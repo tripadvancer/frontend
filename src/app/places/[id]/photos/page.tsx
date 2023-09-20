@@ -1,5 +1,6 @@
 import type { Metadata } from 'next/types'
 import { getPlaceById } from '@/services/places'
+import { PhotoFeed } from '@/components/PhotoFeed'
 
 export const runtime = 'edge'
 
@@ -7,18 +8,17 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     const place = await getPlaceById(params.id)
 
     return {
-        title: `${place.title}, ${place.countryCode} | Tripadvancer`,
+        title: `${place.title}, ${place.countryCode} | Photos | Tripadvancer`,
         description: place.description,
     }
 }
 
-export default async function Place({ params }: { params: { id: string } }) {
+export default async function Photo({ params }: { params: { id: string } }) {
     const place = await getPlaceById(params.id)
 
     return (
-        <section>
-            <h2 className="mb-8 text-2xl">Description</h2>
-            <p>Здесь находится текст и другой контент вашей страницы.</p>
-        </section>
+        <div className="phone:grid-cols-2 grid grid-cols-4 gap-2">
+            <PhotoFeed photos={place.photos} title={place.title} />
+        </div>
     )
 }

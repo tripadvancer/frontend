@@ -1,3 +1,3 @@
-export default function MapsPage() {
+export default function Maps() {
     return <h1>Maps</h1>
 }

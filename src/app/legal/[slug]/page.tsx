@@ -4,6 +4,8 @@ type LegalPageProps = {
     }
 }
 
-export default function LegalPage({ params }: LegalPageProps) {
+export const runtime = 'edge'
+
+export default function Legal({ params }: LegalPageProps) {
     return <h1>Legal {params.slug}</h1>
 }
