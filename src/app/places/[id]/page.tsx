@@ -1,8 +1,6 @@
 import type { Metadata } from 'next/types'
 import { getPlaceById } from '@/services/get-place'
 
-export const runtime = 'edge'
-
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const place = await getPlaceById(params.id)
 
