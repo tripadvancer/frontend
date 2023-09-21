@@ -11,7 +11,7 @@ import Image from 'next/image'
 import 'yet-another-react-lightbox/styles.css'
 import 'yet-another-react-lightbox/plugins/captions.css'
 
-type Photo = {
+export type Photo = {
     url: string
 }
 

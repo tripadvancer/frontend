@@ -1,4 +1,6 @@
-import { getPlaceById } from '@/services/places'
+import { getPlaceById } from '@/services/get-place'
+
+import Image from 'next/image'
 
 import { Tabs } from '@/components/Tabs'
 
@@ -7,11 +9,12 @@ export default async function PlaceLayout({ children, params }: { children: Reac
 
     return (
         <>
-            <header className="bg-red-100">
-                <div className="phone:px-4 container bg-red-100">
+            <header className="relative flex h-[540px] flex-col">
+                <Image src={place.cover + '/public'} className="-z-10 object-cover" alt={place.title} fill />
+                <div className="phone:px-4 container flex-auto">
                     <h1 className="text-4xl">{place.title}</h1>
                 </div>
-                <div className="phone:px-4 phone:gap-x-0 container flex gap-x-8 bg-red-100">
+                <div className="phone:px-4 phone:gap-x-0 container flex gap-x-8">
                     <Tabs
                         tabs={[
                             { label: 'Overview', href: `/places/${place.id}` },
