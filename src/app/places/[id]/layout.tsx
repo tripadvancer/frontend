@@ -1,16 +1,29 @@
 import Image from 'next/image'
 
-import { getPlaceById } from '@/services/places'
+import { ImageVariant } from '@/utils/enums'
+import { makeImageUrl } from '@/utils/helpers'
 
+import { getPlaceById, getPlacesNearby } from '@/services/places'
+
+import { PlaceWidget } from '@/components/PlaceWidget'
+import { PlacesNearbyList } from '@/components/PlacesNearbyList'
 import { Tabs } from '@/components/Tabs'
+import { UserPreview } from '@/components/UserPreview'
 
 export default async function PlaceLayout({ children, params }: { children: React.ReactNode; params: { id: string } }) {
     const place = await getPlaceById(params.id)
+    const placesNearby = await getPlacesNearby(params.id)
 
     return (
         <div className="flex min-h-screen flex-col">
             <div className="relative h-[540px]">
-                <Image src={place.cover + '/public'} className="-z-10 object-cover" alt={place.title} fill priority />
+                <Image
+                    src={makeImageUrl(place.cover, ImageVariant.PUBLIC)}
+                    className="-z-10 object-cover"
+                    alt={place.title}
+                    fill
+                    priority
+                />
                 <div className="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-gradient-to-b from-custom-black-100 to-transparent opacity-50" />
                 <div className="container flex h-full flex-col phone:px-4">
                     <div className="flex-1 py-16">
@@ -46,12 +59,17 @@ export default async function PlaceLayout({ children, params }: { children: Reac
                 <div className="container flex gap-x-8 py-16 phone:flex-col-reverse phone:px-4">
                     <div className="flex-auto">{children}</div>
                     <div className="w-64 flex-none phone:w-auto">
-                        <section>
-                            <h3 className="text-sm uppercase">Places nearby</h3>
-                            <div>
-                                
-                            </div>
+                        <PlaceWidget title={place.title} />
+                        <section className="mb-8">
+                            <h3 className="mb-4 text-sm uppercase">Author</h3>
+                            <UserPreview {...place.author} />
                         </section>
+                        {placesNearby.length > 0 && (
+                            <section>
+                                <h3 className="mb-4 text-sm uppercase">Places nearby</h3>
+                                <PlacesNearbyList places={placesNearby} />
+                            </section>
+                        )}
                     </div>
                 </div>
             </div>

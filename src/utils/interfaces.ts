@@ -60,6 +60,10 @@ export type IPlace = {
     isVisited: boolean
 }
 
+export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & {
+    distance: number
+}
+
 export type IReview = {
     id: number
     place: Pick<IPlace, 'id' | 'title'>

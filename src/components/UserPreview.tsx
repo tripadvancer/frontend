@@ -1,18 +1,23 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { ImageVariant } from '@/utils/enums'
+import { makeImageUrl } from '@/utils/helpers'
 import { IUser } from '@/utils/interfaces'
 
 type UserProps = Pick<IUser, 'id' | 'name' | 'avatar'>
 
 export const UserPreview = ({ id, name, avatar }: UserProps) => {
     return (
-        <Link
-            href={`/users/${id}`}
-            className="text-custom-black-70 hover:text-custom-blue-active transition-colors duration-300 text-xs flex items-center gap-2"
-        >
+        <Link href={`/users/${id}`} className="flex items-center gap-2 text-xs text-custom-black-70">
             {avatar ? (
-                <Image src={avatar + '/avatar'} width={32} height={32} className="rounded-full" alt={name} />
+                <Image
+                    src={makeImageUrl(avatar, ImageVariant.AVATAR)}
+                    width={32}
+                    height={32}
+                    className="rounded-full"
+                    alt={name}
+                />
             ) : (
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 15C9.76086 15 8 13.4274 8 10C8 7.75576 9.5791 6 12 6C14.4142 6 16 7.92158 16 10.2C16 13.4796 14.2181 15 12 15ZM10 10C10 12.2693 10.8182 13 12 13C13.1777 13 14 12.2984 14 10.2C14 8.95042 13.2157 8 12 8C10.7337 8 10 8.81582 10 10Z" />

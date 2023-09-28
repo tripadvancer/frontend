@@ -15,3 +15,12 @@ export enum Categories {
     RECREATIONAL_AREAS = 'RECREATIONAL_AREAS',
     SCENIC_VIEWS = 'SCENIC_VIEWS',
 }
+
+/**
+ * Enum for image variants
+ */
+export enum ImageVariant {
+    PUBLIC = 'public',
+    PREVIEW = 'preview',
+    AVATAR = 'avatar',
+}

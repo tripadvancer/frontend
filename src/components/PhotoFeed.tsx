@@ -8,6 +8,8 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 
 import Image from 'next/image'
 
+import { ImageVariant } from '@/utils/enums'
+import { makeImageUrl } from '@/utils/helpers'
 import { IPhoto } from '@/utils/interfaces'
 
 import 'yet-another-react-lightbox/plugins/captions.css'
@@ -27,7 +29,7 @@ export const PhotoFeed = ({ title, photos, size }: PhotoFeedProps) => {
             {photos.map((photo, index) => (
                 <Image
                     key={photo.id}
-                    src={photo.url + '/preview'}
+                    src={makeImageUrl(photo.url, ImageVariant.PREVIEW)}
                     className="w-full cursor-pointer rounded-lg"
                     width={size}
                     height={size}
@@ -43,7 +45,7 @@ export const PhotoFeed = ({ title, photos, size }: PhotoFeedProps) => {
                 open={indexSlide >= 0}
                 close={() => setIndexSlide(-1)}
                 index={indexSlide}
-                slides={photos.map(photo => ({ title, src: photo.url + '/public' }))}
+                slides={photos.map(photo => ({ title, src: makeImageUrl(photo.url, ImageVariant.PUBLIC) }))}
             />
         </>
     )

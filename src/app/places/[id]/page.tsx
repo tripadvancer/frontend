@@ -13,27 +13,10 @@ export const runtime = 'edge'
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const place = await getPlaceById(params.id)
     const countryName = getCountryNameByCode(place.countryCode)
-    const url = `${process.env.PORTAL_URL}/places/${params.id}`
-    const title = `${place.title}${countryName ? `, ${countryName}` : ''} | Tripadvancer`
-    const description = ''
-    const image = place.cover + '/public' ?? ''
 
     return {
-        title,
-        description,
-        openGraph: {
-            url,
-            type: 'website',
-            title,
-            description,
-            images: [image],
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title,
-            description,
-            images: image,
-        },
+        title: `${place.title}${countryName ? `, ${countryName}` : ''} | Tripadvancer`,
+        description: '',
     }
 }
 
