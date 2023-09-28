@@ -8,30 +8,31 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 
 import Image from 'next/image'
 
-import 'yet-another-react-lightbox/styles.css'
-import 'yet-another-react-lightbox/plugins/captions.css'
+import { IPhoto } from '@/utils/interfaces'
 
-export type Photo = {
-    url: string
-}
+import 'yet-another-react-lightbox/plugins/captions.css'
+import 'yet-another-react-lightbox/styles.css'
 
 type PhotoFeedProps = {
     title: string
-    photos: Photo[]
+    photos: IPhoto[]
+    size: number
 }
 
-export const PhotoFeed = ({ title, photos }: PhotoFeedProps) => {
+export const PhotoFeed = ({ title, photos, size }: PhotoFeedProps) => {
     const [indexSlide, setIndexSlide] = useState<number>(-1)
 
     return (
         <>
             {photos.map((photo, index) => (
                 <Image
-                    key={photo.url}
+                    key={photo.id}
                     src={photo.url + '/preview'}
-                    className="cursor-pointer rounded-lg w-full"
-                    width={154}
-                    height={154}
+                    className="w-full cursor-pointer rounded-lg"
+                    width={size}
+                    height={size}
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8eftuPQAIOAMS40NHBQAAAABJRU5ErkJggg=="
                     alt={title}
                     onClick={() => setIndexSlide(index)}
                 />

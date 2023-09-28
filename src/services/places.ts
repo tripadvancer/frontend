@@ -1,4 +1,6 @@
-export async function getPlaceById(id: string) {
+import { IPlace } from '@/utils/interfaces'
+
+export async function getPlaceById(id: string): Promise<IPlace> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + id
     const res = await fetch(url)
 
