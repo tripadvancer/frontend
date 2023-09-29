@@ -252,7 +252,7 @@ const countries: ICountry[] = [
     { code: 'ZW', name: 'Zimbabwe' },
 ]
 
-export const getCountryNameByCode = (countryCode: Pick<ICountry, 'code'>['code'] | null) => {
+export const getCountryNameByCode = (countryCode: Pick<ICountry, 'code'>['code']) => {
     const country = countries.find(c => c.code === countryCode)
     return country ? country.name : null
 }

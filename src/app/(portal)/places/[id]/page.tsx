@@ -27,7 +27,7 @@ export default async function Place({ params }: { params: { id: string } }) {
     return (
         <>
             <section className="mb-16">
-                <h2 className="mb-8 text-2xl">Description of the place</h2>
+                <h2 className="mb-8 text-2xl">About this place</h2>
                 <DraftToHtml json={place.description} />
             </section>
 

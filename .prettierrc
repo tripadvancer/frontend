@@ -15,6 +15,7 @@
         "^react(.*)",
         "<THIRD_PARTY_MODULES>",
         "next/(.*)",
+        "^@/app/(.*)$",
         "^@/configs/(.*)$",
         "^@/utils/(.*)$",
         "^@/services/(.*)$",

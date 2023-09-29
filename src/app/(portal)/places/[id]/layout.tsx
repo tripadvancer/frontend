@@ -5,7 +5,7 @@ import { makeImageUrl } from '@/utils/helpers'
 
 import { getPlaceById, getPlacesNearby } from '@/services/places'
 
-import { PlaceWidget } from '@/components/PlaceWidget'
+import { PlaceAchievement } from '@/components/PlaceAchievement'
 import { PlacesNearbyList } from '@/components/PlacesNearbyList'
 import { Tabs } from '@/components/Tabs'
 import { UserPreview } from '@/components/UserPreview'
@@ -59,7 +59,7 @@ export default async function PlaceLayout({ children, params }: { children: Reac
                 <div className="container flex gap-x-8 py-16 phone:flex-col-reverse phone:px-4">
                     <div className="flex-auto">{children}</div>
                     <div className="w-64 flex-none phone:w-auto">
-                        <PlaceWidget title={place.title} />
+                        <PlaceAchievement title={place.title} />
                         <section className="mb-8">
                             <h3 className="mb-4 text-sm uppercase">Author</h3>
                             <UserPreview {...place.author} />

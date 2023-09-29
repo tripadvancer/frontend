@@ -11,12 +11,12 @@ export const Review = ({ text, user, rating, photos, place, createdAt }: ReviewP
         <div className="border-b border-custom-blue-20 py-8 first:border-t">
             <div className="mb-4 flex items-center justify-between">
                 <Rating rating={rating} />
-                <div className="text-xs text-custom-black-40">createdAt</div>
+                <div className="text-xs text-custom-black-40">{createdAt}</div>
             </div>
 
             <div className="mb-4 text-sm">{text}</div>
 
-            <div className="mb-4 grid grid-cols-6 gap-2 phone:grid-cols-3">
+            <div className="mb-4 grid grid-cols-9 gap-2 phone:grid-cols-3">
                 <PhotoFeed photos={photos} title={place.title} size={80} />
             </div>
 

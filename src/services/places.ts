@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import { IPlace } from '@/utils/interfaces'
 
 export async function getPlaceById(placeId: string): Promise<IPlace> {
@@ -6,7 +8,7 @@ export async function getPlaceById(placeId: string): Promise<IPlace> {
 
     if (!res.ok) {
         if (res.status === 404) {
-            throw new Error('Place not found')
+            notFound()
         }
 
         throw new Error('Failed to fetch data')
