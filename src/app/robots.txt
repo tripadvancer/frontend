@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Disallow:
+Sitemap: https://api.tripadvancer.me/public/sitemap.xml
