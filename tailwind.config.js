@@ -4,13 +4,8 @@ module.exports = {
     theme: {
         screens: {
             phone: { max: '768px' },
-            // => @media (max-width: 768px) { ... }
-
             tablet: { min: '769px', max: '1023px' },
-            // => @media (min-width: 769px) and (max-width: 1023px) { ... }
-
-            desktop: { min: '1120px' },
-            // => @media (min-width: 1120px) { ... }
+            desktop: { min: '1024px' },
         },
         container: {
             center: true,
@@ -64,5 +59,5 @@ module.exports = {
             },
         },
     },
-    plugins: [],
+    plugins: [require('@tailwindcss/typography')],
 }
