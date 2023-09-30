@@ -1,11 +1,5 @@
-type UserPageProps = {
-    params: {
-        id: string
-    }
-}
-
 export const runtime = 'edge'
 
-export default function User({ params }: UserPageProps) {
-    return <h1>User {params.id}</h1>
+export default function User({ params }: { params: { id: string } }) {
+    return <h1>User, id: {params.id}</h1>
 }

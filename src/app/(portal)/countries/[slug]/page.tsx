@@ -1,11 +1,5 @@
-type PlacePageProps = {
-    params: {
-        slug: string
-    }
-}
-
 export const runtime = 'edge'
 
-export default function Country({ params }: PlacePageProps) {
-    return <h1>Country {params.slug}</h1>
+export default function Country({ params }: { params: { slug: string } }) {
+    return <h1>Country, slug: {params.slug}</h1>
 }

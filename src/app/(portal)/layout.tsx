@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function PortalLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex min-h-screen flex-col">
             <TheHeader />
