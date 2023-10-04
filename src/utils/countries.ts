@@ -1,6 +1,9 @@
-import { ICountry } from '@/utils/interfaces'
+type Country = {
+    code: string
+    name: string
+}
 
-const countries: ICountry[] = [
+const countries: Country[] = [
     { code: 'AD', name: 'Andorra' },
     { code: 'AE', name: 'United Arab Emirates' },
     { code: 'AF', name: 'Afghanistan' },
@@ -77,7 +80,7 @@ const countries: ICountry[] = [
     { code: 'FO', name: 'Faroe Islands' },
     { code: 'FR', name: 'France' },
     { code: 'GA', name: 'Gabon' },
-    { code: 'GB', name: 'United Kingdom of Great Britain and Northern Ireland' },
+    { code: 'GB', name: 'United Kingdom' },
     { code: 'GD', name: 'Grenada' },
     { code: 'GE', name: 'Georgia' },
     { code: 'GF', name: 'French Guiana' },
@@ -252,7 +255,7 @@ const countries: ICountry[] = [
     { code: 'ZW', name: 'Zimbabwe' },
 ]
 
-export const getCountryNameByCode = (countryCode: Pick<ICountry, 'code'>['code']) => {
+export const getCountryNameByCode = (countryCode: Pick<Country, 'code'>['code']): string => {
     const country = countries.find(c => c.code === countryCode)
-    return country ? country.name : null
+    return country ? country.name : ''
 }

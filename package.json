@@ -17,8 +17,10 @@
         "eslint": "^8.50.0",
         "eslint-config-next": "^13.5.3",
         "next": "^13.5.3",
+        "next-i18n-router": "^4.1.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-intl": "^6.4.7",
         "typescript": "5.2.2",
         "yet-another-react-lightbox": "^3.12.2"
     },

@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    i18n: {
-        locales: ['en', 'ru'],
-        defaultLocale: 'en',
-    },
     images: {
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
@@ -12,6 +8,12 @@ const nextConfig = {
                 hostname: 'imagedelivery.net',
                 port: '',
                 pathname: '/*/*/*',
+            },
+            {
+                protocol: 'https',
+                hostname: 'source.unsplash.com',
+                port: '',
+                pathname: '/256x256/**',
             },
         ],
     },

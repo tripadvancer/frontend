@@ -1,0 +1,23 @@
+{
+    "meta.title": "Tripadvancer - Plan your trip and find interesting places",
+    "meta.description": "Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.",
+    
+    "main.title": "Where are you going?",
+    "main.text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.",
+
+    "features.title": "Our features",
+    "features.text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.",
+
+    "features.places.title": "Discover and share interesting places",
+    "features.places.text": "Discover extraordinary places and unique landmarks to plan your unforgettable journey. Share your impressions of the visited locations by leaving reviews and ratings, and you can also add new places that are not yet on the map to help fellow travelers discover them.",
+
+    "features.random.title": "Find random ones places around you",
+    "features.random.text": "Don&rsquo;t know which place to choose to visit in your free time? Use our functionality for random selection of a place near you! All you need to do is choose a category of the place and an acceptable distance from you.",
+
+    "features.lists.title": "Manage your lists favorite places",
+    "features.lists.text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.",
+
+    "map.title": "World map",
+    "map.text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.",
+    "map.cta.caption": "Explore the map"
+}

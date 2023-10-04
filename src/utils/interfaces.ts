@@ -13,8 +13,8 @@ export type GeoJsonPoint = {
 }
 
 export type ICountry = {
-    code: string
-    name: string
+    countryCode: string
+    placesCount: number
 }
 
 export type ICategory = {
