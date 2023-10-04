@@ -11,6 +11,8 @@ const roboto = Roboto({
     weight: ['400', '500', '700'],
 })
 
+export const runtime = 'edge'
+
 export function generateStaticParams() {
     return i18nConfig.locales.map(locale => ({ locale }))
 }
