@@ -4,7 +4,7 @@ const i18nConfig: Config = {
     locales: ['en', 'ru'],
     defaultLocale: 'en',
     prefixDefault: false,
-    routingStrategy: 'rewrite',
+    routingStrategy: 'dynamicSegment',
 }
 
 export default i18nConfig

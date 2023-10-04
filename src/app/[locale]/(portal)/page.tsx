@@ -7,8 +7,6 @@ import getIntl from '@/utils/intl'
 import { CountryFeed } from '@/components/CountryFeed'
 import { getCountries } from '@/services/countries'
 
-export const runtime = 'edge'
-
 export async function generateMetadata(): Promise<Metadata> {
     const intl = await getIntl('landing')
 
