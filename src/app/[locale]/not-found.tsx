@@ -16,7 +16,7 @@ export default function NotFound() {
                     <Image src="/images/logo.svg" width={140} height={24} className="mb-16" alt="Tripadvancer" />
                 </Link>
                 <Image
-                    src="/images/404.svg"
+                    src="/images/error-404.svg"
                     width={352}
                     height={406}
                     className="mb-16 phone:w-72 tablet:hidden desktop:hidden"
