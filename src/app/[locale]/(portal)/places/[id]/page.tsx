@@ -14,6 +14,8 @@ import { ImageVariant } from '@/utils/enums'
 import { FormattedDate, makeImageUrl } from '@/utils/helpers'
 import { IPhoto } from '@/utils/interfaces'
 
+export const runtime = 'edge'
+
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const place = await getPlaceById(params.id)
     const countryName = getCountryNameByCode(place.countryCode)
