@@ -1,6 +1,7 @@
 import { Roboto } from 'next/font/google'
 
-import { getCurrentLocale } from '@/locales/server'
+import { i18nConfig } from '@/configs/i18n.config'
+import { getCurrentLocale } from '@/utils/i18n.server'
 
 import '../globals.css'
 
@@ -12,7 +13,7 @@ const roboto = Roboto({
 export const runtime = 'edge'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-    const local = getCurrentLocale() ?? 'en'
+    const local = getCurrentLocale() ?? i18nConfig.defaultLocale
 
     return (
         <html lang={local}>

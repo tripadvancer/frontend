@@ -1,6 +1,6 @@
 'use client'
 
-import { useChangeLocale, useCurrentLocale } from '@/locales/client'
+import { useChangeLocale, useCurrentLocale } from '@/utils/i18n.client'
 
 export const LanguageChanger = () => {
     const changeLocale = useChangeLocale()
@@ -9,10 +9,16 @@ export const LanguageChanger = () => {
     return (
         <div className="flex gap-2">
             Current locale: {locale}
-            <div onClick={() => changeLocale('en')} className="cursor-pointer text-custom-blue-100 hover:text-custom-blue-active">
+            <div
+                onClick={() => changeLocale('en')}
+                className="cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
+            >
                 En
             </div>
-            <div onClick={() => changeLocale('ru')} className="cursor-pointer text-custom-blue-100 hover:text-custom-blue-active">
+            <div
+                onClick={() => changeLocale('ru')}
+                className="cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
+            >
                 Ru
             </div>
         </div>
