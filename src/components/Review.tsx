@@ -1,17 +1,13 @@
-import { currentLocale } from 'next-i18n-router'
-
-import { FormattedDate } from '@/utils/helpers'
-import { IReview } from '@/utils/interfaces'
-
 import { PhotoFeed } from '@/components/PhotoFeed'
 import { Rating } from '@/components/Rating'
 import { UserPreview } from '@/components/UserPreview'
+import { FormattedDate } from '@/utils/helpers'
+import { IReview } from '@/utils/interfaces'
 
 type ReviewProps = IReview
 
 export const Review = ({ text, user, rating, photos, place, createdAt }: ReviewProps) => {
-    const locale = currentLocale()
-    const formattedDate = FormattedDate(createdAt, locale)
+    const formattedDate = FormattedDate(createdAt, 'en')
 
     return (
         <div className="border-t border-custom-blue-20 py-8 last:pb-0">

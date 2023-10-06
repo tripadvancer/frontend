@@ -1,5 +1,3 @@
-import i18nConfig from '@/configs/i18n.config'
-
 import { ImageVariant } from '@/utils/enums'
 
 export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
@@ -18,7 +16,7 @@ export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
     return `${url}/${imageVariant}`
 }
 
-export function FormattedDate(date: Date, locale: string = i18nConfig.defaultLocale) {
+export function FormattedDate(date: Date, locale: string) {
     return new Date(date).toLocaleDateString(locale, {
         year: 'numeric',
         month: 'long',

@@ -1,34 +1,36 @@
 import Link from 'next/link'
 
-import getIntl from '@/utils/intl'
-
 export const TheFooter = async () => {
-    const intl = await getIntl('footer')
-
     return (
         <footer>
             <div className="container border-t border-custom-black-70 py-8">
                 <section className="mb-5 text-center text-sm text-custom-black-70">
-                    <h4 className="mb-1 font-medium">{intl.formatMessage({ id: 'about.title' })}</h4>
-                    <p>{intl.formatMessage({ id: 'about.text.1' })}</p>
-                    <p>{intl.formatMessage({ id: 'about.text.2' })}</p>
+                    <h4 className="mb-1 font-medium">Planing a trip but don’t know where to go?</h4>
+                    <p>
+                        Tripadvancer will help you discover the world in a new way, find interesting places and go on an
+                        amazing trip.
+                    </p>
+                    <p>
+                        Share your favorite places and experiences with others. Together, we can make every journey even
+                        more interesting and exciting.
+                    </p>
                 </section>
 
                 <nav className="mb-2">
                     <ul className="flex flex-row items-center justify-center gap-3 text-sm">
                         <li>
                             <Link href="/legal/terms-and-conditions" className="text-custom-black-40">
-                                {intl.formatMessage({ id: 'link.legal.terms_and_conditions' })}
+                                Terms and Conditions
                             </Link>
                         </li>
                         <li>
                             <Link href="/legal/privacy-policy" className="text-custom-black-40">
-                                {intl.formatMessage({ id: 'link.legal.privacy_policy' })}
+                                Privacy Policy
                             </Link>
                         </li>
                         <li>
                             <Link href="/legal/cookie-policy" className="text-custom-black-40">
-                                {intl.formatMessage({ id: 'link.legal.cookie_policy' })}
+                                Cookie Policy
                             </Link>
                         </li>
                     </ul>
