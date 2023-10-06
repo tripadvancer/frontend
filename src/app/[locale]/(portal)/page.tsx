@@ -4,60 +4,49 @@ import type { Metadata } from 'next/types'
 
 import { CountryFeed } from '@/components/CountryFeed'
 import { getCountries } from '@/services/countries'
-import { getI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n.server'
 
 export async function generateMetadata(): Promise<Metadata> {
+    const t = await getScopedI18n('pages.home')
+
     return {
-        title: 'Tripadvancer - Plan your trip and find interesting places',
-        description:
-            'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+        title: t('meta.title'),
+        description: t('meta.description'),
     }
 }
 
-export default async function Landing() {
-    const t = await getI18n()
+export default async function Home() {
+    const t = await getScopedI18n('pages.home')
     const countries = await getCountries()
 
     return (
         <div className="container py-24">
             <section className="mb-24">
-                <h1 className="mb-5 text-center text-5xl">{t('hello')}</h1>
+                <h1 className="mb-5 text-center text-5xl">{t('countries.title')}</h1>
                 <p className="m-auto mb-16 w-2/3 text-center text-base text-custom-black-70">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida
-                    feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis.
-                    Nulla sed arcu viverra, efficitur ex quis, tempus nulla.
+                    {t('countries.description')}
                 </p>
                 <CountryFeed countries={countries} />
             </section>
 
             <section className="mb-24">
-                <h2 className="mb-5 text-center text-4xl">Our features</h2>
+                <h2 className="mb-5 text-center text-4xl">{t('features.title')}</h2>
                 <p className="m-auto mb-16 w-2/3 text-center text-base text-custom-black-70">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida
-                    feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis.
-                    Nulla sed arcu viverra, efficitur ex quis, tempus nulla.
+                    {t('features.description')}
                 </p>
 
                 <div className="mb-8 flex flex-row items-center gap-16">
                     <Image src="/images/pic-1.svg" width={448} height={448} alt="" />
                     <div>
-                        <h3 className="mb-8 text-3xl">Discover and share interesting places</h3>
-                        <p className="text-sm">
-                            Discover extraordinary places and unique landmarks to plan your unforgettable journey. Share
-                            your impressions of the visited locations by leaving reviews and ratings, and you can also
-                            add new places that are not yet on the map to help fellow travelers discover them.
-                        </p>
+                        <h3 className="mb-8 text-3xl">{t('features.places.title', { br: <br /> })}</h3>
+                        <p className="text-sm">{t('features.places.description')}</p>
                     </div>
                 </div>
 
                 <div className="mb-8 flex flex-row items-center gap-16">
                     <div className="text-right">
-                        <h3 className="mb-8 text-3xl">Find random ones places around you</h3>
-                        <p className="text-sm">
-                            Don&rsquo;t know which place to choose to visit in your free time? Use our functionality for
-                            random selection of a place near you! All you need to do is choose a category of the place
-                            and an acceptable distance from you.
-                        </p>
+                        <h3 className="mb-8 text-3xl">{t('features.random.title', { br: <br /> })}</h3>
+                        <p className="text-sm">{t('features.random.description')}</p>
                     </div>
                     <Image src="/images/pic-2.svg" width={448} height={448} alt="" />
                 </div>
@@ -65,23 +54,15 @@ export default async function Landing() {
                 <div className="flex flex-row items-center gap-16">
                     <Image src="/images/pic-3.svg" width={448} height={448} alt="" />
                     <div>
-                        <h3 className="mb-8 text-3xl">Manage your lists favorite places</h3>
-                        <p className="text-sm">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida
-                            feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor
-                            condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.
-                        </p>
+                        <h3 className="mb-8 text-3xl">{t('features.lists.title', { br: <br /> })}</h3>
+                        <p className="text-sm">{t('features.lists.description')}</p>
                     </div>
                 </div>
             </section>
 
             <section>
-                <h2 className="mb-5 text-center text-4xl">World map</h2>
-                <p className="m-auto mb-16 w-2/3 text-center text-base text-custom-black-70">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida
-                    feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis.
-                    Nulla sed arcu viverra, efficitur ex quis, tempus nulla.
-                </p>
+                <h2 className="mb-5 text-center text-4xl">{t('map.title')}</h2>
+                <p className="m-auto mb-16 w-2/3 text-center text-base text-custom-black-70">{t('map.description')}</p>
 
                 <div className="relative">
                     <Image src="/images/map.svg" width={1120} height={400} alt="" />
@@ -89,7 +70,7 @@ export default async function Landing() {
                         href="/map"
                         className="absolute left-1/2 top-1/2 flex h-10 -translate-x-1/2 -translate-y-1/2 transform items-center rounded-lg bg-custom-orange-100 px-6 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-custom-orange-active hover:text-white"
                     >
-                        Explore the map
+                        {t('map.cta')}
                     </Link>
                 </div>
             </section>

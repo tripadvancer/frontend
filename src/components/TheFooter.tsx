@@ -1,19 +1,17 @@
 import Link from 'next/link'
 
+import { getScopedI18n } from '@/utils/i18n.server'
+
 export const TheFooter = async () => {
+    const t = await getScopedI18n('common')
+
     return (
         <footer>
             <div className="container border-t border-custom-black-70 py-8">
                 <section className="mb-5 text-center text-sm text-custom-black-70">
-                    <h4 className="mb-1 font-medium">Planing a trip but don’t know where to go?</h4>
-                    <p>
-                        Tripadvancer will help you discover the world in a new way, find interesting places and go on an
-                        amazing trip.
-                    </p>
-                    <p>
-                        Share your favorite places and experiences with others. Together, we can make every journey even
-                        more interesting and exciting.
-                    </p>
+                    <h4 className="mb-1 font-medium">{t('about.title')}</h4>
+                    <p>{t('about.description.str_1')}</p>
+                    <p>{t('about.description.str_2')}</p>
                 </section>
 
                 <nav className="mb-2">
