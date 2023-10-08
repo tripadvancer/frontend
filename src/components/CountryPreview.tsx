@@ -25,7 +25,7 @@ export const CountryPreview = ({ countryCode, placesCount }: CountryPreviewProps
                 </Link>
             </div>
             <figcaption className="flex flex-col justify-between p-4">
-                <div className="mb-4 h-12 text-base font-medium text-custom-black-100">{countryName}</div>
+                <div className="mb-4 h-12 text-base font-medium">{countryName}</div>
                 <div className="flex flex-row items-center gap-2 text-sm font-medium text-custom-blue-100">
                     <svg
                         width="24"

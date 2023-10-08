@@ -5,6 +5,15 @@ export default {
 
     'common.cta.show_more': 'Показать ещё',
 
+    'common.sign_up_link': 'Зарегистрироваться',
+    'common.sign_in_link': 'Войти',
+    'common.terms_link': 'Terms and Conditions',
+    'common.privacy_link': 'Privacy Policy',
+
+    'forms.fields.email.label': 'Email',
+    'forms.fields.password.label': 'Пароль',
+    'forms.fields.username.label': 'Имя пользователя',
+
     'pages.home.meta.title': 'Tripadvancer - Спланируйте своё путешествие и найдите интересные места',
     'pages.home.meta.description': 'Планируете поездку, но не знаете куда поехать? Tripadvancer поможет Вам открыть мир с новой стороны, найти интересные места и отправиться в увлекательное путешествие.',
     'pages.home.countries.title': 'Выберите направление',
@@ -20,4 +29,22 @@ export default {
     'pages.home.map.title': 'Карта',
     'pages.home.map.description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.',
     'pages.home.map.cta': 'Исследовать карту',
+
+    'pages.auth.sign_up.meta.title': 'Регистрация | Tripadvancer',
+    'pages.auth.sign_up.title': 'Регистрация в Tripadvancer',
+    'pages.auth.sign_up.submit': 'Зарегистрироваться',
+    'pages.auth.sign_up.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
+    'pages.auth.sign_up.to_back': 'Уже зарегистрированы? {sign_in_link}',
+
+    'pages.auth.sign_in.meta.title': 'Вход | Tripadvancer',
+    'pages.auth.sign_in.title': 'Вход в Tripadvancer',
+    'pages.auth.sign_in.submit': 'Войти',
+    'pages.auth.sign_in.link.forgot_password': 'Забыли пароль?',
+    'pages.auth.sign_in.to_back': 'Нет учётной записи? {sign_up_link}',
+
+    'pages.auth.forgot_password.meta.title': 'Восстановление пароля | Tripadvancer',
+    'pages.auth.forgot_password.title': 'Забыли пароль?',
+    'pages.auth.forgot_password.submit': 'Восстановить пароль',
+    'pages.auth.forgot_password.info': 'Укажите Ваш email и мы вышлем письмо с инструкцией по восстановлению пароля:',
+    'pages.auth.forgot_password.to_back': '{sign_in_link} или {sign_up_link}',
 } as const

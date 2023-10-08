@@ -5,6 +5,15 @@ export default {
 
     'common.cta.show_more': 'Show more',
 
+    'common.sign_up_link': 'Sign up',
+    'common.sign_in_link': 'Sign in',
+    'common.terms_link': 'Terms and Conditions',
+    'common.privacy_link': 'Privacy Policy',
+
+    'forms.fields.email.label': 'Email',
+    'forms.fields.password.label': 'Password',
+    'forms.fields.username.label': 'Username',
+
     'pages.home.meta.title': 'Tripadvancer - Plan your trip and find interesting places',
     'pages.home.meta.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     'pages.home.countries.title': 'Where are you going?',
@@ -20,4 +29,22 @@ export default {
     'pages.home.map.title': 'World map',
     'pages.home.map.description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.',
     'pages.home.map.cta': 'Explore the map',
+
+    'pages.auth.sign_up.meta.title': 'Sign up | Tripadvancer',
+    'pages.auth.sign_up.title': 'Sign up to Tripadvancer',
+    'pages.auth.sign_up.submit': 'Sign up',
+    'pages.auth.sign_up.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
+    'pages.auth.sign_up.to_back': 'Have an account? {sign_in_link}',
+
+    'pages.auth.sign_in.meta.title': 'Sign in | Tripadvancer',
+    'pages.auth.sign_in.title': 'Sign in to Tripadvancer',
+    'pages.auth.sign_in.submit': 'Sign in',
+    'pages.auth.sign_in.link.forgot_password': 'Forgot password?',
+    'pages.auth.sign_in.to_back': 'Don’t have an account? {sign_up_link}',
+
+    'pages.auth.forgot_password.meta.title': 'Forgot password | Tripadvancer',
+    'pages.auth.forgot_password.title': 'Forgot your password?',
+    'pages.auth.forgot_password.submit': 'Restore password',
+    'pages.auth.forgot_password.info': 'Enter your email and we will send you an email with instructions for resetting your password:',
+    'pages.auth.forgot_password.to_back': '{sign_in_link} or {sign_up_link}',
 } as const

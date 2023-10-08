@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
+import { Button } from '@/components/forms/Button'
+
 export const metadata: Metadata = {
     title: 'Page not found | Tripadvancer',
     description: 'Sorry, but the page you are looking for cannot be found.',
@@ -10,7 +12,14 @@ export const metadata: Metadata = {
 export default function NotFound() {
     return (
         <div className="container flex min-h-screen py-16 phone:flex-col phone:px-4 tablet:flex-row tablet:items-center tablet:justify-center tablet:gap-16 desktop:flex-row desktop:items-center desktop:justify-center desktop:gap-32">
-            <Image src="/images/error-404.svg" width={352} height={406} className="grow phone:hidden" alt="404" priority />
+            <Image
+                src="/images/error-404.svg"
+                width={352}
+                height={406}
+                className="grow phone:hidden"
+                alt="404"
+                priority
+            />
             <div className="phone:flex phone:flex-col phone:items-center phone:text-center">
                 <Link href="/">
                     <Image src="/images/logo.svg" width={140} height={24} className="mb-16" alt="Tripadvancer" />
@@ -28,7 +37,12 @@ export default function NotFound() {
                     We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for
                     has either been moved, deleted, or never existed in the first place.
                 </p>
-                <Link href="/">Return Home</Link>
+                <Link
+                    href="/"
+                    className="inline-flex h-10 items-center rounded-lg bg-custom-blue-100 px-6 text-center text-sm text-white transition-colors duration-300 ease-in-out hover:bg-custom-blue-active hover:text-white focus:outline-none"
+                >
+                    Return Home
+                </Link>
             </div>
         </div>
     )
