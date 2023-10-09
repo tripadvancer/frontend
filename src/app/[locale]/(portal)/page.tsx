@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
 import { CountryFeed } from '@/components/CountryFeed'
-import { getCountries } from '@/services/countries'
+import { getCountries } from '@/services/server.services'
 import { getScopedI18n } from '@/utils/i18n.server'
 
 export async function generateMetadata(): Promise<Metadata> {

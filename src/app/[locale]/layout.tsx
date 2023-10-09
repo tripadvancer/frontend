@@ -1,6 +1,8 @@
 import { Roboto } from 'next/font/google'
 
 import { i18nConfig } from '@/configs/i18n.config'
+import { DialogProvider } from '@/providers/dialog-provider'
+import { I18nProvider } from '@/providers/i18n-provider'
 import { getCurrentLocale } from '@/utils/i18n.server'
 
 import '../globals.css'
@@ -17,7 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
     return (
         <html lang={local}>
-            <body className={roboto.className}>{children}</body>
+            <body className={roboto.className}>
+                <I18nProvider>
+                    <DialogProvider>{children}</DialogProvider>
+                </I18nProvider>
+            </body>
         </html>
     )
 }

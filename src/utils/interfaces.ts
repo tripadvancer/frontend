@@ -60,6 +60,8 @@ export type IPlace = {
     isVisited: boolean
 }
 
+export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'avgRating' | 'reviewsCount' | 'cover'>
+
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & {
     distance: number
 }

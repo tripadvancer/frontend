@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 import { CountryPreview } from '@/components/CountryPreview'
 import { ShowMore } from '@/components/ShowMore'
-import { i18nConfig } from '@/configs/i18n.config'
 import { I18nProviderClient } from '@/utils/i18n.client'
 import { ICountry } from '@/utils/interfaces'
 

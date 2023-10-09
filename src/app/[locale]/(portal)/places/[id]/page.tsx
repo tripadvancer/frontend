@@ -1,14 +1,16 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
+import { CoordinatesToCopy } from '@/components/CoordinatesToCopy'
 import { DraftToHtml } from '@/components/DraftToHtml'
 import { PhotoFeed } from '@/components/PhotoFeed'
 import { PlaceAchievement } from '@/components/PlaceAchievement'
 import { PlacesNearbyList } from '@/components/PlacesNearbyList'
 import { ReviewFeed } from '@/components/ReviewFeed'
 import { UserPreview } from '@/components/UserPreview'
-import { getPlaceById, getPlacesNearby } from '@/services/places'
-import { getReviewsByPlaceId } from '@/services/reviews'
+import { getPlaceById, getPlacesNearby } from '@/services/server.services'
+import { getReviewsByPlaceId } from '@/services/server.services'
 import { getCountryNameByCode } from '@/utils/countries'
 import { ImageVariant } from '@/utils/enums'
 import { FormattedDate, makeImageUrl } from '@/utils/helpers'
@@ -29,6 +31,7 @@ export default async function Place({ params }: { params: { locale: string; id: 
     const placesNearby = await getPlacesNearby(params.id)
     const reviews = await getReviewsByPlaceId(params.id)
 
+    const countryName = getCountryNameByCode(place.countryCode.toUpperCase())
     const formattedDate = FormattedDate(place.createdAt, params.locale)
     const photosWithCover: IPhoto[] = place.photos.slice()
 
@@ -46,15 +49,19 @@ export default async function Place({ params }: { params: { locale: string; id: 
                     fill
                     priority
                 />
-                <div className="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-gradient-to-b from-custom-black-100 to-transparent opacity-50" />
+                <div className="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-custom-black-100 opacity-30" />
 
-                <div className="container flex h-full flex-col phone:px-4">
-                    <div className="flex-1 py-16">
-                        <h1 className="mb-2 text-4xl text-white">{place.title}</h1>
-                        <div className="mb-4 text-base text-white">
-                            {place.location.coordinates[1].toFixed(5)}, {place.location.coordinates[0].toFixed(5)}
-                        </div>
-                        <div className="flex gap-2">
+                <div className="container flex h-full items-center justify-center phone:px-4">
+                    <section className="py-16 text-center">
+                        <Link
+                            href={`/countries/${place.countryCode}`}
+                            className="mb-5 inline-block text-sm text-white hover:text-white"
+                        >
+                            {countryName}
+                        </Link>
+                        <h1 className="mb-5 text-5xl text-white">{place.title}</h1>
+                        <CoordinatesToCopy coordinates={place.location.coordinates} className="mb-4" />
+                        <div className="flex justify-center gap-2">
                             {place.categories.map(category => (
                                 <div
                                     key={category.id}
@@ -64,12 +71,12 @@ export default async function Place({ params }: { params: { locale: string; id: 
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
 
             <div className="-mt-8 flex-1 rounded-t-4xl bg-white phone:rounded-none">
-                <div className="container flex gap-x-8 pb-24 pt-16 phone:flex-col-reverse phone:px-4">
+                <div className="container flex gap-x-8 py-24 phone:flex-col-reverse phone:px-4">
                     <div className="flex-auto">
                         <section className="mb-16">
                             <h2 className="mb-8 text-2xl">About this place</h2>
