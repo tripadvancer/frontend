@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
+import type { IPhoto } from '@/types/photo'
+
 import { CoordinatesToCopy } from '@/components/CoordinatesToCopy'
 import { DraftToHtml } from '@/components/DraftToHtml'
 import { PhotoFeed } from '@/components/PhotoFeed'
@@ -9,12 +11,11 @@ import { PlaceAchievement } from '@/components/PlaceAchievement'
 import { PlacesNearbyList } from '@/components/PlacesNearbyList'
 import { ReviewFeed } from '@/components/ReviewFeed'
 import { UserPreview } from '@/components/UserPreview'
-import { getPlaceById, getPlacesNearby } from '@/services/server.services'
-import { getReviewsByPlaceId } from '@/services/server.services'
+import { getPlaceById, getPlacesNearby } from '@/services/places'
+import { getReviewsByPlaceId } from '@/services/reviews'
 import { getCountryNameByCode } from '@/utils/countries'
 import { ImageVariant } from '@/utils/enums'
 import { FormattedDate, makeImageUrl } from '@/utils/helpers'
-import { IPhoto } from '@/utils/interfaces'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const place = await getPlaceById(params.id)
@@ -41,7 +42,7 @@ export default async function Place({ params }: { params: { locale: string; id: 
 
     return (
         <div className="flex min-h-screen flex-col">
-            <div className="relative h-[540px]">
+            <div className="relative h-[540px] pb-8">
                 <Image
                     src={makeImageUrl(place.cover, ImageVariant.PUBLIC)}
                     className="-z-10 object-cover"

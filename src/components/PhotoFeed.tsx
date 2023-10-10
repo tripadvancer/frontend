@@ -8,9 +8,10 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 
 import Image from 'next/image'
 
+import type { IPhoto } from '@/types/photo'
+
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
-import { IPhoto } from '@/utils/interfaces'
 
 import 'yet-another-react-lightbox/plugins/captions.css'
 import 'yet-another-react-lightbox/styles.css'

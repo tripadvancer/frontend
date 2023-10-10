@@ -1,7 +1,7 @@
 'use client'
 
 import { SignInForm } from '@/components/SignInForm'
-import { useDialog } from '@/providers/dialog-provider'
+import { useDialog } from '@/providers/DialogProvider'
 import { useScopedI18n } from '@/utils/i18n.client'
 
 export const AuthLink = () => {

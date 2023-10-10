@@ -1,7 +1,13 @@
-import { Review } from '@/components/Review'
-import { IReview, PaginatedResponse } from '@/utils/interfaces'
+import type { PaginatedResponse } from '@/types/common'
+import type { IReview } from '@/types/review'
 
-export const ReviewFeed = ({ reviews }: { reviews: PaginatedResponse<IReview> }) => {
+import { Review } from '@/components/Review'
+
+type ReviewFeedProps = {
+    reviews: PaginatedResponse<IReview>
+}
+
+export const ReviewFeed = ({ reviews }: ReviewFeedProps) => {
     if (reviews.items.length === 0) {
         return (
             <div className="text-center text-sm text-custom-black-40">

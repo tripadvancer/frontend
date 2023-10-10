@@ -1,13 +1,16 @@
+import type { IReview } from '@/types/review'
+
 import { PhotoFeed } from '@/components/PhotoFeed'
 import { Rating } from '@/components/Rating'
 import { UserPreview } from '@/components/UserPreview'
 import { FormattedDate } from '@/utils/helpers'
-import { IReview } from '@/utils/interfaces'
+import { getCurrentLocale } from '@/utils/i18n.server'
 
 type ReviewProps = IReview
 
 export const Review = ({ text, user, rating, photos, place, createdAt }: ReviewProps) => {
-    const formattedDate = FormattedDate(createdAt, 'en')
+    const locale = getCurrentLocale()
+    const formattedDate = FormattedDate(createdAt, locale)
 
     return (
         <div className="border-t border-custom-blue-20 py-8 last:pb-0">

@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '@/components/forms/Button'
+import { Button } from '@/components/Button'
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
     return (

@@ -1,6 +1,6 @@
 'use client'
 
-import { CoordinatesTuple } from '@/utils/interfaces'
+import type { CoordinatesTuple } from '@/types/geo'
 
 type CoordinatesToCopyProps = {
     coordinates: CoordinatesTuple

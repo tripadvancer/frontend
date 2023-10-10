@@ -28,11 +28,9 @@ export function useDialog(): DialogContextInterface {
 
 export function DialogProvider({ children }: { children: ReactNode }) {
     const [content, setContent] = useState<ReactNode>(null)
+    const unsetContent = useCallback(() => setContent(null), [])
 
-    const unsetContent = useCallback(() => {
-        setContent(null)
-    }, [])
-
+    //  todo: fix this hack to prevent scrolling when dialog is open
     useEffect(() => {
         if (content) {
             document.body.classList.add('overflow-y-hidden')

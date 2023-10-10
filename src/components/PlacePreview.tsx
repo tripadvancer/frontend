@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import type { IPlacePreview } from '@/types/place'
+
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
-import { IPlacePreview } from '@/utils/interfaces'
 
 type PlacePreviewProps = IPlacePreview
 
-export const PlacePreview = ({ id, title, avgRating, reviewsCount, cover }: IPlacePreview) => {
+export const PlacePreview = ({ id, title, avgRating, reviewsCount, cover }: PlacePreviewProps) => {
     return (
         <div className="flex flex-row gap-4">
             <Link href={`/places/${id}`} className="flex-none">

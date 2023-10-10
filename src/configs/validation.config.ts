@@ -1,0 +1,57 @@
+export const validationConfig = {
+    user: {
+        name: {
+            minLength: 2,
+            maxLength: 40,
+        },
+        password: {
+            minLength: 4,
+            maxLength: 32,
+        },
+        info: {
+            minLength: 2,
+            maxLength: 1000,
+        },
+    },
+    place: {
+        title: {
+            minLength: 2,
+            maxLength: 80,
+        },
+        description: {
+            minLength: 20,
+            maxLength: 2000,
+        },
+        category: {
+            minCount: 1,
+            maxCount: 3,
+        },
+        location: {
+            minLength: 3,
+            maxLength: 40,
+        },
+        photos: {
+            maxCount: 10,
+        },
+    },
+    review: {
+        rate: {
+            min: 1,
+            max: 5,
+        },
+        text: {
+            minLength: 20,
+            maxLength: 1000,
+        },
+        photos: {
+            maxCount: 3,
+        },
+    },
+    complain: {
+        maxLength: 200,
+    },
+    searchQuery: {
+        minLength: 2,
+        maxLength: 20,
+    },
+}

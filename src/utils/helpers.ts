@@ -1,5 +1,7 @@
+import type { ICoordinates } from '@/types/geo'
+
 import { i18nConfig } from '@/configs/i18n.config'
-import { ImageVariant } from '@/utils/enums'
+import { CategoriesEnum, ComplaintReasonsEnum, ImageVariant } from '@/utils/enums'
 
 export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
     if (!url && imageVariant === ImageVariant.PUBLIC) {
@@ -23,4 +25,56 @@ export function FormattedDate(date: Date, locale: string = i18nConfig.defaultLoc
         month: 'long',
         day: 'numeric',
     })
+}
+
+export function extractCoordinates(value: string): ICoordinates {
+    const [lat, lng] = value.split(/[\s,]+/)
+    return {
+        lng: parseFloat(lng),
+        lat: parseFloat(lat),
+    }
+}
+
+export function navigateToLocation(lat: number, lng: number): void {
+    const url = `https://maps.google.com/maps?q=${lat},${lng}`
+    window.open(url, '_blank')
+}
+
+export function isValidCoordinate(coordinates: string): boolean {
+    const reg = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)(\s*,\s*|\s+)([-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?))$/
+    return reg.test(coordinates)
+}
+
+export const getLocalizedCategories = (category: CategoriesEnum, t: (key: string) => string): string => {
+    const localizedCategories: Record<CategoriesEnum, string> = {
+        [CategoriesEnum.ABANDONED]: t('categories.abandoned'),
+        [CategoriesEnum.ADVENTURE_ACTIVITIES]: t('categories.adventure_activities'),
+        [CategoriesEnum.ARCHITECTURE]: t('categories.architecture'),
+        [CategoriesEnum.CAMPING_SITES]: t('categories.camping_sites'),
+        [CategoriesEnum.HIKING]: t('categories.hiking'),
+        [CategoriesEnum.HISTORICAL]: t('categories.historical'),
+        [CategoriesEnum.LANDMARKS]: t('categories.landmarks'),
+        [CategoriesEnum.MUSEUMS]: t('categories.museums'),
+        [CategoriesEnum.NATURAL_ATTRACTIONS]: t('categories.natural_attractions'),
+        [CategoriesEnum.OFF_ROAD]: t('categories.off_road'),
+        [CategoriesEnum.RECREATIONAL_AREAS]: t('categories.recreational_areas'),
+        [CategoriesEnum.SCENIC_VIEWS]: t('categories.scenic_views'),
+    }
+
+    return localizedCategories[category]
+}
+
+export const getLocalizedComplaintReason = (reason: ComplaintReasonsEnum, t: (key: string) => string): string => {
+    const localizedComplaintReasons: Record<ComplaintReasonsEnum, string> = {
+        [ComplaintReasonsEnum.ABUSE]: t('complaint.reasons.abuse'),
+        [ComplaintReasonsEnum.COPYRIGHT]: t('complaint.reasons.copyright'),
+        [ComplaintReasonsEnum.DUPLICATE]: t('complaint.reasons.duplicate'),
+        [ComplaintReasonsEnum.FALSE]: t('complaint.reasons.false'),
+        [ComplaintReasonsEnum.FRAUD]: t('complaint.reasons.fraud'),
+        [ComplaintReasonsEnum.INAPPROPRIATE]: t('complaint.reasons.inappropriate'),
+        [ComplaintReasonsEnum.OTHER]: t('complaint.reasons.other'),
+        [ComplaintReasonsEnum.SPAM]: t('complaint.reasons.spam'),
+    }
+
+    return localizedComplaintReasons[reason]
 }

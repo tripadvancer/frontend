@@ -3,8 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import type { ICountry } from '@/types/country'
+
 import { getCountryNameByCode } from '@/utils/countries'
-import { ICountry } from '@/utils/interfaces'
 
 type CountryPreviewProps = ICountry
 

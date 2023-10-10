@@ -2,8 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
-import { Button } from '@/components/forms/Button'
-
 export const metadata: Metadata = {
     title: 'Page not found | Tripadvancer',
     description: 'Sorry, but the page you are looking for cannot be found.',

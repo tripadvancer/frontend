@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
 import { PlacePreview } from '@/components/PlacePreview'
-import { getPlacesByCountryCode } from '@/services/server.services'
+import { getPlacesByCountryCode } from '@/services/places'
 import { getCountryNameByCode } from '@/utils/countries'
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {

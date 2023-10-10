@@ -3,13 +3,13 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-type Tab = {
+type ITab = {
     label: string
     href: string
 }
 
 type TabsProps = {
-    tabs: Tab[]
+    tabs: ITab[]
     className?: string
 }
 

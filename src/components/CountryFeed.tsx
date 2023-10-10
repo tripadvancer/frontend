@@ -2,14 +2,19 @@
 
 import { useState } from 'react'
 
+import type { ICountry } from '@/types/country'
+
 import { CountryPreview } from '@/components/CountryPreview'
 import { ShowMore } from '@/components/ShowMore'
 import { I18nProviderClient } from '@/utils/i18n.client'
-import { ICountry } from '@/utils/interfaces'
 
 const PAGINATION_LIMIT = 16
 
-export const CountryFeed = ({ countries }: { countries: ICountry[] }) => {
+type CountryFeedProps = {
+    countries: ICountry[]
+}
+
+export const CountryFeed = ({ countries }: CountryFeedProps) => {
     const [currentPage, setCurrentPage] = useState(1)
 
     const handleLoadMore = () => {

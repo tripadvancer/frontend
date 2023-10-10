@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import type { IPlaceNearby } from '@/types/place'
+
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
-import { IPlaceNearby } from '@/utils/interfaces'
 
 type PlacesNearbyListProps = {
     places: IPlaceNearby[]
