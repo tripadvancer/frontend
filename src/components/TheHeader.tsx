@@ -17,11 +17,11 @@ export const TheHeader = async () => {
                 <div className="flex justify-center">
                     <Link href="/">
                         <span className="sr-only">Tripadvancer</span>
-                        <Image src="/images/logo-full.svg" width="208" height="28" alt="Tripadvancer" />
+                        <Image src="/images/logo-full.svg" width="208" height="28" alt="Tripadvancer" priority />
                     </Link>
                 </div>
                 <div className="flex justify-end gap-6">
-                    <AuthLink />
+                    {/* <AuthLink /> */}
                     <LanguageChanger />
                 </div>
             </div>

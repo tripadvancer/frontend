@@ -16,14 +16,14 @@ export type IPlace = {
     avgRating: number
     reviewsCount: number
     createdAt: Date
-    isFavorite: boolean
-    isVisited: boolean
+    isFavorite?: boolean
+    isVisited?: boolean
 }
 
 export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'isFavorite' | 'isVisited'> & {
-    coordinates: CoordinatesTuple
     avgRating: number
     reviewsCount: number
+    coordinates?: CoordinatesTuple
 }
 
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & { distance: number }

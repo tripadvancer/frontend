@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     experimental: {
-        serverActions: true,
+        serverActions: false,
     },
     images: {
         formats: ['image/avif', 'image/webp'],
