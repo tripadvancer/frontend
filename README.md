@@ -1,5 +1,9 @@
 # Tripadvancer Portal
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/en/) >= 18.0.0
+
 ## Getting started
 
 Create a `.env.local` file similar to `.env.example`:
