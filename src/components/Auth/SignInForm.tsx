@@ -62,6 +62,7 @@ export const SignInForm = () => {
                 name="email"
                 value={formik.values.email}
                 placeholder={t('forms.fields.email.placeholder')}
+                autoFocus
                 error={formik.errors.email}
                 className="mb-2"
                 onChange={formik.handleChange}

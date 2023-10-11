@@ -10,6 +10,7 @@ import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/DialogProvider'
+import { useToast } from '@/providers/ToastProvider'
 import { getErrorMessage } from '@/redux/helpers'
 import { authAPI } from '@/redux/services/authAPI'
 import { ApiErrorReason } from '@/utils/enums'
@@ -25,6 +26,7 @@ const passwordMaxLength = validationConfig.user.password.maxLength
 export const SignUpForm = () => {
     const t = useI18n()
     const dialog = useDialog()
+    const toast = useToast()
 
     const [signUp, { isLoading }] = authAPI.useSignUpMutation()
 
@@ -54,7 +56,9 @@ export const SignUpForm = () => {
                 await signUp(values).unwrap()
                 dialog.close()
                 dialog.open(<SignInFeedback reason={ApiErrorReason.ACCOUNT_NOT_ACTIVATED} />)
-            } catch (err) {}
+            } catch (err) {
+                toast.error(getErrorMessage(err))
+            }
         },
     })
 
@@ -66,6 +70,7 @@ export const SignUpForm = () => {
                 name="email"
                 value={formik.values.email}
                 placeholder={t('forms.fields.email.placeholder')}
+                autoFocus
                 error={formik.errors.email}
                 className="mb-2"
                 onChange={formik.handleChange}

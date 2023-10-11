@@ -52,6 +52,23 @@ export default {
     'pages.home.map.description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.',
     'pages.home.map.cta': 'Исследовать карту',
 
+    'pages.auth.verify.meta.title': 'Подтверждение email | Tripadvancer',
+    'pages.auth.verify.token_expired': 'Ссылка для подтверждения email устарела. Пожалуйста, залогиньтесь снова, чтобы мы могли отправить Вам новую ссылку для подтверждения.',
+    'pages.auth.verify.success': 'Ваш email был подтверждён. Добро пожаловать на борт, теперь Вы можете войти.',
+
+    'pages.auth.restore.meta.title': 'Восстановление учётной записи | Tripadvancer',
+    'pages.auth.restore.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления учётной записи.',
+    'pages.auth.restore.success': 'Ваша учётная запись была восстановлена.',
+
+    'pages.auth.confirm_removal.meta.title': 'Подтверждение удаления учётной записи | Tripadvancer',
+    'pages.auth.confirm_removal.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для удаления учётной записи.',
+    'pages.auth.confirm_removal.success': 'Процесс удаления Вашей учётной записи начат. Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
+
+    'pages.auth.reset_password.meta.title': 'Восстановление пароля | Tripadvancer',
+    'pages.auth.reset_password.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления пароля.',
+    'pages.auth.reset_password.success': 'Ваш пароль успешно изменён.',
+    'pages.auth.reset_password.submit': 'Изменить пароль',
+
     'dialog.feedback.verify_email.title': 'Проверьте свой email',
     'dialog.feedback.verify_email.message.not_activated': 'Мы отправили Вам письмо с инструкциями по подтверждению email. Пожалуйста, проверьте свой email и следуйте инструкциям, указанным в письме, чтобы завершить процесс подтверждения.',
     'dialog.feedback.verify_email.message.pending_delete': 'Мы отправили Вам инструкции по восстановлению Вашей учётной записи. Обратите внимание, что восстановление учётной записи доступно ограниченное время.',

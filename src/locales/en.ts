@@ -52,6 +52,23 @@ export default {
     'pages.home.map.description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.',
     'pages.home.map.cta': 'Explore the map',
 
+    'pages.auth.verify.meta.title': 'Verify Email | Tripadvancer',
+    'pages.auth.verify.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
+    'pages.auth.verify.success': 'Your email has been verified. Welcome aboard, you can now sign in.',
+
+    'pages.auth.restore.meta.title': 'Restore account | Tripadvancer',
+    'pages.auth.restore.token_expired': 'The restore link has expired. Please request a new restore link.',
+    'pages.auth.restore.success': 'Your account has been restored.',
+
+    'pages.auth.confirm_removal.meta.title': 'Confirm Account Removal | Tripadvancer',
+    'pages.auth.confirm_removal.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
+    'pages.auth.confirm_removal.success': 'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
+
+    'pages.auth.reset_password.meta.title': 'Reset Password | Tripadvancer',
+    'pages.auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
+    'pages.auth.reset_password.success': 'Your password has been reset.',
+    'pages.auth.reset_password.submit': 'Reset password',
+
     'dialog.feedback.verify_email.title': 'Check your email',
     'dialog.feedback.verify_email.message.not_activated': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
     'dialog.feedback.verify_email.message.pending_delete': 'We have sent you the instructions to restore your account. Please note that there is a limited time window available for account restoration.',

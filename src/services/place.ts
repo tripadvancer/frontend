@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { IPlace } from '@/types/place'
+import type { IPlace } from '@/types/place'
 
 export async function getPlacesByCountryCode(countryCode: string): Promise<IPlace[]> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/countries/' + countryCode + '/places'

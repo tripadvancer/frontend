@@ -1,7 +1,6 @@
 'use client'
 
 import { createContext, useContext, useMemo, useState } from 'react'
-import { createPortal } from 'react-dom'
 
 import { Toast, ToastContainer, ToastType } from '@/components/Toast'
 
@@ -60,20 +59,11 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     return (
         <ToastContext.Provider value={contextValue}>
             {children}
-
-            {createPortal(
-                <ToastContainer>
-                    {toasts.map((toast: ToastInterface) => (
-                        <Toast
-                            key={toast.id}
-                            type={toast.type}
-                            message={toast.message}
-                            onClose={() => close(toast.id)}
-                        />
-                    ))}
-                </ToastContainer>,
-                document.body,
-            )}
+            <ToastContainer>
+                {toasts.map((toast: ToastInterface) => (
+                    <Toast key={toast.id} type={toast.type} message={toast.message} onClose={() => close(toast.id)} />
+                ))}
+            </ToastContainer>
         </ToastContext.Provider>
     )
 }

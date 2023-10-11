@@ -1,12 +1,51 @@
 'use client'
 
+import Link from 'next/link'
+
 import { SignInForm } from '@/components/Auth/SignInForm'
+import { useAuth } from '@/hooks/useAuth'
 import { useDialog } from '@/providers/DialogProvider'
+import { unsetCredentials } from '@/redux/features/userSlice'
+import { useAppDispatch } from '@/redux/hooks'
+import { authAPI } from '@/redux/services/authAPI'
+import { usersAPI } from '@/redux/services/userAPI'
 import { useScopedI18n } from '@/utils/i18n.client'
+
+import { UserIcon } from './UserIcon'
 
 export const UserLink = () => {
     const tCommon = useScopedI18n('common')
+    const dispatch = useAppDispatch()
     const dialog = useDialog()
+    const auth = useAuth()
+    const activeUser = usersAPI.useGetUserQuery(auth.user?.id, { skip: !auth.isAuth })
+
+    const [signOut] = authAPI.useSignOutMutation()
+
+    const handleSignOut = async () => {
+        await signOut().unwrap()
+        dispatch(unsetCredentials())
+    }
+
+    if (auth.isAuth) {
+        return (
+            <>
+                <Link
+                    href={`/users/${activeUser.data?.id}`}
+                    className="inline-flex cursor-pointer gap-x-2 text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
+                >
+                    <span className="phone:hidden">{activeUser.data?.name}</span>
+                    <UserIcon />
+                </Link>
+                <div
+                    className="inline-flex cursor-pointer gap-x-2 text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
+                    onClick={handleSignOut}
+                >
+                    Log out
+                </div>
+            </>
+        )
+    }
 
     return (
         <div
@@ -14,16 +53,7 @@ export const UserLink = () => {
             onClick={() => dialog.open(<SignInForm />)}
         >
             <span className="phone:hidden">{tCommon('sign_in_link')}</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    fillRule="evenodd"
-                    d="M12 15C9.76086 15 8 13.4274 8 10C8 7.75576 9.5791 6 12 6C14.4142 6 16 7.92158 16 10.2C16 13.4796 14.2181 15 12 15ZM10 10C10 12.2693 10.8182 13 12 13C13.1777 13 14 12.2984 14 10.2C14 8.95042 13.2157 8 12 8C10.7337 8 10 8.81582 10 10Z"
-                />
-                <path
-                    fillRule="evenodd"
-                    d="M12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM19.3995 17.1246C20.4086 15.6703 21 13.9042 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 13.9042 3.59138 15.6703 4.6005 17.1246C5.72595 15.6381 8.3706 15 12 15C15.6294 15 18.274 15.6381 19.3995 17.1246ZM17.9647 18.7398C17.672 17.6874 15.5694 17 12 17C8.43062 17 6.328 17.6874 6.03532 18.7398C7.6233 20.1462 9.71194 21 12 21C14.2881 21 16.3767 20.1462 17.9647 18.7398Z"
-                />
-            </svg>
+            <UserIcon />
         </div>
     )
 }
