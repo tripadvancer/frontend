@@ -3,7 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import { SignInForm } from '@/components/Auth/SignInForm'
 import { Button } from '@/components/Button'
@@ -25,6 +25,7 @@ const passwordMaxLength = validationConfig.user.password.maxLength
 
 export const SignUpForm = () => {
     const t = useI18n()
+    const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -99,14 +100,26 @@ export const SignUpForm = () => {
             <div className="mb-8 text-center text-xs text-custom-black-40">
                 {t('dialogs.sign_up.info', {
                     terms_link: (
-                        <Link href="/legal/terms-and-conditions" className="text-custom-blue-100">
+                        <span
+                            className="cursor-pointer text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
+                            onClick={() => {
+                                dialog.close()
+                                router.push('/legal/terms-and-conditions')
+                            }}
+                        >
                             {t('common.terms_link')}
-                        </Link>
+                        </span>
                     ),
                     privacy_link: (
-                        <Link href="/legal/privacy-policy" className="text-custom-blue-100">
+                        <span
+                            className="cursor-pointer text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
+                            onClick={() => {
+                                dialog.close()
+                                router.push('/legal/privacy-policy')
+                            }}
+                        >
                             {t('common.privacy_link')}
-                        </Link>
+                        </span>
                     ),
                 })}
             </div>

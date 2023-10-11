@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { SignInForm } from '@/components/Auth/SignInForm'
@@ -9,6 +10,8 @@ import { unsetCredentials } from '@/redux/features/userSlice'
 import { useAppDispatch } from '@/redux/hooks'
 import { authAPI } from '@/redux/services/authAPI'
 import { usersAPI } from '@/redux/services/userAPI'
+import { ImageVariant } from '@/utils/enums'
+import { makeImageUrl } from '@/utils/helpers'
 import { useScopedI18n } from '@/utils/i18n.client'
 
 import { UserIcon } from './UserIcon'
@@ -35,7 +38,17 @@ export const UserLink = () => {
                     className="inline-flex cursor-pointer gap-x-2 text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
                 >
                     <span className="phone:hidden">{activeUser.data?.name}</span>
-                    <UserIcon />
+                    {activeUser.data?.avatar ? (
+                        <Image
+                            src={makeImageUrl(activeUser.data.avatar, ImageVariant.AVATAR)}
+                            width={24}
+                            height={24}
+                            className="rounded-full"
+                            alt={activeUser.data?.name}
+                        />
+                    ) : (
+                        <UserIcon />
+                    )}
                 </Link>
                 <div
                     className="inline-flex cursor-pointer gap-x-2 text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
