@@ -5,13 +5,13 @@ import { ReactNode, createContext, useCallback, useContext, useEffect, useState 
 import { Dialog } from '@/components/Dialog'
 
 interface DialogContextInterface {
-    setContent(dialogContent: ReactNode): void
-    unsetContent(): void
+    open(content: ReactNode): void
+    close(): void
 }
 
 const defaultValue: DialogContextInterface = {
-    setContent: () => {},
-    unsetContent: () => {},
+    open: () => {},
+    close: () => {},
 }
 
 export const DialogContext = createContext(defaultValue)
@@ -28,7 +28,8 @@ export function useDialog(): DialogContextInterface {
 
 export function DialogProvider({ children }: { children: ReactNode }) {
     const [content, setContent] = useState<ReactNode>(null)
-    const unsetContent = useCallback(() => setContent(null), [])
+    const open = useCallback((content: ReactNode) => setContent(content), [])
+    const close = useCallback(() => setContent(null), [])
 
     //  todo: fix this hack to prevent scrolling when dialog is open
     useEffect(() => {
@@ -40,9 +41,9 @@ export function DialogProvider({ children }: { children: ReactNode }) {
     }, [content])
 
     return (
-        <DialogContext.Provider value={{ setContent, unsetContent }}>
+        <DialogContext.Provider value={{ open, close }}>
             {children}
-            {content && <Dialog content={content} onClose={unsetContent} />}
+            {content && <Dialog content={content} onClose={close} />}
         </DialogContext.Provider>
     )
 }

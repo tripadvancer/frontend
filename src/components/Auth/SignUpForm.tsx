@@ -5,12 +5,17 @@ import * as Yup from 'yup'
 
 import Link from 'next/link'
 
+import { SignInForm } from '@/components/Auth/SignInForm'
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
-import { SignInForm } from '@/components/SignInForm'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/DialogProvider'
+import { getErrorMessage } from '@/redux/helpers'
+import { authAPI } from '@/redux/services/authAPI'
+import { ApiErrorReason } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n.client'
+
+import { SignInFeedback } from './SignInFeedback'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
@@ -21,12 +26,16 @@ export const SignUpForm = () => {
     const t = useI18n()
     const dialog = useDialog()
 
+    const [signUp, { isLoading }] = authAPI.useSignUpMutation()
+
     const formik = useFormik({
         initialValues: {
             email: '',
             name: '',
             password: '',
         },
+        validateOnBlur: false,
+        validateOnChange: false,
         validationSchema: Yup.object().shape({
             email: Yup.string()
                 .required(t('forms.validation.email.required'))
@@ -41,20 +50,24 @@ export const SignUpForm = () => {
                 .max(passwordMaxLength, t('forms.validation.password.max_length', { max_length: passwordMaxLength })),
         }),
         onSubmit: async values => {
-            console.log(values)
+            try {
+                await signUp(values).unwrap()
+                dialog.close()
+                dialog.open(<SignInFeedback reason={ApiErrorReason.ACCOUNT_NOT_ACTIVATED} />)
+            } catch (err) {}
         },
     })
 
     return (
-        <form className="w-96 phone:w-full" onSubmit={formik.handleSubmit}>
+        <form className="w-104 phone:w-full" onSubmit={formik.handleSubmit}>
             <h1 className="mb-8 text-center text-lg font-medium">{t('dialogs.sign_up.title')}</h1>
             <Input
                 type="text"
                 name="email"
                 value={formik.values.email}
                 placeholder={t('forms.fields.email.placeholder')}
-                className="mb-2"
                 error={formik.errors.email}
+                className="mb-2"
                 onChange={formik.handleChange}
             />
             <Input
@@ -62,8 +75,8 @@ export const SignUpForm = () => {
                 name="name"
                 value={formik.values.name}
                 placeholder={t('forms.fields.username.placeholder')}
-                className="mb-2"
                 error={formik.errors.name}
+                className="mb-2"
                 onChange={formik.handleChange}
             />
             <Input
@@ -71,14 +84,14 @@ export const SignUpForm = () => {
                 name="password"
                 value={formik.values.password}
                 placeholder={t('forms.fields.password.placeholder')}
-                className="mb-2"
                 error={formik.errors.password}
+                className="mb-8"
                 onChange={formik.handleChange}
             />
-            <Button type="submit" className="mb-4 w-full">
+            <Button type="submit" className="mb-4 w-full" isDisabled={isLoading}>
                 {t('dialogs.sign_up.submit')}
             </Button>
-            <div className="mb-8 text-center text-sm text-custom-black-40">
+            <div className="mb-8 text-center text-xs text-custom-black-40">
                 {t('dialogs.sign_up.info', {
                     terms_link: (
                         <Link href="/legal/terms-and-conditions" className="text-custom-blue-100">
@@ -97,7 +110,7 @@ export const SignUpForm = () => {
                     sign_in_link: (
                         <span
                             className="cursor-pointer text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
-                            onClick={() => dialog.setContent(<SignInForm />)}
+                            onClick={() => dialog.open(<SignInForm />)}
                         >
                             {t('common.sign_in_link')}
                         </span>

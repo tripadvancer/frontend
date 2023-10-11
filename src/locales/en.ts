@@ -1,15 +1,22 @@
 export default {
+    'common.meta.title': 'Tripadvancer - Plan your trip and find interesting places',
+    'common.meta.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     'common.about.title': 'Planing a trip but don`t know where to go?',
     'common.about.description.str_1': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
     'common.about.description.str_2': 'Share your favorite places and experiences with others. Together, we can make every journey even more interesting and exciting.',
 
     'common.cta.show_more': 'Show more',
+    'common.cta.close': 'Close',
+    'common.cta.home': 'Return Home',
+    'common.cta.try_again': 'Try again',
 
     'common.sign_up_link': 'Sign up',
     'common.sign_in_link': 'Sign in',
     'common.terms_link': 'Terms and Conditions',
     'common.privacy_link': 'Privacy Policy',
+    'common.map_link': 'On map',
 
+    'common.error': 'An unexpected error has occurred. Please try again later.',
     'common.signin.success': 'Welcome back, {name}!',
 
     'forms.fields.email.placeholder': 'Email',
@@ -25,8 +32,12 @@ export default {
     'forms.validation.username.min_length': 'Username must be at least {min_length} characters long',
     'forms.validation.username.max_length': 'Username must be at most {max_length} characters long',
 
-    'pages.home.meta.title': 'Tripadvancer - Plan your trip and find interesting places',
-    'pages.home.meta.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+    'pages.not_found.title': 'Page not found',
+    'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
+
+    'page.error.title': 'Oops! Something Went Wrong',
+    'page.error.text': 'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
+
     'pages.home.countries.title': 'Where are you going?',
     'pages.home.countries.description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.',
     'pages.home.features.title': 'Our features',
@@ -41,12 +52,19 @@ export default {
     'pages.home.map.description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec ligula sed quam gravida feugiat. Phasellus non semper purus. Aliquam placerat ipsum leo, et aliquam tortor condimentum quis. Nulla sed arcu viverra, efficitur ex quis, tempus nulla.',
     'pages.home.map.cta': 'Explore the map',
 
-    'dialogs.sign_up.title': 'Sign up to Tripadvancer',
+    'dialog.feedback.verify_email.title': 'Check your email',
+    'dialog.feedback.verify_email.message.not_activated': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
+    'dialog.feedback.verify_email.message.pending_delete': 'We have sent you the instructions to restore your account. Please note that there is a limited time window available for account restoration.',
+
+    'dialog.feedback.forgot_password.title': 'Reset your password',
+    'dialog.feedback.forgot_password.message': 'We sent you an email with instructions on how to reset your password.',
+
+    'dialogs.sign_up.title': 'Sign up',
     'dialogs.sign_up.submit': 'Sign up',
     'dialogs.sign_up.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
     'dialogs.sign_up.to_back': 'Have an account? {sign_in_link}',
 
-    'dialogs.sign_in.title': 'Sign in to Tripadvancer',
+    'dialogs.sign_in.title': 'Sign in',
     'dialogs.sign_in.submit': 'Sign in',
     'dialogs.sign_in.link.forgot_password': 'Forgot password?',
     'dialogs.sign_in.to_back': 'Don’t have an account? {sign_up_link}',

@@ -9,3 +9,7 @@ body {
 a:hover {
     @apply text-custom-blue-active transition-colors duration-300 ease-in-out;
 }
+
+.inner-container {
+    @apply mx-auto w-[928px] tablet:w-full phone:w-full;
+}

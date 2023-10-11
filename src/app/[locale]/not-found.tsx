@@ -1,13 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { Metadata } from 'next/types'
 
-export const metadata: Metadata = {
-    title: 'Page not found | Tripadvancer',
-    description: 'Sorry, but the page you are looking for cannot be found.',
-}
+import { getScopedI18n } from '@/utils/i18n.server'
 
-export default function NotFound() {
+export default async function NotFound() {
+    const t = await getScopedI18n('pages.not_found')
+    const tCommon = await getScopedI18n('common')
+
     return (
         <div className="container flex min-h-screen py-16 phone:flex-col phone:px-4 tablet:flex-row tablet:items-center tablet:justify-center tablet:gap-16 desktop:flex-row desktop:items-center desktop:justify-center desktop:gap-32">
             <Image
@@ -30,16 +29,13 @@ export default function NotFound() {
                     alt="404"
                     priority
                 />
-                <h2 className="mb-8 text-3xl font-medium">Page not found</h2>
-                <p className="mb-8 text-base text-custom-black-70">
-                    We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for
-                    has either been moved, deleted, or never existed in the first place.
-                </p>
+                <h2 className="mb-8 text-3xl font-medium">{t('title')}</h2>
+                <p className="mb-8 text-base text-custom-black-70">{t('text')}</p>
                 <Link
                     href="/"
                     className="inline-flex h-10 items-center rounded-lg bg-custom-blue-100 px-6 text-center text-sm text-white transition-colors duration-300 ease-in-out hover:bg-custom-blue-active hover:text-white focus:outline-none"
                 >
-                    Return Home
+                    {tCommon('cta.home')}
                 </Link>
             </div>
         </div>

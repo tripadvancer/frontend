@@ -14,7 +14,6 @@ interface ToastInterface {
 interface ToastContextInterface {
     success: (message: string) => void
     error: (message: string) => void
-    info: (message: string) => void
 }
 
 type ToastProviderProps = {
@@ -24,7 +23,6 @@ type ToastProviderProps = {
 const defaultValue: ToastContextInterface = {
     success: () => {},
     error: () => {},
-    info: () => {},
 }
 
 export const ToastContext = createContext(defaultValue)
@@ -54,16 +52,10 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
         setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, type }])
     }
 
-    const info = (message: string) => {
-        const id = Date.now()
-        const type = ToastType.info
-        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, type }])
-    }
-
     const close = (id: number) =>
         setToasts((currentToasts: ToastInterface[]) => currentToasts.filter((toast: ToastInterface) => toast.id !== id))
 
-    const contextValue = useMemo(() => ({ success, error, info }), [])
+    const contextValue = useMemo(() => ({ success, error }), [])
 
     return (
         <ToastContext.Provider value={contextValue}>

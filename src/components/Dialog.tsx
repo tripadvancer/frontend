@@ -5,9 +5,9 @@ type DialogProps = {
 
 export const Dialog = ({ content, onClose }: DialogProps) => {
     return (
-        <div className="fixed bottom-0 left-0 right-0 top-0 z-50 overflow-y-auto before:fixed before:bottom-0 before:left-0 before:right-0 before:top-0 before:bg-custom-black-100 before:opacity-50">
-            <div className="flex min-h-full items-center justify-center phone:h-full">
-                <div className="relative m-16 rounded-2xl bg-white p-16 shadow-lg phone:m-0 phone:min-h-full phone:w-full phone:rounded-none phone:px-4 phone:py-8">
+        <div className="fixed bottom-0 left-0 right-0 top-0 z-40 overflow-y-auto before:fixed before:bottom-0 before:left-0 before:right-0 before:top-0 before:bg-custom-black-100 before:opacity-50">
+            <div className="flex min-h-full items-center justify-center">
+                <div className="relative m-16 rounded-2xl bg-white p-16 shadow-lg phone:m-4 phone:w-full phone:px-8 phone:py-16">
                     <svg
                         width="24"
                         height="24"

@@ -14,7 +14,6 @@ export const LanguageChanger = () => {
 
     return (
         <div className="flex gap-2">
-            Current locale: {currentLocale}
             <div
                 onClick={() => handleChangeLocale('en')}
                 className="cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"

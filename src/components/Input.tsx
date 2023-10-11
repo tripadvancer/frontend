@@ -1,14 +1,16 @@
+import classNames from 'classnames'
+
 type InputProps = {
     type: 'text' | 'password'
     name: string
     value: string
     placeholder: string
-    className?: string
     error?: string
+    className?: string
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Input = ({ type, name, value, placeholder, className, error, onChange }: InputProps) => {
+export const Input = ({ type, name, value, placeholder, error, className, onChange }: InputProps) => {
     const borderClass = error ? 'border-custom-red-100' : 'border-custom-black-15 focus:border-custom-black-40'
 
     return (

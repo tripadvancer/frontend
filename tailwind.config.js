@@ -9,9 +9,6 @@ module.exports = {
         },
         container: {
             center: true,
-            padding: {
-                DEFAULT: '2rem',
-            },
             screens: {
                 phone: '100%',
                 tablet: '100%',
@@ -19,8 +16,15 @@ module.exports = {
             },
         },
         extend: {
+            boxShadow: {
+                medium: '0 16px 32px rgba(2, 14, 25, 0.08)',
+                small: '0 8px 16px rgba(2, 14, 25, 0.08)',
+            },
             borderRadius: {
                 '4xl': '2rem',
+            },
+            width: {
+                104: '26rem',
             },
             colors: {
                 'custom-blue': {
@@ -59,5 +63,5 @@ module.exports = {
             },
         },
     },
-    plugins: [require('@tailwindcss/typography')],
+    plugins: [],
 }
