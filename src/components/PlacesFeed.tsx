@@ -4,6 +4,7 @@ import { IPlacePreview } from '@/types/place'
 import { Paginator } from '@/components/Paginator'
 import { Place } from '@/components/Place'
 import { getScopedI18n } from '@/utils/i18n.server'
+
 import { PlaceSkeletons } from './PlaceSkeletons'
 
 type PlacesFeedProps = {
@@ -21,7 +22,7 @@ export const PlacesFeed = async ({ places, currentPage }: PlacesFeedProps) => {
 
     return (
         <>
-            <div className="mb-8 grid grid-cols-3 gap-8 last:mb-0 phone:grid-cols-1">
+            <div className="mb-8 grid grid-cols-3 gap-8 last:mb-0 phone:grid-cols-2 phone:gap-4">
                 {places.items.map((place, index) => (
                     <Place key={index} {...place} />
                 ))}

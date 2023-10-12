@@ -11,17 +11,17 @@ export const Footer = async () => {
                 <div className="mb-8 border-t border-custom-black-70" />
                 <div className="inner-container">
                     <section className="mb-5 text-center text-sm text-custom-black-70">
-                        <h4 className="mb-1 font-medium">{t('about.title')}</h4>
+                        <h4 className="font-medium">{t('about.title')}</h4>
                         <p>
                             {t('about.description.str_1')} {t('about.description.str_2')}
                         </p>
                     </section>
 
-                    <nav className="mb-2 flex flex-row flex-wrap justify-center gap-x-2 text-sm text-custom-black-40">
-                        <Link href="mailto:support@tripadvancer.me">Contact Us</Link>•
-                        <Link href="/legal/terms-and-conditions">Terms and Conditions</Link>•
-                        <Link href="/legal/privacy-policy">Privacy Policy</Link>•
-                        <Link href="/legal/cookie-policy">Cookie Policy</Link>
+                    <nav className="flex flex-row flex-wrap justify-center gap-x-2 text-sm text-custom-black-40">
+                        <Link href="mailto:support@tripadvancer.me" className='text-custom-blue-100'>Contact Us</Link>•
+                        <Link href="/legal/terms-and-conditions" className='text-custom-blue-100'>Terms and Conditions</Link>•
+                        <Link href="/legal/privacy-policy" className='text-custom-blue-100'>Privacy Policy</Link>•
+                        <Link href="/legal/cookie-policy" className='text-custom-blue-100'>Cookie Policy</Link>
                     </nav>
 
                     <div className="text-center text-sm text-custom-black-40">© Tripadvancer, 2023</div>
