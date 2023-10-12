@@ -47,7 +47,7 @@ export const UserLink = () => {
                             alt={activeUser.data?.name}
                         />
                     ) : (
-                        <UserIcon />
+                        <div className="h-6 w-6 rounded-full bg-custom-orange-100" />
                     )}
                 </Link>
                 <div

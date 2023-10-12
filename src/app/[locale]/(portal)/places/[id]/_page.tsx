@@ -4,10 +4,10 @@ import type { Metadata } from 'next/types'
 
 import type { IPhoto } from '@/types/photo'
 
+import { PlaceAchievement } from '@/components/Achievement/PlaceAchievement'
 import { CoordinatesToCopy } from '@/components/CoordinatesToCopy'
 import { DraftToHtml } from '@/components/DraftToHtml'
 import { PhotoFeed } from '@/components/PhotoFeed'
-import { PlaceAchievement } from '@/components/PlaceAchievement'
 import { PlacesNearbyList } from '@/components/PlacesNearbyList'
 import { ReviewFeed } from '@/components/ReviewFeed'
 import { UserPreview } from '@/components/UserPreview'
@@ -93,7 +93,7 @@ export default async function Place({ params }: { params: { locale: string; id: 
 
                         <section>
                             <h2 className="mb-8 text-2xl">Visitor reviews</h2>
-                            <ReviewFeed reviews={reviews} />
+                            <ReviewFeed reviews={reviews} currentPage={0} />
                         </section>
                     </div>
 

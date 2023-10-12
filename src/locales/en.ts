@@ -19,6 +19,15 @@ export default {
     'common.error': 'An unexpected error has occurred. Please try again later.',
     'common.signin.success': 'Welcome back, {name}!',
 
+    'common.reviews.empty': 'Unfortunately, there are no reviews here at the moment.',
+    'common.places.empty': 'Unfortunately, there are no places here at the moment.',
+
+    'user.achievement.level_1': 'Beginner',
+    'user.achievement.statistic.added_places': 'Added places',
+    'user.achievement.statistic.added_photos': 'Added photos',
+    'user.achievement.statistic.added_reviews': 'Written reviews',
+    'user.achievement.statistic.visited_places': 'Visited places',
+
     'forms.fields.email.placeholder': 'Email',
     'forms.fields.password.placeholder': 'Password',
     'forms.fields.username.placeholder': 'Username',
@@ -68,6 +77,12 @@ export default {
     'pages.auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
     'pages.auth.reset_password.success': 'Your password has been reset.',
     'pages.auth.reset_password.submit': 'Reset password',
+    
+    'pages.user.places.meta.title': '{username} | Added places | Tripadvancer',
+    'pages.user.reviews.meta.title': '{username} | Written reviews | Tripadvancer',
+    'pages.user.about_me': 'About me',
+    'pages.user.places_link': 'Added places',
+    'pages.user.reviews_link': 'Written reviews',
 
     'dialog.feedback.verify_email.title': 'Check your email',
     'dialog.feedback.verify_email.message.not_activated': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',

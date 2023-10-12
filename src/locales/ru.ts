@@ -19,6 +19,15 @@ export default {
     'common.error': 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.',
     'common.signin.success': 'Добро пожаловать, {name}!',
 
+    'common.reviews.empty': 'К сожалению, здесь пока нет отзывов.',
+    'common.places.empty': 'К сожалению, здесь пока нет мест.',
+
+    'user.achievement.level_1': 'Новичок',
+    'user.achievement.statistic.added_places': 'Добавлено мест',
+    'user.achievement.statistic.added_photos': 'Добавлено фото',
+    'user.achievement.statistic.added_reviews': 'Написано отзывов',
+    'user.achievement.statistic.visited_places': 'Посещено мест',
+
     'forms.fields.email.placeholder': 'Email',
     'forms.fields.password.placeholder': 'Пароль',
     'forms.fields.username.placeholder': 'Имя пользователя',
@@ -68,6 +77,12 @@ export default {
     'pages.auth.reset_password.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления пароля.',
     'pages.auth.reset_password.success': 'Ваш пароль успешно изменён.',
     'pages.auth.reset_password.submit': 'Изменить пароль',
+
+    'pages.user.places.meta.title': '{username} | Мои места | Tripadvancer',
+    'pages.user.reviews.meta.title': '{username} | Мои отзывы | Tripadvancer',
+    'pages.user.about_me': 'Обо мне',
+    'pages.user.places_link': 'Мои места',
+    'pages.user.reviews_link': 'Мои отзывы',
 
     'dialog.feedback.verify_email.title': 'Проверьте свой email',
     'dialog.feedback.verify_email.message.not_activated': 'Мы отправили Вам письмо с инструкциями по подтверждению email. Пожалуйста, проверьте свой email и следуйте инструкциям, указанным в письме, чтобы завершить процесс подтверждения.',

@@ -45,7 +45,7 @@ export const Toast = ({ type, message, onClose }: ToastProps) => {
 
 export const ToastContainer = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className="fixed left-0 right-0 top-4 z-50">
+        <div className="fixed left-0 right-0 top-4 z-50 px-8 phone:px-4">
             <div className="inner-container flex flex-col gap-5">{children}</div>
         </div>
     )
