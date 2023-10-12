@@ -17,7 +17,7 @@ module.exports = {
         },
         extend: {
             boxShadow: {
-                medium: '0 16px 32px rgba(2, 14, 25, 0.08)',
+                medium: '0 16px 32px rgba(2, 14, 25, 0.16)',
                 small: '0 8px 16px rgba(2, 14, 25, 0.08)',
             },
             borderRadius: {

@@ -8,6 +8,8 @@ import { useKeypress } from '@/hooks/useKeypress'
 import { useOnClickOutside } from '@/hooks/useOnClickOutside'
 import { Keys } from '@/utils/enums'
 
+import { ActionControl } from './ActionControl'
+
 type DropdownItemProps = {
     caption: string
     value: string
@@ -15,9 +17,9 @@ type DropdownItemProps = {
 }
 
 type DropdownProps = {
-    children: React.ReactNode
     items: DropdownItemProps[]
-    currentItem: string
+    children?: React.ReactNode
+    currentItem?: string
 }
 
 export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
@@ -34,7 +36,9 @@ export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
 
     return (
         <div className="relative" ref={ref}>
-            <div onClick={() => setVisible(!visible)}>{children}</div>
+            <div onClick={() => setVisible(!visible)}>
+                {children ? children : <ActionControl isActivated={visible} />}
+            </div>
             {visible && (
                 <ul className="absolute right-0 top-full w-40 rounded-lg bg-white p-1.5 shadow-medium">
                     {items.map(item => (

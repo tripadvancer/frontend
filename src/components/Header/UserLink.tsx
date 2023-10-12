@@ -54,7 +54,6 @@ export const UserLink = () => {
                         onClick: handleSignOut,
                     },
                 ]}
-                currentItem={''}
             >
                 <div className="hover-animated flex cursor-pointer gap-x-2 text-custom-blue-100 hover:text-custom-blue-active phone:gap-0">
                     <div className="phone:hidden">{activeUser.data?.name}</div>
