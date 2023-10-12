@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang={local}>
             <body className={roboto.className}>
                 <ReduxProvider>
-                    <I18nProvider>
+                    <I18nProvider locale={local}>
                         <ToastProvider>
                             <DialogProvider>{children}</DialogProvider>
                         </ToastProvider>

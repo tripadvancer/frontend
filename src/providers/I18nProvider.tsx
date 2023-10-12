@@ -2,6 +2,6 @@
 
 import { I18nProviderClient } from '@/utils/i18n.client'
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
-    return <I18nProviderClient>{children}</I18nProviderClient>
+export function I18nProvider({ children, locale }: { children: React.ReactNode; locale: string }) {
+    return <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
 }

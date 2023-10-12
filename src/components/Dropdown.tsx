@@ -1,0 +1,59 @@
+'use client'
+
+import { useRef, useState } from 'react'
+
+import classNames from 'classnames'
+
+import { useKeypress } from '@/hooks/useKeypress'
+import { useOnClickOutside } from '@/hooks/useOnClickOutside'
+import { Keys } from '@/utils/enums'
+
+type DropdownItemProps = {
+    caption: string
+    value: string
+    onClick: () => void
+}
+
+type DropdownProps = {
+    children: React.ReactNode
+    items: DropdownItemProps[]
+    currentItem: string
+    className?: string
+}
+
+export const Dropdown = ({ children, items, currentItem, className }: DropdownProps) => {
+    const ref = useRef<HTMLDivElement>(null)
+    const [visible, setVisible] = useState<boolean>(false)
+
+    useOnClickOutside(ref, () => {
+        setVisible(false)
+    })
+
+    useKeypress(Keys.ESCAPE, () => {
+        setVisible(false)
+    })
+
+    return (
+        <div className={classNames('relative', className)} ref={ref}>
+            <div onClick={() => setVisible(!visible)}>{children}</div>
+            {visible && (
+                <ul className={classNames('absolute w-40 rounded-lg bg-white p-1.5 shadow-medium', className)}>
+                    {items.map(item => (
+                        <li
+                            key={item.value}
+                            className={classNames(
+                                'hover-animated cursor-pointer rounded p-1.5 text-sm text-custom-blue-100 last:mb-0 hover:bg-custom-blue-10',
+                                {
+                                    'font-medium': item.value === currentItem,
+                                },
+                            )}
+                            onClick={item.onClick}
+                        >
+                            {item.caption}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    )
+}

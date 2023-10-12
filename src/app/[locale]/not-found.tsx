@@ -33,7 +33,7 @@ export default async function NotFound() {
                 <p className="mb-8 text-base text-custom-black-70">{t('text')}</p>
                 <Link
                     href="/"
-                    className="inline-flex h-10 items-center rounded-lg bg-custom-blue-100 px-6 text-center text-sm text-white transition-colors duration-300 ease-in-out hover:bg-custom-blue-active hover:text-white focus:outline-none"
+                    className="inline-flex h-10 items-center rounded-lg bg-custom-blue-100 px-6 text-center text-sm text-white hover-animated hover:bg-custom-blue-active hover:text-white focus:outline-none"
                 >
                     {tCommon('cta.home')}
                 </Link>

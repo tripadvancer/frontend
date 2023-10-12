@@ -81,7 +81,7 @@ export const SignInForm = () => {
             </Button>
             <div className="mb-8 text-center text-xs">
                 <span
-                    className="cursor-pointer text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
+                    className="cursor-pointer text-custom-blue-100 hover-animated hover:text-custom-blue-active"
                     onClick={() => dialog.open(<ForgotPasswordForm />)}
                 >
                     {t('dialogs.sign_in.link.forgot_password')}
@@ -91,7 +91,7 @@ export const SignInForm = () => {
                 {t('dialogs.sign_in.to_back', {
                     sign_up_link: (
                         <span
-                            className="cursor-pointer text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
+                            className="cursor-pointer text-custom-blue-100 hover-animated hover:text-custom-blue-active"
                             onClick={() => dialog.open(<SignUpForm />)}
                         >
                             {t('common.sign_up_link')}

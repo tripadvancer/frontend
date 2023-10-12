@@ -15,7 +15,7 @@ export const Dialog = ({ content, onClose }: DialogProps) => {
                         fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg"
                         onClick={onClose}
-                        className="absolute right-4 top-4 cursor-pointer text-custom-black-15 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
+                        className="absolute right-4 top-4 cursor-pointer text-custom-black-15 hover-animated hover:text-custom-blue-active"
                     >
                         <path
                             fillRule="evenodd"

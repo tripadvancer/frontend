@@ -58,7 +58,7 @@ export default async function Home() {
                     <Image src="/images/map.svg" width={1120} height={400} alt="" />
                     <Link
                         href="/map"
-                        className="absolute left-1/2 top-1/2 flex h-10 -translate-x-1/2 -translate-y-1/2 transform items-center rounded-lg bg-custom-orange-100 px-6 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-custom-orange-active hover:text-white"
+                        className="absolute left-1/2 top-1/2 flex h-10 -translate-x-1/2 -translate-y-1/2 transform items-center rounded-lg bg-custom-orange-100 px-6 text-sm font-medium text-white hover-animated hover:bg-custom-orange-active hover:text-white"
                     >
                         {t('map.cta')}
                     </Link>

@@ -37,7 +37,7 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                     className={classNames(
                         borderClass,
                         type === 'password' && 'pr-9',
-                        'h-10 w-full rounded-lg border bg-white pl-4 pr-4 text-sm transition-colors duration-300 ease-in-out placeholder:text-custom-black-40 focus:outline-none',
+                        'h-10 w-full rounded-lg border bg-white pl-4 pr-4 text-sm hover-animated placeholder:text-custom-black-40 focus:outline-none',
                     )}
                 />
 
@@ -50,7 +50,7 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                         xmlns="http://www.w3.org/2000/svg"
                         className={classNames(
                             isShowPassword ? 'text-custom-blue-active' : 'text-custom-black-15',
-                            'absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer transition-colors duration-300 ease-in-out hover:text-custom-blue-active',
+                            'absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover-animated hover:text-custom-blue-active',
                         )}
                         onClick={handleTogglePassword}
                     >

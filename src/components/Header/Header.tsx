@@ -9,7 +9,7 @@ export const Header = async () => {
             <div className="container relative flex h-7 items-center justify-between">
                 <MapLink />
                 <Logo />
-                <div className="flex gap-x-6">
+                <div className="flex gap-x-6 phone:gap-x-4">
                     <UserLink />
                     <LanguageChanger />
                 </div>

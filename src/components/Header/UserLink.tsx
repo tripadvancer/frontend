@@ -1,9 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import { SignInForm } from '@/components/Auth/SignInForm'
+import { Dropdown } from '@/components/Dropdown'
 import { useAuth } from '@/hooks/useAuth'
 import { useDialog } from '@/providers/DialogProvider'
 import { unsetCredentials } from '@/redux/features/userSlice'
@@ -21,6 +22,7 @@ export const UserLink = () => {
     const dispatch = useAppDispatch()
     const dialog = useDialog()
     const auth = useAuth()
+    const router = useRouter()
     const activeUser = usersAPI.useGetUserQuery(auth.user?.id, { skip: !auth.isAuth })
 
     const [signOut] = authAPI.useSignOutMutation()
@@ -32,11 +34,28 @@ export const UserLink = () => {
 
     if (auth.isAuth) {
         return (
-            <>
-                <Link
-                    href={`/users/${activeUser.data?.id}`}
-                    className="inline-flex cursor-pointer gap-x-2 text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
-                >
+            <Dropdown
+                items={[
+                    {
+                        caption: 'Added places',
+                        value: 'places',
+                        onClick: () => router.push(`/user/${activeUser.data?.id}}`),
+                    },
+                    {
+                        caption: 'Written reviews',
+                        value: 'ru',
+                        onClick: () => router.push(`/user/${activeUser.data?.id}}/reviews`),
+                    },
+                    {
+                        caption: 'Log out',
+                        value: 'logout',
+                        onClick: handleSignOut,
+                    },
+                ]}
+                currentItem={''}
+                className="right-0 top-full"
+            >
+                <div className="hover-animated inline-flex cursor-pointer gap-x-2 text-custom-blue-100 hover:text-custom-blue-active">
                     <span className="phone:hidden">{activeUser.data?.name}</span>
                     {activeUser.data?.avatar ? (
                         <Image
@@ -49,20 +68,20 @@ export const UserLink = () => {
                     ) : (
                         <div className="h-6 w-6 rounded-full bg-custom-orange-100" />
                     )}
-                </Link>
-                <div
-                    className="inline-flex cursor-pointer gap-x-2 text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
+                </div>
+                {/* <div
+                    className="inline-flex cursor-pointer gap-x-2 text-custom-blue-100 hover-animated hover:text-custom-blue-active"
                     onClick={handleSignOut}
                 >
                     Log out
-                </div>
-            </>
+                </div> */}
+            </Dropdown>
         )
     }
 
     return (
         <div
-            className="inline-flex cursor-pointer gap-x-2 text-custom-blue-100 transition-colors duration-300 ease-in-out hover:text-custom-blue-active"
+            className="hover-animated inline-flex cursor-pointer gap-x-2 text-custom-blue-100 hover:text-custom-blue-active"
             onClick={() => dialog.open(<SignInForm />)}
         >
             <span className="phone:hidden">{tCommon('sign_in_link')}</span>
