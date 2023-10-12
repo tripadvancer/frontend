@@ -22,6 +22,13 @@ export default {
     'common.reviews.empty': 'К сожалению, здесь пока нет отзывов.',
     'common.places.empty': 'К сожалению, здесь пока нет мест.',
 
+    'common.paginator.prev': 'Назад',
+    'common.paginator.next': 'Вперёд',
+
+    'header.user_menu.places': 'Мои места',
+    'header.user_menu.reviews': 'Мои отзывы',
+    'header.user_menu.log_out': 'Выйти',
+
     'user.achievement.level_1': 'Новичок',
     'user.achievement.statistic.added_places': 'Добавлено мест',
     'user.achievement.statistic.added_photos': 'Добавлено фото',

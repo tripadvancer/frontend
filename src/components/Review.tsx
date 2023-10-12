@@ -15,8 +15,8 @@ export const Review = ({ text, user, rating, photos, place, createdAt }: ReviewP
     const formattedDate = FormattedDate(createdAt, locale)
 
     return (
-        <div className="border-t border-custom-black-15 py-8 last:pb-0">
-            <div className="mb-5 flex flex-col phone:gap-y-1">
+        <div className="border-b border-custom-black-15 py-8 first:border-t last:border-none last:pb-0">
+            <div className="mb-5 flex flex-col gap-1">
                 <Rating rating={rating} />
                 <div className="flex flex-row gap-x-2 text-xs phone:flex-col phone:gap-y-1">
                     <Link href={`/places/${place.id}`} className="font-medium text-custom-black-70">

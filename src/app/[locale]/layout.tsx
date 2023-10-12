@@ -1,5 +1,3 @@
-import { setStaticParamsLocale } from 'next-international/server'
-
 import { Roboto } from 'next/font/google'
 import type { Metadata } from 'next/types'
 
@@ -29,7 +27,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
     const locale = params.locale
-    setStaticParamsLocale(locale)
 
     return (
         <html lang={locale}>

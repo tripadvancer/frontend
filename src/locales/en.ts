@@ -22,6 +22,13 @@ export default {
     'common.reviews.empty': 'Unfortunately, there are no reviews here at the moment.',
     'common.places.empty': 'Unfortunately, there are no places here at the moment.',
 
+    'common.paginator.prev': 'Prev',
+    'common.paginator.next': 'Next',
+
+    'header.user_menu.places': 'Added places',
+    'header.user_menu.reviews': 'Written reviews',
+    'header.user_menu.log_out': 'Log out',
+
     'user.achievement.level_1': 'Beginner',
     'user.achievement.statistic.added_places': 'Added places',
     'user.achievement.statistic.added_photos': 'Added photos',

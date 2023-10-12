@@ -19,13 +19,11 @@ export const ReviewFeed = async ({ reviews, currentPage }: ReviewFeedProps) => {
     }
 
     return (
-        <>
-            <div className="mb-8 last:mb-0">
-                {reviews.items.map((review, index) => (
-                    <Review key={index} {...review} />
-                ))}
-            </div>
+        <div>
+            {reviews.items.map((review, index) => (
+                <Review key={index} {...review} />
+            ))}
             {totalPages > 1 && <Paginator pages={totalPages} currentPage={currentPage} />}
-        </>
+        </div>
     )
 }

@@ -18,6 +18,7 @@ import { useScopedI18n } from '@/utils/i18n.client'
 import { UserIcon } from './UserIcon'
 
 export const UserLink = () => {
+    const t = useScopedI18n('header')
     const tCommon = useScopedI18n('common')
     const dispatch = useAppDispatch()
     const dialog = useDialog()
@@ -37,26 +38,25 @@ export const UserLink = () => {
             <Dropdown
                 items={[
                     {
-                        caption: 'Added places',
+                        caption: t('user_menu.places'),
                         value: 'places',
-                        onClick: () => router.push(`/user/${activeUser.data?.id}}`),
+                        onClick: () => router.push(`/users/${activeUser.data?.id}`),
                     },
                     {
-                        caption: 'Written reviews',
+                        caption: t('user_menu.reviews'),
                         value: 'ru',
-                        onClick: () => router.push(`/user/${activeUser.data?.id}}/reviews`),
+                        onClick: () => router.push(`/users/${activeUser.data?.id}/reviews`),
                     },
                     {
-                        caption: 'Log out',
+                        caption: t('user_menu.log_out'),
                         value: 'logout',
                         onClick: handleSignOut,
                     },
                 ]}
                 currentItem={''}
-                className="right-0 top-full"
             >
-                <div className="hover-animated inline-flex cursor-pointer gap-x-2 text-custom-blue-100 hover:text-custom-blue-active">
-                    <span className="phone:hidden">{activeUser.data?.name}</span>
+                <div className="hover-animated flex cursor-pointer gap-x-2 text-custom-blue-100 hover:text-custom-blue-active phone:gap-0">
+                    <div className="phone:hidden">{activeUser.data?.name}</div>
                     {activeUser.data?.avatar ? (
                         <Image
                             src={makeImageUrl(activeUser.data.avatar, ImageVariant.AVATAR)}
@@ -69,12 +69,6 @@ export const UserLink = () => {
                         <div className="h-6 w-6 rounded-full bg-custom-orange-100" />
                     )}
                 </div>
-                {/* <div
-                    className="inline-flex cursor-pointer gap-x-2 text-custom-blue-100 hover-animated hover:text-custom-blue-active"
-                    onClick={handleSignOut}
-                >
-                    Log out
-                </div> */}
             </Dropdown>
         )
     }

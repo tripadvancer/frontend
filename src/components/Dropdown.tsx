@@ -18,10 +18,9 @@ type DropdownProps = {
     children: React.ReactNode
     items: DropdownItemProps[]
     currentItem: string
-    className?: string
 }
 
-export const Dropdown = ({ children, items, currentItem, className }: DropdownProps) => {
+export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
     const ref = useRef<HTMLDivElement>(null)
     const [visible, setVisible] = useState<boolean>(false)
 
@@ -34,10 +33,10 @@ export const Dropdown = ({ children, items, currentItem, className }: DropdownPr
     })
 
     return (
-        <div className={classNames('relative', className)} ref={ref}>
+        <div className="relative" ref={ref}>
             <div onClick={() => setVisible(!visible)}>{children}</div>
             {visible && (
-                <ul className={classNames('absolute w-40 rounded-lg bg-white p-1.5 shadow-medium', className)}>
+                <ul className="absolute right-0 top-full w-40 rounded-lg bg-white p-1.5 shadow-medium">
                     {items.map(item => (
                         <li
                             key={item.value}
@@ -47,7 +46,10 @@ export const Dropdown = ({ children, items, currentItem, className }: DropdownPr
                                     'font-medium': item.value === currentItem,
                                 },
                             )}
-                            onClick={item.onClick}
+                            onClick={() => {
+                                item.onClick()
+                                setVisible(false)
+                            }}
                         >
                             {item.caption}
                         </li>
