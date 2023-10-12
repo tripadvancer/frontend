@@ -12,6 +12,7 @@ type ReviewFeedProps = {
 
 export const ReviewFeed = async ({ reviews, currentPage }: ReviewFeedProps) => {
     const t = await getScopedI18n('common.reviews')
+    const totalPages = reviews.totalPages
 
     if (reviews.items.length === 0) {
         return <div className="text-center text-sm text-custom-black-40">{t('empty')}</div>
@@ -24,7 +25,7 @@ export const ReviewFeed = async ({ reviews, currentPage }: ReviewFeedProps) => {
                     <Review key={index} {...review} />
                 ))}
             </div>
-            <Paginator pages={reviews.totalPages} currentPage={currentPage} />
+            {totalPages > 1 && <Paginator pages={totalPages} currentPage={currentPage} />}
         </>
     )
 }

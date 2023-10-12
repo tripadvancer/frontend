@@ -13,6 +13,7 @@ type PlacesFeedProps = {
 
 export const PlacesFeed = async ({ places, currentPage }: PlacesFeedProps) => {
     const t = await getScopedI18n('common.places')
+    const totalPages = places.totalPages
 
     if (places.items.length === 0) {
         return <div className="text-center text-sm text-custom-black-40">{t('empty')}</div>
@@ -25,7 +26,7 @@ export const PlacesFeed = async ({ places, currentPage }: PlacesFeedProps) => {
                     <Place key={index} {...place} />
                 ))}
             </div>
-            <Paginator pages={places.totalPages} currentPage={currentPage} />
+            {totalPages > 1 && <Paginator pages={totalPages} currentPage={currentPage} />}
         </>
     )
 }
