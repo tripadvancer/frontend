@@ -8,7 +8,7 @@ export async function getPlacesByCountryCode(countryCode: string): Promise<IPlac
     const res = await fetch(url)
 
     if (!res.ok) {
-        throw new Error(res.statusText)
+        throw new Error('Failed to fetch data')
     }
 
     return res.json()
@@ -19,7 +19,7 @@ export async function getPlacesByUserId(userId: string, page: string): Promise<P
     const res = await fetch(url)
 
     if (!res.ok) {
-        throw new Error(res.statusText)
+        throw new Error('Failed to fetch data')
     }
 
     return res.json()
@@ -34,7 +34,7 @@ export async function getPlaceById(placeId: string): Promise<IPlace> {
             notFound()
         }
 
-        throw new Error(res.statusText)
+        throw new Error('Failed to fetch data')
     }
 
     return res.json()
@@ -45,7 +45,7 @@ export async function getPlacesNearby(placeId: string): Promise<IPlaceNearby[]> 
     const res = await fetch(url)
 
     if (!res.ok) {
-        throw new Error(res.statusText)
+        throw new Error('Failed to fetch data')
     }
 
     return res.json()

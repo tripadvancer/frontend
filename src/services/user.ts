@@ -11,7 +11,7 @@ export async function getUserById(userId: string): Promise<IUser> {
             notFound()
         }
 
-        throw new Error(res.statusText)
+        throw new Error('Failed to fetch data')
     }
 
     return res.json()
