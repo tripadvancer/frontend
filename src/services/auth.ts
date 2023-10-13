@@ -1,7 +1,6 @@
 import type { StatusResponse, TokenInputs } from '@/types/auth'
 
 export async function emailVerify(token: TokenInputs): Promise<StatusResponse> {
-    "use server"
     const url = process.env.NEXT_PUBLIC_API_URL + '/auth/verify'
     const res = await fetch(url, {
         method: 'POST',
@@ -17,7 +16,6 @@ export async function emailVerify(token: TokenInputs): Promise<StatusResponse> {
 }
 
 export async function restoreAccount(token: TokenInputs): Promise<StatusResponse> {
-    "use server"
     const url = process.env.NEXT_PUBLIC_API_URL + '/auth/restore'
     const res = await fetch(url, {
         method: 'POST',
@@ -33,7 +31,6 @@ export async function restoreAccount(token: TokenInputs): Promise<StatusResponse
 }
 
 export async function confirmRemoval(token: TokenInputs): Promise<StatusResponse> {
-    "use server"
     const url = process.env.NEXT_PUBLIC_API_URL + '/auth/confirm-removal'
     const res = await fetch(url, {
         method: 'POST',
