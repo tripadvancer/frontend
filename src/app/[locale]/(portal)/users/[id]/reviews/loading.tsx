@@ -1,4 +1,4 @@
-import { ReviewSkeletons } from '@/components/ReviewSkeletons'
+import { ReviewSkeletons } from '@/components/Review/ReviewSkeletons'
 
 export default function Loading() {
     return <ReviewSkeletons />

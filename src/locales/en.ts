@@ -31,6 +31,11 @@ export default {
     'header.user_menu.account': 'Account',
     'header.user_menu.log_out': 'Log out',
 
+    'review.menu.edit': 'Edit',
+    'review.menu.delete': 'Delete',
+    'review.menu.complain': 'Complain',
+    'review.remove.success': 'The review has been successfully removed.',
+
     'user.achievement.level_1': 'Beginner',
     'user.achievement.statistic.added_places': 'Added places',
     'user.achievement.statistic.added_photos': 'Added photos',

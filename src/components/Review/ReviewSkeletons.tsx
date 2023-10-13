@@ -2,18 +2,18 @@ export const ReviewSkeletons = () => {
     return Array.from({ length: 3 }).map((_, i) => (
         <div key={i} role="status" className="w-full animate-pulse border-t border-custom-black-15 py-8 last:pb-0">
             <div className="mb-5 flex flex-col gap-1">
-                <div className="h-3.5 w-20 rounded-full bg-custom-black-5"/>
+                <div className="h-3.5 w-20 rounded-full bg-custom-black-5" />
                 <div className="flex flex-row gap-x-2 text-xs phone:flex-col phone:gap-y-1">
-                    <div className="h-3.5 w-40 rounded-full bg-custom-black-5"/>
-                    <div className="h-3.5 w-40 rounded-full bg-custom-black-5"/>
+                    <div className="h-3.5 w-40 rounded-full bg-custom-black-5" />
+                    <div className="h-3.5 w-40 rounded-full bg-custom-black-5" />
                 </div>
             </div>
 
             <div className="flex flex-col gap-y-2">
-                <div className="h-3.5 w-full rounded-full bg-custom-black-5"/>
-                <div className="h-3.5 w-full rounded-full bg-custom-black-5"/>
-                <div className="h-3.5 w-full rounded-full bg-custom-black-5"/>
-                <div className="h-3.5 max-w-[360px] rounded-full bg-custom-black-5"/>
+                <div className="h-3.5 w-full rounded-full bg-custom-black-5" />
+                <div className="h-3.5 w-full rounded-full bg-custom-black-5" />
+                <div className="h-3.5 w-full rounded-full bg-custom-black-5" />
+                <div className="h-3.5 max-w-[360px] rounded-full bg-custom-black-5" />
             </div>
 
             <div className="mt-5 grid grid-cols-9 gap-2 phone:grid-cols-3">

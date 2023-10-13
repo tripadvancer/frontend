@@ -2,8 +2,9 @@ import type { PaginatedResponse } from '@/types/common'
 import type { IReview } from '@/types/review'
 
 import { Paginator } from '@/components/Paginator'
-import { Review } from '@/components/Review'
 import { getScopedI18n } from '@/utils/i18n.server'
+
+import { Review } from './Review'
 
 type ReviewFeedProps = {
     reviews: PaginatedResponse<IReview>

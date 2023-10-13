@@ -9,30 +9,30 @@ import { CoordinatesToCopy } from '@/components/CoordinatesToCopy'
 import { DraftToHtml } from '@/components/DraftToHtml'
 import { PhotoFeed } from '@/components/PhotoFeed'
 import { PlacesNearbyList } from '@/components/PlacesNearbyList'
-import { ReviewFeed } from '@/components/ReviewFeed'
+import { ReviewFeed } from '@/components/Review/ReviewFeed'
 import { UserPreview } from '@/components/UserPreview'
 import { getPlaceById, getPlacesNearby } from '@/services/places'
 import { getReviewsByPlaceId } from '@/services/reviews'
-import { getCountryNameByCode } from '@/utils/countries'
+// import { getCountryNameByCode } from '@/utils/countries'
 import { ImageVariant } from '@/utils/enums'
 import { FormattedDate, makeImageUrl } from '@/utils/helpers'
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-    const place = await getPlaceById(params.id)
-    const countryName = getCountryNameByCode(place.countryCode)
+// export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+// const place = await getPlaceById(params.id)
+// const countryName = getCountryNameByCode(place.countryCode)
 
-    return {
-        title: `${place.title}${countryName ? `, ${countryName}` : ''} | Tripadvancer`,
-        description: '',
-    }
-}
+// return {
+//     title: `${place.title}${countryName ? `, ${countryName}` : ''} | Tripadvancer`,
+//     description: '',
+// }
+// }
 
 export default async function Place({ params }: { params: { locale: string; id: string } }) {
     const place = await getPlaceById(params.id)
     const placesNearby = await getPlacesNearby(params.id)
     const reviews = await getReviewsByPlaceId(params.id)
 
-    const countryName = getCountryNameByCode(place.countryCode.toUpperCase())
+    // const countryName = getCountryNameByCode(place.countryCode.toUpperCase())
     const formattedDate = FormattedDate(place.createdAt, params.locale)
     const photosWithCover: IPhoto[] = place.photos.slice()
 
@@ -58,7 +58,7 @@ export default async function Place({ params }: { params: { locale: string; id: 
                             href={`/countries/${place.countryCode}`}
                             className="mb-5 inline-block text-sm text-white hover:text-white"
                         >
-                            {countryName}
+                            {/* {countryName} */}
                         </Link>
                         <h1 className="mb-5 text-5xl text-white">{place.title}</h1>
                         <CoordinatesToCopy coordinates={place.location.coordinates} className="mb-4" />

@@ -2,6 +2,7 @@
 
 import { Dropdown } from '@/components/Dropdown'
 import { useAuth } from '@/hooks/useAuth'
+import { useScopedI18n } from '@/utils/i18n.client'
 
 type ReviewActionProps = {
     reviewId: number
@@ -9,12 +10,14 @@ type ReviewActionProps = {
 }
 
 export const ReviewAction = ({ reviewId, userId }: ReviewActionProps) => {
+    const t = useScopedI18n('review')
     const auth = useAuth()
     const isMyReview = auth.user?.id === userId
+
     const items = isMyReview
         ? [
               {
-                  caption: 'Edit',
+                  caption: t('menu.edit'),
                   value: 'edit',
                   icon: (
                       <svg
@@ -30,10 +33,10 @@ export const ReviewAction = ({ reviewId, userId }: ReviewActionProps) => {
                           />
                       </svg>
                   ),
-                  onClick: () => console.log('Complain'),
+                  onClick: () => alert('Do not implemented yet'),
               },
               {
-                  caption: 'Delete',
+                  caption: t('menu.delete'),
                   value: 'delete',
                   icon: (
                       <svg
@@ -50,12 +53,12 @@ export const ReviewAction = ({ reviewId, userId }: ReviewActionProps) => {
                       </svg>
                   ),
                   isRed: true,
-                  onClick: () => console.log('Complain'),
+                  onClick: () => alert('Do not implemented yet'),
               },
           ]
         : [
               {
-                  caption: 'Complain',
+                  caption: t('menu.complain'),
                   value: 'complain',
                   icon: (
                       <svg
@@ -72,7 +75,7 @@ export const ReviewAction = ({ reviewId, userId }: ReviewActionProps) => {
                       </svg>
                   ),
                   isRed: true,
-                  onClick: () => console.log('Complain'),
+                  onClick: () => alert('Do not implemented yet'),
               },
           ]
 

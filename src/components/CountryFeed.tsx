@@ -24,7 +24,7 @@ export const CountryFeed = ({ countries }: CountryFeedProps) => {
 
     return (
         <>
-            <div className="mb-8 grid grid-cols-4 gap-8 phone:grid-cols-2">
+            <div className="mb-8 grid grid-cols-4 gap-8 phone:grid-cols-2 phone:gap-4">
                 {visibleCountries.map((country, index) => (
                     <CountryPreview key={index} {...country} />
                 ))}
