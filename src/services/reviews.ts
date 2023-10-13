@@ -10,7 +10,7 @@ export async function getReviewsByPlaceId(placeId: string): Promise<PaginatedRes
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -21,7 +21,7 @@ export async function getReviewsByUserId(userId: string, page: string): Promise<
     const res = await fetch(url, { cache: 'no-store' })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -37,7 +37,7 @@ export async function removeReviewById(reviewId: string): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     revalidateTag('Reviews')

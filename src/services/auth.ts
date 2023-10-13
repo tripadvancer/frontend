@@ -9,7 +9,7 @@ export async function emailVerify(token: TokenInputs): Promise<StatusResponse> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -24,7 +24,7 @@ export async function restoreAccount(token: TokenInputs): Promise<StatusResponse
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -39,7 +39,7 @@ export async function confirmRemoval(token: TokenInputs): Promise<StatusResponse
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()

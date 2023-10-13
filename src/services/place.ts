@@ -7,7 +7,7 @@ export async function getPlacesByCountryCode(countryCode: string): Promise<IPlac
     const res = await fetch(url)
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -22,7 +22,7 @@ export async function getPlaceById(placeId: string): Promise<IPlace> {
             notFound()
         }
 
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
