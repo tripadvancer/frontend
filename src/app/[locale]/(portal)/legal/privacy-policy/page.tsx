@@ -50,16 +50,16 @@ export default function LegalPrivacyPolicy() {
                 <p className="mb-5">We&nbsp;use the collected information for the following purposes:</p>
                 <ul className="mb-5 list-outside list-disc pl-12">
                     <li className="mb-3">
-                        Communication: We&nbsp;may use your email address to&nbsp;communicate with you regarding your
-                        account, updates, and relevant information.
+                        <strong className="font-medium">Communication</strong>: We&nbsp;may use your email address
+                        to&nbsp;communicate with you regarding your account, updates, and relevant information.
                     </li>
                     <li className="mb-3">
-                        Account Management: Your username and account information are used for identification and
-                        authentication purposes.
+                        <strong className="font-medium">Account Management:</strong> Your username and account
+                        information are used for identification and authentication purposes.
                     </li>
                     <li>
-                        Service Improvement: The information you provide helps&nbsp;us enhance and personalize your user
-                        experience within our platform.
+                        <strong className="font-medium">Service Improvement:</strong> The information you provide
+                        helps&nbsp;us enhance and personalize your user experience within our platform.
                     </li>
                 </ul>
             </article>

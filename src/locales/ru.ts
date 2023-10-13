@@ -27,6 +27,8 @@ export default {
 
     'header.user_menu.places': 'Мои места',
     'header.user_menu.reviews': 'Мои отзывы',
+    'header.user_menu.profile': 'Профиль',
+    'header.user_menu.account': 'Аккаунт',
     'header.user_menu.log_out': 'Выйти',
 
     'user.achievement.level_1': 'Новичок',

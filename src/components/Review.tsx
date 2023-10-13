@@ -11,7 +11,7 @@ import { ReviewAction } from './ReviewAction'
 
 type ReviewProps = IReview
 
-export const Review = ({ text, user, rating, photos, place, createdAt }: ReviewProps) => {
+export const Review = ({ id, text, user, rating, photos, place, createdAt }: ReviewProps) => {
     const locale = getCurrentLocale()
     const formattedDate = FormattedDate(createdAt, locale)
 
@@ -27,7 +27,7 @@ export const Review = ({ text, user, rating, photos, place, createdAt }: ReviewP
                         <div className="text-custom-black-40">{formattedDate}</div>
                     </div>
                 </div>
-                <ReviewAction />
+                <ReviewAction reviewId={id} userId={user.id} />
             </div>
 
             <div className="text-sm">{text}</div>

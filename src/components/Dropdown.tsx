@@ -12,7 +12,9 @@ import { ActionControl } from './ActionControl'
 
 type DropdownItemProps = {
     caption: string
+    icon?: React.ReactNode
     value: string
+    isRed?: boolean
     onClick: () => void
 }
 
@@ -45,9 +47,10 @@ export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
                         <li
                             key={item.value}
                             className={classNames(
-                                'hover-animated cursor-pointer rounded p-1.5 text-sm text-custom-blue-100 last:mb-0 hover:bg-custom-blue-10',
+                                'hover-animated flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-sm text-custom-blue-100 last:mb-0 hover:bg-custom-blue-10',
                                 {
                                     'font-medium': item.value === currentItem,
+                                    'text-custom-red-100': item.isRed,
                                 },
                             )}
                             onClick={() => {
@@ -55,6 +58,7 @@ export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
                                 setVisible(false)
                             }}
                         >
+                            {item.icon}
                             {item.caption}
                         </li>
                     ))}

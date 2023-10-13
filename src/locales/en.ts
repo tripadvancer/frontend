@@ -27,6 +27,8 @@ export default {
 
     'header.user_menu.places': 'Added places',
     'header.user_menu.reviews': 'Written reviews',
+    'header.user_menu.profile': 'Profile',
+    'header.user_menu.account': 'Account',
     'header.user_menu.log_out': 'Log out',
 
     'user.achievement.level_1': 'Beginner',
