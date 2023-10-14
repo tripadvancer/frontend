@@ -11,7 +11,8 @@ export default async function Home() {
 
     return (
         <div className="container py-24">
-            <section className="mb-24">
+            Home
+            {/* <section className="mb-24">
                 <h1 className="mb-4 text-center text-5xl font-medium phone:text-4xl">{t('countries.title')}</h1>
                 <p className="m-auto mb-16 w-2/3 text-center text-base text-custom-black-70 phone:w-full">
                     {t('countries.description')}
@@ -79,7 +80,7 @@ export default async function Home() {
                         {t('map.cta')}
                     </Link>
                 </div>
-            </section>
+            </section> */}
         </div>
     )
 }
