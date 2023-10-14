@@ -318,3 +318,7 @@ const countries: Country[] = [
 export const getCountryByCode = (countryCode: Pick<Country, 'code'>['code']): Country | undefined => {
     return countries.find(country => country.code === countryCode)
 }
+
+export const getCountryBySlug = (countrySlug: Pick<Country, 'slug'>['slug']): Country | undefined => {
+    return countries.find(country => country.slug === countrySlug)
+}

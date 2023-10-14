@@ -9,7 +9,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
         <div className="text-center">
             <p className="text-sm text-custom-black-40">{t('error')}</p>
             {/* todo: remove error message */}
-            <div className="p-4 font-mono text-xs">{error.message}</div>
+            {/* <div className="p-4 font-mono text-xs">{error.message}</div> */}
         </div>
     )
 }
