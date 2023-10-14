@@ -1,7 +1,7 @@
 import type { StatusResponse, TokenInputs } from '@/types/auth'
 
 export async function emailVerify(token: TokenInputs): Promise<StatusResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/auth/verify'
+    const url = process.env.API_URL + '/auth/verify'
     const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -16,7 +16,7 @@ export async function emailVerify(token: TokenInputs): Promise<StatusResponse> {
 }
 
 export async function restoreAccount(token: TokenInputs): Promise<StatusResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/auth/restore'
+    const url = process.env.API_URL + '/auth/restore'
     const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -31,7 +31,7 @@ export async function restoreAccount(token: TokenInputs): Promise<StatusResponse
 }
 
 export async function confirmRemoval(token: TokenInputs): Promise<StatusResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/auth/confirm-removal'
+    const url = process.env.API_URL + '/auth/confirm-removal'
     const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

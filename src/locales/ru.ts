@@ -91,12 +91,10 @@ export default {
 
     'pages.auth.confirm_removal.meta.title': 'Подтверждение удаления учётной записи | Tripadvancer',
     'pages.auth.confirm_removal.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для удаления учётной записи.',
-    'pages.auth.confirm_removal.success':
-        'Процесс удаления Вашей учётной записи начат. Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
+    'pages.auth.confirm_removal.success': 'Процесс удаления Вашей учётной записи начат. Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
 
     'pages.auth.reset_password.meta.title': 'Восстановление пароля | Tripadvancer',
-    'pages.auth.reset_password.token_expired':
-        'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления пароля.',
+    'pages.auth.reset_password.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления пароля.',
     'pages.auth.reset_password.success': 'Ваш пароль успешно изменён.',
     'pages.auth.reset_password.submit': 'Изменить пароль',
 
@@ -107,18 +105,15 @@ export default {
     'pages.user.reviews_link': 'Мои отзывы',
 
     'dialog.feedback.verify_email.title': 'Проверьте свой email',
-    'dialog.feedback.verify_email.message.not_activated':
-        'Мы отправили Вам письмо с инструкциями по подтверждению email. Пожалуйста, проверьте свой email и следуйте инструкциям, указанным в письме, чтобы завершить процесс подтверждения.',
-    'dialog.feedback.verify_email.message.pending_delete':
-        'Мы отправили Вам инструкции по восстановлению Вашей учётной записи. Обратите внимание, что восстановление учётной записи доступно ограниченное время.',
+    'dialog.feedback.verify_email.message.not_activated': 'Мы отправили Вам письмо с инструкциями по подтверждению email. Пожалуйста, проверьте свой email и следуйте инструкциям, указанным в письме, чтобы завершить процесс подтверждения.',
+    'dialog.feedback.verify_email.message.pending_delete': 'Мы отправили Вам инструкции по восстановлению Вашей учётной записи. Обратите внимание, что восстановление учётной записи доступно ограниченное время.',
 
     'dialog.feedback.forgot_password.title': 'Восстановление пароля',
     'dialog.feedback.forgot_password.message': 'Мы отправили Вам письмо с инструкциями по восстановлению пароля.',
 
     'dialogs.sign_up.title': 'Регистрация',
     'dialogs.sign_up.submit': 'Зарегистрироваться',
-    'dialogs.sign_up.info':
-        'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
+    'dialogs.sign_up.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
     'dialogs.sign_up.to_back': 'Уже зарегистрированы? {sign_in_link}',
 
     'dialogs.sign_in.title': 'Вход',

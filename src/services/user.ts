@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import type { IUser } from '@/types/user'
 
 export async function getUserById(userId: string): Promise<IUser> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + userId
+    const url = process.env.API_URL + '/users/' + userId
     const res = await fetch(url)
 
     if (!res.ok) {

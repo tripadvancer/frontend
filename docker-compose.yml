@@ -1,9 +1,15 @@
 services:
-  frontend:
+  app:
     build:
       dockerfile: Dockerfile
-    container_name: portal
     ports:
       - 3000:3000
     volumes:
       - ./src/:/src
+    networks:
+      - tripadvancer_net
+
+networks:
+  tripadvancer_net:
+    external: true
+    
