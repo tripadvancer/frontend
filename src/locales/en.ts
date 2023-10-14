@@ -42,6 +42,10 @@ export default {
     'user.achievement.statistic.added_reviews': 'Written reviews',
     'user.achievement.statistic.visited_places': 'Visited places',
 
+    'countries.places#zero': 'No places',
+    'countries.places#one': '{count} place',
+    'countries.places#other': '{count} places',
+
     'forms.fields.email.placeholder': 'Email',
     'forms.fields.password.placeholder': 'Password',
     'forms.fields.username.placeholder': 'Username',

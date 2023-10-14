@@ -39,6 +39,12 @@ export default {
     'review.menu.complain': 'Пожаловаться',
     'review.remove.success': 'Отзыв был успешно удалён.',
 
+    'countries.places#zero': 'Нет мест',
+    'countries.places#one': '{count} место',
+    'countries.places#few': '{count} места',
+    'countries.places#many': '{count} мест',
+    'countries.places#other': '{count} мест',
+
     'user.achievement.level_1': 'Новичок',
     'user.achievement.statistic.added_places': 'Добавлено мест',
     'user.achievement.statistic.added_photos': 'Добавлено фото',
