@@ -1,6 +1,6 @@
-export const PlaceSkeletons = () => {
-    return Array.from({ length: 6 }).map((_, i) => (
-        <div key={i}>
+export const PlaceSkeleton = () => {
+    return (
+        <div>
             <div className="sm:w-96 mb-2 flex aspect-square w-full animate-pulse items-center justify-center rounded-lg bg-custom-black-5">
                 <svg
                     className="w-10 text-custom-black-15 opacity-30"
@@ -17,5 +17,5 @@ export const PlaceSkeletons = () => {
                 <div className="h-3.5 w-2/3 rounded-full bg-custom-black-5" />
             </div>
         </div>
-    ))
+    )
 }

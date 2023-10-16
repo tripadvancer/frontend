@@ -12,7 +12,7 @@ module.exports = {
             screens: {
                 phone: '100%',
                 tablet: '100%',
-                desktop: '1120px',
+                desktop: '1184px',
             },
         },
         extend: {

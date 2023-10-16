@@ -3,10 +3,9 @@ import Link from 'next/link'
 
 import { IPlacePreview } from '@/types/place'
 
+import { ImageNotFound } from '@/components/ImageNotFound'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
-
-import { ImageNotFound } from './ImageNotFound'
 
 type PlaceType = IPlacePreview
 
@@ -23,7 +22,7 @@ export const Place = ({ id, title, cover }: PlaceType) => {
                         className="mb-2 rounded-lg phone:w-full"
                     />
                 ) : (
-                    <ImageNotFound />
+                    <ImageNotFound className="max-w-[192px] rounded-lg phone:max-w-full" />
                 )}
             </div>
             <span className="text-sm font-medium">{title}</span>

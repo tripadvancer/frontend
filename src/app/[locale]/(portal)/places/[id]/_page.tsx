@@ -4,7 +4,7 @@ import type { Metadata } from 'next/types'
 
 import type { IPhoto } from '@/types/photo'
 
-import { PlaceAchievement } from '@/components/Achievement/PlaceAchievement'
+import { Achievement } from '@/components/Achievement'
 import { CoordinatesToCopy } from '@/components/CoordinatesToCopy'
 import { DraftToHtml } from '@/components/DraftToHtml'
 import { PhotoFeed } from '@/components/PhotoFeed'
@@ -52,7 +52,7 @@ export default async function Place({ params }: { params: { locale: string; id: 
                 />
                 <div className="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-custom-black-100 opacity-30" />
 
-                <div className="container flex h-full items-center justify-center phone:px-4">
+                <div className="container flex h-full items-center justify-center">
                     <section className="py-16 text-center">
                         <Link
                             href={`/countries/${place.countryCode}`}
@@ -77,7 +77,7 @@ export default async function Place({ params }: { params: { locale: string; id: 
             </div>
 
             <div className="-mt-8 flex-1 rounded-t-4xl bg-white phone:rounded-none">
-                <div className="container flex gap-x-8 py-24 phone:flex-col-reverse phone:px-4">
+                <div className="container flex gap-x-8 py-24 phone:flex-col-reverse">
                     <div className="flex-auto">
                         <section className="mb-16">
                             <h2 className="mb-8 text-2xl">About this place</h2>
@@ -98,7 +98,23 @@ export default async function Place({ params }: { params: { locale: string; id: 
                     </div>
 
                     <div className="w-64 flex-none phone:w-auto">
-                        <PlaceAchievement title={place.title} />
+                        <Achievement
+                            icon={
+                                <svg
+                                    width="48"
+                                    height="48"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M4 23V21H4.99264V1H6.97792V2H20.9987L18.022 7.99991L21 14H6.97792V21H7.97056V23H4ZM6.97792 12V4H17.787L15.8025 8.00009L17.7877 12H6.97792Z"
+                                    />
+                                </svg>
+                            }
+                            title={place.title}
+                        />
 
                         <section className="mb-8">
                             <h3 className="mb-4 text-sm uppercase">Author</h3>

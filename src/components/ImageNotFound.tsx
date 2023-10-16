@@ -1,6 +1,17 @@
-export const ImageNotFound = () => {
+import classNames from 'classnames'
+
+type ImageNotFoundProps = {
+    className?: string
+}
+
+export const ImageNotFound = ({ className }: ImageNotFoundProps) => {
     return (
-        <div className="flex aspect-square w-48 items-center justify-center rounded-lg bg-custom-black-5 phone:w-full">
+        <div
+            className={classNames(
+                'flex aspect-square items-center justify-center bg-custom-black-5 phone:w-full',
+                className,
+            )}
+        >
             <svg
                 className="w-12 text-custom-black-15 opacity-75"
                 aria-hidden="true"

@@ -6,7 +6,7 @@ export const Footer = async () => {
     const t = await getScopedI18n('common')
 
     return (
-        <footer className="px-8 py-8 phone:px-4">
+        <footer className="py-8">
             <div className="container">
                 <div className="mb-8 border-t border-custom-black-70" />
                 <div className="inner-container">

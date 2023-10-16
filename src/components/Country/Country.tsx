@@ -10,7 +10,7 @@ import { useCurrentLocale, useScopedI18n } from '@/utils/i18n.client'
 
 type CountryPreviewProps = ICountry
 
-export const CountryPreview = ({ countryCode, placesCount }: CountryPreviewProps) => {
+export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
     const t = useScopedI18n('countries')
     const locale = useCurrentLocale()
     const country = getCountryByCode(countryCode)

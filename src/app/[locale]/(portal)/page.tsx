@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { CountryFeed } from '@/components/CountryFeed'
+import { CountryFeed } from '@/components/Country/CountryFeed'
 import { getCountries } from '@/services/countries'
 import { getScopedI18n } from '@/utils/i18n.server'
 

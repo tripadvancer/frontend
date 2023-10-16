@@ -2,10 +2,9 @@ import { PaginatedResponse } from '@/types/common'
 import { IPlacePreview } from '@/types/place'
 
 import { Paginator } from '@/components/Paginator'
-import { Place } from '@/components/Place'
 import { getScopedI18n } from '@/utils/i18n.server'
 
-import { PlaceSkeletons } from './PlaceSkeletons'
+import { Place } from './Place'
 
 type PlacesFeedProps = {
     places: PaginatedResponse<IPlacePreview>

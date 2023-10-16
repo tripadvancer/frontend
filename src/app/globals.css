@@ -10,6 +10,10 @@ a:hover {
     @apply text-custom-blue-active hover-animated;
 }
 
+.container {
+    @apply px-8 phone:px-4
+}
+
 .inner-container {
     @apply mx-auto w-[928px] tablet:w-full phone:w-full;
 }

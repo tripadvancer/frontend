@@ -16,6 +16,7 @@ export async function getReviewsByPlaceId(placeId: string): Promise<PaginatedRes
 
 export async function getReviewsByUserId(userId: string, page: string): Promise<PaginatedResponse<IReview>> {
     const url = process.env.API_URL + '/reviews?user_id=' + userId + '&page=' + page
+    console.log(url)
     const res = await fetch(url)
 
     if (!res.ok) {

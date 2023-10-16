@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 
-import { PlacesFeed } from '@/components/PlacesFeed'
+import { PlacesFeed } from '@/components/Place/PlacesFeed'
 import { getPlacesByUserId } from '@/services/places'
 import { getUserById } from '@/services/user'
 import { getScopedI18n } from '@/utils/i18n.server'

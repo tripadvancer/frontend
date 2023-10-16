@@ -8,7 +8,7 @@ export default async function NotFound() {
     const tCommon = await getScopedI18n('common')
 
     return (
-        <div className="container flex min-h-screen py-16 phone:flex-col phone:px-4 tablet:flex-row tablet:items-center tablet:justify-center tablet:gap-16 desktop:flex-row desktop:items-center desktop:justify-center desktop:gap-32">
+        <div className="container flex min-h-screen py-16 phone:flex-col tablet:flex-row tablet:items-center tablet:justify-center tablet:gap-16 desktop:flex-row desktop:items-center desktop:justify-center desktop:gap-32">
             <Image
                 src="/images/error-404.svg"
                 width={352}
