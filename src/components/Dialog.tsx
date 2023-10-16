@@ -7,7 +7,7 @@ export const Dialog = ({ content, onClose }: DialogProps) => {
     return (
         <div className="fixed bottom-0 left-0 right-0 top-0 z-40 overflow-y-auto before:fixed before:bottom-0 before:left-0 before:right-0 before:top-0 before:bg-custom-black-100 before:opacity-50">
             <div className="flex min-h-full items-center justify-center">
-                <div className="relative m-16 rounded-2xl bg-white p-16 shadow-lg phone:m-4 phone:w-full phone:px-8 phone:py-16">
+                <div className="sm:m-16 sm:p-16 sm:w-auto relative m-4 w-full rounded-2xl bg-white px-8 py-16 shadow-lg">
                     <svg
                         width="24"
                         height="24"
@@ -15,7 +15,7 @@ export const Dialog = ({ content, onClose }: DialogProps) => {
                         fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg"
                         onClick={onClose}
-                        className="absolute right-4 top-4 cursor-pointer text-custom-black-15 hover-animated hover:text-custom-blue-active"
+                        className="hover-animated absolute right-4 top-4 cursor-pointer text-custom-black-15 hover:text-custom-blue-active"
                     >
                         <path
                             fillRule="evenodd"

@@ -7,10 +7,7 @@ type ImageNotFoundProps = {
 export const ImageNotFound = ({ className }: ImageNotFoundProps) => {
     return (
         <div
-            className={classNames(
-                'flex aspect-square items-center justify-center bg-custom-black-5 phone:w-full',
-                className,
-            )}
+            className={classNames('flex aspect-square items-center justify-center bg-custom-black-5', className)}
         >
             <svg
                 className="w-12 text-custom-black-15 opacity-75"

@@ -42,7 +42,7 @@ export const ForgotPasswordForm = () => {
     })
 
     return (
-        <form className="w-104 phone:w-full" onSubmit={formik.handleSubmit}>
+        <form className="sm:w-104 w-full" onSubmit={formik.handleSubmit}>
             <h1 className="mb-8 text-center text-lg font-medium">{t('dialogs.forgot_password.title')}</h1>
             <p className="mb-2 text-center text-sm">{t('dialogs.forgot_password.info')}</p>
             <Input
@@ -62,7 +62,7 @@ export const ForgotPasswordForm = () => {
                 {t('dialogs.forgot_password.to_back', {
                     sign_in_link: (
                         <span
-                            className="cursor-pointer text-custom-blue-100 hover-animated hover:text-custom-blue-active"
+                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
                             onClick={() => dialog.open(<SignInForm />)}
                         >
                             {t('common.sign_in_link')}
@@ -70,7 +70,7 @@ export const ForgotPasswordForm = () => {
                     ),
                     sign_up_link: (
                         <span
-                            className="cursor-pointer text-custom-blue-100 hover-animated hover:text-custom-blue-active"
+                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
                             onClick={() => dialog.open(<SignUpForm />)}
                         >
                             {t('common.sign_up_link')}

@@ -28,7 +28,7 @@ export default async function RestoreAccount({ params }: { params: { token: stri
 
             <Link
                 href="/"
-                className="inline-flex h-10 w-full items-center justify-center rounded-lg bg-custom-blue-100 px-6 text-sm text-white hover-animated hover:bg-custom-blue-active hover:text-white focus:outline-none"
+                className="hover-animated inline-flex h-10 w-full items-center justify-center rounded-lg bg-custom-blue-100 px-6 text-sm text-white hover:bg-custom-blue-active hover:text-white focus:outline-none"
             >
                 {tCommon('cta.home')}
             </Link>

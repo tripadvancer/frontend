@@ -15,7 +15,7 @@ export const SignInFeedback = ({ reason }: SignInFeedbackProps) => {
     const dialog = useDialog()
 
     return (
-        <div className="w-104 flex flex-col items-center gap-8 phone:w-full">
+        <div className="sm:w-104 flex w-full flex-col items-center gap-8">
             <h1 className="text-lg font-medium">{t('title')}</h1>
             <p className="text-center text-sm">
                 {reason === ApiErrorReason.ACCOUNT_NOT_ACTIVATED && t('message.not_activated')}

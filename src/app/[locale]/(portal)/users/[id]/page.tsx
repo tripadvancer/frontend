@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 
-import { PlacesFeed } from '@/components/Place/PlacesFeed'
+import { UserPlacesFeed } from '@/components/UserPlacesFeed/UserPlacesFeed'
 import { getPlacesByUserId } from '@/services/places'
 import { getUserById } from '@/services/user'
 import { getScopedI18n } from '@/utils/i18n.server'
@@ -26,5 +26,5 @@ export default async function UserPlaces({
     const currentPage = searchParams.page ?? '1'
     const places = await getPlacesByUserId(userId, currentPage)
 
-    return <PlacesFeed places={places} currentPage={parseInt(currentPage)} />
+    return <UserPlacesFeed places={places} currentPage={parseInt(currentPage)} />
 }

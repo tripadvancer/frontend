@@ -78,7 +78,7 @@ export const Paginator = async ({ pages, currentPage }: PaginatorProps) => {
             >
                 {t('prev')}
             </Link>
-            <ol className="flex items-center justify-center gap-x-1 text-sm font-medium phone:hidden">
+            <ol className="sm:flex hidden items-center justify-center gap-x-1 text-sm font-medium">
                 {renderPageNumbers()}
             </ol>
             <Link

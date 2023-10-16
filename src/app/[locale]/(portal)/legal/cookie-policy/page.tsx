@@ -3,13 +3,14 @@ import type { Metadata } from 'next/types'
 
 export const metadata: Metadata = {
     title: 'Cookie Policy | Tripadvancer',
-    description: 'This Cookie Policy explains how Tripadvancer («we,» «us,» or «our») uses cookies and similar tracking technologies when you access or use our web service. By using our web service, you consent to the use of cookies as described in this policy.',
+    description:
+        'This Cookie Policy explains how Tripadvancer («we,» «us,» or «our») uses cookies and similar tracking technologies when you access or use our web service. By using our web service, you consent to the use of cookies as described in this policy.',
 }
 
 export default function LegalCookiePolicy() {
     return (
         <article className="inner-container text-sm">
-            <h1 className="mb-4 text-center text-5xl font-medium phone:text-4xl">Cookie Policy</h1>
+            <h1 className="sm:text-5xl mb-4 text-center text-4xl font-medium">Cookie Policy</h1>
 
             <article className="mb-16 text-center text-custom-black-70">
                 <p className="mb-5">
@@ -22,7 +23,7 @@ export default function LegalCookiePolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">What are Cookies?</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">What are Cookies?</h2>
                 <p>
                     Cookies are small text files that are placed on&nbsp;your device (e.g., computer, smartphone,
                     or&nbsp;tablet) when you visit a&nbsp;website. They are widely used to&nbsp;make websites work
@@ -32,7 +33,7 @@ export default function LegalCookiePolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">How We&nbsp;Use Cookies</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">How We&nbsp;Use Cookies</h2>
                 <p className="mb-5">We&nbsp;use cookies for the following purposes:</p>
                 <ol className="list-outside list-decimal pl-12">
                     <li className="mb-3">
@@ -65,7 +66,7 @@ export default function LegalCookiePolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Your Cookie Choices</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Your Cookie Choices</h2>
                 <p>
                     Most web browsers automatically accept cookies, but you can usually modify your browser settings to
                     decline cookies or&nbsp;to&nbsp;alert you when a&nbsp;cookie is&nbsp;being sent. However, please
@@ -75,7 +76,7 @@ export default function LegalCookiePolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Managing Cookies</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Managing Cookies</h2>
                 <p>
                     You can manage your cookie preferences by&nbsp;adjusting the settings in&nbsp;your web browser. Each
                     browser has different methods for managing cookies, so&nbsp;please refer to&nbsp;the instructions
@@ -88,7 +89,7 @@ export default function LegalCookiePolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Updates to&nbsp;this Cookie Policy</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Updates to&nbsp;this Cookie Policy</h2>
                 <p>
                     We&nbsp;may update this Cookie Policy from time to&nbsp;time to&nbsp;reflect changes in&nbsp;our
                     practices or&nbsp;for other operational, legal, or&nbsp;regulatory reasons. We&nbsp;encourage you
@@ -97,7 +98,7 @@ export default function LegalCookiePolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Contacting&nbsp;us</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Contacting&nbsp;us</h2>
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Cookie Policy,
                     we&nbsp;encourage you to contact&nbsp;us using the details below:{' '}

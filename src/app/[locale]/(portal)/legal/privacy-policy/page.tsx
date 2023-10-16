@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function LegalPrivacyPolicy() {
     return (
         <article className="inner-container text-sm">
-            <h1 className="mb-4 text-center text-5xl font-medium phone:text-4xl">Privacy Policy</h1>
+            <h1 className="sm:text-5xl mb-4 text-center text-4xl font-medium">Privacy Policy</h1>
 
             <article className="mb-16 text-center text-custom-black-70">
                 <p className="mb-5">
@@ -22,7 +22,7 @@ export default function LegalPrivacyPolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Information We&nbsp;Collect</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Information We&nbsp;Collect</h2>
                 <p className="mb-5">We&nbsp;only collect the following user data:</p>
                 <ul className="mb-5 list-outside list-disc pl-12">
                     <li className="mb-3">
@@ -46,7 +46,7 @@ export default function LegalPrivacyPolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Use of&nbsp;Personal Information</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Use of&nbsp;Personal Information</h2>
                 <p className="mb-5">We&nbsp;use the collected information for the following purposes:</p>
                 <ul className="mb-5 list-outside list-disc pl-12">
                     <li className="mb-3">
@@ -65,7 +65,7 @@ export default function LegalPrivacyPolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Data Sharing</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Data Sharing</h2>
                 <p>
                     We&nbsp;do&nbsp;not share your personal data with third-party services. However, please note that
                     images uploaded to&nbsp;our platform are stored on&nbsp;Cloudflare for the purpose of&nbsp;hosting
@@ -79,7 +79,7 @@ export default function LegalPrivacyPolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Data Access and Removal</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Data Access and Removal</h2>
                 <p>
                     You have the right to&nbsp;request access to&nbsp;the personal data we&nbsp;store about you. Upon
                     your request, we&nbsp;will provide your personal data in&nbsp;a .csv file format. Additionally, you
@@ -88,7 +88,7 @@ export default function LegalPrivacyPolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Data Security</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Data Security</h2>
                 <p>
                     We&nbsp;take appropriate measures to&nbsp;protect your personal information from unauthorized
                     access, alteration, disclosure, or&nbsp;destruction. We&nbsp;employ industry-standard security
@@ -97,7 +97,7 @@ export default function LegalPrivacyPolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Children&rsquo;s Privacy</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Children&rsquo;s Privacy</h2>
                 <p>
                     Our platform is&nbsp;not intended for use by&nbsp;individuals under the age of&nbsp;18.
                     We&nbsp;do&nbsp;not knowingly collect personal information from children. If&nbsp;you believe that
@@ -107,7 +107,7 @@ export default function LegalPrivacyPolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Changes to&nbsp;the Privacy Policy</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Changes to&nbsp;the Privacy Policy</h2>
                 <p>
                     We&nbsp;may update this Privacy Policy from time to&nbsp;time. We&nbsp;will notify you of&nbsp;any
                     significant changes by posting the updated Privacy Policy on&nbsp;our platform. Please review this
@@ -116,7 +116,7 @@ export default function LegalPrivacyPolicy() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-2xl font-medium phone:text-xl">Contacting&nbsp;us</h2>
+                <h2 className="sm:text-2xl mb-8 text-xl font-medium">Contacting&nbsp;us</h2>
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Privacy Policy,
                     we&nbsp;encourage you to contact&nbsp;us using the details below:{' '}

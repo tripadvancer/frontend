@@ -7,9 +7,9 @@ import { ImageNotFound } from '@/components/ImageNotFound'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 
-type PlaceType = IPlacePreview
+type UserPlaceType = IPlacePreview
 
-export const Place = ({ id, title, cover }: PlaceType) => {
+export const UserPlace = ({ id, title, cover }: UserPlaceType) => {
     return (
         <Link href={`/places/${id}`}>
             <div className="mb-2">
@@ -19,10 +19,10 @@ export const Place = ({ id, title, cover }: PlaceType) => {
                         alt={title}
                         width={192}
                         height={192}
-                        className="mb-2 rounded-lg phone:w-full"
+                        className="mb-2 w-full rounded-lg"
                     />
                 ) : (
-                    <ImageNotFound className="max-w-[192px] rounded-lg phone:max-w-full" />
+                    <ImageNotFound className="max-w-full rounded-lg" />
                 )}
             </div>
             <span className="text-sm font-medium">{title}</span>

@@ -19,7 +19,7 @@ export const Toast = ({ type, message, onClose }: ToastProps) => {
     useTimeout(onClose, 5000)
     return (
         <div
-            className={classNames('shadow-medium relative rounded-2xl p-8 text-sm', {
+            className={classNames('relative rounded-2xl p-8 text-sm shadow-medium', {
                 'bg-custom-green-10': type === ToastType.success,
                 'bg-custom-red-10': type === ToastType.error,
             })}
@@ -45,7 +45,7 @@ export const Toast = ({ type, message, onClose }: ToastProps) => {
 
 export const ToastContainer = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className="fixed left-0 right-0 top-4 z-50 px-8 phone:px-4">
+        <div className="sm:px-8 fixed left-0 right-0 top-4 z-50 px-4">
             <div className="inner-container flex flex-col gap-5">{children}</div>
         </div>
     )

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { CountryFeed } from '@/components/Country/CountryFeed'
+import { CountriesFeed } from '@/components/CountriesFeed/CountriesFeed'
 import { getCountries } from '@/services/countries'
 import { getScopedI18n } from '@/utils/i18n.server'
 
@@ -12,50 +12,44 @@ export default async function Home() {
     return (
         <div className="container py-24">
             <section className="mb-24">
-                <h1 className="mb-4 text-center text-5xl font-medium phone:text-4xl">{t('countries.title')}</h1>
-                <p className="m-auto mb-16 w-2/3 text-center text-base text-custom-black-70 phone:w-full">
+                <h1 className="sm:text-5xl mb-4 text-center text-4xl font-medium">{t('countries.title')}</h1>
+                <p className="sm:w-2/3 m-auto mb-16 w-full text-center text-base text-custom-black-70">
                     {t('countries.description')}
                 </p>
-                <CountryFeed countries={countries} />
+                <CountriesFeed countries={countries} />
             </section>
 
             <section className="mb-24">
-                <h2 className="mb-4 text-center text-4xl font-medium phone:text-2xl">{t('features.title')}</h2>
-                <p className="m-auto mb-16 w-2/3 text-center text-base text-custom-black-70 phone:w-full">
+                <h2 className="sm:text-4xl mb-4 text-center text-2xl font-medium">{t('features.title')}</h2>
+                <p className="sm:w-2/3 m-auto mb-16 w-full text-center text-base text-custom-black-70">
                     {t('features.description')}
                 </p>
 
-                <div className="inner-container flex flex-col gap-y-8 phone:gap-y-16">
-                    <div className="phone:grid-row-2 grid grid-cols-2 items-center gap-x-16 phone:grid-cols-none phone:gap-y-8">
-                        <Image src="/images/pic-1.svg" width={448} height={448} className="block phone:m-auto" alt="" />
+                <div className="inner-container sm:gap-y-8 flex flex-col gap-y-16">
+                    <div className="grid-row-2 sm:grid-rows-none sm:grid-cols-2 sm:gap-x-16 grid items-center gap-y-8">
+                        <Image src="/images/pic-1.svg" width={448} height={448} className="m-auto block" alt="" />
                         <section>
-                            <h3 className="mb-8 text-2xl font-medium phone:mb-4 phone:text-xl">
+                            <h3 className="sm:mb-8 sm:text-2xl mb-4 text-xl font-medium">
                                 {t('features.places.title', { br: <br /> })}
                             </h3>
                             <p className="text-sm">{t('features.places.description')}</p>
                         </section>
                     </div>
 
-                    <div className="phone:grid-row-2 grid grid-cols-2 items-center gap-x-16 phone:grid-cols-none phone:gap-y-8">
-                        <section className="text-right phone:text-left">
-                            <h3 className="mb-8 text-2xl font-medium phone:mb-4 phone:text-xl">
+                    <div className="grid-row-2 sm:grid-rows-none sm:grid-cols-2 sm:gap-x-16 grid items-center gap-y-8">
+                        <Image src="/images/pic-2.svg" width={448} height={448} className="m-auto block" alt="" />
+                        <section className="sm:text-right sm:-order-1">
+                            <h3 className="sm:mb-8 sm:text-2xl mb-4 text-xl font-medium">
                                 {t('features.random.title', { br: <br /> })}
                             </h3>
                             <p className="text-sm">{t('features.random.description')}</p>
                         </section>
-                        <Image
-                            src="/images/pic-2.svg"
-                            width={448}
-                            height={448}
-                            className="block phone:-order-1 phone:m-auto"
-                            alt=""
-                        />
                     </div>
 
-                    <div className="phone:grid-row-2 grid grid-cols-2 items-center gap-x-16 phone:grid-cols-none phone:gap-y-8">
-                        <Image src="/images/pic-3.svg" width={448} height={448} className="block phone:m-auto" alt="" />
+                    <div className="grid-row-2 sm:grid-rows-none sm:grid-cols-2 sm:gap-x-16 grid items-center gap-y-8">
+                        <Image src="/images/pic-3.svg" width={448} height={448} className="m-auto block" alt="" />
                         <section>
-                            <h3 className="mb-8 text-2xl font-medium phone:mb-4 phone:text-xl">
+                            <h3 className="sm:mb-8 sm:text-2xl mb-4 text-xl font-medium">
                                 {t('features.lists.title', { br: <br /> })}
                             </h3>
                             <p className="text-sm">{t('features.lists.description')}</p>
@@ -65,8 +59,8 @@ export default async function Home() {
             </section>
 
             <section>
-                <h2 className="mb-4 text-center text-4xl font-medium phone:text-3xl">{t('map.title')}</h2>
-                <p className="m-auto mb-16 w-2/3 text-center text-base text-custom-black-70 phone:w-full">
+                <h2 className="sm:text-4xl mb-4 text-center text-3xl font-medium">{t('map.title')}</h2>
+                <p className="sm:w-2/3 m-auto mb-16 w-full text-center text-base text-custom-black-70">
                     {t('map.description')}
                 </p>
 

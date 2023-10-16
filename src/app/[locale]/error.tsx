@@ -11,16 +11,16 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
     const tCommon = useScopedI18n('common')
 
     return (
-        <div className="container flex min-h-screen py-16 phone:flex-col phone:px-4 tablet:flex-row tablet:items-center tablet:justify-center tablet:gap-16 desktop:flex-row desktop:items-center desktop:justify-center desktop:gap-32">
+        <div className="md:flex-row md:gap-x-8 lg:gap-x-16 xl:gap-x-32 container flex min-h-screen flex-col items-center py-16">
             <Image
                 src="/images/error-500.svg"
                 width={352}
                 height={406}
-                className="grow phone:hidden"
+                className="md:block hidden grow"
                 alt="404"
                 priority
             />
-            <div className="phone:flex phone:flex-col phone:items-center phone:text-center">
+            <div className="md:text-left md:items-start flex flex-col items-center text-center">
                 <Link href="/">
                     <Image src="/images/logo.svg" width={140} height={24} className="mb-16" alt="Tripadvancer" />
                 </Link>
@@ -28,7 +28,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
                     src="/images/error-500.svg"
                     width={352}
                     height={406}
-                    className="mb-16 phone:w-72 tablet:hidden desktop:hidden"
+                    className="md:hidden mb-16"
                     alt="404"
                     priority
                 />

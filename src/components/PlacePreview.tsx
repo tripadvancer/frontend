@@ -21,11 +21,11 @@ export const PlacePreview = ({ id, title, avgRating, reviewsCount, cover }: Plac
                         height={160}
                         placeholder="blur"
                         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8eftuPQAIOAMS40NHBQAAAABJRU5ErkJggg=="
-                        className="rounded-2xl phone:w-full w-[160px]"
+                        className="sm:w-[160px] w-full rounded-2xl"
                         alt={title}
                     />
                 ) : (
-                    <ImageNotFound className="w-[160px] rounded-2xl phone:max-w-full" />
+                    <ImageNotFound className="sm:w-[160px] max-w-full rounded-2xl" />
                 )}
                 <div className="flex flex-col justify-between">
                     <div className="line-clamp-4 text-lg font-medium">

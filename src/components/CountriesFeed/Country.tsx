@@ -28,11 +28,11 @@ export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
                         placeholder="blur"
                         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8eftuPQAIOAMS40NHBQAAAABJRU5ErkJggg=="
                         alt={countryName}
-                        className="rounded-t-2xl object-cover transition duration-300 group-hover:scale-110 phone:w-full"
+                        className="w-full rounded-t-2xl object-cover transition duration-300 group-hover:scale-110"
                     />
                 </div>
                 <figcaption className="flex flex-col justify-between p-4">
-                    <div className="mb-4 line-clamp-2 h-14 break-words text-lg font-medium phone:h-12 phone:text-base">
+                    <div className="sm:h-14 sm:text-lg mb-4 line-clamp-2 h-12 break-words text-base font-medium">
                         {countryName}
                     </div>
                     <div className="flex flex-row items-center gap-x-2 text-sm text-custom-blue-100">

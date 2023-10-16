@@ -1,20 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    corePlugins: {
+        container: false,
+    },
     content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
     theme: {
-        screens: {
-            phone: { max: '768px' },
-            tablet: { min: '769px', max: '1023px' },
-            desktop: { min: '1024px' },
-        },
-        container: {
-            center: true,
-            screens: {
-                phone: '100%',
-                tablet: '100%',
-                desktop: '1184px',
-            },
-        },
         extend: {
             boxShadow: {
                 medium: '0 16px 32px rgba(2, 14, 25, 0.16)',

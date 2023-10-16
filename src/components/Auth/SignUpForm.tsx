@@ -64,7 +64,7 @@ export const SignUpForm = () => {
     })
 
     return (
-        <form className="w-104 phone:w-full" onSubmit={formik.handleSubmit}>
+        <form className="sm:w-104 w-full" onSubmit={formik.handleSubmit}>
             <h1 className="mb-8 text-center text-lg font-medium">{t('dialogs.sign_up.title')}</h1>
             <Input
                 type="text"
@@ -101,7 +101,7 @@ export const SignUpForm = () => {
                 {t('dialogs.sign_up.info', {
                     terms_link: (
                         <span
-                            className="cursor-pointer text-custom-blue-100 hover-animated hover:text-custom-blue-active"
+                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
                             onClick={() => {
                                 dialog.close()
                                 router.push('/legal/terms-and-conditions')
@@ -112,7 +112,7 @@ export const SignUpForm = () => {
                     ),
                     privacy_link: (
                         <span
-                            className="cursor-pointer text-custom-blue-100 hover-animated hover:text-custom-blue-active"
+                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
                             onClick={() => {
                                 dialog.close()
                                 router.push('/legal/privacy-policy')
@@ -127,7 +127,7 @@ export const SignUpForm = () => {
                 {t('dialogs.sign_up.to_back', {
                     sign_in_link: (
                         <span
-                            className="cursor-pointer text-custom-blue-100 hover-animated hover:text-custom-blue-active"
+                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
                             onClick={() => dialog.open(<SignInForm />)}
                         >
                             {t('common.sign_in_link')}

@@ -4,16 +4,17 @@ import { useState } from 'react'
 
 import type { ICountry } from '@/types/country'
 
-import { Country } from '@/components/Country/Country'
 import { ShowMore } from '@/components/ShowMore'
 
-const PAGINATION_LIMIT = 16
+import { Country } from './Country'
 
-type CountryFeedProps = {
+const PAGINATION_LIMIT = 12
+
+type CountriesFeedProps = {
     countries: ICountry[]
 }
 
-export const CountryFeed = ({ countries }: CountryFeedProps) => {
+export const CountriesFeed = ({ countries }: CountriesFeedProps) => {
     const [currentPage, setCurrentPage] = useState(1)
 
     const handleLoadMore = () => {
@@ -24,7 +25,7 @@ export const CountryFeed = ({ countries }: CountryFeedProps) => {
 
     return (
         <>
-            <div className="mb-8 grid grid-cols-4 gap-8 phone:grid-cols-2 phone:gap-4">
+            <div className="md:grid-cols-3 lg:grid-cols-4 md:gap-8 mb-8 grid grid-cols-2 gap-4">
                 {visibleCountries.map((country, index) => (
                     <Country key={index} {...country} />
                 ))}

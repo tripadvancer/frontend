@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 
-import { ReviewFeed } from '@/components/Review/ReviewFeed'
+import { ReviewFeed } from '@/components/ReviewsFeed/ReviewsFeed'
 import { getReviewsByUserId } from '@/services/reviews'
 import { getUserById } from '@/services/user'
 import { getScopedI18n } from '@/utils/i18n.server'

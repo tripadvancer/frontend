@@ -76,8 +76,8 @@ export default async function Place({ params }: { params: { locale: string; id: 
                 </div>
             </div>
 
-            <div className="-mt-8 flex-1 rounded-t-4xl bg-white phone:rounded-none">
-                <div className="container flex gap-x-8 py-24 phone:flex-col-reverse">
+            <div className="-mt-8 flex-1 rounded-t-4xl bg-white phone!rounded-none">
+                <div className="container flex gap-x-8 py-24 phone!flex-col-reverse">
                     <div className="flex-auto">
                         <section className="mb-16">
                             <h2 className="mb-8 text-2xl">About this place</h2>
@@ -86,7 +86,7 @@ export default async function Place({ params }: { params: { locale: string; id: 
 
                         <section className="mb-16">
                             <h2 className="mb-8 text-2xl">Photos</h2>
-                            <div className="grid grid-cols-5 gap-2 phone:grid-cols-2">
+                            <div className="grid grid-cols-5 gap-2 phone!grid-cols-2">
                                 <PhotoFeed photos={photosWithCover} title={place.title} size={186} />
                             </div>
                         </section>
@@ -97,7 +97,7 @@ export default async function Place({ params }: { params: { locale: string; id: 
                         </section>
                     </div>
 
-                    <div className="w-64 flex-none phone:w-auto">
+                    <div className="w-64 flex-none phone!w-auto">
                         <Achievement
                             icon={
                                 <svg

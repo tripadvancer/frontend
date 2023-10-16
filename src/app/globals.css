@@ -7,17 +7,17 @@ body {
 }
 
 a:hover {
-    @apply text-custom-blue-active hover-animated;
+    @apply hover-animated text-custom-blue-active;
 }
 
 .container {
-    @apply px-8 phone:px-4
+    @apply sm:px-8 sm:max-w-[1184px] mx-auto w-full px-4;
 }
 
 .inner-container {
-    @apply mx-auto w-[928px] tablet:w-full phone:w-full;
+    @apply sm:max-w-[928px] mx-auto w-full;
 }
 
 .hover-animated {
-    @apply transition-colors duration-300 ease-in-out
+    @apply transition-colors duration-300 ease-in-out;
 }
