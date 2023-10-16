@@ -9,7 +9,7 @@ import { CoordinatesToCopy } from '@/components/CoordinatesToCopy'
 import { DraftToHtml } from '@/components/DraftToHtml'
 import { PhotoFeed } from '@/components/PhotoFeed'
 import { PlacesNearbyList } from '@/components/PlacesNearbyList'
-import { ReviewFeed } from '@/components/Review/ReviewFeed'
+// import { ReviewFeed } from '@/components/Review/ReviewFeed'
 import { UserPreview } from '@/components/UserPreview'
 import { getPlaceById, getPlacesNearby } from '@/services/places'
 import { getReviewsByPlaceId } from '@/services/reviews'
@@ -76,8 +76,8 @@ export default async function Place({ params }: { params: { locale: string; id: 
                 </div>
             </div>
 
-            <div className="-mt-8 flex-1 rounded-t-4xl bg-white phone!rounded-none">
-                <div className="container flex gap-x-8 py-24 phone!flex-col-reverse">
+            <div className="phone!rounded-none -mt-8 flex-1 rounded-t-4xl bg-white">
+                <div className="phone!flex-col-reverse container flex gap-x-8 py-24">
                     <div className="flex-auto">
                         <section className="mb-16">
                             <h2 className="mb-8 text-2xl">About this place</h2>
@@ -86,18 +86,18 @@ export default async function Place({ params }: { params: { locale: string; id: 
 
                         <section className="mb-16">
                             <h2 className="mb-8 text-2xl">Photos</h2>
-                            <div className="grid grid-cols-5 gap-2 phone!grid-cols-2">
+                            <div className="phone!grid-cols-2 grid grid-cols-5 gap-2">
                                 <PhotoFeed photos={photosWithCover} title={place.title} size={186} />
                             </div>
                         </section>
 
                         <section>
                             <h2 className="mb-8 text-2xl">Visitor reviews</h2>
-                            <ReviewFeed reviews={reviews} currentPage={0} />
+                            {/* <ReviewFeed reviews={reviews} currentPage={0} /> */}
                         </section>
                     </div>
 
-                    <div className="w-64 flex-none phone!w-auto">
+                    <div className="phone!w-auto w-64 flex-none">
                         <Achievement
                             icon={
                                 <svg
