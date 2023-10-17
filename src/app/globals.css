@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    @apply text-black-100 text-base;
+    @apply text-black-100 text-base antialiased;
 }
 
 a:hover {
