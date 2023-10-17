@@ -29,7 +29,7 @@ export const LanguageChanger = () => {
             ]}
             currentItem={currentLocale}
         >
-            <div className="hover-animated flex cursor-pointer gap-x-2 text-custom-blue-100 hover:text-custom-blue-active">
+            <div className="hover-animated hover:text-blue-active text-big-bold flex cursor-pointer items-center gap-x-2 text-blue-100">
                 <span className="sm:block hidden">
                     {currentLocale === 'en' && 'English'}
                     {currentLocale === 'ru' && 'Русский'}

@@ -18,7 +18,7 @@ export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
     const countrySlug = country?.slug ?? ''
 
     return (
-        <figure className="group overflow-hidden rounded-2xl bg-custom-orange-10">
+        <figure className="bg-orange-10 group overflow-hidden rounded-2xl">
             <Link href={`/countries/${countrySlug}`}>
                 <div className="w-full overflow-hidden">
                     <Image
@@ -32,10 +32,8 @@ export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
                     />
                 </div>
                 <figcaption className="flex flex-col justify-between p-4">
-                    <div className="sm:h-14 sm:text-lg mb-4 line-clamp-2 h-12 break-words text-base font-medium">
-                        {countryName}
-                    </div>
-                    <div className="flex flex-row items-center gap-x-2 text-sm text-custom-blue-100">
+                    <div className="sm:h-14 text-h7-m sm:text-h7 mb-4 line-clamp-2 h-12 break-words">{countryName}</div>
+                    <div className="flex flex-row items-center gap-x-2 text-blue-100">
                         <svg
                             width="16"
                             height="16"

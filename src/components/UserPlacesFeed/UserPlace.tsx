@@ -25,7 +25,7 @@ export const UserPlace = ({ id, title, cover }: UserPlaceType) => {
                     <ImageNotFound className="max-w-full rounded-lg" />
                 )}
             </div>
-            <span className="text-sm font-medium">{title}</span>
+            <div className="font-medium">{title}</div>
         </Link>
     )
 }

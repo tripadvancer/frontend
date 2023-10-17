@@ -12,7 +12,7 @@ export default async function User({ params, children }: { params: { id: string 
     return (
         <div className="container py-24">
             <div className="inner-container">
-                <h1 className="lg:mb-16 lg:flex-row lg:text-5xl mb-8 flex flex-col items-center gap-4 text-4xl">
+                <h1 className="lg:mb-16 lg:flex-row text-h1-m sm:text-h1 mb-8 flex flex-col items-center gap-4">
                     <Avatar src={user.avatar} alt={user.name} size={64} />
                     {user.name}
                 </h1>
@@ -58,8 +58,8 @@ export default async function User({ params, children }: { params: { id: string 
 
                         {user.info && (
                             <section>
-                                <h3 className="mb-4 text-sm uppercase">{t('about_me')}</h3>
-                                <p className="text-sm">{user.info}</p>
+                                <h3 className="text-caps mb-4 uppercase">{t('about_me')}</h3>
+                                <p>{user.info}</p>
                             </section>
                         )}
                     </div>

@@ -22,7 +22,7 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
         setIsShowPassword(!isShowPassword)
     }
 
-    const borderClass = error ? 'border-custom-red-100' : 'border-custom-black-15 focus:border-custom-black-40'
+    const borderClass = error ? 'border-red-100' : 'border-black-15 focus:border-black-40'
 
     return (
         <div className={className}>
@@ -37,7 +37,7 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                     className={classNames(
                         borderClass,
                         type === 'password' && 'pr-9',
-                        'h-10 w-full rounded-lg border bg-white pl-4 pr-4 text-sm hover-animated placeholder:text-custom-black-40 focus:outline-none',
+                        'hover-animated placeholder:text-black-40 h-10 w-full rounded-lg border bg-white pl-4 pr-4 focus:outline-none',
                     )}
                 />
 
@@ -49,8 +49,8 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                         fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg"
                         className={classNames(
-                            isShowPassword ? 'text-custom-blue-active' : 'text-custom-black-15',
-                            'absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover-animated hover:text-custom-blue-active',
+                            isShowPassword ? 'text-blue-active' : 'text-black-15',
+                            'hover-animated hover:text-blue-active absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer',
                         )}
                         onClick={handleTogglePassword}
                     >
@@ -62,7 +62,7 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                 )}
             </div>
 
-            {error && <div className="mt-1 text-xs text-custom-red-100">{error}</div>}
+            {error && <div className="text-small mt-1 text-red-100">{error}</div>}
         </div>
     )
 }

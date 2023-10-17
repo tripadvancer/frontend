@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
+import { LinkButton } from '@/components/LinkButton'
 import { restoreAccount } from '@/services/auth'
 import { ApiResponseStatus } from '@/utils/enums'
 import { getScopedI18n } from '@/utils/i18n.server'
@@ -21,17 +22,13 @@ export default async function RestoreAccount({ params }: { params: { token: stri
 
     return (
         <>
-            <p className="text-center text-sm">
+            <p className="text-center ">
                 {response.status === ApiResponseStatus.TOKEN_EXPIRED && t('token_expired')}
                 {response.status === ApiResponseStatus.SUCCESS && t('success')}
             </p>
-
-            <Link
-                href="/"
-                className="hover-animated inline-flex h-10 w-full items-center justify-center rounded-lg bg-custom-blue-100 px-6 text-sm text-white hover:bg-custom-blue-active hover:text-white focus:outline-none"
-            >
+            <LinkButton href="/" className="w-full">
                 {tCommon('cta.home')}
-            </Link>
+            </LinkButton>
         </>
     )
 }

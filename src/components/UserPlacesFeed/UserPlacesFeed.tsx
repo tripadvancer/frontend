@@ -16,7 +16,7 @@ export const UserPlacesFeed = async ({ places, currentPage }: UserPlacesFeedProp
     const totalPages = places.totalPages
 
     if (places.items.length === 0) {
-        return <div className="text-center text-sm text-custom-black-40">{t('empty')}</div>
+        return <div className="text-center  text-black-40">{t('empty')}</div>
     }
 
     return (

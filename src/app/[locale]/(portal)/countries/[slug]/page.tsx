@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
-import { PlacePreview } from '@/components/PlacePreview'
+import { CountryPlacesFeed } from '@/components/CountryPlacesFeed/CountryPlacesFeed'
 import { getPlacesByCountryCode } from '@/services/places'
 import { getCountryBySlug } from '@/utils/countries'
 import { getCurrentLocale } from '@/utils/i18n.server'
@@ -36,15 +36,15 @@ export default async function Country({ params }: { params: { slug: string } }) 
                         fill
                         priority
                     />
-                    <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-gradient-to-b from-custom-black-100 to-transparent opacity-50" />
+                    <div className="bg-black-100 absolute bottom-0 left-0 right-0 top-0 z-20 opacity-30" />
                 </div>
                 <section className="container relative z-30 py-8 text-center">
                     <div className="m-auto w-2/3">
-                        <Link href="/" className="mb-5 inline-block text-sm text-white hover:text-white">
+                        <Link href="/" className="mb-4 inline-block font-medium text-white hover:text-white">
                             View all countries
                         </Link>
-                        <h1 className="sm:text-5xl mb-5 text-4xl text-white">{countryName}</h1>
-                        <p className="text-base text-white">
+                        <h1 className="text-h1-m sm:text-h1 mb-4 text-white">{countryName}</h1>
+                        <p className="text-big text-white">
                             Proin mollis ligula at mi tempor, id luctus felis iaculis. Ut sit amet tincidunt velit, ut
                             aliquet augue. Sed luctus ac magna non gravida. Suspendisse potenti. Proin eu massa tempus
                             metus tristique scelerisque. Fusce elit neque, faucibus ut risus vel, gravida placerat
@@ -54,7 +54,9 @@ export default async function Country({ params }: { params: { slug: string } }) 
                 </section>
             </div>
             <div className="relative flex-1 rounded-t-4xl bg-white">
-                <div className="container py-24">Places feed</div>
+                <div className="container py-24">
+                    <CountryPlacesFeed places={places} />
+                </div>
             </div>
         </div>
     )

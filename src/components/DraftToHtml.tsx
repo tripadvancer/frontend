@@ -11,5 +11,5 @@ export const DraftToHtml = ({ json }: DraftToHtmlProps) => {
     const contentState = convertFromRaw(JSON.parse(json))
     const html = stateToHTML(contentState)
 
-    return <div dangerouslySetInnerHTML={{ __html: html }} className="text-base text-custom-black-70" />
+    return <div dangerouslySetInnerHTML={{ __html: html }} className="text-big" />
 }

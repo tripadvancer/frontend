@@ -4,7 +4,7 @@ type RatingProps = {
 
 export const Rating = ({ rating }: RatingProps) => {
     return (
-        <div className="flex items-center text-custom-orange-100">
+        <div className="flex items-center text-orange-100">
             {Array(5)
                 .fill(null)
                 .map((_, index) => (

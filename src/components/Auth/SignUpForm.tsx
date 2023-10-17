@@ -65,7 +65,7 @@ export const SignUpForm = () => {
 
     return (
         <form className="sm:w-104 w-full" onSubmit={formik.handleSubmit}>
-            <h1 className="mb-8 text-center text-lg font-medium">{t('dialogs.sign_up.title')}</h1>
+            <h1 className="text-h7-m sm:text-h7 mb-8 text-center">{t('dialogs.sign_up.title')}</h1>
             <Input
                 type="text"
                 name="email"
@@ -97,11 +97,11 @@ export const SignUpForm = () => {
             <Button type="submit" className="mb-4 w-full" isDisabled={isLoading}>
                 {t('dialogs.sign_up.submit')}
             </Button>
-            <div className="mb-8 text-center text-xs text-custom-black-40">
+            <div className="text-black-40 text-small mb-8 text-center">
                 {t('dialogs.sign_up.info', {
                     terms_link: (
                         <span
-                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
+                            className="hover-animated hover:text-blue-active cursor-pointer text-blue-100"
                             onClick={() => {
                                 dialog.close()
                                 router.push('/legal/terms-and-conditions')
@@ -112,7 +112,7 @@ export const SignUpForm = () => {
                     ),
                     privacy_link: (
                         <span
-                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
+                            className="hover-animated hover:text-blue-active cursor-pointer text-blue-100"
                             onClick={() => {
                                 dialog.close()
                                 router.push('/legal/privacy-policy')
@@ -123,11 +123,11 @@ export const SignUpForm = () => {
                     ),
                 })}
             </div>
-            <div className="text-center text-sm">
+            <div className="text-center ">
                 {t('dialogs.sign_up.to_back', {
                     sign_in_link: (
                         <span
-                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
+                            className="hover-animated hover:text-blue-active cursor-pointer text-blue-100"
                             onClick={() => dialog.open(<SignInForm />)}
                         >
                             {t('common.sign_in_link')}

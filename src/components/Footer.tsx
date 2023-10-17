@@ -8,21 +8,32 @@ export const Footer = async () => {
     return (
         <footer className="bg-white">
             <div className="container">
-                <div className="border-t border-custom-black-70" />
+                <div className="border-black-70 border-t" />
                 <div className="inner-container py-8">
-                    <section className="mb-5 text-center text-sm text-custom-black-70">
+                    <section className="text-black-70 mb-5  text-center">
                         <h4 className="font-medium">{t('about.title')}</h4>
                         <p>
                             {t('about.description.str_1')} {t('about.description.str_2')}
                         </p>
                     </section>
-                    <nav className="flex flex-row flex-wrap justify-center gap-x-2 text-sm text-custom-black-40">
-                        <Link href="mailto:support@tripadvancer.me" className='text-custom-blue-100'>Contact Us</Link>•
-                        <Link href="/legal/terms-and-conditions" className='text-custom-blue-100'>Terms and Conditions</Link>•
-                        <Link href="/legal/privacy-policy" className='text-custom-blue-100'>Privacy Policy</Link>•
-                        <Link href="/legal/cookie-policy" className='text-custom-blue-100'>Cookie Policy</Link>
+                    <nav className="text-black-40 flex flex-row flex-wrap justify-center  gap-x-2">
+                        <Link href="mailto:support@tripadvancer.me" className="text-blue-100">
+                            Contact Us
+                        </Link>
+                        •
+                        <Link href="/legal/terms-and-conditions" className="text-blue-100">
+                            Terms and Conditions
+                        </Link>
+                        •
+                        <Link href="/legal/privacy-policy" className="text-blue-100">
+                            Privacy Policy
+                        </Link>
+                        •
+                        <Link href="/legal/cookie-policy" className="text-blue-100">
+                            Cookie Policy
+                        </Link>
                     </nav>
-                    <div className="text-center text-sm text-custom-black-40">© Tripadvancer, 2023</div>
+                    <div className="text-black-40  text-center">© Tripadvancer, 2023</div>
                 </div>
             </div>
         </footer>

@@ -19,16 +19,16 @@ export const Toast = ({ type, message, onClose }: ToastProps) => {
     useTimeout(onClose, 5000)
     return (
         <div
-            className={classNames('relative rounded-2xl p-8 text-sm shadow-medium', {
-                'bg-custom-green-10': type === ToastType.success,
-                'bg-custom-red-10': type === ToastType.error,
+            className={classNames('relative rounded-2xl p-8 shadow-medium', {
+                'bg-green-10': type === ToastType.success,
+                'bg-red-10': type === ToastType.error,
             })}
         >
             {message}
             <div
-                className={classNames('absolute right-8 top-1/2 -translate-y-1/2 transform cursor-pointer', {
-                    'text-custom-green-100': type === ToastType.success,
-                    'text-custom-red-100': type === ToastType.error,
+                className={classNames('absolute right-8 top-1/2 -translate-y-1/2 cursor-pointer', {
+                    'text-green-100': type === ToastType.success,
+                    'text-red-100': type === ToastType.error,
                 })}
                 onClick={onClose}
             >

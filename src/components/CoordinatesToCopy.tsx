@@ -1,5 +1,7 @@
 'use client'
 
+import classNames from 'classnames'
+
 import type { CoordinatesTuple } from '@/types/geo'
 
 type CoordinatesToCopyProps = {
@@ -16,7 +18,10 @@ export const CoordinatesToCopy = ({ coordinates, className }: CoordinatesToCopyP
     }
 
     return (
-        <div className={`${className} inline-flex cursor-pointer gap-2 text-base text-white`} onClick={handleCopy}>
+        <div
+            className={classNames('text-big inline-flex cursor-pointer gap-2 text-white', className)}
+            onClick={handleCopy}
+        >
             {coordinates[1].toFixed(5)}, {coordinates[0].toFixed(5)}
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path

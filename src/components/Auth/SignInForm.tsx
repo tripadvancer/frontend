@@ -56,7 +56,7 @@ export const SignInForm = () => {
 
     return (
         <form className="sm:w-104 w-full" onSubmit={formik.handleSubmit}>
-            <h1 className="mb-8 text-center text-lg font-medium">{t('dialogs.sign_in.title')}</h1>
+            <h1 className="text-h7-m sm:text-h7 mb-8 text-center">{t('dialogs.sign_in.title')}</h1>
             <Input
                 type="text"
                 name="email"
@@ -79,19 +79,19 @@ export const SignInForm = () => {
             <Button type="submit" className="mb-4 w-full" isDisabled={isLoading}>
                 {t('dialogs.sign_in.submit')}
             </Button>
-            <div className="mb-8 text-center text-xs">
+            <div className="mb-8 text-center">
                 <span
-                    className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
+                    className="hover-animated hover:text-blue-active text-small cursor-pointer text-blue-100"
                     onClick={() => dialog.open(<ForgotPasswordForm />)}
                 >
                     {t('dialogs.sign_in.link.forgot_password')}
                 </span>
             </div>
-            <div className="text-center text-sm">
+            <div className="text-center ">
                 {t('dialogs.sign_in.to_back', {
                     sign_up_link: (
                         <span
-                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
+                            className="hover-animated hover:text-blue-active cursor-pointer text-blue-100"
                             onClick={() => dialog.open(<SignUpForm />)}
                         >
                             {t('common.sign_up_link')}

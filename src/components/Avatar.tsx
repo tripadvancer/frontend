@@ -22,5 +22,5 @@ export const Avatar = ({ src, alt, size }: AvatarProps) => {
         )
     }
 
-    return <div className="rounded-full bg-custom-orange-100" style={{ width: size, height: size }} />
+    return <div className="rounded-full bg-orange-100" style={{ width: size, height: size }} />
 }

@@ -32,8 +32,8 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
                     alt="404"
                     priority
                 />
-                <h2 className="mb-8 text-3xl font-medium">{t('title')}</h2>
-                <p className="mb-8 text-base text-custom-black-70">{t('text')}</p>
+                <h2 className="text-h3-m sm:text-h3 mb-8">{t('title')}</h2>
+                <p className="text-black-70 text-big mb-8">{t('text')}</p>
                 <Button type="button" onClick={() => reset()}>
                     {tCommon('cta.try_again')}
                 </Button>

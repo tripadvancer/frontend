@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { LinkButton } from '@/components/LinkButton'
 import { getScopedI18n } from '@/utils/i18n.server'
 
 export default async function NotFound() {
@@ -29,14 +30,9 @@ export default async function NotFound() {
                     alt="404"
                     priority
                 />
-                <h2 className="mb-8 text-3xl font-medium">{t('title')}</h2>
-                <p className="mb-8 text-base text-custom-black-70">{t('text')}</p>
-                <Link
-                    href="/"
-                    className="hover-animated inline-flex h-10 items-center rounded-lg bg-custom-blue-100 px-6 text-center text-sm text-white hover:bg-custom-blue-active hover:text-white focus:outline-none"
-                >
-                    {tCommon('cta.home')}
-                </Link>
+                <h2 className="text-h3-m sm:text-h3 mb-8">{t('title')}</h2>
+                <p className="text-black-70 text-big mb-8">{t('text')}</p>
+                <LinkButton href="/">{tCommon('cta.home')}</LinkButton>
             </div>
         </div>
     )

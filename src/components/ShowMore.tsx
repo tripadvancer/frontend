@@ -11,7 +11,7 @@ export const ShowMore = ({ onClick }: ShowMoreProps) => {
 
     return (
         <button
-            className="hover-animated h-10 w-full rounded-full border border-custom-blue-20 text-center text-sm font-medium text-custom-blue-100 hover:border-custom-blue-active hover:text-custom-blue-active"
+            className="hover-animated border-blue-20 hover:border-blue-active hover:text-blue-active h-10 w-full rounded-full border text-center font-medium text-blue-100"
             onClick={onClick}
         >
             {t('show_more')}

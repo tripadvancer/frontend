@@ -12,16 +12,16 @@ export default async function Home() {
     return (
         <div className="container py-24">
             <section className="mb-24">
-                <h1 className="sm:text-5xl mb-4 text-center text-4xl font-medium">{t('countries.title')}</h1>
-                <p className="sm:w-2/3 m-auto mb-16 w-full text-center text-base text-custom-black-70">
+                <h1 className="text-h1-m sm:text-h1 mb-4 text-center">{t('countries.title')}</h1>
+                <p className="sm:w-2/3 text-black-70 text-big m-auto mb-16 w-full text-center">
                     {t('countries.description')}
                 </p>
                 <CountriesFeed countries={countries} />
             </section>
 
             <section className="mb-24">
-                <h2 className="sm:text-4xl mb-4 text-center text-2xl font-medium">{t('features.title')}</h2>
-                <p className="sm:w-2/3 m-auto mb-16 w-full text-center text-base text-custom-black-70">
+                <h2 className="text-h3-m sm:text-h3 mb-4 text-center">{t('features.title')}</h2>
+                <p className="sm:w-2/3 text-black-70 text-big m-auto mb-16 w-full text-center">
                     {t('features.description')}
                 </p>
 
@@ -29,38 +29,38 @@ export default async function Home() {
                     <div className="grid-row-2 sm:grid-rows-none sm:grid-cols-2 sm:gap-x-16 grid items-center gap-y-8">
                         <Image src="/images/pic-1.svg" width={448} height={448} className="m-auto block" alt="" />
                         <section>
-                            <h3 className="sm:mb-8 sm:text-2xl mb-4 text-xl font-medium">
+                            <h3 className="sm:mb-8 text-h5-m sm:text-h5 mb-4">
                                 {t('features.places.title', { br: <br /> })}
                             </h3>
-                            <p className="text-sm">{t('features.places.description')}</p>
+                            <p>{t('features.places.description')}</p>
                         </section>
                     </div>
 
                     <div className="grid-row-2 sm:grid-rows-none sm:grid-cols-2 sm:gap-x-16 grid items-center gap-y-8">
                         <Image src="/images/pic-2.svg" width={448} height={448} className="m-auto block" alt="" />
                         <section className="sm:text-right sm:-order-1">
-                            <h3 className="sm:mb-8 sm:text-2xl mb-4 text-xl font-medium">
+                            <h3 className="sm:mb-8 text-h5-m sm:text-h5 mb-4">
                                 {t('features.random.title', { br: <br /> })}
                             </h3>
-                            <p className="text-sm">{t('features.random.description')}</p>
+                            <p>{t('features.random.description')}</p>
                         </section>
                     </div>
 
                     <div className="grid-row-2 sm:grid-rows-none sm:grid-cols-2 sm:gap-x-16 grid items-center gap-y-8">
                         <Image src="/images/pic-3.svg" width={448} height={448} className="m-auto block" alt="" />
                         <section>
-                            <h3 className="sm:mb-8 sm:text-2xl mb-4 text-xl font-medium">
+                            <h3 className="sm:mb-8 text-h5-m sm:text-h5 mb-4">
                                 {t('features.lists.title', { br: <br /> })}
                             </h3>
-                            <p className="text-sm">{t('features.lists.description')}</p>
+                            <p>{t('features.lists.description')}</p>
                         </section>
                     </div>
                 </div>
             </section>
 
             <section>
-                <h2 className="sm:text-4xl mb-4 text-center text-3xl font-medium">{t('map.title')}</h2>
-                <p className="sm:w-2/3 m-auto mb-16 w-full text-center text-base text-custom-black-70">
+                <h2 className="text-h3-m sm:text-h3 mb-4 text-center">{t('map.title')}</h2>
+                <p className="sm:w-2/3 text-black-70 text-big m-auto mb-16 w-full text-center">
                     {t('map.description')}
                 </p>
 
@@ -68,7 +68,7 @@ export default async function Home() {
                     <Image src="/images/map.svg" width={1120} height={400} alt="" />
                     <Link
                         href="/map"
-                        className="hover-animated absolute left-1/2 top-1/2 flex h-10 -translate-x-1/2 -translate-y-1/2 transform items-center whitespace-nowrap rounded-lg bg-custom-orange-100 px-6 text-sm font-medium text-white hover:bg-custom-orange-active hover:text-white"
+                        className="hover-animated hover:bg-orange-active absolute left-1/2 top-1/2 flex h-10 -translate-x-1/2 -translate-y-1/2 items-center whitespace-nowrap rounded-lg bg-orange-100   px-6 text-white hover:text-white"
                     >
                         {t('map.cta')}
                     </Link>

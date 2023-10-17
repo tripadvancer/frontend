@@ -18,7 +18,7 @@ export const ReviewFeed = async ({ reviews, currentPage }: ReviewFeedProps) => {
     console.log(reviews)
 
     if (reviews.items.length === 0) {
-        return <div className="text-center text-sm text-custom-black-40">{t('empty')}</div>
+        return <div className="text-black-40 text-center">{t('empty')}</div>
     }
 
     return (

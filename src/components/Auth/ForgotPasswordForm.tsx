@@ -43,8 +43,8 @@ export const ForgotPasswordForm = () => {
 
     return (
         <form className="sm:w-104 w-full" onSubmit={formik.handleSubmit}>
-            <h1 className="mb-8 text-center text-lg font-medium">{t('dialogs.forgot_password.title')}</h1>
-            <p className="mb-2 text-center text-sm">{t('dialogs.forgot_password.info')}</p>
+            <h1 className="text-h7 sm:text-h7-m mb-8 text-center">{t('dialogs.forgot_password.title')}</h1>
+            <p className="mb-2 text-center ">{t('dialogs.forgot_password.info')}</p>
             <Input
                 type="text"
                 name="email"
@@ -58,11 +58,11 @@ export const ForgotPasswordForm = () => {
             <Button type="submit" className="mb-8 w-full" isDisabled={isLoading}>
                 {t('dialogs.forgot_password.submit')}
             </Button>
-            <div className="text-center text-sm">
+            <div className="text-center ">
                 {t('dialogs.forgot_password.to_back', {
                     sign_in_link: (
                         <span
-                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
+                            className="hover-animated hover:text-blue-active cursor-pointer text-blue-100"
                             onClick={() => dialog.open(<SignInForm />)}
                         >
                             {t('common.sign_in_link')}
@@ -70,7 +70,7 @@ export const ForgotPasswordForm = () => {
                     ),
                     sign_up_link: (
                         <span
-                            className="hover-animated cursor-pointer text-custom-blue-100 hover:text-custom-blue-active"
+                            className="hover-animated hover:text-blue-active cursor-pointer text-blue-100"
                             onClick={() => dialog.open(<SignUpForm />)}
                         >
                             {t('common.sign_up_link')}

@@ -12,7 +12,7 @@ type UserProps = IUserPreview & {
 
 export const UserPreview = ({ id, name, avatar, date }: UserProps) => {
     return (
-        <Link href={`/users/${id}`} className="flex items-center gap-2 text-xs">
+        <Link href={`/users/${id}`} className="flex items-center gap-2">
             {avatar ? (
                 <Image
                     src={makeImageUrl(avatar, ImageVariant.AVATAR)}
@@ -28,8 +28,8 @@ export const UserPreview = ({ id, name, avatar, date }: UserProps) => {
                 </svg>
             )}
             <div>
-                <div className="text-custom-black-70">{name}</div>
-                <div className="text-custom-black-40">{date}</div>
+                <div className="text-black-70">{name}</div>
+                <div className="text-black-40">{date}</div>
             </div>
         </Link>
     )

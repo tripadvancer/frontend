@@ -27,12 +27,12 @@ export const PlacesNearbyList = ({ places }: PlacesNearbyListProps) => {
                         />
                     </Link>
                     <div>
-                        <div className="line-clamp-2 text-sm font-medium">
-                            <Link href={`/places/${place.id}`} className="flex-none">
+                        <div className="line-clamp-2">
+                            <Link href={`/places/${place.id}`} className="flex-none font-medium">
                                 {place.title}
                             </Link>
                         </div>
-                        <div className="text-xs text-custom-black-40">{place.distance} m.</div>
+                        <div className=" text-black-40">{place.distance} m.</div>
                     </div>
                 </div>
             ))}

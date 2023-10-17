@@ -17,16 +17,15 @@ export const PageSwitcher = ({ nav, className }: PageSwitcherProps) => {
     const pathname = usePathname()
 
     return (
-        <nav className={classNames('flex gap-x-4', className)}>
+        <nav className={classNames('text-big-bold flex gap-x-4', className)}>
             {nav.map(item => (
                 <Link
                     key={item.href}
                     href={item.href}
-                    className={`${
-                        pathname === item.href
-                            ? 'border-b-2 border-custom-black-100 text-custom-black-100 hover:text-custom-black-100'
-                            : 'text-custom-blue-100'
-                    }`}
+                    className={classNames({
+                        'border-black-100 text-black-100 hover:text-black-100 border-b-2': pathname === item.href,
+                        'text-blue-100': pathname !== item.href,
+                    })}
                 >
                     {item.caption}
                 </Link>

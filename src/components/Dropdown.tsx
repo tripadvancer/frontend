@@ -47,10 +47,10 @@ export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
                         <li
                             key={item.value}
                             className={classNames(
-                                'hover-animated flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-sm text-custom-blue-100 last:mb-0 hover:bg-custom-blue-10',
+                                'hover-animated hover:bg-blue-10 flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-blue-100 last:mb-0',
                                 {
                                     'font-medium': item.value === currentItem,
-                                    'text-custom-red-100': item.isRed,
+                                    'text-red-100': item.isRed,
                                 },
                             )}
                             onClick={() => {

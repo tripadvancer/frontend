@@ -5,7 +5,7 @@ import { UserLink } from './UserLink'
 
 export const Header = async () => {
     return (
-        <header className="sm:h-[76px] sticky top-0 z-40 h-[56px] bg-custom-blue-20">
+        <header className="sm:h-[76px] bg-blue-20 sticky top-0 z-40 h-[56px]">
             <div className="container relative flex h-full items-center justify-between">
                 <MapLink />
                 <Logo />

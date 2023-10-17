@@ -30,8 +30,6 @@ export const RessetPasswordForm = ({ token }: RessetPasswordFormProps) => {
     const [status, setStatus] = useState<ApiResponseStatus>()
     const [resetPassword, { isLoading }] = authAPI.useResetPasswordMutation()
 
-    const response = { status: '' }
-
     const formik = useFormik({
         initialValues: {
             token: token,
@@ -58,7 +56,7 @@ export const RessetPasswordForm = ({ token }: RessetPasswordFormProps) => {
             {!status && (
                 <form className="w-full" onSubmit={formik.handleSubmit}>
                     <Input
-                        type="text"
+                        type="password"
                         name="password"
                         value={formik.values.password}
                         placeholder={t('forms.fields.password.placeholder')}
@@ -75,10 +73,10 @@ export const RessetPasswordForm = ({ token }: RessetPasswordFormProps) => {
 
             {status === ApiResponseStatus.TOKEN_EXPIRED && (
                 <>
-                    <p className="text-center text-sm">{t('pages.auth.reset_password.token_expired')}</p>
+                    <p className="text-center">{t('pages.auth.reset_password.token_expired')}</p>
                     <Link
                         href="/"
-                        className="inline-flex h-10 w-full items-center justify-center rounded-lg bg-custom-blue-100 px-6 text-sm text-white hover-animated hover:bg-custom-blue-active hover:text-white focus:outline-none"
+                        className="hover-animated hover:bg-blue-active inline-flex h-10 w-full items-center justify-center rounded-lg  bg-blue-100 px-6 text-white hover:text-white focus:outline-none"
                     >
                         {t('common.cta.home')}
                     </Link>
@@ -87,10 +85,10 @@ export const RessetPasswordForm = ({ token }: RessetPasswordFormProps) => {
 
             {status === ApiResponseStatus.SUCCESS && (
                 <>
-                    <p className="text-center text-sm">{t('pages.auth.reset_password.success')}</p>
+                    <p className="text-center">{t('pages.auth.reset_password.success')}</p>
                     <Link
                         href="/"
-                        className="inline-flex h-10 w-full items-center justify-center rounded-lg bg-custom-blue-100 px-6 text-sm text-white hover-animated hover:bg-custom-blue-active hover:text-white focus:outline-none"
+                        className="hover-animated hover:bg-blue-active inline-flex h-10 w-full items-center justify-center rounded-lg  bg-blue-100 px-6 text-white hover:text-white focus:outline-none"
                     >
                         {t('common.cta.home')}
                     </Link>

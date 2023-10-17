@@ -7,7 +7,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
 
     return (
         <div className="text-center">
-            <p className="text-sm text-custom-black-40">{t('error')}</p>
+            <p className="text-black-40">{t('error')}</p>
         </div>
     )
 }

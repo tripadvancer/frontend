@@ -16,8 +16,8 @@ export const SignInFeedback = ({ reason }: SignInFeedbackProps) => {
 
     return (
         <div className="sm:w-104 flex w-full flex-col items-center gap-8">
-            <h1 className="text-lg font-medium">{t('title')}</h1>
-            <p className="text-center text-sm">
+            <h1 className="text-h7-m sm:text-h7">{t('title')}</h1>
+            <p className="text-center ">
                 {reason === ApiErrorReason.ACCOUNT_NOT_ACTIVATED && t('message.not_activated')}
                 {reason === ApiErrorReason.ACCOUNT_PENDING_DELETE && t('message.pending_delete')}
             </p>

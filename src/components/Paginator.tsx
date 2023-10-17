@@ -12,15 +12,13 @@ type PaginatorProps = {
 const PageItem = ({ content, isCurrent }: { content: number | string; isCurrent: boolean }) => (
     <li className="h-10 w-10">
         {content === '...' ? (
-            <span className="flex h-full w-full items-center justify-center text-custom-blue-100">...</span>
+            <span className="flex h-full w-full items-center justify-center text-blue-100">...</span>
         ) : (
             <Link
                 href={{ query: { page: content } }}
                 className={classNames(
-                    'flex h-full w-full items-center justify-center rounded-full border hover:border-custom-blue-active hover:text-custom-blue-active',
-                    isCurrent
-                        ? 'border-custom-blue-active bg-custom-blue-active text-custom-blue-20'
-                        : 'border-custom-blue-20 text-custom-blue-100',
+                    'hover:border-blue-active hover:text-blue-active flex h-full w-full items-center justify-center rounded-full border',
+                    isCurrent ? 'border-blue-active bg-blue-active text-blue-20' : 'border-blue-20 text-blue-100',
                 )}
             >
                 {content}
@@ -68,23 +66,21 @@ export const Paginator = async ({ pages, currentPage }: PaginatorProps) => {
     }
 
     return (
-        <div className="mt-8 flex justify-center gap-x-1">
+        <div className="mt-8 flex justify-center gap-x-1 font-medium">
             <Link
                 href={{ query: { page: currentPage - 1 } }}
                 className={classNames(
-                    'flex h-10 items-center justify-center rounded-full border border-custom-blue-20 px-6 text-sm font-medium text-custom-blue-100 hover:border-custom-blue-active hover:text-custom-blue-active',
+                    'border-blue-20 hover:border-blue-active hover:text-blue-active flex h-10 items-center justify-center rounded-full border px-6 text-blue-100',
                     { 'pointer-events-none opacity-30': currentPage === 1 },
                 )}
             >
                 {t('prev')}
             </Link>
-            <ol className="sm:flex hidden items-center justify-center gap-x-1 text-sm font-medium">
-                {renderPageNumbers()}
-            </ol>
+            <ol className="sm:flex hidden items-center justify-center gap-x-1">{renderPageNumbers()}</ol>
             <Link
                 href={{ query: { page: currentPage + 1 } }}
                 className={classNames(
-                    'flex h-10 items-center justify-center rounded-full border border-custom-blue-20 px-6 text-sm font-medium text-custom-blue-100 hover:border-custom-blue-active hover:text-custom-blue-active',
+                    'border-blue-20 hover:border-blue-active hover:text-blue-active flex h-10 items-center justify-center rounded-full border px-6 text-blue-100',
                     { 'pointer-events-none opacity-30': currentPage === pages },
                 )}
             >

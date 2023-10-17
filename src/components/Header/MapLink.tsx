@@ -6,7 +6,7 @@ export const MapLink = async () => {
     const tCommon = await getScopedI18n('common')
 
     return (
-        <Link href="/map" className="flex gap-x-2 text-custom-blue-100">
+        <Link href="/map" className="text-big-bold flex items-center gap-x-2 text-blue-100">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
                     fillRule="evenodd"

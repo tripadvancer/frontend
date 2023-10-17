@@ -133,7 +133,7 @@ export const UserLink = () => {
                     },
                 ]}
             >
-                <div className="hover-animated flex cursor-pointer gap-x-2 text-custom-blue-100 hover:text-custom-blue-active">
+                <div className="hover-animated hover:text-blue-active flex cursor-pointer gap-x-2 text-blue-100">
                     <div className="sm:block hidden">{activeUser.data?.name}</div>
                     <Avatar src={activeUser.data?.avatar} alt={activeUser.data?.name} size={24} />
                 </div>
@@ -143,7 +143,7 @@ export const UserLink = () => {
 
     return (
         <div
-            className="hover-animated inline-flex cursor-pointer gap-x-2 text-custom-blue-100 hover:text-custom-blue-active"
+            className="hover-animated hover:text-blue-active text-big-bold flex cursor-pointer items-center gap-x-2 text-blue-100"
             onClick={() => dialog.open(<SignInForm />)}
         >
             <span className="sm:block hidden">{tCommon('sign_in_link')}</span>

@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 body {
-    @apply text-custom-black-100;
+    @apply text-black-100 text-base;
 }
 
 a:hover {
-    @apply hover-animated text-custom-blue-active;
+    @apply hover-animated text-blue-active;
 }
 
 .container {

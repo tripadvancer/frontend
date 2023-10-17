@@ -16,21 +16,21 @@ export const Review = ({ id, text, user, rating, photos, place, createdAt }: Rev
     const formattedDate = FormattedDate(createdAt, locale)
 
     return (
-        <div className="border-b border-custom-black-15 py-8 first:border-t last:border-none last:pb-0">
+        <div className="border-black-15 border-b py-8 first:border-t last:border-none last:pb-0">
             <div className="sm:items-center mb-5 flex items-start justify-between">
                 <div className="flex flex-col gap-1">
                     <Rating rating={rating} />
-                    <div className="sm:flex-row sm:gap-x-2 flex flex-col gap-y-1 text-xs">
-                        <Link href={`/places/${place.id}`} className="font-medium text-custom-black-70">
+                    <div className="sm:flex-row sm:gap-x-2 flex flex-col gap-y-1 ">
+                        <Link href={`/places/${place.id}`} className="text-black-70 text-small-bold">
                             {place.title}
                         </Link>
-                        <div className="text-custom-black-40">{formattedDate}</div>
+                        <div className="text-black-40 text-small">{formattedDate}</div>
                     </div>
                 </div>
                 <ReviewAction reviewId={id} userId={user.id} />
             </div>
 
-            <div className="text-sm">{text}</div>
+            <div>{text}</div>
 
             {photos.length > 0 && (
                 <div className="sm:grid-cols-9 mt-5 grid grid-cols-3 gap-2">
