@@ -6,7 +6,7 @@ import { i18nConfig } from '@/configs/i18n.config'
 
 const I18nMiddleware = createI18nMiddleware({
     ...i18nConfig,
-    urlMappingStrategy: 'rewrite',
+    // urlMappingStrategy: 'rewrite',
 })
 
 export function middleware(request: NextRequest) {

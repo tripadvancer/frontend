@@ -16,19 +16,13 @@ const roboto = Roboto({
 
 export const runtime = 'edge'
 
-// export async function generateMetadata(): Promise<Metadata> {
-//     const t = await getScopedI18n('common.meta')
+export async function generateMetadata(): Promise<Metadata> {
+    const t = await getScopedI18n('common.meta')
 
-//     return {
-//         title: t('title'),
-//         description: t('description'),
-//     }
-// }
-
-export const metadata: Metadata = {
-    title: 'Tripadvancer - Plan your trip and find interesting places',
-    description:
-        'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+    return {
+        title: t('title'),
+        description: t('description'),
+    }
 }
 
 export default function RootLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
