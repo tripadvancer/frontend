@@ -3,7 +3,6 @@ import type { Metadata } from 'next/types'
 
 export const metadata: Metadata = {
     title: 'Privacy Policy',
-    description: 'Thank you for using our service! This Privacy Policy explains how we collect, use, and protect your personal information when you use our platform. By accessing or using our service, you agree to the terms of this Privacy Policy.',
 }
 
 export default function LegalPrivacyPolicy() {
