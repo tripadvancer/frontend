@@ -1,19 +1,5 @@
-import type { Metadata } from 'next/types'
-
 import { ReviewFeed } from '@/components/ReviewsFeed/ReviewsFeed'
 import { getReviewsByUserId } from '@/services/reviews'
-import { getUserById } from '@/services/user'
-import { getScopedI18n } from '@/utils/i18n.server'
-
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-    const t = await getScopedI18n('pages.user.reviews.meta')
-    const user = await getUserById(params.id)
-
-    return {
-        title: t('title', { username: user.name }),
-        description: '',
-    }
-}
 
 export default async function UserReviews({
     params,

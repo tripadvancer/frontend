@@ -1,19 +1,5 @@
-import type { Metadata } from 'next/types'
-
 import { UserPlacesFeed } from '@/components/UserPlacesFeed/UserPlacesFeed'
 import { getPlacesByUserId } from '@/services/places'
-import { getUserById } from '@/services/user'
-import { getScopedI18n } from '@/utils/i18n.server'
-
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-    const t = await getScopedI18n('pages.user.places.meta')
-    const user = await getUserById(params.id)
-
-    return {
-        title: t('title', { username: user.name }),
-        description: '',
-    }
-}
 
 export default async function UserPlaces({
     params,

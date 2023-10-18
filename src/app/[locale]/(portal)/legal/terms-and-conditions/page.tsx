@@ -2,9 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
 export const metadata: Metadata = {
-    title: 'Terms and Conditions | Tripadvancer',
-    description:
-        'These terms and conditions set forth the general terms and conditions of your use of the tripadvancer.me website and any of its related products and services.',
+    title: 'Terms and Conditions',
+    description: 'These terms and conditions set forth the general terms and conditions of your use of the tripadvancer.me website and any of its related products and services.',
 }
 
 export default function LegalTermsAndConditions() {

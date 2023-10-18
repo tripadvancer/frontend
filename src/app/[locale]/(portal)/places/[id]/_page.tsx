@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { Metadata } from 'next/types'
 
 import type { IPhoto } from '@/types/photo'
 
@@ -16,16 +15,6 @@ import { getReviewsByPlaceId } from '@/services/reviews'
 // import { getCountryNameByCode } from '@/utils/countries'
 import { ImageVariant } from '@/utils/enums'
 import { FormattedDate, makeImageUrl } from '@/utils/helpers'
-
-// export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-// const place = await getPlaceById(params.id)
-// const countryName = getCountryNameByCode(place.countryCode)
-
-// return {
-//     title: `${place.title}${countryName ? `, ${countryName}` : ''} | Tripadvancer`,
-//     description: '',
-// }
-// }
 
 export default async function Place({ params }: { params: { locale: string; id: string } }) {
     const place = await getPlaceById(params.id)

@@ -2,9 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
 export const metadata: Metadata = {
-    title: 'Cookie Policy | Tripadvancer',
-    description:
-        'This Cookie Policy explains how Tripadvancer («we,» «us,» or «our») uses cookies and similar tracking technologies when you access or use our web service. By using our web service, you consent to the use of cookies as described in this policy.',
+    title: 'Cookie Policy',
+    description: 'This Cookie Policy explains how Tripadvancer («we,» «us,» or «our») uses cookies and similar tracking technologies when you access or use our web service. By using our web service, you consent to the use of cookies as described in this policy.',
 }
 
 export default function LegalCookiePolicy() {

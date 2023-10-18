@@ -1,7 +1,4 @@
 export default {
-    'common.meta.title': 'Tripadvancer - Plan your trip and find interesting places',
-    'common.meta.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
-    
     'common.about.title': 'Planing a trip but don`t know where to go?',
     'common.about.description.str_1': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
     'common.about.description.str_2': 'Share your favorite places and experiences with others. Together, we can make every journey even more interesting and exciting.',
@@ -94,25 +91,19 @@ export default {
     'pages.home.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
     'pages.home.map.cta': 'Explore the map',
 
-    'pages.auth.verify.meta.title': 'Verify Email | Tripadvancer',
     'pages.auth.verify.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
     'pages.auth.verify.success': 'Your email has been verified. Welcome aboard, you can now sign in.',
 
-    'pages.auth.restore.meta.title': 'Restore account | Tripadvancer',
     'pages.auth.restore.token_expired': 'The restore link has expired. Please request a new restore link.',
     'pages.auth.restore.success': 'Your account has been restored.',
 
-    'pages.auth.confirm_removal.meta.title': 'Confirm Account Removal | Tripadvancer',
     'pages.auth.confirm_removal.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
     'pages.auth.confirm_removal.success': 'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
 
-    'pages.auth.reset_password.meta.title': 'Reset Password | Tripadvancer',
     'pages.auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
     'pages.auth.reset_password.success': 'Your password has been reset.',
     'pages.auth.reset_password.submit': 'Reset password',
     
-    'pages.user.places.meta.title': '{username} | Added places | Tripadvancer',
-    'pages.user.reviews.meta.title': '{username} | Written reviews | Tripadvancer',
     'pages.user.about_me': 'About me',
     'pages.user.places_link': 'Added places',
     'pages.user.reviews_link': 'Written reviews',

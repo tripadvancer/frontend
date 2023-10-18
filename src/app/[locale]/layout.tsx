@@ -25,13 +25,19 @@ export const metadata: Metadata = {
     openGraph: {
         type: 'website',
         url: process.env.NEXT_PUBLIC_PORTAL_URL,
-        title: 'Tripadvancer - Plan your trip and find interesting places',
+        title: {
+            template: '%s | Tripadvancer',
+            default: 'Tripadvancer - Plan your trip and find interesting places',
+        },
         description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
         images: 'https://tripadvancer.com/images/og-image.png',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Tripadvancer - Plan your trip and find interesting places',
+        title: {
+            template: '%s | Tripadvancer',
+            default: 'Tripadvancer - Plan your trip and find interesting places',
+        },
         description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
         images: 'https://tripadvancer.com/images/og-image.png',
     },

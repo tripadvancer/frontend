@@ -1,19 +1,7 @@
-import Link from 'next/link'
-import type { Metadata } from 'next/types'
-
 import { LinkButton } from '@/components/LinkButton'
 import { restoreAccount } from '@/services/auth'
 import { ApiResponseStatus } from '@/utils/enums'
 import { getScopedI18n } from '@/utils/i18n.server'
-
-export async function generateMetadata(): Promise<Metadata> {
-    const t = await getScopedI18n('pages.auth.restore.meta')
-
-    return {
-        title: t('title'),
-        description: '',
-    }
-}
 
 export default async function RestoreAccount({ params }: { params: { token: string } }) {
     const t = await getScopedI18n('pages.auth.restore')
