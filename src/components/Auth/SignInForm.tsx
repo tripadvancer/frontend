@@ -79,7 +79,7 @@ export const SignInForm = () => {
             <Button type="submit" className="mb-4 w-full" isDisabled={isLoading}>
                 {t('dialogs.sign_in.submit')}
             </Button>
-            <div className="mb-8 text-center">
+            <div className="text-small mb-8 text-center">
                 <span
                     className="hover-animated hover:text-blue-active text-small cursor-pointer text-blue-100"
                     onClick={() => dialog.open(<ForgotPasswordForm />)}

@@ -30,7 +30,9 @@ export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
                     />
                 </div>
                 <figcaption className="flex flex-col justify-between p-4">
-                    <div className="sm:h-14 text-h7-m sm:text-h7 mb-4 line-clamp-2 h-12 break-words">{countryName}</div>
+                    <div className="text-h7-m sm:text-h7 sm:h-[52px] mb-4 line-clamp-2 h-12 break-words">
+                        {countryName}
+                    </div>
                     <div className="flex flex-row items-center gap-x-2 text-blue-100">
                         <svg
                             width="16"

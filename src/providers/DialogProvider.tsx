@@ -3,6 +3,8 @@
 import { ReactNode, createContext, useCallback, useContext, useEffect, useState } from 'react'
 
 import { Dialog } from '@/components/Dialog'
+import { useKeypress } from '@/hooks/useKeypress'
+import { Keys } from '@/utils/enums'
 
 interface DialogContextInterface {
     open(content: ReactNode): void
@@ -30,6 +32,8 @@ export function DialogProvider({ children }: { children: ReactNode }) {
     const [content, setContent] = useState<ReactNode>(null)
     const open = useCallback((content: ReactNode) => setContent(content), [])
     const close = useCallback(() => setContent(null), [])
+
+    useKeypress(Keys.ESCAPE, () => close())
 
     //  todo: fix this hack to prevent scrolling when dialog is open
     useEffect(() => {

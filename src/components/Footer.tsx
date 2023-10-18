@@ -12,9 +12,7 @@ export const Footer = async () => {
                 <div className="inner-container py-8">
                     <section className="text-black-70 mb-5  text-center">
                         <h4 className="font-medium">{t('about.title')}</h4>
-                        <p>
-                            {t('about.description.str_1')} {t('about.description.str_2')}
-                        </p>
+                        <p>{t('about.description.str_1')}</p>
                     </section>
                     <nav className="text-black-40 flex flex-row flex-wrap justify-center  gap-x-2">
                         <Link href="mailto:support@tripadvancer.me" className="text-blue-100">
