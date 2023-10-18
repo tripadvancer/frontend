@@ -16,12 +16,11 @@ type CountriesFeedProps = {
 
 export const CountriesFeed = ({ countries }: CountriesFeedProps) => {
     const [currentPage, setCurrentPage] = useState(1)
+    const visibleCountries = countries.slice(0, currentPage * PAGINATION_LIMIT)
 
     const handleLoadMore = () => {
         setCurrentPage((prevPage: number) => prevPage + 1)
     }
-
-    const visibleCountries = countries.slice(0, currentPage * PAGINATION_LIMIT)
 
     return (
         <>

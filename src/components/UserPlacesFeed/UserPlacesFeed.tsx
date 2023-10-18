@@ -1,5 +1,5 @@
-import { PaginatedResponse } from '@/types/common'
-import { IPlacePreview } from '@/types/place'
+import type { PaginatedResponse } from '@/types/common'
+import type { IPlacePreview } from '@/types/place'
 
 import { Paginator } from '@/components/Paginator'
 import { getScopedI18n } from '@/utils/i18n.server'

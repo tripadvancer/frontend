@@ -1,4 +1,4 @@
-import { PaginatedResponse } from '@/types/common'
+import type { PaginatedResponse } from '@/types/common'
 import type { CreateReviewComplaintInputs } from '@/types/complaint'
 import type { CreateReviewInputs, IReview, UpdateReviewInputs } from '@/types/review'
 

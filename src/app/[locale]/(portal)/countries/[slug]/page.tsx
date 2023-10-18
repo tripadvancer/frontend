@@ -2,13 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
+import { Categories } from '@/components/Categories/Categories'
 import { CountryPlacesFeed } from '@/components/CountryPlacesFeed/CountryPlacesFeed'
+import { getCategories } from '@/services/categories'
 import { getPlacesByCountryCode } from '@/services/places'
 import { getCountryBySlug } from '@/utils/countries'
 import { getCurrentLocale } from '@/utils/i18n.server'
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const locale = await getCurrentLocale()
+    const locale = getCurrentLocale()
     const country = getCountryBySlug(params.slug)
     const countryName = country?.name[locale] ?? ''
 
@@ -19,15 +21,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function Country({ params }: { params: { slug: string } }) {
-    const locale = await getCurrentLocale()
+    const locale = getCurrentLocale()
     const country = getCountryBySlug(params.slug)
     const countryCode = country?.code ?? ''
     const countryName = country?.name[locale] ?? ''
+    const categories = await getCategories()
     const places = await getPlacesByCountryCode(countryCode)
 
     return (
         <div className="flex flex-col">
-            <div className="relative flex flex-[540px] items-center justify-center">
+            <div className="relative z-10 -mb-8 flex flex-[800px] items-center justify-center pb-8">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
                     <Image
                         src={`https://source.unsplash.com/1920x1280/?${countryName}`}
@@ -53,8 +56,11 @@ export default async function Country({ params }: { params: { slug: string } }) 
                     </div>
                 </section>
             </div>
-            <div className="relative flex-1 rounded-t-4xl bg-white">
+            <div className="relative z-20 flex-1 rounded-t-4xl bg-white">
                 <div className="container py-24">
+                    <div className="sm:w-2/3 mx-auto mb-16 flex flex-wrap justify-center gap-1">
+                        <Categories categories={categories} />
+                    </div>
                     <CountryPlacesFeed places={places} />
                 </div>
             </div>

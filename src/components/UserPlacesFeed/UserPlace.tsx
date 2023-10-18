@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { IPlacePreview } from '@/types/place'
+import type { IPlacePreview } from '@/types/place'
 
 import { ImageNotFound } from '@/components/ImageNotFound'
 import { ImageVariant } from '@/utils/enums'
