@@ -17,29 +17,40 @@ export const runtime = 'edge'
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_PORTAL_URL as string),
+    alternates: {
+        canonical: '/',
+    },
     title: {
         template: '%s | Tripadvancer',
         default: 'Tripadvancer - Plan your trip and find interesting places',
     },
     description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     openGraph: {
-        type: 'website',
-        url: process.env.NEXT_PUBLIC_PORTAL_URL,
         title: {
             template: '%s | Tripadvancer',
-            default: 'Tripadvancer - Plan your trip and find interesting places',
+            default: 'Welcome to Tripadvancer',
         },
-        description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
-        images: '/images/og-image.png',
+        type: 'website',
+        locale: 'en',
+        url: '/',
+        siteName: 'Tripadvancer',
+        images: [
+            {
+                url: '/images/og-image.jpg',
+                width: 1200,
+                height: 630,
+                type: 'image/jpeg',
+                alt: 'Tripadvancer',
+            },
+        ],
     },
     twitter: {
-        card: 'summary_large_image',
         title: {
             template: '%s | Tripadvancer',
-            default: 'Tripadvancer - Plan your trip and find interesting places',
+            default: 'Welcome to Tripadvancer',
         },
-        description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
-        images: '/images/og-image.png',
+        card: 'summary_large_image',
+        images: '/images/og-image.jpg',
     },
 }
 
