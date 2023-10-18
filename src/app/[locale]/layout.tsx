@@ -30,7 +30,7 @@ export const metadata: Metadata = {
             default: 'Tripadvancer - Plan your trip and find interesting places',
         },
         description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
-        images: 'https://tripadvancer.com/images/og-image.png',
+        images: '/images/og-image.png',
     },
     twitter: {
         card: 'summary_large_image',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
             default: 'Tripadvancer - Plan your trip and find interesting places',
         },
         description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
-        images: 'https://tripadvancer.com/images/og-image.png',
+        images: '/images/og-image.png',
     },
 }
 
