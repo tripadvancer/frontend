@@ -1,5 +1,3 @@
-import { setStaticParamsLocale } from 'next-international/server'
-
 import { Roboto } from 'next/font/google'
 import type { Metadata } from 'next/types'
 
@@ -7,7 +5,6 @@ import { DialogProvider } from '@/providers/DialogProvider'
 import { I18nProvider } from '@/providers/I18nProvider'
 import { ToastProvider } from '@/providers/ToastProvider'
 import { ReduxProvider } from '@/redux/provider'
-import { getScopedI18n } from '@/utils/i18n.server'
 
 import '../globals.css'
 
@@ -18,14 +15,23 @@ const roboto = Roboto({
 
 export const runtime = 'edge'
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    setStaticParamsLocale(params.locale)
-    const t = await getScopedI18n('common.meta')
-
-    return {
-        title: t('title'),
-        description: t('description'),
-    }
+export const metadate: Metadata = {
+    title: 'Tripadvancer - Plan your trip and find interesting places',
+    description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: process.env.NEXT_PUBLIC_PORTAL_URL,
+        siteName: 'Tripadvancer',
+        images: [
+            {
+                url: 'https://tripadvancer.com/images/og-image.png',
+                width: 1200,
+                height: 630,
+                alt: 'Tripadvancer',
+            },
+        ],
+    },
 }
 
 export default function RootLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
