@@ -17,11 +17,12 @@ const roboto = Roboto({
 export const runtime = 'edge'
 
 export async function generateMetadata(): Promise<Metadata> {
-    const t = await getScopedI18n('common.meta')
+    // const t = await getScopedI18n('common.meta')
 
     return {
-        title: t('title'),
-        description: t('description'),
+        title: 'Tripadvancer - Plan your trip and find interesting places',
+        description:
+            'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     }
 }
 
