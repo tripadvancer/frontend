@@ -11,7 +11,7 @@ export const Footer = async () => {
                 <div className="border-black-70 border-t" />
                 <div className="inner-container py-8">
                     <section className="text-black-70 mb-5  text-center">
-                        <h4 className="font-medium">{t('about.title')}</h4>
+                        <h5 className="font-medium">{t('about.title')}</h5>
                         <p>{t('about.description.str_1')}</p>
                     </section>
                     <nav className="text-black-40 flex flex-row flex-wrap justify-center  gap-x-2">
