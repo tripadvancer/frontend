@@ -1,3 +1,5 @@
+import { setStaticParamsLocale } from 'next-international/server'
+
 import { Roboto } from 'next/font/google'
 import type { Metadata } from 'next/types'
 
@@ -16,13 +18,13 @@ const roboto = Roboto({
 
 export const runtime = 'edge'
 
-export async function generateMetadata(): Promise<Metadata> {
-    // const t = await getScopedI18n('common.meta')
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+    setStaticParamsLocale(params.locale)
+    const t = await getScopedI18n('common.meta')
 
     return {
-        title: 'Tripadvancer - Plan your trip and find interesting places',
-        description:
-            'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+        title: t('title'),
+        description: t('description'),
     }
 }
 
