@@ -15,14 +15,27 @@ const roboto = Roboto({
 
 export const runtime = 'edge'
 
-export const metadate: Metadata = {
+export const metadata: Metadata = {
     title: 'Tripadvancer - Plan your trip and find interesting places',
     description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     openGraph: {
         type: 'website',
-        locale: 'en_US',
         url: process.env.NEXT_PUBLIC_PORTAL_URL,
-        siteName: 'Tripadvancer',
+        title: 'Tripadvancer - Plan your trip and find interesting places',
+        description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+        images: [
+            {
+                url: 'https://tripadvancer.com/images/og-image.png',
+                width: 1200,
+                height: 630,
+                alt: 'Tripadvancer',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Tripadvancer - Plan your trip and find interesting places',
+        description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
         images: [
             {
                 url: 'https://tripadvancer.com/images/og-image.png',
