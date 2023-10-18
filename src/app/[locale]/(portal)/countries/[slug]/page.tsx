@@ -15,8 +15,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const countryName = country?.name[locale] ?? ''
 
     return {
-        title: `${countryName} | Tripadvancer`,
-        description: '',
+        title: countryName,
     }
 }
 
