@@ -1,6 +1,7 @@
 import { Roboto } from 'next/font/google'
 import type { Metadata } from 'next/types'
 
+import { TailwindIndicator } from '@/components/TailwindIndicator'
 import { DialogProvider } from '@/providers/DialogProvider'
 import { I18nProvider } from '@/providers/I18nProvider'
 import { ToastProvider } from '@/providers/ToastProvider'
@@ -67,6 +68,7 @@ export default function RootLayout({ children, params }: { children: React.React
                         </ToastProvider>
                     </I18nProvider>
                 </ReduxProvider>
+                <TailwindIndicator />
             </body>
         </html>
     )

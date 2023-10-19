@@ -1,55 +1,53 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback } from 'react'
 
 import classNames from 'classnames'
 
 import Link from 'next/link'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 import { ICategory } from '@/types/category'
 
 type CategoryProps = {
     categories: ICategory[]
+    selectedCategories: number[]
 }
 
-export const Categories = ({ categories }: CategoryProps) => {
-    const router = useRouter()
+export const Categories = ({ categories, selectedCategories }: CategoryProps) => {
     const searchParams = useSearchParams()
-    // const [selectedCategories, setSelectedCategories] = useState<number[]>([])
 
-    // const handleClick = (id: number) => {
-    //     if (params.includes(id)) {
-    //         setParams(params.filter(param => param !== id))
-    //     } else {
-    //         setParams([...params, id])
-    //     }
-    // }
+    const createQueryString = useCallback(
+        (id: number) => {
+            const params = new URLSearchParams(searchParams)
 
-    // useEffect(() => {
-    // console.log(params)
-    //     router.push('?category=' + params.join(',') || '', { scroll: false })
-    // }, [params, router])
+            // Toggle the ID in selectedCategories, for example: /?categories=1,2,3
+            const updatedCategories = selectedCategories.includes(id)
+                ? selectedCategories.filter(item => item !== id)
+                : [...selectedCategories, id]
 
-    return categories.map(category => {
-        // const params = new URLSearchParams({ category: category.id.toString() })
+            // Remove elements equal to 0, for example: /?categories=
+            const updatedCategoriesWithoutZero = updatedCategories.filter(item => item !== 0)
 
-        return (
-            <Link
-                key={category.id}
-                href={{
-                    query: {
-                        categories: [searchParams.get('categories')?.split(',') || [], category.id].join(','),
-                    },
-                }}
-                scroll={false}
-                className={classNames(
-                    'bg-blue-20 text-small hover:bg-blue-active hover-animated hover:text-blue-20 flex h-8 cursor-pointer items-center justify-center rounded-full px-4 text-blue-100',
-                    // { 'bg-blue-active': params.includes(category.id) },
-                )}
-            >
-                {category.name}
-            </Link>
-        )
-    })
+            params.set('categories', updatedCategoriesWithoutZero.join())
+            return params.toString()
+        },
+        [searchParams, selectedCategories],
+    )
+
+    return categories.map(category => (
+        <Link
+            key={category.id}
+            href={{ query: createQueryString(category.id) }}
+            scroll={false}
+            className={classNames(
+                'hover-animated flex h-8 cursor-pointer items-center justify-center rounded-full bg-blue-20 px-4 text-small text-blue-100 hover:bg-blue-active hover:text-blue-20',
+                {
+                    'bg-blue-active text-blue-20': selectedCategories.includes(category.id),
+                },
+            )}
+        >
+            {category.name}
+        </Link>
+    ))
 }
