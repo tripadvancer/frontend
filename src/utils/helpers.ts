@@ -33,7 +33,7 @@ export function isValidCoordinate(coordinates: string): boolean {
     return reg.test(coordinates)
 }
 
-export const getLocalizedCategories = (category: CategoriesEnum, t: (key: string) => string): string => {
+export function getLocalizedCategories(category: CategoriesEnum, t: (key: string) => string): string {
     const localizedCategories: Record<CategoriesEnum, string> = {
         [CategoriesEnum.ABANDONED]: t('categories.abandoned'),
         [CategoriesEnum.ADVENTURE_ACTIVITIES]: t('categories.adventure_activities'),
@@ -52,7 +52,7 @@ export const getLocalizedCategories = (category: CategoriesEnum, t: (key: string
     return localizedCategories[category]
 }
 
-export const getLocalizedComplaintReason = (reason: ComplaintReasonsEnum, t: (key: string) => string): string => {
+export function getLocalizedComplaintReason(reason: ComplaintReasonsEnum, t: (key: string) => string): string {
     const localizedComplaintReasons: Record<ComplaintReasonsEnum, string> = {
         [ComplaintReasonsEnum.ABUSE]: t('complaint.reasons.abuse'),
         [ComplaintReasonsEnum.COPYRIGHT]: t('complaint.reasons.copyright'),
@@ -65,4 +65,16 @@ export const getLocalizedComplaintReason = (reason: ComplaintReasonsEnum, t: (ke
     }
 
     return localizedComplaintReasons[reason]
+}
+
+export function parseNumberString(input: string | undefined, validationArray: number[]): number[] {
+    if (input === undefined || input === '') {
+        return []
+    }
+
+    const numberStrings = input.split(',')
+    const numbers = numberStrings.map(str => parseFloat(str.trim()))
+
+    // Filter out NaN and numbers not in validationArray
+    return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
 }

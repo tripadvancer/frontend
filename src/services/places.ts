@@ -5,7 +5,6 @@ import type { IPlace, IPlaceNearby, IPlacePreview } from '@/types/place'
 
 export async function getPlacesByCountryCode(countryCode: string, categoriesIds: string | undefined): Promise<IPlacePreview[]> {
     const url = process.env.API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
-    console.log(url)
     const res = await fetch(url)
 
     if (!res.ok) {
