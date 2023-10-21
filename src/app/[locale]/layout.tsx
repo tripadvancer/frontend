@@ -44,20 +44,6 @@ export const metadata: Metadata = {
                 type: 'image/jpeg',
                 alt: 'Tripadvancer',
             },
-            {
-                url: '/images/og-image-2.jpg',
-                width: 1200,
-                height: 628,
-                type: 'image/jpeg',
-                alt: 'Tripadvancer',
-            },
-            {
-                url: '/images/og-image-3.jpg',
-                width: 1200,
-                height: 628,
-                type: 'image/jpeg',
-                alt: 'Tripadvancer',
-            },
         ],
     },
     twitter: {
@@ -66,7 +52,7 @@ export const metadata: Metadata = {
             default: 'Welcome to Tripadvancer',
         },
         card: 'summary_large_image',
-        images: ['/images/og-image-1.jpg', '/images/og-image-2.jpg', '/images/og-image-3.jpg'],
+        images: '/images/og-image-1.jpg',
     },
 }
 
