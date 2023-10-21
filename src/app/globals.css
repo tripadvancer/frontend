@@ -7,7 +7,7 @@ body {
 }
 
 a:hover {
-    @apply hover-animated text-blue-active;
+    @apply hover-animated sm:text-blue-active;
 }
 
 .container {

@@ -5,7 +5,7 @@ import { useCallback } from 'react'
 import classNames from 'classnames'
 
 import Link from 'next/link'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 import type { ICategory } from '@/types/category'
 
@@ -18,7 +18,6 @@ type CategoryProps = {
 
 export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) => {
     const tCategories = useScopedI18n('categories')
-    const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
 
@@ -40,24 +39,27 @@ export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) =
 
     return (
         <>
-            <div
+            <Link
+                href={pathname}
+                scroll={false}
+                replace={true}
                 className={classNames(
                     'hover-animated flex h-8 cursor-pointer items-center justify-center rounded-full bg-blue-20 px-4 text-small text-blue-100 hover:bg-blue-active hover:text-blue-20',
                     {
                         'bg-blue-active text-blue-20': selectedCategoryIds.length === 0,
                     },
                 )}
-                onClick={() => router.push(pathname, { scroll: false })}
             >
                 {tCategories('all')}
-            </div>
+            </Link>
             {categories.map(category => (
                 <Link
                     key={category.id}
                     href={{ query: createQueryString(category.id) }}
                     scroll={false}
+                    replace={true}
                     className={classNames(
-                        'hover-animated flex h-8 cursor-pointer items-center justify-center rounded-full bg-blue-20 px-4 text-small text-blue-100 hover:bg-blue-active hover:text-blue-20',
+                        'hover-animated flex h-8 cursor-pointer items-center justify-center rounded-full bg-blue-20 px-4 text-small text-blue-100 sm:hover:bg-blue-active sm:hover:text-blue-20',
                         {
                             'bg-blue-active text-blue-20': selectedCategoryIds.includes(category.id),
                         },
