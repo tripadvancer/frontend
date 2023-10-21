@@ -16,15 +16,15 @@ export const Review = ({ id, text, user, rating, photos, place, createdAt }: Rev
     const formattedDate = FormattedDate(createdAt, locale)
 
     return (
-        <div className="border-black-15 border-b py-8 first:border-t last:border-none last:pb-0">
-            <div className="sm:items-center mb-5 flex items-start justify-between">
+        <div className="border-b border-black-15 py-8 first:border-t last:border-none last:pb-0">
+            <div className="mb-5 flex items-start justify-between sm:items-center">
                 <div className="flex flex-col gap-1">
                     <Rating rating={rating} />
-                    <div className="sm:flex-row sm:gap-x-2 flex flex-col gap-y-1 ">
-                        <Link href={`/places/${place.id}`} className="text-black-70 text-small-bold">
+                    <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2 ">
+                        <Link href={`/places/${place.id}`} className="text-small-bold text-black-70">
                             {place.title}
                         </Link>
-                        <div className="text-black-40 text-small">{formattedDate}</div>
+                        <div className="text-small text-black-40">{formattedDate}</div>
                     </div>
                 </div>
                 <ReviewAction reviewId={id} userId={user.id} />
@@ -33,8 +33,8 @@ export const Review = ({ id, text, user, rating, photos, place, createdAt }: Rev
             <div>{text}</div>
 
             {photos.length > 0 && (
-                <div className="sm:grid-cols-9 mt-5 grid grid-cols-3 gap-2">
-                    <PhotoFeed photos={photos} title={place.title} size={64} />
+                <div className="mt-5 grid grid-cols-3 gap-2 sm:grid-cols-9">
+                    <PhotoFeed photos={photos} title={place.title} description={user.name} size={64} />
                 </div>
             )}
         </div>

@@ -1,13 +1,6 @@
-type Country = {
-    code: string
-    slug: string
-    name: {
-        en: string
-        ru: string
-    }
-}
+import { ICountryDict } from '@/types/country'
 
-const countries: Country[] = [
+export const сountriesDictionary: ICountryDict[] = [
     { code: 'AD', slug: 'andorra', name: { en: 'Andorra', ru: 'Андорра' } },
     {
         code: 'AE',
@@ -314,11 +307,3 @@ const countries: Country[] = [
     { code: 'ZM', slug: 'zambia', name: { en: 'Zambia', ru: 'Замбия' } },
     { code: 'ZW', slug: 'zimbabwe', name: { en: 'Zimbabwe', ru: 'Зимбабве' } },
 ]
-
-export const getCountryByCode = (countryCode: Pick<Country, 'code'>['code']): Country | undefined => {
-    return countries.find(country => country.code === countryCode)
-}
-
-export const getCountryBySlug = (countrySlug: Pick<Country, 'slug'>['slug']): Country | undefined => {
-    return countries.find(country => country.slug === countrySlug)
-}

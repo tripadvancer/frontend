@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import type { ICountry } from '@/types/country'
 
-import { getCountryByCode } from '@/utils/countries'
+import { getCountryByCode } from '@/services/countries'
 import { useCurrentLocale, useScopedI18n } from '@/utils/i18n.client'
 
 type CountryPreviewProps = ICountry
@@ -16,7 +16,7 @@ export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
     const countrySlug = country?.slug ?? ''
 
     return (
-        <figure className="bg-orange-10 group overflow-hidden rounded-2xl">
+        <figure className="group overflow-hidden rounded-2xl bg-orange-10">
             <Link href={`/countries/${countrySlug}`}>
                 <div className="w-full overflow-hidden">
                     <Image
@@ -30,7 +30,7 @@ export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
                     />
                 </div>
                 <figcaption className="flex flex-col justify-between p-4">
-                    <h4 className="text-h7-m sm:text-h7 sm:h-[52px] mb-4 line-clamp-2 h-12 break-words">
+                    <h4 className="mb-4 line-clamp-2 h-12 break-words text-h7-m sm:h-[52px] sm:text-h7">
                         {countryName}
                     </h4>
                     <div className="flex flex-row items-center gap-x-2 text-blue-100">

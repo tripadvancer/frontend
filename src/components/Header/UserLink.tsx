@@ -36,44 +36,6 @@ export const UserLink = () => {
             <Dropdown
                 items={[
                     {
-                        caption: t('user_menu.places'),
-                        value: 'places',
-                        icon: (
-                            <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 16 16"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M9 15V9.89998C11.2822 9.43671 13 7.41896 13 5C13 2.23858 10.7614 0 8 0C5.23858 0 3 2.23858 3 5C3 7.41896 4.71776 9.43671 7 9.89998V15L8 16L9 15ZM11 5C11 6.65685 9.65685 8 8 8C6.34315 8 5 6.65685 5 5C5 3.34315 6.34315 2 8 2C9.65685 2 11 3.34315 11 5Z"
-                                />
-                            </svg>
-                        ),
-                        onClick: () => router.push(`/users/${activeUser.data?.id}`),
-                    },
-                    {
-                        caption: t('user_menu.reviews'),
-                        value: 'ru',
-                        icon: (
-                            <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 16 16"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M4 16L10.0868 12.0198H14C15.1046 12.0198 16 11.1155 16 10V2.01977C16 0.904281 15.1046 0 14 0H2C0.89543 0 0 0.904281 0 2.01977V10C0 11.1155 0.89543 12.0198 2 12.0198H4V16ZM9.5132 10L6 12.2175V10H2V2.01977H14V10H9.5132Z"
-                                />
-                            </svg>
-                        ),
-                        onClick: () => router.push(`/users/${activeUser.data?.id}/reviews`),
-                    },
-                    {
                         caption: t('user_menu.profile'),
                         value: 'ru',
                         icon: (
@@ -91,10 +53,10 @@ export const UserLink = () => {
                                 />
                             </svg>
                         ),
-                        onClick: () => router.push(`/users/${activeUser.data?.id}/profile`),
+                        onClick: () => router.push(`/users/${activeUser.data?.id}`),
                     },
                     {
-                        caption: t('user_menu.account'),
+                        caption: t('user_menu.settings'),
                         value: 'ru',
                         icon: (
                             <svg
@@ -111,7 +73,7 @@ export const UserLink = () => {
                                 />
                             </svg>
                         ),
-                        onClick: () => router.push(`/users/${activeUser.data?.id}/account`),
+                        onClick: () => router.push(`/users/${activeUser.data?.id}/settings`),
                     },
                     {
                         caption: t('user_menu.log_out'),
@@ -133,8 +95,8 @@ export const UserLink = () => {
                     },
                 ]}
             >
-                <div className="hover-animated text-big-bold hover:text-blue-active flex cursor-pointer gap-x-2 text-blue-100">
-                    <div className="sm:block hidden">{activeUser.data?.name}</div>
+                <div className="hover-animated flex cursor-pointer gap-x-2 text-big-bold text-blue-100 hover:text-blue-active">
+                    <div className="hidden sm:block">{activeUser.data?.name}</div>
                     <Avatar src={activeUser.data?.avatar} alt={activeUser.data?.name} size={24} />
                 </div>
             </Dropdown>
@@ -143,10 +105,10 @@ export const UserLink = () => {
 
     return (
         <div
-            className="hover-animated hover:text-blue-active text-big-bold flex cursor-pointer items-center gap-x-2 text-blue-100"
+            className="hover-animated flex cursor-pointer items-center gap-x-2 text-big-bold text-blue-100 hover:text-blue-active"
             onClick={() => dialog.open(<SignInForm />)}
         >
-            <span className="sm:block hidden">{tCommon('sign_in_link')}</span>
+            <span className="hidden sm:block">{tCommon('sign_in_link')}</span>
             <UserIcon />
         </div>
     )

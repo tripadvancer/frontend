@@ -18,11 +18,12 @@ import 'yet-another-react-lightbox/styles.css'
 
 type PhotoFeedProps = {
     title: string
+    description: string
     photos: IPhoto[]
     size: number
 }
 
-export const PhotoFeed = ({ title, photos, size }: PhotoFeedProps) => {
+export const PhotoFeed = ({ title, photos, size, description }: PhotoFeedProps) => {
     const [indexSlide, setIndexSlide] = useState<number>(-1)
 
     return (
@@ -46,7 +47,11 @@ export const PhotoFeed = ({ title, photos, size }: PhotoFeedProps) => {
                 open={indexSlide >= 0}
                 close={() => setIndexSlide(-1)}
                 index={indexSlide}
-                slides={photos.map(photo => ({ title, src: makeImageUrl(photo.url, ImageVariant.PUBLIC) }))}
+                slides={photos.map(photo => ({
+                    title,
+                    description,
+                    src: makeImageUrl(photo.url, ImageVariant.PUBLIC),
+                }))}
             />
         </>
     )

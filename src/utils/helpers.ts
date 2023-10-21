@@ -1,4 +1,4 @@
-import { ICategory } from '@/types/category'
+import type { ICategory } from '@/types/category'
 import type { ICoordinates } from '@/types/geo'
 
 import { i18nConfig } from '@/configs/i18n.config'
@@ -44,4 +44,13 @@ export function parseQueryString(input: string | undefined, validationArray: num
 
     // Filter out NaN and numbers not in validationArray
     return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
+}
+
+export function localizeCategories(categories: ICategory[], t: any): ICategory[] {
+    return categories
+        .map(category => ({
+            ...category,
+            localizedName: t(CategoryI18nKeys[CategoriesEnum[category.name]]),
+        }))
+        .sort((a, b) => a.localizedName.localeCompare(b.localizedName))
 }

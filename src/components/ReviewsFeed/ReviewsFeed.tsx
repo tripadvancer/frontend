@@ -15,8 +15,6 @@ export const ReviewFeed = async ({ reviews, currentPage }: ReviewFeedProps) => {
     const t = await getScopedI18n('common.reviews')
     const totalPages = reviews.totalPages
 
-    console.log(reviews)
-
     if (reviews.items.length === 0) {
         return <div className="text-black-40 text-center">{t('empty')}</div>
     }

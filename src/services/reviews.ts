@@ -3,8 +3,8 @@ import { revalidateTag } from 'next/cache'
 import type { PaginatedResponse } from '@/types/common'
 import type { IReview } from '@/types/review'
 
-export async function getReviewsByPlaceId(placeId: string): Promise<PaginatedResponse<IReview>> {
-    const url = process.env.API_URL + '/reviews?place_id=' + placeId
+export async function getReviewsByPlaceId(placeId: string, page: string): Promise<PaginatedResponse<IReview>> {
+    const url = process.env.API_URL + '/reviews?place_id=' + placeId + '&page=' + page
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -16,7 +16,6 @@ export async function getReviewsByPlaceId(placeId: string): Promise<PaginatedRes
 
 export async function getReviewsByUserId(userId: string, page: string): Promise<PaginatedResponse<IReview>> {
     const url = process.env.API_URL + '/reviews?user_id=' + userId + '&page=' + page
-    console.log(url)
     const res = await fetch(url)
 
     if (!res.ok) {

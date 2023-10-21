@@ -4,7 +4,7 @@ import { PageSwitcher } from '@/components/PageSwitcher'
 import { getUserById } from '@/services/user'
 import { getScopedI18n } from '@/utils/i18n.server'
 
-export default async function User({ params, children }: { params: { id: string }; children: React.ReactNode }) {
+export default async function UserLayout({ params, children }: { params: { id: string }; children: React.ReactNode }) {
     const t = await getScopedI18n('pages.user')
     const tUserAchievement = await getScopedI18n('user.achievement')
     const user = await getUserById(params.id)
