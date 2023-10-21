@@ -46,15 +46,14 @@ export default async function Country({
     params: { slug: string }
     searchParams: { [key: string]: string | string[] | undefined }
 }) {
+    const locale = getCurrentLocale()
+    const tCategories = await getScopedI18n('categories')
     const country = getCountryBySlug(params.slug)
 
     // Handle the case when the country is not found
     if (country === undefined) {
         notFound()
     }
-
-    const tCategories = await getScopedI18n('categories')
-    const locale = getCurrentLocale()
 
     const categories = await getCategories()
     const categoriesIds = categories.map(category => category.id)

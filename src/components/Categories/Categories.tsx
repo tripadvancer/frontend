@@ -1,13 +1,13 @@
 'use client'
 
-import { useCallback, useEffect } from 'react'
+import { useCallback } from 'react'
 
 import classNames from 'classnames'
 
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-import { ICategory } from '@/types/category'
+import type { ICategory } from '@/types/category'
 
 import { useScopedI18n } from '@/utils/i18n.client'
 
