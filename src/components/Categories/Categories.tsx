@@ -9,7 +9,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import type { ICategory } from '@/types/category'
 
-// import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n.client'
 
 type CategoryProps = {
     categories: ICategory[]
@@ -17,7 +17,7 @@ type CategoryProps = {
 }
 
 export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) => {
-    // const tCategories = useScopedI18n('categories')
+    const tCategories = useScopedI18n('categories')
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -49,8 +49,7 @@ export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) =
                 )}
                 onClick={() => router.push(pathname, { scroll: false })}
             >
-                {/* {tCategories('all')} */}
-                All categories
+                {tCategories('all')}
             </div>
             {categories.map(category => (
                 <Link
