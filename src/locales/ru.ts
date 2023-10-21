@@ -28,7 +28,7 @@ export default {
     'categories.architecture': 'Архитектура',
     'categories.camping_sites': 'Кемпинги',
     'categories.hiking': 'Пешие тропы',
-    'categories.historical': 'Исторические',
+    'categories.historical': 'История',
     'categories.landmarks': 'Достопримечательности',
     'categories.museums': 'Музеи',
     'categories.natural_attractions': 'Природа',

@@ -46,7 +46,7 @@ export default async function Country({
     params,
     searchParams,
 }: {
-    params: { slug: string }
+    params: { slug: string, locale: string }
     searchParams: { [key: string]: string | string[] | undefined }
 }) {
     const locale = getCurrentLocale()

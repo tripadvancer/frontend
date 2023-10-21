@@ -14,8 +14,8 @@ export const PlacesNearbyList = ({ places }: PlacesNearbyListProps) => {
     return (
         <div className="flex flex-col gap-4">
             {places.map(place => (
-                <div key={place.id} className="flex flex-row gap-4">
-                    <Link href={`/places/${place.id}`} className="flex-none">
+                <Link href={`/places/${place.id}`} key={place.id} className="flex-none">
+                    <div className="flex flex-row gap-4">
                         <Image
                             src={makeImageUrl(place.cover, ImageVariant.PREVIEW)}
                             className="rounded-lg"
@@ -25,16 +25,14 @@ export const PlacesNearbyList = ({ places }: PlacesNearbyListProps) => {
                             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8eftuPQAIOAMS40NHBQAAAABJRU5ErkJggg=="
                             alt={place.title}
                         />
-                    </Link>
-                    <div>
-                        <div className="line-clamp-2">
-                            <Link href={`/places/${place.id}`} className="flex-none font-medium">
-                                {place.title}
-                            </Link>
+                        <div className="flex flex-col justify-between">
+                            <div className="line-clamp-2 font-medium">{place.title}</div>
+                            <div className="text-small text-black-40">
+                                {place.distance} m.
+                            </div>
                         </div>
-                        <div className=" text-black-40">{place.distance} m.</div>
                     </div>
-                </div>
+                </Link>
             ))}
         </div>
     )
