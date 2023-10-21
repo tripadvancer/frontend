@@ -13,6 +13,21 @@ export enum CategoriesEnum {
     SCENIC_VIEWS = 'SCENIC_VIEWS',
 }
 
+export enum CategoryI18nKeys {
+    ABANDONED = 'abandoned',
+    ADVENTURE_ACTIVITIES = 'adventure_activities',
+    ARCHITECTURE = 'architecture',
+    CAMPING_SITES = 'camping_sites',
+    HIKING = 'hiking',
+    HISTORICAL = 'historical',
+    LANDMARKS = 'landmarks',
+    MUSEUMS = 'museums',
+    NATURAL_ATTRACTIONS = 'natural_attractions',
+    OFF_ROAD = 'off_road',
+    RECREATIONAL_AREAS = 'recreational_areas',
+    SCENIC_VIEWS = 'scenic_views',
+}
+
 export enum ComplaintReasonsEnum {
     ABUSE = 'ABUSE',
     COPYRIGHT = 'COPYRIGHT',

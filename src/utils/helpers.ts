@@ -1,7 +1,8 @@
+import { ICategory } from '@/types/category'
 import type { ICoordinates } from '@/types/geo'
 
 import { i18nConfig } from '@/configs/i18n.config'
-import { CategoriesEnum, ComplaintReasonsEnum, ImageVariant } from '@/utils/enums'
+import { CategoriesEnum, CategoryI18nKeys, ImageVariant } from '@/utils/enums'
 
 export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
     return `${url}/${imageVariant}`
@@ -33,41 +34,7 @@ export function isValidCoordinate(coordinates: string): boolean {
     return reg.test(coordinates)
 }
 
-export function getLocalizedCategories(category: CategoriesEnum, t: (key: string) => string): string {
-    const localizedCategories: Record<CategoriesEnum, string> = {
-        [CategoriesEnum.ABANDONED]: t('categories.abandoned'),
-        [CategoriesEnum.ADVENTURE_ACTIVITIES]: t('categories.adventure_activities'),
-        [CategoriesEnum.ARCHITECTURE]: t('categories.architecture'),
-        [CategoriesEnum.CAMPING_SITES]: t('categories.camping_sites'),
-        [CategoriesEnum.HIKING]: t('categories.hiking'),
-        [CategoriesEnum.HISTORICAL]: t('categories.historical'),
-        [CategoriesEnum.LANDMARKS]: t('categories.landmarks'),
-        [CategoriesEnum.MUSEUMS]: t('categories.museums'),
-        [CategoriesEnum.NATURAL_ATTRACTIONS]: t('categories.natural_attractions'),
-        [CategoriesEnum.OFF_ROAD]: t('categories.off_road'),
-        [CategoriesEnum.RECREATIONAL_AREAS]: t('categories.recreational_areas'),
-        [CategoriesEnum.SCENIC_VIEWS]: t('categories.scenic_views'),
-    }
-
-    return localizedCategories[category]
-}
-
-export function getLocalizedComplaintReason(reason: ComplaintReasonsEnum, t: (key: string) => string): string {
-    const localizedComplaintReasons: Record<ComplaintReasonsEnum, string> = {
-        [ComplaintReasonsEnum.ABUSE]: t('complaint.reasons.abuse'),
-        [ComplaintReasonsEnum.COPYRIGHT]: t('complaint.reasons.copyright'),
-        [ComplaintReasonsEnum.DUPLICATE]: t('complaint.reasons.duplicate'),
-        [ComplaintReasonsEnum.FALSE]: t('complaint.reasons.false'),
-        [ComplaintReasonsEnum.FRAUD]: t('complaint.reasons.fraud'),
-        [ComplaintReasonsEnum.INAPPROPRIATE]: t('complaint.reasons.inappropriate'),
-        [ComplaintReasonsEnum.OTHER]: t('complaint.reasons.other'),
-        [ComplaintReasonsEnum.SPAM]: t('complaint.reasons.spam'),
-    }
-
-    return localizedComplaintReasons[reason]
-}
-
-export function parseNumberString(input: string | undefined, validationArray: number[]): number[] {
+export function parseQueryString(input: string | undefined, validationArray: number[]): number[] {
     if (input === undefined || input === '') {
         return []
     }
