@@ -25,7 +25,8 @@ export const metadata: Metadata = {
         template: '%s | Tripadvancer',
         default: 'Tripadvancer - Plan your trip and find interesting places',
     },
-    description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+    description:
+        'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     openGraph: {
         title: {
             template: '%s | Tripadvancer',
@@ -37,9 +38,23 @@ export const metadata: Metadata = {
         siteName: 'Tripadvancer',
         images: [
             {
-                url: '/images/og-image.jpg',
+                url: '/images/og-image-1.jpg',
                 width: 1200,
-                height: 630,
+                height: 628,
+                type: 'image/jpeg',
+                alt: 'Tripadvancer',
+            },
+            {
+                url: '/images/og-image-2.jpg',
+                width: 1200,
+                height: 628,
+                type: 'image/jpeg',
+                alt: 'Tripadvancer',
+            },
+            {
+                url: '/images/og-image-3.jpg',
+                width: 1200,
+                height: 628,
                 type: 'image/jpeg',
                 alt: 'Tripadvancer',
             },
@@ -51,7 +66,7 @@ export const metadata: Metadata = {
             default: 'Welcome to Tripadvancer',
         },
         card: 'summary_large_image',
-        images: '/images/og-image.jpg',
+        images: ['/images/og-image-1.jpg', '/images/og-image-2.jpg', '/images/og-image-3.jpg'],
     },
 }
 
