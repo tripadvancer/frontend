@@ -28,8 +28,8 @@ export const UserPreview = ({ id, name, avatar, date }: UserProps) => {
                 </svg>
             )}
             <div>
-                <div className="text-black-70">{name}</div>
-                <div className="text-black-40">{date}</div>
+                <div className="text-small-bold">{name}</div>
+                <div className="text-small text-black-40">{date}</div>
             </div>
         </Link>
     )
