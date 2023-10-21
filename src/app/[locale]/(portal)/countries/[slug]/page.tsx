@@ -47,7 +47,7 @@ export default async function Country({
     searchParams: { [key: string]: string | string[] | undefined }
 }) {
     const locale = getCurrentLocale()
-    // const tCategories = await getScopedI18n('categories')
+    const tCategories = await getScopedI18n('categories')
     const country = getCountryBySlug(params.slug)
 
     // Handle the case when the country is not found
@@ -64,8 +64,7 @@ export default async function Country({
     const localizedCategories = categories
         .map(category => ({
             ...category,
-            // localizedName: tCategories(CategoryI18nKeys[CategoriesEnum[category.name]]),
-            localizedName: '',
+            localizedName: tCategories(CategoryI18nKeys[CategoriesEnum[category.name]]),
         }))
         .sort((a, b) => a.localizedName.localeCompare(b.localizedName))
 
