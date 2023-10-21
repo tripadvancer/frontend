@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -18,6 +20,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
     return {
         title: countryName,
+        description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
         openGraph: {
             title: countryName,
             description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,

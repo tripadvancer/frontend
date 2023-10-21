@@ -25,12 +25,12 @@ export const CountryPlacesFeed = ({ places }: CountryPlacesFeedProps) => {
     }
 
     if (places.length === 0) {
-        return <div className="text-black-40 text-center">{t('empty')}</div>
+        return <div className="text-center text-black-40">{t('empty')}</div>
     }
 
     return (
         <>
-            <div className="sm:grid-cols-2 lg:grid-cols-3 lg:gap-4 xl:gap-8 mb-8 grid grid-cols-1 gap-4">
+            <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4 xl:gap-8">
                 {visiblePlaces.map((place, index) => (
                     <CountryPlace key={index} {...place} />
                 ))}
