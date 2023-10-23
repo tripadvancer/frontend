@@ -2,9 +2,9 @@ import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/t
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-import userReducer from '@/redux/features/userSlice'
-import { apiSliceWithCredentials } from '@/redux/services/apiSliceWithCredentials'
-import { authAPI } from '@/redux/services/authAPI'
+import userReducer from '@/redux/features/user-slice'
+import { apiSliceWithCredentials } from '@/redux/services/api-slice-with-credentials'
+import { authAPI } from '@/redux/services/auth-api'
 
 const persistConfig = {
     key: 'root',

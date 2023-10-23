@@ -1,4 +1,4 @@
-import { UserPlacesFeed } from '@/components/UserPlacesFeed/UserPlacesFeed'
+import { UserPlacesFeed } from '@/components/user-places-feed/user-places-feed'
 import { getPlacesByUserId } from '@/services/places'
 
 export default async function UserPlaces({

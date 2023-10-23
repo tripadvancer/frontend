@@ -1,15 +1,15 @@
-import { LanguageChanger } from './LanguageChanger'
-import { Logo } from './Logo'
-import { MapLink } from './MapLink'
-import { UserLink } from './UserLink'
+import { LanguageChanger } from './language-changer'
+import { Logo } from './logo'
+import { MapLink } from './map-link'
+import { UserLink } from './user-link'
 
 export const Header = async () => {
     return (
-        <header className="sm:h-[76px] bg-blue-20 sticky top-0 z-40 h-[56px]">
+        <header className="sticky top-0 z-40 h-[56px] bg-blue-20 sm:h-[76px]">
             <div className="container relative flex h-full items-center justify-between">
                 <MapLink />
                 <Logo />
-                <div className="sm:gap-x-6 flex gap-x-4">
+                <div className="flex gap-x-4 sm:gap-x-6">
                     <UserLink />
                     <LanguageChanger />
                 </div>

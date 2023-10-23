@@ -1,6 +1,6 @@
-import { Achievement } from '@/components/Achievement'
-import { Avatar } from '@/components/Avatar'
-import { PageSwitcher } from '@/components/PageSwitcher'
+import { Achievement } from '@/components/achievement'
+import { Avatar } from '@/components/avatar'
+import { PageSwitcher } from '@/components/page-switcher'
 import { getUserById } from '@/services/user'
 import { getScopedI18n } from '@/utils/i18n.server'
 
@@ -12,13 +12,13 @@ export default async function UserLayout({ params, children }: { params: { id: s
     return (
         <div className="container py-24">
             <div className="inner-container">
-                <h1 className="lg:mb-16 lg:flex-row text-h1-m sm:text-h1 mb-8 flex flex-col items-center gap-4">
+                <h1 className="mb-8 flex flex-col items-center gap-4 text-h1-m sm:text-h1 lg:mb-16 lg:flex-row">
                     <Avatar src={user.avatar} alt={user.name} size={64} />
                     {user.name}
                 </h1>
 
-                <div className="lg:flex-row-reverse lg:gap-8 flex flex-col gap-16">
-                    <div className="lg:w-64 flex w-full flex-col gap-8">
+                <div className="flex flex-col gap-16 lg:flex-row-reverse lg:gap-8">
+                    <div className="flex w-full flex-col gap-8 lg:w-64">
                         <Achievement
                             title={tUserAchievement('level_1')}
                             icon={
@@ -58,7 +58,7 @@ export default async function UserLayout({ params, children }: { params: { id: s
 
                         {user.info && (
                             <section>
-                                <h3 className="text-caps mb-4 uppercase">{t('about_me')}</h3>
+                                <h3 className="mb-4 text-caps uppercase">{t('about_me')}</h3>
                                 <p>{user.info}</p>
                             </section>
                         )}
@@ -69,6 +69,7 @@ export default async function UserLayout({ params, children }: { params: { id: s
                             nav={[
                                 { href: `/users/${user.id}`, caption: t('places_link') },
                                 { href: `/users/${user.id}/reviews`, caption: t('reviews_link') },
+                                { href: `/users/${user.id}/settings`, caption: t('settings_link') },
                             ]}
                             className="mb-8"
                         />

@@ -4,11 +4,10 @@ import { useRef, useState } from 'react'
 
 import classNames from 'classnames'
 
-import { useKeypress } from '@/hooks/useKeypress'
-import { useOnClickOutside } from '@/hooks/useOnClickOutside'
+import { ActionControl } from '@/components/action-control'
+import { useKeypress } from '@/hooks/use-keypress'
+import { useOnClickOutside } from '@/hooks/use-on-click-outside'
 import { Keys } from '@/utils/enums'
-
-import { ActionControl } from './ActionControl'
 
 type DropdownItemProps = {
     caption: string
@@ -47,7 +46,7 @@ export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
                         <li
                             key={item.value}
                             className={classNames(
-                                'hover-animated hover:bg-blue-10 flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-blue-100 last:mb-0',
+                                'hover-animated flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-blue-100 last:mb-0 hover:bg-blue-10',
                                 {
                                     'font-medium': item.value === currentItem,
                                     'text-red-100': item.isRed,

@@ -37,7 +37,8 @@ export default {
     'categories.scenic_views': 'Scenic views',
     'categories.all': 'All categories',
 
-    'header.user_menu.profile': 'Profile',
+    'header.user_menu.places': 'Added places',
+    'header.user_menu.reviews': 'Written reviews',
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
 
@@ -105,6 +106,7 @@ export default {
     'pages.user.about_me': 'About me',
     'pages.user.places_link': 'Added places',
     'pages.user.reviews_link': 'Written reviews',
+    'pages.user.settings_link': 'Settings',
 
     'dialog.feedback.verify_email.title': 'Check your email',
     'dialog.feedback.verify_email.message.not_activated': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',

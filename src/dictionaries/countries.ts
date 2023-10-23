@@ -1,46 +1,644 @@
 import { ICountryDict } from '@/types/country'
 
 export const сountriesDictionary: ICountryDict[] = [
-    { code: 'AD', slug: 'andorra', name: { en: 'Andorra', ru: 'Андорра' } },
+    {
+        code: 'AD',
+        slug: 'andorra',
+        name: {
+            en: 'Andorra',
+            ru: 'Андорра',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 42.656,
+                lng: 1.786,
+            },
+            southWest: {
+                lat: 42.428,
+                lng: 1.413,
+            },
+        },
+    },
     {
         code: 'AE',
         slug: 'united-arab-emirates',
-        name: { en: 'United Arab Emirates', ru: 'Объединенные Арабские Эмираты' },
+        name: {
+            en: 'United Arab Emirates',
+            ru: 'Объединенные Арабские Эмираты',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 26.084,
+                lng: 56.381,
+            },
+            southWest: {
+                lat: 22.633,
+                lng: 51.583,
+            },
+        },
     },
-    { code: 'AF', slug: 'afghanistan', name: { en: 'Afghanistan', ru: 'Афганистан' } },
-    { code: 'AG', slug: 'antigua-and-barbuda', name: { en: 'Antigua and Barbuda', ru: 'Антигуа и Барбуда' } },
-    { code: 'AI', slug: 'anguilla', name: { en: 'Anguilla', ru: 'Ангилья' } },
-    { code: 'AL', slug: 'albania', name: { en: 'Albania', ru: 'Албания' } },
-    { code: 'AM', slug: 'armenia', name: { en: 'Armenia', ru: 'Армения' } },
-    { code: 'AO', slug: 'angola', name: { en: 'Angola', ru: 'Ангола' } },
-    { code: 'AQ', slug: 'antarctica', name: { en: 'Antarctica', ru: 'Антарктида' } },
-    { code: 'AR', slug: 'argentina', name: { en: 'Argentina', ru: 'Аргентина' } },
-    { code: 'AS', slug: 'american-samoa', name: { en: 'American Samoa', ru: 'Американское Самоа' } },
-    { code: 'AT', slug: 'austria', name: { en: 'Austria', ru: 'Австрия' } },
-    { code: 'AU', slug: 'australia', name: { en: 'Australia', ru: 'Австралия' } },
-    { code: 'AW', slug: 'aruba', name: { en: 'Aruba', ru: 'Аруба' } },
-    { code: 'AX', slug: 'aland-islands', name: { en: 'Åland Islands', ru: 'Аландские острова' } },
-    { code: 'AZ', slug: 'azerbaijan', name: { en: 'Azerbaijan', ru: 'Азербайджан' } },
-    { code: 'BA', slug: 'bosnia-and-herzegovina', name: { en: 'Bosnia and Herzegovina', ru: 'Босния и Герцеговина' } },
-    { code: 'BB', slug: 'barbados', name: { en: 'Barbados', ru: 'Барбадос' } },
-    { code: 'BD', slug: 'bangladesh', name: { en: 'Bangladesh', ru: 'Бангладеш' } },
-    { code: 'BE', slug: 'belgium', name: { en: 'Belgium', ru: 'Бельгия' } },
-    { code: 'BF', slug: 'burkina-faso', name: { en: 'Burkina Faso', ru: 'Буркина-Фасо' } },
-    { code: 'BG', slug: 'bulgaria', name: { en: 'Bulgaria', ru: 'Болгария' } },
-    { code: 'BH', slug: 'bahrain', name: { en: 'Bahrain', ru: 'Бахрейн' } },
-    { code: 'BI', slug: 'burundi', name: { en: 'Burundi', ru: 'Бурунди' } },
-    { code: 'BJ', slug: 'benin', name: { en: 'Benin', ru: 'Бенин' } },
-    { code: 'BL', slug: 'saint-barthelemy', name: { en: 'Saint Barthélemy', ru: 'Сен-Бартелеми' } },
-    { code: 'BM', slug: 'bermuda', name: { en: 'Bermuda', ru: 'Бермуды' } },
-    { code: 'BN', slug: 'brunei-darussalam', name: { en: 'Brunei Darussalam', ru: 'Бруней-Даруссалам' } },
-    { code: 'BO', slug: 'bolivia', name: { en: 'Bolivia', ru: 'Боливия' } },
-    { code: 'BQ', slug: 'bonaire', name: { en: 'Bonaire', ru: 'Бонайре' } },
-    { code: 'BR', slug: 'brazil', name: { en: 'Brazil', ru: 'Бразилия' } },
-    { code: 'BS', slug: 'bahamas', name: { en: 'Bahamas', ru: 'Багамы' } },
-    { code: 'BT', slug: 'bhutan', name: { en: 'Bhutan', ru: 'Бутан' } },
-    { code: 'BV', slug: 'bouvet-island', name: { en: 'Bouvet Island', ru: 'Остров Буве' } },
-    { code: 'BW', slug: 'botswana', name: { en: 'Botswana', ru: 'Ботсвана' } },
-    { code: 'BY', slug: 'belarus', name: { en: 'Belarus', ru: 'Беларусь' } },
+    {
+        code: 'AF',
+        slug: 'afghanistan',
+        name: {
+            en: 'Afghanistan',
+            ru: 'Афганистан',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 38.49,
+                lng: 74.892,
+            },
+            southWest: {
+                lat: 29.377,
+                lng: 60.496,
+            },
+        },
+    },
+    {
+        code: 'AG',
+        slug: 'antigua-and-barbuda',
+        name: {
+            en: 'Antigua and Barbuda',
+            ru: 'Антигуа и Барбуда',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 17.729,
+                lng: -61.672,
+            },
+            southWest: {
+                lat: 16.757,
+                lng: -62.67,
+            },
+        },
+    },
+    {
+        code: 'AI',
+        slug: 'anguilla',
+        name: {
+            en: 'Anguilla',
+            ru: 'Ангилья',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 18.283,
+                lng: -62.968,
+            },
+            southWest: {
+                lat: 18.166,
+                lng: -63.168,
+            },
+        },
+    },
+    {
+        code: 'AL',
+        slug: 'albania',
+        name: {
+            en: 'Albania',
+            ru: 'Албания',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 42.661,
+                lng: 21.057,
+            },
+            southWest: {
+                lat: 39.644,
+                lng: 19.263,
+            },
+        },
+    },
+    {
+        code: 'AM',
+        slug: 'armenia',
+        name: {
+            en: 'Armenia',
+            ru: 'Армения',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 41.3,
+                lng: 46.637,
+            },
+            southWest: {
+                lat: 38.841,
+                lng: 43.447,
+            },
+        },
+    },
+    {
+        code: 'AO',
+        slug: 'angola',
+        name: {
+            en: 'Angola',
+            ru: 'Ангола',
+        },
+        boundingBox: {
+            northEast: {
+                lat: -4.388,
+                lng: 24.082,
+            },
+            southWest: {
+                lat: -18.042,
+                lng: 11.715,
+            },
+        },
+    },
+    {
+        code: 'AQ',
+        slug: 'antarctica',
+        name: {
+            en: 'Antarctica',
+            ru: 'Антарктида',
+        },
+        boundingBox: {
+            northEast: {
+                lat: -60.515,
+                lng: 179.999,
+            },
+            southWest: {
+                lat: -89.999,
+                lng: -180,
+            },
+        },
+    },
+    {
+        code: 'AR',
+        slug: 'argentina',
+        name: {
+            en: 'Argentina',
+            ru: 'Аргентина',
+        },
+        boundingBox: {
+            northEast: {
+                lat: -21.781,
+                lng: -53.639,
+            },
+            southWest: {
+                lat: -55.057,
+                lng: -73.588,
+            },
+        },
+    },
+    {
+        code: 'AS',
+        slug: 'american-samoa',
+        name: {
+            en: 'American Samoa',
+            ru: 'Американское Самоа',
+        },
+        boundingBox: {
+            northEast: {
+                lat: -11.049,
+                lng: -169.417,
+            },
+            southWest: {
+                lat: -14.382,
+                lng: -171.091,
+            },
+        },
+    },
+    {
+        code: 'AT',
+        slug: 'austria',
+        name: {
+            en: 'Austria',
+            ru: 'Австрия',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 49.021,
+                lng: 17.162,
+            },
+            southWest: {
+                lat: 46.372,
+                lng: 9.535,
+            },
+        },
+    },
+    {
+        code: 'AU',
+        slug: 'australia',
+        name: {
+            en: 'Australia',
+            ru: 'Австралия',
+        },
+        boundingBox: {
+            northEast: {
+                lat: -9.088,
+                lng: 159.105,
+            },
+            southWest: {
+                lat: -54.753,
+                lng: 112.921,
+            },
+        },
+    },
+    {
+        code: 'AW',
+        slug: 'aruba',
+        name: {
+            en: 'Aruba',
+            ru: 'Аруба',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 12.623,
+                lng: -69.865,
+            },
+            southWest: {
+                lat: 12.411,
+                lng: -70.064,
+            },
+        },
+    },
+    {
+        code: 'AX',
+        slug: 'aland-islands',
+        name: {
+            en: 'Åland Islands',
+            ru: 'Аландские острова',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 60.488,
+                lng: 21.684,
+            },
+            southWest: {
+                lat: 59.454,
+                lng: 19.203,
+            },
+        },
+    },
+    {
+        code: 'AZ',
+        slug: 'azerbaijan',
+        name: {
+            en: 'Azerbaijan',
+            ru: 'Азербайджан',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 41.905,
+                lng: 50.374,
+            },
+            southWest: {
+                lat: 38.392,
+                lng: 44.777,
+            },
+        },
+    },
+    {
+        code: 'BA',
+        slug: 'bosnia-and-herzegovina',
+        name: {
+            en: 'Bosnia and Herzegovina',
+            ru: 'Босния и Герцеговина',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 45.276,
+                lng: 19.642,
+            },
+            southWest: {
+                lat: 42.555,
+                lng: 15.728,
+            },
+        },
+    },
+    {
+        code: 'BB',
+        slug: 'barbados',
+        name: {
+            en: 'Barbados',
+            ru: 'Барбадос',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 13.342,
+                lng: -59.42,
+            },
+            southWest: {
+                lat: 13.039,
+                lng: -59.648,
+            },
+        },
+    },
+    {
+        code: 'BD',
+        slug: 'bangladesh',
+        name: {
+            en: 'Bangladesh',
+            ru: 'Бангладеш',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 26.631,
+                lng: 92.673,
+            },
+            southWest: {
+                lat: 20.743,
+                lng: 88.028,
+            },
+        },
+    },
+    {
+        code: 'BE',
+        slug: 'belgium',
+        name: {
+            en: 'Belgium',
+            ru: 'Бельгия',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 51.505,
+                lng: 6.408,
+            },
+            southWest: {
+                lat: 49.496,
+                lng: 2.54,
+            },
+        },
+    },
+    {
+        code: 'BF',
+        slug: 'burkina-faso',
+        name: {
+            en: 'Burkina Faso',
+            ru: 'Буркина-Фасо',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 15.082,
+                lng: 2.405,
+            },
+            southWest: {
+                lat: 9.408,
+                lng: -5.521,
+            },
+        },
+    },
+    {
+        code: 'BG',
+        slug: 'bulgaria',
+        name: {
+            en: 'Bulgaria',
+            ru: 'Болгария',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 44.22,
+                lng: 28.61,
+            },
+            southWest: {
+                lat: 41.235,
+                lng: 22.357,
+            },
+        },
+    },
+    {
+        code: 'BH',
+        slug: 'bahrain',
+        name: {
+            en: 'Bahrain',
+            ru: 'Бахрейн',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 26.33,
+                lng: 50.923,
+            },
+            southWest: {
+                lat: 25.534,
+                lng: 50.337,
+            },
+        },
+    },
+    {
+        code: 'BI',
+        slug: 'burundi',
+        name: {
+            en: 'Burundi',
+            ru: 'Бурунди',
+        },
+        boundingBox: {
+            northEast: {
+                lat: -2.309,
+                lng: 30.847,
+            },
+            southWest: {
+                lat: -4.465,
+                lng: 28.993,
+            },
+        },
+    },
+    {
+        code: 'BJ',
+        slug: 'benin',
+        name: {
+            en: 'Benin',
+            ru: 'Бенин',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 12.418,
+                lng: 3.851,
+            },
+            southWest: {
+                lat: 6.213,
+                lng: 0.774,
+            },
+        },
+    },
+    {
+        code: 'BL',
+        slug: 'saint-barthelemy',
+        name: {
+            en: 'Saint Barthélemy',
+            ru: 'Сен-Бартелеми',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 17.967,
+                lng: -62.788,
+            },
+            southWest: {
+                lat: 17.878,
+                lng: -62.928,
+            },
+        },
+    },
+    {
+        code: 'BM',
+        slug: 'bermuda',
+        name: {
+            en: 'Bermuda',
+            ru: 'Бермуды',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 32.393,
+                lng: -64.647,
+            },
+            southWest: {
+                lat: 32.246,
+                lng: -64.888,
+            },
+        },
+    },
+    {
+        code: 'BN',
+        slug: 'brunei-darussalam',
+        name: {
+            en: 'Brunei Darussalam',
+            ru: 'Бруней-Даруссалам',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 5.047,
+                lng: 115.359,
+            },
+            southWest: {
+                lat: 4.002,
+                lng: 114.071,
+            },
+        },
+    },
+    {
+        code: 'BO',
+        slug: 'bolivia',
+        name: {
+            en: 'Bolivia',
+            ru: 'Боливия',
+        },
+        boundingBox: {
+            northEast: {
+                lat: -9.668,
+                lng: -57.453,
+            },
+            southWest: {
+                lat: -22.898,
+                lng: -69.645,
+            },
+        },
+    },
+    {
+        code: 'BQ',
+        slug: 'bonaire',
+        name: {
+            en: 'Bonaire',
+            ru: 'Бонайре',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 12.304,
+                lng: -68.192,
+            },
+            southWest: {
+                lat: 12.017,
+                lng: -68.416,
+            },
+        },
+    },
+    {
+        code: 'BR',
+        slug: 'brazil',
+        name: {
+            en: 'Brazil',
+            ru: 'Бразилия',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 5.271,
+                lng: -28.65,
+            },
+            southWest: {
+                lat: -33.751,
+                lng: -73.982,
+            },
+        },
+    },
+    {
+        code: 'BS',
+        slug: 'bahamas',
+        name: {
+            en: 'Bahamas',
+            ru: 'Багамы',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 26.928,
+                lng: -74.423,
+            },
+            southWest: {
+                lat: 20.705,
+                lng: -78.995,
+            },
+        },
+    },
+    {
+        code: 'BT',
+        slug: 'bhutan',
+        name: {
+            en: 'Bhutan',
+            ru: 'Бутан',
+        },
+        boundingBox: {
+            northEast: {
+                lat: 28.325,
+                lng: 92.125,
+            },
+            southWest: {
+                lat: 26.702,
+                lng: 88.746,
+            },
+        },
+    },
+    {
+        code: 'BV',
+        slug: 'bouvet-island',
+        name: {
+            en: 'Bouvet Island',
+            ru: 'Остров Буве',
+        },
+        boundingBox: {
+            northEast: {
+                lat: -54.4,
+                lng: 3.6,
+            },
+            southWest: {
+                lat: -54.6,
+                lng: 3.2,
+            },
+        },
+    },
+    {
+        code: 'BW',
+        slug: 'botswana',
+        name: {
+            en: 'Botswana',
+            ru: 'Ботсвана',
+        },
+        boundingBox: {
+            northEast: {
+                lat: -17.78,
+                lng: 29.373,
+            },
+            southWest: {
+                lat: -26.907,
+                lng: 19.998,
+            },
+        },
+    },
+    {
+        code: 'BY',
+        slug: 'belarus',
+        name: {
+            en: 'Belarus',
+            ru: 'Беларусь',
+        },
+    },
     { code: 'BZ', slug: 'belize', name: { en: 'Belize', ru: 'Белиз' } },
     { code: 'CA', slug: 'canada', name: { en: 'Canada', ru: 'Канада' } },
     { code: 'CC', slug: 'cocos-islands', name: { en: 'Cocos Islands', ru: 'Кокосовые острова' } },

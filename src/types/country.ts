@@ -9,4 +9,14 @@ export type ICountryDict = {
     name: {
         [locale: string]: string
     }
+    boundingBox?: {
+        northEast: {
+            lat: number
+            lng: number
+        }
+        southWest: {
+            lat: number
+            lng: number
+        }
+    }
 }

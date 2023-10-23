@@ -1,4 +1,4 @@
-import { LinkButton } from '@/components/LinkButton'
+import { LinkButton } from '@/components/link-button'
 import { emailVerify } from '@/services/auth'
 import { ApiResponseStatus } from '@/utils/enums'
 import { getScopedI18n } from '@/utils/i18n.server'

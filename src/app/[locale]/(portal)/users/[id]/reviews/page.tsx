@@ -1,4 +1,4 @@
-import { ReviewFeed } from '@/components/ReviewsFeed/ReviewsFeed'
+import { ReviewFeed } from '@/components/reviews-feed/reviews-feed'
 import { getReviewsByUserId } from '@/services/reviews'
 
 export default async function UserReviews({
