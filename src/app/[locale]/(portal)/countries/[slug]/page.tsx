@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
-import { Categories } from '@/components/categories/categories'
+import { Categories } from '@/components/categories'
 import { CountryPlacesFeed } from '@/components/country-places-feed/country-places-feed'
 import { getCategories } from '@/services/categories'
 import { getCountryBySlug } from '@/services/countries'
