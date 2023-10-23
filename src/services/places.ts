@@ -3,7 +3,10 @@ import { notFound } from 'next/navigation'
 import type { PaginatedResponse } from '@/types/common'
 import type { IPlace, IPlaceNearby, IPlacePreview } from '@/types/place'
 
-export async function getPlacesByCountryCode(countryCode: string, categoriesIds: string | undefined): Promise<IPlacePreview[]> {
+export async function getPlacesByCountryCode(
+    countryCode: string,
+    categoriesIds: string | undefined,
+): Promise<IPlacePreview[]> {
     const url = process.env.API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
     const res = await fetch(url)
 

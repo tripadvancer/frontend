@@ -17,7 +17,7 @@ const PageItem = ({ content, isCurrent }: { content: number | string; isCurrent:
             <Link
                 href={{ query: { page: content } }}
                 className={classNames(
-                    'hover:border-blue-active hover:text-blue-active flex h-full w-full items-center justify-center rounded-full border',
+                    'flex h-full w-full items-center justify-center rounded-full border hover:border-blue-active hover:text-blue-active',
                     isCurrent ? 'border-blue-active bg-blue-active text-blue-20' : 'border-blue-20 text-blue-100',
                 )}
             >
@@ -70,17 +70,17 @@ export const Paginator = async ({ pages, currentPage }: PaginatorProps) => {
             <Link
                 href={{ query: { page: currentPage - 1 } }}
                 className={classNames(
-                    'border-blue-20 hover:border-blue-active hover:text-blue-active flex h-10 items-center justify-center rounded-full border px-6 text-blue-100',
+                    'flex h-10 items-center justify-center rounded-full border border-blue-20 px-6 text-blue-100 hover:border-blue-active hover:text-blue-active',
                     { 'pointer-events-none opacity-30': currentPage === 1 },
                 )}
             >
                 {t('prev')}
             </Link>
-            <ol className="sm:flex hidden items-center justify-center gap-x-1">{renderPageNumbers()}</ol>
+            <ol className="hidden items-center justify-center gap-x-1 sm:flex">{renderPageNumbers()}</ol>
             <Link
                 href={{ query: { page: currentPage + 1 } }}
                 className={classNames(
-                    'border-blue-20 hover:border-blue-active hover:text-blue-active flex h-10 items-center justify-center rounded-full border px-6 text-blue-100',
+                    'flex h-10 items-center justify-center rounded-full border border-blue-20 px-6 text-blue-100 hover:border-blue-active hover:text-blue-active',
                     { 'pointer-events-none opacity-30': currentPage === pages },
                 )}
             >

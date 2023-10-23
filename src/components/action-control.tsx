@@ -8,7 +8,7 @@ export const ActionControl = ({ isActivated }: ActionControlProps) => {
     return (
         <div
             className={classNames(
-                'hover-animated bg-blue-20 hover:bg-blue-active flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-blue-100 hover:text-white',
+                'hover-animated flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-blue-20 text-blue-100 hover:bg-blue-active hover:text-white',
                 {
                     'bg-blue-active text-white': isActivated,
                 },

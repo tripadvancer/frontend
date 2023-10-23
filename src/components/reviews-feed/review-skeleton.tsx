@@ -1,26 +1,26 @@
 export const ReviewSkeleton = () => {
     return (
-        <div role="status" className="border-black-15 w-full animate-pulse border-t py-8 last:pb-0">
+        <div role="status" className="w-full animate-pulse border-t border-black-15 py-8 last:pb-0">
             <div className="mb-5 flex flex-col gap-1">
-                <div className="bg-black-5 h-3.5 w-20 rounded-full" />
-                <div className="sm:flex-row sm:gap-x-2 flex flex-col gap-y-1 ">
-                    <div className="bg-black-5 h-3.5 w-40 rounded-full" />
-                    <div className="bg-black-5 h-3.5 w-40 rounded-full" />
+                <div className="h-3.5 w-20 rounded-full bg-black-5" />
+                <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2 ">
+                    <div className="h-3.5 w-40 rounded-full bg-black-5" />
+                    <div className="h-3.5 w-40 rounded-full bg-black-5" />
                 </div>
             </div>
 
             <div className="flex flex-col gap-y-2">
-                <div className="bg-black-5 h-3.5 w-full rounded-full" />
-                <div className="bg-black-5 h-3.5 w-full rounded-full" />
-                <div className="bg-black-5 h-3.5 w-full rounded-full" />
-                <div className="bg-black-5 h-3.5 max-w-[360px] rounded-full" />
+                <div className="h-3.5 w-full rounded-full bg-black-5" />
+                <div className="h-3.5 w-full rounded-full bg-black-5" />
+                <div className="h-3.5 w-full rounded-full bg-black-5" />
+                <div className="h-3.5 max-w-[360px] rounded-full bg-black-5" />
             </div>
 
-            <div className="sm:grid-cols-9 mt-5 grid grid-cols-3 gap-2">
+            <div className="mt-5 grid grid-cols-3 gap-2 sm:grid-cols-9">
                 {Array.from({ length: 3 }).map((_, i) => (
-                    <div key={i} className="bg-black-5 flex aspect-square w-full items-center justify-center rounded">
+                    <div key={i} className="flex aspect-square w-full items-center justify-center rounded bg-black-5">
                         <svg
-                            className="text-black-15 w-10 opacity-20"
+                            className="w-10 text-black-15 opacity-20"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"

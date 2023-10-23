@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 export default function LegalTermsAndConditions() {
     return (
         <article className="inner-container">
-            <h1 className="text-h1-m sm:text-h1 mb-4 text-center">Terms and Conditions</h1>
+            <h1 className="mb-4 text-center text-h1-m sm:text-h1">Terms and Conditions</h1>
 
-            <article className="text-black-70 mb-16 text-center">
+            <article className="mb-16 text-center text-black-70">
                 <p className="mb-5">
                     These terms and conditions (&laquo;Agreement&raquo;) set forth the general terms and conditions
                     of&nbsp;your use of&nbsp;the tripadvancer.me website (&laquo;Website&raquo;
@@ -39,7 +39,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Accounts and membership</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Accounts and membership</h2>
                 <p className="mb-5">
                     You must be&nbsp;at&nbsp;least 18&nbsp;years of&nbsp;age to&nbsp;use the Website and Services.
                     By&nbsp;using the Website and Services and by&nbsp;agreeing to&nbsp;this Agreement you warrant and
@@ -66,7 +66,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">User content</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">User content</h2>
                 <p className="mb-5">
                     We&nbsp;do&nbsp;not own any data, information or&nbsp;material (collectively, &laquo;Content&raquo;)
                     that you submit on&nbsp;the Website in&nbsp;the course of&nbsp;using the Service. You shall have
@@ -95,7 +95,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Backups</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Backups</h2>
                 <p>
                     We&nbsp;perform regular backups of&nbsp;the Website and its Content and will do&nbsp;our best
                     to&nbsp;ensure completeness and accuracy of&nbsp;these backups. In&nbsp;the event of&nbsp;the
@@ -105,7 +105,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Links to&nbsp;other resources</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Links to&nbsp;other resources</h2>
                 <p className="mb-5">
                     Although the Website and Services may link to&nbsp;other resources (such as&nbsp;websites, mobile
                     applications, etc.), we&nbsp;are not, directly or&nbsp;indirectly, implying any approval,
@@ -123,7 +123,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Prohibited uses</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Prohibited uses</h2>
                 <p className="mb-5">
                     In&nbsp;addition to&nbsp;other terms as&nbsp;set forth in&nbsp;the Agreement, you are prohibited
                     from using the Website and Services or&nbsp;Content:
@@ -164,7 +164,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Intellectual property rights</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Intellectual property rights</h2>
                 <p>
                     &laquo;Intellectual Property Rights&raquo; means all present and future rights conferred
                     by&nbsp;statute, common law or equity in&nbsp;or&nbsp;in&nbsp;relation to&nbsp;any copyright and
@@ -187,7 +187,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Image Licensing</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Image Licensing</h2>
                 <p className="mb-5">External Images:</p>
                 <ol className="mb-5 list-outside list-decimal pl-12">
                     <li className="mb-3">
@@ -267,7 +267,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Limitation of&nbsp;liability</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Limitation of&nbsp;liability</h2>
                 <p className="mb-5">
                     To&nbsp;the fullest extent permitted by&nbsp;applicable law, in&nbsp;no&nbsp;event will the
                     Operator, its affiliates, directors, officers, employees, agents, suppliers or&nbsp;licensors
@@ -299,7 +299,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Indemnification</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Indemnification</h2>
                 <p>
                     You agree to&nbsp;indemnify and hold the Operator and its affiliates, directors, officers,
                     employees, agents, suppliers and licensors harmless from and against any liabilities, losses,
@@ -311,7 +311,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Severability</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Severability</h2>
                 <p>
                     All rights and restrictions contained in&nbsp;this Agreement may be&nbsp;exercised and shall
                     be&nbsp;applicable and binding only to&nbsp;the extent that they do&nbsp;not violate any applicable
@@ -327,7 +327,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Dispute resolution</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Dispute resolution</h2>
                 <p>
                     The formation, interpretation, and performance of&nbsp;this Agreement and any disputes arising out
                     of&nbsp;it shall be&nbsp;governed by&nbsp;the substantive and procedural laws of&nbsp;Lithuania
@@ -342,7 +342,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Changes and amendments</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Changes and amendments</h2>
                 <p>
                     We&nbsp;reserve the right to&nbsp;modify this Agreement or&nbsp;its terms related to&nbsp;the
                     Website and Services at&nbsp;any time at&nbsp;our discretion. When we&nbsp;do, we&nbsp;will revise
@@ -359,7 +359,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Acceptance of&nbsp;these terms</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Acceptance of&nbsp;these terms</h2>
                 <p>
                     You acknowledge that you have read this Agreement and agree to&nbsp;all its terms and conditions. By
                     accessing and using the Website and Services you agree to&nbsp;be&nbsp;bound by&nbsp;this Agreement.
@@ -369,7 +369,7 @@ export default function LegalTermsAndConditions() {
             </article>
 
             <article className="mb-16">
-                <h2 className="text-h5-m sm:text-h5 mb-8">Contacting&nbsp;us</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">Contacting&nbsp;us</h2>
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Agreement,
                     we&nbsp;encourage you to&nbsp;contact us&nbsp;using the details below:{' '}
@@ -380,7 +380,7 @@ export default function LegalTermsAndConditions() {
                 </p>
             </article>
 
-            <p className="text-black-70  text-center">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
+            <p className="text-center  text-black-70">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
         </article>
     )
 }

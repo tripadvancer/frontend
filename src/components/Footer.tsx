@@ -8,13 +8,13 @@ export const Footer = async () => {
     return (
         <footer className="bg-white">
             <div className="container">
-                <div className="border-black-70 border-t" />
+                <div className="border-t border-black-70" />
                 <div className="inner-container py-8">
-                    <section className="text-black-70 mb-5  text-center">
+                    <section className="mb-5 text-center  text-black-70">
                         <h5 className="font-medium">{t('about.title')}</h5>
                         <p>{t('about.description.str_1')}</p>
                     </section>
-                    <nav className="text-black-40 flex flex-row flex-wrap justify-center  gap-x-2">
+                    <nav className="flex flex-row flex-wrap justify-center gap-x-2  text-black-40">
                         <Link href="mailto:support@tripadvancer.me" className="text-blue-100">
                             Contact Us
                         </Link>
@@ -31,7 +31,7 @@ export const Footer = async () => {
                             Cookie Policy
                         </Link>
                     </nav>
-                    <div className="text-black-40  text-center">© Tripadvancer, 2023</div>
+                    <div className="text-center  text-black-40">© Tripadvancer, 2023</div>
                 </div>
             </div>
         </footer>

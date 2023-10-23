@@ -21,7 +21,7 @@ export const ButtonStroke = ({
         <button
             type={type}
             className={classNames(
-                'border-blue-20 hover-animated hover:border-blue-active hover:text-blue-active h-10 rounded-lg border px-6 text-center font-medium text-blue-100 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
+                'hover-animated h-10 rounded-lg border border-blue-20 px-6 text-center font-medium text-blue-100 hover:border-blue-active hover:text-blue-active focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                 className,
             )}
             disabled={isDisabled}

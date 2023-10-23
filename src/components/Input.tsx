@@ -37,7 +37,7 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                     className={classNames(
                         borderClass,
                         type === 'password' && 'pr-9',
-                        'hover-animated placeholder:text-black-40 h-10 w-full rounded-lg border bg-white pl-4 pr-4 focus:outline-none',
+                        'hover-animated h-10 w-full rounded-lg border bg-white pl-4 pr-4 placeholder:text-black-40 focus:outline-none',
                     )}
                 />
 
@@ -50,7 +50,7 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                         xmlns="http://www.w3.org/2000/svg"
                         className={classNames(
                             isShowPassword ? 'text-blue-active' : 'text-black-15',
-                            'hover-animated hover:text-blue-active absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer',
+                            'hover-animated absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-blue-active',
                         )}
                         onClick={handleTogglePassword}
                     >
@@ -62,7 +62,7 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                 )}
             </div>
 
-            {error && <div className="text-small mt-1 text-red-100">{error}</div>}
+            {error && <div className="mt-1 text-small text-red-100">{error}</div>}
         </div>
     )
 }
