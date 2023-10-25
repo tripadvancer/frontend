@@ -9,7 +9,7 @@ export type ICountryDict = {
     name: {
         [locale: string]: string
     }
-    boundingBox?: {
+    boundingBox: {
         northEast: {
             lat: number
             lng: number
