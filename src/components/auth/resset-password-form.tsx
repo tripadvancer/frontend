@@ -36,9 +36,9 @@ export const RessetPasswordForm = ({ token }: RessetPasswordFormProps) => {
         },
         validationSchema: Yup.object().shape({
             password: Yup.string()
-                .required(t('forms.validation.password.required'))
-                .min(passwordMinLength, t('forms.validation.password.min_length', { min_length: passwordMinLength }))
-                .max(passwordMaxLength, t('forms.validation.password.max_length', { max_length: passwordMaxLength })),
+                .required(t('forms.validation.required'))
+                .min(passwordMinLength, t('forms.validation.min_length', { min_length: passwordMinLength }))
+                .max(passwordMaxLength, t('forms.validation.max_length', { max_length: passwordMaxLength })),
         }),
         onSubmit: async values => {
             try {

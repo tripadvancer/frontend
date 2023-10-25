@@ -40,17 +40,15 @@ export const SignUpForm = () => {
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema: Yup.object().shape({
-            email: Yup.string()
-                .required(t('forms.validation.email.required'))
-                .email(t('forms.validation.email.invalid')),
+            email: Yup.string().required(t('forms.validation.required')).email(t('forms.validation.email.invalid')),
             name: Yup.string()
-                .required(t('forms.validation.username.required'))
-                .min(userNameMinLength, t('forms.validation.username.min_length', { min_length: userNameMinLength }))
-                .max(userNameMaxLength, t('forms.validation.username.max_length', { max_length: userNameMaxLength })),
+                .required(t('forms.validation.required'))
+                .min(userNameMinLength, t('forms.validation.min_length', { min_length: userNameMinLength }))
+                .max(userNameMaxLength, t('forms.validation.max_length', { max_length: userNameMaxLength })),
             password: Yup.string()
-                .required(t('forms.validation.password.required'))
-                .min(passwordMinLength, t('forms.validation.password.min_length', { min_length: passwordMinLength }))
-                .max(passwordMaxLength, t('forms.validation.password.max_length', { max_length: passwordMaxLength })),
+                .required(t('forms.validation.required'))
+                .min(passwordMinLength, t('forms.validation.min_length', { min_length: passwordMinLength }))
+                .max(passwordMaxLength, t('forms.validation.max_length', { max_length: passwordMaxLength })),
         }),
         onSubmit: async values => {
             try {

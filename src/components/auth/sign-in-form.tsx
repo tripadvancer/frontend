@@ -32,10 +32,8 @@ export const SignInForm = () => {
             password: '',
         },
         validationSchema: Yup.object().shape({
-            email: Yup.string()
-                .required(t('forms.validation.email.required'))
-                .email(t('forms.validation.email.invalid')),
-            password: Yup.string().required(t('forms.validation.password.required')),
+            email: Yup.string().required(t('forms.validation.required')).email(t('forms.validation.email.invalid')),
+            password: Yup.string().required(t('forms.validation.required')),
         }),
         onSubmit: async values => {
             try {

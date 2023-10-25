@@ -13,11 +13,6 @@ export const usersAPI = apiSliceWithCredentials.injectEndpoints({
             query: userId => 'users/' + userId,
             providesTags: ['User'],
         }),
-
-        // getUserPlaces: build.query<PaginatedResponse<IPlacePreview>, GetUserPlacesParams>({
-        //     query: ({ userId, page }) => `users/${userId}/places?page=${page}`,
-        //     providesTags: ['UserPlaces'],
-        // }),
     }),
     overrideExisting: false,
 })

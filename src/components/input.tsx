@@ -5,6 +5,7 @@ import { useState } from 'react'
 import classNames from 'classnames'
 
 type InputProps = {
+    id?: string
     type: 'text' | 'password'
     name: string
     value: string
@@ -15,19 +16,14 @@ type InputProps = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Input = ({ type, name, value, placeholder, autoFocus, error, className, onChange }: InputProps) => {
+export const Input = ({ id, type, name, value, placeholder, autoFocus, error, className, onChange }: InputProps) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
-
-    const handleTogglePassword = () => {
-        setIsShowPassword(!isShowPassword)
-    }
-
-    const borderClass = error ? 'border-red-100' : 'border-black-15 focus:border-black-40'
 
     return (
         <div className={className}>
             <div className="relative">
                 <input
+                    id={id}
                     type={isShowPassword ? 'text' : type}
                     name={name}
                     value={value}
@@ -35,9 +31,12 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                     autoFocus={autoFocus}
                     onChange={onChange}
                     className={classNames(
-                        borderClass,
-                        type === 'password' && 'pr-9',
                         'hover-animated h-10 w-full rounded-lg border bg-white pl-4 pr-4 placeholder:text-black-40 focus:outline-none',
+                        {
+                            'border-red-100': error,
+                            'border-black-15 focus:border-black-40': !error,
+                            'pr-9': type === 'password',
+                        },
                     )}
                 />
 
@@ -52,7 +51,7 @@ export const Input = ({ type, name, value, placeholder, autoFocus, error, classN
                             isShowPassword ? 'text-blue-active' : 'text-black-15',
                             'hover-animated absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-blue-active',
                         )}
-                        onClick={handleTogglePassword}
+                        onClick={() => setIsShowPassword(!isShowPassword)}
                     >
                         <path
                             fillRule="evenodd"

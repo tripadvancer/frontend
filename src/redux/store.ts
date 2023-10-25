@@ -6,6 +6,8 @@ import userReducer from '@/redux/features/user-slice'
 import { apiSliceWithCredentials } from '@/redux/services/api-slice-with-credentials'
 import { authAPI } from '@/redux/services/auth-api'
 
+import { profileAPI } from './services/profile-api'
+
 const persistConfig = {
     key: 'root',
     storage,
@@ -15,6 +17,7 @@ const persistConfig = {
 const reducers = combineReducers({
     user: userReducer,
     [authAPI.reducerPath]: authAPI.reducer,
+    [profileAPI.reducerPath]: profileAPI.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)

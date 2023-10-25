@@ -27,9 +27,7 @@ export const ForgotPasswordForm = () => {
             email: '',
         },
         validationSchema: Yup.object().shape({
-            email: Yup.string()
-                .required(t('forms.validation.email.required'))
-                .email(t('forms.validation.email.invalid')),
+            email: Yup.string().required(t('forms.validation.required')).email(t('forms.validation.email.invalid')),
         }),
         onSubmit: async values => {
             try {
