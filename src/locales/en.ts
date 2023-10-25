@@ -1,14 +1,14 @@
 export default {
     'common.about.title': 'Planing a trip but don`t know where to go?',
-    'common.about.description.str_1':
-        'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
-    'common.about.description.str_2':
-        'Share your favorite places and experiences with others. Together, we can make every journey even more interesting and exciting.',
+    'common.about.description.str_1': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
+    'common.about.description.str_2': 'Share your favorite places and experiences with others. Together, we can make every journey even more interesting and exciting.',
 
     'common.cta.show_more': 'Show more',
     'common.cta.close': 'Close',
     'common.cta.home': 'Return Home',
     'common.cta.try_again': 'Try again',
+    'common.cta.confirm': 'Confirm',
+    'common.cta.cancel': 'Cancel',
 
     'common.sign_up_link': 'Sign up',
     'common.sign_in_link': 'Sign in',
@@ -73,47 +73,35 @@ export default {
     'forms.validation.username.max_length': 'Username must be at most {max_length} characters long',
 
     'pages.not_found.title': 'Page not found',
-    'pages.not_found.text':
-        'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
+    'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
 
     'page.error.title': 'Oops! Something Went Wrong',
-    'page.error.text':
-        'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
+    'page.error.text': 'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
 
     'pages.home.countries.title': 'Where are you going?',
-    'pages.home.countries.description':
-        'Uncover unique spots recommended by fellow travelers. Immerse yourself in captivating sights, diverse cultures, and renowned landmarks. Ready to start your adventure? Simply select the country of your choice and let the journey unfold!',
+    'pages.home.countries.description': 'Uncover unique spots recommended by fellow travelers. Immerse yourself in captivating sights, diverse cultures, and renowned landmarks. Ready to start your adventure? Simply select the country of your choice and let the journey unfold!',
     'pages.home.features.title': 'Our features',
-    'pages.home.features.description':
-        'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
+    'pages.home.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
     'pages.home.features.places.title': 'Discover and share{br}interesting places',
-    'pages.home.features.places.description':
-        'Find interesting places and unique landmarks to plan your unforgettable journey. Share your impressions of the visited locations by leaving reviews and ratings, and you can also add new places that are not yet on the map to help fellow travelers discover them.',
+    'pages.home.features.places.description': 'Find interesting places and unique landmarks to plan your unforgettable journey. Share your impressions of the visited locations by leaving reviews and ratings, and you can also add new places that are not yet on the map to help fellow travelers discover them.',
     'pages.home.features.random.title': 'Try Our Random{br}Destination Picker',
-    'pages.home.features.random.description':
-        'Stuck on where to go in your free time? Utilize our feature for a random choice of nearby destinations! Simply pick a category and choose a comfortable distance. Let the exploration begin!',
+    'pages.home.features.random.description': 'Stuck on where to go in your free time? Utilize our feature for a random choice of nearby destinations! Simply pick a category and choose a comfortable distance. Let the exploration begin!',
     'pages.home.features.lists.title': 'Create Your Personalized{br}Travel Lists',
-    'pages.home.features.lists.description':
-        'Craft, modify, and manage your own tailored travel experiences by curating lists of favorite places. Save, edit, and organize Points of Interest for easy access on your journeys. Your personalized adventure starts here!',
+    'pages.home.features.lists.description': 'Craft, modify, and manage your own tailored travel experiences by curating lists of favorite places. Save, edit, and organize Points of Interest for easy access on your journeys. Your personalized adventure starts here!',
     'pages.home.map.title': 'Embark on a Global Journey',
-    'pages.home.map.description':
-        'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
+    'pages.home.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
     'pages.home.map.cta': 'Explore the map',
 
-    'pages.auth.verify.token_expired':
-        'The email verification link has expired. Please sign in again so we can send you a new verification link.',
+    'pages.auth.verify.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
     'pages.auth.verify.success': 'Your email has been verified. Welcome aboard, you can now sign in.',
 
     'pages.auth.restore.token_expired': 'The restore link has expired. Please request a new restore link.',
     'pages.auth.restore.success': 'Your account has been restored.',
 
-    'pages.auth.confirm_removal.token_expired':
-        'The confirmation link has expired. Please request a new confirmation link.',
-    'pages.auth.confirm_removal.success':
-        'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
+    'pages.auth.confirm_removal.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
+    'pages.auth.confirm_removal.success': 'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
 
-    'pages.auth.reset_password.token_expired':
-        'The password reset link has expired. Please request a new password reset link.',
+    'pages.auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
     'pages.auth.reset_password.success': 'Your password has been reset.',
     'pages.auth.reset_password.submit': 'Reset password',
 
@@ -121,20 +109,24 @@ export default {
     'pages.user.places_link': 'Added places',
     'pages.user.reviews_link': 'Written reviews',
     'pages.user.settings_link': 'Settings',
+    'pages.user.settings.gdpr.title': 'Your account',
+    'pages.user.settings.gdpr.get_copy_data': 'Get a copy of your data',
+    'pages.user.settings.gdpr.get_copy_data.confirm.title': 'Send personal data',
+    'pages.user.settings.gdpr.get_copy_data.confirm.message': 'Are you sure you want to send your personal data to your email?',
+    'pages.user.settings.gdpr.remove_account': 'Remove your account',
+    'pages.user.settings.gdpr.remove_account.confirm.title': 'Remove your account',
+    'pages.user.settings.gdpr.remove_account.confirm.message': 'Are you sure you want to remove your account?',
 
     'dialog.feedback.verify_email.title': 'Check your email',
-    'dialog.feedback.verify_email.message.not_activated':
-        'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
-    'dialog.feedback.verify_email.message.pending_delete':
-        'We have sent you the instructions to restore your account. Please note that there is a limited time window available for account restoration.',
+    'dialog.feedback.verify_email.message.not_activated': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
+    'dialog.feedback.verify_email.message.pending_delete': 'We have sent you the instructions to restore your account. Please note that there is a limited time window available for account restoration.',
 
     'dialog.feedback.forgot_password.title': 'Reset your password',
     'dialog.feedback.forgot_password.message': 'We sent you an email with instructions on how to reset your password.',
 
     'dialogs.sign_up.title': 'Sign up',
     'dialogs.sign_up.submit': 'Sign up',
-    'dialogs.sign_up.info':
-        'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
+    'dialogs.sign_up.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
     'dialogs.sign_up.to_back': 'Have an account? {sign_in_link}',
 
     'dialogs.sign_in.title': 'Sign in',
@@ -144,7 +136,6 @@ export default {
 
     'dialogs.forgot_password.title': 'Forgot your password?',
     'dialogs.forgot_password.submit': 'Restore password',
-    'dialogs.forgot_password.info':
-        'Enter your email and we will send you an email with instructions for resetting your password:',
+    'dialogs.forgot_password.info': 'Enter your email and we will send you an email with instructions for resetting your password:',
     'dialogs.forgot_password.to_back': '{sign_in_link} or {sign_up_link}',
 } as const

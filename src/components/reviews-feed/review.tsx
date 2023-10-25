@@ -7,7 +7,7 @@ import { Rating } from '@/components/rating'
 import { FormattedDate } from '@/utils/helpers'
 import { getCurrentLocale } from '@/utils/i18n.server'
 
-import { ReviewAction } from './review-action'
+import { ReviewActions } from './review-actions'
 
 type ReviewProps = IReview
 
@@ -27,7 +27,7 @@ export const Review = ({ id, text, user, rating, photos, place, createdAt }: Rev
                         <div className="text-small text-black-40">{formattedDate}</div>
                     </div>
                 </div>
-                <ReviewAction reviewId={id} userId={user.id} />
+                <ReviewActions reviewId={id} userId={user.id} />
             </div>
 
             <div>{text}</div>

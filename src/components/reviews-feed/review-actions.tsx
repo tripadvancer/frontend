@@ -9,7 +9,7 @@ type ReviewActionProps = {
     userId: number
 }
 
-export const ReviewAction = ({ reviewId, userId }: ReviewActionProps) => {
+export const ReviewActions = ({ reviewId, userId }: ReviewActionProps) => {
     const t = useScopedI18n('review')
     const auth = useAuth()
     const isMyReview = auth.user?.id === userId

@@ -178,7 +178,9 @@ module.exports = {
                 },
                 red: {
                     100: '#f6511d',
+                    20: '#fddcd2',
                     10: '#fee5dd',
+                    active: '#c5441c',
                 },
                 green: {
                     100: '#98ce00',
