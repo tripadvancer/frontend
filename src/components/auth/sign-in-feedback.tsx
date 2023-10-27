@@ -2,11 +2,11 @@
 
 import { ButtonStroke } from '@/components/button-stroke'
 import { useDialog } from '@/providers/dialog-provider'
-import { ApiErrorReason } from '@/utils/enums'
+import { UserStatus } from '@/utils/enums'
 import { useScopedI18n } from '@/utils/i18n.client'
 
 type SignInFeedbackProps = {
-    reason: ApiErrorReason
+    reason: UserStatus
 }
 
 export const SignInFeedback = ({ reason }: SignInFeedbackProps) => {
@@ -18,8 +18,8 @@ export const SignInFeedback = ({ reason }: SignInFeedbackProps) => {
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
             <h1 className="text-h7-m sm:text-h7">{t('title')}</h1>
             <p className="text-center ">
-                {reason === ApiErrorReason.ACCOUNT_NOT_ACTIVATED && t('message.not_activated')}
-                {reason === ApiErrorReason.ACCOUNT_PENDING_DELETE && t('message.pending_delete')}
+                {reason === UserStatus.NOT_ACTIVATED && t('message.not_activated')}
+                {reason === UserStatus.PENDING_DELETE && t('message.pending_delete')}
             </p>
             <ButtonStroke type="button" className="w-full" onClick={dialog.close}>
                 {tCommon('cta.close')}

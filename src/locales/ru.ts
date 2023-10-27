@@ -74,6 +74,7 @@ export default {
     'forms.validation.email.invalid': 'Неверный формат email адреса',
     'forms.validation.location.invalid': "Неверный формат координат, укажите их в формате: \"широта, долгота\", например \"50.4501, 30.5234\"",
     'forms.validation.categories.max_count': 'Вы можете выбрать не более {max_count} категорий',
+    'forms.validation.wrong_credentials': 'Неверный email или пароль',
 
     'pages.not_found.title': 'Страница не найдена',
     'pages.not_found.text': 'Извините, но похоже, Вы забрели в неизведанные территории. Страница, которую Вы искали, либо была перемещена, удалена, либо никогда не существовала.',
@@ -95,6 +96,7 @@ export default {
     'pages.home.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
     'pages.home.map.cta': 'Исследовать карту',
 
+    'pages.auth.verify.loading': 'Проверяем ваш email...',
     'pages.auth.verify.token_expired': 'Ссылка для подтверждения email устарела. Пожалуйста, залогиньтесь снова, чтобы мы могли отправить Вам новую ссылку для подтверждения.',
     'pages.auth.verify.success': 'Ваш email был подтверждён. Добро пожаловать на борт, теперь Вы можете войти.',
 
@@ -104,6 +106,7 @@ export default {
     'pages.auth.confirm_removal.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для удаления учётной записи.',
     'pages.auth.confirm_removal.success': 'Процесс удаления Вашей учётной записи начат. Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
 
+    'pages.auth.reset_password.welcome': 'Введите новый пароль для Вашей учётной записи',
     'pages.auth.reset_password.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления пароля.',
     'pages.auth.reset_password.success': 'Ваш пароль успешно изменён.',
     'pages.auth.reset_password.submit': 'Изменить пароль',
@@ -137,15 +140,15 @@ export default {
     'dialog.feedback.forgot_password.title': 'Восстановление пароля',
     'dialog.feedback.forgot_password.message': 'Мы отправили Вам письмо с инструкциями по восстановлению пароля.',
 
-    'dialogs.sign_up.title': 'Регистрация',
-    'dialogs.sign_up.submit': 'Зарегистрироваться',
-    'dialogs.sign_up.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
-    'dialogs.sign_up.to_back': 'Уже зарегистрированы? {sign_in_link}',
+    'dialogs.signup.title': 'Регистрация',
+    'dialogs.signup.submit': 'Зарегистрироваться',
+    'dialogs.signup.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
+    'dialogs.signup.to_back': 'Уже зарегистрированы? {sign_in_link}',
 
-    'dialogs.sign_in.title': 'Вход',
-    'dialogs.sign_in.submit': 'Войти',
-    'dialogs.sign_in.link.forgot_password': 'Забыли пароль?',
-    'dialogs.sign_in.to_back': 'Нет учётной записи? {sign_up_link}',
+    'dialogs.signin.title': 'Вход',
+    'dialogs.signin.submit': 'Войти',
+    'dialogs.signin.link.forgot_password': 'Забыли пароль?',
+    'dialogs.signin.to_back': 'Нет учётной записи? {sign_up_link}',
 
     'dialogs.forgot_password.title': 'Забыли пароль?',
     'dialogs.forgot_password.submit': 'Восстановить пароль',

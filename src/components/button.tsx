@@ -7,6 +7,7 @@ type ButtonProps = {
     type?: 'button' | 'submit'
     variant?: 'blue' | 'orange' | 'red'
     className?: string
+    isLoading?: boolean
     isDisabled?: boolean
     onClick?: () => void
 }
@@ -16,6 +17,7 @@ export const Button = ({
     type = 'button',
     variant = 'blue',
     className,
+    isLoading,
     isDisabled,
     onClick,
 }: ButtonProps) => {
@@ -23,7 +25,7 @@ export const Button = ({
         <button
             type={type}
             className={classNames(
-                'hover-animated h-10 rounded-lg px-6 text-center font-medium text-white focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
+                'hover-animated flex h-10 items-center rounded-lg px-6 font-medium text-white focus:outline-none disabled:cursor-no-drop disabled:opacity-30 justify-center',
                 {
                     'bg-blue-100 hover:bg-blue-active disabled:hover:bg-blue-100': variant === 'blue',
                     'bg-orange-100 hover:bg-orange-active disabled:hover:bg-orange-100': variant === 'orange',
@@ -31,10 +33,17 @@ export const Button = ({
                 },
                 className,
             )}
-            disabled={isDisabled}
+            disabled={isDisabled || isLoading}
             onClick={onClick}
         >
-            {children}
+            {isLoading ? (
+                // prettier-ignore
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="animate-spin">
+                    <path d="M18.364 5.63604L19.7782 4.22182C21.7688 6.21243 23 8.96243 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 6.26196 5.3935 1.55007 11 1.04484V1H13V11L14.1213 9.87868C14.6642 10.4216 15 11.1716 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.6938 9.83481 9.58254 11 9.17071V7.10002C8.71776 7.56329 7 9.58104 7 12C7 14.7614 9.23858 17 12 17C14.7614 17 17 14.7614 17 12C17 10.6193 16.4404 9.36929 15.5355 8.46447L16.9497 7.05025C18.2165 8.317 19 10.067 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.47353 7.60771 5.55612 11 5.07089V3.05493C6.50005 3.55237 3 7.36745 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 9.51472 19.9926 7.26472 18.364 5.63604Z" />
+                </svg>
+            ) : (
+                children
+            )}
         </button>
     )
 }

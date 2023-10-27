@@ -8,8 +8,6 @@ import { Input } from '@/components/input'
 import { Textarea } from '@/components/textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { getErrorMessage } from '@/redux/helpers'
-import { profileAPI } from '@/redux/services/profile-api'
 import { useScopedI18n } from '@/utils/i18n.client'
 
 const userNameMinLength = validationConfig.user.name.minLength
@@ -23,13 +21,12 @@ export const UserSettingsForm = () => {
     const tForms = useScopedI18n('pages.user.settings.forms')
     const tValidation = useScopedI18n('forms.validation')
     const toast = useToast()
-    const profile = profileAPI.useGetProfileQuery()
 
     const formik = useFormik({
         initialValues: {
             avatar: '',
-            name: profile.data?.name ?? '',
-            info: profile.data?.info ?? '',
+            name: '',
+            info: '',
             password: '',
             current_password: '',
         },
@@ -43,11 +40,11 @@ export const UserSettingsForm = () => {
                 .max(userInfoMaxLength, tValidation('max_length', { max_length: userInfoMaxLength })),
         }),
         onSubmit: async values => {
-            try {
-                toast.error('Not implemented yet')
-            } catch (err) {
-                toast.error(getErrorMessage(err))
-            }
+            // try {
+            //     toast.error('Not implemented yet')
+            // } catch (err) {
+            //     toast.error(getErrorMessage(err))
+            // }
         },
     })
 

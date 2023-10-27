@@ -72,6 +72,7 @@ export default {
     'forms.validation.email.invalid': 'Please enter a valid email address',
     'forms.validation.location.invalid': "Сoordinates must be in format: \"lat, lng\", e.g. \"50.4501, 30.5234\"",
     'forms.validation.categories.max_count': 'You can select up to {max_count} categories',
+    'forms.validation.wrong_credentials': 'Wrong email or password',
 
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
@@ -93,6 +94,7 @@ export default {
     'pages.home.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
     'pages.home.map.cta': 'Explore the map',
 
+    'pages.auth.verify.loading': 'Verifying your email...',
     'pages.auth.verify.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
     'pages.auth.verify.success': 'Your email has been verified. Welcome aboard, you can now sign in.',
 
@@ -102,6 +104,7 @@ export default {
     'pages.auth.confirm_removal.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
     'pages.auth.confirm_removal.success': 'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
 
+    'pages.auth.reset_password.welcome': 'Enter your new password below',
     'pages.auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
     'pages.auth.reset_password.success': 'Your password has been reset.',
     'pages.auth.reset_password.submit': 'Reset password',
@@ -135,15 +138,15 @@ export default {
     'dialog.feedback.forgot_password.title': 'Reset your password',
     'dialog.feedback.forgot_password.message': 'We sent you an email with instructions on how to reset your password.',
 
-    'dialogs.sign_up.title': 'Sign up',
-    'dialogs.sign_up.submit': 'Sign up',
-    'dialogs.sign_up.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
-    'dialogs.sign_up.to_back': 'Have an account? {sign_in_link}',
+    'dialogs.signup.title': 'Sign up',
+    'dialogs.signup.submit': 'Sign up',
+    'dialogs.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
+    'dialogs.signup.to_back': 'Have an account? {sign_in_link}',
 
-    'dialogs.sign_in.title': 'Sign in',
-    'dialogs.sign_in.submit': 'Sign in',
-    'dialogs.sign_in.link.forgot_password': 'Forgot password?',
-    'dialogs.sign_in.to_back': 'Don’t have an account? {sign_up_link}',
+    'dialogs.signin.title': 'Sign in',
+    'dialogs.signin.submit': 'Sign in',
+    'dialogs.signin.link.forgot_password': 'Forgot password?',
+    'dialogs.signin.to_back': 'Don’t have an account? {sign_up_link}',
 
     'dialogs.forgot_password.title': 'Forgot your password?',
     'dialogs.forgot_password.submit': 'Restore password',

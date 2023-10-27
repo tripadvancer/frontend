@@ -3,10 +3,6 @@ import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 import userReducer from '@/redux/features/user-slice'
-import { apiSliceWithCredentials } from '@/redux/services/api-slice-with-credentials'
-import { authAPI } from '@/redux/services/auth-api'
-
-import { profileAPI } from './services/profile-api'
 
 const persistConfig = {
     key: 'root',
@@ -16,16 +12,13 @@ const persistConfig = {
 
 const reducers = combineReducers({
     user: userReducer,
-    [authAPI.reducerPath]: authAPI.reducer,
-    [profileAPI.reducerPath]: profileAPI.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
     reducer: persistedReducer,
-    middleware: getDefaultMiddleware =>
-        getDefaultMiddleware({ serializableCheck: false }).concat([apiSliceWithCredentials.middleware]),
+    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
     devTools: process.env.NODE_ENV !== 'production',
 })
 

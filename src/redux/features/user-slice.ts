@@ -1,13 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import type { AuthResponse, AuthUserResponse } from '@/types/auth'
 import type { ICoordinates } from '@/types/geo'
+import { IUserInfo } from '@/types/user'
 
 import type { RootState } from '@/redux/store'
 
 interface UserState {
-    token: string | null
-    user: AuthUserResponse | null
+    user: IUserInfo | null
     userLocation: ICoordinates | null
     isAuth: boolean
     isOnboarded: boolean
@@ -15,7 +14,6 @@ interface UserState {
 }
 
 export const initialState: UserState = {
-    token: null,
     user: null,
     userLocation: null,
     isAuth: false,
@@ -27,14 +25,12 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setCredentials(state, action: PayloadAction<AuthResponse>) {
-            state.user = action.payload.user
-            state.token = action.payload.token
+        setCredentials(state, action: PayloadAction<IUserInfo>) {
+            state.user = action.payload
             state.isAuth = true
         },
         unsetCredentials(state) {
             state.user = null
-            state.token = null
             state.isAuth = false
         },
         setUserLocation(state, action: PayloadAction<ICoordinates>) {
@@ -51,7 +47,6 @@ export const userSlice = createSlice({
 
 export const getCurrentUser = (state: RootState) => state.user.user
 export const getUserLocation = (state: RootState) => state.user.userLocation
-export const getToken = (state: RootState) => state.user.token
 export const getIsAuth = (state: RootState) => state.user.isAuth
 export const getIsOnboarded = (state: RootState) => state.user.isOnboarded
 export const getIsCookieAccepted = (state: RootState) => state.user.isCookieAccepted

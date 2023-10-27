@@ -1,18 +1,22 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useFormik } from 'formik'
+import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverification'
+import { emailPasswordSignUp } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
+
+import type { SignUpInputs } from '@/types/auth'
 
 import { Button } from '@/components/button'
 import { Input } from '@/components/input'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { getErrorMessage } from '@/redux/helpers'
-import { authAPI } from '@/redux/services/auth-api'
-import { ApiErrorReason } from '@/utils/enums'
+import { UserStatus } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n.client'
 
 import { SignInFeedback } from './sign-in-feedback'
@@ -29,19 +33,74 @@ export const SignUpForm = () => {
     const dialog = useDialog()
     const toast = useToast()
 
-    const [signUp, { isLoading }] = authAPI.useSignUpMutation()
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+
+    const sendEmail = async () => {
+        try {
+            await sendVerificationEmail()
+            dialog.open(<SignInFeedback reason={UserStatus.NOT_ACTIVATED} />)
+        } catch (err) {
+            toast.error(t('common.error'))
+        }
+    }
+
+    const handleSubmit = async (values: SignUpInputs) => {
+        try {
+            setIsLoading(true)
+
+            const formFields = [
+                { id: 'email', value: values.email },
+                { id: 'password', value: values.password },
+                { id: 'username', value: values.username },
+            ]
+
+            let response = await emailPasswordSignUp({ formFields })
+
+            switch (response.status) {
+                case 'FIELD_ERROR':
+                    const emailError = response.formFields.find(formField => formField.id === 'email')
+                    const passwordError = response.formFields.find(formField => formField.id === 'password')
+                    const usernameError = response.formFields.find(formField => formField.id === 'username')
+
+                    if (emailError) {
+                        formik.setErrors({ email: emailError.error })
+                    }
+
+                    if (passwordError) {
+                        formik.setErrors({ password: passwordError.error })
+                    }
+
+                    if (usernameError) {
+                        formik.setErrors({ username: usernameError.error })
+                    }
+                    break
+
+                default:
+                    await sendEmail()
+                    break
+            }
+        } catch (err: any) {
+            toast.error(t('common.error'))
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    const handleSignInClick = () => {
+        dialog.open(<SignInForm />)
+    }
 
     const formik = useFormik({
         initialValues: {
             email: '',
-            name: '',
+            username: '',
             password: '',
         },
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema: Yup.object().shape({
             email: Yup.string().required(t('forms.validation.required')).email(t('forms.validation.email.invalid')),
-            name: Yup.string()
+            username: Yup.string()
                 .required(t('forms.validation.required'))
                 .min(userNameMinLength, t('forms.validation.min_length', { min_length: userNameMinLength }))
                 .max(userNameMaxLength, t('forms.validation.max_length', { max_length: userNameMaxLength })),
@@ -50,20 +109,12 @@ export const SignUpForm = () => {
                 .min(passwordMinLength, t('forms.validation.min_length', { min_length: passwordMinLength }))
                 .max(passwordMaxLength, t('forms.validation.max_length', { max_length: passwordMaxLength })),
         }),
-        onSubmit: async values => {
-            try {
-                await signUp(values).unwrap()
-                dialog.close()
-                dialog.open(<SignInFeedback reason={ApiErrorReason.ACCOUNT_NOT_ACTIVATED} />)
-            } catch (err) {
-                toast.error(getErrorMessage(err))
-            }
-        },
+        onSubmit: handleSubmit,
     })
 
     return (
         <form className="w-full sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="mb-8 text-center text-h7-m sm:text-h7">{t('dialogs.sign_up.title')}</h1>
+            <h1 className="mb-8 text-center text-h7-m sm:text-h7">{t('dialogs.signup.title')}</h1>
             <Input
                 type="text"
                 name="email"
@@ -76,10 +127,10 @@ export const SignUpForm = () => {
             />
             <Input
                 type="text"
-                name="name"
-                value={formik.values.name}
+                name="username"
+                value={formik.values.username}
                 placeholder={t('forms.fields.username.placeholder')}
-                error={formik.errors.name}
+                error={formik.errors.username}
                 className="mb-2"
                 onChange={formik.handleChange}
             />
@@ -92,11 +143,11 @@ export const SignUpForm = () => {
                 className="mb-8"
                 onChange={formik.handleChange}
             />
-            <Button type="submit" className="mb-4 w-full" isDisabled={isLoading}>
-                {t('dialogs.sign_up.submit')}
+            <Button type="submit" className="mb-4 w-full" isLoading={isLoading}>
+                {t('dialogs.signup.submit')}
             </Button>
             <div className="mb-8 text-center text-small text-black-40">
-                {t('dialogs.sign_up.info', {
+                {t('dialogs.signup.info', {
                     terms_link: (
                         <span
                             className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
@@ -122,11 +173,11 @@ export const SignUpForm = () => {
                 })}
             </div>
             <div className="text-center ">
-                {t('dialogs.sign_up.to_back', {
+                {t('dialogs.signup.to_back', {
                     sign_in_link: (
                         <span
                             className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
-                            onClick={() => dialog.open(<SignInForm />)}
+                            onClick={handleSignInClick}
                         >
                             {t('common.sign_in_link')}
                         </span>

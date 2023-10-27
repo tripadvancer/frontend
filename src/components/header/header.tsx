@@ -1,7 +1,7 @@
 import { LanguageChanger } from './language-changer'
 import { Logo } from './logo'
 import { MapLink } from './map-link'
-import { UserLink } from './user-link'
+import { SignIn } from './signin'
 
 export const Header = async () => {
     return (
@@ -10,7 +10,7 @@ export const Header = async () => {
                 <MapLink />
                 <Logo />
                 <div className="flex gap-x-4 sm:gap-x-6">
-                    <UserLink />
+                    <SignIn />
                     <LanguageChanger />
                 </div>
             </div>

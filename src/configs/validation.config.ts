@@ -5,7 +5,7 @@ export const validationConfig = {
             maxLength: 40,
         },
         password: {
-            minLength: 4,
+            minLength: 8,
             maxLength: 32,
         },
         info: {

@@ -75,11 +75,6 @@ export enum ApiErrorStatusCode {
     NOT_FOUND = 404,
 }
 
-export enum ApiErrorReason {
-    ACCOUNT_NOT_ACTIVATED = 'ACCOUNT_NOT_ACTIVATED',
-    ACCOUNT_PENDING_DELETE = 'ACCOUNT_PENDING_DELETE',
-}
-
 export enum ApiResponseStatus {
     SUCCESS = 'SUCCESS',
     TOKEN_EXPIRED = 'TOKEN_EXPIRED',

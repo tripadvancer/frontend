@@ -1,14 +1,17 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useFormik } from 'formik'
+import { sendPasswordResetEmail } from 'supertokens-web-js/recipe/emailpassword'
 import * as Yup from 'yup'
+
+import type { ForgotPasswordInputs } from '@/types/auth'
 
 import { Button } from '@/components/button'
 import { Input } from '@/components/input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { getErrorMessage } from '@/redux/helpers'
-import { authAPI } from '@/redux/services/auth-api'
 import { useI18n } from '@/utils/i18n.client'
 
 import { ForgotPasswordFeedback } from './forgot-password-feedback'
@@ -20,7 +23,41 @@ export const ForgotPasswordForm = () => {
     const dialog = useDialog()
     const toast = useToast()
 
-    const [forgotPassword, { isLoading }] = authAPI.useForgotPasswordMutation()
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+
+    const handleSubmit = async (values: ForgotPasswordInputs) => {
+        try {
+            setIsLoading(true)
+
+            const formFields = [{ id: 'email', value: values.email }]
+            const response = await sendPasswordResetEmail({ formFields })
+
+            switch (response.status) {
+                case 'FIELD_ERROR':
+                    const emailError = response.formFields.find(formField => formField.id === 'email')
+                    if (emailError) {
+                        formik.setErrors({ email: emailError.error })
+                    }
+                    break
+
+                default:
+                    dialog.open(<ForgotPasswordFeedback />)
+                    break
+            }
+        } catch (err) {
+            toast.error(t('common.error'))
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    const handleSignInClcik = () => {
+        dialog.open(<SignInForm />)
+    }
+
+    const handleSignUpClick = () => {
+        dialog.open(<SignUpForm />)
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -29,15 +66,7 @@ export const ForgotPasswordForm = () => {
         validationSchema: Yup.object().shape({
             email: Yup.string().required(t('forms.validation.required')).email(t('forms.validation.email.invalid')),
         }),
-        onSubmit: async values => {
-            try {
-                await forgotPassword(values).unwrap()
-                dialog.close()
-                dialog.open(<ForgotPasswordFeedback />)
-            } catch (err) {
-                toast.error(getErrorMessage(err))
-            }
-        },
+        onSubmit: handleSubmit,
     })
 
     return (
@@ -54,7 +83,7 @@ export const ForgotPasswordForm = () => {
                 className="mb-8"
                 onChange={formik.handleChange}
             />
-            <Button type="submit" className="mb-8 w-full" isDisabled={isLoading}>
+            <Button type="submit" className="mb-8 w-full" isLoading={isLoading}>
                 {t('dialogs.forgot_password.submit')}
             </Button>
             <div className="text-center ">
@@ -62,7 +91,7 @@ export const ForgotPasswordForm = () => {
                     sign_in_link: (
                         <span
                             className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
-                            onClick={() => dialog.open(<SignInForm />)}
+                            onClick={handleSignInClcik}
                         >
                             {t('common.sign_in_link')}
                         </span>
@@ -70,7 +99,7 @@ export const ForgotPasswordForm = () => {
                     sign_up_link: (
                         <span
                             className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
-                            onClick={() => dialog.open(<SignUpForm />)}
+                            onClick={handleSignUpClick}
                         >
                             {t('common.sign_up_link')}
                         </span>
