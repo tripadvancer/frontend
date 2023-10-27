@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import type { IUserPreview } from '@/types/user'
+import type { IUserInfo } from '@/types/user'
 
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 
-type UserProps = IUserPreview & {
+type UserProps = IUserInfo & {
     date?: string
 }
 

@@ -1351,7 +1351,7 @@ export const сountriesDictionary: ICountryDict[] = [
             southWest: { lat: 14.392, lng: -61.229 },
         },
     },
-    { 
+    {
         code: 'MR',
         slug: 'mauritania',
         name: { en: 'Mauritania', ru: 'Мавритания' },
@@ -1506,15 +1506,16 @@ export const сountriesDictionary: ICountryDict[] = [
     },
     {
         code: 'NP',
-        slug: 'nepal',name: { en: 'Nepal', ru: 'Непал' },
+        slug: 'nepal',
+        name: { en: 'Nepal', ru: 'Непал' },
         boundingBox: {
             northEast: { lat: 30.446, lng: 88.199 },
             southWest: { lat: 26.347, lng: 80.058 },
         },
     },
-    { 
-        code: 'NR', 
-        slug: 'nauru', 
+    {
+        code: 'NR',
+        slug: 'nauru',
         name: { en: 'Nauru', ru: 'Науру' },
         boundingBox: {
             northEast: { lat: -0.502, lng: 166.958 },

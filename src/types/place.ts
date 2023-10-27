@@ -1,7 +1,7 @@
 import type { ICategory } from '@/types/category'
 import type { CoordinatesTuple, GeoJsonPoint } from '@/types/geo'
 import type { IPhoto } from '@/types/photo'
-import type { IUserPreview } from '@/types/user'
+import type { IUserInfo } from '@/types/user'
 
 export type IPlace = {
     id: number
@@ -11,7 +11,7 @@ export type IPlace = {
     photos: IPhoto[]
     categories: ICategory[]
     countryCode: string
-    author: IUserPreview
+    author: IUserInfo
     location: GeoJsonPoint
     avgRating: number
     reviewsCount: number

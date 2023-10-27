@@ -25,7 +25,7 @@ export const Button = ({
         <button
             type={type}
             className={classNames(
-                'hover-animated flex h-10 items-center rounded-lg px-6 font-medium text-white focus:outline-none disabled:cursor-no-drop disabled:opacity-30 justify-center',
+                'hover-animated flex h-10 items-center justify-center rounded-lg px-6 font-medium text-white focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                 {
                     'bg-blue-100 hover:bg-blue-active disabled:hover:bg-blue-100': variant === 'blue',
                     'bg-orange-100 hover:bg-orange-active disabled:hover:bg-orange-100': variant === 'orange',

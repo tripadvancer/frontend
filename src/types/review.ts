@@ -1,11 +1,11 @@
 import type { IPhoto } from '@/types/photo'
 import type { IPlace } from '@/types/place'
-import type { IUserPreview } from '@/types/user'
+import type { IUserInfo } from '@/types/user'
 
 export type IReview = {
     id: number
     place: Pick<IPlace, 'id' | 'title'>
-    user: IUserPreview
+    user: IUserInfo
     text: string
     rating: number
     photos: IPhoto[]
