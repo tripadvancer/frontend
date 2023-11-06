@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import { UserPlacesFeed } from '@/components/user-places-feed/user-places-feed'
 import { getPlacesByUserId } from '@/services/places'
 

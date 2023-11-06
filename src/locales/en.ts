@@ -11,6 +11,11 @@ export default {
     'common.cta.try_again': 'Try again',
     'common.cta.confirm': 'Confirm',
     'common.cta.cancel': 'Cancel',
+    'common.cta.send': 'Send',
+
+    'common.confirm.title': 'Sure?',
+    'common.confirm.yes': 'Yes',
+    'common.confirm.no': 'No',
 
     'common.sign_up_link': 'Sign up',
     'common.sign_in_link': 'Sign in',
@@ -41,6 +46,15 @@ export default {
     'categories.scenic_views': 'Scenic views',
     'categories.all': 'All categories',
 
+    'complaint.reasons.abuse': 'Misuse, mistreatment or intentional harm',
+    'complaint.reasons.copyright': 'Copyright or intellectual property rights violation',
+    'complaint.reasons.duplicate': 'Duplicate, no additional value',
+    'complaint.reasons.false': 'Incorrect or misleading information',
+    'complaint.reasons.fraud': 'Fraudulent, deceptive activities',
+    'complaint.reasons.inappropriate': 'Inappropriate or explicit content',
+    'complaint.reasons.spam': 'Irrelevant or unsolicited content',
+    'complaint.reasons.other': 'Other reason',
+
     'header.user_menu.places': 'Added places',
     'header.user_menu.reviews': 'Written reviews',
     'header.user_menu.settings': 'Settings',
@@ -50,6 +64,9 @@ export default {
     'review.menu.delete': 'Delete',
     'review.menu.complain': 'Complain',
     'review.remove.success': 'The review has been successfully removed.',
+    'review.complaint.form.title': 'Complain about a review',
+    'review.complaint.form.text.placeholder': 'Add your comment here',
+    'review.complaint.success': 'Your complaint has been successfully sent.',
 
     'user.achievement.level_1': 'Beginner',
     'user.achievement.statistic.added_places': 'Added places',

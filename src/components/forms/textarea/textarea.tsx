@@ -50,7 +50,7 @@ export const Textarea = ({
                 maxLength={maxLength}
                 onChange={onChange}
                 className={classNames(
-                    'hover-animated h-[120px] w-full resize-none rounded-lg border bg-white p-2.5 placeholder:text-black-40 focus:outline-none',
+                    'hover-animated h-[120px] w-full resize-none rounded-lg border bg-white p-2.5 align-top placeholder:text-black-40 focus:outline-none',
                     {
                         'border-red-100': error,
                         'border-black-15 focus:border-black-40': !error,

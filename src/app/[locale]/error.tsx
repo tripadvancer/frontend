@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '@/components/button'
+import { Button } from '@/components/forms/button/button'
 import { useScopedI18n } from '@/utils/i18n.client'
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {

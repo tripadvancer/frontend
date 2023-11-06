@@ -2,11 +2,11 @@
 
 import SuperTokensWebJs from 'supertokens-web-js'
 
-import { authFrontendConfig } from '@/configs/auth.frontend.config'
+import { authClientConfig } from '@/utils/auth.client'
 
 if (typeof window !== 'undefined') {
     // we only want to call this init function on the frontend, so we check typeof window !== 'undefined'
-    SuperTokensWebJs.init(authFrontendConfig())
+    SuperTokensWebJs.init(authClientConfig())
 }
 
 export const AuthProviders: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {

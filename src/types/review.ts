@@ -1,6 +1,7 @@
 import type { IPhoto } from '@/types/photo'
 import type { IPlace } from '@/types/place'
 import type { IUserInfo } from '@/types/user'
+import { ComplaintReasonsEnum } from '@/utils/enums'
 
 export type IReview = {
     id: number
@@ -20,4 +21,10 @@ export type CreateReviewInputs = Pick<IReview, 'text' | 'rating'> & {
 
 export type UpdateReviewInputs = Partial<CreateReviewInputs> & {
     reviewId: number
+}
+
+export type ReviewComplaintInputs = {
+    reviewId: number
+    reason: ComplaintReasonsEnum
+    text?: string
 }

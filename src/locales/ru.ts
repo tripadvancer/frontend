@@ -9,8 +9,13 @@ export default {
     'common.cta.close': 'Закрыть',
     'common.cta.home': 'На главную',
     'common.cta.try_again': 'Попробовать снова',
-    'common.cta.confirm': 'Да',
-    'common.cta.cancel': 'Нет',
+    'common.cta.confirm': 'Подтвердить',
+    'common.cta.cancel': 'Отмена',
+    'common.cta.send': 'Отправить',
+
+    'common.confirm.title': 'Уверены?',
+    'common.confirm.yes': 'Да',
+    'common.confirm.no': 'Нет',
 
     'common.sign_up_link': 'Зарегистрироваться',
     'common.sign_in_link': 'Войти',
@@ -41,6 +46,15 @@ export default {
     'categories.scenic_views': 'Красивые виды',
     'categories.all': 'Все категории',
 
+    'complaint.reasons.abuse': 'Неправомерное использование, плохое обращение или умышленный вред',
+    'complaint.reasons.copyright': 'Нарушение авторских или интеллектуальных прав',
+    'complaint.reasons.duplicate': 'Дубликат, не добавляющий ценности',
+    'complaint.reasons.false': 'Некорректная или вводящая в заблуждение информация',
+    'complaint.reasons.fraud': 'Мошенничество, обман',
+    'complaint.reasons.inappropriate': 'Неуместный или непристойный контент',
+    'complaint.reasons.spam': 'Незначимый или нежелательный контент',
+    'complaint.reasons.other': 'Другая причина',
+
     'header.user_menu.places': 'Мои места',
     'header.user_menu.reviews': 'Мои отзывы',
     'header.user_menu.settings': 'Настройки',
@@ -50,6 +64,9 @@ export default {
     'review.menu.delete': 'Удалить',
     'review.menu.complain': 'Пожаловаться',
     'review.remove.success': 'Отзыв был успешно удалён.',
+    'review.complaint.form.title': 'Пожаловаться на отзыв',
+    'review.complaint.form.text.placeholder': 'Опишите причину жалобы',
+    'review.complaint.success': 'Ваша жалоба была отправлена.',
 
     'countries.places#zero': 'Нет мест',
     'countries.places#one': '{count} место',

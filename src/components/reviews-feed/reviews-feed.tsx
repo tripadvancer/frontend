@@ -2,9 +2,8 @@ import type { PaginatedResponse } from '@/types/common'
 import type { IReview } from '@/types/review'
 
 import { Paginator } from '@/components/paginator'
+import { Review } from '@/components/review/review'
 import { getScopedI18n } from '@/utils/i18n.server'
-
-import { Review } from './review'
 
 type ReviewFeedProps = {
     reviews: PaginatedResponse<IReview>
@@ -22,7 +21,7 @@ export const ReviewFeed = async ({ reviews, currentPage }: ReviewFeedProps) => {
     return (
         <div>
             {reviews.items.map((review, index) => (
-                <Review key={index} {...review} />
+                <Review key={index} {...review} reviewsCount={reviews.items.length} />
             ))}
             {totalPages > 1 && <Paginator pages={totalPages} currentPage={currentPage} />}
         </div>

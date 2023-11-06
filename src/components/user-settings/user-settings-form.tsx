@@ -3,9 +3,11 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
-import { Textarea } from '@/components/textarea'
+import type { IUserProfile } from '@/types/user'
+
+import { Button } from '@/components/forms/button/button'
+import { Input } from '@/components/forms/input/input'
+import { Textarea } from '@/components/forms/textarea/textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { useScopedI18n } from '@/utils/i18n.client'
@@ -17,16 +19,18 @@ const passwordMaxLength = validationConfig.user.password.maxLength
 const userInfoMinLength = validationConfig.user.info.minLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 
-export const UserSettingsForm = () => {
+type UserSettingsFormProps = IUserProfile
+
+export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormProps) => {
     const tForms = useScopedI18n('pages.user.settings.forms')
     const tValidation = useScopedI18n('forms.validation')
     const toast = useToast()
 
     const formik = useFormik({
         initialValues: {
-            avatar: '',
-            name: '',
-            info: '',
+            avatar: avatar || '',
+            name: name || '',
+            info: info || '',
             password: '',
             current_password: '',
         },

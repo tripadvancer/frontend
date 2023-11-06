@@ -28,6 +28,8 @@ export const UserMenu = ({ children, userId }: UserMenuProps) => {
             dispatch(unsetCredentials())
         } catch (err) {
             toast.error(tCommon('error'))
+        } finally {
+            router.push('/')
         }
     }
 

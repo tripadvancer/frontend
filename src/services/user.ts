@@ -1,6 +1,4 @@
-import { notFound } from 'next/navigation'
-
-import type { IUser, IUserInfo } from '@/types/user'
+import type { IUserInfo, IUserProfile } from '@/types/user'
 
 export async function getUserInfo(): Promise<IUserInfo> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/user'
@@ -13,15 +11,16 @@ export async function getUserInfo(): Promise<IUserInfo> {
     return res.json()
 }
 
-export async function getUserById(userId: string): Promise<IUser> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + userId
-    const res = await fetch(url)
+export async function getUserProfile(accessToken: string): Promise<IUserProfile> {
+    'server only'
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user'
+    const res = await fetch(url, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+    })
 
     if (!res.ok) {
-        if (res.status === 404) {
-            notFound()
-        }
-
         throw new Error('Failed to fetch data')
     }
 

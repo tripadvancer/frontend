@@ -1,7 +1,7 @@
 import { Achievement } from '@/components/achievement'
 import { Avatar } from '@/components/avatar'
 import { PageSwitcher } from '@/components/page-switcher'
-import { getUserById } from '@/services/user'
+import { getUserById } from '@/services/users'
 import { getScopedI18n } from '@/utils/i18n.server'
 
 export default async function UserLayout({ params, children }: { params: { id: string }; children: React.ReactNode }) {
@@ -69,8 +69,9 @@ export default async function UserLayout({ params, children }: { params: { id: s
                             nav={[
                                 { href: `/users/${user.id}`, caption: t('places_link') },
                                 { href: `/users/${user.id}/reviews`, caption: t('reviews_link') },
-                                { href: `/users/${user.id}/settings`, caption: t('settings_link') },
+                                { href: `/users/${user.id}/settings`, caption: t('settings_link'), isAuthOnly: true },
                             ]}
+                            activeUserId={user.id}
                             className="mb-8"
                         />
                         {children}

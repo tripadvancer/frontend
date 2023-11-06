@@ -2,7 +2,7 @@ import type { ICategory } from '@/types/category'
 import type { ICoordinates } from '@/types/geo'
 
 import { i18nConfig } from '@/configs/i18n.config'
-import { CategoriesEnum, CategoryI18nKeys, ImageVariant } from '@/utils/enums'
+import { CategoriesEnum, CategoryI18nKeys, ComplaintReasonsEnum, ComplaintReasonsI18nKeys, ImageVariant } from '@/utils/enums'
 
 export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
     return `${url}/${imageVariant}`

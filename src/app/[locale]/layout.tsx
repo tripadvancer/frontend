@@ -15,10 +15,8 @@ const roboto = Roboto({
     weight: ['400', '500', '700'],
 })
 
-export const runtime = 'edge'
-
 export const metadata: Metadata = {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_PORTAL_URL as string),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string),
     alternates: {
         canonical: '/',
     },
@@ -26,8 +24,7 @@ export const metadata: Metadata = {
         template: '%s | Tripadvancer',
         default: 'Tripadvancer - Plan your trip and find interesting places',
     },
-    description:
-        'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+    description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     openGraph: {
         title: {
             template: '%s | Tripadvancer',

@@ -5,9 +5,3 @@ export type CreatePlaceComplaintInputs = {
     reason: ComplaintReasonsEnum
     text?: string
 }
-
-export type CreateReviewComplaintInputs = {
-    reviewId: number
-    reason: ComplaintReasonsEnum
-    text?: string
-}

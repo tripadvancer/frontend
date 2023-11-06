@@ -17,9 +17,7 @@ export type IUserStatistics = {
 }
 
 export type IUserInfo = Pick<IUser, 'id' | 'name' | 'avatar'>
-
-export type IUserProfile = Pick<IUser, 'id' | 'name' | 'info' | 'avatar' | 'cover'>
-
+export type IUserProfile = Pick<IUser, 'id' | 'name' | 'info' | 'avatar'>
 export type UpdateUserProfileInputs = Partial<Pick<IUser, 'name' | 'info'>>
 
 export type UpdateUserPasswordInputs = {

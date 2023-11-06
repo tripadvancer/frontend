@@ -11,8 +11,8 @@ import { useRouter } from 'next/navigation'
 
 import type { SignUpInputs } from '@/types/auth'
 
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
+import { Button } from '@/components/forms/button/button'
+import { Input } from '@/components/forms/input/input'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'

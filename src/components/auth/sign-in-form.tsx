@@ -10,8 +10,8 @@ import * as Yup from 'yup'
 
 import type { SignInInputs } from '@/types/auth'
 
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
+import { Button } from '@/components/forms/button/button'
+import { Input } from '@/components/forms/input/input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { setCredentials } from '@/redux/features/user-slice'

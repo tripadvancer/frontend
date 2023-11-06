@@ -1,7 +1,7 @@
-import { LanguageChanger } from './language-changer'
-import { Logo } from './logo'
-import { MapLink } from './map-link'
-import { SignIn } from './signin'
+import { LanguageChanger } from './components/language-changer'
+import { Logo } from './components/logo'
+import { MapLink } from './components/map-link'
+import { SignIn } from './components/signin'
 
 export const Header = async () => {
     return (

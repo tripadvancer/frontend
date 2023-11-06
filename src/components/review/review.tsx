@@ -7,11 +7,13 @@ import { Rating } from '@/components/rating'
 import { FormattedDate } from '@/utils/helpers'
 import { getCurrentLocale } from '@/utils/i18n.server'
 
-import { ReviewActions } from './review-actions'
+import { ReviewActions } from './components/review-actions'
 
-type ReviewProps = IReview
+type ReviewProps = IReview & {
+    reviewsCount: number
+}
 
-export const Review = ({ id, text, user, rating, photos, place, createdAt }: ReviewProps) => {
+export const Review = ({ id, text, user, rating, photos, place, createdAt, reviewsCount }: ReviewProps) => {
     const locale = getCurrentLocale()
     const formattedDate = FormattedDate(createdAt, locale)
 
@@ -27,7 +29,7 @@ export const Review = ({ id, text, user, rating, photos, place, createdAt }: Rev
                         <div className="text-small text-black-40">{formattedDate}</div>
                     </div>
                 </div>
-                <ReviewActions reviewId={id} userId={user.id} />
+                <ReviewActions reviewId={id} userId={user.id} reviewsCount={reviewsCount} />
             </div>
 
             <div>{text}</div>
