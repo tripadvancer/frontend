@@ -16,9 +16,9 @@ export type IPlace = {
     avgRating: number | null
     reviewsCount: number
     createdAt: Date
-    isFavorite?: boolean
-    isVisited?: boolean
-    isReviewed?: boolean
+    isFavorite: boolean
+    isVisited: boolean
+    isReviewed: boolean
 }
 
 export type IPlacePreview = Pick<

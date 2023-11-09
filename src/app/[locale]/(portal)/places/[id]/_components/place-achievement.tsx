@@ -1,12 +1,47 @@
 'use client'
 
+import Session from 'supertokens-web-js/recipe/session'
+
+import { useRouter } from 'next/navigation'
+
 import type { IPlace } from '@/utils/types/place'
 
 import { Achievement } from '@/components/achievement'
+import { SignIn } from '@/components/auth/sign-in'
+import { Switcher } from '@/components/forms/switcher/switcher'
+import { useDialog } from '@/providers/dialog-provider'
+import { useToast } from '@/providers/toast-provider'
+import { addPlaceToVisited, removePlaceFromVisited } from '@/services/visited'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 type PlaceAchivementProps = IPlace
 
-export const PlaceAchivement = ({ title }: PlaceAchivementProps) => {
+export const PlaceAchivement = ({ id, title, isVisited }: PlaceAchivementProps) => {
+    const t = useI18n()
+    const router = useRouter()
+    const dialog = useDialog()
+    const toast = useToast()
+
+    const toggleVisited = async () => {
+        const doesSessionExist = await Session.doesSessionExist()
+
+        if (!doesSessionExist) {
+            dialog.open(<SignIn />)
+            return
+        }
+
+        try {
+            if (isVisited) {
+                await removePlaceFromVisited(id)
+            } else {
+                await addPlaceToVisited(id)
+            }
+            router.refresh()
+        } catch {
+            toast.error(t('common.error'))
+        }
+    }
+
     return (
         <Achievement
             icon={
@@ -19,7 +54,13 @@ export const PlaceAchivement = ({ title }: PlaceAchivementProps) => {
             }
             title={title}
         >
-            I was here
+            <div className="flex justify-between gap-x-1">
+                <div className="whitespace-nowrap">{t('place.i_was_here')}</div>
+                <div className="overflow-hidden">
+                    ...........................................................................................................................................................................................................
+                </div>
+                <Switcher checked={isVisited} onChange={toggleVisited} />
+            </div>
         </Achievement>
     )
 }

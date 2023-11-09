@@ -31,5 +31,5 @@ export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {
             })
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-    return <GlobalLoading />
+    return fallback ?? <GlobalLoading />
 }

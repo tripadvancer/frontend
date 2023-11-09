@@ -1,6 +1,9 @@
+import { LngLatBounds } from 'react-map-gl'
+
 import { notFound } from 'next/navigation'
 
 import type { PaginatedResponse } from '@/utils/types/common'
+import { GeoJsonCollection } from '@/utils/types/geo'
 import type { IPlace, IPlaceNearby, IPlacePreview } from '@/utils/types/place'
 
 export async function getPlacesByCountryCode(
@@ -10,6 +13,35 @@ export async function getPlacesByCountryCode(
     const url =
         process.env.NEXT_PUBLIC_API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
     const res = await fetch(url)
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+
+    return res.json()
+}
+
+export async function getPlaceByBounds({
+    mapBounds,
+    selectedCategories,
+}: {
+    mapBounds: LngLatBounds | undefined
+    selectedCategories: number[]
+}): Promise<GeoJsonCollection<IPlacePreview>> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/places'
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            categories_ids: selectedCategories,
+            ne_lat: mapBounds?.getNorthEast().lat,
+            ne_lng: mapBounds?.getNorthEast().lng,
+            sw_lat: mapBounds?.getSouthWest().lat,
+            sw_lng: mapBounds?.getSouthWest().lng,
+        }),
+    })
 
     if (!res.ok) {
         throw new Error('Failed to fetch data')

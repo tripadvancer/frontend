@@ -20,7 +20,7 @@ import 'yet-another-react-lightbox/styles.css'
 
 type PhotosProps = IPlace
 
-export const Photos = ({ title, description, photos, cover }: PhotosProps) => {
+export const Photos = ({ title, author, photos, cover }: PhotosProps) => {
     const t = useI18n()
     const photosWithCover: IPhoto[] = cover ? [{ id: 0, url: cover }, ...photos] : photos
 
@@ -55,7 +55,7 @@ export const Photos = ({ title, description, photos, cover }: PhotosProps) => {
                     index={indexSlide}
                     slides={photosWithCover.map(photo => ({
                         title,
-                        description,
+                        description: author.name,
                         src: makeImageUrl(photo.url, ImageVariant.PUBLIC),
                     }))}
                 />

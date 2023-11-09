@@ -103,6 +103,9 @@ export default {
     'countries.places#one': '{count} place',
     'countries.places#other': '{count} places',
     
+    'place.i_was_here': 'I was here',
+    'place.navigation': 'Navigation',
+
     'place.user_actions.edit': 'Edit place',
     'place.user_actions.delete': 'Delete place',
     'place.user_actions.complain': 'Complain about place',

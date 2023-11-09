@@ -50,7 +50,9 @@ export const Button = ({
                     </svg>
                 </span>
             )}
-            <span className={classNames({ 'opacity-0': isLoading })}>{children}</span>
+            <span className={classNames('flex items-center justify-center gap-x-2', { 'opacity-0': isLoading })}>
+                {children}
+            </span>
         </button>
     )
 }

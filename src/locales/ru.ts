@@ -105,6 +105,9 @@ export default {
     'countries.places#many': '{count} мест',
     'countries.places#other': '{count} мест',
 
+    'place_achievement.i_was_here': 'Я был здесь',
+    'place.navigation': 'Маршрут',
+
     'place.user_actions.edit': 'Редактировать место',
     'place.user_actions.delete': 'Удалить место',
     'place.user_actions.complain': 'Пожаловаться на место',

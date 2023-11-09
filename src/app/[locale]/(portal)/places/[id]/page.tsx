@@ -3,6 +3,7 @@ import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 import { About } from './_components/about'
+import { Actions } from './_components/actions'
 import { Author } from './_components/author'
 import { Header } from './_components/header/header'
 import { Photos } from './_components/photos'
@@ -37,6 +38,7 @@ export default async function Place({
                         <div className="flex w-full flex-col gap-y-8 lg:w-64">
                             <PlaceAchivement {...place} />
                             <PlaceRating {...place} />
+                            <Actions {...place} />
                             <Author {...place} locale={params.locale} />
                             <UserActions {...place} />
                             <PlacesNearby {...place} />

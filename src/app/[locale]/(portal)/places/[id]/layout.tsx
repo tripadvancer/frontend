@@ -1,8 +1,15 @@
 import type { Metadata } from 'next/types'
 
+import { getCountryByCode } from '@/services/countries'
+import { getPlaceById } from '@/services/places'
+
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+    const place = await getPlaceById(params.id)
+    const country = getCountryByCode(place.countryCode)
+    const countryName = country?.name['en'] ?? ''
+
     return {
-        title: 'asasas',
+        title: `${place.title} | ${countryName}`,
     }
 }
 

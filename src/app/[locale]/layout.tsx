@@ -10,6 +10,8 @@ import { SuperTokensProvider } from '@/utils/supertokens/supertokens.provider'
 
 import '../globals.css'
 
+import 'mapbox-gl/dist/mapbox-gl.css'
+
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],
     weight: ['400', '500', '700'],

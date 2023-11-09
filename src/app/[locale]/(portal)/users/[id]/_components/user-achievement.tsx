@@ -3,9 +3,9 @@ import { IUserStatistics } from '@/utils/types/user'
 import { Achievement } from '@/components/achievement'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-type AchivementProps = IUserStatistics
+type UserAchievementProps = IUserStatistics
 
-export const Achivement = async ({ places, placePhotos, placeReviews, visitedPlaces }: AchivementProps) => {
+export const UserAchievement = async ({ places, placePhotos, placeReviews, visitedPlaces }: UserAchievementProps) => {
     const t = await getI18n()
 
     return (

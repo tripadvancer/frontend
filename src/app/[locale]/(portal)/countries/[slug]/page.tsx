@@ -2,7 +2,6 @@ import { Suspense } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
-import type { Metadata } from 'next/types'
 
 import { getCategories } from '@/services/categories'
 import { getCountryBySlug } from '@/services/countries'
@@ -13,34 +12,6 @@ import { getI18n, getScopedI18n } from '@/utils/i18n/i18n.server'
 import { Categories } from './_components/categories'
 import { PlacesFeed } from './_components/places-feed'
 import { PlacesFeedSkeleton } from './_components/places-feed-skeleton'
-
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const country = getCountryBySlug(params.slug)
-    const countryName = country?.name['en'] ?? ''
-
-    return {
-        title: countryName,
-        description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
-        openGraph: {
-            title: countryName,
-            description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
-            images: [
-                {
-                    url: `https://source.unsplash.com/1920x1280/?${countryName}`,
-                    width: 1920,
-                    height: 1280,
-                    type: 'image/jpeg',
-                    alt: countryName,
-                },
-            ],
-        },
-        twitter: {
-            title: countryName,
-            description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
-            images: `https://source.unsplash.com/1920x1280/?${countryName}`,
-        },
-    }
-}
 
 export default async function Country({
     params,
