@@ -66,7 +66,7 @@ export default {
     'review.remove.success': 'Отзыв был успешно удалён.',
     'review.complaint.form.title': 'Пожаловаться на отзыв',
     'review.complaint.form.text.placeholder': 'Опишите причину жалобы',
-    'review.complaint.success': 'Ваша жалоба была отправлена.',
+    'review.complaint.form.success': 'Ваша жалоба была отправлена.',
 
     'countries.places#zero': 'Нет мест',
     'countries.places#one': '{count} место',
@@ -158,6 +158,7 @@ export default {
     'pages.user.settings.forms.current_password.placeholder': 'Введите Ваш текущий пароль',
     'pages.user.settings.forms.password.placeholder': 'Введите новый пароль',
     'pages.user.settings.forms.submit': 'Сохранить',
+    'pages.user.settings.forms.success': 'Ваш профиль был успешно обновлён.',
     'pages.user.settings.gdpr.title': 'Ваша учётная запись',
     'pages.user.settings.gdpr.get_copy_data': 'Получить копию Ваших данных',
     'pages.user.settings.gdpr.get_copy_data.confirm.title': 'Отправить персональные данные',

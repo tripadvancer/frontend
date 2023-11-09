@@ -13,10 +13,22 @@ type InputProps = {
     autoFocus?: boolean
     error?: string
     className?: string
+    isDisabled?: boolean
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Input = ({ id, type, name, value, placeholder, autoFocus, error, className, onChange }: InputProps) => {
+export const Input = ({
+    id,
+    type,
+    name,
+    value,
+    placeholder,
+    autoFocus,
+    error,
+    className,
+    isDisabled,
+    onChange,
+}: InputProps) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
 
     return (
@@ -29,9 +41,10 @@ export const Input = ({ id, type, name, value, placeholder, autoFocus, error, cl
                     value={value}
                     placeholder={placeholder}
                     autoFocus={autoFocus}
+                    disabled={isDisabled}
                     onChange={onChange}
                     className={classNames(
-                        'hover-animated h-10 w-full rounded-lg border bg-white pl-4 pr-4 placeholder:text-black-40 focus:outline-none',
+                        'hover-animated h-10 w-full rounded-lg border bg-white pl-4 pr-4 placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                         {
                             'border-red-100': error,
                             'border-black-15 focus:border-black-40': !error,

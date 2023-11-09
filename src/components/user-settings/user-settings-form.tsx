@@ -1,16 +1,21 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import type { IUserProfile } from '@/utils/types/user'
+import { useRouter } from 'next/navigation'
+
+import type { IUserInfo } from '@/utils/types/user'
 
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
 import { Textarea } from '@/components/forms/textarea/textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { useScopedI18n } from '@/utils/i18n/i18n.client'
+import { updateUserInfo } from '@/services/user'
+import { useI18n, useScopedI18n } from '@/utils/i18n/i18n.client'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
@@ -19,12 +24,16 @@ const passwordMaxLength = validationConfig.user.password.maxLength
 const userInfoMinLength = validationConfig.user.info.minLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 
-type UserSettingsFormProps = IUserProfile
+type UserSettingsFormProps = IUserInfo
 
 export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormProps) => {
+    const t = useI18n()
     const tForms = useScopedI18n('pages.user.settings.forms')
     const tValidation = useScopedI18n('forms.validation')
+    const router = useRouter()
     const toast = useToast()
+
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const formik = useFormik({
         initialValues: {
@@ -44,11 +53,20 @@ export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormPro
                 .max(userInfoMaxLength, tValidation('max_length', { max_length: userInfoMaxLength })),
         }),
         onSubmit: async values => {
-            // try {
-            //     toast.error('Not implemented yet')
-            // } catch (err) {
-            //     toast.error(getErrorMessage(err))
-            // }
+            try {
+                setIsLoading(true)
+                await updateUserInfo({
+                    name: values.name,
+                    // If info is empty, don't send it to the server
+                    ...(values.info && { info: values.info }),
+                })
+                router.refresh()
+                toast.success(t('pages.user.settings.forms.success'))
+            } catch (err: any) {
+                toast.error(err.message)
+            } finally {
+                setIsLoading(false)
+            }
         },
     })
 
@@ -66,6 +84,7 @@ export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormPro
                         value={formik.values.avatar}
                         placeholder={tForms('upload_avatar.placeholder')}
                         error={formik.errors.avatar}
+                        isDisabled={isLoading}
                         onChange={formik.handleChange}
                     />
                 </div>
@@ -81,6 +100,7 @@ export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormPro
                         value={formik.values.name}
                         placeholder={tForms('username.placeholder')}
                         error={formik.errors.name}
+                        isDisabled={isLoading}
                         onChange={formik.handleChange}
                     />
                 </div>
@@ -96,6 +116,7 @@ export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormPro
                         placeholder={tForms('info.placeholder')}
                         maxLength={userInfoMaxLength}
                         error={formik.errors.info}
+                        isDisabled={isLoading}
                         onChange={formik.handleChange}
                     />
                 </div>
@@ -112,6 +133,7 @@ export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormPro
                     value={formik.values.current_password}
                     placeholder={tForms('current_password.placeholder')}
                     error={formik.errors.current_password}
+                    isDisabled={isLoading}
                     onChange={formik.handleChange}
                 />
                 <Input
@@ -120,11 +142,12 @@ export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormPro
                     value={formik.values.password}
                     placeholder={tForms('password.placeholder')}
                     error={formik.errors.password}
+                    isDisabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>
 
-            <Button className="w-full" type="submit">
+            <Button className="w-full" type="submit" isLoading={isLoading}>
                 {tForms('submit')}
             </Button>
         </form>

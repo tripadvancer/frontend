@@ -13,6 +13,7 @@ type InputProps = {
     maxLength?: number
     error?: string
     className?: string
+    isDisabled?: boolean
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
@@ -25,6 +26,7 @@ export const Textarea = ({
     maxLength,
     error,
     className,
+    isDisabled,
     onChange,
 }: InputProps) => {
     const [characterCount, setCharacterCount] = useState<number>(0)
@@ -48,9 +50,10 @@ export const Textarea = ({
                 placeholder={placeholder}
                 autoFocus={autoFocus}
                 maxLength={maxLength}
+                disabled={isDisabled}
                 onChange={onChange}
                 className={classNames(
-                    'hover-animated h-[120px] w-full resize-none rounded-lg border bg-white p-2.5 align-top placeholder:text-black-40 focus:outline-none',
+                    'hover-animated h-[120px] w-full resize-none rounded-lg border bg-white p-2.5 align-top placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                     {
                         'border-red-100': error,
                         'border-black-15 focus:border-black-40': !error,

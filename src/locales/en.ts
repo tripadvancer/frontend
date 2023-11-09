@@ -66,7 +66,7 @@ export default {
     'review.remove.success': 'The review has been successfully removed.',
     'review.complaint.form.title': 'Complain about a review',
     'review.complaint.form.text.placeholder': 'Add your comment here',
-    'review.complaint.success': 'Your complaint has been successfully sent.',
+    'review.complaint.form.success': 'Your complaint has been successfully sent.',
 
     'user.achievement.level_1': 'Beginner',
     'user.achievement.statistic.added_places': 'Added places',
@@ -154,6 +154,7 @@ export default {
     'pages.user.settings.forms.current_password.placeholder': 'Enter your current password',
     'pages.user.settings.forms.password.placeholder': 'Enter your new password',
     'pages.user.settings.forms.submit': 'Save changes',
+    'pages.user.settings.forms.success': 'Your profile has been successfully updated.',
     'pages.user.settings.gdpr.title': 'Your account',
     'pages.user.settings.gdpr.get_copy_data': 'Get a copy of your data',
     'pages.user.settings.gdpr.get_copy_data.confirm.title': 'Send personal data',

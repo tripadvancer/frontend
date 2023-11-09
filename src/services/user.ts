@@ -1,6 +1,6 @@
-import type { IUserProfile } from '@/utils/types/user'
+import type { IUserInfo, UpdateUserProfileInputs } from '@/utils/types/user'
 
-export async function getUserInfo(accessToken: string | undefined): Promise<IUserProfile> {
+export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/user'
     const res = await fetch(url, {
         headers: {
@@ -13,4 +13,19 @@ export async function getUserInfo(accessToken: string | undefined): Promise<IUse
     }
 
     return res.json()
+}
+
+export async function updateUserInfo({ name, info }: UpdateUserProfileInputs): Promise<void> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user'
+    const res = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, info }),
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
 }

@@ -9,6 +9,7 @@ import type { ReviewComplaintInputs } from '@/utils/types/review'
 
 import { ButtonStroke } from '@/components/button-stroke'
 import { Button } from '@/components/forms/button/button'
+import { Input } from '@/components/forms/input/input'
 import { Radio } from '@/components/radio'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
@@ -16,8 +17,6 @@ import { useToast } from '@/providers/toast-provider'
 import { reviewComplaint } from '@/services/reviews'
 import { ComplaintReasonsEnum, ComplaintReasonsI18nKeys } from '@/utils/enums'
 import { useI18n, useScopedI18n } from '@/utils/i18n/i18n.client'
-
-import { Input } from './forms/input/input'
 
 const textMaxLength = validationConfig.complain.maxLength
 
@@ -39,7 +38,7 @@ export const ReviewComplainForm = ({ reviewId }: ReviewComplainFormProps) => {
         try {
             setIsLoading(true)
             reviewComplaint(values)
-            toast.success(t('review.complaint.success'))
+            toast.success(t('review.complaint.form.success'))
             dialog.close()
         } catch (err) {
             toast.error(t('common.error'))
