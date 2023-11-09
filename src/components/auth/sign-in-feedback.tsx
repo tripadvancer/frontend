@@ -3,7 +3,7 @@
 import { ButtonStroke } from '@/components/button-stroke'
 import { useDialog } from '@/providers/dialog-provider'
 import { UserStatus } from '@/utils/enums'
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 type SignInFeedbackProps = {
     reason: UserStatus

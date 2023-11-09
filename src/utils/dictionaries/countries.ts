@@ -1,4 +1,4 @@
-import { ICountryDict } from '@/types/country'
+import { ICountryDict } from '@/utils/types/country'
 
 export const сountriesDictionary: ICountryDict[] = [
     {

@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 
-import type { IPlacePreview } from '@/types/place'
+import type { IPlacePreview } from '@/utils/types/place'
 
 import { ShowMore } from '@/components/show-more'
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 import { CountryPlace } from './country-place'
 

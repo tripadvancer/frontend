@@ -2,7 +2,7 @@
 
 import classNames from 'classnames'
 
-import type { CoordinatesTuple } from '@/types/geo'
+import type { CoordinatesTuple } from '@/utils/types/geo'
 
 import { useToast } from '@/providers/toast-provider'
 

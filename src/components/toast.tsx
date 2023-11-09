@@ -2,7 +2,7 @@
 
 import classNames from 'classnames'
 
-import { useTimeout } from '@/hooks/use-timeout'
+import { useTimeout } from '@/utils/hooks/use-timeout'
 
 export enum ToastType {
     success = 'success',

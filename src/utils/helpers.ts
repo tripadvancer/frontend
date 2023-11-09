@@ -1,8 +1,8 @@
-import type { ICategory } from '@/types/category'
-import type { ICoordinates } from '@/types/geo'
+import type { ICategory } from '@/utils/types/category'
+import type { ICoordinates } from '@/utils/types/geo'
 
-import { i18nConfig } from '@/configs/i18n.config'
-import { CategoriesEnum, CategoryI18nKeys, ComplaintReasonsEnum, ComplaintReasonsI18nKeys, ImageVariant } from '@/utils/enums'
+import { CategoriesEnum, CategoryI18nKeys, ImageVariant } from '@/utils/enums'
+import { i18nConfig } from '@/utils/i18n/i18n.config'
 
 export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
     return `${url}/${imageVariant}`

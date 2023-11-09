@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import type { ICountry } from '@/types/country'
+import type { ICountry } from '@/utils/types/country'
 
 import { getCountryByCode } from '@/services/countries'
-import { useCurrentLocale, useScopedI18n } from '@/utils/i18n.client'
+import { useCurrentLocale, useScopedI18n } from '@/utils/i18n/i18n.client'
 
 type CountryPreviewProps = ICountry
 

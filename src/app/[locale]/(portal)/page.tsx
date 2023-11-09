@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { CountriesFeed } from '@/components/countries-feed/countries-feed'
 import { getCountries } from '@/services/countries'
-import { getScopedI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 export default async function Home() {
     const t = await getScopedI18n('pages.home')

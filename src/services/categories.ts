@@ -1,4 +1,4 @@
-import type { ICategory } from '@/types/category'
+import type { ICategory } from '@/utils/types/category'
 
 export async function getCategories(): Promise<ICategory[]> {
     const url = process.env.API_URL + '/categories'

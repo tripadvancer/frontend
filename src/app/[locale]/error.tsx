@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Button } from '@/components/forms/button/button'
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
     const t = useScopedI18n('page.error')

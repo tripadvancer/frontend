@@ -1,4 +1,4 @@
-import { ReviewSkeleton } from "@/components/review/review-skeleton"
+import { ReviewSkeleton } from '@/components/review/review-skeleton'
 
 const REVIEWS_COUNT = 3
 

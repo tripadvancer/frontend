@@ -7,9 +7,9 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 
-import type { ICategory } from '@/types/category'
+import type { ICategory } from '@/utils/types/category'
 
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 type CategoryProps = {
     categories: ICategory[]

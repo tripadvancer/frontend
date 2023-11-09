@@ -1,18 +1,18 @@
 import SuperTokens from 'supertokens-node'
 import SessionNode from 'supertokens-node/recipe/session'
-import UserMetadata from 'supertokens-node/recipe/usermetadata'
+import UserMetadataNode from 'supertokens-node/recipe/usermetadata'
 import type { TypeInput } from 'supertokens-node/types'
 
-import { authConfig } from '@/configs/auth.config'
+import { supertokensConfig } from './supertokens.config'
 
-export let authServerConfig = (): TypeInput => {
+export let serverConfig = (): TypeInput => {
     return {
-        appInfo: authConfig,
+        appInfo: supertokensConfig,
         supertokens: {
             connectionURI: process.env.SUPERTOKENS_CONNECTION_URI as string,
             apiKey: process.env.SUPERTOKENS_API_KEY,
         },
-        recipeList: [UserMetadata.init(), SessionNode.init()],
+        recipeList: [UserMetadataNode.init(), SessionNode.init()],
         isInServerlessEnv: true,
     }
 }
@@ -20,7 +20,7 @@ export let authServerConfig = (): TypeInput => {
 let initialized = false
 export function ensureSuperTokensInit() {
     if (!initialized) {
-        SuperTokens.init(authServerConfig())
+        SuperTokens.init(serverConfig())
         initialized = true
     }
 }

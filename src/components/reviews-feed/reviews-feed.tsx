@@ -1,9 +1,9 @@
-import type { PaginatedResponse } from '@/types/common'
-import type { IReview } from '@/types/review'
+import type { PaginatedResponse } from '@/utils/types/common'
+import type { IReview } from '@/utils/types/review'
 
 import { Paginator } from '@/components/paginator'
 import { Review } from '@/components/review/review'
-import { getScopedI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 type ReviewFeedProps = {
     reviews: PaginatedResponse<IReview>

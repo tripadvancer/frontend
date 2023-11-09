@@ -2,7 +2,7 @@ import { createI18nMiddleware } from 'next-international/middleware'
 
 import { NextRequest } from 'next/server'
 
-import { i18nConfig } from '@/configs/i18n.config'
+import { i18nConfig } from './utils/i18n/i18n.config'
 
 const I18nMiddleware = createI18nMiddleware({
     ...i18nConfig,

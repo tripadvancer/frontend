@@ -1,10 +1,9 @@
-import type { PaginatedResponse } from '@/types/common'
-import type { IPlacePreview } from '@/types/place'
+import type { PaginatedResponse } from '@/utils/types/common'
+import type { IPlacePreview } from '@/utils/types/place'
 
 import { Paginator } from '@/components/paginator'
-import { getScopedI18n } from '@/utils/i18n.server'
-
-import { UserPlace } from './user-place'
+import { UserPlace } from '@/components/user-place/user-place'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 type UserPlacesFeedProps = {
     places: PaginatedResponse<IPlacePreview>

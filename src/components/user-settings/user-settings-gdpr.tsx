@@ -2,13 +2,13 @@
 
 import { Confirmation } from '@/components/confirmation'
 import { useDialog } from '@/providers/dialog-provider'
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
-type UserSettingGDPRActionsProps = {
+type UserSettingGDPRProps = {
     userId: number
 }
 
-export const UserSettingGDPRActions = ({ userId }: UserSettingGDPRActionsProps) => {
+export const UserSettingGDPR = ({ userId }: UserSettingGDPRProps) => {
     const t = useScopedI18n('pages.user.settings')
     const dialog = useDialog()
 

@@ -1,13 +1,13 @@
 import Link from 'next/link'
 
-import type { IReview } from '@/types/review'
+import type { IReview } from '@/utils/types/review'
 
 import { PhotoFeed } from '@/components/photo-feed'
 import { Rating } from '@/components/rating'
 import { FormattedDate } from '@/utils/helpers'
-import { getCurrentLocale } from '@/utils/i18n.server'
+import { getCurrentLocale } from '@/utils/i18n/i18n.server'
 
-import { ReviewActions } from './components/review-actions'
+import { ReviewActions } from './review-actions'
 
 type ReviewProps = IReview & {
     reviewsCount: number

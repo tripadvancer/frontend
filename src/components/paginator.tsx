@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 import Link from 'next/link'
 
-import { getScopedI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 type PaginatorProps = {
     pages: number

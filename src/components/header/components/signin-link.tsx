@@ -2,20 +2,11 @@
 
 import { SignInForm } from '@/components/auth/sign-in-form'
 import { useDialog } from '@/providers/dialog-provider'
-import { getCurrentUser } from '@/redux/features/user-slice'
-import { useAppSelector } from '@/redux/hooks'
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
-import { User } from './user'
-
-export const SignIn = () => {
+export const SignInLink = () => {
     const tCommon = useScopedI18n('common')
     const dialog = useDialog()
-    const user = useAppSelector(getCurrentUser)
-
-    if (user) {
-        return <User {...user} />
-    }
 
     return (
         <div

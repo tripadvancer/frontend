@@ -3,14 +3,14 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import type { IUserProfile } from '@/types/user'
+import type { IUserProfile } from '@/utils/types/user'
 
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
 import { Textarea } from '@/components/forms/textarea/textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength

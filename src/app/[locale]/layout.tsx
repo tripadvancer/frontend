@@ -2,11 +2,11 @@ import { Roboto } from 'next/font/google'
 import type { Metadata } from 'next/types'
 
 import { TailwindIndicator } from '@/components/tailwind-indicator'
-import { AuthProviders } from '@/providers/auth-provider'
 import { DialogProvider } from '@/providers/dialog-provider'
-import { I18nProvider } from '@/providers/i18n-provider'
 import { ToastProvider } from '@/providers/toast-provider'
 import { ReduxProvider } from '@/redux/provider'
+import { I18nProvider } from '@/utils/i18n/i18n.provider'
+import { SuperTokensProvider } from '@/utils/supertokens/supertokens.provider'
 
 import '../globals.css'
 
@@ -24,7 +24,8 @@ export const metadata: Metadata = {
         template: '%s | Tripadvancer',
         default: 'Tripadvancer - Plan your trip and find interesting places',
     },
-    description: 'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+    description:
+        'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     openGraph: {
         title: {
             template: '%s | Tripadvancer',
@@ -68,11 +69,11 @@ export default async function RootLayout({
             <body className={roboto.className}>
                 <ReduxProvider>
                     <I18nProvider locale={locale}>
-                        <AuthProviders>
+                        <SuperTokensProvider>
                             <ToastProvider>
                                 <DialogProvider>{children}</DialogProvider>
                             </ToastProvider>
-                        </AuthProviders>
+                        </SuperTokensProvider>
                     </I18nProvider>
                 </ReduxProvider>
                 <TailwindIndicator />

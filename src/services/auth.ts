@@ -1,4 +1,4 @@
-import type { StatusResponse, TokenInputs } from '@/types/auth'
+import type { StatusResponse, TokenInputs } from '@/utils/types/auth'
 
 export async function restoreAccount(token: TokenInputs): Promise<StatusResponse> {
     const url = process.env.API_URL + '/auth/restore'

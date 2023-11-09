@@ -1,7 +1,7 @@
 import { LinkButton } from '@/components/link-button'
 import { confirmRemoval } from '@/services/auth'
 import { ApiResponseStatus } from '@/utils/enums'
-import { getScopedI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 export default async function ConfirmAccountRemoval({ params }: { params: { token: string } }) {
     const t = await getScopedI18n('pages.auth.confirm_removal')

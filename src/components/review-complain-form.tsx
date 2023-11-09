@@ -5,17 +5,17 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import type { ReviewComplaintInputs } from '@/types/review'
+import type { ReviewComplaintInputs } from '@/utils/types/review'
 
-import { Button } from '@/components/forms/button/button'
 import { ButtonStroke } from '@/components/button-stroke'
+import { Button } from '@/components/forms/button/button'
 import { Radio } from '@/components/radio'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { reviewComplaint } from '@/services/reviews'
 import { ComplaintReasonsEnum, ComplaintReasonsI18nKeys } from '@/utils/enums'
-import { useI18n, useScopedI18n } from '@/utils/i18n.client'
+import { useI18n, useScopedI18n } from '@/utils/i18n/i18n.client'
 
 import { Input } from './forms/input/input'
 

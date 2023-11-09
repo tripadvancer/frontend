@@ -5,10 +5,10 @@ import { useRef, useState } from 'react'
 import classNames from 'classnames'
 
 import { ActionControl } from '@/components/action-control'
-import { useKeypress } from '@/hooks/use-keypress'
-import { useOnClickOutside } from '@/hooks/use-on-click-outside'
 import { Keys } from '@/utils/enums'
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useKeypress } from '@/utils/hooks/use-keypress'
+import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 export type DropdownItemProps = {
     caption: string

@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import type { ICoordinates } from '@/types/geo'
-import { IUserInfo } from '@/types/user'
+import type { ICoordinates } from '@/utils/types/geo'
+import { IUserInfo } from '@/utils/types/user'
 
 import type { RootState } from '@/redux/store'
 

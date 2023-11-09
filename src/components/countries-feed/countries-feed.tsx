@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import type { ICountry } from '@/types/country'
+import type { ICountry } from '@/utils/types/country'
 
 import { ShowMore } from '@/components/show-more'
 

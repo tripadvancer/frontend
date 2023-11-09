@@ -1,6 +1,7 @@
-import type { IPhoto } from '@/types/photo'
-import type { IPlace } from '@/types/place'
-import type { IUserInfo } from '@/types/user'
+import type { IPhoto } from '@/utils/types/photo'
+import type { IPlace } from '@/utils/types/place'
+import type { IUserInfo } from '@/utils/types/user'
+
 import { ComplaintReasonsEnum } from '@/utils/enums'
 
 export type IReview = {

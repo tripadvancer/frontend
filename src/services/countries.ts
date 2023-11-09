@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 
-import type { ICountry, ICountryDict } from '@/types/country'
+import type { ICountry, ICountryDict } from '@/utils/types/country'
 
-import { сountriesDictionary } from '@/dictionaries/countries'
+import { сountriesDictionary } from '@/utils/dictionaries/countries'
 
 export async function getCountries(): Promise<ICountry[]> {
     const url = process.env.API_URL + '/countries'

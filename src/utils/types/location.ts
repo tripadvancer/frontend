@@ -1,4 +1,4 @@
-import type { ICoordinates } from '@/types/geo'
+import type { ICoordinates } from '@/utils/types/geo'
 
 export type ILocation = {
     title: string

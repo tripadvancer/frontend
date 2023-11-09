@@ -1,8 +1,8 @@
 import { Achievement } from '@/components/achievement'
-import { Avatar } from '@/components/avatar'
+import { Avatar } from '@/components/avatar/avatar'
 import { PageSwitcher } from '@/components/page-switcher'
 import { getUserById } from '@/services/users'
-import { getScopedI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 export default async function UserLayout({ params, children }: { params: { id: string }; children: React.ReactNode }) {
     const t = await getScopedI18n('pages.user')

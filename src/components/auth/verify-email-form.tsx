@@ -6,7 +6,7 @@ import { verifyEmail } from 'supertokens-web-js/recipe/emailverification'
 
 import { LinkButton } from '@/components/link-button'
 import { useToast } from '@/providers/toast-provider'
-import { useI18n } from '@/utils/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const VerifyEmailForm = () => {
     const t = useI18n()

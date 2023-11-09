@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
-import type { PaginatedResponse } from '@/types/common'
-import type { IPlace, IPlaceNearby, IPlacePreview } from '@/types/place'
+import type { PaginatedResponse } from '@/utils/types/common'
+import type { IPlace, IPlaceNearby, IPlacePreview } from '@/utils/types/place'
 
 export async function getPlacesByCountryCode(
     countryCode: string,

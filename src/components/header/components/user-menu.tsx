@@ -6,9 +6,7 @@ import { useRouter } from 'next/navigation'
 
 import { Dropdown } from '@/components/dropdown'
 import { useToast } from '@/providers/toast-provider'
-import { unsetCredentials } from '@/redux/features/user-slice'
-import { useAppDispatch } from '@/redux/hooks'
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 type UserMenuProps = {
     children: React.ReactNode
@@ -20,16 +18,13 @@ export const UserMenu = ({ children, userId }: UserMenuProps) => {
     const tCommon = useScopedI18n('common')
     const router = useRouter()
     const toast = useToast()
-    const dispatch = useAppDispatch()
 
     const signOut = async () => {
         try {
             await Session.signOut()
-            dispatch(unsetCredentials())
+            router.refresh()
         } catch (err) {
             toast.error(tCommon('error'))
-        } finally {
-            router.push('/')
         }
     }
 

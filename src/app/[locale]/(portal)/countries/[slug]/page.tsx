@@ -8,7 +8,7 @@ import { getCategories } from '@/services/categories'
 import { getCountryBySlug } from '@/services/countries'
 import { getPlacesByCountryCode } from '@/services/places'
 import { localizeCategories, parseQueryString } from '@/utils/helpers'
-import { getScopedI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const country = getCountryBySlug(params.slug)

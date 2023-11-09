@@ -3,8 +3,8 @@
 import { ReactNode, createContext, useCallback, useContext, useEffect, useState } from 'react'
 
 import { Dialog } from '@/components/dialog'
-import { useKeypress } from '@/hooks/use-keypress'
 import { Keys } from '@/utils/enums'
+import { useKeypress } from '@/utils/hooks/use-keypress'
 
 interface DialogContextInterface {
     open(content: ReactNode): void

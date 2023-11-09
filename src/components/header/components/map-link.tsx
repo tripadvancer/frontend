@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { getScopedI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 export const MapLink = async () => {
     const tCommon = await getScopedI18n('common')

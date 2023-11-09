@@ -9,7 +9,7 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import type { SignUpInputs } from '@/types/auth'
+import type { SignUpInputs } from '@/utils/types/auth'
 
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
@@ -17,7 +17,7 @@ import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { UserStatus } from '@/utils/enums'
-import { useI18n } from '@/utils/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { SignInFeedback } from './sign-in-feedback'
 import { SignInForm } from './sign-in-form'

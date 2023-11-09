@@ -1,7 +1,7 @@
 'use client'
 
 import { Dropdown } from '@/components/dropdown'
-import { useChangeLocale, useCurrentLocale } from '@/utils/i18n.client'
+import { useChangeLocale, useCurrentLocale } from '@/utils/i18n/i18n.client'
 
 export const LanguageChanger = () => {
     const changeLocale = useChangeLocale()

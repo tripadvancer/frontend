@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import type { IPhoto } from '@/types/photo'
+import type { IPhoto } from '@/utils/types/photo'
 
 import { Achievement } from '@/components/achievement'
 import { CoordinatesToCopy } from '@/components/coordinates-to-copy'
@@ -15,7 +15,7 @@ import { getPlaceById, getPlacesNearby } from '@/services/places'
 import { getReviewsByPlaceId } from '@/services/reviews'
 import { ImageVariant } from '@/utils/enums'
 import { FormattedDate, localizeCategories, makeImageUrl } from '@/utils/helpers'
-import { getScopedI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 export default async function Place({
     params,

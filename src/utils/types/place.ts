@@ -1,7 +1,7 @@
-import type { ICategory } from '@/types/category'
-import type { CoordinatesTuple, GeoJsonPoint } from '@/types/geo'
-import type { IPhoto } from '@/types/photo'
-import type { IUserInfo } from '@/types/user'
+import type { ICategory } from '@/utils/types/category'
+import type { CoordinatesTuple, GeoJsonPoint } from '@/utils/types/geo'
+import type { IPhoto } from '@/utils/types/photo'
+import type { IUserInfo } from '@/utils/types/user'
 
 export type IPlace = {
     id: number

@@ -1,6 +1,6 @@
 'use client'
 
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 type ShowMoreProps = {
     onClick: () => void

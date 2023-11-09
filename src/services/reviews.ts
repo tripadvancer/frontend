@@ -1,5 +1,5 @@
-import type { PaginatedResponse } from '@/types/common'
-import type { IReview, ReviewComplaintInputs } from '@/types/review'
+import type { PaginatedResponse } from '@/utils/types/common'
+import type { IReview, ReviewComplaintInputs } from '@/utils/types/review'
 
 export async function getReviewsByPlaceId(placeId: string, page: string): Promise<PaginatedResponse<IReview>> {
     const url = process.env.API_URL + '/reviews?place_id=' + placeId + '&page=' + page
@@ -47,7 +47,7 @@ export async function reviewComplaint({ reviewId, reason, text }: ReviewComplain
         body: JSON.stringify({ reason, text }),
     })
 
-    if (!res.ok) {  
+    if (!res.ok) {
         if (res.status === 409) {
             console.log(res)
             throw new Error('You have already complained about this review')

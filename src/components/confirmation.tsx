@@ -1,9 +1,9 @@
 'use client'
 
-import { Button } from '@/components/forms/button/button'
 import { ButtonStroke } from '@/components/button-stroke'
+import { Button } from '@/components/forms/button/button'
 import { useDialog } from '@/providers/dialog-provider'
-import { useScopedI18n } from '@/utils/i18n.client'
+import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 type ConfirmationProps = {
     title: string

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import type { IPlacePreview } from '@/types/place'
+import type { IPlacePreview } from '@/utils/types/place'
 
 import { ImageNotFound } from '@/components/image-not-found'
 import { Rating } from '@/components/rating'

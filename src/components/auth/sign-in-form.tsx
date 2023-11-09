@@ -8,17 +8,16 @@ import Session from 'supertokens-web-js/recipe/session'
 import { emailPasswordSignIn } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 import * as Yup from 'yup'
 
-import type { SignInInputs } from '@/types/auth'
+import { useRouter } from 'next/navigation'
+
+import type { SignInInputs } from '@/utils/types/auth'
 
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { setCredentials } from '@/redux/features/user-slice'
-import { useAppDispatch } from '@/redux/hooks'
-import { getUserInfo } from '@/services/user'
 import { UserStatus } from '@/utils/enums'
-import { useI18n } from '@/utils/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPasswordForm } from './forgot-password-form'
 import { SignInFeedback } from './sign-in-feedback'
@@ -26,29 +25,21 @@ import { SignUpForm } from './sign-up-form'
 
 export const SignInForm = () => {
     const t = useI18n()
-    const dispatch = useAppDispatch()
+    const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    const handleSuccessfulSignIn = async () => {
-        try {
-            const userInfo = await getUserInfo()
-            dispatch(setCredentials(userInfo))
-            toast.success(t('common.signin.success', { name: userInfo.name }))
-            dialog.close()
-        } catch (err) {
-            toast.error(t('common.error'))
-        }
+    const handleSuccessfulSignIn = () => {
+        dialog.close()
+        router.refresh()
     }
 
     const sendEmail = async () => {
         try {
-            const response = await sendVerificationEmail()
-            response.status === 'EMAIL_ALREADY_VERIFIED_ERROR'
-                ? handleSuccessfulSignIn()
-                : dialog.open(<SignInFeedback reason={UserStatus.NOT_ACTIVATED} />)
+            await sendVerificationEmail()
+            dialog.open(<SignInFeedback reason={UserStatus.NOT_ACTIVATED} />)
         } catch (err) {
             toast.error(t('common.error'))
         }

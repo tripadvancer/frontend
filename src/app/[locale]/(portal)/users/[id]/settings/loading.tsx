@@ -1,20 +1,5 @@
-import { ButtonSkeleton } from '@/components/forms/button/button-skeleton'
-import { InputSkeleton } from '@/components/forms/input/input-skeleton'
-import { TextareaSkeleton } from '@/components/forms/textarea/textarea-skeleton'
+import { UserSettingsSkeleton } from '@/components/user-settings/user-settings-skeleton'
 
 export default function Loading() {
-    return (
-        <div className="flex flex-col gap-y-8">
-            <div className="flex flex-col gap-y-4">
-                <InputSkeleton labeled />
-                <InputSkeleton labeled />
-                <TextareaSkeleton labeled />
-            </div>
-            <div className="flex flex-col gap-y-2">
-                <InputSkeleton labeled />
-                <InputSkeleton />
-            </div>
-            <ButtonSkeleton />
-        </div>
-    )
+    return <UserSettingsSkeleton />
 }

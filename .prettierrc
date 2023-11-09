@@ -15,8 +15,7 @@
         "^react(.*)",
         "<THIRD_PARTY_MODULES>",
         "next/(.*)",
-        "^@/types/(.*)",
-        "^@/utils/intl",
+        "^@/utils/types/(.*)",
         "^@/(.*)$",
         "^[./]",
         "(.*).css"

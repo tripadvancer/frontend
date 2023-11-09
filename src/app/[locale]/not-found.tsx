@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { LinkButton } from '@/components/link-button'
-import { getScopedI18n } from '@/utils/i18n.server'
+import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
 export default async function NotFound() {
     const t = await getScopedI18n('pages.not_found')

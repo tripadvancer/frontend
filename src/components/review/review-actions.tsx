@@ -9,7 +9,7 @@ import { useToast } from '@/providers/toast-provider'
 import { getCurrentUser } from '@/redux/features/user-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { removeReviewById } from '@/services/reviews'
-import { useI18n } from '@/utils/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 type ReviewActionProps = {
     reviewId: number

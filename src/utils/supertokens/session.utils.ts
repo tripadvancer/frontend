@@ -6,7 +6,7 @@ import { HTTPMethod } from 'supertokens-node/types'
 import { cookies, headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
-import { ensureSuperTokensInit } from '@/utils/auth.server'
+import { ensureSuperTokensInit } from './supertokens.server'
 
 ensureSuperTokensInit()
 
