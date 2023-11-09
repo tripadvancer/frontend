@@ -1,6 +1,6 @@
 import { Achievement } from '@/components/achievement'
 import { Avatar } from '@/components/avatar/avatar'
-import { PageSwitcher } from '@/components/page-switcher'
+import { UserTabs } from '@/components/user-tabs/user-tabs'
 import { getUserById } from '@/services/users'
 import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
@@ -65,15 +65,7 @@ export default async function UserLayout({ params, children }: { params: { id: s
                     </div>
 
                     <div className="flex-1">
-                        <PageSwitcher
-                            nav={[
-                                { href: `/users/${user.id}`, caption: t('places_link') },
-                                { href: `/users/${user.id}/reviews`, caption: t('reviews_link') },
-                                { href: `/users/${user.id}/settings`, caption: t('settings_link'), isAuthOnly: true },
-                            ]}
-                            activeUserId={user.id}
-                            className="mb-8"
-                        />
+                        <UserTabs userId={user.id} />
                         {children}
                     </div>
                 </div>

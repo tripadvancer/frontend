@@ -23,6 +23,7 @@ export const UserMenu = ({ children, userId }: UserMenuProps) => {
         try {
             await Session.signOut()
             router.refresh()
+            router.push('/')
         } catch (err) {
             toast.error(tCommon('error'))
         }

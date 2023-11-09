@@ -1,6 +1,6 @@
 import type { IUserProfile } from '@/utils/types/user'
 
-export async function getUserInfo(accessToken: string): Promise<IUserProfile> {
+export async function getUserInfo(accessToken: string | undefined): Promise<IUserProfile> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/user'
     const res = await fetch(url, {
         headers: {

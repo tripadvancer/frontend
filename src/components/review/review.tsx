@@ -18,7 +18,7 @@ export const Review = ({ id, text, user, rating, photos, place, createdAt, revie
     const formattedDate = FormattedDate(createdAt, locale)
 
     return (
-        <div className="border-b border-black-15 py-8 first:border-t last:border-none last:pb-0">
+        <div className="border-b border-black-15 py-8 first:border-t last:border-b-0 last:pb-0">
             <div className="mb-5 flex items-start justify-between sm:items-center">
                 <div className="flex flex-col gap-1">
                     <Rating rating={rating} />
