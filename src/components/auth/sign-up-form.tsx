@@ -24,8 +24,6 @@ import { SignInForm } from './sign-in-form'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
-const passwordMinLength = validationConfig.user.password.minLength
-const passwordMaxLength = validationConfig.user.password.maxLength
 
 export const SignUpForm = () => {
     const t = useI18n()
@@ -106,8 +104,6 @@ export const SignUpForm = () => {
                 .max(userNameMaxLength, t('forms.validation.max_length', { max_length: userNameMaxLength })),
             password: Yup.string()
                 .required(t('forms.validation.required'))
-                .min(passwordMinLength, t('forms.validation.min_length', { min_length: passwordMinLength }))
-                .max(passwordMaxLength, t('forms.validation.max_length', { max_length: passwordMaxLength })),
         }),
         onSubmit: handleSubmit,
     })

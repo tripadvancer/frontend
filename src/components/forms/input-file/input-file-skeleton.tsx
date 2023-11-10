@@ -1,8 +1,8 @@
-type InputSkeletonProps = {
+type InputFileSkeletonProps = {
     labeled?: boolean
 }
 
-export const InputSkeleton = ({ labeled }: InputSkeletonProps) => {
+export const InputFileSkeleton = ({ labeled }: InputFileSkeletonProps) => {
     return (
         <div role="status" className="flex w-full animate-pulse flex-col gap-y-2">
             {labeled && <div className="h-5 w-1/4 rounded-full bg-black-5" />}

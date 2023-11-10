@@ -12,13 +12,8 @@ import type { ResetPasswordInputs } from '@/utils/types/auth'
 
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
-import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { ApiResponseStatus } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
-
-const passwordMinLength = validationConfig.user.password.minLength
-const passwordMaxLength = validationConfig.user.password.maxLength
 
 export const RessetPasswordForm = () => {
     const t = useI18n()
@@ -58,10 +53,7 @@ export const RessetPasswordForm = () => {
             password: '',
         },
         validationSchema: Yup.object().shape({
-            password: Yup.string()
-                .required(t('forms.validation.required'))
-                .min(passwordMinLength, t('forms.validation.min_length', { min_length: passwordMinLength }))
-                .max(passwordMaxLength, t('forms.validation.max_length', { max_length: passwordMaxLength })),
+            password: Yup.string().required(t('forms.validation.required'))
         }),
         onSubmit: handleSubmit,
     })

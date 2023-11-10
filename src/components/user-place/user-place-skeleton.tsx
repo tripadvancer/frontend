@@ -1,7 +1,7 @@
 export const UserPlaceSkeleton = () => {
     return (
-        <div>
-            <div className="mb-2 flex aspect-square w-full animate-pulse items-center justify-center rounded-lg bg-black-5">
+        <div role="status" className="animate-pulse">
+            <div className="mb-2 flex aspect-square w-full items-center justify-center rounded-lg bg-black-5">
                 <svg
                     className="w-10 text-black-15 opacity-30"
                     aria-hidden="true"

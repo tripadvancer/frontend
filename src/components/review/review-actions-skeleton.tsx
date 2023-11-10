@@ -1,6 +1,9 @@
 export const ReviewActionsSkeleton = () => {
     return (
-        <div className="flex h-8 w-8 animate-pulse items-center justify-center rounded-lg bg-black-5 text-black-15">
+        <div
+            role="status"
+            className="flex h-8 w-8 animate-pulse items-center justify-center rounded-lg bg-black-5 text-black-15"
+        >
             <svg width="16" height="4" viewBox="0 0 16 4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 2C10 3.10457 9.10457 4 8 4C6.89543 4 6 3.10457 6 2C6 0.89543 6.89543 0 8 0C9.10457 0 10 0.89543 10 2Z" />
                 <path d="M4 2C4 3.10457 3.10457 4 2 4C0.89543 4 0 3.10457 0 2C0 0.89543 0.89543 0 2 0C3.10457 0 4 0.89543 4 2Z" />
