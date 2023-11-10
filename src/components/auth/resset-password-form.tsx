@@ -53,7 +53,7 @@ export const RessetPasswordForm = () => {
             password: '',
         },
         validationSchema: Yup.object().shape({
-            password: Yup.string().required(t('forms.validation.required'))
+            password: Yup.string().required(t('forms.validation.required')),
         }),
         onSubmit: handleSubmit,
     })

@@ -1,4 +1,4 @@
-export const ReviewActionsSkeleton = () => {
+export const ActionControlSkeleton = () => {
     return (
         <div
             role="status"

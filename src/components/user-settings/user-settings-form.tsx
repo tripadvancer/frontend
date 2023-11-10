@@ -14,10 +14,10 @@ import { Input } from '@/components/forms/input/input'
 import { Textarea } from '@/components/forms/textarea/textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { updateUserAvatar, updateUserInfo } from '@/services/user'
+import { updateUserInfo } from '@/services/user'
 import { useI18n, useScopedI18n } from '@/utils/i18n/i18n.client'
 
-import { InputFile } from '../forms/input-file/input-file'
+import { UserSettingsAvatar } from './user-settings-avatar'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
@@ -25,31 +25,17 @@ const userInfoMaxLength = validationConfig.user.info.maxLength
 
 type UserSettingsFormProps = IUserInfo
 
-export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormProps) => {
+export const UserSettingsForm = ({ name, info, avatar }: UserSettingsFormProps) => {
     const t = useI18n()
     const tForms = useScopedI18n('pages.user.settings.forms')
     const tValidation = useScopedI18n('forms.validation')
     const router = useRouter()
     const toast = useToast()
 
-    const [isFileUploading, setIsFileUploading] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(false)
-
-    const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        try {
-            setIsFileUploading(true)
-            await updateUserAvatar(e.target.files?.[0] as File)
-            router.refresh()
-        } catch (err) {
-            toast.error(t('common.error'))
-        } finally {
-            setIsFileUploading(false)
-        }
-    }
 
     const formik = useFormik({
         initialValues: {
-            avatar: avatar || '',
             name: name || '',
             info: info || '',
             password: '',
@@ -60,16 +46,12 @@ export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormPro
                 .required(tValidation('required'))
                 .min(userNameMinLength, tValidation('min_length', { min_length: userNameMinLength }))
                 .max(userNameMaxLength, tValidation('max_length', { max_length: userNameMaxLength })),
-            info: Yup.string()
-                .max(userInfoMaxLength, tValidation('max_length', { max_length: userInfoMaxLength })),
+            info: Yup.string().max(userInfoMaxLength, tValidation('max_length', { max_length: userInfoMaxLength })),
         }),
         onSubmit: async values => {
             try {
                 setIsLoading(true)
-                await updateUserInfo({
-                    name: values.name,
-                    info: values.info,
-                })
+                await updateUserInfo({ name: values.name, info: values.info })
                 router.refresh()
                 toast.success(t('pages.user.settings.forms.success'))
             } catch (err: any) {
@@ -85,9 +67,9 @@ export const UserSettingsForm = ({ id, name, info, avatar }: UserSettingsFormPro
             <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="avatar" className="font-medium">
-                        {tForms('upload_avatar.label')}
+                        {tForms('upload_avatar.file.label')}
                     </label>
-                    <InputFile isUploading={isFileUploading} onChange={handleAvatarUpload} />
+                    <UserSettingsAvatar currentAvatar={avatar} />
                 </div>
 
                 <div className="flex flex-col gap-y-2">

@@ -5,6 +5,8 @@ import { Paginator } from '@/components/paginator'
 import { Review } from '@/components/review/review'
 import { getScopedI18n } from '@/utils/i18n/i18n.server'
 
+import { ReviewSkeleton } from '../review/review-skeleton'
+
 type ReviewFeedProps = {
     reviews: PaginatedResponse<IReview>
     currentPage: number

@@ -12,6 +12,7 @@ export default {
     'common.cta.confirm': 'Confirm',
     'common.cta.cancel': 'Cancel',
     'common.cta.send': 'Send',
+    'common.cta.delete': 'Delete',
 
     'common.confirm.title': 'Sure?',
     'common.confirm.yes': 'Yes',
@@ -81,6 +82,7 @@ export default {
     'forms.fields.email.placeholder': 'Email',
     'forms.fields.password.placeholder': 'Password',
     'forms.fields.username.placeholder': 'Username',
+    'forms.fields.file.placeholder': 'Select file ...',
 
     'forms.validation.file.types': 'Only {types} files are allowed',
     'forms.validation.file.max_size': 'The file size must not exceed {size} MB',
@@ -144,8 +146,8 @@ export default {
     'pages.user.places_link': 'Added places',
     'pages.user.reviews_link': 'Written reviews',
     'pages.user.settings_link': 'Settings',
-    'pages.user.settings.forms.upload_avatar.label': 'Upload avatar',
-    'pages.user.settings.forms.upload_avatar.placeholder': 'Select file ...',
+    'pages.user.settings.forms.upload_avatar.file.label': 'Upload avatar',
+    'pages.user.settings.forms.upload_avatar.success': 'Your avatar has been successfully updated.',
     'pages.user.settings.forms.username.label': 'Username',
     'pages.user.settings.forms.username.placeholder': 'Enter your username',
     'pages.user.settings.forms.info.label': 'About me',

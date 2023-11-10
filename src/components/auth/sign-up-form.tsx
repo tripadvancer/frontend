@@ -102,8 +102,7 @@ export const SignUpForm = () => {
                 .required(t('forms.validation.required'))
                 .min(userNameMinLength, t('forms.validation.min_length', { min_length: userNameMinLength }))
                 .max(userNameMaxLength, t('forms.validation.max_length', { max_length: userNameMaxLength })),
-            password: Yup.string()
-                .required(t('forms.validation.required'))
+            password: Yup.string().required(t('forms.validation.required')),
         }),
         onSubmit: handleSubmit,
     })

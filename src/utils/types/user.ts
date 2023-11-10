@@ -2,8 +2,7 @@ export type IUser = {
     id: number
     name: string
     info: string
-    avatar: string
-    cover: string
+    avatar: string | null
     createdAt: Date
     updatedAt: Date
     _count: IUserStatistics

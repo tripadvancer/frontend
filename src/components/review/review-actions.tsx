@@ -2,9 +2,9 @@ import { getUserInfo } from '@/services/user'
 import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
+import { ActionControlSkeleton } from '../action-control/action-control-skeleton'
 import { PrivateReviewActions } from './private-review-actions'
 import { PublicReviewActions } from './public-review-actions'
-import { ReviewActionsSkeleton } from './review-actions-skeleton'
 
 type ReviewActionsProps = {
     reviewId: number
@@ -39,7 +39,7 @@ export const ReviewActions = async ({ reviewId, userId, reviewsCount }: ReviewAc
              * This means that the session does not exist but we have session tokens for the user. In this case
              * the `TryRefreshComponent` will try to refresh the session.
              */
-            return <TryRefreshComponent fallback={<ReviewActionsSkeleton />} />
+            return <TryRefreshComponent fallback={<ActionControlSkeleton />} />
         }
     }
 

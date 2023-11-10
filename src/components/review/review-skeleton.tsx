@@ -1,12 +1,20 @@
+import { ActionControlSkeleton } from '../action-control/action-control-skeleton'
+
 export const ReviewSkeleton = () => {
     return (
-        <div role="status" className="w-full animate-pulse border-t border-black-15 py-8 last:pb-0">
-            <div className="mb-5 flex flex-col gap-1">
-                <div className="h-3.5 w-20 rounded-full bg-black-5" />
-                <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2 ">
-                    <div className="h-3.5 w-40 rounded-full bg-black-5" />
-                    <div className="h-3.5 w-40 rounded-full bg-black-5" />
+        <div
+            role="status"
+            className="animate-pulse border-b border-black-15 py-8 first:border-t last:border-b-0 last:pb-0"
+        >
+            <div className="mb-5 flex items-start justify-between sm:items-center">
+                <div className="flex flex-col gap-1">
+                    <div className="h-3.5 w-20 rounded-full bg-black-5" />
+                    <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2 ">
+                        <div className="h-3.5 w-40 rounded-full bg-black-5" />
+                        <div className="h-3.5 w-40 rounded-full bg-black-5" />
+                    </div>
                 </div>
+                <ActionControlSkeleton />
             </div>
 
             <div className="flex flex-col gap-y-2">

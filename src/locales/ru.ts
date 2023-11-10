@@ -12,6 +12,7 @@ export default {
     'common.cta.confirm': 'Подтвердить',
     'common.cta.cancel': 'Отмена',
     'common.cta.send': 'Отправить',
+    'common.cta.delete': 'Удалить',
 
     'common.confirm.title': 'Уверены?',
     'common.confirm.yes': 'Да',
@@ -83,6 +84,7 @@ export default {
     'forms.fields.email.placeholder': 'Email',
     'forms.fields.password.placeholder': 'Пароль',
     'forms.fields.username.placeholder': 'Имя пользователя',
+    'forms.fields.file.placeholder': 'Выберите файл ...',
 
     'forms.validation.file.types': 'Разрешены только файлы {types}',
     'forms.validation.file.max_size': 'Размер файла не должен превышать {size} МБ',
@@ -148,8 +150,8 @@ export default {
     'pages.user.places_link': 'Мои места',
     'pages.user.reviews_link': 'Мои отзывы',
     'pages.user.settings_link': 'Настройки',
-    'pages.user.settings.forms.upload_avatar.label': 'Аватарка',
-    'pages.user.settings.forms.upload_avatar.placeholder': 'Выберите файл ...',
+    'pages.user.settings.forms.upload_avatar.file.label': 'Аватарка',
+    'pages.user.settings.forms.upload_avatar.success': 'Ваша аватарка была успешно обновлена.',
     'pages.user.settings.forms.username.label': 'Имя пользователя',
     'pages.user.settings.forms.username.placeholder': 'Введите имя пользователя',
     'pages.user.settings.forms.info.label': 'Расскажите о себе',

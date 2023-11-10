@@ -4,11 +4,11 @@ import { useRef, useState } from 'react'
 
 import classNames from 'classnames'
 
-import { ActionControl } from '@/components/action-control'
+import { ActionControl } from '@/components/action-control/action-control'
+import { ConfirmationMini } from '@/components/confirmation-mini'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
-import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 export type DropdownItemProps = {
     caption: string
@@ -81,43 +81,26 @@ const DropdownItem = (props: DropdownItemProps) => {
     }
 
     if (isConfirm) {
-        return <DropdownItemConfirm onCancel={handleCancel} onConfirm={handleConfirm} />
+        return (
+            <li className="hover-animated flex items-center gap-x-1 rounded p-1.5 text-blue-100 last:mb-0 hover:bg-blue-10">
+                <ConfirmationMini onCancel={handleCancel} onConfirm={handleConfirm} />
+            </li>
+        )
     }
 
-    return <DropdownItemRegular {...props} onClick={handleClick} />
-}
-
-const DropdownItemRegular = ({ caption, icon, isCurrent, isRed, onClick }: DropdownItemProps) => {
     return (
         <li
             className={classNames(
                 'hover-animated flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-blue-100 last:mb-0 hover:bg-blue-10',
                 {
-                    'font-medium': isCurrent,
-                    'text-red-100': isRed,
+                    'font-medium': props.isCurrent,
+                    'text-red-100': props.isRed,
                 },
             )}
-            onClick={onClick}
+            onClick={handleClick}
         >
-            {icon}
-            {caption}
-        </li>
-    )
-}
-
-const DropdownItemConfirm = ({ onCancel, onConfirm }: { onCancel: () => void; onConfirm: () => void }) => {
-    const t = useScopedI18n('common')
-
-    return (
-        <li className="hover-animated flex items-center gap-x-1 rounded p-1.5 text-blue-100 last:mb-0 hover:bg-blue-10">
-            <span>{t('confirm.title')}</span>
-            <span className="hover-animated cursor-pointer text-red-100 hover:text-red-active" onClick={onCancel}>
-                {t('confirm.no')}
-            </span>
-            <span>/</span>
-            <span className="hover-animated cursor-pointer text-red-100 hover:text-red-active" onClick={onConfirm}>
-                {t('confirm.yes')}
-            </span>
+            {props.icon}
+            {props.caption}
         </li>
     )
 }
