@@ -158,13 +158,16 @@ export default {
     'pages.user.settings.forms.submit': 'Save changes',
     'pages.user.settings.forms.success': 'Your profile has been successfully updated.',
     'pages.user.settings.gdpr.title': 'Your account',
-    'pages.user.settings.gdpr.get_copy_data': 'Get a copy of your data',
-    'pages.user.settings.gdpr.get_copy_data.confirm.title': 'Send personal data',
-    'pages.user.settings.gdpr.get_copy_data.confirm.message':
+    'pages.user.settings.gdpr.get_user_personal_data': 'Get a copy of your data',
+    'pages.user.settings.gdpr.get_user_personal_data.confirm.title': 'Send personal data',
+    'pages.user.settings.gdpr.get_user_personal_data.confirm.message':
         'Are you sure you want to send your personal data to your email?',
-    'pages.user.settings.gdpr.remove_account': 'Remove your account',
-    'pages.user.settings.gdpr.remove_account.confirm.title': 'Remove your account',
-    'pages.user.settings.gdpr.remove_account.confirm.message': 'Are you sure you want to remove your account?',
+    'pages.user.settings.gdpr.get_user_personal_data.success':
+        'Your personal data has been successfully sent to your email.',
+    'pages.user.settings.gdpr.delete_user': 'Remove your account',
+    'pages.user.settings.gdpr.delete_user.confirm.title': 'Remove your account',
+    'pages.user.settings.gdpr.delete_user.confirm.message': 'Are you sure you want to remove your account?',
+    'pages.user.settings.gdpr.delete_user.success': 'We sent you an email with instructions to remove your account.',
 
     'dialog.feedback.verify_email.title': 'Check your email',
     'dialog.feedback.verify_email.message.not_activated':

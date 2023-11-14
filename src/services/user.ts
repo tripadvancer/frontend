@@ -56,3 +56,23 @@ export async function deleteUserAvatar(): Promise<void> {
         throw new Error('Failed to fetch data')
     }
 }
+
+export async function deleteUser(): Promise<void> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user'
+    const res = await fetch(url, {
+        method: 'DELETE',
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+}
+
+export async function getUserPersonalData(): Promise<void> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/personal-data'
+    const res = await fetch(url)
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+}
