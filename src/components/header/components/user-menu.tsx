@@ -22,8 +22,8 @@ export const UserMenu = ({ children, userId }: UserMenuProps) => {
     const signOut = async () => {
         try {
             await Session.signOut()
-            router.refresh()
             router.push('/')
+            router.refresh()
         } catch (err) {
             toast.error(tCommon('error'))
         }

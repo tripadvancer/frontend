@@ -5,7 +5,7 @@ import type { ICountry, ICountryDict } from '@/utils/types/country'
 import { сountriesDictionary } from '@/utils/dictionaries/countries'
 
 export async function getCountries(): Promise<ICountry[]> {
-    const url = process.env.API_URL + '/countries'
+    const url = process.env.NEXT_PUBLIC_API_URL + '/countries'
     const res = await fetch(url)
 
     if (!res.ok) {

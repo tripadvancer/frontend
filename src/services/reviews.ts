@@ -2,7 +2,7 @@ import type { PaginatedResponse } from '@/utils/types/common'
 import type { IReview, ReviewComplaintInputs } from '@/utils/types/review'
 
 export async function getReviewsByPlaceId(placeId: string, page: string): Promise<PaginatedResponse<IReview>> {
-    const url = process.env.API_URL + '/reviews?place_id=' + placeId + '&page=' + page
+    const url = process.env.NEXT_PUBLIC_API_URL + '/reviews?place_id=' + placeId + '&page=' + page
     const res = await fetch(url, { cache: 'no-store' })
 
     if (!res.ok) {
@@ -13,7 +13,7 @@ export async function getReviewsByPlaceId(placeId: string, page: string): Promis
 }
 
 export async function getReviewsByUserId(userId: string, page: string): Promise<PaginatedResponse<IReview>> {
-    const url = process.env.API_URL + '/reviews?user_id=' + userId + '&page=' + page
+    const url = process.env.NEXT_PUBLIC_API_URL + '/reviews?user_id=' + userId + '&page=' + page
     const res = await fetch(url, { cache: 'no-store' })
 
     if (!res.ok) {

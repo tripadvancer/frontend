@@ -7,7 +7,8 @@ export async function getPlacesByCountryCode(
     countryCode: string,
     categoriesIds: string | undefined,
 ): Promise<IPlacePreview[]> {
-    const url = process.env.API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
+    const url =
+        process.env.NEXT_PUBLIC_API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -18,7 +19,7 @@ export async function getPlacesByCountryCode(
 }
 
 export async function getPlacesByUserId(userId: string, page: string): Promise<PaginatedResponse<IPlacePreview>> {
-    const url = process.env.API_URL + '/users/' + userId + '/places?page=' + page
+    const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + userId + '/places?page=' + page
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -29,7 +30,7 @@ export async function getPlacesByUserId(userId: string, page: string): Promise<P
 }
 
 export async function getPlaceById(placeId: string): Promise<IPlace> {
-    const url = process.env.API_URL + '/places/' + placeId
+    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -44,7 +45,7 @@ export async function getPlaceById(placeId: string): Promise<IPlace> {
 }
 
 export async function getPlacesNearby(placeId: string): Promise<IPlaceNearby[]> {
-    const url = process.env.API_URL + '/places/' + placeId + '/nearby'
+    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId + '/nearby'
     const res = await fetch(url)
 
     if (!res.ok) {
