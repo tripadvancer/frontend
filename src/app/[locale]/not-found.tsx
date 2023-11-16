@@ -32,7 +32,7 @@ export default async function NotFound() {
                 />
                 <h2 className="mb-8 text-h3-m sm:text-h3">{t('title')}</h2>
                 <p className="mb-8 text-big text-black-70">{t('text')}</p>
-                <LinkButton href="/">{tCommon('cta.home')}</LinkButton>
+                <LinkButton href="/">{tCommon('action.return_home')}</LinkButton>
             </div>
         </div>
     )

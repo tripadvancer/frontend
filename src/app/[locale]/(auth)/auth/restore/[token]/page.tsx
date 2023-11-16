@@ -15,7 +15,7 @@ export default async function RestoreAccount({ params }: { params: { token: stri
                 {response.status === ApiResponseStatus.SUCCESS && t('success')}
             </p>
             <LinkButton href="/" className="w-full">
-                {tCommon('cta.home')}
+                {tCommon('action.return_home')}
             </LinkButton>
         </>
     )

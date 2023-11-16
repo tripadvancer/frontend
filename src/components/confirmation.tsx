@@ -26,10 +26,10 @@ export const Confirmation = ({ title, message, variant = 'blue', isLoading, onCo
             </div>
             <div className="flex gap-x-2">
                 <Button variant={variant} onClick={onConfirm}>
-                    {t('cta.confirm')}
+                    {t('action.confirm')}
                 </Button>
                 <ButtonStroke variant={variant} onClick={() => dialog.close()}>
-                    {t('cta.cancel')}
+                    {t('action.cancel')}
                 </ButtonStroke>
             </div>
         </div>

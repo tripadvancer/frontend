@@ -38,7 +38,7 @@ export const ReviewComplainForm = ({ reviewId }: ReviewComplainFormProps) => {
         try {
             setIsLoading(true)
             reviewComplaint(values)
-            toast.success(t('review.complaint.form.success'))
+            toast.success(t('review.complaint.success'))
             dialog.close()
         } catch (err) {
             toast.error(t('common.error'))
@@ -83,16 +83,16 @@ export const ReviewComplainForm = ({ reviewId }: ReviewComplainFormProps) => {
                     type="text"
                     name="text"
                     value={formik.values.text}
-                    placeholder={t('review.complaint.form.text.placeholder')}
+                    placeholder={t('review.complaint.form.fields.text.placeholder')}
                     error={formik.errors.text}
                     onChange={formik.handleChange}
                 />
             </div>
             <div className="flex gap-x-2">
                 <Button type="submit" isLoading={isLoading}>
-                    {t('common.cta.send')}
+                    {t('common.action.send')}
                 </Button>
-                <ButtonStroke onClick={() => dialog.close()}>{t('common.cta.cancel')}</ButtonStroke>
+                <ButtonStroke onClick={() => dialog.close()}>{t('common.action.cancel')}</ButtonStroke>
             </div>
         </form>
     )

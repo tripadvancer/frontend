@@ -106,7 +106,7 @@ export const SignInForm = () => {
 
     return (
         <form className="w-full sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="mb-8 text-center text-h7-m sm:text-h7">{t('dialogs.signin.title')}</h1>
+            <h1 className="mb-8 text-center text-h7-m sm:text-h7">{t('auth.signin.title')}</h1>
             <Input
                 type="text"
                 name="email"
@@ -127,24 +127,24 @@ export const SignInForm = () => {
                 onChange={formik.handleChange}
             />
             <Button type="submit" className="mb-4 w-full" isLoading={isLoading}>
-                {t('dialogs.signin.submit')}
+                {t('auth.signin.submit')}
             </Button>
             <div className="mb-8 text-center text-small">
                 <span
                     className="hover-animated cursor-pointer text-small text-blue-100 hover:text-blue-active"
                     onClick={handleForgotPasswordClick}
                 >
-                    {t('dialogs.signin.link.forgot_password')}
+                    {t('auth.signin.link.forgot_password')}
                 </span>
             </div>
             <div className="text-center ">
-                {t('dialogs.signin.to_back', {
+                {t('auth.signin.to_back', {
                     sign_up_link: (
                         <span
                             className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
                             onClick={handleSignUpClick}
                         >
-                            {t('common.sign_up_link')}
+                            {t('common.link.sign_up')}
                         </span>
                     ),
                 })}

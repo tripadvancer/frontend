@@ -10,7 +10,7 @@ type SignInFeedbackProps = {
 }
 
 export const SignInFeedback = ({ reason }: SignInFeedbackProps) => {
-    const t = useScopedI18n('dialog.feedback.verify_email')
+    const t = useScopedI18n('auth.feedback.verify_email')
     const tCommon = useScopedI18n('common')
     const dialog = useDialog()
 
@@ -22,7 +22,7 @@ export const SignInFeedback = ({ reason }: SignInFeedbackProps) => {
                 {reason === UserStatus.PENDING_DELETE && t('message.pending_delete')}
             </p>
             <ButtonStroke type="button" className="w-full" onClick={dialog.close}>
-                {tCommon('cta.close')}
+                {tCommon('action.close')}
             </ButtonStroke>
         </div>
     )

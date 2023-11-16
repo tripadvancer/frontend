@@ -9,34 +9,40 @@ import { getCurrentLocale } from '@/utils/i18n/i18n.server'
 
 import { ReviewActions } from './review-actions'
 
-type ReviewProps = IReview & {
+type ReviewProps = {
+    review: IReview
     reviewsCount: number
 }
 
-export const Review = ({ id, text, user, rating, photos, place, createdAt, reviewsCount }: ReviewProps) => {
+export const Review = ({ review, reviewsCount }: ReviewProps) => {
     const locale = getCurrentLocale()
-    const formattedDate = FormattedDate(createdAt, locale)
+    const formattedDate = FormattedDate(review.createdAt, locale)
 
     return (
         <div className="border-b border-black-15 py-8 first:border-t last:border-b-0 last:pb-0">
             <div className="mb-5 flex items-start justify-between sm:items-center">
                 <div className="flex flex-col gap-1">
-                    <Rating rating={rating} />
+                    <Rating value={review.rating} size={16} />
                     <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2 ">
-                        <Link href={`/places/${place.id}`} className="text-small-bold text-black-70">
-                            {place.title}
+                        <Link href={`/places/${review.place.id}`} className="text-small-bold text-black-70">
+                            {review.place.title}
                         </Link>
                         <div className="text-small text-black-40">{formattedDate}</div>
                     </div>
                 </div>
-                <ReviewActions reviewId={id} userId={user.id} reviewsCount={reviewsCount} />
+                <ReviewActions review={review} reviewsCount={reviewsCount} />
             </div>
 
-            <div>{text}</div>
+            <div>{review.text}</div>
 
-            {photos.length > 0 && (
+            {review.photos.length > 0 && (
                 <div className="mt-5 grid grid-cols-3 gap-2 sm:grid-cols-9">
-                    <PhotoFeed photos={photos} title={place.title} description={user.name} size={64} />
+                    <PhotoFeed
+                        photos={review.photos}
+                        title={review.place.title}
+                        description={review.user.name}
+                        size={64}
+                    />
                 </div>
             )}
         </div>

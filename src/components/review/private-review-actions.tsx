@@ -2,18 +2,22 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
+import { IReview } from '@/utils/types/review'
+
 import { Dropdown, DropdownItemProps } from '@/components/dropdown'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { removeReviewById } from '@/services/reviews'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
+import { EditReview } from '../review-form/edit-review'
+
 type PrivateReviewActionsProps = {
-    reviewId: number
+    review: IReview
     reviewsCount: number
 }
 
-export const PrivateReviewActions = ({ reviewId, reviewsCount }: PrivateReviewActionsProps) => {
+export const PrivateReviewActions = ({ review, reviewsCount }: PrivateReviewActionsProps) => {
     const t = useI18n()
     const router = useRouter()
     const pathname = usePathname()
@@ -25,9 +29,9 @@ export const PrivateReviewActions = ({ reviewId, reviewsCount }: PrivateReviewAc
 
     const handleRemove = async () => {
         try {
-            await removeReviewById(reviewId.toString())
+            await removeReviewById(review.id.toString())
             dialog.close()
-            toast.success(t('review.remove.success'))
+            toast.success(t('review.delete.success'))
             // Redirect to previous page if user remove last review on current page and current page is not first
             reviewsCount === 1 && page && page !== '1'
                 ? router.push(`${pathname}?page=${parseInt(page) - 1}`)
@@ -47,7 +51,7 @@ export const PrivateReviewActions = ({ reviewId, reviewsCount }: PrivateReviewAc
                 <path fillRule="evenodd" d="M11 1C11.5288 1 11.9869 1.20949 12.3544 1.57991L14.4217 3.64718C14.7924 4.01786 15 4.47274 15 5C15 5.52385 14.794 6.06728 14.4217 6.43959L6.89021 13.9675C6.36661 14.5715 5.62438 14.9426 4.7564 15.0016H1V14.0016L1.00325 11.1647C1.06698 10.3758 1.43373 9.64229 1.98196 9.15991L9.56093 1.58101C9.93285 1.20718 10.4754 1 11 1ZM3.35157 10.6161C3.14601 10.7979 3.01885 11.0522 3 11.2452V13.0025L4.68578 13.004C4.95369 12.9851 5.20307 12.8604 5.42749 12.6054L9.80933 8.22354L7.77751 6.19172L3.35157 10.6161ZM9.19197 4.77776L11.2235 6.80933L12.9895 5.04339L10.9582 3.01212L9.19197 4.77776Z" />
             </svg>
         ),
-            onClick: () => alert('Do not implemented yet'),
+            onClick: () => dialog.open(<EditReview {...review} />),
         },
         {
             caption: t('review.menu.delete'),

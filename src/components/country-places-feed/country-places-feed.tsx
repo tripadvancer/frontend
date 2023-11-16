@@ -16,7 +16,7 @@ type CountryPlacesFeedProps = {
 const PAGINATION_LIMIT = 48
 
 export const CountryPlacesFeed = ({ places }: CountryPlacesFeedProps) => {
-    const t = useScopedI18n('common.places')
+    const t = useScopedI18n('common.empty_message')
     const [currentPage, setCurrentPage] = useState(1)
     const visiblePlaces = places.slice(0, currentPage * PAGINATION_LIMIT)
 
@@ -25,7 +25,7 @@ export const CountryPlacesFeed = ({ places }: CountryPlacesFeedProps) => {
     }
 
     if (places.length === 0) {
-        return <div className="text-center text-black-40">{t('empty')}</div>
+        return <div className="text-center text-black-40">{t('places')}</div>
     }
 
     return (

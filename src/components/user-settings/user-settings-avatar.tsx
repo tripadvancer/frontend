@@ -47,7 +47,7 @@ export const UserSettingsAvatar = ({ currentAvatar }: UserSettingsAvatarProps) =
         try {
             setIsUploading(true)
             await updateUserAvatar(file as File)
-            toast.success(t('pages.user.settings.forms.upload_avatar.success'))
+            toast.success(t('pages.user.settings.avatar.update.success'))
             router.refresh()
         } catch {
             toast.error(t('common.error'))
@@ -70,7 +70,7 @@ export const UserSettingsAvatar = ({ currentAvatar }: UserSettingsAvatarProps) =
         try {
             setIsUploading(true)
             await deleteUserAvatar()
-            toast.success(t('pages.user.settings.forms.upload_avatar.success'))
+            toast.success(t('pages.user.settings.avatar.update.success'))
             router.refresh()
         } catch {
             toast.error(t('common.error'))
@@ -90,7 +90,7 @@ export const UserSettingsAvatar = ({ currentAvatar }: UserSettingsAvatarProps) =
                         <ConfirmationMini onConfirm={handleConfirmRemoveAvatar} onCancel={handleCancelRemoveAvatar} />
                     ) : (
                         <div className="cursor-pointer text-red-100" onClick={handleClickRemoveAvatar}>
-                            {t('common.cta.delete')}
+                            {t('common.action.delete')}
                         </div>
                     )}
                 </div>

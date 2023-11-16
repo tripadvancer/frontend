@@ -15,7 +15,7 @@ export default async function ConfirmAccountRemoval({ params }: { params: { toke
                 {response.status === ApiResponseStatus.SUCCESS && t('success')}
             </p>
             <LinkButton href="/" className="w-full">
-                {tCommon('cta.home')}
+                {tCommon('action.return_home')}
             </LinkButton>
         </>
     )

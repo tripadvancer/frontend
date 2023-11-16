@@ -5,7 +5,7 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useScopedI18n } from '@/utils/i18n/i18n.client'
 
 export const ForgotPasswordFeedback = () => {
-    const t = useScopedI18n('dialog.feedback.forgot_password')
+    const t = useScopedI18n('auth.feedback.forgot_password')
     const tCommon = useScopedI18n('common')
     const dialog = useDialog()
 
@@ -14,7 +14,7 @@ export const ForgotPasswordFeedback = () => {
             <h1 className="text-h7 sm:text-h7-m">{t('title')}</h1>
             <p className="text-center">{t('message')}</p>
             <ButtonStroke type="button" className="w-full" onClick={dialog.close}>
-                {tCommon('cta.close')}
+                {tCommon('action.close')}
             </ButtonStroke>
         </div>
     )

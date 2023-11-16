@@ -35,7 +35,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
                 <h2 className="mb-8 text-h3-m sm:text-h3">{t('title')}</h2>
                 <p className="mb-8 text-big text-black-70">{t('text')}</p>
                 <Button type="button" onClick={() => reset()}>
-                    {tCommon('cta.try_again')}
+                    {tCommon('action.try_again')}
                 </Button>
             </div>
         </div>

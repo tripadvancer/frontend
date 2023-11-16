@@ -1,5 +1,5 @@
 import type { PaginatedResponse } from '@/utils/types/common'
-import type { IReview, ReviewComplaintInputs } from '@/utils/types/review'
+import type { IReview, ReviewComplaintInputs, UpdateReviewInputs } from '@/utils/types/review'
 
 export async function getReviewsByPlaceId(placeId: string, page: string): Promise<PaginatedResponse<IReview>> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/reviews?place_id=' + placeId + '&page=' + page
@@ -21,6 +21,21 @@ export async function getReviewsByUserId(userId: string, page: string): Promise<
     }
 
     return res.json()
+}
+
+export async function updateReviewById({ reviewId, ...patch }: UpdateReviewInputs): Promise<void> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/reviews/' + reviewId
+    const res = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(patch),
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
 }
 
 export async function removeReviewById(reviewId: string): Promise<void> {
@@ -49,7 +64,6 @@ export async function reviewComplaint({ reviewId, reason, text }: ReviewComplain
 
     if (!res.ok) {
         if (res.status === 409) {
-            console.log(res)
             throw new Error('You have already complained about this review')
         }
         throw new Error('Failed to fetch data')

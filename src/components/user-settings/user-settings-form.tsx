@@ -53,7 +53,7 @@ export const UserSettingsForm = ({ name, info, avatar }: UserSettingsFormProps) 
                 setIsLoading(true)
                 await updateUserInfo({ name: values.name, info: values.info })
                 router.refresh()
-                toast.success(t('pages.user.settings.forms.success'))
+                toast.success(t('pages.user.settings.update.success'))
             } catch (err: any) {
                 toast.error(err.message)
             } finally {
@@ -67,21 +67,21 @@ export const UserSettingsForm = ({ name, info, avatar }: UserSettingsFormProps) 
             <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="avatar" className="font-medium">
-                        {tForms('upload_avatar.file.label')}
+                        {tForms('fields.avatar.label')}
                     </label>
                     <UserSettingsAvatar currentAvatar={avatar} />
                 </div>
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="name" className="font-medium">
-                        {tForms('username.label')}
+                        {tForms('fields.username.label')}
                     </label>
                     <Input
                         id="name"
                         type="text"
                         name="name"
                         value={formik.values.name}
-                        placeholder={tForms('username.placeholder')}
+                        placeholder={tForms('fields.username.placeholder')}
                         error={formik.errors.name}
                         isDisabled={isLoading}
                         onChange={formik.handleChange}
@@ -90,13 +90,13 @@ export const UserSettingsForm = ({ name, info, avatar }: UserSettingsFormProps) 
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="info" className="font-medium">
-                        {tForms('info.label')}
+                        {tForms('fields.info.label')}
                     </label>
                     <Textarea
                         id="info"
                         name="info"
                         value={formik.values.info}
-                        placeholder={tForms('info.placeholder')}
+                        placeholder={tForms('fields.info.placeholder')}
                         maxLength={userInfoMaxLength}
                         error={formik.errors.info}
                         isDisabled={isLoading}
@@ -107,14 +107,14 @@ export const UserSettingsForm = ({ name, info, avatar }: UserSettingsFormProps) 
 
             <div className="flex flex-col gap-y-2">
                 <label htmlFor="current_password" className="font-medium">
-                    {tForms('change_password.label')}
+                    {tForms('fields.change_password.label')}
                 </label>
                 <Input
                     id="current_password"
                     type="password"
                     name="current_password"
                     value={formik.values.current_password}
-                    placeholder={tForms('current_password.placeholder')}
+                    placeholder={tForms('fields.current_password.placeholder')}
                     error={formik.errors.current_password}
                     isDisabled={isLoading}
                     onChange={formik.handleChange}
@@ -123,7 +123,7 @@ export const UserSettingsForm = ({ name, info, avatar }: UserSettingsFormProps) 
                     type="password"
                     name="password"
                     value={formik.values.password}
-                    placeholder={tForms('password.placeholder')}
+                    placeholder={tForms('fields.password.placeholder')}
                     error={formik.errors.password}
                     isDisabled={isLoading}
                     onChange={formik.handleChange}

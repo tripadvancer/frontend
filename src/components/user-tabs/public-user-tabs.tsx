@@ -9,8 +9,8 @@ export const PublicUserTabs = async ({ userId }: PublicUserTabsProps) => {
     const t = await getScopedI18n('pages.user')
 
     const nav = [
-        { href: `/users/${userId}`, caption: t('places_link') },
-        { href: `/users/${userId}/reviews`, caption: t('reviews_link') },
+        { href: `/users/${userId}`, caption: t('link.places') },
+        { href: `/users/${userId}/reviews`, caption: t('link.reviews') },
     ]
 
     return <Tabs nav={nav} className="mb-8" />

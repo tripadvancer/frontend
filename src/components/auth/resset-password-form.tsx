@@ -89,7 +89,7 @@ export const RessetPasswordForm = () => {
                 href="/"
                 className="hover-animated inline-flex h-10 w-full items-center justify-center rounded-lg bg-blue-100 px-6 text-white hover:bg-blue-active hover:text-white focus:outline-none"
             >
-                {t('common.cta.home')}
+                {t('common.action.return_home')}
             </Link>
         </>
     )

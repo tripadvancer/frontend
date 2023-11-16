@@ -109,7 +109,7 @@ export const SignUpForm = () => {
 
     return (
         <form className="w-full sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="mb-8 text-center text-h7-m sm:text-h7">{t('dialogs.signup.title')}</h1>
+            <h1 className="mb-8 text-center text-h7-m sm:text-h7">{t('auth.signup.title')}</h1>
             <Input
                 type="text"
                 name="email"
@@ -139,10 +139,10 @@ export const SignUpForm = () => {
                 onChange={formik.handleChange}
             />
             <Button type="submit" className="mb-4 w-full" isLoading={isLoading}>
-                {t('dialogs.signup.submit')}
+                {t('auth.signup.submit')}
             </Button>
             <div className="mb-8 text-center text-small text-black-40">
-                {t('dialogs.signup.info', {
+                {t('auth.signup.info', {
                     terms_link: (
                         <span
                             className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
@@ -151,7 +151,7 @@ export const SignUpForm = () => {
                                 router.push('/legal/terms-and-conditions')
                             }}
                         >
-                            {t('common.terms_link')}
+                            {t('common.link.terms')}
                         </span>
                     ),
                     privacy_link: (
@@ -162,19 +162,19 @@ export const SignUpForm = () => {
                                 router.push('/legal/privacy-policy')
                             }}
                         >
-                            {t('common.privacy_link')}
+                            {t('common.link.privacy')}
                         </span>
                     ),
                 })}
             </div>
             <div className="text-center ">
-                {t('dialogs.signup.to_back', {
+                {t('auth.signup.to_back', {
                     sign_in_link: (
                         <span
                             className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
                             onClick={handleSignInClick}
                         >
-                            {t('common.sign_in_link')}
+                            {t('common.link.sign_in')}
                         </span>
                     ),
                 })}
