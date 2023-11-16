@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import classNames from 'classnames'
 
@@ -6,15 +6,29 @@ import { Spinner } from '@/components/spinner'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type FileInputProps = {
-    fileName: string
-    error?: string
+    fileName?: string
     className?: string
+    multiple?: boolean
+    maxFilesCount?: number
+    maxFileSize: number
+    currentFilesLength?: number
     isUploading?: boolean
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange: (files: FileList) => void
 }
 
-export const FileInput = ({ fileName, error, className, isUploading, onChange }: FileInputProps) => {
+export const FileInput = ({
+    fileName,
+    className,
+    multiple,
+    maxFilesCount = 1,
+    maxFileSize,
+    currentFilesLength = 0,
+    isUploading,
+    onChange,
+}: FileInputProps) => {
     const t = useI18n()
+
+    const [error, setError] = useState<string>('')
 
     // Create a reference to the hidden file input element
     const hiddenFileInput = useRef<HTMLInputElement>(null)
@@ -25,40 +39,95 @@ export const FileInput = ({ fileName, error, className, isUploading, onChange }:
         hiddenFileInput.current?.click()
     }
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files?.length) {
+            return
+        }
+
+        const files = e.target.files
+        const fileSize = e.target.files[0].size
+
+        setError('')
+
+        if (files.length + currentFilesLength > maxFilesCount) {
+            setError(t('forms.validation.file.max_count', { count: maxFilesCount }))
+            return
+        }
+
+        if (fileSize > maxFileSize) {
+            setError(t('forms.validation.file.max_size', { size: maxFileSize / 1000000 }))
+            return
+        }
+
+        onChange(e.target.files)
+    }
+
     return (
         <div className={className}>
-            <div className="relative cursor-pointer">
-                <div
-                    className={classNames(
-                        'hover-animated flex h-10 w-full items-center rounded-lg border bg-white pl-4 pr-9',
-                        {
-                            'border-red-100': error,
-                            'border-black-15 focus:border-black-40': !error,
-                        },
-                    )}
-                    onClick={handleClickFileInput}
-                >
-                    {fileName ? fileName : <div className="text-black-40">{t('forms.fields.file.placeholder')}</div>}
-                </div>
+            <div className="relative">
+                {multiple && (
+                    <div className="absolute -top-7 right-0 text-black-40">
+                        {currentFilesLength} / {maxFilesCount}
+                    </div>
+                )}
 
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15" onClick={handleClickFileInput}>
-                    {isUploading ? (
-                        <Spinner size={16} />
-                    ) : (
-                        // prettier-ignore
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" d="M16 5C16 3.89543 15.1046 3 14 3H8.00179C8.04192 2.99978 8.02918 2.98428 7.94123 2.87732C7.91963 2.85104 7.89349 2.81925 7.86248 2.78082C7.83182 2.74281 7.74603 2.63225 7.67056 2.535C7.61708 2.46609 7.56879 2.40385 7.54898 2.37885C6.83294 1.47545 6.12 1 5 1H2C0.89543 1 0 1.89543 0 3V13C0 14.1046 0.89543 15 2 15H14C15.1046 15 16 14.1046 16 13V5ZM14 5V13H2V3H5C5.38424 3 5.60702 3.14857 5.9816 3.62116C5.99337 3.63601 6.02712 3.67952 6.06918 3.73374C6.14956 3.83735 6.26027 3.98006 6.30583 4.03654C6.80869 4.65991 7.27649 4.99614 7.99465 4.99999L14 5Z" />
-                        </svg>
-                    )}
-                </div>
+                <div className="relative">
+                    <div
+                        className={classNames(
+                            'hover-animated flex h-10 w-full cursor-pointer items-center rounded-lg border bg-white pl-4 pr-9',
+                            {
+                                'border-red-100': error,
+                                'border-black-15 focus:border-black-40': !error,
+                                'cursor-wait': isUploading,
+                                'cursor-default opacity-30': multiple && currentFilesLength >= maxFilesCount,
+                            },
+                        )}
+                        onClick={handleClickFileInput}
+                    >
+                        {isUploading && (
+                            <>
+                                <div className="text-black-40">{t('forms.fields.file.loading.placeholder')}</div>
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
+                                    <Spinner size={16} />
+                                </div>
+                            </>
+                        )}
 
-                <input
-                    ref={hiddenFileInput}
-                    type="file"
-                    className="hidden"
-                    accept="image/jpg, image/jpeg, image/png, image/webp"
-                    onChange={onChange}
-                />
+                        {!isUploading && !fileName && (
+                            <>
+                                <div className="text-black-40">{t('forms.fields.file.placeholder')}</div>
+                                {/* prettier-ignore */}
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fillRule="evenodd" d="M16 5C16 3.89543 15.1046 3 14 3H8.00179C8.04192 2.99978 8.02918 2.98428 7.94123 2.87732C7.91963 2.85104 7.89349 2.81925 7.86248 2.78082C7.83182 2.74281 7.74603 2.63225 7.67056 2.535C7.61708 2.46609 7.56879 2.40385 7.54898 2.37885C6.83294 1.47545 6.12 1 5 1H2C0.89543 1 0 1.89543 0 3V13C0 14.1046 0.89543 15 2 15H14C15.1046 15 16 14.1046 16 13V5ZM14 5V13H2V3H5C5.38424 3 5.60702 3.14857 5.9816 3.62116C5.99337 3.63601 6.02712 3.67952 6.06918 3.73374C6.14956 3.83735 6.26027 3.98006 6.30583 4.03654C6.80869 4.65991 7.27649 4.99614 7.99465 4.99999L14 5Z" />
+                                    </svg>
+                                </div>
+                            </>
+                        )}
+
+                        {!isUploading && fileName && (
+                            <>
+                                {fileName}
+                                {/* prettier-ignore */}
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fillRule="evenodd" d="M16 5C16 3.89543 15.1046 3 14 3H8.00179C8.04192 2.99978 8.02918 2.98428 7.94123 2.87732C7.91963 2.85104 7.89349 2.81925 7.86248 2.78082C7.83182 2.74281 7.74603 2.63225 7.67056 2.535C7.61708 2.46609 7.56879 2.40385 7.54898 2.37885C6.83294 1.47545 6.12 1 5 1H2C0.89543 1 0 1.89543 0 3V13C0 14.1046 0.89543 15 2 15H14C15.1046 15 16 14.1046 16 13V5ZM14 5V13H2V3H5C5.38424 3 5.60702 3.14857 5.9816 3.62116C5.99337 3.63601 6.02712 3.67952 6.06918 3.73374C6.14956 3.83735 6.26027 3.98006 6.30583 4.03654C6.80869 4.65991 7.27649 4.99614 7.99465 4.99999L14 5Z" />
+                                    </svg>
+                                </div>
+                            </>
+                        )}
+                    </div>
+
+                    <input
+                        ref={hiddenFileInput}
+                        type="file"
+                        className="hidden"
+                        accept="image/jpg, image/jpeg, image/png, image/webp"
+                        multiple={multiple}
+                        disabled={isUploading || (multiple && currentFilesLength >= maxFilesCount)}
+                        onChange={handleChange}
+                    />
+                </div>
             </div>
 
             {error && <div className="mt-1 text-small text-red-100">{error}</div>}

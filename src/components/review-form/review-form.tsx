@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -18,6 +18,8 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { updateReviewById } from '@/services/reviews'
 import { useI18n, useScopedI18n } from '@/utils/i18n/i18n.client'
+
+import { ReviewPhotosUploader } from './review-photos-uploader'
 
 const reviewTextMinLength = validationConfig.review.text.minLength
 const reviewTextMaxLength = validationConfig.review.text.maxLength
@@ -38,6 +40,7 @@ export const ReviewForm = (review: ReviewFormProps) => {
             reviewId: review.id,
             rating: review.rating || 0,
             text: review.text || '',
+            photos: review.photos.map(photo => photo.url),
         },
         validationSchema: Yup.object().shape({
             rating: Yup.number().min(1, t('forms.validation.required')),
@@ -66,7 +69,7 @@ export const ReviewForm = (review: ReviewFormProps) => {
             <div className="mb-8 flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        Your rating
+                        {t('review.add.form.fields.rating.label')}
                     </label>
                     <RatingInput
                         value={formik.values.rating}
@@ -77,17 +80,26 @@ export const ReviewForm = (review: ReviewFormProps) => {
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        Review
+                        {t('review.add.form.fields.text.label')}
                     </label>
                     <Textarea
                         id="text"
                         name="text"
                         value={formik.values.text}
-                        placeholder="Share your impressions in detail — this way you will help others learn more about this place"
+                        placeholder={t('review.add.form.fields.text.placeholder')}
                         maxLength={reviewTextMaxLength}
                         error={formik.errors.text}
                         isDisabled={isLoading}
                         onChange={formik.handleChange}
+                    />
+                </div>
+                <div className="flex flex-col gap-y-2">
+                    <label htmlFor="text" className="font-medium">
+                        {t('review.add.form.fields.photos.label')}
+                    </label>
+                    <ReviewPhotosUploader
+                        photos={formik.values.photos}
+                        onChange={value => formik.setFieldValue('photos', value)}
                     />
                 </div>
             </div>

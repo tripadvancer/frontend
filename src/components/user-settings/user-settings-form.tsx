@@ -17,7 +17,7 @@ import { useToast } from '@/providers/toast-provider'
 import { updateUserInfo } from '@/services/user'
 import { useI18n, useScopedI18n } from '@/utils/i18n/i18n.client'
 
-import { UserSettingsAvatar } from './user-settings-avatar'
+import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
@@ -69,7 +69,7 @@ export const UserSettingsForm = ({ name, info, avatar }: UserSettingsFormProps) 
                     <label htmlFor="avatar" className="font-medium">
                         {tForms('fields.avatar.label')}
                     </label>
-                    <UserSettingsAvatar currentAvatar={avatar} />
+                    <UserSettingsAvatarUploader currentAvatar={avatar} />
                 </div>
 
                 <div className="flex flex-col gap-y-2">

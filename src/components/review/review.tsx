@@ -19,8 +19,8 @@ export const Review = ({ review, reviewsCount }: ReviewProps) => {
     const formattedDate = FormattedDate(review.createdAt, locale)
 
     return (
-        <div className="border-b border-black-15 py-8 first:border-t last:border-b-0 last:pb-0">
-            <div className="mb-5 flex items-start justify-between sm:items-center">
+        <div className="flex flex-col gap-y-5 border-b border-black-15 py-8 first:border-t last:border-b-0 last:pb-0">
+            <div className="flex items-start justify-between sm:items-center">
                 <div className="flex flex-col gap-1">
                     <Rating value={review.rating} size={16} />
                     <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2 ">
@@ -36,7 +36,7 @@ export const Review = ({ review, reviewsCount }: ReviewProps) => {
             <div>{review.text}</div>
 
             {review.photos.length > 0 && (
-                <div className="mt-5 grid grid-cols-3 gap-2 sm:grid-cols-9">
+                <div className="grid grid-cols-3 gap-2 sm:grid-cols-9">
                     <PhotoFeed
                         photos={review.photos}
                         title={review.place.title}

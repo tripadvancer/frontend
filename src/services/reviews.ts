@@ -38,13 +38,28 @@ export async function updateReviewById({ reviewId, ...patch }: UpdateReviewInput
     }
 }
 
+export async function reviewPhotosUpload(file: File): Promise<{ url: string }> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/images/review-photo'
+    const formData = new FormData()
+
+    formData.append('file', file)
+
+    const res = await fetch(url, {
+        method: 'POST',
+        body: formData,
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+
+    return res.json()
+}
+
 export async function removeReviewById(reviewId: string): Promise<void> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/reviews/' + reviewId
     const res = await fetch(url, {
         method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
     })
 
     if (!res.ok) {

@@ -14,35 +14,21 @@ import { FileInput } from '../forms/file-input/file-input'
 
 const maxFileSize = validationConfig.common.maxFileSize
 
-type UserSettingsAvatarProps = {
+type UserSettingsAvatarUploaderProps = {
     currentAvatar: string | null
 }
 
-export const UserSettingsAvatar = ({ currentAvatar }: UserSettingsAvatarProps) => {
+export const UserSettingsAvatarUploader = ({ currentAvatar }: UserSettingsAvatarUploaderProps) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()
 
     const [fileName, setFileName] = useState<string>('')
-    const [error, setError] = useState<string>('')
     const [isUploading, setIsUploading] = useState<boolean>(false)
     const [isRemoveAvatarConfirm, setIsRemoveAvatarConfirm] = useState<boolean>(false)
 
-    const handleChangeFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!e.target.files?.[0]) {
-            return
-        }
-
-        const file = e.target.files[0]
-        const fileSize = e.target.files[0].size
-
-        setError('')
-        setFileName(e.target.files[0].name)
-
-        if (fileSize && fileSize > maxFileSize) {
-            setError(t('forms.validation.file.max_size', { size: maxFileSize / 1000000 }))
-            return
-        }
+    const handleChangeFileInput = async (files: FileList) => {
+        const file = files[0]
 
         try {
             setIsUploading(true)
@@ -53,7 +39,7 @@ export const UserSettingsAvatar = ({ currentAvatar }: UserSettingsAvatarProps) =
             toast.error(t('common.error'))
             setFileName('')
         } finally {
-            setError('')
+            setFileName(file.name)
             setIsUploading(false)
         }
     }
@@ -75,7 +61,6 @@ export const UserSettingsAvatar = ({ currentAvatar }: UserSettingsAvatarProps) =
         } catch {
             toast.error(t('common.error'))
         } finally {
-            setError('')
             setFileName('')
             setIsUploading(false)
             setIsRemoveAvatarConfirm(false)
@@ -96,7 +81,12 @@ export const UserSettingsAvatar = ({ currentAvatar }: UserSettingsAvatarProps) =
                 </div>
             )}
 
-            <FileInput fileName={fileName} error={error} isUploading={isUploading} onChange={handleChangeFileInput} />
+            <FileInput
+                fileName={fileName}
+                maxFileSize={maxFileSize}
+                isUploading={isUploading}
+                onChange={handleChangeFileInput}
+            />
         </div>
     )
 }
