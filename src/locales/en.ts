@@ -66,6 +66,10 @@ export default {
     'countries.places#one': '{count} place',
     'countries.places#other': '{count} places',
 
+    'place.reviews#zero': 'No reviews',
+    'place.reviews#one': '{count} review',
+    'place.reviews#other': '{count} reviews',
+
     'user.achievement.level_1': 'Beginner',
     'user.achievement.statistic.added_places': 'Added places',
     'user.achievement.statistic.added_photos': 'Added photos',

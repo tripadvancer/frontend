@@ -4,9 +4,8 @@ import { useState } from 'react'
 
 import type { ICountry } from '@/utils/types/country'
 
+import { Country } from '@/components/country/country'
 import { ShowMore } from '@/components/show-more'
-
-import { Country } from './country'
 
 const PAGINATION_LIMIT = 12
 

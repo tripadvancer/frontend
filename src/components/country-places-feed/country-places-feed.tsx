@@ -4,10 +4,9 @@ import { useState } from 'react'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
+import { CountryPlace } from '@/components/country-place/country-place'
 import { ShowMore } from '@/components/show-more'
 import { useScopedI18n } from '@/utils/i18n/i18n.client'
-
-import { CountryPlace } from './country-place'
 
 type CountryPlacesFeedProps = {
     places: IPlacePreview[]

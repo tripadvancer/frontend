@@ -68,6 +68,12 @@ export default {
     'countries.places#many': '{count} мест',
     'countries.places#other': '{count} мест',
 
+    'place.reviews#zero': 'Нет отзывов',
+    'place.reviews#one': '{count} отзыв',
+    'place.reviews#few': '{count} отзыва',
+    'place.reviews#many': '{count} отзывов',
+    'place.reviews#other': '{count} отзывов',
+
     'user.achievement.level_1': 'Новичок',
     'user.achievement.statistic.added_places': 'Добавлено мест',
     'user.achievement.statistic.added_photos': 'Добавлено фото',

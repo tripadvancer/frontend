@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -7,10 +9,13 @@ import { ImageNotFound } from '@/components/image-not-found'
 import { Rating } from '@/components/rating'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 type CountryPlaceProps = IPlacePreview
 
 export const CountryPlace = ({ id, title, avgRating, reviewsCount, cover }: CountryPlaceProps) => {
+    const t = useI18n()
+
     return (
         <Link href={`/places/${id}`}>
             <div className="flex flex-row gap-4">
@@ -32,8 +37,12 @@ export const CountryPlace = ({ id, title, avgRating, reviewsCount, cover }: Coun
                 <div className="flex flex-col justify-between">
                     <div className="line-clamp-3 text-h7-m sm:text-h7">{title}</div>
                     <div>
-                        <Rating rating={avgRating} />
-                        <div className="text-small text-black-40">345 reviews</div>
+                        <Rating value={avgRating} size={16} />
+                        <div className="text-small text-black-40">
+                            {t('place.reviews', {
+                                count: reviewsCount ?? 0,
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { CountryPlaceSkeleton } from '@/components/country-places-feed/country-place-skeleton'
+import { CountryPlaceSkeleton } from '@/components/country-place/country-place-skeleton'
 import { CategoriesEnum } from '@/utils/enums'
 
 export default function Loading() {

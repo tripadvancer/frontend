@@ -65,9 +65,9 @@ export const ReviewPhotosUploader = ({ photos, onChange }: ReviewPhotosUploaderP
 
             <div className="flex gap-x-2">
                 {photos.map(photo => (
-                    <div key={photo} className="relative cursor-pointer">
+                    <div key={photo} className="relative">
                         <div
-                            className="absolute right-0 top-0 flex h-8 w-8 items-center justify-center rounded-lg bg-red-10 text-red-100"
+                            className="absolute right-0 top-0 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-red-10 text-red-100"
                             onClick={() => handlePhotoRemove(photo)}
                         >
                             {/* prettier-ignore */}
@@ -79,7 +79,7 @@ export const ReviewPhotosUploader = ({ photos, onChange }: ReviewPhotosUploaderP
                             src={makeImageUrl(photo, ImageVariant.PREVIEW)}
                             width={64}
                             height={64}
-                            className="cursor-pointer rounded-lg"
+                            className="rounded-lg"
                             alt=""
                         />
                     </div>
