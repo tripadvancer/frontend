@@ -17,7 +17,7 @@ export const initialState: UserState = {
     user: null,
     userLocation: null,
     isAuth: false,
-    isOnboarded: true,
+    isOnboarded: false,
     isCookieAccepted: false,
 }
 

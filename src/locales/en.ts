@@ -1,4 +1,8 @@
 export default {
+    'cookie.consent.title': 'Allow Cookies',
+    'cookie.consent.description': 'This website uses cookies to ensure you get the best experience on our website. For more information, you can read our {cookie_policy_link}.',
+    'cookie.consent.cookie_policy_link': 'Cookie Policy',
+
     'common.about.title': 'Planing a trip but don`t know where to go?',
     'common.about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
 
@@ -10,6 +14,7 @@ export default {
     'common.action.cancel': 'Cancel',
     'common.action.send': 'Send',
     'common.action.delete': 'Delete',
+    'common.action.got_it': 'Got it!',
 
     'common.confirm.title': 'Sure?',
     'common.confirm.yes': 'Yes',

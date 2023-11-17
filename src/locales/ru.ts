@@ -1,4 +1,8 @@
 export default {
+    'cookie.consent.title': 'Согласие на использование файлов cookie',
+    'cookie.consent.description': 'Этот веб-сайт использует файлы cookie, чтобы обеспечить Вам максимальное удобство. Дополнительную информацию Вы можете найти в нашей {cookie_policy_link}.',
+    'cookie.consent.cookie_policy_link': 'Политике использования файлов cookie',
+
     'common.about.title': 'Планируете поездку, но не знаете куда поехать?',
     'common.about.description': 'Tripadvancer поможет Вам открыть мир с новой стороны, найти интересные места и отправиться в увлекательное путешествие.',
 
@@ -10,6 +14,7 @@ export default {
     'common.action.cancel': 'Отмена',
     'common.action.send': 'Отправить',
     'common.action.delete': 'Удалить',
+    'common.action.got_it': 'Понятно!',
 
     'common.confirm.title': 'Уверены?',
     'common.confirm.yes': 'Да',

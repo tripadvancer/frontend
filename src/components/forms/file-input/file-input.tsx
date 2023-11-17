@@ -74,10 +74,11 @@ export const FileInput = ({
                 <div className="relative">
                     <div
                         className={classNames(
-                            'hover-animated flex h-10 w-full cursor-pointer items-center rounded-lg border bg-white pl-4 pr-9',
+                            'hover-animated flex h-10 w-full items-center rounded-lg border bg-white pl-4 pr-9',
                             {
                                 'border-red-100': error,
                                 'border-black-15 focus:border-black-40': !error,
+                                'cursor-pointer': !isUploading && currentFilesLength < maxFilesCount,
                                 'cursor-wait': isUploading,
                                 'cursor-default opacity-30': multiple && currentFilesLength >= maxFilesCount,
                             },

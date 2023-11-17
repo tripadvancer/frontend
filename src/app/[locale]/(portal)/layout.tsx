@@ -1,3 +1,4 @@
+import { CookieConsent } from '@/components/cookie-consent'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header/header'
 
@@ -8,6 +9,7 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
             <Header />
             <main className="flex-1 overflow-hidden rounded-t-4xl bg-white">{children}</main>
             <Footer />
+            <CookieConsent />
         </div>
     )
 }
