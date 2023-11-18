@@ -10,9 +10,10 @@ import { ReviewSkeleton } from '../review/review-skeleton'
 type ReviewFeedProps = {
     reviews: PaginatedResponse<IReview>
     currentPage: number
+    variant: 'place-page' | 'user-page'
 }
 
-export const ReviewFeed = async ({ reviews, currentPage }: ReviewFeedProps) => {
+export const ReviewFeed = async ({ reviews, currentPage, variant }: ReviewFeedProps) => {
     const t = await getScopedI18n('common.empty_message')
     const totalPages = reviews.totalPages
 
@@ -23,7 +24,7 @@ export const ReviewFeed = async ({ reviews, currentPage }: ReviewFeedProps) => {
     return (
         <div>
             {reviews.items.map((review, index) => (
-                <Review key={index} review={review} reviewsCount={reviews.items.length} />
+                <Review key={index} review={review} reviewsCount={reviews.items.length} variant={variant} />
             ))}
             {totalPages > 1 && <Paginator pages={totalPages} currentPage={currentPage} />}
         </div>

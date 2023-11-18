@@ -12,5 +12,5 @@ export default async function UserReviews({
     const currentPage = searchParams.page ?? '1'
     const reviews = await getReviewsByUserId(userId, currentPage)
 
-    return <ReviewFeed reviews={reviews} currentPage={parseInt(currentPage)} />
+    return <ReviewFeed reviews={reviews} currentPage={parseInt(currentPage)} variant="user-page" />
 }

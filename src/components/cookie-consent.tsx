@@ -18,8 +18,8 @@ export const CookieConsent = () => {
     }
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 bg-orange-10">
-            <div className="container flex justify-between gap-x-4 py-4">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-orange-10">
+            <div className="container flex flex-col gap-4 py-4 sm:flex-row sm:justify-between">
                 <div className="text-black-70">
                     <div className="font-medium">{t('cookie.consent.title')}</div>
                     <div>
@@ -35,9 +35,11 @@ export const CookieConsent = () => {
                         })}
                     </div>
                 </div>
-                <Button variant="orange" onClick={() => dispatch(setCookieAccepted(true))}>
-                    {t('common.action.got_it')}
-                </Button>
+                <div className="flex-none">
+                    <Button variant="orange" onClick={() => dispatch(setCookieAccepted(true))}>
+                        {t('common.action.got_it')}
+                    </Button>
+                </div>
             </div>
         </div>
     )

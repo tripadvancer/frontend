@@ -143,7 +143,11 @@ export default async function Place({
 
                             <section>
                                 <h2 className="mb-8 text-h5-m sm:text-h5">Visitor reviews</h2>
-                                <ReviewFeed reviews={reviews} currentPage={parseInt(currentPage)} />
+                                <ReviewFeed
+                                    reviews={reviews}
+                                    currentPage={parseInt(currentPage)}
+                                    variant="place-page"
+                                />
                             </section>
                         </div>
                     </div>
