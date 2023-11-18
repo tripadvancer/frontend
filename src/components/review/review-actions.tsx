@@ -1,10 +1,10 @@
 import { IReview } from '@/utils/types/review'
 
+import { ActionControlSkeleton } from '@/components/action-control/action-control-skeleton'
 import { getUserInfo } from '@/services/user'
 import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { ActionControlSkeleton } from '../action-control/action-control-skeleton'
 import { PrivateReviewActions } from './private-review-actions'
 import { PublicReviewActions } from './public-review-actions'
 

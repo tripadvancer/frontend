@@ -10,6 +10,7 @@ import { CoordinatesToCopy } from '@/components/coordinates-to-copy'
 import { DraftToHtml } from '@/components/draft-to-html'
 import { PhotoFeed } from '@/components/photo-feed'
 import { PlacesNearbyFeed } from '@/components/places-nearby-feed/places-nearby-feed'
+import { PlacesNearbyFeedSkeleton } from '@/components/places-nearby-feed/places-nearby-feed-skeleton'
 import { ReviewFeed } from '@/components/reviews-feed/reviews-feed'
 import { ReviewsFeedSkeleton } from '@/components/reviews-feed/reviews-feed-skeleton'
 import { UserPreview } from '@/components/user-preview'
@@ -122,7 +123,9 @@ export default async function Place({
                             {placesNearby.length > 0 && (
                                 <section>
                                     <h3 className="mb-4 text-caps uppercase">{t('place_nearby.title')}</h3>
-                                    <PlacesNearbyFeed places={placesNearby} />
+                                    <Suspense fallback={<PlacesNearbyFeedSkeleton />}>
+                                        <PlacesNearbyFeed places={placesNearby} />
+                                    </Suspense>
                                 </section>
                             )}
                         </div>

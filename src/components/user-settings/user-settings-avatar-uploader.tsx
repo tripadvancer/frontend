@@ -1,16 +1,15 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 import { useRouter } from 'next/navigation'
 
+import { ConfirmationMini } from '@/components/confirmation-mini'
+import { FileInput } from '@/components/forms/file-input/file-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { deleteUserAvatar, updateUserAvatar } from '@/services/user'
 import { useI18n } from '@/utils/i18n/i18n.client'
-
-import { ConfirmationMini } from '../confirmation-mini'
-import { FileInput } from '../forms/file-input/file-input'
 
 const maxFileSize = validationConfig.common.maxFileSize
 

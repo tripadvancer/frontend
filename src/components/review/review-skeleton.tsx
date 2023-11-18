@@ -1,4 +1,4 @@
-import { ActionControlSkeleton } from '../action-control/action-control-skeleton'
+import { ActionControlSkeleton } from '@/components/action-control/action-control-skeleton'
 
 export const ReviewSkeleton = () => {
     return (

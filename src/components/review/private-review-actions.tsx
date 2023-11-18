@@ -5,12 +5,11 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { IReview } from '@/utils/types/review'
 
 import { Dropdown, DropdownItemProps } from '@/components/dropdown'
+import { EditReview } from '@/components/review-form/edit-review'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { removeReviewById } from '@/services/reviews'
 import { useI18n } from '@/utils/i18n/i18n.client'
-
-import { EditReview } from '../review-form/edit-review'
 
 type PrivateReviewActionsProps = {
     review: IReview
