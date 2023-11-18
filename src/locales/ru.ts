@@ -6,6 +6,9 @@ export default {
     'common.about.title': 'Планируете поездку, но не знаете куда поехать?',
     'common.about.description': 'Tripadvancer поможет Вам открыть мир с новой стороны, найти интересные места и отправиться в увлекательное путешествие.',
 
+    'common.coordinates.copy.success': 'Координаты были успешно скопированы.',
+    'common.distance.meters': '{distance} км',
+
     'common.action.show_more': 'Показать ещё',
     'common.action.close': 'Закрыть',
     'common.action.return_home': 'На главную',
@@ -109,8 +112,8 @@ export default {
     'review.add.success': 'Ваш отзыв был успешно добавлен.',
     'review.edit.form.title': 'Редактировать отзыв',
     'review.edit.success': 'Ваш отзыв был успешно обновлён.',
-    'review.complaint.title': 'Пожаловаться на отзыв',
-    'review.complaint.form.text.placeholder': 'Опишите причину жалобы',
+    'review.complaint.form.title': 'Пожаловаться на отзыв',
+    'review.complaint.form.fields.text.placeholder': 'Опишите причину жалобы',
     'review.complaint.success': 'Ваша жалоба была отправлена.',
 
     'auth.feedback.verify_email.title': 'Проверьте свой email',
@@ -195,4 +198,10 @@ export default {
     'pages.user.settings.gdpr.delete_user.confirm.title': 'Удалить учётную запись',
     'pages.user.settings.gdpr.delete_user.confirm.message': 'Вы уверены, что хотите удалить свою учётную запись?',
     'pages.user.settings.gdpr.delete_user.success': 'Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
+
+    'pages.place.about.title': 'О месте',
+    'pages.place.photos.title': 'Фотографии',
+    'pages.place.reviews.title': 'Отзывы',
+    'pages.place.author.title': 'Автор',
+    'pages.place.place_nearby.title': 'Места рядом',
 } as const

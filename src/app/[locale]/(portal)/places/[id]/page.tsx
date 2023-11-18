@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -7,8 +9,9 @@ import { Achievement } from '@/components/achievement'
 import { CoordinatesToCopy } from '@/components/coordinates-to-copy'
 import { DraftToHtml } from '@/components/draft-to-html'
 import { PhotoFeed } from '@/components/photo-feed'
-import { PlacesNearbyList } from '@/components/places-nearby-list'
+import { PlacesNearbyFeed } from '@/components/places-nearby-feed/places-nearby-feed'
 import { ReviewFeed } from '@/components/reviews-feed/reviews-feed'
+import { ReviewsFeedSkeleton } from '@/components/reviews-feed/reviews-feed-skeleton'
 import { UserPreview } from '@/components/user-preview'
 import { getCountryByCode } from '@/services/countries'
 import { getPlaceById, getPlacesNearby } from '@/services/places'
@@ -26,6 +29,7 @@ export default async function Place({
 }) {
     const currentPage = searchParams.page ?? '1'
 
+    const t = await getScopedI18n('pages.place')
     const tCategories = await getScopedI18n('categories')
     const place = await getPlaceById(params.id)
     const placesNearby = await getPlacesNearby(params.id)
@@ -69,7 +73,7 @@ export default async function Place({
                             href={`/countries/${country?.slug}`}
                             className="mb-4 inline-block font-medium text-white hover:text-white"
                         >
-                            {country?.name['en']}
+                            {country?.name[params.locale]}
                         </Link>
                         <h1 className="mb-4 text-h1-m text-white sm:text-h1">{place.title}</h1>
                         <CoordinatesToCopy coordinates={place.location.coordinates} className="mb-4" />
@@ -111,26 +115,26 @@ export default async function Place({
                             </Achievement>
 
                             <section>
-                                <h3 className="mb-4 text-caps uppercase">Author</h3>
+                                <h3 className="mb-4 text-caps uppercase">{t('author.title')}</h3>
                                 <UserPreview {...place.author} date={formattedDate} />
                             </section>
 
                             {placesNearby.length > 0 && (
                                 <section>
-                                    <h3 className="mb-4 text-caps uppercase">Places nearby</h3>
-                                    <PlacesNearbyList places={placesNearby} />
+                                    <h3 className="mb-4 text-caps uppercase">{t('place_nearby.title')}</h3>
+                                    <PlacesNearbyFeed places={placesNearby} />
                                 </section>
                             )}
                         </div>
 
                         <div className="flex-1">
                             <section className="mb-16">
-                                <h2 className="mb-8 text-h5-m sm:text-h5">About this place</h2>
+                                <h2 className="mb-8 text-h5-m sm:text-h5">{t('about.title')}</h2>
                                 <DraftToHtml json={place.description} />
                             </section>
 
                             <section className="mb-16">
-                                <h2 className="mb-8 text-h5-m sm:text-h5">Photos</h2>
+                                <h2 className="mb-8 text-h5-m sm:text-h5">{t('photos.title')}</h2>
                                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
                                     <PhotoFeed
                                         photos={photosWithCover}
@@ -142,12 +146,14 @@ export default async function Place({
                             </section>
 
                             <section>
-                                <h2 className="mb-8 text-h5-m sm:text-h5">Visitor reviews</h2>
-                                <ReviewFeed
-                                    reviews={reviews}
-                                    currentPage={parseInt(currentPage)}
-                                    variant="place-page"
-                                />
+                                <h2 className="mb-8 text-h5-m sm:text-h5">{t('reviews.title')}</h2>
+                                <Suspense fallback={<ReviewsFeedSkeleton />}>
+                                    <ReviewFeed
+                                        reviews={reviews}
+                                        currentPage={parseInt(currentPage)}
+                                        variant="place-page"
+                                    />
+                                </Suspense>
                             </section>
                         </div>
                     </div>

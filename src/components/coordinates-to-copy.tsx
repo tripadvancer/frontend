@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import type { CoordinatesTuple } from '@/utils/types/geo'
 
 import { useToast } from '@/providers/toast-provider'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 type CoordinatesToCopyProps = {
     coordinates: CoordinatesTuple
@@ -12,12 +13,13 @@ type CoordinatesToCopyProps = {
 }
 
 export const CoordinatesToCopy = ({ coordinates, className }: CoordinatesToCopyProps) => {
+    const t = useI18n()
     const toast = useToast()
 
     const handleCopy = () => {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(`${coordinates[1]}, ${coordinates[0]}`)
-            toast.success('Coordinates copied to clipboard')
+            toast.success(t('common.coordinates.copy.success'))
         }
     }
 

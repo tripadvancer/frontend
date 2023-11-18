@@ -6,6 +6,9 @@ export default {
     'common.about.title': 'Planing a trip but don`t know where to go?',
     'common.about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
 
+    'common.coordinates.copy.success': 'Coordinates have been successfully copied to the clipboard.',
+    'common.distance.meters': '{distance} km',
+
     'common.action.show_more': 'Show more',
     'common.action.close': 'Close',
     'common.action.return_home': 'Return Home',
@@ -191,4 +194,10 @@ export default {
     'pages.user.settings.gdpr.delete_user.confirm.title': 'Remove your account',
     'pages.user.settings.gdpr.delete_user.confirm.message': 'Are you sure you want to remove your account?',
     'pages.user.settings.gdpr.delete_user.success': 'This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
+
+    'pages.place.about.title': 'About this place',
+    'pages.place.photos.title': 'Photos',
+    'pages.place.reviews.title': 'Visitor reviews',
+    'pages.place.author.title': 'Author',
+    'pages.place.place_nearby.title': 'Places nearby',
 } as const
