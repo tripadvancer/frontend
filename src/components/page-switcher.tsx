@@ -19,13 +19,14 @@ export const Tabs = async ({ nav, className }: PageSwitcherProps) => {
     return (
         <nav className={classNames('flex gap-x-4 text-big-bold', className)}>
             {nav.map(item => {
+                const isActive = pathname === item.href
+
                 return (
                     <Link
                         key={item.href}
                         href={item.href}
                         className={classNames('whitespace-nowrap', {
-                            'border-b-2 border-black-100 text-black-100 hover:text-black-100': pathname === item.href,
-                            'text-blue-100': pathname !== item.href,
+                            'border-b-2 border-black-100 text-black-100 hover:text-black-100': isActive,
                         })}
                     >
                         {item.caption}

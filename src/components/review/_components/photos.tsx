@@ -16,28 +16,28 @@ import { makeImageUrl } from '@/utils/helpers'
 import 'yet-another-react-lightbox/plugins/captions.css'
 import 'yet-another-react-lightbox/styles.css'
 
-type PhotoFeedProps = {
+type PhotosProps = {
     title: string
     description: string
     photos: IPhoto[]
-    cover: string | null
-    size: number
 }
 
-export const PhotoFeed = ({ title, description, photos, cover, size }: PhotoFeedProps) => {
+export const Photos = ({ title, description, photos }: PhotosProps) => {
     const [indexSlide, setIndexSlide] = useState<number>(-1)
 
-    const photosWithCover: IPhoto[] = cover ? [{ id: 0, url: cover }, ...photos] : photos
+    if (photos.length === 0) {
+        return null
+    }
 
     return (
-        <>
-            {photosWithCover.map((photo, index) => (
+        <div className="grid grid-cols-3 gap-2 sm:grid-cols-9">
+            {photos.map((photo, index) => (
                 <Image
                     key={photo.id}
                     src={makeImageUrl(photo.url, ImageVariant.PREVIEW)}
                     className="w-full cursor-pointer rounded-lg"
-                    width={size}
-                    height={size}
+                    width={64}
+                    height={64}
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8eftuPQAIOAMS40NHBQAAAABJRU5ErkJggg=="
                     alt={title}
@@ -50,12 +50,12 @@ export const PhotoFeed = ({ title, description, photos, cover, size }: PhotoFeed
                 open={indexSlide >= 0}
                 close={() => setIndexSlide(-1)}
                 index={indexSlide}
-                slides={photosWithCover.map(photo => ({
+                slides={photos.map(photo => ({
                     title,
                     description,
                     src: makeImageUrl(photo.url, ImageVariant.PUBLIC),
                 }))}
             />
-        </>
+        </div>
     )
 }

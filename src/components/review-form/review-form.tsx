@@ -17,7 +17,7 @@ import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { updateReviewById } from '@/services/reviews'
-import { useI18n, useScopedI18n } from '@/utils/i18n/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ReviewPhotosUploader } from './review-photos-uploader'
 
@@ -28,7 +28,6 @@ type ReviewFormProps = IReview
 
 export const ReviewForm = (review: ReviewFormProps) => {
     const t = useI18n()
-    const tValidation = useScopedI18n('forms.validation')
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -43,11 +42,11 @@ export const ReviewForm = (review: ReviewFormProps) => {
             photos: review.photos.map(photo => photo.url),
         },
         validationSchema: Yup.object().shape({
-            rating: Yup.number().min(1, t('forms.validation.required')),
+            rating: Yup.number().min(1, t('validation.required')),
             text: Yup.string()
-                .required(tValidation('required'))
-                .min(reviewTextMinLength, tValidation('min_length', { min_length: reviewTextMinLength }))
-                .max(reviewTextMaxLength, tValidation('max_length', { max_length: reviewTextMaxLength })),
+                .required(t('validation.required'))
+                .min(reviewTextMinLength, t('validation.min_length', { min_length: reviewTextMinLength }))
+                .max(reviewTextMaxLength, t('validation.max_length', { max_length: reviewTextMaxLength })),
         }),
         onSubmit: async values => {
             try {

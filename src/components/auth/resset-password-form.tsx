@@ -53,7 +53,7 @@ export const RessetPasswordForm = () => {
             password: '',
         },
         validationSchema: Yup.object().shape({
-            password: Yup.string().required(t('forms.validation.required')),
+            password: Yup.string().required(t('validation.required')),
         }),
         onSubmit: handleSubmit,
     })
@@ -61,7 +61,7 @@ export const RessetPasswordForm = () => {
     if (!status) {
         return (
             <form className="w-full" onSubmit={formik.handleSubmit}>
-                <p className="mb-2 text-center">{t('pages.auth.reset_password.welcome')}</p>
+                <p className="mb-2 text-center">{t('pages.auth.reset_password.title')}</p>
                 <Input
                     type="password"
                     name="password"

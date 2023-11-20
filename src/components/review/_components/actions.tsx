@@ -5,15 +5,15 @@ import { getUserInfo } from '@/services/user'
 import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { PrivateReviewActions } from './private-review-actions'
-import { PublicReviewActions } from './public-review-actions'
+import { ActionsPrivate } from './actions-private'
+import { ActionsPublic } from './actions-public'
 
-type ReviewActionsProps = {
+type ActionsProps = {
     review: IReview
     reviewsCount: number
 }
 
-export const ReviewActions = async ({ review, reviewsCount }: ReviewActionsProps) => {
+export const Actions = async ({ review, reviewsCount }: ActionsProps) => {
     const { session, hasToken, hasInvalidClaims } = await getSSRSession()
 
     if (!session) {
@@ -22,7 +22,7 @@ export const ReviewActions = async ({ review, reviewsCount }: ReviewActionsProps
              * This means that the user is not logged in. If you want to display some other UI in this
              * case, you can do so here.
              */
-            return <PublicReviewActions reviewId={review.id} />
+            return <ActionsPublic reviewId={review.id} />
         }
 
         /**
@@ -34,7 +34,7 @@ export const ReviewActions = async ({ review, reviewsCount }: ReviewActionsProps
              * This means that one of the session claims is invalid. You should redirect the user to
              * the appropriate page depending on which claim is invalid.
              */
-            return <PublicReviewActions reviewId={review.id} />
+            return <ActionsPublic reviewId={review.id} />
         } else {
             /**
              * This means that the session does not exist but we have session tokens for the user. In this case
@@ -47,8 +47,8 @@ export const ReviewActions = async ({ review, reviewsCount }: ReviewActionsProps
     const user = await getUserInfo(session.getAccessToken())
 
     if (review.user.id !== user.id) {
-        return <PublicReviewActions reviewId={review.id} />
+        return <ActionsPublic reviewId={review.id} />
     }
 
-    return <PrivateReviewActions review={review} reviewsCount={reviewsCount} />
+    return <ActionsPrivate review={review} reviewsCount={reviewsCount} />
 }

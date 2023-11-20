@@ -4,12 +4,12 @@ import Link from 'next/link'
 import type { ICountry } from '@/utils/types/country'
 
 import { getCountryByCode } from '@/services/countries'
-import { useCurrentLocale, useScopedI18n } from '@/utils/i18n/i18n.client'
+import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
 type CountryPreviewProps = ICountry
 
 export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
-    const t = useScopedI18n('countries')
+    const t = useI18n()
     const locale = useCurrentLocale()
     const country = getCountryByCode(countryCode)
     const countryName = country?.name[locale] ?? ''
@@ -47,7 +47,7 @@ export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
                                 d="M8 15.9995L6.96927 15.0809C3.67789 12.1477 2 8.54211 2 6.10311C2 2.64043 4.65737 0 8 0C11.3426 0 14 2.64043 14 6.10311C14 8.54211 12.3221 12.1477 9.03073 15.0809L8 15.9995ZM12 6.10311C12 3.74787 10.2409 2 8 2C5.75908 2 4 3.74787 4 6.10311C4 7.77275 5.298 10.8469 8 13.3171C10.702 10.8469 12 7.77275 12 6.10311Z"
                             />
                         </svg>
-                        {t('places', { count: placesCount })}
+                        {t('countries.places', { count: placesCount })}
                     </div>
                 </figcaption>
             </Link>

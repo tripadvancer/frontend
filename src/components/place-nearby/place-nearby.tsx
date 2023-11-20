@@ -34,7 +34,7 @@ export const PlaceNearby = async (place: PlaceNearbyProps) => {
                 )}
                 <div className="flex flex-col justify-between">
                     <div className="line-clamp-2 font-medium">{place.title}</div>
-                    <div className="text-small text-black-40">{t('common.distance.meters', { distance })}</div>
+                    <div className="text-small text-black-40">{t('common.distance.km', { distance })}</div>
                 </div>
             </div>
         </Link>

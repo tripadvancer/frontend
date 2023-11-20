@@ -21,23 +21,18 @@ export const CookieConsent = () => {
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-orange-10">
             <div className="container flex flex-col gap-4 py-4 sm:flex-row sm:justify-between">
                 <div className="text-black-70">
-                    <div className="font-medium">{t('cookie.consent.title')}</div>
+                    <div className="font-medium">{t('cookie_consent.title')}</div>
                     <div>
-                        {t('cookie.consent.description', {
+                        {t('cookie_consent.description', {
                             cookie_policy_link: (
-                                <Link
-                                    href="#"
-                                    className='className="hover-animated hover:text-blue-active" cursor-pointer text-blue-100'
-                                >
-                                    {t('cookie.consent.cookie_policy_link')}
-                                </Link>
+                                <Link href="/legal/cookie-policy">{t('cookie_consent.policy_link')}</Link>
                             ),
                         })}
                     </div>
                 </div>
                 <div className="flex-none">
                     <Button variant="orange" onClick={() => dispatch(setCookieAccepted(true))}>
-                        {t('common.action.got_it')}
+                        {t('cookie_consent.got_it')}
                     </Button>
                 </div>
             </div>

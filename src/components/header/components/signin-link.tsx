@@ -2,18 +2,15 @@
 
 import { SignInForm } from '@/components/auth/sign-in-form'
 import { useDialog } from '@/providers/dialog-provider'
-import { useScopedI18n } from '@/utils/i18n/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const SignInLink = () => {
-    const tCommon = useScopedI18n('common')
+    const t = useI18n()
     const dialog = useDialog()
 
     return (
-        <div
-            className="hover-animated flex cursor-pointer items-center gap-x-2 text-big-bold text-blue-100 hover:text-blue-active"
-            onClick={() => dialog.open(<SignInForm />)}
-        >
-            <span className="hidden sm:block">{tCommon('link.sign_in')}</span>
+        <div className="link flex items-center gap-x-2 text-big-bold" onClick={() => dialog.open(<SignInForm />)}>
+            <span className="hidden sm:block">{t('common.link.sign_in')}</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 {/* prettier-ignore */}
                 <path fillRule="evenodd" d="M12 15C9.76086 15 8 13.4274 8 10C8 7.75576 9.5791 6 12 6C14.4142 6 16 7.92158 16 10.2C16 13.4796 14.2181 15 12 15ZM10 10C10 12.2693 10.8182 13 12 13C13.1777 13 14 12.2984 14 10.2C14 8.95042 13.2157 8 12 8C10.7337 8 10 8.81582 10 10Z" />

@@ -1,6 +1,6 @@
 'use client'
 
-import { useScopedI18n } from '@/utils/i18n/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 type ConfirmationMiniProps = {
     onConfirm: () => void
@@ -8,17 +8,17 @@ type ConfirmationMiniProps = {
 }
 
 export const ConfirmationMini = ({ onConfirm, onCancel }: ConfirmationMiniProps) => {
-    const t = useScopedI18n('common')
+    const t = useI18n()
 
     return (
         <div className="flex gap-x-1">
-            <span>{t('confirm.title')}</span>
-            <span className="hover-animated cursor-pointer text-red-100 hover:text-red-active" onClick={onCancel}>
-                {t('confirm.no')}
+            <span>{t('confirm_mini.title')}</span>
+            <span className="link-red" onClick={onCancel}>
+                {t('confirm_mini.no')}
             </span>
             <span>/</span>
-            <span className="hover-animated cursor-pointer text-red-100 hover:text-red-active" onClick={onConfirm}>
-                {t('confirm.yes')}
+            <span className="link-red" onClick={onConfirm}>
+                {t('confirm_mini.yes')}
             </span>
         </div>
     )

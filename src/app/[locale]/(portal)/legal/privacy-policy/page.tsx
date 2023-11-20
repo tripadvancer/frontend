@@ -118,10 +118,7 @@ export default function LegalPrivacyPolicy() {
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Privacy Policy,
                     we&nbsp;encourage you to contact&nbsp;us using the details below:{' '}
-                    <Link href="mailto:support@tripadvancer.me" className="text-blue-100">
-                        support@tripadvancer.me
-                    </Link>
-                    .
+                    <Link href="mailto:support@tripadvancer.me">support@tripadvancer.me</Link>.
                 </p>
             </article>
 

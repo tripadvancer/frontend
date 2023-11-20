@@ -3,7 +3,7 @@ import type { IPlacePreview } from '@/utils/types/place'
 
 import { Paginator } from '@/components/paginator'
 import { UserPlace } from '@/components/user-place/user-place'
-import { getScopedI18n } from '@/utils/i18n/i18n.server'
+import { getI18n } from '@/utils/i18n/i18n.server'
 
 type UserPlacesFeedProps = {
     places: PaginatedResponse<IPlacePreview>
@@ -11,11 +11,11 @@ type UserPlacesFeedProps = {
 }
 
 export const UserPlacesFeed = async ({ places, currentPage }: UserPlacesFeedProps) => {
-    const t = await getScopedI18n('common.empty_message')
+    const t = await getI18n()
     const totalPages = places.totalPages
 
     if (places.items.length === 0) {
-        return <div className="text-center  text-black-40">{t('places')}</div>
+        return <div className="text-center  text-black-40">{t('common.empty_message.places')}</div>
     }
 
     return (

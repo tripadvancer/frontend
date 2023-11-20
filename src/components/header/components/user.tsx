@@ -51,7 +51,7 @@ export const User = async () => {
 
     return (
         <UserMenu userId={user.id}>
-            <div className="hover-animated flex cursor-pointer gap-x-2 text-big-bold text-blue-100 hover:text-blue-active">
+            <div className="link flex gap-x-2 text-big-bold">
                 <div className="hidden sm:block">{user.name}</div>
                 <Avatar src={user.avatar} size={24} alt="" />
             </div>

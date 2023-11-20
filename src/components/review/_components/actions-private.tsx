@@ -11,12 +11,12 @@ import { useToast } from '@/providers/toast-provider'
 import { removeReviewById } from '@/services/reviews'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PrivateReviewActionsProps = {
+type ActionsPrivateProps = {
     review: IReview
     reviewsCount: number
 }
 
-export const PrivateReviewActions = ({ review, reviewsCount }: PrivateReviewActionsProps) => {
+export const ActionsPrivate = ({ review, reviewsCount }: ActionsPrivateProps) => {
     const t = useI18n()
     const router = useRouter()
     const pathname = usePathname()
@@ -42,7 +42,7 @@ export const PrivateReviewActions = ({ review, reviewsCount }: PrivateReviewActi
 
     const items: DropdownItemProps[] = [
         {
-            caption: t('review.menu.edit'),
+            caption: t('review.user_actions.edit'),
             value: 'edit',
             // prettier-ignore
             icon: (
@@ -53,7 +53,7 @@ export const PrivateReviewActions = ({ review, reviewsCount }: PrivateReviewActi
             onClick: () => dialog.open(<EditReview {...review} />),
         },
         {
-            caption: t('review.menu.delete'),
+            caption: t('review.user_actions.delete'),
             value: 'delete',
             // prettier-ignore
             icon: (

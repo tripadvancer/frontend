@@ -50,12 +50,12 @@ export const FileInput = ({
         setError('')
 
         if (files.length + currentFilesLength > maxFilesCount) {
-            setError(t('forms.validation.file.max_count', { count: maxFilesCount }))
+            setError(t('validation.file.max_count', { count: maxFilesCount }))
             return
         }
 
         if (fileSize > maxFileSize) {
-            setError(t('forms.validation.file.max_size', { size: maxFileSize / 1000000 }))
+            setError(t('validation.file.max_size', { size: maxFileSize / 1000000 }))
             return
         }
 

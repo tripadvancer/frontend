@@ -7,14 +7,14 @@ import Session from 'supertokens-web-js/recipe/session'
 import { useRouter } from 'next/navigation'
 
 import { useToast } from '@/providers/toast-provider'
-import { useScopedI18n } from '@/utils/i18n/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 type TryRefreshComponentProps = {
     fallback?: React.ReactNode
 }
 
 export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {
-    const t = useScopedI18n('common')
+    const t = useI18n()
     const router = useRouter()
     const toast = useToast()
 
@@ -26,7 +26,7 @@ export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {
                 }
             })
             .catch(() => {
-                toast.error(t('error'))
+                toast.error(t('common.error'))
             })
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

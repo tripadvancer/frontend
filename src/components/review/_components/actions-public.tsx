@@ -5,11 +5,11 @@ import { ReviewComplainForm } from '@/components/review-complain-form/review-com
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PublicReviewActionsProps = {
+type ActionsPublicProps = {
     reviewId: number
 }
 
-export const PublicReviewActions = ({ reviewId }: PublicReviewActionsProps) => {
+export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
     const t = useI18n()
     const dialog = useDialog()
 

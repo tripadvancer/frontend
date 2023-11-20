@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 
 import { Dropdown } from '@/components/dropdown'
 import { useToast } from '@/providers/toast-provider'
-import { useScopedI18n } from '@/utils/i18n/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 type UserMenuProps = {
     children: React.ReactNode
@@ -14,8 +14,7 @@ type UserMenuProps = {
 }
 
 export const UserMenu = ({ children, userId }: UserMenuProps) => {
-    const t = useScopedI18n('header')
-    const tCommon = useScopedI18n('common')
+    const t = useI18n()
     const router = useRouter()
     const toast = useToast()
 
@@ -25,7 +24,7 @@ export const UserMenu = ({ children, userId }: UserMenuProps) => {
             router.push('/')
             router.refresh()
         } catch (err) {
-            toast.error(tCommon('error'))
+            toast.error(t('common.error'))
         }
     }
 
@@ -33,7 +32,7 @@ export const UserMenu = ({ children, userId }: UserMenuProps) => {
         <Dropdown
             items={[
                 {
-                    caption: t('user_menu.places'),
+                    caption: t('header.user_menu.places'),
                     value: 'places',
                     // prettier-ignore
                     icon: (
@@ -44,7 +43,7 @@ export const UserMenu = ({ children, userId }: UserMenuProps) => {
                     onClick: () => router.push(`/users/${userId}`),
                 },
                 {
-                    caption: t('user_menu.reviews'),
+                    caption: t('header.user_menu.reviews'),
                     value: 'reviews',
                     // prettier-ignore
                     icon: (
@@ -55,7 +54,7 @@ export const UserMenu = ({ children, userId }: UserMenuProps) => {
                     onClick: () => router.push(`/users/${userId}/reviews`),
                 },
                 {
-                    caption: t('user_menu.settings'),
+                    caption: t('header.user_menu.settings'),
                     value: 'settings',
                     // prettier-ignore
                     icon: (
@@ -67,7 +66,7 @@ export const UserMenu = ({ children, userId }: UserMenuProps) => {
                     onClick: () => router.push(`/users/${userId}/settings`),
                 },
                 {
-                    caption: t('user_menu.log_out'),
+                    caption: t('header.user_menu.log_out'),
                     value: 'logout',
                     // prettier-ignore
                     icon: (

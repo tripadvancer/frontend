@@ -9,7 +9,7 @@ import { usePathname, useSearchParams } from 'next/navigation'
 
 import type { ICategory } from '@/utils/types/category'
 
-import { useScopedI18n } from '@/utils/i18n/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 type CategoryProps = {
     categories: ICategory[]
@@ -17,7 +17,7 @@ type CategoryProps = {
 }
 
 export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) => {
-    const tCategories = useScopedI18n('categories')
+    const t = useI18n()
     const pathname = usePathname()
     const searchParams = useSearchParams()
 
@@ -50,7 +50,7 @@ export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) =
                     },
                 )}
             >
-                {tCategories('all')}
+                {t('categories.all')}
             </Link>
             {categories.map(category => (
                 <Link

@@ -3,23 +3,24 @@ import { Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import type { IPhoto } from '@/utils/types/photo'
-
-import { Achievement } from '@/components/achievement'
-import { CoordinatesToCopy } from '@/components/coordinates-to-copy'
-import { DraftToHtml } from '@/components/draft-to-html'
-import { PhotoFeed } from '@/components/photo-feed'
 import { PlacesNearbyFeed } from '@/components/places-nearby-feed/places-nearby-feed'
 import { PlacesNearbyFeedSkeleton } from '@/components/places-nearby-feed/places-nearby-feed-skeleton'
+import { Rating } from '@/components/rating'
 import { ReviewFeed } from '@/components/reviews-feed/reviews-feed'
 import { ReviewsFeedSkeleton } from '@/components/reviews-feed/reviews-feed-skeleton'
-import { UserPreview } from '@/components/user-preview'
 import { getCountryByCode } from '@/services/countries'
 import { getPlaceById, getPlacesNearby } from '@/services/places'
 import { getReviewsByPlaceId } from '@/services/reviews'
 import { ImageVariant } from '@/utils/enums'
 import { FormattedDate, localizeCategories, makeImageUrl } from '@/utils/helpers'
-import { getScopedI18n } from '@/utils/i18n/i18n.server'
+import { getI18n, getScopedI18n } from '@/utils/i18n/i18n.server'
+
+import { CoordinatesToCopy } from './_components/coordinates-to-copy'
+import { DraftToHtml } from './_components/draft-to-html'
+import { Photos } from './_components/photos'
+import { PlaceAchivement } from './_components/place-achievement'
+import { UserActions } from './_components/user-actions'
+import { UserPreview } from './_components/user-preview'
 
 export default async function Place({
     params,
@@ -30,7 +31,7 @@ export default async function Place({
 }) {
     const currentPage = searchParams.page ?? '1'
 
-    const t = await getScopedI18n('pages.place')
+    const t = await getI18n()
     const tCategories = await getScopedI18n('categories')
     const place = await getPlaceById(params.id)
     const placesNearby = await getPlacesNearby(params.id)
@@ -38,12 +39,7 @@ export default async function Place({
     const country = getCountryByCode(place.countryCode.toUpperCase())
 
     const formattedDate = FormattedDate(place.createdAt, params.locale)
-    const photosWithCover: IPhoto[] = place.photos.slice()
     const localizedCategories = localizeCategories(place.categories, tCategories)
-
-    if (place.cover) {
-        photosWithCover.unshift({ id: 0, url: place.cover })
-    }
 
     return (
         <div className="flex flex-col">
@@ -95,34 +91,33 @@ export default async function Place({
                 <div className="container py-24">
                     <div className="inner-container flex flex-col gap-16 lg:flex-row-reverse lg:gap-8">
                         <div className="flex w-full flex-col gap-8 lg:w-64">
-                            <Achievement
-                                icon={
-                                    <svg
-                                        width="48"
-                                        height="48"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M4 23V21H4.99264V1H6.97792V2H20.9987L18.022 7.99991L21 14H6.97792V21H7.97056V23H4ZM6.97792 12V4H17.787L15.8025 8.00009L17.7877 12H6.97792Z"
-                                        />
-                                    </svg>
-                                }
-                                title={place.title}
-                            >
-                                I was here
-                            </Achievement>
+                            <PlaceAchivement title={place.title} />
 
-                            <section>
-                                <h3 className="mb-4 text-caps uppercase">{t('author.title')}</h3>
+                            <div className="flex flex-col items-center gap-y-2">
+                                <Rating value={place.avgRating} size={32} />
+                                <p className="text-sm text-black-40">
+                                    {/* {place.avgRating === 0 && t('place.rating.empty')' */}
+                                    {/* {t('place.rating', {
+                                        reviews: (
+                                            <Link href={'#reviews'}>
+                                                {t('place.reviews', {
+                                                    count: place.reviewsCount,
+                                                })}
+                                            </Link>
+                                        ),
+                                        avg_rating: place.avgRating,
+                                    })} */}
+                                </p>
+                            </div>
+
+                            <section className="flex flex-col gap-y-4">
                                 <UserPreview {...place.author} date={formattedDate} />
+                                <UserActions placeId={place.id} />
                             </section>
 
                             {placesNearby.length > 0 && (
                                 <section>
-                                    <h3 className="mb-4 text-caps uppercase">{t('place_nearby.title')}</h3>
+                                    <h3 className="mb-4 text-caps uppercase">{t('pages.place.place_nearby.title')}</h3>
                                     <Suspense fallback={<PlacesNearbyFeedSkeleton />}>
                                         <PlacesNearbyFeed places={placesNearby} />
                                     </Suspense>
@@ -132,24 +127,24 @@ export default async function Place({
 
                         <div className="flex-1">
                             <section className="mb-16">
-                                <h2 className="mb-8 text-h5-m sm:text-h5">{t('about.title')}</h2>
+                                <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.place.about.title')}</h2>
                                 <DraftToHtml json={place.description} />
                             </section>
 
                             <section className="mb-16">
-                                <h2 className="mb-8 text-h5-m sm:text-h5">{t('photos.title')}</h2>
-                                <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-                                    <PhotoFeed
-                                        photos={photosWithCover}
-                                        title={place.title}
-                                        description={place.author.name}
-                                        size={186}
-                                    />
-                                </div>
+                                <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.place.photos.title')}</h2>
+                                <Photos
+                                    title={place.title}
+                                    description={place.author.name}
+                                    photos={place.photos}
+                                    cover={place.cover}
+                                />
                             </section>
 
                             <section>
-                                <h2 className="mb-8 text-h5-m sm:text-h5">{t('reviews.title')}</h2>
+                                <h2 className="mb-8 text-h5-m sm:text-h5" id="reviews">
+                                    {t('pages.place.reviews.title')}
+                                </h2>
                                 <Suspense fallback={<ReviewsFeedSkeleton />}>
                                     <ReviewFeed
                                         reviews={reviews}

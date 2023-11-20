@@ -6,12 +6,12 @@ import { UserSettingsForm } from '@/components/user-settings/user-settings-form'
 import { UserSettingGDPR } from '@/components/user-settings/user-settings-gdpr'
 import { UserSettingsSkeleton } from '@/components/user-settings/user-settings-skeleton'
 import { getUserInfo } from '@/services/user'
-import { getScopedI18n } from '@/utils/i18n/i18n.server'
+import { getI18n } from '@/utils/i18n/i18n.server'
 import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 export default async function UserSettings({ params }: { params: { id: string } }) {
-    const t = await getScopedI18n('pages.user.settings')
+    const t = await getI18n()
     const { session, hasToken, hasInvalidClaims } = await getSSRSession()
 
     if (!session) {
@@ -56,7 +56,7 @@ export default async function UserSettings({ params }: { params: { id: string } 
                 <UserSettingsForm {...userProfile} />
             </section>
             <section>
-                <h2 className="mb-8 text-h5-m sm:text-h5">{t('gdpr.title')}</h2>
+                <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.user.settings.gdpr.title')}</h2>
                 <UserSettingGDPR userId={parseInt(params.id)} />
             </section>
         </div>

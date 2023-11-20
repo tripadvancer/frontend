@@ -4,11 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Button } from '@/components/forms/button/button'
-import { useScopedI18n } from '@/utils/i18n/i18n.client'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
-    const t = useScopedI18n('page.error')
-    const tCommon = useScopedI18n('common')
+    const t = useI18n()
 
     return (
         <div className="container flex min-h-screen flex-col items-center py-16 md:flex-row md:gap-x-8 lg:gap-x-16 xl:gap-x-32">
@@ -32,10 +31,10 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
                     alt="404"
                     priority
                 />
-                <h2 className="mb-8 text-h3-m sm:text-h3">{t('title')}</h2>
-                <p className="mb-8 text-big text-black-70">{t('text')}</p>
+                <h2 className="mb-8 text-h3-m sm:text-h3">{t('pages.error.title')}</h2>
+                <p className="mb-8 text-big text-black-70">{t('pages.error.text')}</p>
                 <Button type="button" onClick={() => reset()}>
-                    {tCommon('action.try_again')}
+                    {t('common.action.try_again')}
                 </Button>
             </div>
         </div>

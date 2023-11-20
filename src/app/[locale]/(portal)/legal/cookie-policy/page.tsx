@@ -79,7 +79,7 @@ export default function LegalCookiePolicy() {
                     You can manage your cookie preferences by&nbsp;adjusting the settings in&nbsp;your web browser. Each
                     browser has different methods for managing cookies, so&nbsp;please refer to&nbsp;the instructions
                     provided by&nbsp;your browser&rsquo;s manufacturer. You can also visit{' '}
-                    <Link href="https://www.allaboutcookies.org" target="_blank" className="text-blue-100">
+                    <Link href="https://www.allaboutcookies.org" target="_blank">
                         www.allaboutcookies.org
                     </Link>{' '}
                     for more information on&nbsp;how to&nbsp;manage and delete cookies.
@@ -100,10 +100,7 @@ export default function LegalCookiePolicy() {
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Cookie Policy,
                     we&nbsp;encourage you to contact&nbsp;us using the details below:{' '}
-                    <Link href="mailto:support@tripadvancer.me" className="text-blue-100">
-                        support@tripadvancer.me
-                    </Link>
-                    .
+                    <Link href="mailto:support@tripadvancer.me">support@tripadvancer.me</Link>.
                 </p>
             </article>
 

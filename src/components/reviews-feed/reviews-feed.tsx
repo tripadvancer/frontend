@@ -3,7 +3,7 @@ import type { IReview } from '@/utils/types/review'
 
 import { Paginator } from '@/components/paginator'
 import { Review } from '@/components/review/review'
-import { getScopedI18n } from '@/utils/i18n/i18n.server'
+import { getI18n } from '@/utils/i18n/i18n.server'
 
 type ReviewFeedProps = {
     reviews: PaginatedResponse<IReview>
@@ -12,11 +12,11 @@ type ReviewFeedProps = {
 }
 
 export const ReviewFeed = async ({ reviews, currentPage, variant }: ReviewFeedProps) => {
-    const t = await getScopedI18n('common.empty_message')
+    const t = await getI18n()
     const totalPages = reviews.totalPages
 
     if (reviews.items.length === 0) {
-        return <div className="text-center text-black-40">{t('reviews')}</div>
+        return <div className="text-center text-black-40">{t('common.empty_message.reviews')}</div>
     }
 
     return (

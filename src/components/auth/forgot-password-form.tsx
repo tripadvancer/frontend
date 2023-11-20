@@ -64,7 +64,7 @@ export const ForgotPasswordForm = () => {
             email: '',
         },
         validationSchema: Yup.object().shape({
-            email: Yup.string().required(t('forms.validation.required')).email(t('forms.validation.email.invalid')),
+            email: Yup.string().required(t('validation.required')).email(t('validation.email.invalid')),
         }),
         onSubmit: handleSubmit,
     })
@@ -89,18 +89,12 @@ export const ForgotPasswordForm = () => {
             <div className="text-center ">
                 {t('auth.forgot_password.to_back', {
                     sign_in_link: (
-                        <span
-                            className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
-                            onClick={handleSignInClcik}
-                        >
+                        <span className="link" onClick={handleSignInClcik}>
                             {t('common.link.sign_in')}
                         </span>
                     ),
                     sign_up_link: (
-                        <span
-                            className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
-                            onClick={handleSignUpClick}
-                        >
+                        <span className="link" onClick={handleSignUpClick}>
                             {t('common.link.sign_up')}
                         </span>
                     ),

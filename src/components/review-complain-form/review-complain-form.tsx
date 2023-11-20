@@ -26,7 +26,7 @@ type ReviewComplainFormProps = {
 
 export const ReviewComplainForm = ({ reviewId }: ReviewComplainFormProps) => {
     const t = useI18n()
-    const tComplaint = useScopedI18n('complaint.reasons')
+    const tComplaint = useScopedI18n('complaint_reasons')
     const dialog = useDialog()
     const toast = useToast()
 
@@ -56,7 +56,7 @@ export const ReviewComplainForm = ({ reviewId }: ReviewComplainFormProps) => {
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema: Yup.object().shape({
-            text: Yup.string().max(textMaxLength, t('forms.validation.max_length', { max_length: textMaxLength })),
+            text: Yup.string().max(textMaxLength, t('validation.max_length', { max_length: textMaxLength })),
         }),
         onSubmit: handleSubmit,
     })

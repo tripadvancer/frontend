@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 import Link from 'next/link'
 
-import { getScopedI18n } from '@/utils/i18n/i18n.server'
+import { getI18n } from '@/utils/i18n/i18n.server'
 
 type PaginatorProps = {
     pages: number
@@ -28,7 +28,7 @@ const PageItem = ({ content, isCurrent }: { content: number | string; isCurrent:
 )
 
 export const Paginator = async ({ pages, currentPage }: PaginatorProps) => {
-    const t = await getScopedI18n('common.paginator')
+    const t = await getI18n()
     const maxVisiblePages = 5
     const pageNumbers: (number | string)[] = []
 
@@ -74,7 +74,7 @@ export const Paginator = async ({ pages, currentPage }: PaginatorProps) => {
                     { 'pointer-events-none opacity-30': currentPage === 1 },
                 )}
             >
-                {t('prev')}
+                {t('paginator.prev')}
             </Link>
             <ol className="hidden items-center justify-center gap-x-1 sm:flex">{renderPageNumbers()}</ol>
             <Link
@@ -84,7 +84,7 @@ export const Paginator = async ({ pages, currentPage }: PaginatorProps) => {
                     { 'pointer-events-none opacity-30': currentPage === pages },
                 )}
             >
-                {t('next')}
+                {t('paginator.next')}
             </Link>
         </div>
     )

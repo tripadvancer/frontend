@@ -19,7 +19,7 @@ export const CoordinatesToCopy = ({ coordinates, className }: CoordinatesToCopyP
     const handleCopy = () => {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(`${coordinates[1]}, ${coordinates[0]}`)
-            toast.success(t('common.coordinates.copy.success'))
+            toast.success(t('coordinates.copy.success'))
         }
     }
 

@@ -65,7 +65,7 @@ export const SignInForm = () => {
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
-                    formik.setErrors({ password: t('forms.validation.wrong_credentials') })
+                    formik.setErrors({ password: t('validation.wrong_credentials') })
                     break
 
                 default:
@@ -98,8 +98,8 @@ export const SignInForm = () => {
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema: Yup.object().shape({
-            email: Yup.string().required(t('forms.validation.required')).email(t('forms.validation.email.invalid')),
-            password: Yup.string().required(t('forms.validation.required')),
+            email: Yup.string().required(t('validation.required')).email(t('validation.email.invalid')),
+            password: Yup.string().required(t('validation.required')),
         }),
         onSubmit: handleSubmit,
     })
@@ -130,20 +130,14 @@ export const SignInForm = () => {
                 {t('auth.signin.submit')}
             </Button>
             <div className="mb-8 text-center text-small">
-                <span
-                    className="hover-animated cursor-pointer text-small text-blue-100 hover:text-blue-active"
-                    onClick={handleForgotPasswordClick}
-                >
+                <span className="link text-small" onClick={handleForgotPasswordClick}>
                     {t('auth.signin.link.forgot_password')}
                 </span>
             </div>
             <div className="text-center ">
                 {t('auth.signin.to_back', {
                     sign_up_link: (
-                        <span
-                            className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
-                            onClick={handleSignUpClick}
-                        >
+                        <span className="link" onClick={handleSignUpClick}>
                             {t('common.link.sign_up')}
                         </span>
                     ),

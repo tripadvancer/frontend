@@ -97,12 +97,12 @@ export const SignUpForm = () => {
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema: Yup.object().shape({
-            email: Yup.string().required(t('forms.validation.required')).email(t('forms.validation.email.invalid')),
+            email: Yup.string().required(t('validation.required')).email(t('validation.email.invalid')),
             username: Yup.string()
-                .required(t('forms.validation.required'))
-                .min(userNameMinLength, t('forms.validation.min_length', { min_length: userNameMinLength }))
-                .max(userNameMaxLength, t('forms.validation.max_length', { max_length: userNameMaxLength })),
-            password: Yup.string().required(t('forms.validation.required')),
+                .required(t('validation.required'))
+                .min(userNameMinLength, t('validation.min_length', { min_length: userNameMinLength }))
+                .max(userNameMaxLength, t('validation.max_length', { max_length: userNameMaxLength })),
+            password: Yup.string().required(t('validation.required')),
         }),
         onSubmit: handleSubmit,
     })
@@ -145,7 +145,7 @@ export const SignUpForm = () => {
                 {t('auth.signup.info', {
                     terms_link: (
                         <span
-                            className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
+                            className="link"
                             onClick={() => {
                                 dialog.close()
                                 router.push('/legal/terms-and-conditions')
@@ -156,7 +156,7 @@ export const SignUpForm = () => {
                     ),
                     privacy_link: (
                         <span
-                            className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
+                            className="link"
                             onClick={() => {
                                 dialog.close()
                                 router.push('/legal/privacy-policy')
@@ -170,10 +170,7 @@ export const SignUpForm = () => {
             <div className="text-center ">
                 {t('auth.signup.to_back', {
                     sign_in_link: (
-                        <span
-                            className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
-                            onClick={handleSignInClick}
-                        >
+                        <span className="link" onClick={handleSignInClick}>
                             {t('common.link.sign_in')}
                         </span>
                     ),

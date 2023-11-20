@@ -1,5 +1,3 @@
-import classNames from 'classnames'
-
 type RatingProps = {
     value: number
     size: number

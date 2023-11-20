@@ -4,11 +4,11 @@ import type { IUserInfo } from '@/utils/types/user'
 
 import { Avatar } from '@/components/avatar/avatar'
 
-type UserProps = IUserInfo & {
+type UserPreviewProps = IUserInfo & {
     date: string
 }
 
-export const UserPreview = ({ id, name, avatar, date }: UserProps) => {
+export const UserPreview = ({ id, name, avatar, date }: UserPreviewProps) => {
     return (
         <Link href={`/users/${id}`} className="group inline-flex items-center gap-2">
             <Avatar src={avatar} alt={name} size={32} />
