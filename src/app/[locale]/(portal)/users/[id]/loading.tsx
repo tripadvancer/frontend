@@ -1,9 +1,5 @@
-import { UserPlacesFeedSkeleton } from '@/components/user-places-feed/user-places-feed-skeleton'
+import { PlacesFeedSkeleton } from './_components/places-feed-skeleton'
 
 export default function Loading() {
-    return (
-        <div className="mb-8 grid grid-cols-2 gap-4 last:mb-0 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-3">
-            <UserPlacesFeedSkeleton />
-        </div>
-    )
+    return <PlacesFeedSkeleton />
 }

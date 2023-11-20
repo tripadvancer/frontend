@@ -1,14 +1,18 @@
+import { Suspense } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
-import { Categories } from '@/components/categories'
-import { CountryPlacesFeed } from '@/components/country-places-feed/country-places-feed'
 import { getCategories } from '@/services/categories'
 import { getCountryBySlug } from '@/services/countries'
 import { getPlacesByCountryCode } from '@/services/places'
 import { localizeCategories, parseQueryString } from '@/utils/helpers'
-import { getScopedI18n } from '@/utils/i18n/i18n.server'
+import { getI18n, getScopedI18n } from '@/utils/i18n/i18n.server'
+
+import { Categories } from './_components/categories'
+import { PlacesFeed } from './_components/places-feed'
+import { PlacesFeedSkeleton } from './_components/places-feed-skeleton'
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const country = getCountryBySlug(params.slug)
@@ -45,6 +49,7 @@ export default async function Country({
     params: { slug: string; locale: string }
     searchParams: { categories: string }
 }) {
+    const t = await getI18n()
     const tCategories = await getScopedI18n('categories')
     const country = getCountryBySlug(params.slug)
     const categories = await getCategories()
@@ -70,7 +75,7 @@ export default async function Country({
                 <section className="container relative z-30 py-8 text-center">
                     <div className="m-auto sm:w-2/3">
                         <Link href="/" className="mb-4 inline-block font-medium text-white hover:text-white">
-                            View all countries
+                            {t('pages.country.view_all')}
                         </Link>
                         <h1 className="mb-4 text-h1-m text-white sm:text-h1">{country.name[params.locale]}</h1>
                         <p className="text-big text-white">
@@ -83,11 +88,11 @@ export default async function Country({
                 </section>
             </div>
             <div className="relative z-20 flex-1 rounded-t-4xl bg-white">
-                <div className="container py-24">
-                    <div className="mx-auto mb-16 flex flex-wrap justify-center gap-1 sm:w-2/3">
-                        <Categories categories={localizedCategories} selectedCategoryIds={selectedCategoriesIds} />
-                    </div>
-                    <CountryPlacesFeed places={places} />
+                <div className="container flex flex-col gap-y-16 py-24">
+                    <Categories categories={localizedCategories} selectedCategoryIds={selectedCategoriesIds} />
+                    <Suspense fallback={<PlacesFeedSkeleton />}>
+                        <PlacesFeed places={places} />
+                    </Suspense>
                 </div>
             </div>
         </div>

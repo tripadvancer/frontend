@@ -11,13 +11,13 @@ import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type CountryPlaceProps = IPlacePreview
+type PlaceProps = IPlacePreview
 
-export const CountryPlace = ({ id, title, avgRating, reviewsCount, cover }: CountryPlaceProps) => {
+export const Place = ({ id, title, avgRating, reviewsCount, cover }: PlaceProps) => {
     const t = useI18n()
 
     return (
-        <Link href={`/places/${id}`}>
+        <Link href={`/places/${id}`} className="text-black-100">
             <div className="flex flex-row gap-4">
                 <div className="flex-none">
                     {cover ? (

@@ -2,13 +2,14 @@ import UserMetadata from 'supertokens-node/recipe/usermetadata'
 
 import { notFound } from 'next/navigation'
 
-import { UserSettingsForm } from '@/components/user-settings/user-settings-form'
-import { UserSettingGDPR } from '@/components/user-settings/user-settings-gdpr'
-import { UserSettingsSkeleton } from '@/components/user-settings/user-settings-skeleton'
 import { getUserInfo } from '@/services/user'
 import { getI18n } from '@/utils/i18n/i18n.server'
 import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+
+import { SettingsForm } from './_components/settings-form'
+import { SettingGDPR } from './_components/settings-gdpr'
+import { SettingsSkeleton } from './_components/settings-skeleton'
 
 export default async function UserSettings({ params }: { params: { id: string } }) {
     const t = await getI18n()
@@ -38,7 +39,7 @@ export default async function UserSettings({ params }: { params: { id: string } 
              * This means that the session does not exist but we have session tokens for the user. In this case
              * the `TryRefreshComponent` will try to refresh the session.
              */
-            return <TryRefreshComponent fallback={<UserSettingsSkeleton />} />
+            return <TryRefreshComponent fallback={<SettingsSkeleton />} />
         }
     }
 
@@ -53,11 +54,11 @@ export default async function UserSettings({ params }: { params: { id: string } 
     return (
         <div className="flex flex-col gap-y-16">
             <section>
-                <UserSettingsForm {...userProfile} />
+                <SettingsForm {...userProfile} />
             </section>
             <section>
                 <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.user.settings.gdpr.title')}</h2>
-                <UserSettingGDPR userId={parseInt(params.id)} />
+                <SettingGDPR userId={parseInt(params.id)} />
             </section>
         </div>
     )

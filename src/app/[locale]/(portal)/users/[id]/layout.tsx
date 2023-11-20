@@ -1,9 +1,9 @@
-import { UserTabs } from '@/app/[locale]/(portal)/users/[id]/_components/user-tabs/user-tabs'
 import { Avatar } from '@/components/avatar/avatar'
 import { getUserById } from '@/services/users'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-import { UserAchivement } from './_components/user-achievement'
+import { Achivement } from './_components/achievement'
+import { Tabs } from './_components/tabs'
 
 export default async function UserLayout({ params, children }: { params: { id: string }; children: React.ReactNode }) {
     const t = await getI18n()
@@ -19,7 +19,7 @@ export default async function UserLayout({ params, children }: { params: { id: s
 
                 <div className="flex flex-col gap-16 lg:flex-row-reverse lg:gap-8">
                     <div className="flex w-full flex-col gap-8 lg:w-64">
-                        <UserAchivement {...user._count} />
+                        <Achivement {...user._count} />
 
                         {user.info && (
                             <section>
@@ -30,7 +30,7 @@ export default async function UserLayout({ params, children }: { params: { id: s
                     </div>
 
                     <div className="flex-1">
-                        <UserTabs userId={user.id} />
+                        <Tabs userId={user.id} />
                         {children}
                     </div>
                 </div>

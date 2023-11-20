@@ -8,11 +8,11 @@ import { useToast } from '@/providers/toast-provider'
 import { deleteUser, getUserPersonalData } from '@/services/user'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type UserSettingGDPRProps = {
+type SettingGDPRProps = {
     userId: number
 }
 
-export const UserSettingGDPR = ({ userId }: UserSettingGDPRProps) => {
+export const SettingGDPR = ({ userId }: SettingGDPRProps) => {
     const t = useI18n()
     const dialog = useDialog()
     const toast = useToast()

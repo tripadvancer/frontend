@@ -3,7 +3,7 @@ import { FileInputSkeleton } from '@/components/forms/file-input/file-input-skel
 import { InputSkeleton } from '@/components/forms/input/input-skeleton'
 import { TextareaSkeleton } from '@/components/forms/textarea/textarea-skeleton'
 
-export const UserSettingsSkeleton = () => {
+export const SettingsSkeleton = () => {
     return (
         <div role="status" className="flex animate-pulse flex-col gap-y-16">
             <section>

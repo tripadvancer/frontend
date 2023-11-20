@@ -1,4 +1,4 @@
-export const UserPlaceSkeleton = () => {
+export const PlaceSkeleton = () => {
     return (
         <div role="status" className="animate-pulse">
             <div className="mb-2 flex aspect-square w-full items-center justify-center rounded-lg bg-black-5">

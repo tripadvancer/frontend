@@ -17,15 +17,15 @@ import { useToast } from '@/providers/toast-provider'
 import { updateUserInfo } from '@/services/user'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
+import { AvatarUploader } from './avatar-uploader'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 
-type UserSettingsFormProps = IUserInfo
+type SettingsFormProps = IUserInfo
 
-export const UserSettingsForm = ({ name, info, avatar }: UserSettingsFormProps) => {
+export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()
@@ -67,7 +67,7 @@ export const UserSettingsForm = ({ name, info, avatar }: UserSettingsFormProps) 
                     <label htmlFor="avatar" className="font-medium">
                         {t('pages.user.settings.forms.fields.avatar.label')}
                     </label>
-                    <UserSettingsAvatarUploader currentAvatar={avatar} />
+                    <AvatarUploader currentAvatar={avatar} />
                 </div>
 
                 <div className="flex flex-col gap-y-2">

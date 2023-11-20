@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { CountriesFeed } from '@/components/countries-feed/countries-feed'
 import { getCountries } from '@/services/countries'
 import { getI18n } from '@/utils/i18n/i18n.server'
+
+import { CountriesFeed } from './_components/countries-feed'
 
 export default async function Home() {
     const t = await getI18n()

@@ -180,8 +180,14 @@ export default {
     'pages.home.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
     'pages.home.map.cta': 'Explore the map',
 
-    'pages.user.about_me': 'About me',
+    'pages.country.view_all': 'View all countries',
 
+    'pages.place.about.title': 'About this place',
+    'pages.place.photos.title': 'Photos',
+    'pages.place.reviews.title': 'Visitor reviews',
+    'pages.place.place_nearby.title': 'Places nearby',
+
+    'pages.user.about_me': 'About me',
     'pages.user.settings.forms.fields.avatar.label': 'Upload avatar',
     'pages.user.settings.avatar.update.success': 'Your avatar has been successfully updated.',
     'pages.user.settings.forms.fields.username.label': 'Username',
@@ -202,12 +208,6 @@ export default {
     'pages.user.settings.gdpr.delete_user.confirm.title': 'Remove your account',
     'pages.user.settings.gdpr.delete_user.confirm.message': 'Are you sure you want to remove your account?',
     'pages.user.settings.gdpr.delete_user.success': 'This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
-
-    'pages.place.about.title': 'About this place',
-    'pages.place.photos.title': 'Photos',
-    'pages.place.reviews.title': 'Visitor reviews',
-    'pages.place.place_nearby.title': 'Places nearby',
-
 
     
     'place.rating.empty': 'This place does not have a rating yet',

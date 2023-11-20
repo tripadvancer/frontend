@@ -7,11 +7,11 @@ import { ImageNotFound } from '@/components/image-not-found'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 
-type UserPlaceType = IPlacePreview
+type PlaceType = IPlacePreview
 
-export const UserPlace = ({ id, title, cover }: UserPlaceType) => {
+export const Place = ({ id, title, cover }: PlaceType) => {
     return (
-        <Link href={`/places/${id}`}>
+        <Link href={`/places/${id}`} className="text-black-100">
             <div className="mb-2">
                 {cover ? (
                     <Image

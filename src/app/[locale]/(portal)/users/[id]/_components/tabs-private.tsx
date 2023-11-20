@@ -1,11 +1,11 @@
 import { Tabs } from '@/components/page-switcher'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-type UserTabsPrivateProps = {
+type TabsPrivateProps = {
     userId: number
 }
 
-export const UserTabsPrivate = async ({ userId }: UserTabsPrivateProps) => {
+export const TabsPrivate = async ({ userId }: TabsPrivateProps) => {
     const t = await getI18n()
 
     const nav = [

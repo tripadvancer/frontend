@@ -38,7 +38,7 @@ export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) =
     )
 
     return (
-        <>
+        <div className="mx-auto flex flex-wrap justify-center gap-1 sm:w-2/3">
             <Link
                 href={pathname}
                 scroll={false}
@@ -68,6 +68,6 @@ export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) =
                     {category.localizedName}
                 </Link>
             ))}
-        </>
+        </div>
     )
 }

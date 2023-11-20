@@ -1,5 +1,5 @@
-import { UserSettingsSkeleton } from '@/components/user-settings/user-settings-skeleton'
+import { SettingsSkeleton } from './_components/settings-skeleton'
 
 export default function Loading() {
-    return <UserSettingsSkeleton />
+    return <SettingsSkeleton />
 }

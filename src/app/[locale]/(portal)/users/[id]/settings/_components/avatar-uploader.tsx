@@ -13,11 +13,11 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 const maxFileSize = validationConfig.common.maxFileSize
 
-type UserSettingsAvatarUploaderProps = {
+type AvatarUploaderProps = {
     currentAvatar: string | null
 }
 
-export const UserSettingsAvatarUploader = ({ currentAvatar }: UserSettingsAvatarUploaderProps) => {
+export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()

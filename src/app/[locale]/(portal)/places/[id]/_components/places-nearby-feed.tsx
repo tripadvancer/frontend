@@ -1,6 +1,6 @@
 import { IPlaceNearby } from '@/utils/types/place'
 
-import { PlaceNearby } from '@/components/place-nearby/place-nearby'
+import { PlaceNearby } from './place-nearby'
 
 type PlacesNearbyFeedProps = {
     places: IPlaceNearby[]

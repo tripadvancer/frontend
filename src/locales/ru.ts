@@ -184,8 +184,14 @@ export default {
     'pages.home.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
     'pages.home.map.cta': 'Исследовать карту',
 
-    'pages.user.about_me': 'Обо мне',
+    'pages.country.view_all': 'Все страны',
 
+    'pages.place.about.title': 'О месте',
+    'pages.place.photos.title': 'Фотографии',
+    'pages.place.reviews.title': 'Отзывы',
+    'pages.place.place_nearby.title': 'Места рядом',
+
+    'pages.user.about_me': 'Обо мне',
     'pages.user.settings.forms.fields.avatar.label': 'Аватарка',
     'pages.user.settings.avatar.update.success': 'Ваша аватарка была успешно обновлена.',
     'pages.user.settings.forms.fields.username.label': 'Имя пользователя',
@@ -206,12 +212,6 @@ export default {
     'pages.user.settings.gdpr.delete_user.confirm.title': 'Удалить учётную запись',
     'pages.user.settings.gdpr.delete_user.confirm.message': 'Вы уверены, что хотите удалить свою учётную запись?',
     'pages.user.settings.gdpr.delete_user.success': 'Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
-
-    'pages.place.about.title': 'О месте',
-    'pages.place.photos.title': 'Фотографии',
-    'pages.place.reviews.title': 'Отзывы',
-    'pages.place.place_nearby.title': 'Места рядом',
-
 
 
     'place.rating.empty': 'У этого места пока нет оценки',
