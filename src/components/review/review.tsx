@@ -1,9 +1,9 @@
 import type { IReview } from '@/utils/types/review'
 
-import { Actions } from './_components/actions'
-import { Photos } from './_components/photos'
-import { RatingAuthor } from './_components/rating-author'
-import { RatingPlace } from './_components/rating-place'
+import { Actions } from './components/actions'
+import { Photos } from './components/photos'
+import { RatingAuthor } from './components/rating-author'
+import { RatingPlace } from './components/rating-place'
 
 type ReviewProps = {
     review: IReview

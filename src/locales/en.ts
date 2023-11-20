@@ -106,6 +106,9 @@ export default {
     'place.reviews#one': '{count} review',
     'place.reviews#other': '{count} reviews',
 
+    'place.rating.empty': 'This place does not have a rating yet',
+    'place.rating': '{reviews} with an average rating of {avg_rating}',
+
     'review.user_actions.edit': 'Edit',
     'review.user_actions.delete': 'Delete',
     'review.user_actions.complain': 'Complain',
@@ -208,8 +211,4 @@ export default {
     'pages.user.settings.gdpr.delete_user.confirm.title': 'Remove your account',
     'pages.user.settings.gdpr.delete_user.confirm.message': 'Are you sure you want to remove your account?',
     'pages.user.settings.gdpr.delete_user.success': 'This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
-
-    
-    'place.rating.empty': 'This place does not have a rating yet',
-    'place.rating': '{reviews} with an average rating of {avg_rating}',
 } as const

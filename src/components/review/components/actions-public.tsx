@@ -15,7 +15,7 @@ export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
 
     const items: DropdownItemProps[] = [
         {
-            caption: t('review.menu.complain'),
+            caption: t('review.user_actions.complain'),
             value: 'complain',
             // prettier-ignore
             icon: (

@@ -110,6 +110,9 @@ export default {
     'place.reviews#many': '{count} отзывов',
     'place.reviews#other': '{count} отзывов',
 
+    'place.rating.empty': 'У этого места пока нет оценки',
+    'place.rating': '{reviews} со средней оценкой {avg_rating}',
+
     'review.user_actions.edit': 'Редактировать',
     'review.user_actions.delete': 'Удалить',
     'review.user_actions.complain': 'Пожаловаться',
@@ -212,8 +215,4 @@ export default {
     'pages.user.settings.gdpr.delete_user.confirm.title': 'Удалить учётную запись',
     'pages.user.settings.gdpr.delete_user.confirm.message': 'Вы уверены, что хотите удалить свою учётную запись?',
     'pages.user.settings.gdpr.delete_user.success': 'Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
-
-
-    'place.rating.empty': 'У этого места пока нет оценки',
-    'place.rating': '{reviews} со средней оценкой {avg_rating}',
 } as const

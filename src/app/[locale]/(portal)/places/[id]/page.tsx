@@ -40,6 +40,7 @@ export default async function Place({
 
     const formattedDate = FormattedDate(place.createdAt, params.locale)
     const localizedCategories = localizeCategories(place.categories, tCategories)
+    const rating = place.avgRating === 0 ? '0.00' : place.avgRating.toFixed(1)
 
     return (
         <div className="flex flex-col">
@@ -96,17 +97,16 @@ export default async function Place({
                             <div className="flex flex-col items-center gap-y-2">
                                 <Rating value={place.avgRating} size={32} />
                                 <p className="text-sm text-black-40">
-                                    {/* {place.avgRating === 0 && t('place.rating.empty')' */}
-                                    {/* {t('place.rating', {
-                                        reviews: (
-                                            <Link href={'#reviews'}>
-                                                {t('place.reviews', {
-                                                    count: place.reviewsCount,
-                                                })}
-                                            </Link>
-                                        ),
-                                        avg_rating: place.avgRating,
-                                    })} */}
+                                    {place.avgRating === 0
+                                        ? t('place.rating.empty')
+                                        : t('place.rating', {
+                                              reviews: (
+                                                  <Link href={'#reviews'}>
+                                                      {t('place.reviews', { count: place.avgRating })}
+                                                  </Link>
+                                              ),
+                                              avg_rating: rating,
+                                          })}
                                 </p>
                             </div>
 

@@ -17,7 +17,7 @@ export const PlaceNearby = async (place: PlaceNearbyProps) => {
     const distance = Math.round(place.distance / 100) / 10
 
     return (
-        <Link href={`/places/${place.id}`} className="flex-none">
+        <Link href={`/places/${place.id}`} className="flex-none text-black-100">
             <div className="flex flex-row gap-4">
                 {place.cover ? (
                     <Image
