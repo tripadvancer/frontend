@@ -2,13 +2,13 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-import { IReview } from '@/utils/types/review'
+import type { IReview } from '@/utils/types/review'
 
 import { Dropdown, DropdownItemProps } from '@/components/dropdown'
 import { EditReview } from '@/components/review-form/edit-review'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { removeReviewById } from '@/services/reviews'
+import { deleteReviewById } from '@/services/reviews'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type ActionsPrivateProps = {
@@ -28,7 +28,7 @@ export const ActionsPrivate = ({ review, reviewsCount }: ActionsPrivateProps) =>
 
     const handleRemove = async () => {
         try {
-            await removeReviewById(review.id.toString())
+            await deleteReviewById(review.id.toString())
             dialog.close()
             toast.success(t('review.delete.success'))
             // Redirect to previous page if user remove last review on current page and current page is not first

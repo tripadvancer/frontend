@@ -13,16 +13,17 @@ export type IPlace = {
     countryCode: string
     author: IUserInfo
     location: GeoJsonPoint
-    avgRating: number
+    avgRating: number | null
     reviewsCount: number
     createdAt: Date
     isFavorite?: boolean
     isVisited?: boolean
 }
 
-export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'isFavorite' | 'isVisited'> & {
-    avgRating: number
-    reviewsCount: number
+export type IPlacePreview = Pick<
+    IPlace,
+    'id' | 'title' | 'cover' | 'isFavorite' | 'isVisited' | 'avgRating' | 'reviewsCount'
+> & {
     coordinates?: CoordinatesTuple
 }
 

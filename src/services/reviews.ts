@@ -71,7 +71,7 @@ export async function reviewPhotosUpload(file: File): Promise<{ url: string }> {
     return res.json()
 }
 
-export async function removeReviewById(reviewId: string): Promise<void> {
+export async function deleteReviewById(reviewId: string): Promise<void> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/reviews/' + reviewId
     const res = await fetch(url, {
         method: 'DELETE',

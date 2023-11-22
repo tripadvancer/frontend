@@ -54,3 +54,14 @@ export async function getPlacesNearby(placeId: string): Promise<IPlaceNearby[]> 
 
     return res.json()
 }
+
+export async function deletePlaceById(placeId: string): Promise<void> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
+    const res = await fetch(url, {
+        method: 'DELETE',
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+}

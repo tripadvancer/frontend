@@ -107,6 +107,10 @@ export default {
     'place.user_actions.delete': 'Delete place',
     'place.user_actions.complain': 'Complain about place',
 
+    'place.delete.confirm.title': 'Delete place',
+    'place.delete.confirm.message': 'Are you sure you want to remove this place and all data associated with it?',
+    'place.delete.success': 'The place has been successfully removed.',
+
     'place.reviews#zero': 'No reviews',
     'place.reviews#one': '{count} review',
     'place.reviews#other': '{count} reviews',

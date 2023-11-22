@@ -109,6 +109,10 @@ export default {
     'place.user_actions.delete': 'Удалить место',
     'place.user_actions.complain': 'Пожаловаться на место',
 
+    'place.delete.confirm.title': 'Удалить место',
+    'place.delete.confirm.message': 'Вы уверены, что хотите удалить это место? Это действие необратимо.',
+    'place.delete.success': 'Место было успешно удалено.',
+
     'place.reviews#zero': 'Нет отзывов',
     'place.reviews#one': '{count} отзыв',
     'place.reviews#few': '{count} отзыва',

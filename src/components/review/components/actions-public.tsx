@@ -16,7 +16,7 @@ export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
     const t = useI18n()
     const dialog = useDialog()
 
-    const handleClick = async () => {
+    const handleComplainClick = async () => {
         if (await Session.doesSessionExist()) {
             dialog.open(<ReviewComplain reviewId={reviewId} />)
         } else {
@@ -35,7 +35,7 @@ export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
                 </svg>
             ),
             isRed: true,
-            onClick: handleClick,
+            onClick: handleComplainClick,
         },
     ]
 

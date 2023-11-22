@@ -42,7 +42,6 @@ export default async function Place({
 
     const formattedDate = FormattedDate(place.createdAt, params.locale)
     const localizedCategories = localizeCategories(place.categories, tCategories)
-    const rating = place.avgRating === 0 ? '0.00' : place.avgRating.toFixed(1)
 
     return (
         <div className="flex flex-col">
@@ -97,24 +96,24 @@ export default async function Place({
                             <PlaceAchivement title={place.title} />
 
                             <div className="flex flex-col items-center gap-y-2">
-                                <Rating value={place.avgRating} size={32} />
+                                <Rating value={place.avgRating ?? 0} size={32} />
                                 <p className="text-sm text-black-40">
-                                    {place.avgRating === 0
-                                        ? t('place.rating.empty')
-                                        : t('place.rating', {
+                                    {place.reviewsCount
+                                        ? t('place.rating', {
                                               reviews: (
                                                   <Link href={'#reviews'}>
-                                                      {t('place.reviews', { count: place.avgRating })}
+                                                      {t('place.reviews', { count: place.reviewsCount ?? 0 })}
                                                   </Link>
                                               ),
-                                              avg_rating: rating,
-                                          })}
+                                              avg_rating: place.avgRating?.toFixed(1),
+                                          })
+                                        : t('place.rating.empty')}
                                 </p>
                             </div>
 
                             <section className="flex flex-col gap-y-4">
                                 <UserPreview {...place.author} date={formattedDate} />
-                                <UserActions placeId={place.id} />
+                                <UserActions place={place} />
                             </section>
 
                             {placesNearby.length > 0 && (
@@ -133,15 +132,17 @@ export default async function Place({
                                 <DraftToHtml json={place.description} />
                             </section>
 
-                            <section className="mb-16">
-                                <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.place.photos.title')}</h2>
-                                <Photos
-                                    title={place.title}
-                                    description={place.author.name}
-                                    photos={place.photos}
-                                    cover={place.cover}
-                                />
-                            </section>
+                            {place.photos.length > 0 && (
+                                <section className="mb-16">
+                                    <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.place.photos.title')}</h2>
+                                    <Photos
+                                        title={place.title}
+                                        description={place.author.name}
+                                        photos={place.photos}
+                                        cover={place.cover}
+                                    />
+                                </section>
+                            )}
 
                             <section>
                                 <h2 className="mb-8 text-h5-m sm:text-h5" id="reviews">
