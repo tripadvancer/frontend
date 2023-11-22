@@ -19,13 +19,13 @@ import { useToast } from '@/providers/toast-provider'
 import { UserStatus } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
+import { SignIn } from './sign-in'
 import { SignInFeedback } from './sign-in-feedback'
-import { SignInForm } from './sign-in-form'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 
-export const SignUpForm = () => {
+export const SignUp = () => {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()
@@ -85,7 +85,7 @@ export const SignUpForm = () => {
     }
 
     const handleSignInClick = () => {
-        dialog.open(<SignInForm />)
+        dialog.open(<SignIn />)
     }
 
     const formik = useFormik({

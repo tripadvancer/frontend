@@ -1,7 +1,10 @@
 'use client'
 
+import Session from 'supertokens-web-js/recipe/session'
+
+import { SignIn } from '@/components/auth/sign-in'
+import { ReviewComplain } from '@/components/complain/review-complain'
 import { Dropdown, DropdownItemProps } from '@/components/dropdown'
-import { ReviewComplainForm } from '@/components/review-complain-form/review-complain-form'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -12,6 +15,14 @@ type ActionsPublicProps = {
 export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
     const t = useI18n()
     const dialog = useDialog()
+
+    const handleClick = async () => {
+        if (await Session.doesSessionExist()) {
+            dialog.open(<ReviewComplain reviewId={reviewId} />)
+        } else {
+            dialog.open(<SignIn />)
+        }
+    }
 
     const items: DropdownItemProps[] = [
         {
@@ -24,7 +35,7 @@ export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
                 </svg>
             ),
             isRed: true,
-            onClick: () => dialog.open(<ReviewComplainForm reviewId={reviewId} />),
+            onClick: handleClick,
         },
     ]
 

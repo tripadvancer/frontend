@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { ButtonMinor } from '@/components/forms/button-minor/button-minor'
 import { Rating } from '@/components/rating'
 import { ReviewFeed } from '@/components/reviews-feed/reviews-feed'
 import { ReviewsFeedSkeleton } from '@/components/reviews-feed/reviews-feed-skeleton'
@@ -13,6 +14,7 @@ import { ImageVariant } from '@/utils/enums'
 import { FormattedDate, localizeCategories, makeImageUrl } from '@/utils/helpers'
 import { getI18n, getScopedI18n } from '@/utils/i18n/i18n.server'
 
+import { AddReviewButton } from './_components/add-review-button'
 import { CoordinatesToCopy } from './_components/coordinates-to-copy'
 import { DraftToHtml } from './_components/draft-to-html'
 import { Photos } from './_components/photos'
@@ -145,6 +147,7 @@ export default async function Place({
                                 <h2 className="mb-8 text-h5-m sm:text-h5" id="reviews">
                                     {t('pages.place.reviews.title')}
                                 </h2>
+                                <AddReviewButton placeId={place.id} />
                                 <Suspense fallback={<ReviewsFeedSkeleton />}>
                                     <ReviewFeed
                                         reviews={reviews}

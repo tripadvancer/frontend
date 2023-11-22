@@ -4,7 +4,7 @@ type RadioProps = {
     value: string
     caption: string
     checked?: boolean
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Radio = ({ id, name, value, caption, checked, onChange }: RadioProps) => {

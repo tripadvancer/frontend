@@ -8,7 +8,7 @@ import { LinkButton } from '@/components/link-button'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const VerifyEmailForm = () => {
+export const VerifyEmail = () => {
     const t = useI18n()
     const toast = useToast()
     const [status, setStatus] = useState<string>()

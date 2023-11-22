@@ -23,9 +23,3 @@ export type CreateReviewInputs = Pick<IReview, 'text' | 'rating'> & {
 export type UpdateReviewInputs = Partial<CreateReviewInputs> & {
     reviewId: number
 }
-
-export type ReviewComplaintInputs = {
-    reviewId: number
-    reason: ComplaintReasonsEnum
-    text?: string
-}

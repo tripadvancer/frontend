@@ -1,5 +1,10 @@
 'use client'
 
+import Session from 'supertokens-web-js/recipe/session'
+
+import { SignIn } from '@/components/auth/sign-in'
+import { PlaceComplain } from '@/components/complain/place-complain'
+import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type UserActionsProps = {
@@ -8,10 +13,19 @@ type UserActionsProps = {
 
 export const UserActions = ({ placeId }: UserActionsProps) => {
     const t = useI18n()
+    const dialog = useDialog()
+
+    const handleCompainClick = async () => {
+        if (await Session.doesSessionExist()) {
+            dialog.open(<PlaceComplain placeId={placeId} />)
+        } else {
+            dialog.open(<SignIn />)
+        }
+    }
 
     return (
         <ul className="flex flex-col gap-y-2 text-big-bold">
-            <li className="flex" onClick={() => {}}>
+            <li className="flex" onClick={handleCompainClick}>
                 <span className="link-red inline-flex gap-x-2">
                     {/* prettier-ignore */}
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

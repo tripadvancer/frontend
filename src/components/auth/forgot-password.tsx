@@ -15,10 +15,10 @@ import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPasswordFeedback } from './forgot-password-feedback'
-import { SignInForm } from './sign-in-form'
-import { SignUpForm } from './sign-up-form'
+import { SignIn } from './sign-in'
+import { SignUp } from './sign-up'
 
-export const ForgotPasswordForm = () => {
+export const ForgotPassword = () => {
     const t = useI18n()
     const dialog = useDialog()
     const toast = useToast()
@@ -52,11 +52,11 @@ export const ForgotPasswordForm = () => {
     }
 
     const handleSignInClcik = () => {
-        dialog.open(<SignInForm />)
+        dialog.open(<SignIn />)
     }
 
     const handleSignUpClick = () => {
-        dialog.open(<SignUpForm />)
+        dialog.open(<SignUp />)
     }
 
     const formik = useFormik({

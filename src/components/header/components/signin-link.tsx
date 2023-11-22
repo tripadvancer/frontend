@@ -1,6 +1,6 @@
 'use client'
 
-import { SignInForm } from '@/components/auth/sign-in-form'
+import { SignIn } from '@/components/auth/sign-in'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -9,7 +9,7 @@ export const SignInLink = () => {
     const dialog = useDialog()
 
     return (
-        <div className="link flex items-center gap-x-2 text-big-bold" onClick={() => dialog.open(<SignInForm />)}>
+        <div className="link flex items-center gap-x-2 text-big-bold" onClick={() => dialog.open(<SignIn />)}>
             <span className="hidden sm:block">{t('common.link.sign_in')}</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 {/* prettier-ignore */}

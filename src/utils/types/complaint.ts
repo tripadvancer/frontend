@@ -1,7 +1,13 @@
 import { ComplaintReasonsEnum } from '@/utils/enums'
 
-export type CreatePlaceComplaintInputs = {
+export type PlaceComplaintInputs = {
     placeId: number
     reason: ComplaintReasonsEnum
-    text?: string
+    text: string
+}
+
+export type ReviewComplaintInputs = {
+    reviewId: number
+    reason: ComplaintReasonsEnum
+    text: string
 }

@@ -15,7 +15,7 @@ import { Input } from '@/components/forms/input/input'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const RessetPasswordForm = () => {
+export const RessetPassword = () => {
     const t = useI18n()
     const toast = useToast()
 
