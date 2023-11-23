@@ -52,6 +52,8 @@ export const RessetPassword = () => {
         initialValues: {
             password: '',
         },
+        validateOnBlur: false,
+        validateOnChange: false,
         validationSchema: Yup.object().shape({
             password: Yup.string().required(t('validation.required')),
         }),

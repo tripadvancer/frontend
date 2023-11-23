@@ -1,4 +1,4 @@
-export const PlacesNearbySkeleton = () => {
+export const PlaceNearbySkeleton = () => {
     return (
         <div role="status" className="flex-none animate-pulse">
             <div className="flex flex-row gap-4">

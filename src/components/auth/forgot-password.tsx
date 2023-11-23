@@ -63,6 +63,8 @@ export const ForgotPassword = () => {
         initialValues: {
             email: '',
         },
+        validateOnBlur: false,
+        validateOnChange: false,
         validationSchema: Yup.object().shape({
             email: Yup.string().required(t('validation.required')).email(t('validation.email.invalid')),
         }),

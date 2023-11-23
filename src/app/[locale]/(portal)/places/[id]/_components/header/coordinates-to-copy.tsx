@@ -1,33 +1,26 @@
 'use client'
 
-import classNames from 'classnames'
-
-import type { CoordinatesTuple } from '@/utils/types/geo'
+import type { IPlace } from '@/utils/types/place'
 
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type CoordinatesToCopyProps = {
-    coordinates: CoordinatesTuple
-    className?: string
-}
+type CoordinatesToCopyProps = IPlace
 
-export const CoordinatesToCopy = ({ coordinates, className }: CoordinatesToCopyProps) => {
+export const CoordinatesToCopy = ({ location }: CoordinatesToCopyProps) => {
     const t = useI18n()
     const toast = useToast()
+    const coordinates = location.coordinates
 
     const handleCopy = () => {
         if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(`${coordinates[1]}, ${coordinates[0]}`)
+            navigator.clipboard.writeText(`${coordinates[1].toFixed(5)}, ${coordinates[0].toFixed(5)}`)
             toast.success(t('coordinates.copy.success'))
         }
     }
 
     return (
-        <div
-            className={classNames('inline-flex cursor-pointer gap-2 text-big text-white', className)}
-            onClick={handleCopy}
-        >
+        <div className="inline-flex cursor-pointer gap-2 text-big text-white" onClick={handleCopy}>
             {coordinates[1].toFixed(5)}, {coordinates[0].toFixed(5)}
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path

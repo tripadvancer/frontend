@@ -39,6 +39,8 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
             password: '',
             current_password: '',
         },
+        validateOnBlur: false,
+        validateOnChange: false,
         validationSchema: Yup.object().shape({
             name: Yup.string()
                 .required(t('validation.required'))

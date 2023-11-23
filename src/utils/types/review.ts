@@ -17,9 +17,10 @@ export type IReview = {
 
 export type CreateReviewInputs = Pick<IReview, 'text' | 'rating'> & {
     placeId: number
-    photos?: string[]
+    photos: string[]
 }
 
-export type UpdateReviewInputs = Partial<CreateReviewInputs> & {
+export type UpdateReviewInputs = Pick<IReview, 'text' | 'rating'> & {
     reviewId: number
+    photos: string[]
 }

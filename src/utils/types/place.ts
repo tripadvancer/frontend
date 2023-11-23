@@ -18,6 +18,7 @@ export type IPlace = {
     createdAt: Date
     isFavorite?: boolean
     isVisited?: boolean
+    isReviewed?: boolean
 }
 
 export type IPlacePreview = Pick<

@@ -3,7 +3,7 @@ import { getUserById } from '@/services/users'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { Achivement } from './_components/achievement'
-import { Tabs } from './_components/tabs'
+import { Navigation } from './_components/navigation'
 
 export default async function UserLayout({ params, children }: { params: { id: string }; children: React.ReactNode }) {
     const t = await getI18n()
@@ -30,7 +30,7 @@ export default async function UserLayout({ params, children }: { params: { id: s
                     </div>
 
                     <div className="flex-1">
-                        <Tabs userId={user.id} />
+                        <Navigation userId={user.id} />
                         {children}
                     </div>
                 </div>

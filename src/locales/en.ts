@@ -21,8 +21,8 @@ export default {
     'header.link.map': 'On map',
 
     'common.error': 'An unexpected error has occurred. Please try again later.',
-    'common.empty_message.reviews': 'Unfortunately, there are no reviews here at the moment.',
-    'common.empty_message.places': 'Unfortunately, there are no places here at the moment.',
+    'common.empty_message.reviews': 'There are no reviews here at the moment.',
+    'common.empty_message.places': 'There are no places here at the moment.',
 
     'common.distance.km': '{distance} km',
 
@@ -123,15 +123,15 @@ export default {
     'review.user_actions.complain': 'Complain',
     'review.user_actions.add': 'Add review',
 
-    'review.delete.success': 'The review has been successfully removed.',
-    'review.add.form.title': 'Leave feedback',
-    'review.add.form.fields.rating.label': 'Your rating',
-    'review.add.form.fields.text.label': 'Review',
-    'review.add.form.fields.text.placeholder': 'Share your impressions in detail — this way you will help others learn more about this place',
-    'review.add.form.fields.photos.label': 'Photos',
     'review.add.success': 'Your review has been successfully added.',
-    'review.edit.form.title': 'Edit your review',
     'review.edit.success': 'Your review has been successfully updated.',
+    'review.delete.success': 'The review has been successfully removed.',
+    'review.form.edit.title': 'Edit your review',
+    'review.form.add.title': 'Leave feedback',
+    'review.form.fields.rating.label': 'Your rating',
+    'review.form.fields.text.label': 'Review',
+    'review.form.fields.text.placeholder': 'Share your impressions in detail — this way you will help others learn more about this place',
+    'review.form.fields.photos.label': 'Photos',
 
     'auth.feedback.verify_email.title': 'Check your email',
     'auth.feedback.verify_email.message.not_activated': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',

@@ -49,12 +49,12 @@ export default async function UserSettings({ params }: { params: { id: string } 
         notFound()
     }
 
-    const userProfile = await getUserInfo(session.getAccessToken())
+    const userInfo = await getUserInfo(session.getAccessToken())
 
     return (
         <div className="flex flex-col gap-y-16">
             <section>
-                <SettingsForm {...userProfile} />
+                <SettingsForm {...userInfo} />
             </section>
             <section>
                 <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.user.settings.gdpr.title')}</h2>

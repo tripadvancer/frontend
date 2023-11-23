@@ -5,13 +5,13 @@ import { Paginator } from '@/components/paginator'
 import { Review } from '@/components/review/review'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-type ReviewFeedProps = {
+type ReviewsFeedProps = {
     reviews: PaginatedResponse<IReview>
     currentPage: number
     variant: 'place-page' | 'user-page'
 }
 
-export const ReviewFeed = async ({ reviews, currentPage, variant }: ReviewFeedProps) => {
+export const ReviewsFeed = async ({ reviews, currentPage, variant }: ReviewsFeedProps) => {
     const t = await getI18n()
     const totalPages = reviews.totalPages
 

@@ -4,6 +4,7 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { SignIn } from '@/components/auth/sign-in'
 import { ButtonMinor } from '@/components/forms/button-minor/button-minor'
+import { AddReview } from '@/components/review-form/add-review'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -17,14 +18,14 @@ export const AddReviewButton = ({ placeId }: AddReviewButtonProps) => {
 
     const handleClick = async () => {
         if (await Session.doesSessionExist()) {
-            dialog.open(<div>Add review for place {placeId}</div>)
+            dialog.open(<AddReview placeId={placeId} />)
         } else {
             dialog.open(<SignIn />)
         }
     }
 
     return (
-        <ButtonMinor className="mb-8 w-full rounded-lg" onClick={handleClick}>
+        <ButtonMinor className="w-full rounded-lg" onClick={handleClick}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
                     fillRule="evenodd"

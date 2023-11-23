@@ -1,13 +1,9 @@
 'use client'
 
-import { ChangeEvent, useState } from 'react'
-
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { useRouter } from 'next/navigation'
-
-import { IReview } from '@/utils/types/review'
+import { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
 
 import { ButtonStroke } from '@/components/button-stroke'
 import { Button } from '@/components/forms/button/button'
@@ -15,8 +11,6 @@ import { RatingInput } from '@/components/forms/rating-input/rating-input'
 import { Textarea } from '@/components/forms/textarea/textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { updateReviewById } from '@/services/reviews'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ReviewPhotosUploader } from './review-photos-uploader'
@@ -24,23 +18,20 @@ import { ReviewPhotosUploader } from './review-photos-uploader'
 const reviewTextMinLength = validationConfig.review.text.minLength
 const reviewTextMaxLength = validationConfig.review.text.maxLength
 
-type ReviewFormProps = IReview
+type ReviewFormProps = {
+    initialValues: CreateReviewInputs | UpdateReviewInputs
+    isLoading: boolean
+    onSubmit: (values: CreateReviewInputs | UpdateReviewInputs) => Promise<void>
+}
 
-export const ReviewForm = (review: ReviewFormProps) => {
+export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {
     const t = useI18n()
-    const router = useRouter()
     const dialog = useDialog()
-    const toast = useToast()
-
-    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const formik = useFormik({
-        initialValues: {
-            reviewId: review.id,
-            rating: review.rating || 0,
-            text: review.text || '',
-            photos: review.photos.map(photo => photo.url),
-        },
+        initialValues,
+        validateOnBlur: false,
+        validateOnChange: false,
         validationSchema: Yup.object().shape({
             rating: Yup.number().min(1, t('validation.required')),
             text: Yup.string()
@@ -48,27 +39,15 @@ export const ReviewForm = (review: ReviewFormProps) => {
                 .min(reviewTextMinLength, t('validation.min_length', { min_length: reviewTextMinLength }))
                 .max(reviewTextMaxLength, t('validation.max_length', { max_length: reviewTextMaxLength })),
         }),
-        onSubmit: async values => {
-            try {
-                setIsLoading(true)
-                await updateReviewById(values)
-                dialog.close()
-                router.refresh()
-                toast.success(t('review.edit.success'))
-            } catch (err: any) {
-                toast.error(err.message)
-            } finally {
-                setIsLoading(false)
-            }
-        },
+        onSubmit,
     })
 
     return (
-        <form className="w-full sm:w-104" onSubmit={formik.handleSubmit}>
-            <div className="mb-8 flex flex-col gap-y-4">
+        <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
+            <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {t('review.add.form.fields.rating.label')}
+                        {t('review.form.fields.rating.label')}
                     </label>
                     <RatingInput
                         value={formik.values.rating}
@@ -79,13 +58,13 @@ export const ReviewForm = (review: ReviewFormProps) => {
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {t('review.add.form.fields.text.label')}
+                        {t('review.form.fields.text.label')}
                     </label>
                     <Textarea
                         id="text"
                         name="text"
                         value={formik.values.text}
-                        placeholder={t('review.add.form.fields.text.placeholder')}
+                        placeholder={t('review.form.fields.text.placeholder')}
                         maxLength={reviewTextMaxLength}
                         error={formik.errors.text}
                         isDisabled={isLoading}
@@ -94,7 +73,7 @@ export const ReviewForm = (review: ReviewFormProps) => {
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {t('review.add.form.fields.photos.label')}
+                        {t('review.form.fields.photos.label')}
                     </label>
                     <ReviewPhotosUploader
                         photos={formik.values.photos}

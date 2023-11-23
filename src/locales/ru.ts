@@ -21,8 +21,8 @@ export default {
     'header.link.map': 'Карта',
 
     'common.error': 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.',
-    'common.empty_message.reviews': 'К сожалению, здесь пока нет отзывов.',
-    'common.empty_message.places': 'К сожалению, здесь пока нет мест.',
+    'common.empty_message.reviews': 'Здесь пока нет отзывов.',
+    'common.empty_message.places': 'Здесь пока нет мест.',
     
     'common.distance.km': '{distance} км',
 
@@ -127,15 +127,15 @@ export default {
     'review.user_actions.complain': 'Пожаловаться',
     'review.user_actions.add': 'Добавить отзыв',
 
-    'review.delete.success': 'Отзыв был успешно удалён.',
-    'review.add.form.title': 'Добавить отзыв',
-    'review.add.form.fields.rating.label': 'Оценка',
-    'review.add.form.fields.text.label': 'Отзыв',
-    'review.add.form.fields.text.placeholder': 'Развернуто поделитесь своими впечатлениями - так Вы поможете остальным узнать больше о месте',
-    'review.add.form.fields.photos.label': 'Фотографии',
     'review.add.success': 'Ваш отзыв был успешно добавлен.',
-    'review.edit.form.title': 'Редактировать отзыв',
     'review.edit.success': 'Ваш отзыв был успешно обновлён.',
+    'review.delete.success': 'Отзыв был успешно удалён.',
+    'review.form.edit.title': 'Изменить Ваш отзыв',
+    'review.form.add.title': 'Добавить отзыв',
+    'review.form.fields.rating.label': 'Ваша оценка',
+    'review.form.fields.text.label': 'Отзыв',
+    'review.form.fields.text.placeholder': 'Развернуто поделитесь своими впечатлениями - так Вы поможете остальным узнать больше о месте',
+    'review.form.fields.photos.label': 'Фотографии',
 
     'auth.feedback.verify_email.title': 'Проверьте свой email',
     'auth.feedback.verify_email.message.not_activated': 'Мы отправили Вам письмо с инструкциями по подтверждению email. Пожалуйста, проверьте свой email и следуйте инструкциям, указанным в письме, чтобы завершить процесс подтверждения.',

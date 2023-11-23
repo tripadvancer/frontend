@@ -5,31 +5,31 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-type PageSwitcherProps = {
-    nav: {
+type NavProps = {
+    links: {
         href: string
         caption: string
     }[]
     className?: string
 }
 
-export const Tabs = async ({ nav, className }: PageSwitcherProps) => {
+export const Nav = async ({ links, className }: NavProps) => {
     const pathname = usePathname()
 
     return (
         <nav className={classNames('flex gap-x-4 text-big-bold', className)}>
-            {nav.map(item => {
-                const isActive = pathname === item.href
+            {links.map(link => {
+                const isActive = pathname === link.href
 
                 return (
                     <Link
-                        key={item.href}
-                        href={item.href}
+                        key={link.href}
+                        href={link.href}
                         className={classNames('whitespace-nowrap', {
                             'border-b-2 border-black-100 text-black-100 hover:text-black-100': isActive,
                         })}
                     >
-                        {item.caption}
+                        {link.caption}
                     </Link>
                 )
             })}

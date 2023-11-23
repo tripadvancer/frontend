@@ -1,10 +1,10 @@
 'use client'
 
+import type { IPlace } from '@/utils/types/place'
+
 import { Achievement } from '@/components/achievement'
 
-type PlaceAchivementProps = {
-    title: string
-}
+type PlaceAchivementProps = IPlace
 
 export const PlaceAchivement = ({ title }: PlaceAchivementProps) => {
     return (
