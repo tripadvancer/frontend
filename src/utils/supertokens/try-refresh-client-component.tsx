@@ -6,6 +6,7 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
 
+import { GlobalLoading } from '@/components/global-loading'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -30,5 +31,5 @@ export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {
             })
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-    return fallback ?? null
+    return <GlobalLoading />
 }

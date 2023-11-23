@@ -27,9 +27,9 @@ export const Button = ({
             className={classNames(
                 'hover-animated relative flex h-10 items-center justify-center whitespace-nowrap rounded-lg px-6 font-medium text-white focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                 {
-                    'bg-blue-100 hover:bg-blue-active disabled:hover:bg-blue-100': variant === 'blue',
-                    'bg-orange-100 hover:bg-orange-active disabled:hover:bg-orange-100': variant === 'orange',
-                    'bg-red-100 hover:bg-red-active disabled:hover:bg-red-100': variant === 'red',
+                    'bg-blue-100 enabled:hover:bg-blue-active': variant === 'blue',
+                    'bg-orange-100 enabled:hover:bg-orange-active': variant === 'orange',
+                    'bg-red-100 enabled:hover:bg-red-active': variant === 'red',
                 },
                 className,
             )}

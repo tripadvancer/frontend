@@ -16,11 +16,8 @@ export const UserActionsPublic = ({ placeId }: UserActionsPublicProps) => {
     const dialog = useDialog()
 
     const handleCompainClick = async () => {
-        if (await Session.doesSessionExist()) {
-            dialog.open(<PlaceComplain placeId={placeId} />)
-        } else {
-            dialog.open(<SignIn />)
-        }
+        const doesSessionExist = await Session.doesSessionExist()
+        dialog.open(doesSessionExist ? <PlaceComplain placeId={placeId} /> : <SignIn />)
     }
 
     return (

@@ -10,22 +10,20 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 type AddReviewButtonProps = {
     placeId: number
+    isDisabled?: boolean
 }
 
-export const AddReviewButton = ({ placeId }: AddReviewButtonProps) => {
+export const AddReviewButton = ({ placeId, isDisabled }: AddReviewButtonProps) => {
     const t = useI18n()
     const dialog = useDialog()
 
     const handleClick = async () => {
-        if (await Session.doesSessionExist()) {
-            dialog.open(<AddReview placeId={placeId} />)
-        } else {
-            dialog.open(<SignIn />)
-        }
+        const doesSessionExist = await Session.doesSessionExist()
+        dialog.open(doesSessionExist ? <AddReview placeId={placeId} /> : <SignIn />)
     }
 
     return (
-        <ButtonMinor className="w-full rounded-lg" onClick={handleClick}>
+        <ButtonMinor className="w-full rounded-lg" isDisabled={isDisabled} onClick={handleClick}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
                     fillRule="evenodd"

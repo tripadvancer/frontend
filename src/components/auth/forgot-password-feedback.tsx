@@ -1,6 +1,6 @@
 'use client'
 
-import { ButtonStroke } from '@/components/button-stroke'
+import { ButtonStroke } from '@/components/forms/button-stroke/button-stroke'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 

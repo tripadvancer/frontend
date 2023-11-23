@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 
 import type { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/types/complaint'
 
-import { ButtonStroke } from '@/components/button-stroke'
+import { ButtonStroke } from '@/components/forms/button-stroke/button-stroke'
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
 import { Radio } from '@/components/radio'

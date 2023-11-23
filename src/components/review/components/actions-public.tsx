@@ -17,11 +17,8 @@ export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
     const dialog = useDialog()
 
     const handleComplainClick = async () => {
-        if (await Session.doesSessionExist()) {
-            dialog.open(<ReviewComplain reviewId={reviewId} />)
-        } else {
-            dialog.open(<SignIn />)
-        }
+        const doesSessionExist = await Session.doesSessionExist()
+        dialog.open(doesSessionExist ? <ReviewComplain reviewId={reviewId} /> : <SignIn />)
     }
 
     const items: DropdownItemProps[] = [

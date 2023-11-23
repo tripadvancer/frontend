@@ -39,7 +39,7 @@ export default async function UserSettings({ params }: { params: { id: string } 
              * This means that the session does not exist but we have session tokens for the user. In this case
              * the `TryRefreshComponent` will try to refresh the session.
              */
-            return <TryRefreshComponent fallback={<SettingsSkeleton />} />
+            return <TryRefreshComponent />
         }
     }
 

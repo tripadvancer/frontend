@@ -29,9 +29,11 @@ export async function getPlacesByUserId(userId: string, page: string): Promise<P
     return res.json()
 }
 
-export async function getPlaceById(placeId: string): Promise<IPlace> {
+export async function getPlaceById(placeId: string, accessToken?: string): Promise<IPlace> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
-    const res = await fetch(url)
+    const res = await fetch(url, {
+        headers: accessToken ? { Authorization: 'Bearer ' + accessToken } : {},
+    })
 
     if (!res.ok) {
         if (res.status === 404) {

@@ -1,4 +1,6 @@
 import { getPlaceById } from '@/services/places'
+import { getSSRSession } from '@/utils/supertokens/session.utils'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 import { About } from './_components/about'
 import { Author } from './_components/author'
@@ -17,7 +19,14 @@ export default async function Place({
     params: { locale: string; id: string }
     searchParams: { page: string }
 }) {
-    const place = await getPlaceById(params.id)
+    const { session, hasToken } = await getSSRSession()
+
+    if (!session && hasToken) {
+        return <TryRefreshComponent />
+    }
+
+    const accessToken = session?.getAccessToken()
+    const place = await getPlaceById(params.id, accessToken)
 
     return (
         <div className="flex flex-col">
@@ -30,13 +39,13 @@ export default async function Place({
                             <PlaceRating {...place} />
                             <Author {...place} locale={params.locale} />
                             <UserActions {...place} />
-                            <PlacesNearby placeId={params.id} />
+                            <PlacesNearby {...place} />
                         </div>
 
                         <div className="flex-1">
                             <About {...place} />
                             <Photos {...place} />
-                            <Reviews placeId={params.id} page={searchParams.page} />
+                            <Reviews {...place} page={searchParams.page} />
                         </div>
                     </div>
                 </div>

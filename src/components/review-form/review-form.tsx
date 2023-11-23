@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 
 import { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
 
-import { ButtonStroke } from '@/components/button-stroke'
+import { ButtonStroke } from '@/components/forms/button-stroke/button-stroke'
 import { Button } from '@/components/forms/button/button'
 import { RatingInput } from '@/components/forms/rating-input/rating-input'
 import { Textarea } from '@/components/forms/textarea/textarea'
