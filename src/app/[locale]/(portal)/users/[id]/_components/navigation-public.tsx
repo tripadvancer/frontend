@@ -9,7 +9,7 @@ export const NavigationPublic = ({ userId }: NavigationPublicProps) => {
     const t = useI18n()
 
     const links = [
-        { href: `/users/${userId}`, caption: t('user_tabs.places') },
+        { href: `/users/${userId}/places`, caption: t('user_tabs.places') },
         { href: `/users/${userId}/reviews`, caption: t('user_tabs.reviews') },
     ]
 

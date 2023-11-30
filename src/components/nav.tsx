@@ -19,7 +19,14 @@ export const Nav = async ({ links, className }: NavProps) => {
     return (
         <nav className={classNames('flex gap-x-4 text-big-bold', className)}>
             {links.map(link => {
-                const isActive = pathname === link.href
+                // с учетом локализации, например в en локализации path выглядит следующим образом /users/1, а в ru локализации ru/users/1
+                // http://localhost:3000/users/1 and http://localhost:3000/ru/users/1
+                // http://localhost:3000/users/1/reviews and http://localhost:3000/ru/users/1/reviews
+                // http://localhost:3000/users/1/settings and http://localhost:3000/ru/users/1/settings
+                const isActive = pathname.includes(link.href)
+                // const isActive = pathname.includes(link.href)
+                // const isActive = pathname.startsWith(link.href)
+                // const isActive = pathname === link.href
 
                 return (
                     <Link
