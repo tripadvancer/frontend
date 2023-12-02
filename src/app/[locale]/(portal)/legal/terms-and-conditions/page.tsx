@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: 'Terms and Conditions',
 }
 
-export default function LegalTermsAndConditions() {
+export default function LegalTermsAndConditionsPage() {
     return (
         <article className="inner-container">
             <h1 className="mb-4 text-center text-h1-m sm:text-h1">Terms and Conditions</h1>

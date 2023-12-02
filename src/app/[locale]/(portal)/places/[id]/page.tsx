@@ -6,6 +6,7 @@ import { About } from './_components/about'
 import { Actions } from './_components/actions'
 import { Author } from './_components/author'
 import { Header } from './_components/header/header'
+import { Map } from './_components/map'
 import { Photos } from './_components/photos'
 import { PlaceAchivement } from './_components/place-achievement'
 import { PlaceRating } from './_components/place-rating'
@@ -13,7 +14,7 @@ import { PlacesNearby } from './_components/places-nearby'
 import { Reviews } from './_components/reviews'
 import { UserActions } from './_components/user-actions'
 
-export default async function Place({
+export default async function PlacePage({
     params,
     searchParams,
 }: {
@@ -44,10 +45,11 @@ export default async function Place({
                             <PlacesNearby {...place} />
                         </div>
 
-                        <div className="flex-1">
+                        <div className="flex flex-1 flex-col gap-y-16">
                             <About {...place} />
                             <Photos {...place} />
                             <Reviews {...place} page={searchParams.page} />
+                            <Map {...place} />
                         </div>
                     </div>
                 </div>

@@ -198,6 +198,8 @@ export default {
     'pages.place.about.title': 'About this place',
     'pages.place.photos.title': 'Photos',
     'pages.place.reviews.title': 'Visitor reviews',
+    'pages.place.map.title': '{place_name} on map',
+    'pages.place.map.alt': 'Map with location of {place_name}',
     'pages.place.place_nearby.title': 'Places nearby',
 
     'pages.user.about_me': 'About me',

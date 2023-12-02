@@ -1,5 +1,5 @@
-import { RessetPasswordForm } from '@/components/auth/resset-password-form'
+import { RessetPassword } from '@/components/auth/resset-password'
 
-export default async function RessetPassword() {
-    return <RessetPasswordForm />
+export default async function RessetPasswordPage() {
+    return <RessetPassword />
 }

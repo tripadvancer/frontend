@@ -3,7 +3,7 @@ import { confirmRemoval } from '@/services/auth'
 import { ApiResponseStatus } from '@/utils/enums'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-export default async function ConfirmAccountRemoval({ params }: { params: { token: string } }) {
+export default async function ConfirmAccountRemovalPage({ params }: { params: { token: string } }) {
     const t = await getI18n()
     const response = await confirmRemoval({ token: params.token })
 

@@ -6,7 +6,7 @@ import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { CountriesFeed } from './_components/countries-feed'
 
-export default async function Home() {
+export default async function HomePage() {
     const t = await getI18n()
     const countries = await getCountries()
 

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: 'Cookie Policy',
 }
 
-export default function LegalCookiePolicy() {
+export default function LegalCookiePolicyPage() {
     return (
         <article className="inner-container">
             <h1 className="mb-4 text-center text-h1-m sm:text-h1">Cookie Policy</h1>

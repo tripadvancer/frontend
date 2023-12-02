@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: 'Privacy Policy',
 }
 
-export default function LegalPrivacyPolicy() {
+export default function LegalPrivacyPolicyPage() {
     return (
         <article className="inner-container">
             <h1 className="mb-4 text-center text-h1-m sm:text-h1">Privacy Policy</h1>

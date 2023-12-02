@@ -25,23 +25,16 @@ export async function getPlaceByBounds({
     mapBounds,
     selectedCategories,
 }: {
-    mapBounds: LngLatBounds | undefined
+    mapBounds: LngLatBounds
     selectedCategories: number[]
 }): Promise<GeoJsonCollection<IPlacePreview>> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places'
-    const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            categories_ids: selectedCategories,
-            ne_lat: mapBounds?.getNorthEast().lat,
-            ne_lng: mapBounds?.getNorthEast().lng,
-            sw_lat: mapBounds?.getSouthWest().lat,
-            sw_lng: mapBounds?.getSouthWest().lng,
-        }),
-    })
+    const categories_ids = '?categories_ids=' + selectedCategories.join()
+    const ne_lat = '&ne_lat=' + mapBounds?.getNorthEast().lat
+    const ne_lng = '&ne_lng=' + mapBounds?.getNorthEast().lng
+    const sw_lat = '&sw_lat=' + mapBounds?.getSouthWest().lat
+    const sw_lng = '&sw_lng=' + mapBounds?.getSouthWest().lng
+    const url = process.env.NEXT_PUBLIC_API_URL + '/places' + categories_ids + ne_lat + ne_lng + sw_lat + sw_lng
+    const res = await fetch(url)
 
     if (!res.ok) {
         throw new Error('Failed to fetch data')

@@ -20,8 +20,8 @@ export const Reviews = async ({ id, isReviewed, page }: ReviewsProps) => {
     const reviews = await getReviewsByPlaceId(id.toString(), currentPage)
 
     return (
-        <section>
-            <h2 className="mb-8 text-h5-m sm:text-h5" id="reviews">
+        <section className="flex flex-col gap-y-8">
+            <h2 className="text-h5-m sm:text-h5" id="reviews">
                 {t('pages.place.reviews.title')}
             </h2>
             <div className="flex flex-col gap-y-8">

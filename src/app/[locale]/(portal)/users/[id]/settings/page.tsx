@@ -11,7 +11,7 @@ import { SettingsForm } from './_components/settings-form'
 import { SettingGDPR } from './_components/settings-gdpr'
 import { SettingsSkeleton } from './_components/settings-skeleton'
 
-export default async function UserSettings({ params }: { params: { id: string } }) {
+export default async function UserSettingsPage({ params }: { params: { id: string } }) {
     const t = await getI18n()
     const { session, hasToken, hasInvalidClaims } = await getSSRSession()
 

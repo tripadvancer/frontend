@@ -1,5 +1,5 @@
-import { VerifyEmailForm } from '@/components/auth/verify-email-form'
+import { VerifyEmail } from '@/components/auth/verify-email'
 
-export default async function VerifyEmail() {
-    return <VerifyEmailForm />
+export default async function VerifyEmailPage() {
+    return <VerifyEmail />
 }

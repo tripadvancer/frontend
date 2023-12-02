@@ -2,7 +2,7 @@ import { getPlacesByUserId } from '@/services/places'
 
 import { PlacesFeed } from './_components/places-feed'
 
-export default async function UserPlaces({
+export default async function UserPlacesPage({
     params,
     searchParams,
 }: {

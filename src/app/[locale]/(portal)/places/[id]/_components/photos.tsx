@@ -31,8 +31,8 @@ export const Photos = ({ title, author, photos, cover }: PhotosProps) => {
     }
 
     return (
-        <section className="mb-16">
-            <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.place.photos.title')}</h2>
+        <section className="flex flex-col gap-y-8">
+            <h2 className="text-h5-m sm:text-h5">{t('pages.place.photos.title')}</h2>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
                 {photosWithCover.map((photo, index) => (
                     <Image

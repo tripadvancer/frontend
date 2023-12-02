@@ -13,7 +13,7 @@ import { Categories } from './_components/categories'
 import { PlacesFeed } from './_components/places-feed'
 import { PlacesFeedSkeleton } from './_components/places-feed-skeleton'
 
-export default async function Country({
+export default async function CountryPage({
     params,
     searchParams,
 }: {

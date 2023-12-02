@@ -105,7 +105,7 @@ export default {
     'countries.places#many': '{count} мест',
     'countries.places#other': '{count} мест',
 
-    'place_achievement.i_was_here': 'Я был здесь',
+    'place.i_was_here': 'Я был здесь',
     'place.navigation': 'Маршрут',
 
     'place.user_actions.edit': 'Редактировать место',
@@ -202,6 +202,8 @@ export default {
     'pages.place.about.title': 'О месте',
     'pages.place.photos.title': 'Фотографии',
     'pages.place.reviews.title': 'Отзывы',
+    'pages.place.map.title': '{place_name} на карте',
+    'pages.place.map.alt': 'Карта с местом {place_name}',
     'pages.place.place_nearby.title': 'Места рядом',
 
     'pages.user.about_me': 'Обо мне',

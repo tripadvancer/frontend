@@ -1,7 +1,7 @@
 import { ReviewsFeed } from '@/components/reviews-feed/reviews-feed'
 import { getReviewsByUserId } from '@/services/reviews'
 
-export default async function UserReviews({
+export default async function UserReviewsPage({
     params,
     searchParams,
 }: {

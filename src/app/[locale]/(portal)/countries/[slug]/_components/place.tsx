@@ -37,7 +37,7 @@ export const Place = ({ id, title, avgRating, reviewsCount, cover }: PlaceProps)
                 <div className="flex flex-col justify-between">
                     <div className="line-clamp-3 text-h7-m sm:text-h7">{title}</div>
                     <div>
-                        <Rating value={avgRating} size={16} />
+                        <Rating value={avgRating ?? 0} size={16} />
                         <div className="text-small text-black-40">
                             {t('place.reviews', {
                                 count: reviewsCount ?? 0,
