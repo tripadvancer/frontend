@@ -16,11 +16,9 @@ import { Input } from '@/components/forms/input/input'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { UserStatus } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { SignIn } from './sign-in'
-import { SignInFeedback } from './sign-in-feedback'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
@@ -32,15 +30,6 @@ export const SignUp = () => {
     const toast = useToast()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
-
-    const sendEmail = async () => {
-        try {
-            await sendVerificationEmail()
-            dialog.open(<SignInFeedback reason={UserStatus.NOT_ACTIVATED} />)
-        } catch (err) {
-            toast.error(t('common.error'))
-        }
-    }
 
     const handleSubmit = async (values: SignUpInputs) => {
         try {
@@ -55,6 +44,12 @@ export const SignUp = () => {
             let response = await emailPasswordSignUp({ formFields })
 
             switch (response.status) {
+                case 'OK':
+                    dialog.close()
+                    router.refresh()
+                    await sendVerificationEmail()
+                    break
+
                 case 'FIELD_ERROR':
                     const emailError = response.formFields.find(formField => formField.id === 'email')
                     const passwordError = response.formFields.find(formField => formField.id === 'password')
@@ -74,7 +69,7 @@ export const SignUp = () => {
                     break
 
                 default:
-                    await sendEmail()
+                    toast.error(t('common.error'))
                     break
             }
         } catch (err: any) {

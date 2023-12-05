@@ -3,8 +3,6 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
-import { EmailVerificationClaim, sendVerificationEmail } from 'supertokens-web-js/recipe/emailverification'
-import Session from 'supertokens-web-js/recipe/session'
 import { emailPasswordSignIn } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 import * as Yup from 'yup'
 
@@ -16,11 +14,9 @@ import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { UserStatus } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPassword } from './forgot-password'
-import { SignInFeedback } from './sign-in-feedback'
 import { SignUp } from './sign-up'
 
 export const SignIn = () => {
@@ -30,20 +26,6 @@ export const SignIn = () => {
     const toast = useToast()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
-
-    const handleSuccessfulSignIn = () => {
-        dialog.close()
-        router.refresh()
-    }
-
-    const sendEmail = async () => {
-        try {
-            await sendVerificationEmail()
-            dialog.open(<SignInFeedback reason={UserStatus.NOT_ACTIVATED} />)
-        } catch (err) {
-            toast.error(t('common.error'))
-        }
-    }
 
     const handleSubmit = async (values: SignInInputs) => {
         try {
@@ -57,6 +39,11 @@ export const SignIn = () => {
             const response = await emailPasswordSignIn({ formFields })
 
             switch (response.status) {
+                case 'OK':
+                    dialog.close()
+                    router.refresh()
+                    break
+
                 case 'FIELD_ERROR':
                     const emailError = response.formFields.find(formField => formField.id === 'email')
                     if (emailError) {
@@ -69,10 +56,7 @@ export const SignIn = () => {
                     break
 
                 default:
-                    const validationErrors = await Session.validateClaims()
-                    validationErrors.some(err => err.validatorId === EmailVerificationClaim.id)
-                        ? await sendEmail()
-                        : handleSuccessfulSignIn()
+                    toast.error(t('common.error'))
                     break
             }
         } catch (err) {

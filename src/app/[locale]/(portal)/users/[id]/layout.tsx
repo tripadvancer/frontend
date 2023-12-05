@@ -13,7 +13,7 @@ export default async function UserLayout({ params, children }: { params: { id: s
         <div className="container py-24">
             <div className="inner-container">
                 <h1 className="mb-8 flex flex-col items-center gap-4 text-h1-m sm:text-h1 lg:mb-16 lg:flex-row">
-                    <Avatar src={user.avatar} alt={user.name} size={64} />
+                    <Avatar {...user} size={64} />
                     {user.name}
                 </h1>
 
@@ -30,7 +30,7 @@ export default async function UserLayout({ params, children }: { params: { id: s
                     </div>
 
                     <div className="flex-1">
-                        <Navigation userId={user.id} />
+                        <Navigation {...user} />
                         {children}
                     </div>
                 </div>

@@ -1,28 +1,30 @@
-'use client'
-
-import Session from 'supertokens-web-js/recipe/session'
-
 import { Avatar } from '@/components/avatar/avatar'
+import { getUserInfo } from '@/services/user'
+import { getSSRSession } from '@/utils/supertokens/session.utils'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 import { SignInLink } from './signin-link'
 import { UserMenu } from './user-menu'
 
 export const User = async () => {
-    const doesSessionExist = await Session.doesSessionExist()
+    const { session, hasToken } = await getSSRSession()
 
-    if (doesSessionExist) {
-        const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
-        const userInfo = accessTokenPayload.userInfo
+    if (!session) {
+        if (!hasToken) {
+            return <SignInLink />
+        }
 
-        return (
-            <UserMenu userId={userInfo.id}>
-                <div className="link flex gap-x-2 text-big-bold">
-                    <div className="hidden sm:block">{userInfo.name}</div>
-                    <Avatar src={userInfo.avatar} size={24} alt="" />
-                </div>
-            </UserMenu>
-        )
+        return <TryRefreshComponent />
     }
 
-    return <SignInLink />
+    const userInfo = await getUserInfo(session.getAccessToken())
+
+    return (
+        <UserMenu userId={userInfo.id}>
+            <div className="link flex gap-x-2 text-big-bold">
+                <div className="hidden sm:block">{userInfo.name}</div>
+                <Avatar {...userInfo} size={24} />
+            </div>
+        </UserMenu>
+    )
 }

@@ -9,17 +9,17 @@ import { UserActionsPublic } from './user-actions-public'
 
 type UserActionsProps = IPlace
 
-export const UserActions = async (place: UserActionsProps) => {
+export const UserActions = async ({ id, author }: UserActionsProps) => {
     const doesSessionExist = await Session.doesSessionExist()
 
     if (doesSessionExist) {
         const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
-        const userInfo = accessTokenPayload.userInfo
+        const activeUserId = accessTokenPayload.userId
 
-        if (place.author.id === userInfo.id) {
-            return <UserActionsPrivate place={place} />
+        if (activeUserId === author.id) {
+            return <UserActionsPrivate placeId={id} />
         }
     }
 
-    return <UserActionsPublic placeId={place.id} />
+    return <UserActionsPublic placeId={id} />
 }

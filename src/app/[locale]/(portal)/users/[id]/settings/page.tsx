@@ -1,5 +1,3 @@
-import UserMetadata from 'supertokens-node/recipe/usermetadata'
-
 import { notFound } from 'next/navigation'
 
 import { getUserInfo } from '@/services/user'
@@ -13,39 +11,20 @@ import { SettingsSkeleton } from './_components/settings-skeleton'
 
 export default async function UserSettingsPage({ params }: { params: { id: string } }) {
     const t = await getI18n()
-    const { session, hasToken, hasInvalidClaims } = await getSSRSession()
+    const { session, hasToken } = await getSSRSession()
 
     if (!session) {
         if (!hasToken) {
-            /**
-             * This means that the user is not logged in. If you want to display some other UI in this
-             * case, you can do so here.
-             */
             notFound()
         }
 
-        /**
-         * `hasInvalidClaims` indicates that session claims did not pass validation. For example if email
-         * verification is required but the user's email has not been verified.
-         */
-        if (hasInvalidClaims) {
-            /**
-             * This means that one of the session claims is invalid. You should redirect the user to
-             * the appropriate page depending on which claim is invalid.
-             */
-            notFound()
-        } else {
-            /**
-             * This means that the session does not exist but we have session tokens for the user. In this case
-             * the `TryRefreshComponent` will try to refresh the session.
-             */
-            return <TryRefreshComponent fallback={<SettingsSkeleton />} />
-        }
+        return <TryRefreshComponent fallback={<SettingsSkeleton />} />
     }
 
-    const { metadata } = await UserMetadata.getUserMetadata(session.getUserId())
+    const accessTokenPayload = session.getAccessTokenPayload()
+    const activeUserId = accessTokenPayload.userId
 
-    if (metadata.userId !== parseInt(params.id)) {
+    if (activeUserId !== parseInt(params.id)) {
         notFound()
     }
 

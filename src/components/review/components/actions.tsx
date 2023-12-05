@@ -17,9 +17,9 @@ export const Actions = async ({ review, reviewsCount }: ActionsProps) => {
 
     if (doesSessionExist) {
         const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
-        const userInfo = accessTokenPayload.userInfo
+        const activeUserId = accessTokenPayload.userId
 
-        if (review.user.id === userInfo.id) {
+        if (activeUserId === review.user.id) {
             return <ActionsPrivate review={review} reviewsCount={reviewsCount} />
         }
     }

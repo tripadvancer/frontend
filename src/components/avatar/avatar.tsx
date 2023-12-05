@@ -1,23 +1,23 @@
 import Image from 'next/image'
 
+import type { IUserInfo } from '@/utils/types/user'
+
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 
-type AvatarProps = {
-    src: string | null | undefined
-    alt: string | undefined
+type AvatarProps = IUserInfo & {
     size: number
 }
 
-export const Avatar = ({ src, alt, size }: AvatarProps) => {
-    if (src) {
+export const Avatar = ({ avatar, name, size }: AvatarProps) => {
+    if (avatar) {
         return (
             <Image
-                src={makeImageUrl(src, ImageVariant.AVATAR)}
+                src={makeImageUrl(avatar, ImageVariant.AVATAR)}
                 width={size}
                 height={size}
                 className="rounded-full"
-                alt={alt ?? 'avatar'}
+                alt={name}
             />
         )
     }

@@ -117,7 +117,7 @@ export async function withSession(
         )
     }
 
-    baseResponse.headers.forEach((value, key) => {
+    baseResponse.headers.forEach((value: string, key: string) => {
         didAddHeaders = true
         userResponse.headers.set(key, value)
     })
