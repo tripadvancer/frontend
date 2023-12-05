@@ -15,7 +15,7 @@ export const RatingAuthor = ({ user, rating, createdAt }: RatingAuthorProps) => 
 
     return (
         <Link href={`/users/${user.id}`} className="group inline-flex items-start gap-2">
-            <Avatar src={user.avatar} alt={user.name} size={32} />
+            <Avatar {...user} size={32} />
             <div className="flex flex-col">
                 <Rating value={rating} size={16} />
                 <div className="sm:flex sm:gap-x-2">
