@@ -19,6 +19,7 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPassword } from './forgot-password'
 import { SignUp } from './sign-up'
+import { ThirdPartyFacebook } from './third-party-facebook'
 import { ThirdPartyGoogle } from './third-party-google'
 
 export const SignIn = () => {
@@ -94,7 +95,10 @@ export const SignIn = () => {
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
             <h1 className="text-center text-h7-m sm:text-h7">{t('auth.signin.title')}</h1>
             <div className="flex flex-col gap-y-4">
-                <ThirdPartyGoogle isDisabled={isLoading} />
+                <div className="flex gap-x-2">
+                    <ThirdPartyGoogle isDisabled={isLoading} />
+                    <ThirdPartyFacebook isDisabled={isLoading} />
+                </div>
                 <Devider>{t('auth.signin.third_party.or')}</Devider>
                 <div className="flex flex-col gap-y-2">
                     <Input
