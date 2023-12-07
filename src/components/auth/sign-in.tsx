@@ -19,8 +19,7 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPassword } from './forgot-password'
 import { SignUp } from './sign-up'
-import { ThirdPartyFacebook } from './third-party-facebook'
-import { ThirdPartyGoogle } from './third-party-google'
+import { ThirdPartyButton } from './third-party-button'
 
 export const SignIn = () => {
     const t = useI18n()
@@ -96,8 +95,8 @@ export const SignIn = () => {
             <h1 className="text-center text-h7-m sm:text-h7">{t('auth.signin.title')}</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
-                    <ThirdPartyGoogle isDisabled={isLoading} />
-                    <ThirdPartyFacebook isDisabled={isLoading} />
+                    <ThirdPartyButton provider="google" isDisabled={isLoading} />
+                    <ThirdPartyButton provider="facebook" isDisabled={isLoading} />
                 </div>
                 <Devider>{t('auth.signin.third_party.or')}</Devider>
                 <div className="flex flex-col gap-y-2">

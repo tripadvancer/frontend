@@ -21,8 +21,7 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { SignIn } from './sign-in'
 import { SignUpCompleting } from './sign-up-completing'
-import { ThirdPartyFacebook } from './third-party-facebook'
-import { ThirdPartyGoogle } from './third-party-google'
+import { ThirdPartyButton } from './third-party-button'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
@@ -111,8 +110,8 @@ export const SignUp = () => {
             <h1 className="text-center text-h7-m sm:text-h7">{t('auth.signup.title')}</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
-                    <ThirdPartyGoogle isDisabled={isLoading} />
-                    <ThirdPartyFacebook isDisabled={isLoading} />
+                    <ThirdPartyButton provider="google" isDisabled={isLoading} />
+                    <ThirdPartyButton provider="facebook" isDisabled={isLoading} />
                 </div>
                 <Devider>{t('auth.signin.third_party.or')}</Devider>
                 <div className="flex flex-col gap-y-2">
