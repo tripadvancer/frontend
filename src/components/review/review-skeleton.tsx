@@ -9,7 +9,7 @@ export const ReviewSkeleton = () => {
             <div className="flex items-start justify-between sm:items-center">
                 <div className="flex flex-col gap-1">
                     <div className="h-3.5 w-20 rounded-full bg-black-5" />
-                    <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2 ">
+                    <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2">
                         <div className="h-3.5 w-40 rounded-full bg-black-5" />
                         <div className="h-3.5 w-40 rounded-full bg-black-5" />
                     </div>

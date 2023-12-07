@@ -9,7 +9,7 @@ export default async function RestoreAccountPage({ params }: { params: { token: 
 
     return (
         <>
-            <p className="text-center ">
+            <p className="text-center">
                 {response.status === ApiResponseStatus.TOKEN_EXPIRED && t('pages.auth.restore.token_expired')}
                 {response.status === ApiResponseStatus.SUCCESS && t('pages.auth.restore.success')}
             </p>

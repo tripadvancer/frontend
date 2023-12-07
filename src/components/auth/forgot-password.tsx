@@ -72,35 +72,39 @@ export const ForgotPassword = () => {
     })
 
     return (
-        <form className="w-full sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="mb-8 text-center text-h7 sm:text-h7-m">{t('auth.forgot_password.title')}</h1>
-            <p className="mb-2 text-center ">{t('auth.forgot_password.info')}</p>
-            <Input
-                type="text"
-                name="email"
-                value={formik.values.email}
-                placeholder={t('forms.fields.email.placeholder')}
-                autoFocus
-                error={formik.errors.email}
-                className="mb-8"
-                onChange={formik.handleChange}
-            />
-            <Button type="submit" className="mb-8 w-full" isLoading={isLoading}>
-                {t('auth.forgot_password.submit')}
-            </Button>
-            <div className="text-center ">
-                {t('auth.forgot_password.to_back', {
-                    sign_in_link: (
-                        <span className="link" onClick={handleSignInClcik}>
-                            {t('common.link.sign_in')}
-                        </span>
-                    ),
-                    sign_up_link: (
-                        <span className="link" onClick={handleSignUpClick}>
-                            {t('common.link.sign_up')}
-                        </span>
-                    ),
-                })}
+        <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
+            <h1 className="text-center text-h7 sm:text-h7-m">{t('auth.forgot_password.title')}</h1>
+            <div className="flex flex-col gap-y-2">
+                <p className="text-center">{t('auth.forgot_password.info')}</p>
+                <Input
+                    type="text"
+                    name="email"
+                    value={formik.values.email}
+                    placeholder={t('forms.fields.email.placeholder')}
+                    autoFocus
+                    error={formik.errors.email}
+                    isDisabled={isLoading}
+                    onChange={formik.handleChange}
+                />
+            </div>
+            <div className="flex flex-col gap-y-4">
+                <Button type="submit" className="w-full" isLoading={isLoading}>
+                    {t('auth.forgot_password.submit')}
+                </Button>
+                <div className="text-center">
+                    {t('auth.forgot_password.to_back', {
+                        sign_in_link: (
+                            <span className="link" onClick={handleSignInClcik}>
+                                {t('common.link.sign_in')}
+                            </span>
+                        ),
+                        sign_up_link: (
+                            <span className="link" onClick={handleSignUpClick}>
+                                {t('common.link.sign_up')}
+                            </span>
+                        ),
+                    })}
+                </div>
             </div>
         </form>
     )

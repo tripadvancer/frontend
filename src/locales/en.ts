@@ -148,6 +148,7 @@ export default {
     'auth.third_party.callback.error.email_already_exists': 'Seems like you already have an account with another method. Please use that instead.',
 
     'auth.signup.title': 'Sign up',
+    'auth.signup.third_party.title': 'Or, sign up with your email address',
     'auth.signup.submit': 'Sign up',
     'auth.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
     'auth.signup.to_back': 'Have an account? {sign_in_link}',
@@ -157,6 +158,7 @@ export default {
     'auth.completing_signup.resend_verification_email': 'Resend Verification Email',
 
     'auth.signin.title': 'Sign in',
+    'auth.signin.third_party.or': 'Or',
     'auth.signin.submit': 'Sign in',
     'auth.signin.link.forgot_password': 'Forgot password?',
     'auth.signin.to_back': 'Don’t have an account? {sign_up_link}',

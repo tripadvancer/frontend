@@ -10,15 +10,16 @@ import { useRouter } from 'next/navigation'
 
 import type { SignInInputs } from '@/utils/types/auth'
 
+import { Devider } from '@/components/devider'
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { GoogleSignInUp } from './components/third-party-sign-in/google'
 import { ForgotPassword } from './forgot-password'
 import { SignUp } from './sign-up'
+import { ThirdPartyGoogle } from './third-party-google'
 
 export const SignIn = () => {
     const t = useI18n()
@@ -90,38 +91,44 @@ export const SignIn = () => {
     })
 
     return (
-        <form className="w-full sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="mb-8 text-center text-h7-m sm:text-h7">{t('auth.signin.title')}</h1>
-            <GoogleSignInUp />
-            <div className="mb-4 text-center">Or</div>
-            <Input
-                type="text"
-                name="email"
-                value={formik.values.email}
-                placeholder={t('forms.fields.email.placeholder')}
-                autoFocus
-                error={formik.errors.email}
-                className="mb-2"
-                onChange={formik.handleChange}
-            />
-            <Input
-                type="password"
-                name="password"
-                value={formik.values.password}
-                placeholder={t('forms.fields.password.placeholder')}
-                error={formik.errors.password}
-                className="mb-8"
-                onChange={formik.handleChange}
-            />
-            <Button type="submit" className="mb-4 w-full" isLoading={isLoading}>
-                {t('auth.signin.submit')}
-            </Button>
-            <div className="mb-8 text-center text-small">
-                <span className="link text-small" onClick={handleForgotPasswordClick}>
-                    {t('auth.signin.link.forgot_password')}
-                </span>
+        <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
+            <h1 className="text-center text-h7-m sm:text-h7">{t('auth.signin.title')}</h1>
+            <div className="flex flex-col gap-y-4">
+                <ThirdPartyGoogle isDisabled={isLoading} />
+                <Devider>{t('auth.signin.third_party.or')}</Devider>
+                <div className="flex flex-col gap-y-2">
+                    <Input
+                        type="text"
+                        name="email"
+                        value={formik.values.email}
+                        placeholder={t('forms.fields.email.placeholder')}
+                        autoFocus
+                        error={formik.errors.email}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                    <Input
+                        type="password"
+                        name="password"
+                        value={formik.values.password}
+                        placeholder={t('forms.fields.password.placeholder')}
+                        error={formik.errors.password}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                </div>
             </div>
-            <div className="text-center ">
+            <div className="flex flex-col gap-y-4">
+                <Button type="submit" className="w-full" isLoading={isLoading}>
+                    {t('auth.signin.submit')}
+                </Button>
+                <div className="text-center text-small">
+                    <span className="link text-small" onClick={handleForgotPasswordClick}>
+                        {t('auth.signin.link.forgot_password')}
+                    </span>
+                </div>
+            </div>
+            <div className="text-center">
                 {t('auth.signin.to_back', {
                     sign_up_link: (
                         <span className="link" onClick={handleSignUpClick}>

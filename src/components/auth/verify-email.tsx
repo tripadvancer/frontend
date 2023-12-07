@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { verifyEmail } from 'supertokens-web-js/recipe/emailverification'
 
 import { LinkButton } from '@/components/link-button'
 import { useToast } from '@/providers/toast-provider'
+import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const VerifyEmail = () => {
@@ -13,7 +14,7 @@ export const VerifyEmail = () => {
     const toast = useToast()
     const [status, setStatus] = useState<string>()
 
-    useEffect(() => {
+    useOnMountUnsafe(() => {
         const handleVerifyEmail = async () => {
             try {
                 const response = await verifyEmail()
@@ -23,7 +24,7 @@ export const VerifyEmail = () => {
             }
         }
         handleVerifyEmail()
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    })
 
     if (!status) {
         return (

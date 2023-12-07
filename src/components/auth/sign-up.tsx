@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 
 import type { SignUpInputs } from '@/utils/types/auth'
 
+import { Devider } from '@/components/devider'
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
 import { validationConfig } from '@/configs/validation.config'
@@ -18,9 +19,9 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { GoogleSignInUp } from './components/third-party-sign-in/google'
 import { SignIn } from './sign-in'
 import { SignUpCompleting } from './sign-up-completing'
+import { ThirdPartyGoogle } from './third-party-google'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
@@ -105,68 +106,74 @@ export const SignUp = () => {
     })
 
     return (
-        <form className="w-full sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="mb-8 text-center text-h7-m sm:text-h7">{t('auth.signup.title')}</h1>
-            <GoogleSignInUp />
-            <div className="mb-4 text-center">Or</div>
-            <Input
-                type="text"
-                name="email"
-                value={formik.values.email}
-                placeholder={t('forms.fields.email.placeholder')}
-                autoFocus
-                error={formik.errors.email}
-                className="mb-2"
-                onChange={formik.handleChange}
-            />
-            <Input
-                type="text"
-                name="username"
-                value={formik.values.username}
-                placeholder={t('forms.fields.username.placeholder')}
-                error={formik.errors.username}
-                className="mb-2"
-                onChange={formik.handleChange}
-            />
-            <Input
-                type="password"
-                name="password"
-                value={formik.values.password}
-                placeholder={t('forms.fields.password.placeholder')}
-                error={formik.errors.password}
-                className="mb-8"
-                onChange={formik.handleChange}
-            />
-            <Button type="submit" className="mb-4 w-full" isLoading={isLoading}>
-                {t('auth.signup.submit')}
-            </Button>
-            <div className="mb-8 text-center text-small text-black-40">
-                {t('auth.signup.info', {
-                    terms_link: (
-                        <span
-                            className="link"
-                            onClick={() => {
-                                dialog.close()
-                                router.push('/legal/terms-and-conditions')
-                            }}
-                        >
-                            {t('common.link.terms')}
-                        </span>
-                    ),
-                    privacy_link: (
-                        <span
-                            className="link"
-                            onClick={() => {
-                                dialog.close()
-                                router.push('/legal/privacy-policy')
-                            }}
-                        >
-                            {t('common.link.privacy')}
-                        </span>
-                    ),
-                })}
+        <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
+            <h1 className="text-center text-h7-m sm:text-h7">{t('auth.signup.title')}</h1>
+            <div className="flex flex-col gap-y-4">
+                <ThirdPartyGoogle isDisabled={isLoading} />
+                <Devider>{t('auth.signin.third_party.or')}</Devider>
+                <div className="flex flex-col gap-y-2">
+                    <Input
+                        type="text"
+                        name="email"
+                        value={formik.values.email}
+                        placeholder={t('forms.fields.email.placeholder')}
+                        autoFocus
+                        error={formik.errors.email}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                    <Input
+                        type="text"
+                        name="username"
+                        value={formik.values.username}
+                        placeholder={t('forms.fields.username.placeholder')}
+                        error={formik.errors.username}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                    <Input
+                        type="password"
+                        name="password"
+                        value={formik.values.password}
+                        placeholder={t('forms.fields.password.placeholder')}
+                        error={formik.errors.password}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                </div>
             </div>
-            <div className="text-center ">
+            <div className="flex flex-col gap-y-4">
+                <Button type="submit" className="w-full" isLoading={isLoading}>
+                    {t('auth.signup.submit')}
+                </Button>
+                <div className="text-center text-small text-black-40">
+                    {t('auth.signup.info', {
+                        terms_link: (
+                            <span
+                                className="link"
+                                onClick={() => {
+                                    dialog.close()
+                                    router.push('/legal/terms-and-conditions')
+                                }}
+                            >
+                                {t('common.link.terms')}
+                            </span>
+                        ),
+                        privacy_link: (
+                            <span
+                                className="link"
+                                onClick={() => {
+                                    dialog.close()
+                                    router.push('/legal/privacy-policy')
+                                }}
+                            >
+                                {t('common.link.privacy')}
+                            </span>
+                        ),
+                    })}
+                </div>
+            </div>
+            <div className="text-center">
                 {t('auth.signup.to_back', {
                     sign_in_link: (
                         <span className="link" onClick={handleSignInClick}>

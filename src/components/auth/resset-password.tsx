@@ -62,18 +62,20 @@ export const RessetPassword = () => {
 
     if (!status) {
         return (
-            <form className="w-full" onSubmit={formik.handleSubmit}>
-                <p className="mb-2 text-center">{t('pages.auth.reset_password.title')}</p>
-                <Input
-                    type="password"
-                    name="password"
-                    value={formik.values.password}
-                    placeholder={t('forms.fields.password.placeholder')}
-                    autoFocus
-                    error={formik.errors.password}
-                    className="mb-8"
-                    onChange={formik.handleChange}
-                />
+            <form className="flex w-full flex-col gap-y-8" onSubmit={formik.handleSubmit}>
+                <div className="flex flex-col gap-y-2">
+                    <p className="text-center">{t('pages.auth.reset_password.title')}</p>
+                    <Input
+                        type="password"
+                        name="password"
+                        value={formik.values.password}
+                        placeholder={t('forms.fields.password.placeholder')}
+                        autoFocus
+                        error={formik.errors.password}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                </div>
                 <Button type="submit" className="w-full" isLoading={isLoading}>
                     {t('pages.auth.reset_password.submit')}
                 </Button>

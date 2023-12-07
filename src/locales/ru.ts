@@ -148,6 +148,7 @@ export default {
     'auth.third_party.callback.error.email_already_exists': 'Похоже, у вас уже есть учетная запись с другим методом входа. Пожалуйста, используйте её для входа.',
 
     'auth.signup.title': 'Регистрация',
+    'auth.signup.third_party.title': 'Или зарегистрируйтесь, используя свой email',
     'auth.signup.submit': 'Зарегистрироваться',
     'auth.signup.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
     'auth.signup.to_back': 'Уже зарегистрированы? {sign_in_link}',
@@ -157,6 +158,7 @@ export default {
     'auth.completing_signup.resend_verification_email': 'Отправить письмо ещё раз',
 
     'auth.signin.title': 'Вход',
+    'auth.signin.third_party.or': 'Или',
     'auth.signin.submit': 'Войти',
     'auth.signin.link.forgot_password': 'Забыли пароль?',
     'auth.signin.to_back': 'Нет учётной записи? {sign_up_link}',

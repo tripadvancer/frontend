@@ -9,7 +9,7 @@ export default async function ConfirmAccountRemovalPage({ params }: { params: { 
 
     return (
         <>
-            <p className="text-center ">
+            <p className="text-center">
                 {response.status === ApiResponseStatus.TOKEN_EXPIRED && t('pages.auth.confirm_removal.token_expired')}
                 {response.status === ApiResponseStatus.SUCCESS && t('pages.auth.confirm_removal.success')}
             </p>
