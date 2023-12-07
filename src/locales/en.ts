@@ -142,6 +142,11 @@ export default {
     'review.form.fields.text.placeholder': 'Share your impressions in detail — this way you will help others learn more about this place',
     'review.form.fields.photos.label': 'Photos',
 
+    'auth.third_party.callback.redirecting': 'You are being redirected...',
+    'auth.third_party.callback.checking_status': 'We are checking your status...',
+    'auth.third_party.callback.error.email_not_provided': 'No email provided by social login. Please use another form of login.',
+    'auth.third_party.callback.error.email_already_exists': 'Seems like you already have an account with another method. Please use that instead.',
+
     'auth.signup.title': 'Sign up',
     'auth.signup.submit': 'Sign up',
     'auth.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',

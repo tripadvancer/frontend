@@ -16,6 +16,7 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
+import { GoogleSignInUp } from './components/third-party-sign-in/google'
 import { ForgotPassword } from './forgot-password'
 import { SignUp } from './sign-up'
 
@@ -91,6 +92,8 @@ export const SignIn = () => {
     return (
         <form className="w-full sm:w-104" onSubmit={formik.handleSubmit}>
             <h1 className="mb-8 text-center text-h7-m sm:text-h7">{t('auth.signin.title')}</h1>
+            <GoogleSignInUp />
+            <div className="mb-4 text-center">Or</div>
             <Input
                 type="text"
                 name="email"

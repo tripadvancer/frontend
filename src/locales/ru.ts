@@ -142,6 +142,11 @@ export default {
     'review.form.fields.text.placeholder': 'Развернуто поделитесь своими впечатлениями - так Вы поможете остальным узнать больше о месте',
     'review.form.fields.photos.label': 'Фотографии',
 
+    'auth.third_party.callback.redirecting': 'Идет перенаправление...',
+    'auth.third_party.callback.checking_status': 'Мы проверяем статус Вашей учётной записи...',
+    'auth.third_party.callback.error.email_not_provided': 'Мы не получили Ваш email от социальной сети. Пожалуйста, попробуйте другой способ входа.',
+    'auth.third_party.callback.error.email_already_exists': 'Похоже, у вас уже есть учетная запись с другим методом входа. Пожалуйста, используйте её для входа.',
+
     'auth.signup.title': 'Регистрация',
     'auth.signup.submit': 'Зарегистрироваться',
     'auth.signup.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
