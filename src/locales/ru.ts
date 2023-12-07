@@ -34,10 +34,12 @@ export default {
     'common.action.show_more': 'Показать ещё',
     'common.action.close': 'Закрыть',
     'common.action.return_home': 'На главную',
+    'common.action.go_home': 'Перейти на главную',
     'common.action.try_again': 'Попробовать снова',
     'common.action.send': 'Отправить',
     'common.action.delete': 'Удалить',
     'common.action.cancel': 'Отмена',
+    'common.action.ok': 'Ок',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -140,17 +142,14 @@ export default {
     'review.form.fields.text.placeholder': 'Развернуто поделитесь своими впечатлениями - так Вы поможете остальным узнать больше о месте',
     'review.form.fields.photos.label': 'Фотографии',
 
-    'auth.feedback.verify_email.title': 'Проверьте свой email',
-    'auth.feedback.verify_email.message.not_activated': 'Мы отправили Вам письмо с инструкциями по подтверждению email. Пожалуйста, проверьте свой email и следуйте инструкциям, указанным в письме, чтобы завершить процесс подтверждения.',
-    'auth.feedback.verify_email.message.pending_delete': 'Мы отправили Вам инструкции по восстановлению Вашей учётной записи. Обратите внимание, что восстановление учётной записи доступно ограниченное время.',
-
-    'auth.feedback.forgot_password.title': 'Восстановление пароля',
-    'auth.feedback.forgot_password.message': 'Мы отправили Вам письмо с инструкциями по восстановлению пароля.',
-
     'auth.signup.title': 'Регистрация',
     'auth.signup.submit': 'Зарегистрироваться',
     'auth.signup.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
     'auth.signup.to_back': 'Уже зарегистрированы? {sign_in_link}',
+
+    'auth.completing_signup.title': 'Подтвердите Ваш email',
+    'auth.completing_signup.message': 'Мы отправили вам письмо с подтверждением. Пожалуйста, проверьте свой почтовый ящик и следуйте инструкциям в письме, чтобы завершить процесс подтверждения.',
+    'auth.completing_signup.resend_verification_email': 'Отправить письмо ещё раз',
 
     'auth.signin.title': 'Вход',
     'auth.signin.submit': 'Войти',
@@ -161,6 +160,9 @@ export default {
     'auth.forgot_password.submit': 'Восстановить пароль',
     'auth.forgot_password.info': 'Укажите Ваш email и мы вышлем письмо с инструкцией по восстановлению пароля:',
     'auth.forgot_password.to_back': '{sign_in_link} или {sign_up_link}',
+
+    'auth.completing_forgot_password.title': 'Восстановление пароля',
+    'auth.completing_forgot_password.message': 'Мы отправили Вам письмо с инструкциями по восстановлению пароля.',
 
     'pages.auth.verify.loading': 'Проверяем ваш email...',
     'pages.auth.verify.token_expired': 'Ссылка для подтверждения email устарела. Пожалуйста, залогиньтесь снова, чтобы мы могли отправить Вам новую ссылку для подтверждения.',

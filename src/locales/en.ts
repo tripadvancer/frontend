@@ -34,10 +34,16 @@ export default {
     'common.action.show_more': 'Show more',
     'common.action.close': 'Close',
     'common.action.return_home': 'Return Home',
+    'common.action.go_home': 'Go to Home',
     'common.action.try_again': 'Try again',
     'common.action.send': 'Send',
     'common.action.delete': 'Delete',
     'common.action.cancel': 'Cancel',
+    'common.action.ok': 'Ok',
+
+    'claim.attention.title': 'Your email is not verified',
+    'claim.attention.message': 'Please check your inbox and follow the instructions provided in the email to complete the verification process.',
+    'claim.attention.resend_verification_email': 'Resend Verification Email',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -136,17 +142,14 @@ export default {
     'review.form.fields.text.placeholder': 'Share your impressions in detail — this way you will help others learn more about this place',
     'review.form.fields.photos.label': 'Photos',
 
-    'auth.feedback.verify_email.title': 'Check your email',
-    'auth.feedback.verify_email.message.not_activated': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
-    'auth.feedback.verify_email.message.pending_delete': 'We have sent you the instructions to restore your account. Please note that there is a limited time window available for account restoration.',
-
-    'auth.feedback.forgot_password.title': 'Reset your password',
-    'auth.feedback.forgot_password.message': 'We sent you an email with instructions on how to reset your password.',
-
     'auth.signup.title': 'Sign up',
     'auth.signup.submit': 'Sign up',
     'auth.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
     'auth.signup.to_back': 'Have an account? {sign_in_link}',
+
+    'auth.completing_signup.title': 'Completing sign up',
+    'auth.completing_signup.message': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
+    'auth.completing_signup.resend_verification_email': 'Resend Verification Email',
 
     'auth.signin.title': 'Sign in',
     'auth.signin.submit': 'Sign in',
@@ -155,8 +158,11 @@ export default {
 
     'auth.forgot_password.title': 'Forgot your password?',
     'auth.forgot_password.submit': 'Restore password',
-    'auth.forgot_password.info': 'Enter your email and we will send you an email with instructions for resetting your password:',
+    'auth.forgot_password.info': 'To reset your password, please enter your email address. We will send an email to the provided address with instructions on how to reset your password:',
     'auth.forgot_password.to_back': '{sign_in_link} or {sign_up_link}',
+
+    'auth.completing_forgot_password.title': 'Completing the recovery',
+    'auth.completing_forgot_password.message': 'We sent you an email with instructions on how to reset your password.',
 
     'pages.auth.verify.loading': 'Verifying your email...',
     'pages.auth.verify.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',

@@ -14,7 +14,7 @@ export default async function RestoreAccountPage({ params }: { params: { token: 
                 {response.status === ApiResponseStatus.SUCCESS && t('pages.auth.restore.success')}
             </p>
             <LinkButton href="/" className="w-full">
-                {t('common.action.return_home')}
+                {t('common.action.go_home')}
             </LinkButton>
         </>
     )

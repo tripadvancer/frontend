@@ -30,7 +30,7 @@ export const VerifyEmail = () => {
             <>
                 <p className="text-center">{t('pages.auth.verify.loading')}</p>
                 <LinkButton href="/" className="w-full">
-                    {t('common.action.return_home')}
+                    {t('common.action.go_home')}
                 </LinkButton>
             </>
         )
@@ -43,7 +43,7 @@ export const VerifyEmail = () => {
                 {status === 'OK' && t('pages.auth.verify.success')}
             </p>
             <LinkButton href="/" className="w-full">
-                {t('common.action.return_home')}
+                {t('common.action.go_home')}
             </LinkButton>
         </>
     )

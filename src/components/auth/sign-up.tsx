@@ -19,6 +19,7 @@ import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { SignIn } from './sign-in'
+import { SignUpCompleting } from './sign-up-completing'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
@@ -45,9 +46,9 @@ export const SignUp = () => {
 
             switch (response.status) {
                 case 'OK':
-                    dialog.close()
-                    router.refresh()
                     await sendVerificationEmail()
+                    router.refresh()
+                    dialog.open(<SignUpCompleting />)
                     break
 
                 case 'FIELD_ERROR':

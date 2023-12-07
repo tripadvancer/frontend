@@ -14,7 +14,7 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { ForgotPasswordFeedback } from './forgot-password-feedback'
+import { ForgotPasswordCompleting } from './forgot-password-completing'
 import { SignIn } from './sign-in'
 import { SignUp } from './sign-up'
 
@@ -41,7 +41,7 @@ export const ForgotPassword = () => {
                     break
 
                 default:
-                    dialog.open(<ForgotPasswordFeedback />)
+                    dialog.open(<ForgotPasswordCompleting />)
                     break
             }
         } catch (err) {

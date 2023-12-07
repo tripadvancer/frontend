@@ -2,6 +2,7 @@
 
 import Session from 'supertokens-web-js/recipe/session'
 
+import { ClaimsError } from '@/components/auth/claims-error'
 import { SignIn } from '@/components/auth/sign-in'
 import { PlaceComplain } from '@/components/complain/place-complain'
 import { useDialog } from '@/providers/dialog-provider'
@@ -17,7 +18,19 @@ export const UserActionsPublic = ({ placeId }: UserActionsPublicProps) => {
 
     const handleCompainClick = async () => {
         const doesSessionExist = await Session.doesSessionExist()
-        dialog.open(doesSessionExist ? <PlaceComplain placeId={placeId} /> : <SignIn />)
+        const validationErrors = await Session.validateClaims()
+
+        if (!doesSessionExist) {
+            dialog.open(<SignIn />)
+            return
+        }
+
+        if (validationErrors.length > 0) {
+            dialog.open(<ClaimsError />)
+            return
+        }
+
+        dialog.open(<PlaceComplain placeId={placeId} />)
     }
 
     return (

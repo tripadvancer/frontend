@@ -2,6 +2,7 @@
 
 import Session from 'supertokens-web-js/recipe/session'
 
+import { ClaimsError } from '@/components/auth/claims-error'
 import { SignIn } from '@/components/auth/sign-in'
 import { ButtonMinor } from '@/components/forms/button-minor/button-minor'
 import { AddReview } from '@/components/review-form/add-review'
@@ -19,7 +20,19 @@ export const AddReviewButton = ({ placeId, isDisabled }: AddReviewButtonProps) =
 
     const handleClick = async () => {
         const doesSessionExist = await Session.doesSessionExist()
-        dialog.open(doesSessionExist ? <AddReview placeId={placeId} /> : <SignIn />)
+        const validationErrors = await Session.validateClaims()
+
+        if (!doesSessionExist) {
+            dialog.open(<SignIn />)
+            return
+        }
+
+        if (validationErrors.length > 0) {
+            dialog.open(<ClaimsError />)
+            return
+        }
+
+        dialog.open(<AddReview placeId={placeId} />)
     }
 
     return (

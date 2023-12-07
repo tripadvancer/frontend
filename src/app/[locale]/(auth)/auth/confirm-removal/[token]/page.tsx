@@ -14,7 +14,7 @@ export default async function ConfirmAccountRemovalPage({ params }: { params: { 
                 {response.status === ApiResponseStatus.SUCCESS && t('pages.auth.confirm_removal.success')}
             </p>
             <LinkButton href="/" className="w-full">
-                {t('common.action.return_home')}
+                {t('common.action.go_home')}
             </LinkButton>
         </>
     )

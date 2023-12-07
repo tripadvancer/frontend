@@ -19,7 +19,7 @@ export const Toast = ({ type, message, onClose }: ToastProps) => {
     useTimeout(onClose, 5000)
     return (
         <div
-            className={classNames('relative rounded-2xl p-8 shadow-medium', {
+            className={classNames('relative rounded-2xl py-8 pl-8 pr-16 shadow-medium', {
                 'bg-green-10': type === ToastType.success,
                 'bg-red-10': type === ToastType.error,
             })}
