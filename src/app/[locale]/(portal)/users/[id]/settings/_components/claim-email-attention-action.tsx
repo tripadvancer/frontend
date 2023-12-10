@@ -8,7 +8,7 @@ import { Button } from '@/components/forms/button/button'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const ClaimAttentionAction = () => {
+export const ClaimEmailAttentionAction = () => {
     const t = useI18n()
     const toast = useToast()
 
@@ -28,7 +28,7 @@ export const ClaimAttentionAction = () => {
 
     return (
         <Button variant="orange" isLoading={isLoading} onClick={handleResendVerificationEmail}>
-            {t('claim.attention.resend_verification_email')}
+            {t('claim.email.resend_verification_email')}
         </Button>
     )
 }

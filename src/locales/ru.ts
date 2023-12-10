@@ -41,6 +41,10 @@ export default {
     'common.action.cancel': 'Отмена',
     'common.action.ok': 'Ок',
 
+    'claim.email.title': 'Ваш email не подтверждён',
+    'claim.email.message': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
+    'claim.email.resend_verification_email': 'Отправить письмо ещё раз',
+
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
 

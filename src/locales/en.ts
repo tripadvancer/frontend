@@ -41,9 +41,9 @@ export default {
     'common.action.cancel': 'Cancel',
     'common.action.ok': 'Ok',
 
-    'claim.attention.title': 'Your email is not verified',
-    'claim.attention.message': 'Please check your inbox and follow the instructions provided in the email to complete the verification process.',
-    'claim.attention.resend_verification_email': 'Resend Verification Email',
+    'claim.email.title': 'Your email is not verified',
+    'claim.email.message': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
+    'claim.email.resend_verification_email': 'Resend Verification Email',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',

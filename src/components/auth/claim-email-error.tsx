@@ -9,7 +9,7 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const ClaimsError = () => {
+export const ClaimEmailError = () => {
     const t = useI18n()
     const toast = useToast()
     const dialog = useDialog()
@@ -31,15 +31,15 @@ export const ClaimsError = () => {
 
     return (
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
-            <h1 className="text-h7-m sm:text-h7">{t('claim.attention.title')}</h1>
-            <p className="text-center">{t('claim.attention.message')}</p>
+            <h1 className="text-h7-m sm:text-h7">{t('claim.email.title')}</h1>
+            <p className="text-center">{t('claim.email.message')}</p>
             <ButtonStroke
                 type="button"
                 className="w-full"
                 isLoading={isLoading}
                 onClick={handleResendVerificationEmail}
             >
-                {t('claim.attention.resend_verification_email')}
+                {t('claim.email.resend_verification_email')}
             </ButtonStroke>
         </div>
     )

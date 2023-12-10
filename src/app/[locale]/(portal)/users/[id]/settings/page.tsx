@@ -5,7 +5,7 @@ import { getI18n } from '@/utils/i18n/i18n.server'
 import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { ClaimAttention } from './_components/claim-attention'
+import { ClaimEmailAttention } from './_components/claim-email-attention'
 import { SettingsForm } from './_components/settings-form'
 import { SettingGDPR } from './_components/settings-gdpr'
 import { SettingsSkeleton } from './_components/settings-skeleton'
@@ -33,7 +33,7 @@ export default async function UserSettingsPage({ params }: { params: { id: strin
 
     return (
         <div className="flex flex-col gap-y-8">
-            <ClaimAttention />
+            <ClaimEmailAttention />
 
             <div className="flex flex-col gap-y-16">
                 <section>

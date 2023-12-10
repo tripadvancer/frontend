@@ -29,7 +29,7 @@ export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps
                 thirdPartyId: provider,
                 frontendRedirectURI: `${process.env.NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH}/${provider}`,
             })
-            router.replace(authUrl)
+            router.push(authUrl)
         } catch (err: any) {
             toast.error(t('common.error'))
         } finally {

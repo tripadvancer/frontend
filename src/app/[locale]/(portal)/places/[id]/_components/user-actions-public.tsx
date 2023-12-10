@@ -2,7 +2,7 @@
 
 import Session from 'supertokens-web-js/recipe/session'
 
-import { ClaimsError } from '@/components/auth/claims-error'
+import { ClaimEmailError } from '@/components/auth/claim-email-error'
 import { SignIn } from '@/components/auth/sign-in'
 import { PlaceComplain } from '@/components/complain/place-complain'
 import { useDialog } from '@/providers/dialog-provider'
@@ -26,7 +26,7 @@ export const UserActionsPublic = ({ placeId }: UserActionsPublicProps) => {
         }
 
         if (validationErrors.length > 0) {
-            dialog.open(<ClaimsError />)
+            dialog.open(<ClaimEmailError />)
             return
         }
 
