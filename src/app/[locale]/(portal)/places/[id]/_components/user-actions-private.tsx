@@ -1,11 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-
-import type { IPlace } from '@/utils/types/place'
 
 import { Confirmation } from '@/components/confirmation'
 import { useDialog } from '@/providers/dialog-provider'
@@ -23,27 +19,21 @@ export const UserActionsPrivate = ({ placeId }: UserActionsPrivateProps) => {
     const dialog = useDialog()
     const toast = useToast()
 
-    const [isDeleting, setIsDeleting] = useState<boolean>(false)
-
     const handleDeleteClick = () => {
         dialog.open(
             <Confirmation
                 variant="red"
                 title={t('place.delete.confirm.title')}
                 message={t('place.delete.confirm.message')}
-                isLoading={isDeleting}
                 onConfirm={async () => {
+                    dialog.close()
                     try {
-                        setIsDeleting(true)
                         await deletePlaceById(placeId.toString())
                         toast.success(t('place.delete.success'))
-                        dialog.close()
                         router.push('/')
                         router.refresh()
                     } catch {
                         toast.error(t('common.error'))
-                    } finally {
-                        setIsDeleting(false)
                     }
                 }}
             />,

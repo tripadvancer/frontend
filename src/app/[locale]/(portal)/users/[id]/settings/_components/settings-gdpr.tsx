@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Confirmation } from '@/components/confirmation'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
@@ -17,24 +15,18 @@ export const SettingGDPR = ({ userId }: SettingGDPRProps) => {
     const dialog = useDialog()
     const toast = useToast()
 
-    const [isLoading, setIsLoading] = useState(false)
-
     const handleGetUserPersonalData = () => {
         dialog.open(
             <Confirmation
                 title={t('pages.user.settings.gdpr.get_user_personal_data.confirm.title')}
                 message={t('pages.user.settings.gdpr.get_user_personal_data.confirm.message')}
-                isLoading={isLoading}
                 onConfirm={async () => {
+                    dialog.close()
                     try {
-                        setIsLoading(true)
                         await getUserPersonalData()
                         toast.success(t('pages.user.settings.gdpr.get_user_personal_data.success'))
-                        dialog.close()
                     } catch {
                         toast.error(t('common.error'))
-                    } finally {
-                        setIsLoading(false)
                     }
                 }}
             />,
@@ -47,17 +39,13 @@ export const SettingGDPR = ({ userId }: SettingGDPRProps) => {
                 variant="red"
                 title={t('pages.user.settings.gdpr.delete_user.confirm.title')}
                 message={t('pages.user.settings.gdpr.delete_user.confirm.message')}
-                isLoading={isLoading}
                 onConfirm={async () => {
+                    dialog.close()
                     try {
-                        setIsLoading(true)
                         await deleteUser()
                         toast.success(t('pages.user.settings.gdpr.delete_user.success'))
-                        dialog.close()
                     } catch {
                         toast.error(t('common.error'))
-                    } finally {
-                        setIsLoading(false)
                     }
                 }}
             />,

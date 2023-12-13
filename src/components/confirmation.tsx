@@ -9,11 +9,10 @@ type ConfirmationProps = {
     title: string
     message: string
     variant?: 'blue' | 'red'
-    isLoading?: boolean
     onConfirm: () => void
 }
 
-export const Confirmation = ({ title, message, variant = 'blue', isLoading, onConfirm }: ConfirmationProps) => {
+export const Confirmation = ({ title, message, variant = 'blue', onConfirm }: ConfirmationProps) => {
     const t = useI18n()
     const dialog = useDialog()
 
