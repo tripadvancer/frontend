@@ -1,5 +1,3 @@
-import { ApiResponseStatus } from '@/utils/enums'
-
 export type SignInInputs = {
     email: string
     password: string
@@ -19,10 +17,10 @@ export type ResetPasswordInputs = {
     password: string
 }
 
-export type TokenInputs = {
-    token: string
+export type RestoreAccountResponse = {
+    status: 'SUCCESS' | 'TOKEN_EXPIRED'
 }
 
-export type StatusResponse = {
-    status: ApiResponseStatus
+export type ConfirmAccountRemovalResponse = {
+    status: 'SUCCESS' | 'TOKEN_EXPIRED'
 }

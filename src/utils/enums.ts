@@ -86,11 +86,6 @@ export enum ApiErrorStatusCode {
     NOT_FOUND = 404,
 }
 
-export enum ApiResponseStatus {
-    SUCCESS = 'SUCCESS',
-    TOKEN_EXPIRED = 'TOKEN_EXPIRED',
-}
-
 export enum UserRoles {
     USER = 'USER',
     ADMIN = 'ADMIN',

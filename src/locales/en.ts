@@ -235,5 +235,5 @@ export default {
     'pages.user.settings.gdpr.delete_user': 'Remove your account',
     'pages.user.settings.gdpr.delete_user.confirm.title': 'Remove your account',
     'pages.user.settings.gdpr.delete_user.confirm.message': 'Are you sure you want to remove your account?',
-    'pages.user.settings.gdpr.delete_user.success': 'This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
+    'pages.user.settings.gdpr.delete_user.success': 'We have sent you an email with instructions on how to complete the removal process.',
 } as const

@@ -1,3 +1,4 @@
+import { ConfirmAccountRemovalResponse, RestoreAccountResponse } from '@/utils/types/auth'
 import type { IUserInfo, UpdateUserProfileInputs } from '@/utils/types/user'
 
 export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
@@ -75,4 +76,38 @@ export async function getUserPersonalData(): Promise<void> {
     if (!res.ok) {
         throw new Error('Failed to fetch data')
     }
+}
+
+export async function confirmAccountRemoval(token: string): Promise<ConfirmAccountRemovalResponse> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/confirm-removal'
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+
+    return res.json()
+}
+
+export async function restoreAccount(token: string): Promise<RestoreAccountResponse> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/restore'
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+
+    return res.json()
 }
