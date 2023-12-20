@@ -26,7 +26,7 @@ export const PlaceComplain = ({ placeId }: PlaceComplainProps) => {
     const handleSubmit = async (values: PlaceComplaintInputs) => {
         try {
             setIsLoading(true)
-            placeComplaint(values)
+            await placeComplaint(values)
             toast.success(t('success.send_complaint'))
             dialog.close()
         } catch (err) {

@@ -26,7 +26,7 @@ export const ReviewComplain = ({ reviewId }: ReviewComplainProps) => {
     const handleSubmit = async (values: ReviewComplaintInputs) => {
         try {
             setIsLoading(true)
-            reviewComplaint(values)
+            await reviewComplaint(values)
             toast.success(t('success.send_complaint'))
             dialog.close()
         } catch (err) {

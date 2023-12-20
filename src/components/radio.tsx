@@ -13,6 +13,7 @@ export const Radio = ({ id, name, value, caption, checked, onChange }: RadioProp
             <label htmlFor={id} className="group flex cursor-pointer justify-center gap-x-2">
                 <div className="hover-animated flex h-5 w-5 flex-none items-center justify-center rounded-full border border-black-15 group-hover:border-black-40">
                     <input
+                        id={id}
                         type="radio"
                         name={name}
                         value={value}
