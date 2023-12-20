@@ -87,7 +87,7 @@ export const FileInput = ({
                     >
                         {isUploading && (
                             <>
-                                <div className="text-black-40">{t('forms.fields.file.loading.placeholder')}</div>
+                                <div className="text-black-40">{t('placeholder.file.loading')}</div>
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
                                     <Spinner size={16} />
                                 </div>
@@ -96,7 +96,7 @@ export const FileInput = ({
 
                         {!isUploading && !fileName && (
                             <>
-                                <div className="text-black-40">{t('forms.fields.file.placeholder')}</div>
+                                <div className="text-black-40">{t('placeholder.file')}</div>
                                 {/* prettier-ignore */}
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

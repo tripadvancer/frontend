@@ -9,7 +9,7 @@ export default async function ConfirmUserRemovalPage({ searchParams }: { searchP
     return (
         <>
             <p className="text-center">
-                {response.status === 'OK' && t('pages.auth.confirm_removal.success')}
+                {response.status === 'OK' && t('pages.auth.confirm_removal.ok')}
                 {response.status === 'INVALID_TOKEN_ERROR' && t('pages.auth.confirm_removal.token_expired')}
             </p>
             <LinkButton href="/" className="w-full">

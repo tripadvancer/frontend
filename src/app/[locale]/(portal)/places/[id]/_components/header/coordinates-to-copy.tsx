@@ -15,7 +15,7 @@ export const CoordinatesToCopy = ({ location }: CoordinatesToCopyProps) => {
     const handleCopy = () => {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(`${coordinates[1].toFixed(5)}, ${coordinates[0].toFixed(5)}`)
-            toast.success(t('coordinates.copy.success'))
+            toast.success(t('success.copy_coordinates'))
         }
     }
 

@@ -32,7 +32,7 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
         try {
             setIsUploading(true)
             await updateUserAvatar(file as File)
-            toast.success(t('pages.user.settings.avatar.update.success'))
+            toast.success(t('success.update_user_avatar'))
             router.refresh()
         } catch {
             toast.error(t('common.error'))
@@ -55,7 +55,7 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
         try {
             setIsUploading(true)
             await deleteUserAvatar()
-            toast.success(t('pages.user.settings.avatar.update.success'))
+            toast.success(t('success.update_user_avatar'))
             router.refresh()
         } catch {
             toast.error(t('common.error'))

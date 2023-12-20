@@ -36,8 +36,8 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
             rating: Yup.number().min(1, t('validation.required')),
             text: Yup.string()
                 .required(t('validation.required'))
-                .min(reviewTextMinLength, t('validation.min_length', { min_length: reviewTextMinLength }))
-                .max(reviewTextMaxLength, t('validation.max_length', { max_length: reviewTextMaxLength })),
+                .min(reviewTextMinLength, t('validation.text.min_length', { min_length: reviewTextMinLength }))
+                .max(reviewTextMaxLength, t('validation.text.max_length', { max_length: reviewTextMaxLength })),
         }),
         onSubmit,
     })
@@ -64,7 +64,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         id="text"
                         name="text"
                         value={formik.values.text}
-                        placeholder={t('review.form.fields.text.placeholder')}
+                        placeholder={t('placeholder.action.review')}
                         maxLength={reviewTextMaxLength}
                         error={formik.errors.text}
                         isDisabled={isLoading}

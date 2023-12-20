@@ -42,6 +42,9 @@ export const ChangePassword = () => {
                 case 'FIELD_ERROR':
                     const newPassword = response.formFields.find(formField => formField.id === 'newPassword')
                     if (newPassword) {
+                        if (newPassword.error === 'PASSWORD_POLICY_VIOLATED_ERROR') {
+                            formik.setErrors({ newPassword: t('validation.password.policy_violated') })
+                        }
                         formik.setErrors({ newPassword: newPassword.error })
                     }
                     break
@@ -84,7 +87,7 @@ export const ChangePassword = () => {
                     type="password"
                     name="oldPassword"
                     value={formik.values.oldPassword}
-                    placeholder={t('auth.change_password.forms.fields.old_password.placeholder')}
+                    placeholder={t('placeholder.action.password')}
                     autoFocus
                     error={formik.errors.oldPassword}
                     isDisabled={isLoading}
@@ -94,7 +97,7 @@ export const ChangePassword = () => {
                     type="password"
                     name="newPassword"
                     value={formik.values.newPassword}
-                    placeholder={t('auth.change_password.forms.fields.new_password.placeholder')}
+                    placeholder={t('placeholder.action.new_password')}
                     error={formik.errors.newPassword}
                     isDisabled={isLoading}
                     onChange={formik.handleChange}

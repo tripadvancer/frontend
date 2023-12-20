@@ -42,7 +42,7 @@ export const VerifyEmail = () => {
         <>
             <p className="text-center">
                 {status === 'EMAIL_VERIFICATION_INVALID_TOKEN_ERROR' && t('pages.auth.verify.token_expired')}
-                {status === 'OK' && t('pages.auth.verify.success')}
+                {status === 'OK' && t('pages.auth.verify.ok')}
             </p>
             <LinkButton href="/" className="w-full">
                 {t('common.action.go_home')}

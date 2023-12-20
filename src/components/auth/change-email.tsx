@@ -34,7 +34,7 @@ export const ChangeEmail = () => {
                 case 'OK':
                     dialog.close()
                     router.refresh()
-                    toast.success(t('auth.change_email.success'))
+                    toast.success(t('success.change_user_email'))
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
@@ -44,7 +44,11 @@ export const ChangeEmail = () => {
                 case 'FIELD_ERROR':
                     const newEmail = response.formFields.find(formField => formField.id === 'newEmail')
                     if (newEmail) {
-                        formik.setErrors({ newEmail: newEmail.error })
+                        if (newEmail.error === 'EMAIL_ALREADY_TAKEN') {
+                            formik.setErrors({ newEmail: t('validation.email.already_taken') })
+                        } else {
+                            formik.setErrors({ newEmail: newEmail.error })
+                        }
                     }
                     break
 
@@ -82,7 +86,7 @@ export const ChangeEmail = () => {
                     type="text"
                     name="newEmail"
                     value={formik.values.newEmail}
-                    placeholder={t('auth.change_email.forms.fields.newEmail.placeholder')}
+                    placeholder={t('placeholder.action.new_email')}
                     autoFocus
                     error={formik.errors.newEmail}
                     isDisabled={isLoading}
@@ -92,7 +96,7 @@ export const ChangeEmail = () => {
                     type="password"
                     name="password"
                     value={formik.values.password}
-                    placeholder={t('auth.change_email.forms.fields.password.placeholder')}
+                    placeholder={t('placeholder.action.password')}
                     error={formik.errors.password}
                     isDisabled={isLoading}
                     onChange={formik.handleChange}

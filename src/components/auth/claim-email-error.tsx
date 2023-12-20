@@ -20,7 +20,7 @@ export const ClaimEmailError = () => {
         try {
             setIsLoading(true)
             await sendVerificationEmail()
-            toast.success(t('auth.completing_signup.message'))
+            toast.success(t('success.send_verification_email'))
             dialog.close()
         } catch {
             toast.error(t('common.error'))

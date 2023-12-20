@@ -104,7 +104,7 @@ export const SignIn = () => {
                         type="text"
                         name="email"
                         value={formik.values.email}
-                        placeholder={t('forms.fields.email.placeholder')}
+                        placeholder={t('placeholder.email')}
                         autoFocus
                         error={formik.errors.email}
                         isDisabled={isLoading}
@@ -114,7 +114,7 @@ export const SignIn = () => {
                         type="password"
                         name="password"
                         value={formik.values.password}
-                        placeholder={t('forms.fields.password.placeholder')}
+                        placeholder={t('placeholder.password')}
                         error={formik.errors.password}
                         isDisabled={isLoading}
                         onChange={formik.handleChange}

@@ -84,7 +84,7 @@ export const ForgotPassword = () => {
                     type="text"
                     name="email"
                     value={formik.values.email}
-                    placeholder={t('forms.fields.email.placeholder')}
+                    placeholder={t('placeholder.action.email')}
                     autoFocus
                     error={formik.errors.email}
                     isDisabled={isLoading}

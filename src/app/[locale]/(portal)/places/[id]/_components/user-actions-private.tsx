@@ -23,13 +23,13 @@ export const UserActionsPrivate = ({ placeId }: UserActionsPrivateProps) => {
         dialog.open(
             <Confirmation
                 variant="red"
-                title={t('place.delete.confirm.title')}
-                message={t('place.delete.confirm.message')}
+                title={t('confirm.delete_place.title')}
+                message={t('confirm.delete_place.message')}
                 onConfirm={async () => {
                     dialog.close()
                     try {
                         await deletePlaceById(placeId.toString())
-                        toast.success(t('place.delete.success'))
+                        toast.success(t('success.delete_place'))
                         router.push('/')
                         router.refresh()
                     } catch {

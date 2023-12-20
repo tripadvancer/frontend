@@ -67,7 +67,9 @@ export const SignUp = () => {
                     }
 
                     if (usernameError) {
-                        formik.setErrors({ username: usernameError.error })
+                        if (usernameError.error === 'USERNAME_ALREADY_TAKEN') {
+                            formik.setErrors({ username: t('validation.username.already_taken') })
+                        }
                     }
                     break
 
@@ -98,8 +100,8 @@ export const SignUp = () => {
             email: Yup.string().required(t('validation.required')).email(t('validation.email.invalid')),
             username: Yup.string()
                 .required(t('validation.required'))
-                .min(userNameMinLength, t('validation.min_length', { min_length: userNameMinLength }))
-                .max(userNameMaxLength, t('validation.max_length', { max_length: userNameMaxLength })),
+                .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
+                .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
             password: Yup.string().required(t('validation.required')),
         }),
         onSubmit: handleSubmit,
@@ -119,7 +121,7 @@ export const SignUp = () => {
                         type="text"
                         name="email"
                         value={formik.values.email}
-                        placeholder={t('forms.fields.email.placeholder')}
+                        placeholder={t('placeholder.email')}
                         autoFocus
                         error={formik.errors.email}
                         isDisabled={isLoading}
@@ -129,7 +131,7 @@ export const SignUp = () => {
                         type="text"
                         name="username"
                         value={formik.values.username}
-                        placeholder={t('forms.fields.username.placeholder')}
+                        placeholder={t('placeholder.username')}
                         error={formik.errors.username}
                         isDisabled={isLoading}
                         onChange={formik.handleChange}
@@ -138,7 +140,7 @@ export const SignUp = () => {
                         type="password"
                         name="password"
                         value={formik.values.password}
-                        placeholder={t('forms.fields.password.placeholder')}
+                        placeholder={t('placeholder.password')}
                         error={formik.errors.password}
                         isDisabled={isLoading}
                         onChange={formik.handleChange}

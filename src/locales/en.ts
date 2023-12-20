@@ -7,12 +7,21 @@ export default {
     'about.title': 'Planing a trip but don`t know where to go?',
     'about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
 
-    'confirm.yes': 'Confirm',
-    'confirm.no': 'Cancel',
-
     'confirm_mini.title': 'Sure?',
     'confirm_mini.yes': 'Yes',
     'confirm_mini.no': 'No',
+
+    'confirm.delete_place.title': 'Delete place',
+    'confirm.delete_place.message': 'Are you sure you want to remove this place and all data associated with it?',
+
+    'confirm.request_personal_data.title': 'Send personal data',
+    'confirm.request_personal_data.message': 'Are you sure you want to send your personal data to your email?',
+    
+    'confirm.request_user_removal.title': 'Remove your account',
+    'confirm.request_user_removal.message': 'Are you sure you want to remove your account?',
+
+    'confirm.yes': 'Confirm',
+    'confirm.no': 'Cancel',
 
     'header.user_menu.places': 'Added places',
     'header.user_menu.reviews': 'Written reviews',
@@ -49,24 +58,49 @@ export default {
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
 
+    'validation.required': 'This field is required',
     'validation.file.types': 'Only {types} files are allowed',
     'validation.file.max_size': 'The file size must not exceed {size} MB',
     'validation.file.max_count': 'You can upload up to {count} files',
-    'validation.required': 'This field is required',
-    'validation.min_length': 'This field must be at least {min_length} characters long',
-    'validation.max_length': 'This field must be at most {max_length} characters long',
+    'validation.text.min_length': 'This field must be at least {min_length} characters long',
+    'validation.text.max_length': 'This field must be at most {max_length} characters long',
     'validation.email.invalid': 'Please enter a valid email address',
+    'validation.email.already_taken': 'This email is already taken',
     'validation.location.invalid': 'Coordinates must be in format: "lat, lng", e.g. "50.4501, 30.5234"',
     'validation.categories.max_count': 'You can select up to {max_count} categories',
     'validation.wrong_credentials': 'Wrong email or password',
     'validation.wrong_password': 'Wrong password',
     'validation.wrong_email': 'Wrong email',
+    'validation.username.already_taken': 'This username is already taken',
+    'validation.password.policy_violated': 'Password must contain at least 8 characters, including a number',
 
-    'forms.fields.email.placeholder': 'Email',
-    'forms.fields.password.placeholder': 'Password',
-    'forms.fields.username.placeholder': 'Username',
-    'forms.fields.file.placeholder': 'Select file ...',
-    'forms.fields.file.loading.placeholder': 'Loading ...',
+    'placeholder.email': 'Email',
+    'placeholder.password': 'Password',
+    'placeholder.username': 'Username',
+    'placeholder.file': 'Select file ...',
+    'placeholder.file.loading': 'Loading ...',
+    'placeholder.action.username': 'Enter your username',
+    'placeholder.action.about_user': 'Enter information about yourself...',
+    'placeholder.action.review': 'Share your impressions in detail — this way you will help others learn more about this place',
+    'placeholder.action.complain.comment': 'Add your comment here',
+    'placeholder.action.password': 'Enter your password',
+    'placeholder.action.new_password': 'Enter your new password',
+    'placeholder.action.email': 'Enter your email address',
+    'placeholder.action.new_email': 'Enter your new email address',
+
+    'success.send_complaint': 'Your complaint has been sent.',
+    'success.copy_coordinates': 'Coordinates has been copied to the clipboard.',
+    'success.delete_place': 'The place has been removed.',
+    'success.create_review': 'Your review has been added.',
+    'success.edit_review': 'Your review has been updated.',
+    'success.delete_review': 'The review has been removed.',
+    'success.change_user_password': 'Your password has been changed.',
+    'success.change_user_email': 'We have sent you a verification email. After confirming your new email address, you will be able to sign in using it.',
+    'success.update_user_avatar': 'Your avatar has been updated.',
+    'success.update_user_info': 'Your profile has been updated.',
+    'success.request_personal_data': 'Your personal data has been sent to your email.',
+    'success.request_user_removal': 'We have sent you an email with instructions on how to complete the removal process.',
+    'success.send_verification_email': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
 
     'categories.abandoned': 'Abandoned',
     'categories.adventure_activities': 'Adventure activities',
@@ -93,8 +127,6 @@ export default {
 
     'complaint.form.review.title': 'Complain about a review',
     'complaint.form.place.title': 'Complain about a place',
-    'complaint.form.fields.text.placeholder': 'Add your comment here',
-    'complaint.send.success': 'Your complaint has been successfully sent.',
 
     'user_achievement.level_1': 'Beginner',
     'user_achievement.statistic.added_places': 'Added places',
@@ -106,8 +138,6 @@ export default {
     'user_tabs.reviews': 'Written reviews',
     'user_tabs.settings': 'Settings',
 
-    'coordinates.copy.success': 'Coordinates have been successfully copied to the clipboard.',
-
     'countries.places#zero': 'No places',
     'countries.places#one': '{count} place',
     'countries.places#other': '{count} places',
@@ -118,10 +148,6 @@ export default {
     'place.user_actions.edit': 'Edit place',
     'place.user_actions.delete': 'Delete place',
     'place.user_actions.complain': 'Complain about place',
-
-    'place.delete.confirm.title': 'Delete place',
-    'place.delete.confirm.message': 'Are you sure you want to remove this place and all data associated with it?',
-    'place.delete.success': 'The place has been successfully removed.',
 
     'place.reviews#zero': 'No reviews',
     'place.reviews#one': '{count} review',
@@ -135,14 +161,10 @@ export default {
     'review.user_actions.complain': 'Complain',
     'review.user_actions.add': 'Add review',
 
-    'review.add.success': 'Your review has been successfully added.',
-    'review.edit.success': 'Your review has been successfully updated.',
-    'review.delete.success': 'The review has been successfully removed.',
     'review.form.edit.title': 'Edit your review',
     'review.form.add.title': 'Leave feedback',
     'review.form.fields.rating.label': 'Your rating',
     'review.form.fields.text.label': 'Review',
-    'review.form.fields.text.placeholder': 'Share your impressions in detail — this way you will help others learn more about this place',
     'review.form.fields.photos.label': 'Photos',
 
     'auth.third_party.callback.redirecting': 'You are being redirected...',
@@ -176,29 +198,23 @@ export default {
 
     'auth.change_password.title': 'Change password',
     'auth.change_password.info': 'Create a new password that is at least 8 characters long and contains a mix of letters and numbers:',
-    'auth.change_password.success': 'Your password has been successfully changed.',
-    'auth.change_password.forms.fields.old_password.placeholder': 'Enter your current password',
-    'auth.change_password.forms.fields.new_password.placeholder': 'Enter your new password',
 
     'auth.change_email.title': 'Change email',
     'auth.change_email.info': 'Enter your new email address below and we will send you a verification email:',
-    'auth.change_email.success': 'We have sent you a verification email. After confirming your new email address, you will be able to sign in using it.', 
-    'auth.change_email.forms.fields.newEmail.placeholder': 'Enter your new email address',
-    'auth.change_email.forms.fields.password.placeholder': 'Enter your password',
 
     'pages.auth.verify.loading': 'Verifying your email...',
     'pages.auth.verify.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
-    'pages.auth.verify.success': 'Your email has been verified. Welcome aboard, you can now sign in.',
+    'pages.auth.verify.ok': 'Your email has been verified. Welcome aboard, you can now sign in.',
 
     'pages.auth.restore.token_expired': 'The restore link has expired. Please request a new restore link.',
-    'pages.auth.restore.success': 'Your account has been restored.',
+    'pages.auth.restore.ok': 'Your account has been restored.',
 
     'pages.auth.confirm_removal.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
-    'pages.auth.confirm_removal.success': 'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
+    'pages.auth.confirm_removal.ok': 'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
 
     'pages.auth.reset_password.title': 'Enter your new password below',
     'pages.auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
-    'pages.auth.reset_password.success': 'Your password has been reset.',
+    'pages.auth.reset_password.ok': 'Your password has been reset.',
     'pages.auth.reset_password.submit': 'Reset password',
 
     'pages.not_found.title': 'Page not found',
@@ -232,21 +248,11 @@ export default {
 
     'pages.user.about_me': 'About me',
     'pages.user.settings.forms.fields.avatar.label': 'Upload avatar',
-    'pages.user.settings.avatar.update.success': 'Your avatar has been successfully updated.',
     'pages.user.settings.forms.fields.username.label': 'Username',
-    'pages.user.settings.forms.fields.username.placeholder': 'Enter your username',
     'pages.user.settings.forms.fields.info.label': 'About me',
-    'pages.user.settings.forms.fields.info.placeholder': 'Enter information about yourself...',
-    'pages.user.settings.update.success': 'Your profile has been successfully updated.',
     'pages.user.settings.account.title': 'Your account',
     'pages.user.settings.account.change_password': 'Change password',
     'pages.user.settings.account.change_email': 'Change email',
     'pages.user.settings.account.request_personal_data': 'Get a copy of your data',
-    'pages.user.settings.account.request_personal_data.confirm.title': 'Send personal data',
-    'pages.user.settings.account.request_personal_data.confirm.message': 'Are you sure you want to send your personal data to your email?',
-    'pages.user.settings.account.request_personal_data.success': 'Your personal data has been successfully sent to your email.',
     'pages.user.settings.account.request_user_removal': 'Remove your account',
-    'pages.user.settings.account.request_user_removal.confirm.title': 'Remove your account',
-    'pages.user.settings.account.request_user_removal.confirm.message': 'Are you sure you want to remove your account?',
-    'pages.user.settings.account.request_user_removal.success': 'We have sent you an email with instructions on how to complete the removal process.',
 } as const

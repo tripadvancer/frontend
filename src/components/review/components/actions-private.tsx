@@ -30,7 +30,7 @@ export const ActionsPrivate = ({ review, reviewsCount }: ActionsPrivateProps) =>
         try {
             await deleteReviewById(review.id.toString())
             dialog.close()
-            toast.success(t('review.delete.success'))
+            toast.success(t('success.delete_review'))
             // Redirect to previous page if user remove last review on current page and current page is not first
             reviewsCount === 1 && page && page !== '1'
                 ? router.push(`${pathname}?page=${parseInt(page) - 1}`)

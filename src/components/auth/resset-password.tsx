@@ -69,7 +69,7 @@ export const RessetPassword = () => {
                         type="password"
                         name="password"
                         value={formik.values.password}
-                        placeholder={t('forms.fields.password.placeholder')}
+                        placeholder={t('placeholder.action.new_password')}
                         autoFocus
                         error={formik.errors.password}
                         isDisabled={isLoading}
@@ -87,7 +87,7 @@ export const RessetPassword = () => {
         <>
             <p className="text-center">
                 {status === 'RESET_PASSWORD_INVALID_TOKEN_ERROR' && t('pages.auth.reset_password.token_expired')}
-                {status === 'OK' && t('pages.auth.reset_password.success')}
+                {status === 'OK' && t('pages.auth.reset_password.ok')}
             </p>
             <Link
                 href="/"

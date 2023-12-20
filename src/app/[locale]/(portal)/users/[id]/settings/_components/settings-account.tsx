@@ -28,13 +28,13 @@ export const SettingAccount = ({ userId }: SettingGDPRProps) => {
     const handleRequestPersonalData = () => {
         dialog.open(
             <Confirmation
-                title={t('pages.user.settings.account.request_personal_data.confirm.title')}
-                message={t('pages.user.settings.account.request_personal_data.confirm.message')}
+                title={t('confirm.request_personal_data.title')}
+                message={t('confirm.request_personal_data.message')}
                 onConfirm={async () => {
                     dialog.close()
                     try {
                         await requestPersonalData()
-                        toast.success(t('pages.user.settings.account.request_personal_data.success'))
+                        toast.success(t('success.request_personal_data'))
                     } catch {
                         toast.error(t('common.error'))
                     }
@@ -47,13 +47,13 @@ export const SettingAccount = ({ userId }: SettingGDPRProps) => {
         dialog.open(
             <Confirmation
                 variant="red"
-                title={t('pages.user.settings.account.request_user_removal.confirm.title')}
-                message={t('pages.user.settings.account.request_user_removal.confirm.message')}
+                title={t('confirm.request_user_removal.title')}
+                message={t('confirm.request_user_removal.message')}
                 onConfirm={async () => {
                     dialog.close()
                     try {
                         await requestUserRemoval()
-                        toast.success(t('pages.user.settings.account.request_user_removal.success'))
+                        toast.success(t('success.request_user_removal'))
                     } catch {
                         toast.error(t('common.error'))
                     }

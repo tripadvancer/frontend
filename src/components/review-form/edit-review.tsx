@@ -29,7 +29,7 @@ export const EditReview = (review: EditReviewProps) => {
             await updateReviewById(values)
             dialog.close()
             router.refresh()
-            toast.success(t('review.edit.success'))
+            toast.success(t('success.edit_review'))
         } catch (err: any) {
             toast.error(err.message)
         } finally {

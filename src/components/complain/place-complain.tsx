@@ -27,7 +27,7 @@ export const PlaceComplain = ({ placeId }: PlaceComplainProps) => {
         try {
             setIsLoading(true)
             placeComplaint(values)
-            toast.success(t('complaint.send.success'))
+            toast.success(t('success.send_complaint'))
             dialog.close()
         } catch (err) {
             toast.error(t('common.error'))

@@ -44,9 +44,12 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
         validationSchema: Yup.object().shape({
             name: Yup.string()
                 .required(t('validation.required'))
-                .min(userNameMinLength, t('validation.min_length', { min_length: userNameMinLength }))
-                .max(userNameMaxLength, t('validation.max_length', { max_length: userNameMaxLength })),
-            info: Yup.string().max(userInfoMaxLength, t('validation.max_length', { max_length: userInfoMaxLength })),
+                .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
+                .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
+            info: Yup.string().max(
+                userInfoMaxLength,
+                t('validation.text.max_length', { max_length: userInfoMaxLength }),
+            ),
         }),
         onSubmit: async values => {
             try {
@@ -57,13 +60,17 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
                 switch (response.status) {
                     case 'OK':
                         router.refresh()
-                        toast.success(t('pages.user.settings.update.success'))
+                        toast.success(t('success.update_user_info'))
                         break
 
                     case 'FIELD_ERROR':
                         const usernameError = response.formFields.find(formField => formField.id === 'username')
                         if (usernameError) {
-                            formik.setErrors({ name: usernameError.error })
+                            if (usernameError.error === 'USERNAME_ALREADY_TAKEN') {
+                                formik.setErrors({ name: t('validation.username.already_taken') })
+                            } else {
+                                formik.setErrors({ name: usernameError.error })
+                            }
                         }
                         break
 
@@ -97,7 +104,7 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
                         type="text"
                         name="name"
                         value={formik.values.name}
-                        placeholder={t('pages.user.settings.forms.fields.username.placeholder')}
+                        placeholder={t('placeholder.action.username')}
                         error={formik.errors.name}
                         isDisabled={isLoading}
                         onChange={formik.handleChange}
@@ -111,7 +118,7 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
                     <Textarea
                         name="info"
                         value={formik.values.info}
-                        placeholder={t('pages.user.settings.forms.fields.info.placeholder')}
+                        placeholder={t('placeholder.action.about_user')}
                         maxLength={userInfoMaxLength}
                         error={formik.errors.info}
                         isDisabled={isLoading}

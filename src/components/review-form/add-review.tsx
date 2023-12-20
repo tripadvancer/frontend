@@ -31,7 +31,7 @@ export const AddReview = ({ placeId }: AddReviewProps) => {
             await createReview(values)
             dialog.close()
             router.refresh()
-            toast.success(t('review.add.success'))
+            toast.success(t('success.create_review'))
         } catch (err: any) {
             toast.error(err.message)
         } finally {

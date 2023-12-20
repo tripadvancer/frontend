@@ -9,7 +9,7 @@ export default async function RestoreUserPage({ searchParams }: { searchParams: 
     return (
         <>
             <p className="text-center">
-                {response.status === 'OK' && t('pages.auth.restore.success')}
+                {response.status === 'OK' && t('pages.auth.restore.ok')}
                 {response.status === 'INVALID_TOKEN_ERROR' && t('pages.auth.restore.token_expired')}
             </p>
             <LinkButton href="/" className="w-full">

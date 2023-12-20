@@ -34,7 +34,7 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema: Yup.object().shape({
-            text: Yup.string().max(textMaxLength, t('validation.max_length', { max_length: textMaxLength })),
+            text: Yup.string().max(textMaxLength, t('validation.text.max_length', { max_length: textMaxLength })),
         }),
         onSubmit,
     })
@@ -59,7 +59,7 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
                     type="text"
                     name="text"
                     value={formik.values.text}
-                    placeholder={t('complaint.form.fields.text.placeholder')}
+                    placeholder={t('placeholder.action.complain.comment')}
                     error={formik.errors.text}
                     onChange={formik.handleChange}
                 />

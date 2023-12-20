@@ -27,7 +27,7 @@ export const ReviewComplain = ({ reviewId }: ReviewComplainProps) => {
         try {
             setIsLoading(true)
             reviewComplaint(values)
-            toast.success(t('complaint.send.success'))
+            toast.success(t('success.send_complaint'))
             dialog.close()
         } catch (err) {
             toast.error(t('common.error'))
