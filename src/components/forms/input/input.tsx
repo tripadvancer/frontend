@@ -18,7 +18,6 @@ type InputProps = {
 }
 
 export const Input = ({
-    id,
     type,
     name,
     value,
@@ -35,7 +34,6 @@ export const Input = ({
         <div className={className}>
             <div className="relative">
                 <input
-                    id={id}
                     type={isShowPassword ? 'text' : type}
                     name={name}
                     value={value}

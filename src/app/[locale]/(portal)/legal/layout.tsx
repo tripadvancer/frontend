@@ -8,6 +8,5 @@ export function generateStaticParams() {
 
 export default function LegalLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
     setStaticParamsLocale(params.locale)
-
     return <div className="container py-24">{children}</div>
 }

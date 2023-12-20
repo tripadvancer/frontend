@@ -6,8 +6,8 @@ import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 import { ClaimEmailAttention } from './_components/claim-email-attention'
+import { SettingAccount } from './_components/settings-account'
 import { SettingsForm } from './_components/settings-form'
-import { SettingGDPR } from './_components/settings-gdpr'
 import { SettingsSkeleton } from './_components/settings-skeleton'
 
 export default async function UserSettingsPage({ params }: { params: { id: string } }) {
@@ -40,8 +40,8 @@ export default async function UserSettingsPage({ params }: { params: { id: strin
                     <SettingsForm {...userInfo} />
                 </section>
                 <section>
-                    <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.user.settings.gdpr.title')}</h2>
-                    <SettingGDPR userId={parseInt(params.id)} />
+                    <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.user.settings.account.title')}</h2>
+                    <SettingAccount userId={parseInt(params.id)} />
                 </section>
             </div>
         </div>

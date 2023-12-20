@@ -33,6 +33,10 @@ export const ForgotPassword = () => {
             const response = await sendPasswordResetEmail({ formFields })
 
             switch (response.status) {
+                case 'OK':
+                    dialog.open(<ForgotPasswordCompleting />)
+                    break
+
                 case 'FIELD_ERROR':
                     const emailError = response.formFields.find(formField => formField.id === 'email')
                     if (emailError) {
@@ -41,7 +45,7 @@ export const ForgotPassword = () => {
                     break
 
                 default:
-                    dialog.open(<ForgotPasswordCompleting />)
+                    toast.error(t('common.error'))
                     break
             }
         } catch (err) {

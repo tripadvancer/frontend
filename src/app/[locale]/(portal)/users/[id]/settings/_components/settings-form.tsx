@@ -51,9 +51,26 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
         onSubmit: async values => {
             try {
                 setIsLoading(true)
-                await updateUserInfo({ name: values.name, info: values.info })
-                router.refresh()
-                toast.success(t('pages.user.settings.update.success'))
+
+                const response = await updateUserInfo({ name: values.name, info: values.info })
+
+                switch (response.status) {
+                    case 'OK':
+                        router.refresh()
+                        toast.success(t('pages.user.settings.update.success'))
+                        break
+
+                    case 'FIELD_ERROR':
+                        const usernameError = response.formFields.find(formField => formField.id === 'username')
+                        if (usernameError) {
+                            formik.setErrors({ name: usernameError.error })
+                        }
+                        break
+
+                    default:
+                        toast.error(t('common.error'))
+                        break
+                }
             } catch (err: any) {
                 toast.error(err.message)
             } finally {
@@ -77,7 +94,6 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
                         {t('pages.user.settings.forms.fields.username.label')}
                     </label>
                     <Input
-                        id="name"
                         type="text"
                         name="name"
                         value={formik.values.name}
@@ -93,7 +109,6 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
                         {t('pages.user.settings.forms.fields.info.label')}
                     </label>
                     <Textarea
-                        id="info"
                         name="info"
                         value={formik.values.info}
                         placeholder={t('pages.user.settings.forms.fields.info.placeholder')}
@@ -105,33 +120,8 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-y-2">
-                <label htmlFor="current_password" className="font-medium">
-                    {t('pages.user.settings.forms.fields.change_password.label')}
-                </label>
-                <Input
-                    id="current_password"
-                    type="password"
-                    name="current_password"
-                    value={formik.values.current_password}
-                    placeholder={t('pages.user.settings.forms.fields.current_password.placeholder')}
-                    error={formik.errors.current_password}
-                    isDisabled={isLoading}
-                    onChange={formik.handleChange}
-                />
-                <Input
-                    type="password"
-                    name="password"
-                    value={formik.values.password}
-                    placeholder={t('pages.user.settings.forms.fields.password.placeholder')}
-                    error={formik.errors.password}
-                    isDisabled={isLoading}
-                    onChange={formik.handleChange}
-                />
-            </div>
-
             <Button className="w-full" type="submit" isLoading={isLoading}>
-                {t('pages.user.settings.forms.submit')}
+                {t('common.action.save_changes')}
             </Button>
         </form>
     )

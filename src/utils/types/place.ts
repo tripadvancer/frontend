@@ -36,4 +36,9 @@ export type CreatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover'> 
     photos: string[]
 }
 
-export type UpdatePlaceInputs = Partial<CreatePlaceInputs> & { placeId: number }
+export type UpdatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover'> & {
+    placeId: number
+    location: string
+    categories: number[]
+    photos: string[]
+}

@@ -1,17 +1,7 @@
-import { setStaticParamsLocale } from 'next-international/server'
-
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { getStaticParams } from '@/utils/i18n/i18n.server'
-
-export function generateStaticParams() {
-    return getStaticParams()
-}
-
-export default function AuthLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
-    setStaticParamsLocale(params.locale)
-
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex min-h-screen items-center justify-center bg-blue-20 p-4 sm:p-16">
             <div className="box-content flex w-104 flex-col items-center gap-y-8 rounded-2xl bg-white px-8 py-16 sm:p-16">

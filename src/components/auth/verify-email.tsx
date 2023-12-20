@@ -12,6 +12,7 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 export const VerifyEmail = () => {
     const t = useI18n()
     const toast = useToast()
+
     const [status, setStatus] = useState<string>()
 
     useOnMountUnsafe(() => {

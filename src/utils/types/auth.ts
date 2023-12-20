@@ -16,11 +16,3 @@ export type ForgotPasswordInputs = {
 export type ResetPasswordInputs = {
     password: string
 }
-
-export type RestoreAccountResponse = {
-    status: 'SUCCESS' | 'TOKEN_EXPIRED'
-}
-
-export type ConfirmAccountRemovalResponse = {
-    status: 'SUCCESS' | 'TOKEN_EXPIRED'
-}

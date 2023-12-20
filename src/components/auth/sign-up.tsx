@@ -44,7 +44,7 @@ export const SignUp = () => {
                 { id: 'username', value: values.username },
             ]
 
-            let response = await emailPasswordSignUp({ formFields })
+            const response = await emailPasswordSignUp({ formFields })
 
             switch (response.status) {
                 case 'OK':

@@ -1,5 +1,14 @@
-import { ConfirmAccountRemovalResponse, RestoreAccountResponse } from '@/utils/types/auth'
-import type { IUserInfo, UpdateUserProfileInputs } from '@/utils/types/user'
+import type {
+    ChangeUserEmailInputs,
+    ChangeUserEmailResponse,
+    ChangeUserPasswordInputs,
+    ChangeUserPasswordResponse,
+    ConfirmUserRemovalResponse,
+    IUserInfo,
+    RestoreUserResponse,
+    UpdateUserInfoInputs,
+    UpdateUserInfoResponse,
+} from '@/utils/types/user'
 
 export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/user'
@@ -16,19 +25,57 @@ export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
     return res.json()
 }
 
-export async function updateUserInfo({ name, info }: UpdateUserProfileInputs): Promise<void> {
+export async function updateUserInfo(body: UpdateUserInfoInputs): Promise<UpdateUserInfoResponse> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/user'
     const res = await fetch(url, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, info }),
+        body: JSON.stringify(body),
+    })
+
+    console.log(res)
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+
+    return res.json()
+}
+
+export async function changeUserPassword(body: ChangeUserPasswordInputs): Promise<ChangeUserPasswordResponse> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/password'
+    const res = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
     })
 
     if (!res.ok) {
         throw new Error('Failed to fetch data')
     }
+
+    return res.json()
+}
+
+export async function changeUserEmail(body: ChangeUserEmailInputs): Promise<ChangeUserEmailResponse> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/email'
+    const res = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+
+    return res.json()
 }
 
 export async function updateUserAvatar(file: File): Promise<void> {
@@ -58,7 +105,16 @@ export async function deleteUserAvatar(): Promise<void> {
     }
 }
 
-export async function deleteUser(): Promise<void> {
+export async function requestPersonalData(): Promise<void> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/personal-data'
+    const res = await fetch(url)
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+}
+
+export async function requestUserRemoval(): Promise<void> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/user'
     const res = await fetch(url, {
         method: 'DELETE',
@@ -69,17 +125,8 @@ export async function deleteUser(): Promise<void> {
     }
 }
 
-export async function getUserPersonalData(): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/personal-data'
-    const res = await fetch(url)
-
-    if (!res.ok) {
-        throw new Error('Failed to fetch data')
-    }
-}
-
-export async function confirmAccountRemoval(token: string): Promise<ConfirmAccountRemovalResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/confirm-removal'
+export async function restoreUser(token: string): Promise<RestoreUserResponse> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/restore'
     const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -95,8 +142,8 @@ export async function confirmAccountRemoval(token: string): Promise<ConfirmAccou
     return res.json()
 }
 
-export async function restoreAccount(token: string): Promise<RestoreAccountResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/restore'
+export async function confirmUserRemoval(token: string): Promise<ConfirmUserRemovalResponse> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/confirm-removal'
     const res = await fetch(url, {
         method: 'POST',
         headers: {

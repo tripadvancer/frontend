@@ -1,16 +1,16 @@
 import { LinkButton } from '@/components/link-button'
-import { confirmAccountRemoval } from '@/services/user'
+import { confirmUserRemoval } from '@/services/user'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-export default async function ConfirmAccountRemovalPage({ searchParams }: { searchParams: { token: string } }) {
+export default async function ConfirmUserRemovalPage({ searchParams }: { searchParams: { token: string } }) {
     const t = await getI18n()
-    const response = await confirmAccountRemoval(searchParams.token)
+    const response = await confirmUserRemoval(searchParams.token)
 
     return (
         <>
             <p className="text-center">
-                {response.status === 'TOKEN_EXPIRED' && t('pages.auth.confirm_removal.token_expired')}
-                {response.status === 'SUCCESS' && t('pages.auth.confirm_removal.success')}
+                {response.status === 'OK' && t('pages.auth.confirm_removal.success')}
+                {response.status === 'INVALID_TOKEN_ERROR' && t('pages.auth.confirm_removal.token_expired')}
             </p>
             <LinkButton href="/" className="w-full">
                 {t('common.action.go_home')}

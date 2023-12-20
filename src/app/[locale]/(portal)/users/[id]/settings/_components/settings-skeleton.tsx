@@ -35,6 +35,18 @@ export const SettingsSkeleton = () => {
                             <div className="h-4 w-2/3 rounded-lg bg-black-5" />
                         </div>
                     </li>
+                    <li>
+                        <div className="flex items-center gap-x-2">
+                            <div className="h-6 w-6 rounded-lg bg-black-5" />
+                            <div className="h-4 w-2/3 rounded-lg bg-black-5" />
+                        </div>
+                    </li>
+                    <li>
+                        <div className="flex items-center gap-x-2">
+                            <div className="h-6 w-6 rounded-lg bg-black-5" />
+                            <div className="h-4 w-2/3 rounded-lg bg-black-5" />
+                        </div>
+                    </li>
                 </ul>
             </section>
         </div>
