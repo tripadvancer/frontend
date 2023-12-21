@@ -19,7 +19,7 @@ export type IUserStatistics = {
 
 export type IUserInfo = Pick<IUser, 'id' | 'name' | 'info' | 'avatar'>
 
-export type UpdateUserInfoInputs = Partial<Pick<IUser, 'name' | 'info'>>
+export type UpdateUserInfoInputs = Pick<IUser, 'name' | 'info'>
 
 export type ChangeUserPasswordInputs = {
     oldPassword: string
@@ -31,38 +31,17 @@ export type ChangeUserEmailInputs = {
     password: string
 }
 
-export type UpdateUserInfoResponse =
-    | {
-          status: 'OK'
-      }
-    | {
-          status: 'FIELD_ERROR'
-          formFields: FormFieldError[]
-      }
+export type UpdateUserInfoResponse = {
+    status: 'OK' | 'USERNAME_ALREADY_EXISTS_ERROR'
+}
 
-export type ChangeUserPasswordResponse =
-    | {
-          status: 'OK'
-      }
-    | {
-          status: 'WRONG_CREDENTIALS_ERROR'
-      }
-    | {
-          status: 'FIELD_ERROR'
-          formFields: FormFieldError[]
-      }
+export type ChangeUserPasswordResponse = {
+    status: 'OK' | 'WRONG_CREDENTIALS_ERROR' | 'PASSWORD_POLICY_VIOLATED_ERROR'
+}
 
-export type ChangeUserEmailResponse =
-    | {
-          status: 'OK'
-      }
-    | {
-          status: 'WRONG_CREDENTIALS_ERROR'
-      }
-    | {
-          status: 'FIELD_ERROR'
-          formFields: FormFieldError[]
-      }
+export type ChangeUserEmailResponse = {
+    status: 'OK' | 'WRONG_CREDENTIALS_ERROR' | 'EMAIL_ALREADY_EXISTS_ERROR'
+}
 
 export type RestoreUserResponse = {
     status: 'OK' | 'INVALID_TOKEN_ERROR'

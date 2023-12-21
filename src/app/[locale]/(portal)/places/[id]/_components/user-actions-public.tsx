@@ -18,19 +18,15 @@ export const UserActionsPublic = ({ placeId }: UserActionsPublicProps) => {
 
     const handleCompainClick = async () => {
         const doesSessionExist = await Session.doesSessionExist()
-        const validationErrors = await Session.validateClaims()
 
         if (!doesSessionExist) {
             dialog.open(<SignIn />)
             return
         }
 
-        if (validationErrors.length > 0) {
-            dialog.open(<ClaimEmailError />)
-            return
-        }
-
-        dialog.open(<PlaceComplain placeId={placeId} />)
+        const validationErrors = await Session.validateClaims()
+        const hasClaims = validationErrors.length > 0
+        dialog.open(hasClaims ? <ClaimEmailError /> : <PlaceComplain placeId={placeId} />)
     }
 
     return (

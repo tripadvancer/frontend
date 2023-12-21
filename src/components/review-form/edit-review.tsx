@@ -23,6 +23,13 @@ export const EditReview = (review: EditReviewProps) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues = {
+        reviewId: review.id,
+        rating: review.rating,
+        text: review.text,
+        photos: review.photos.map(photo => photo.url),
+    }
+
     const handleSubmit = async (values: UpdateReviewInputs) => {
         try {
             setIsLoading(true)
@@ -42,12 +49,7 @@ export const EditReview = (review: EditReviewProps) => {
             <h1 className="text-h7">{t('review.form.edit.title')}</h1>
             <hr className="border-black-70" />
             <ReviewForm
-                initialValues={{
-                    reviewId: review.id,
-                    rating: review.rating,
-                    text: review.text,
-                    photos: review.photos.map(photo => photo.url),
-                }}
+                initialValues={initialValues}
                 isLoading={isLoading}
                 onSubmit={values => handleSubmit(values as UpdateReviewInputs)}
             />

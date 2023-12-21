@@ -25,10 +25,22 @@ export const ForgotPassword = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues = {
+        email: '',
+    }
+
+    const validationSchema = Yup.object().shape({
+        email: Yup.string()
+            .required(t('validation.required'))
+            .matches(
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
+                t('validation.email.invalid'),
+            ),
+    })
+
     const handleSubmit = async (values: ForgotPasswordInputs) => {
         try {
             setIsLoading(true)
-
             const formFields = [{ id: 'email', value: values.email }]
             const response = await sendPasswordResetEmail({ formFields })
 
@@ -64,14 +76,10 @@ export const ForgotPassword = () => {
     }
 
     const formik = useFormik({
-        initialValues: {
-            email: '',
-        },
+        initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: Yup.object().shape({
-            email: Yup.string().required(t('validation.required')).email(t('validation.email.invalid')),
-        }),
+        validationSchema,
         onSubmit: handleSubmit,
     })
 

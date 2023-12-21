@@ -12,10 +12,13 @@ import type { ChangeUserPasswordInputs } from '@/utils/types/user'
 
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
+import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { changeUserPassword } from '@/services/user'
 import { useI18n } from '@/utils/i18n/i18n.client'
+
+const userPasswordMinLength = validationConfig.user.password.minLength
 
 export const ChangePassword = () => {
     const t = useI18n()
@@ -25,10 +28,22 @@ export const ChangePassword = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues = {
+        oldPassword: '',
+        newPassword: '',
+    }
+
+    const validationSchema = Yup.object().shape({
+        oldPassword: Yup.string().required(t('validation.required')),
+        newPassword: Yup.string()
+            .required(t('validation.required'))
+            .min(userPasswordMinLength, t('validation.text.min_length', { min_length: userPasswordMinLength }))
+            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.password.policy_violated')),
+    })
+
     const handleSubmit = async (values: ChangeUserPasswordInputs) => {
         try {
             setIsLoading(true)
-
             const response = await changeUserPassword(values)
 
             switch (response.status) {
@@ -39,18 +54,12 @@ export const ChangePassword = () => {
                     router.refresh()
                     break
 
-                case 'FIELD_ERROR':
-                    const newPassword = response.formFields.find(formField => formField.id === 'newPassword')
-                    if (newPassword) {
-                        if (newPassword.error === 'PASSWORD_POLICY_VIOLATED_ERROR') {
-                            formik.setErrors({ newPassword: t('validation.password.policy_violated') })
-                        }
-                        formik.setErrors({ newPassword: newPassword.error })
-                    }
-                    break
-
                 case 'WRONG_CREDENTIALS_ERROR':
                     formik.setErrors({ oldPassword: t('validation.wrong_password') })
+                    break
+
+                case 'PASSWORD_POLICY_VIOLATED_ERROR':
+                    formik.setErrors({ newPassword: t('validation.password.policy_violated') })
                     break
 
                 default:
@@ -65,16 +74,10 @@ export const ChangePassword = () => {
     }
 
     const formik = useFormik({
-        initialValues: {
-            oldPassword: '',
-            newPassword: '',
-        },
+        initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: Yup.object().shape({
-            oldPassword: Yup.string().required(t('validation.required')),
-            newPassword: Yup.string().required(t('validation.required')),
-        }),
+        validationSchema,
         onSubmit: handleSubmit,
     })
 

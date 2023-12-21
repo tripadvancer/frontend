@@ -14,7 +14,7 @@ export async function placeComplaint({ placeId, reason, text }: PlaceComplaintIn
         if (res.status === 409) {
             throw new Error('You have already complained about this place')
         }
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }
 
@@ -32,6 +32,6 @@ export async function reviewComplaint({ reviewId, reason, text }: ReviewComplain
         if (res.status === 409) {
             throw new Error('You have already complained about this review')
         }
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }

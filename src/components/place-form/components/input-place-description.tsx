@@ -1,16 +1,20 @@
 'use client'
 
+import { useState } from 'react'
+
 import { Editor, EditorState } from 'draft-js'
 
 type InputPlaceDescriptionProps = {
-    value: EditorState
-    onChange: (editorState: EditorState) => void
+    value: string
+    onChange: (value: string | null) => void
 }
 
 export const InputPlaceDescription = ({ value, onChange }: InputPlaceDescriptionProps) => {
+    const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
+
     return (
         <div className="flex-1 text-big">
-            <Editor editorState={value} onChange={onChange} />
+            <Editor editorState={editorState} onChange={setEditorState} />
         </div>
     )
 }

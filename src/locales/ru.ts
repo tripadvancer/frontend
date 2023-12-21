@@ -65,13 +65,13 @@ export default {
     'validation.text.min_length': 'Длинна поля не должна быть меньше {min_length} символов',
     'validation.text.max_length': 'Длинна поля не должна превышать {max_length} символов',
     'validation.email.invalid': 'Неверный формат email адреса',
-    'validation.email.already_taken': 'Этот email уже занят',
+    'validation.email.already_exists': 'Этот email уже занят',
     'validation.location.invalid': 'Неверный формат координат, укажите их в формате: "широта, долгота", например "50.4501, 30.5234"',
     'validation.categories.max_count': 'Вы можете выбрать не более {max_count} категорий',
     'validation.wrong_credentials': 'Неверный email или пароль',
-    'validation.wrong_password': 'Неверный пароль',
-    'validation.wrong_email': 'Неверный email',
-    'validation.username.already_taken': 'Это имя пользователя уже занято',
+    'validation.wrong_password': 'Вы ввели неверный пароль',
+    'validation.wrong_email': 'Вы ввели неверный email',
+    'validation.username.already_exists': 'Это имя уже занято',
     'validation.password.policy_violated': 'Пароль должен содержать не менее 8 символов, включая буквы и цифры',
 
     'placeholder.email': 'Email',
@@ -208,13 +208,15 @@ export default {
 
     'pages.auth.verify.loading': 'Проверяем ваш email...',
     'pages.auth.verify.token_expired': 'Ссылка для подтверждения email устарела. Пожалуйста, залогиньтесь снова, чтобы мы могли отправить Вам новую ссылку для подтверждения.',
-    'pages.auth.verify.ok': 'Ваш email был подтверждён. Добро пожаловать на борт, теперь Вы можете войти.',
+    'pages.auth.verify.ok': 'Ваш email был подтверждён.',
 
-    'pages.auth.restore.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления учётной записи.',
-    'pages.auth.restore.ok': 'Ваша учётная запись была восстановлена.',
+    'pages.auth.restore_user.loading': 'Восстанавливаем Вашу учётную запись...',
+    'pages.auth.restore_user.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления учётной записи.',
+    'pages.auth.restore_user.ok': 'Ваша учётная запись была восстановлена.',
 
-    'pages.auth.confirm_removal.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для удаления учётной записи.',
-    'pages.auth.confirm_removal.ok': 'Процесс удаления Вашей учётной записи начат. Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
+    'pages.auth.confirm_user_removal.loading': 'Начинаем процесс удаления Вашей учётной записи...',
+    'pages.auth.confirm_user_removal.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для удаления учётной записи.',
+    'pages.auth.confirm_user_removal.ok': 'Процесс удаления Вашей учётной записи начат. Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
 
     'pages.auth.reset_password.title': 'Введите новый пароль для Вашей учётной записи',
     'pages.auth.reset_password.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления пароля.',

@@ -22,16 +22,25 @@ type PlaceFormProps = {
     onSubmit: (values: CreatePlaceInputs | UpdatePlaceInputs) => Promise<void>
 }
 
-export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps) => {
+export const PlaceForm = () => {
     const t = useI18n()
     const dialog = useDialog()
 
     const formik = useFormik({
-        initialValues,
+        initialValues: {
+            title: '',
+            description: '',
+            location: '',
+            photos: [],
+            cover: '',
+            categories: [],
+        },
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema: Yup.object().shape({}),
-        onSubmit,
+        onSubmit: async values => {
+            console.log(values)
+        },
     })
 
     const handleSelectCategories = () => {
@@ -76,10 +85,10 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                                 <div className="w-full text-black-40 lg:w-64">
                                     Tell us what inspired you so you can help others learn more about this place.
                                 </div>
-                                {/* <InputPlaceDescription
+                                <InputPlaceDescription
                                     value={formik.values?.description}
                                     onChange={formik.handleChange}
-                                /> */}
+                                />
                             </div>
                         </div>
                         <div>
@@ -93,7 +102,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                         </div>
                         <div className="flex flex-col lg:flex-row lg:gap-x-8">
                             <div className="flex-1">
-                                <Button type="submit" isLoading={isLoading} className="mb-4 w-full">
+                                <Button type="submit" isLoading={false} className="mb-4 w-full">
                                     Add a place
                                 </Button>
                                 <p className="text-center text-small text-black-40">

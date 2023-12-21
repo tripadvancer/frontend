@@ -33,12 +33,12 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
             setIsUploading(true)
             await updateUserAvatar(file as File)
             toast.success(t('success.update_user_avatar'))
+            setFileName(file.name)
             router.refresh()
         } catch {
             toast.error(t('common.error'))
             setFileName('')
         } finally {
-            setFileName(file.name)
             setIsUploading(false)
         }
     }

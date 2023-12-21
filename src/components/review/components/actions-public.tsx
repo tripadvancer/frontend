@@ -19,19 +19,15 @@ export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
 
     const handleComplainClick = async () => {
         const doesSessionExist = await Session.doesSessionExist()
-        const validationErrors = await Session.validateClaims()
 
         if (!doesSessionExist) {
             dialog.open(<SignIn />)
             return
         }
 
-        if (validationErrors.length > 0) {
-            dialog.open(<ClaimEmailError />)
-            return
-        }
-
-        dialog.open(<ReviewComplain reviewId={reviewId} />)
+        const validationErrors = await Session.validateClaims()
+        const hasClaims = validationErrors.length > 0
+        dialog.open(hasClaims ? <ClaimEmailError /> : <ReviewComplain reviewId={reviewId} />)
     }
 
     const items: DropdownItemProps[] = [

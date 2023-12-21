@@ -65,13 +65,13 @@ export default {
     'validation.text.min_length': 'This field must be at least {min_length} characters long',
     'validation.text.max_length': 'This field must be at most {max_length} characters long',
     'validation.email.invalid': 'Please enter a valid email address',
-    'validation.email.already_taken': 'This email is already taken',
+    'validation.email.already_exists': 'This email is already taken',
     'validation.location.invalid': 'Coordinates must be in format: "lat, lng", e.g. "50.4501, 30.5234"',
     'validation.categories.max_count': 'You can select up to {max_count} categories',
     'validation.wrong_credentials': 'Wrong email or password',
     'validation.wrong_password': 'Wrong password',
     'validation.wrong_email': 'Wrong email',
-    'validation.username.already_taken': 'This username is already taken',
+    'validation.username.already_exists': 'This username is already taken',
     'validation.password.policy_violated': 'Password must contain at least 8 characters, including a number',
 
     'placeholder.email': 'Email',
@@ -204,13 +204,15 @@ export default {
 
     'pages.auth.verify.loading': 'Verifying your email...',
     'pages.auth.verify.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
-    'pages.auth.verify.ok': 'Your email has been verified. Welcome aboard, you can now sign in.',
+    'pages.auth.verify.ok': 'Your email has been verified.',
 
-    'pages.auth.restore.token_expired': 'The restore link has expired. Please request a new restore link.',
-    'pages.auth.restore.ok': 'Your account has been restored.',
+    'pages.auth.restore_user.loading': 'Restoring your account...',
+    'pages.auth.restore_user.token_expired': 'The restore link has expired. Please request a new restore link.',
+    'pages.auth.restore_user.ok': 'Your account has been restored.',
 
-    'pages.auth.confirm_removal.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
-    'pages.auth.confirm_removal.ok': 'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
+    'pages.auth.confirm_user_removal.loading': 'Starting the removal process...',
+    'pages.auth.confirm_user_removal.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
+    'pages.auth.confirm_user_removal.ok': 'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
 
     'pages.auth.reset_password.title': 'Enter your new password below',
     'pages.auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',

@@ -9,7 +9,7 @@ export async function addPlaceToVisited(placeId: number): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }
 
@@ -20,6 +20,6 @@ export async function removePlaceFromVisited(placeId: number): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }

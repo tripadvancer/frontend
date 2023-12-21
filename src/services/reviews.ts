@@ -6,7 +6,7 @@ export async function getReviewsByPlaceId(placeId: string, page: string): Promis
     const res = await fetch(url, { cache: 'no-store' })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -17,7 +17,7 @@ export async function getReviewsByUserId(userId: string, page: string): Promise<
     const res = await fetch(url, { cache: 'no-store' })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -28,7 +28,7 @@ export async function getMyReview(userId: string, placeId: string): Promise<IRev
     const res = await fetch(url, { cache: 'no-store' })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -45,7 +45,7 @@ export async function createReview(body: CreateReviewInputs): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }
 
@@ -60,7 +60,7 @@ export async function updateReviewById({ reviewId, ...patch }: UpdateReviewInput
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }
 
@@ -76,7 +76,7 @@ export async function reviewPhotosUpload(file: File): Promise<{ url: string }> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -89,6 +89,6 @@ export async function deleteReviewById(reviewId: string): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }

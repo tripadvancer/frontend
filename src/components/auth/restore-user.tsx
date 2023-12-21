@@ -2,40 +2,43 @@
 
 import { useState } from 'react'
 
-import { verifyEmail } from 'supertokens-web-js/recipe/emailverification'
-
 import { LinkButton } from '@/components/link-button'
 import { useToast } from '@/providers/toast-provider'
+import { restoreUser } from '@/services/user'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const VerifyEmail = () => {
+type RestoreUserProps = {
+    token: string
+}
+
+export const RestoreUser = ({ token }: RestoreUserProps) => {
     const t = useI18n()
     const toast = useToast()
 
     const [status, setStatus] = useState<string>()
 
     useOnMountUnsafe(() => {
-        const handleVerifyEmail = async () => {
+        const handleRestoreUser = async () => {
             try {
-                const response = await verifyEmail()
+                const response = await restoreUser(token)
                 setStatus(response.status)
             } catch (err) {
                 toast.error(t('common.error'))
             }
         }
-        handleVerifyEmail()
+        handleRestoreUser()
     })
 
     if (!status) {
-        return <p className="text-center">{t('pages.auth.verify.loading')}</p>
+        return <p className="text-center">{t('pages.auth.restore_user.loading')}</p>
     }
 
     return (
         <>
             <p className="text-center">
-                {status === 'EMAIL_VERIFICATION_INVALID_TOKEN_ERROR' && t('pages.auth.verify.token_expired')}
-                {status === 'OK' && t('pages.auth.verify.ok')}
+                {status === 'OK' && t('pages.auth.restore_user.ok')}
+                {status === 'INVALID_TOKEN_ERROR' && t('pages.auth.restore_user.token_expired')}
             </p>
             <LinkButton href="/" className="w-full">
                 {t('common.action.go_home')}

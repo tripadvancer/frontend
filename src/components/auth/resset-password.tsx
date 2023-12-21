@@ -12,8 +12,11 @@ import type { ResetPasswordInputs } from '@/utils/types/auth'
 
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
+import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
+
+const userPasswordMinLength = validationConfig.user.password.minLength
 
 export const RessetPassword = () => {
     const t = useI18n()
@@ -22,10 +25,20 @@ export const RessetPassword = () => {
     const [status, setStatus] = useState<string>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues = {
+        password: '',
+    }
+
+    const validationSchema = Yup.object().shape({
+        password: Yup.string()
+            .required(t('validation.required'))
+            .min(userPasswordMinLength, t('validation.text.min_length', { min_length: userPasswordMinLength }))
+            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.password.policy_violated')),
+    })
+
     const handleSubmit = async (values: ResetPasswordInputs) => {
         try {
             setIsLoading(true)
-
             const formFields = [{ id: 'password', value: values.password }]
             const response = await submitNewPassword({ formFields })
 
@@ -49,14 +62,10 @@ export const RessetPassword = () => {
     }
 
     const formik = useFormik({
-        initialValues: {
-            password: '',
-        },
+        initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: Yup.object().shape({
-            password: Yup.string().required(t('validation.required')),
-        }),
+        validationSchema,
         onSubmit: handleSubmit,
     })
 

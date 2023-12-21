@@ -24,10 +24,24 @@ export const ChangeEmail = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues = {
+        newEmail: '',
+        password: '',
+    }
+
+    const validationSchema = Yup.object().shape({
+        newEmail: Yup.string()
+            .required(t('validation.required'))
+            .matches(
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
+                t('validation.email.invalid'),
+            ),
+        password: Yup.string().required(t('validation.required')),
+    })
+
     const handleSubmit = async (values: ChangeUserEmailInputs) => {
         try {
             setIsLoading(true)
-
             const response = await changeUserEmail(values)
 
             switch (response.status) {
@@ -41,15 +55,8 @@ export const ChangeEmail = () => {
                     formik.setErrors({ password: t('validation.wrong_password') })
                     break
 
-                case 'FIELD_ERROR':
-                    const newEmail = response.formFields.find(formField => formField.id === 'newEmail')
-                    if (newEmail) {
-                        if (newEmail.error === 'EMAIL_ALREADY_TAKEN') {
-                            formik.setErrors({ newEmail: t('validation.email.already_taken') })
-                        } else {
-                            formik.setErrors({ newEmail: newEmail.error })
-                        }
-                    }
+                case 'EMAIL_ALREADY_EXISTS_ERROR':
+                    formik.setErrors({ newEmail: t('validation.email.already_exists') })
                     break
 
                 default:
@@ -64,16 +71,10 @@ export const ChangeEmail = () => {
     }
 
     const formik = useFormik({
-        initialValues: {
-            newEmail: '',
-            password: '',
-        },
+        initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: Yup.object().shape({
-            newEmail: Yup.string().required(t('validation.required')).email(t('validation.email.invalid')),
-            password: Yup.string().required(t('validation.required')),
-        }),
+        validationSchema,
         onSubmit: handleSubmit,
     })
 

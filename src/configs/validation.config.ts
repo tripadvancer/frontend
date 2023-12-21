@@ -10,6 +10,9 @@ export const validationConfig = {
         info: {
             maxLength: 1000,
         },
+        password: {
+            minLength: 8,
+        },
     },
     place: {
         title: {

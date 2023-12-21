@@ -35,11 +35,7 @@ export const ToggleFavoriteButton = ({ id, isFavorite }: ToggleFavoriteButtonPro
 
         try {
             setIsLoading(true)
-            if (isFavorite) {
-                await removePlaceFromFavorite(id)
-            } else {
-                await addPlaceToFavorite(id)
-            }
+            isFavorite ? await removePlaceFromFavorite(id) : await addPlaceToFavorite(id)
             router.refresh()
         } catch {
             toast.error(t('common.error'))

@@ -20,19 +20,15 @@ export const AddReviewButton = ({ placeId, isDisabled }: AddReviewButtonProps) =
 
     const handleClick = async () => {
         const doesSessionExist = await Session.doesSessionExist()
-        const validationErrors = await Session.validateClaims()
 
         if (!doesSessionExist) {
             dialog.open(<SignIn />)
             return
         }
 
-        if (validationErrors.length > 0) {
-            dialog.open(<ClaimEmailError />)
-            return
-        }
-
-        dialog.open(<AddReview placeId={placeId} />)
+        const validationErrors = await Session.validateClaims()
+        const hasClaims = validationErrors.length > 0
+        dialog.open(hasClaims ? <ClaimEmailError /> : <AddReview placeId={placeId} />)
     }
 
     return (

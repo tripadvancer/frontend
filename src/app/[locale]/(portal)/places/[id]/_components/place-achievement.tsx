@@ -31,11 +31,7 @@ export const PlaceAchivement = ({ id, title, isVisited }: PlaceAchivementProps) 
         }
 
         try {
-            if (isVisited) {
-                await removePlaceFromVisited(id)
-            } else {
-                await addPlaceToVisited(id)
-            }
+            isVisited ? await removePlaceFromVisited(id) : await addPlaceToVisited(id)
             router.refresh()
         } catch {
             toast.error(t('common.error'))

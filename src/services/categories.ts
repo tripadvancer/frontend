@@ -5,7 +5,7 @@ export async function getCategories(): Promise<ICategory[]> {
     const res = await fetch(url)
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()

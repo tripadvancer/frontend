@@ -9,7 +9,7 @@ export async function addPlaceToFavorite(placeId: number): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }
 
@@ -20,6 +20,6 @@ export async function removePlaceFromFavorite(placeId: number): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }

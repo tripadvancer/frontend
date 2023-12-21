@@ -19,7 +19,7 @@ export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -35,10 +35,8 @@ export async function updateUserInfo(body: UpdateUserInfoInputs): Promise<Update
         body: JSON.stringify(body),
     })
 
-    console.log(res)
-
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -55,7 +53,7 @@ export async function changeUserPassword(body: ChangeUserPasswordInputs): Promis
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -72,7 +70,7 @@ export async function changeUserEmail(body: ChangeUserEmailInputs): Promise<Chan
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 
     return res.json()
@@ -90,7 +88,7 @@ export async function updateUserAvatar(file: File): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }
 
@@ -101,7 +99,7 @@ export async function deleteUserAvatar(): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }
 
@@ -110,7 +108,7 @@ export async function requestPersonalData(): Promise<void> {
     const res = await fetch(url)
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
 }
 
@@ -121,25 +119,8 @@ export async function requestUserRemoval(): Promise<void> {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
     }
-}
-
-export async function restoreUser(token: string): Promise<RestoreUserResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/restore'
-    const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token }),
-    })
-
-    if (!res.ok) {
-        throw new Error('Failed to fetch data')
-    }
-
-    return res.json()
 }
 
 export async function confirmUserRemoval(token: string): Promise<ConfirmUserRemovalResponse> {
@@ -153,7 +134,24 @@ export async function confirmUserRemoval(token: string): Promise<ConfirmUserRemo
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error(res.statusText)
+    }
+
+    return res.json()
+}
+
+export async function restoreUser(token: string): Promise<RestoreUserResponse> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/restore'
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+    })
+
+    if (!res.ok) {
+        throw new Error(res.statusText)
     }
 
     return res.json()

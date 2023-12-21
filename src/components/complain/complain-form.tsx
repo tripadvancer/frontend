@@ -29,13 +29,15 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
 
     const reasons = Object.values(ComplaintReasonsEnum)
 
+    const validationSchema = Yup.object().shape({
+        text: Yup.string().max(textMaxLength, t('validation.text.max_length', { max_length: textMaxLength })),
+    })
+
     const formik = useFormik({
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: Yup.object().shape({
-            text: Yup.string().max(textMaxLength, t('validation.text.max_length', { max_length: textMaxLength })),
-        }),
+        validationSchema,
         onSubmit,
     })
 

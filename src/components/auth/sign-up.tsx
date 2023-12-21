@@ -25,6 +25,7 @@ import { ThirdPartyButton } from './third-party-button'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
+const userPasswordMinLength = validationConfig.user.password.minLength
 
 export const SignUp = () => {
     const t = useI18n()
@@ -34,16 +35,41 @@ export const SignUp = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues = {
+        email: '',
+        username: '',
+        password: '',
+    }
+
+    const validationSchema = Yup.object().shape({
+        email: Yup.string()
+            .required(t('validation.required'))
+            .matches(
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
+                t('validation.email.invalid'),
+            ),
+        username: Yup.string()
+            .required(t('validation.required'))
+            .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
+            .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
+        // Password validator makes sure that the provided password:
+        // 1) has a minimum of 8 characters
+        // 2) contains at least one lowercase character
+        // 3) contains at least one number
+        password: Yup.string()
+            .required(t('validation.required'))
+            .min(userPasswordMinLength, t('validation.text.min_length', { min_length: userPasswordMinLength }))
+            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.password.policy_violated')),
+    })
+
     const handleSubmit = async (values: SignUpInputs) => {
         try {
             setIsLoading(true)
-
             const formFields = [
                 { id: 'email', value: values.email },
                 { id: 'password', value: values.password },
                 { id: 'username', value: values.username },
             ]
-
             const response = await emailPasswordSignUp({ formFields })
 
             switch (response.status) {
@@ -59,16 +85,21 @@ export const SignUp = () => {
                     const usernameError = response.formFields.find(formField => formField.id === 'username')
 
                     if (emailError) {
-                        formik.setErrors({ email: emailError.error })
+                        // todo: try to find a better way to handle this
+                        if (emailError.error === 'This email already exists. Please sign in instead.') {
+                            formik.setErrors({ email: t('validation.email.already_exists') })
+                        } else {
+                            formik.setErrors({ email: emailError.error })
+                        }
                     }
 
                     if (passwordError) {
-                        formik.setErrors({ password: passwordError.error })
+                        formik.setErrors({ email: passwordError.error })
                     }
 
                     if (usernameError) {
-                        if (usernameError.error === 'USERNAME_ALREADY_TAKEN') {
-                            formik.setErrors({ username: t('validation.username.already_taken') })
+                        if (usernameError.error === 'USERNAME_ALREADY_EXISTS_ERROR') {
+                            formik.setErrors({ username: t('validation.username.already_exists') })
                         }
                     }
                     break
@@ -89,21 +120,10 @@ export const SignUp = () => {
     }
 
     const formik = useFormik({
-        initialValues: {
-            email: '',
-            username: '',
-            password: '',
-        },
+        initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: Yup.object().shape({
-            email: Yup.string().required(t('validation.required')).email(t('validation.email.invalid')),
-            username: Yup.string()
-                .required(t('validation.required'))
-                .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
-                .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
-            password: Yup.string().required(t('validation.required')),
-        }),
+        validationSchema,
         onSubmit: handleSubmit,
     })
 

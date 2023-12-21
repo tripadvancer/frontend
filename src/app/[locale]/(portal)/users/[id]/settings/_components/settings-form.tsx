@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import type { IUserInfo } from '@/utils/types/user'
+import type { IUserInfo, UpdateUserInfoInputs } from '@/utils/types/user'
 
 import { Button } from '@/components/forms/button/button'
 import { Input } from '@/components/forms/input/input'
@@ -32,58 +32,51 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues = {
+        name: name,
+        info: info || '',
+    }
+
+    const validationSchema = Yup.object().shape({
+        name: Yup.string()
+            .required(t('validation.required'))
+            .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
+            .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
+        info: Yup.string().max(userInfoMaxLength, t('validation.text.max_length', { max_length: userInfoMaxLength })),
+    })
+
+    const handleSubmit = async (values: UpdateUserInfoInputs) => {
+        try {
+            setIsLoading(true)
+            const response = await updateUserInfo(values)
+
+            switch (response.status) {
+                case 'OK':
+                    router.refresh()
+                    toast.success(t('success.update_user_info'))
+                    break
+
+                case 'USERNAME_ALREADY_EXISTS_ERROR':
+                    formik.setErrors({ name: t('validation.username.already_exists') })
+                    break
+
+                default:
+                    toast.error(t('common.error'))
+                    break
+            }
+        } catch (err: any) {
+            toast.error(err.message)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     const formik = useFormik({
-        initialValues: {
-            name: name || '',
-            info: info || '',
-            password: '',
-            current_password: '',
-        },
+        initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: Yup.object().shape({
-            name: Yup.string()
-                .required(t('validation.required'))
-                .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
-                .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
-            info: Yup.string().max(
-                userInfoMaxLength,
-                t('validation.text.max_length', { max_length: userInfoMaxLength }),
-            ),
-        }),
-        onSubmit: async values => {
-            try {
-                setIsLoading(true)
-
-                const response = await updateUserInfo({ name: values.name, info: values.info })
-
-                switch (response.status) {
-                    case 'OK':
-                        router.refresh()
-                        toast.success(t('success.update_user_info'))
-                        break
-
-                    case 'FIELD_ERROR':
-                        const usernameError = response.formFields.find(formField => formField.id === 'username')
-                        if (usernameError) {
-                            if (usernameError.error === 'USERNAME_ALREADY_TAKEN') {
-                                formik.setErrors({ name: t('validation.username.already_taken') })
-                            } else {
-                                formik.setErrors({ name: usernameError.error })
-                            }
-                        }
-                        break
-
-                    default:
-                        toast.error(t('common.error'))
-                        break
-                }
-            } catch (err: any) {
-                toast.error(err.message)
-            } finally {
-                setIsLoading(false)
-            }
-        },
+        validationSchema,
+        onSubmit: handleSubmit,
     })
 
     return (

@@ -29,15 +29,28 @@ export const SignIn = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues = {
+        email: '',
+        password: '',
+    }
+
+    const validationSchema = Yup.object().shape({
+        email: Yup.string()
+            .required(t('validation.required'))
+            .matches(
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
+                t('validation.email.invalid'),
+            ),
+        password: Yup.string().required(t('validation.required')),
+    })
+
     const handleSubmit = async (values: SignInInputs) => {
         try {
             setIsLoading(true)
-
             const formFields = [
                 { id: 'email', value: values.email },
                 { id: 'password', value: values.password },
             ]
-
             const response = await emailPasswordSignIn({ formFields })
 
             switch (response.status) {
@@ -46,15 +59,15 @@ export const SignIn = () => {
                     router.refresh()
                     break
 
+                case 'WRONG_CREDENTIALS_ERROR':
+                    formik.setErrors({ password: t('validation.wrong_credentials') })
+                    break
+
                 case 'FIELD_ERROR':
                     const emailError = response.formFields.find(formField => formField.id === 'email')
                     if (emailError) {
                         formik.setErrors({ email: emailError.error })
                     }
-                    break
-
-                case 'WRONG_CREDENTIALS_ERROR':
-                    formik.setErrors({ password: t('validation.wrong_credentials') })
                     break
 
                 default:
@@ -77,16 +90,10 @@ export const SignIn = () => {
     }
 
     const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-        },
+        initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: Yup.object().shape({
-            email: Yup.string().required(t('validation.required')).email(t('validation.email.invalid')),
-            password: Yup.string().required(t('validation.required')),
-        }),
+        validationSchema,
         onSubmit: handleSubmit,
     })
 

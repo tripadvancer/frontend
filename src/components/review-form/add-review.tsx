@@ -25,6 +25,13 @@ export const AddReview = ({ placeId }: AddReviewProps) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues = {
+        placeId,
+        rating: 0,
+        text: '',
+        photos: [],
+    }
+
     const handleSubmit = async (values: CreateReviewInputs) => {
         try {
             setIsLoading(true)
@@ -44,12 +51,7 @@ export const AddReview = ({ placeId }: AddReviewProps) => {
             <h1 className="text-h7">{t('review.form.add.title')}</h1>
             <hr className="border-black-70" />
             <ReviewForm
-                initialValues={{
-                    placeId,
-                    rating: 0,
-                    text: '',
-                    photos: [],
-                }}
+                initialValues={initialValues}
                 isLoading={isLoading}
                 onSubmit={values => handleSubmit(values as CreateReviewInputs)}
             />
