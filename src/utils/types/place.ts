@@ -1,4 +1,3 @@
-import type { ICategory } from '@/utils/types/category'
 import type { CoordinatesTuple, GeoJsonPoint } from '@/utils/types/geo'
 import type { IPhoto } from '@/utils/types/photo'
 import type { IUserInfo } from '@/utils/types/user'
@@ -9,7 +8,7 @@ export type IPlace = {
     description: string
     cover: string | null
     photos: IPhoto[]
-    categories: ICategory[]
+    categories: number[]
     countryCode: string
     author: IUserInfo
     location: GeoJsonPoint
@@ -30,15 +29,13 @@ export type IPlacePreview = Pick<
 
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & { distance: number }
 
-export type CreatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover'> & {
+export type CreatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover' | 'categories'> & {
     location: string
-    categories: number[]
     photos: string[]
 }
 
-export type UpdatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover'> & {
+export type UpdatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover' | 'categories'> & {
     placeId: number
     location: string
-    categories: number[]
     photos: string[]
 }

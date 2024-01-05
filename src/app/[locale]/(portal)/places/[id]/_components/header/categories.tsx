@@ -11,10 +11,10 @@ export const Categories = async ({ categories, locale }: CategoriesProps) => {
         <div className="flex gap-2">
             {categories.map(category => (
                 <div
-                    key={category.id}
+                    key={category}
                     className="flex h-8 items-center rounded-full border border-white px-4 text-small text-white"
                 >
-                    {categoriesDictionary[category.id].localizedName[locale]}
+                    {categoriesDictionary[category].localizedName[locale]}
                 </div>
             ))}
         </div>
