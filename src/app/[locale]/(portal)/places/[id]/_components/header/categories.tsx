@@ -14,7 +14,7 @@ export const Categories = async ({ categories, locale }: CategoriesProps) => {
                     key={category}
                     className="flex h-8 items-center rounded-full border border-white px-4 text-small text-white"
                 >
-                    {categoriesDictionary[category].localizedName[locale]}
+                    {categoriesDictionary.find(item => item.id === category)?.localizedName[locale]}
                 </div>
             ))}
         </div>
