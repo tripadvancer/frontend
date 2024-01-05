@@ -17,8 +17,8 @@ export default {
     'confirm.request_personal_data.title': 'Send personal data',
     'confirm.request_personal_data.message': 'Are you sure you want to send your personal data to your email?',
     
-    'confirm.request_user_removal.title': 'Delete your account',
-    'confirm.request_user_removal.message': 'Are you sure you want to delete your account?',
+    'confirm.request_user_deletion.title': 'Delete your account',
+    'confirm.request_user_deletion.message': 'Are you sure you want to delete your account?',
 
     'confirm.yes': 'Confirm',
     'confirm.no': 'Cancel',
@@ -102,7 +102,7 @@ export default {
     'success.update_user_avatar': 'Your avatar has been updated.',
     'success.update_user_info': 'Your profile has been updated.',
     'success.request_personal_data': 'Your personal data has been sent to your email.',
-    'success.request_user_removal': 'We have sent you an email with instructions on how to complete the removal process.',
+    'success.request_user_deletion': 'We have sent you an email with instructions on how to complete the deletion process.',
     'success.send_verification_email': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
 
     'categories.all': 'All categories',
@@ -201,9 +201,9 @@ export default {
     'pages.auth.restore_user.token_expired': 'The restore link has expired. Please request a new restore link.',
     'pages.auth.restore_user.ok': 'Your account has been restored.',
 
-    'pages.auth.confirm_user_removal.loading': 'Starting the removal process...',
-    'pages.auth.confirm_user_removal.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
-    'pages.auth.confirm_user_removal.ok': 'The removal process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
+    'pages.auth.confirm_user_deletion.loading': 'Starting the deletion process...',
+    'pages.auth.confirm_user_deletion.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
+    'pages.auth.confirm_user_deletion.ok': 'The deletion process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.',
 
     'pages.auth.reset_password.title': 'Enter your new password below',
     'pages.auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
@@ -262,9 +262,9 @@ export default {
     'pages.user.account.request_personal_data.text': 'You can request a copy of your personal data we have stored on Tripadvancer. We will send you a file with your personal data to your email.',
     'pages.user.account.request_personal_data.action': 'Request personal data',
 
-    'pages.user.account.request_user_removal.title': 'Delete your account',
-    'pages.user.account.request_user_removal.text': 'You can delete your account and all data associated with it. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
-    'pages.user.account.request_user_removal.action': 'Delete your account',
+    'pages.user.account.request_user_deletion.title': 'Delete your account',
+    'pages.user.account.request_user_deletion.text': 'You can delete your account and all data associated with it. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.',
+    'pages.user.account.request_user_deletion.action': 'Delete your account',
 
     'pages.add_place.about.title': 'About this place',
     'pages.add_place.about.info': 'Tell us what inspired you so you can help others learn more about this place.',

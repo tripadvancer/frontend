@@ -7,7 +7,7 @@ import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-comp
 
 import { BlockChangePassword } from './_components/block-change-password'
 import { BlockRequestPersonalData } from './_components/block-request-personal-data'
-import { BlockRequestUserRemoval } from './_components/block-request-user-removal'
+import { BlockRequestUserDeletion } from './_components/block-request-user-deletion'
 import { BlockVerificationEmail } from './_components/block-verification-email'
 import { BlockChangeEmail } from './_components/block-сhange-email'
 import { SettingsForm } from './_components/settings-form'
@@ -47,7 +47,7 @@ export default async function UserSettingsPage({ params }: { params: { id: strin
                         <BlockChangeEmail />
                         <BlockChangePassword />
                         <BlockRequestPersonalData />
-                        <BlockRequestUserRemoval />
+                        <BlockRequestUserDeletion />
                     </div>
                 </section>
             </div>

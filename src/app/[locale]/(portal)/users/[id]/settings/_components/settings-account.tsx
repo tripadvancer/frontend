@@ -1,6 +1,6 @@
 import { BlockChangePassword } from './block-change-password'
 import { BlockRequestPersonalData } from './block-request-personal-data'
-import { BlockRequestUserRemoval } from './block-request-user-removal'
+import { BlockRequestUserDeletion } from './block-request-user-deletion'
 import { BlockChangeEmail } from './block-сhange-email'
 
 export const SettingAccount = () => {
@@ -9,7 +9,7 @@ export const SettingAccount = () => {
             <BlockChangeEmail />
             <BlockChangePassword />
             <BlockRequestPersonalData />
-            <BlockRequestUserRemoval />
+            <BlockRequestUserDeletion />
         </div>
     )
 }

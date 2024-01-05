@@ -47,6 +47,6 @@ export type RestoreUserResponse = {
     status: 'OK' | 'INVALID_TOKEN_ERROR'
 }
 
-export type ConfirmUserRemovalResponse = {
+export type ConfirmUserDeletionResponse = {
     status: 'OK' | 'INVALID_TOKEN_ERROR'
 }

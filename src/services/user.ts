@@ -3,7 +3,7 @@ import type {
     ChangeUserEmailResponse,
     ChangeUserPasswordInputs,
     ChangeUserPasswordResponse,
-    ConfirmUserRemovalResponse,
+    ConfirmUserDeletionResponse,
     IUserInfo,
     RestoreUserResponse,
     UpdateUserInfoInputs,
@@ -112,7 +112,7 @@ export async function requestPersonalData(): Promise<void> {
     }
 }
 
-export async function requestUserRemoval(): Promise<void> {
+export async function requestUserDeletion(): Promise<void> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/user'
     const res = await fetch(url, {
         method: 'DELETE',
@@ -123,8 +123,8 @@ export async function requestUserRemoval(): Promise<void> {
     }
 }
 
-export async function confirmUserRemoval(token: string): Promise<ConfirmUserRemovalResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/confirm-removal'
+export async function confirmUserDeletion(token: string): Promise<ConfirmUserDeletionResponse> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/user/confirm-deletion'
     const res = await fetch(url, {
         method: 'POST',
         headers: {

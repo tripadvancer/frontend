@@ -6,7 +6,7 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { LinkButton } from '@/components/link-button'
 import { useToast } from '@/providers/toast-provider'
-import { confirmUserRemoval } from '@/services/user'
+import { confirmUserDeletion } from '@/services/user'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -14,7 +14,7 @@ type ConfirmUserRemovalProps = {
     token: string
 }
 
-export const ConfirmUserRemoval = ({ token }: ConfirmUserRemovalProps) => {
+export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
     const t = useI18n()
     const toast = useToast()
 
@@ -23,7 +23,7 @@ export const ConfirmUserRemoval = ({ token }: ConfirmUserRemovalProps) => {
     useOnMountUnsafe(() => {
         const handleConfirmUserRemoval = async () => {
             try {
-                const response = await confirmUserRemoval(token)
+                const response = await confirmUserDeletion(token)
                 await Session.signOut()
                 setStatus(response.status)
             } catch (err) {
@@ -34,14 +34,14 @@ export const ConfirmUserRemoval = ({ token }: ConfirmUserRemovalProps) => {
     })
 
     if (!status) {
-        return <p className="text-center">{t('pages.auth.confirm_user_removal.loading')}</p>
+        return <p className="text-center">{t('pages.auth.confirm_user_deletion.loading')}</p>
     }
 
     return (
         <>
             <p className="text-center">
-                {status === 'OK' && t('pages.auth.confirm_user_removal.ok')}
-                {status === 'INVALID_TOKEN_ERROR' && t('pages.auth.confirm_user_removal.token_expired')}
+                {status === 'OK' && t('pages.auth.confirm_user_deletion.ok')}
+                {status === 'INVALID_TOKEN_ERROR' && t('pages.auth.confirm_user_deletion.token_expired')}
             </p>
             <LinkButton href="/" className="w-full">
                 {t('common.action.go_home')}
