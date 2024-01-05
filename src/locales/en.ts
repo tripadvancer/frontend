@@ -230,7 +230,7 @@ export default {
     'pages.home.features.title': 'Our features',
     'pages.home.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
     'pages.home.features.places.title': 'Discover and share{br}interesting places',
-    'pages.home.features.places.description': 'Find interesting places and unique landmarks to plan your unforgettable journey. Share your impressions of the visited locations by leaving reviews and ratings, and you can also add new places that are not yet on the map to help fellow travelers discover them.',
+    'pages.home.features.places.description': 'Find captivating places and distinctive landmarks to craft your unforgettable journey. Share your thoughts on visited locations by leaving reviews and ratings. Additionally, contribute by adding new, undiscovered places to the map, helping fellow travelers explore hidden gems.',
     'pages.home.features.random.title': 'Try Our Random{br}Destination Picker',
     'pages.home.features.random.description': 'Stuck on where to go in your free time? Utilize our feature for a random choice of nearby destinations! Simply pick a category and choose a comfortable distance. Let the exploration begin!',
     'pages.home.features.lists.title': 'Create Your Personalized{br}Travel Lists',
@@ -239,6 +239,7 @@ export default {
     'pages.home.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
     'pages.home.map.cta': 'Explore the map',
 
+    'pages.country.description': 'Here are incredible places recommended by experienced travelers. Discover the unique features of a country like {country}, following the advice of those who have already visited it. Craft your own special route and immerse yourself in an exciting journey with just a few clicks!',
     'pages.country.view_all': 'View all countries',
 
     'pages.place.about.title': 'About this place',

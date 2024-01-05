@@ -50,10 +50,7 @@ export default async function CountryPage({
                         </Link>
                         <h1 className="mb-4 text-h1-m text-white sm:text-h1">{country.name[params.locale]}</h1>
                         <p className="text-big text-white">
-                            Proin mollis ligula at mi tempor, id luctus felis iaculis. Ut sit amet tincidunt velit, ut
-                            aliquet augue. Sed luctus ac magna non gravida. Suspendisse potenti. Proin eu massa tempus
-                            metus tristique scelerisque. Fusce elit neque, faucibus ut risus vel, gravida placerat
-                            libero. Aliquam eget metus eu sem venenatis rhoncus.
+                            {t('pages.country.description', { country: country.name[params.locale] })}
                         </p>
                     </div>
                 </section>
