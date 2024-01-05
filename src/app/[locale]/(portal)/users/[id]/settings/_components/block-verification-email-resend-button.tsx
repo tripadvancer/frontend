@@ -4,11 +4,11 @@ import { useState } from 'react'
 
 import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverification'
 
-import { Button } from '@/components/forms/button/button'
+import { ButtonMinor } from '@/components/forms/button-minor/button-minor'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const ClaimEmailAttentionAction = () => {
+export const BlockVerificationEmailResendButton = () => {
     const t = useI18n()
     const toast = useToast()
 
@@ -27,8 +27,8 @@ export const ClaimEmailAttentionAction = () => {
     }
 
     return (
-        <Button variant="orange" isLoading={isLoading} onClick={handleResendVerificationEmail}>
-            {t('claim.email.resend_verification_email')}
-        </Button>
+        <ButtonMinor variant="blue" isLoading={isLoading} onClick={handleResendVerificationEmail}>
+            {t('pages.user.account.verify_email.action')}
+        </ButtonMinor>
     )
 }

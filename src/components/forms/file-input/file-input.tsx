@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 
 import classNames from 'classnames'
 
@@ -39,7 +39,7 @@ export const FileInput = ({
         hiddenFileInput.current?.click()
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files?.length) {
             return
         }

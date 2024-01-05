@@ -29,3 +29,15 @@ a {
 .hover-animated {
     @apply transition-colors duration-300 ease-in-out;
 }
+
+.DraftEditor-root {
+    @apply relative;
+}
+
+.public-DraftEditorPlaceholder-root {
+    @apply absolute z-0 text-black-40;
+}
+
+.DraftEditor-editorContainer {
+    @apply relative z-10;
+}

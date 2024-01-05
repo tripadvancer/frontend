@@ -64,7 +64,7 @@ export async function updateReviewById({ reviewId, ...patch }: UpdateReviewInput
     }
 }
 
-export async function reviewPhotosUpload(file: File): Promise<{ url: string }> {
+export async function reviewPhotoUpload(file: File): Promise<{ url: string }> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/images/review-photo'
     const formData = new FormData()
 

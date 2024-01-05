@@ -18,7 +18,7 @@ export default {
     'confirm.request_personal_data.message': 'Вы уверены, что хотите запросить копию своих персональных данных?',
     
     'confirm.request_user_removal.title': 'Удалить учётную запись',
-    'confirm.request_user_removal.message': 'Вы уверены, что хотите удалить свою учётную запись и все связанные с ней данные? Это действие необратимо.',
+    'confirm.request_user_removal.message': 'Вы уверены, что хотите начать процесс удаления своей учётной записи и всех связанных с ней данных?',
 
     'confirm.yes': 'Подтвердить',
     'confirm.no': 'Отмена',
@@ -81,6 +81,7 @@ export default {
     'placeholder.file.loading': 'Загрузка файла ...',
     'placeholder.action.username': 'Введите имя пользователя',
     'placeholder.action.about_user': 'Напишите что-нибудь о себе',
+    'placeholder.action.about_place': 'Введте описание места',
     'placeholder.action.review': 'Развернуто поделитесь своими впечатлениями - так Вы поможете остальным узнать больше о месте',
     'placeholder.action.complain.comment': 'Опишите причину жалобы',
     'placeholder.action.password': 'Введите пароль',
@@ -90,6 +91,8 @@ export default {
 
     'success.send_complaint': 'Ваша жалоба была успешно отправлена.',
     'success.copy_coordinates': 'Координаты были скопированы в буфер обмена.',
+    'success.create_place': 'Ваше место было успешно добавлено.',
+    'success.edit_place': 'Ваше место было успешно обновлено.',
     'success.delete_place': 'Место было успешно удалено.',
     'success.create_review': 'Ваш отзыв был успешно добавлен.',
     'success.edit_review': 'Ваш отзыв был успешно обновлён.',
@@ -102,18 +105,6 @@ export default {
     'success.request_user_removal': 'Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
     'success.send_verification_email': 'Мы отправили Вам письмо с подтверждением. Пожалуйста, проверьте свой почтовый ящик и следуйте инструкциям в письме, чтобы завершить процесс подтверждения.',
 
-    'categories.abandoned': 'Заброшки',
-    'categories.adventure_activities': 'Приключения',
-    'categories.architecture': 'Архитектура',
-    'categories.camping_sites': 'Кемпинги',
-    'categories.hiking': 'Пешие тропы',
-    'categories.historical': 'История',
-    'categories.landmarks': 'Достопримечательности',
-    'categories.museums': 'Музеи',
-    'categories.natural_attractions': 'Природа',
-    'categories.off_road': 'Офф-роуд',
-    'categories.recreational_areas': 'Места отдыха',
-    'categories.scenic_views': 'Красивые виды',
     'categories.all': 'Все категории',
 
     'complaint.reasons.abuse': 'Неправомерное использование, плохое обращение или умышленный вред',
@@ -259,8 +250,31 @@ export default {
     'pages.user.settings.forms.fields.info.label': 'Расскажите о себе',
     'pages.user.settings.forms.submit': 'Сохранить',
     'pages.user.settings.account.title': 'Ваша учётная запись',
-    'pages.user.settings.account.change_password': 'Изменить пароль',
-    'pages.user.settings.account.change_email': 'Изменить email',
-    'pages.user.settings.account.request_personal_data': 'Получить копию Ваших данных',
-    'pages.user.settings.account.request_user_removal': 'Удалить учётную запись',
+    
+    'pages.user.account.verify_email.title': 'Ваш email не подтверждён',
+    'pages.user.account.verify_email.text': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
+    'pages.user.account.verify_email.action': 'Отправить письмо ещё раз',
+
+    'pages.user.account.change_email.title': 'Ваш email',
+    'pages.user.account.change_email.text': 'Ваш адрес электронной почты будет использоваться для входа в систему, получения уведомлений и восстановления пароля.',
+    'pages.user.account.change_email.action': 'Изменить email',
+
+    'pages.user.account.change_password.title': 'Ваш пароль',
+    'pages.user.account.change_password.text': 'Мы рекомендуем вам использовать пароль, отличный от других ваших учетных записей в Интернете, а так же изменять его время от времени.',
+    'pages.user.account.change_password.action': 'Изменить пароль',
+
+    'pages.user.account.request_personal_data.title': 'Ваши персональные данные',
+    'pages.user.account.request_personal_data.text': 'Вы можете запросить копию своих персональных данных, которые мы храним. Это включает в себя любые данные, которые вы предоставили нам при регистрации, такие как имя пользователя, адрес электронной почты и другие дополнительные сведения.',
+    'pages.user.account.request_personal_data.action': 'Запросить персональные данные',
+
+    'pages.user.account.request_user_removal.title': 'Удалить учётную запись',
+    'pages.user.account.request_user_removal.text': 'Вы можете запросить удаление своей учётной записи и всех связанных с ней данных. Вы сможете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
+    'pages.user.account.request_user_removal.action': 'Удалить учётную запись',
+
+    'pages.add_place.about.title': 'О месте',
+    'pages.add_place.about.info': 'Расскажите, что вдохновило Вас — так Вы поможете остальным узнать больше об этом месте',
+    'pages.add_place.photos.title': 'Фотографии',
+    'pages.add_place.photos.info': 'Вы можете загрузить до {max_count} фотографий.',
+    'pages.add_place.submit': 'Добавить место',
+    'pages.add_place.submit.info': 'Добавляя новый объект на карту, вы принимаете {terms_link}, {privacy_link} и даете согласие на их обработку.'
 } as const

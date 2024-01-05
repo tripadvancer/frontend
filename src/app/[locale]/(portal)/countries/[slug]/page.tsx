@@ -3,11 +3,11 @@ import { Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { getCategories } from '@/services/categories'
 import { getCountryBySlug } from '@/services/countries'
 import { getPlacesByCountryCode } from '@/services/places'
-import { localizeCategories, parseQueryString } from '@/utils/helpers'
-import { getI18n, getScopedI18n } from '@/utils/i18n/i18n.server'
+import { categoriesDictionary } from '@/utils/dictionaries/categories'
+import { parseQueryString } from '@/utils/helpers'
+import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { Categories } from './_components/categories'
 import { PlacesFeed } from './_components/places-feed'
@@ -21,11 +21,8 @@ export default async function CountryPage({
     searchParams: { categories: string }
 }) {
     const t = await getI18n()
-    const tCategories = await getScopedI18n('categories')
     const country = getCountryBySlug(params.slug)
-    const categories = await getCategories()
-    const localizedCategories = localizeCategories(categories, tCategories)
-    const categoriesIds = categories.map(category => category.id)
+    const categoriesIds = categoriesDictionary.map(category => category.id)
     const selectedCategoriesIdsFromQueryString = searchParams.categories?.toString().toLowerCase()
     const selectedCategoriesIds = parseQueryString(selectedCategoriesIdsFromQueryString, categoriesIds)
     const places = await getPlacesByCountryCode(country.code, selectedCategoriesIds.join())
@@ -57,7 +54,7 @@ export default async function CountryPage({
             </div>
             <div className="relative z-20 flex-1 rounded-t-4xl bg-white">
                 <div className="container flex flex-col gap-y-16 py-24">
-                    <Categories categories={localizedCategories} selectedCategoryIds={selectedCategoriesIds} />
+                    <Categories selectedCategoryIds={selectedCategoriesIds} locale={params.locale} />
                     <Suspense fallback={<PlacesFeedSkeleton />}>
                         <PlacesFeed places={places} />
                     </Suspense>

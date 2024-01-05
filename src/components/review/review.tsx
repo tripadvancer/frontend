@@ -1,7 +1,7 @@
 import type { IReview } from '@/utils/types/review'
 
 import { Actions } from './components/actions'
-import { Photos } from './components/photos'
+import { PhotosList } from './components/photos-list'
 import { RatingAuthor } from './components/rating-author'
 import { RatingPlace } from './components/rating-place'
 
@@ -22,7 +22,7 @@ export const Review = ({ review, reviewsCount, variant }: ReviewProps) => {
             </div>
 
             <div>{review.text}</div>
-            <Photos title={review.place.title} description={review.user.name} photos={review.photos} />
+            <PhotosList title={review.place.title} description={review.user.name} photos={review.photos} />
         </div>
     )
 }

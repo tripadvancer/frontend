@@ -7,16 +7,15 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 
-import type { ICategory } from '@/utils/types/category'
-
+import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type CategoryProps = {
-    categories: ICategory[]
     selectedCategoryIds: number[]
+    locale: string
 }
 
-export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) => {
+export const Categories = ({ selectedCategoryIds, locale }: CategoryProps) => {
     const t = useI18n()
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -52,7 +51,7 @@ export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) =
             >
                 {t('categories.all')}
             </Link>
-            {categories.map(category => (
+            {categoriesDictionary.map(category => (
                 <Link
                     key={category.id}
                     href={{ query: createQueryString(category.id) }}
@@ -65,7 +64,7 @@ export const Categories = ({ categories, selectedCategoryIds }: CategoryProps) =
                         },
                     )}
                 >
-                    {category.localizedName}
+                    {category.localizedName[locale]}
                 </Link>
             ))}
         </div>

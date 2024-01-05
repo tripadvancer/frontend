@@ -12,13 +12,13 @@ export default {
     'confirm_mini.no': 'No',
 
     'confirm.delete_place.title': 'Delete place',
-    'confirm.delete_place.message': 'Are you sure you want to remove this place and all data associated with it?',
+    'confirm.delete_place.message': 'Are you sure you want to delete this place and all data associated with it?',
 
     'confirm.request_personal_data.title': 'Send personal data',
     'confirm.request_personal_data.message': 'Are you sure you want to send your personal data to your email?',
     
-    'confirm.request_user_removal.title': 'Remove your account',
-    'confirm.request_user_removal.message': 'Are you sure you want to remove your account?',
+    'confirm.request_user_removal.title': 'Delete your account',
+    'confirm.request_user_removal.message': 'Are you sure you want to delete your account?',
 
     'confirm.yes': 'Confirm',
     'confirm.no': 'Cancel',
@@ -81,6 +81,7 @@ export default {
     'placeholder.file.loading': 'Loading ...',
     'placeholder.action.username': 'Enter your username',
     'placeholder.action.about_user': 'Enter information about yourself...',
+    'placeholder.action.about_place': 'Enter a description',
     'placeholder.action.review': 'Share your impressions in detail — this way you will help others learn more about this place',
     'placeholder.action.complain.comment': 'Add your comment here',
     'placeholder.action.password': 'Enter your password',
@@ -90,10 +91,12 @@ export default {
 
     'success.send_complaint': 'Your complaint has been sent.',
     'success.copy_coordinates': 'Coordinates has been copied to the clipboard.',
-    'success.delete_place': 'The place has been removed.',
+    'success.create_place': 'Your place has been added.',
+    'success.edit_place': 'Your place has been updated.',
+    'success.delete_place': 'The place has been deleted.',
     'success.create_review': 'Your review has been added.',
     'success.edit_review': 'Your review has been updated.',
-    'success.delete_review': 'The review has been removed.',
+    'success.delete_review': 'The review has been deleted.',
     'success.change_user_password': 'Your password has been changed.',
     'success.change_user_email': 'We have sent you a verification email. After confirming your new email address, you will be able to sign in using it.',
     'success.update_user_avatar': 'Your avatar has been updated.',
@@ -102,18 +105,6 @@ export default {
     'success.request_user_removal': 'We have sent you an email with instructions on how to complete the removal process.',
     'success.send_verification_email': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
 
-    'categories.abandoned': 'Abandoned',
-    'categories.adventure_activities': 'Adventure activities',
-    'categories.architecture': 'Architecture',
-    'categories.camping_sites': 'Camping sites',
-    'categories.hiking': 'Hiking trails',
-    'categories.historical': 'Historical',
-    'categories.landmarks': 'Landmarks',
-    'categories.museums': 'Museums',
-    'categories.natural_attractions': 'Natural attractions',
-    'categories.off_road': 'Off-road',
-    'categories.recreational_areas': 'Recreational areas',
-    'categories.scenic_views': 'Scenic views',
     'categories.all': 'All categories',
 
     'complaint.reasons.abuse': 'Misuse, mistreatment or intentional harm',
@@ -254,8 +245,31 @@ export default {
     'pages.user.settings.forms.fields.username.label': 'Username',
     'pages.user.settings.forms.fields.info.label': 'About me',
     'pages.user.settings.account.title': 'Your account',
-    'pages.user.settings.account.change_password': 'Change password',
-    'pages.user.settings.account.change_email': 'Change email',
-    'pages.user.settings.account.request_personal_data': 'Get a copy of your data',
-    'pages.user.settings.account.request_user_removal': 'Remove your account',
+    
+    'pages.user.account.verify_email.title': 'Your email is not verified',
+    'pages.user.account.verify_email.text': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
+    'pages.user.account.verify_email.action': 'Resend Verification Email',
+
+    'pages.user.account.change_email.title': 'Your email',
+    'pages.user.account.change_email.text': 'Your email will be used for signing in, receiving notifications and resetting your password.',
+    'pages.user.account.change_email.action': 'Change email',
+
+    'pages.user.account.change_password.title': 'Your password',
+    'pages.user.account.change_password.text': 'We recommend you to use a strong password that you don not use elsewhere and change it regularly.',
+    'pages.user.account.change_password.action': 'Change password',
+
+    'pages.user.account.request_personal_data.title': 'Your personal data',
+    'pages.user.account.request_personal_data.text': 'You can request a copy of your personal data we have stored on Tripadvancer. We will send you a file with your personal data to your email.',
+    'pages.user.account.request_personal_data.action': 'Request personal data',
+
+    'pages.user.account.request_user_removal.title': 'Delete your account',
+    'pages.user.account.request_user_removal.text': 'You can delete your account and all data associated with it. This process may take up to several days. You can restore your account using the link sent to your email until the removal process is finished.',
+    'pages.user.account.request_user_removal.action': 'Delete your account',
+
+    'pages.add_place.about.title': 'About this place',
+    'pages.add_place.about.info': 'Tell us what inspired you so you can help others learn more about this place.',
+    'pages.add_place.photos.title': 'Photos',
+    'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
+    'pages.add_place.submit': 'Add place',
+    'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
 } as const

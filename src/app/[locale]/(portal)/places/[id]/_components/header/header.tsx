@@ -16,7 +16,7 @@ export const Header = async ({ params }: { params: { locale: string; id: string 
                     <Country {...place} locale={params.locale} />
                     <h1 className="text-center text-h1-m text-white sm:text-h1">{place.title}</h1>
                     <CoordinatesToCopy {...place} />
-                    <Categories {...place} />
+                    <Categories {...place} locale={params.locale} />
                 </div>
             </section>
         </div>

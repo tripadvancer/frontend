@@ -5,8 +5,11 @@ import { getI18n } from '@/utils/i18n/i18n.server'
 import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { ClaimEmailAttention } from './_components/claim-email-attention'
-import { SettingAccount } from './_components/settings-account'
+import { BlockChangePassword } from './_components/block-change-password'
+import { BlockRequestPersonalData } from './_components/block-request-personal-data'
+import { BlockRequestUserRemoval } from './_components/block-request-user-removal'
+import { BlockVerificationEmail } from './_components/block-verification-email'
+import { BlockChangeEmail } from './_components/block-сhange-email'
 import { SettingsForm } from './_components/settings-form'
 import { SettingsSkeleton } from './_components/settings-skeleton'
 
@@ -33,15 +36,19 @@ export default async function UserSettingsPage({ params }: { params: { id: strin
 
     return (
         <div className="flex flex-col gap-y-8">
-            <ClaimEmailAttention />
-
             <div className="flex flex-col gap-y-16">
                 <section>
                     <SettingsForm {...userInfo} />
                 </section>
                 <section>
                     <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.user.settings.account.title')}</h2>
-                    <SettingAccount userId={parseInt(params.id)} />
+                    <div className="flex flex-col gap-y-8">
+                        <BlockVerificationEmail />
+                        <BlockChangeEmail />
+                        <BlockChangePassword />
+                        <BlockRequestPersonalData />
+                        <BlockRequestUserRemoval />
+                    </div>
                 </section>
             </div>
         </div>

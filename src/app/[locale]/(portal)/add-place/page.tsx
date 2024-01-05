@@ -1,8 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/types/place'
-
-import { PlaceForm } from '@/components/place-form/place-form'
+import { AddPlace } from '@/components/place-form/add-place'
 import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
@@ -17,5 +15,5 @@ export default async function AddPlacePage() {
         return <TryRefreshComponent />
     }
 
-    return <PlaceForm />
+    return <AddPlace />
 }

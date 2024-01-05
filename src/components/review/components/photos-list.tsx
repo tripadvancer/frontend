@@ -6,23 +6,19 @@ import Lightbox from 'yet-another-react-lightbox'
 import Captions from 'yet-another-react-lightbox/plugins/captions'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 
-import Image from 'next/image'
-
 import type { IPhoto } from '@/utils/types/photo'
 
+import { Photo } from '@/components/photo'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 
-import 'yet-another-react-lightbox/plugins/captions.css'
-import 'yet-another-react-lightbox/styles.css'
-
-type PhotosProps = {
+type PhotosListProps = {
     title: string
     description: string
     photos: IPhoto[]
 }
 
-export const Photos = ({ title, description, photos }: PhotosProps) => {
+export const PhotosList = ({ title, description, photos }: PhotosListProps) => {
     const [indexSlide, setIndexSlide] = useState<number>(-1)
 
     if (photos.length === 0) {
@@ -32,17 +28,7 @@ export const Photos = ({ title, description, photos }: PhotosProps) => {
     return (
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-9">
             {photos.map((photo, index) => (
-                <Image
-                    key={photo.id}
-                    src={makeImageUrl(photo.url, ImageVariant.PREVIEW)}
-                    className="w-full cursor-pointer rounded-lg"
-                    width={64}
-                    height={64}
-                    placeholder="blur"
-                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8eftuPQAIOAMS40NHBQAAAABJRU5ErkJggg=="
-                    alt={title}
-                    onClick={() => setIndexSlide(index)}
-                />
+                <Photo key={photo.id} url={photo.url} size={64} alt={title} onClick={() => setIndexSlide(index)} />
             ))}
 
             <Lightbox

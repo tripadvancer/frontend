@@ -1,33 +1,3 @@
-export enum CategoriesEnum {
-    ABANDONED = 'ABANDONED',
-    ADVENTURE_ACTIVITIES = 'ADVENTURE_ACTIVITIES',
-    ARCHITECTURE = 'ARCHITECTURE',
-    CAMPING_SITES = 'CAMPING_SITES',
-    HIKING = 'HIKING',
-    HISTORICAL = 'HISTORICAL',
-    LANDMARKS = 'LANDMARKS',
-    MUSEUMS = 'MUSEUMS',
-    NATURAL_ATTRACTIONS = 'NATURAL_ATTRACTIONS',
-    OFF_ROAD = 'OFF_ROAD',
-    RECREATIONAL_AREAS = 'RECREATIONAL_AREAS',
-    SCENIC_VIEWS = 'SCENIC_VIEWS',
-}
-
-export enum CategoryI18nKeys {
-    ABANDONED = 'abandoned',
-    ADVENTURE_ACTIVITIES = 'adventure_activities',
-    ARCHITECTURE = 'architecture',
-    CAMPING_SITES = 'camping_sites',
-    HIKING = 'hiking',
-    HISTORICAL = 'historical',
-    LANDMARKS = 'landmarks',
-    MUSEUMS = 'museums',
-    NATURAL_ATTRACTIONS = 'natural_attractions',
-    OFF_ROAD = 'off_road',
-    RECREATIONAL_AREAS = 'recreational_areas',
-    SCENIC_VIEWS = 'scenic_views',
-}
-
 export enum ComplaintReasonsEnum {
     ABUSE = 'ABUSE',
     COPYRIGHT = 'COPYRIGHT',

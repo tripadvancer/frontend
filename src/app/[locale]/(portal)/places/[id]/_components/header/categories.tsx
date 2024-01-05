@@ -1,22 +1,20 @@
 import type { IPlace } from '@/utils/types/place'
 
-import { localizeCategories } from '@/utils/helpers'
-import { getScopedI18n } from '@/utils/i18n/i18n.server'
+import { categoriesDictionary } from '@/utils/dictionaries/categories'
 
-type CategoriesProps = IPlace
+type CategoriesProps = IPlace & {
+    locale: string
+}
 
-export const Categories = async ({ categories }: CategoriesProps) => {
-    const tCategories = await getScopedI18n('categories')
-    const localizedCategories = localizeCategories(categories, tCategories)
-
+export const Categories = async ({ categories, locale }: CategoriesProps) => {
     return (
         <div className="flex gap-2">
-            {localizedCategories.map(category => (
+            {categories.map(category => (
                 <div
                     key={category.id}
                     className="flex h-8 items-center rounded-full border border-white px-4 text-small text-white"
                 >
-                    {category.localizedName}
+                    {categoriesDictionary[category.id].localizedName[locale]}
                 </div>
             ))}
         </div>

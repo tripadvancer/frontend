@@ -24,7 +24,6 @@ export const validationConfig = {
             maxLength: 2000,
         },
         category: {
-            minCount: 1,
             maxCount: 3,
         },
         location: {

@@ -13,7 +13,7 @@ export async function addPlaceToVisited(placeId: number): Promise<void> {
     }
 }
 
-export async function removePlaceFromVisited(placeId: number): Promise<void> {
+export async function deletePlaceFromVisited(placeId: number): Promise<void> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/visited/' + placeId
     const res = await fetch(url, {
         method: 'DELETE',

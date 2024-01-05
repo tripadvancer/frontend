@@ -13,7 +13,7 @@ import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { ReviewPhotosUploader } from './review-photos-uploader'
+import { ReviewPhotosList } from './components/review-photos-list'
 
 const reviewTextMinLength = validationConfig.review.text.minLength
 const reviewTextMaxLength = validationConfig.review.text.maxLength
@@ -77,7 +77,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     <label htmlFor="text" className="font-medium">
                         {t('review.form.fields.photos.label')}
                     </label>
-                    <ReviewPhotosUploader
+                    <ReviewPhotosList
                         photos={formik.values.photos}
                         onChange={value => formik.setFieldValue('photos', value)}
                     />

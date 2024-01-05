@@ -26,12 +26,12 @@ export const ActionsPrivate = ({ review, reviewsCount }: ActionsPrivateProps) =>
 
     const page = searchParams.get('page')
 
-    const handleRemove = async () => {
+    const handleDeleteReview = async () => {
         try {
             await deleteReviewById(review.id.toString())
             dialog.close()
             toast.success(t('success.delete_review'))
-            // Redirect to previous page if user remove last review on current page and current page is not first
+            // Redirect to previous page if user delete last review on current page and current page is not first
             reviewsCount === 1 && page && page !== '1'
                 ? router.push(`${pathname}?page=${parseInt(page) - 1}`)
                 : router.refresh()
@@ -63,7 +63,7 @@ export const ActionsPrivate = ({ review, reviewsCount }: ActionsPrivateProps) =>
         ),
             isRed: true,
             requiredConfirmation: true,
-            onClick: handleRemove,
+            onClick: handleDeleteReview,
         },
     ]
 

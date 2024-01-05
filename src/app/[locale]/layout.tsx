@@ -10,7 +10,8 @@ import { SuperTokensProvider } from '@/utils/supertokens/supertokens.provider'
 
 import '../globals.css'
 
-import 'mapbox-gl/dist/mapbox-gl.css'
+import 'yet-another-react-lightbox/plugins/captions.css'
+import 'yet-another-react-lightbox/styles.css'
 
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],

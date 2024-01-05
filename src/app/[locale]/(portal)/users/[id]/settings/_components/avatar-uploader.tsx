@@ -24,7 +24,7 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
 
     const [fileName, setFileName] = useState<string>('')
     const [isUploading, setIsUploading] = useState<boolean>(false)
-    const [isRemoveAvatarConfirm, setIsRemoveAvatarConfirm] = useState<boolean>(false)
+    const [isDeleteAvatarConfirm, setIsDeleteAvatarConfirm] = useState<boolean>(false)
 
     const handleChangeFileInput = async (files: FileList) => {
         const file = files[0]
@@ -43,15 +43,15 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
         }
     }
 
-    const handleClickRemoveAvatar = () => {
-        setIsRemoveAvatarConfirm(true)
+    const handleClickDeleteAvatar = () => {
+        setIsDeleteAvatarConfirm(true)
     }
 
-    const handleCancelRemoveAvatar = () => {
-        setIsRemoveAvatarConfirm(false)
+    const handleCancelDeleteAvatar = () => {
+        setIsDeleteAvatarConfirm(false)
     }
 
-    const handleConfirmRemoveAvatar = async () => {
+    const handleConfirmDeleteAvatar = async () => {
         try {
             setIsUploading(true)
             await deleteUserAvatar()
@@ -62,7 +62,7 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
         } finally {
             setFileName('')
             setIsUploading(false)
-            setIsRemoveAvatarConfirm(false)
+            setIsDeleteAvatarConfirm(false)
         }
     }
 
@@ -70,10 +70,10 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
         <div className="relative">
             {currentAvatar && (
                 <div className="absolute -top-7 right-0">
-                    {isRemoveAvatarConfirm ? (
-                        <ConfirmationMini onConfirm={handleConfirmRemoveAvatar} onCancel={handleCancelRemoveAvatar} />
+                    {isDeleteAvatarConfirm ? (
+                        <ConfirmationMini onConfirm={handleConfirmDeleteAvatar} onCancel={handleCancelDeleteAvatar} />
                     ) : (
-                        <div className="link-red" onClick={handleClickRemoveAvatar}>
+                        <div className="link-red" onClick={handleClickDeleteAvatar}>
                             {t('common.action.delete')}
                         </div>
                     )}

@@ -6,21 +6,17 @@ import Lightbox from 'yet-another-react-lightbox'
 import Captions from 'yet-another-react-lightbox/plugins/captions'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 
-import Image from 'next/image'
-
 import type { IPhoto } from '@/utils/types/photo'
 import type { IPlace } from '@/utils/types/place'
 
+import { Photo } from '@/components/photo'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import 'yet-another-react-lightbox/plugins/captions.css'
-import 'yet-another-react-lightbox/styles.css'
+type PhotosListProps = IPlace
 
-type PhotosProps = IPlace
-
-export const Photos = ({ title, author, photos, cover }: PhotosProps) => {
+export const PhotosList = ({ title, author, photos, cover }: PhotosListProps) => {
     const t = useI18n()
     const photosWithCover: IPhoto[] = cover ? [{ id: 0, url: cover }, ...photos] : photos
 
@@ -35,17 +31,7 @@ export const Photos = ({ title, author, photos, cover }: PhotosProps) => {
             <h2 className="text-h5-m sm:text-h5">{t('pages.place.photos.title')}</h2>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
                 {photosWithCover.map((photo, index) => (
-                    <Image
-                        key={photo.id}
-                        src={makeImageUrl(photo.url, ImageVariant.PREVIEW)}
-                        className="w-full cursor-pointer rounded-lg"
-                        width={186}
-                        height={186}
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8eftuPQAIOAMS40NHBQAAAABJRU5ErkJggg=="
-                        alt={title}
-                        onClick={() => setIndexSlide(index)}
-                    />
+                    <Photo key={photo.id} url={photo.url} size={186} alt={title} onClick={() => setIndexSlide(index)} />
                 ))}
 
                 <Lightbox

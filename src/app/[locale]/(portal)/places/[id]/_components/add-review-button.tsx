@@ -32,7 +32,7 @@ export const AddReviewButton = ({ placeId, isDisabled }: AddReviewButtonProps) =
     }
 
     return (
-        <ButtonMinor className="w-full rounded-lg" isDisabled={isDisabled} onClick={handleClick}>
+        <ButtonMinor variant="blue" className="w-full rounded-lg" isDisabled={isDisabled} onClick={handleClick}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
                     fillRule="evenodd"

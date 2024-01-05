@@ -11,7 +11,7 @@ import { SignIn } from '@/components/auth/sign-in'
 import { Switcher } from '@/components/forms/switcher/switcher'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { addPlaceToVisited, removePlaceFromVisited } from '@/services/visited'
+import { addPlaceToVisited, deletePlaceFromVisited } from '@/services/visited'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type PlaceAchivementProps = IPlace
@@ -31,7 +31,7 @@ export const PlaceAchivement = ({ id, title, isVisited }: PlaceAchivementProps) 
         }
 
         try {
-            isVisited ? await removePlaceFromVisited(id) : await addPlaceToVisited(id)
+            isVisited ? await deletePlaceFromVisited(id) : await addPlaceToVisited(id)
             router.refresh()
         } catch {
             toast.error(t('common.error'))

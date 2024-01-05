@@ -12,7 +12,7 @@ import { SignIn } from '@/components/auth/sign-in'
 import { ButtonIcon } from '@/components/forms/button-icon/button-icon'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { addPlaceToFavorite, removePlaceFromFavorite } from '@/services/favorites'
+import { addPlaceToFavorite, deletePlaceFromFavorite } from '@/services/favorites'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type ToggleFavoriteButtonProps = IPlace
@@ -35,7 +35,7 @@ export const ToggleFavoriteButton = ({ id, isFavorite }: ToggleFavoriteButtonPro
 
         try {
             setIsLoading(true)
-            isFavorite ? await removePlaceFromFavorite(id) : await addPlaceToFavorite(id)
+            isFavorite ? await deletePlaceFromFavorite(id) : await addPlaceToFavorite(id)
             router.refresh()
         } catch {
             toast.error(t('common.error'))

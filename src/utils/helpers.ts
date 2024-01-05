@@ -1,7 +1,6 @@
-import type { ICategory } from '@/utils/types/category'
 import type { ICoordinates } from '@/utils/types/geo'
 
-import { CategoriesEnum, CategoryI18nKeys, ImageVariant } from '@/utils/enums'
+import { ImageVariant } from '@/utils/enums'
 import { i18nConfig } from '@/utils/i18n/i18n.config'
 
 export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
@@ -46,11 +45,15 @@ export function parseQueryString(input: string | undefined, validationArray: num
     return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
 }
 
-export function localizeCategories(categories: ICategory[], t: any): ICategory[] {
-    return categories
-        .map(category => ({
-            ...category,
-            localizedName: t(CategoryI18nKeys[CategoriesEnum[category.name]]),
-        }))
-        .sort((a, b) => a.localizedName.localeCompare(b.localizedName))
+export function getDescriptionLength(value: string): number {
+    return 0
+
+    // if (typeof value === 'string') {
+    //     const contentState = convertFromRaw(JSON.parse(value))
+    //     const plainText = contentState.getPlainText('')
+    //     const charCount = plainText.length
+    //     return charCount
+    // }
+
+    // return 0
 }
