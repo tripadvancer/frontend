@@ -18,6 +18,15 @@ export const AddPlace = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const initialValues: CreatePlaceInputs = {
+        title: '',
+        description: '',
+        location: '',
+        photos: [],
+        cover: '',
+        categories: [],
+    }
+
     const handleSubmit = async (values: CreatePlaceInputs) => {
         try {
             setIsLoading(true)
@@ -33,7 +42,7 @@ export const AddPlace = () => {
 
     return (
         <PlaceForm
-            initialValues={{ title: '', description: '', location: '', photos: [], cover: '', categories: [] }}
+            initialValues={initialValues}
             isLoading={isLoading}
             onSubmit={values => handleSubmit(values as CreatePlaceInputs)}
         />

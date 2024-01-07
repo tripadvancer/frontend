@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useState } from 'react'
 
-import { Editor, EditorState, convertToRaw } from 'draft-js'
+import classNames from 'classnames'
+import { Editor, EditorState, convertFromRaw, convertToRaw } from 'draft-js'
 
 import { validationConfig } from '@/configs/validation.config'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -11,28 +12,36 @@ const maxLength = validationConfig.place.description.maxLength
 
 type DescriptionInputProps = {
     value: string
-    onChange: (value: string | null) => void
+    onChange: (value: string) => void
+}
+
+const createEditorState = (value: string) => {
+    if (value.length > 0) {
+        return EditorState.createWithContent(convertFromRaw(JSON.parse(value)))
+    }
+
+    return EditorState.createEmpty()
 }
 
 export const DescriptionInput = ({ value, onChange }: DescriptionInputProps) => {
     const t = useI18n()
 
-    const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
+    const [editorState, setEditorState] = useState<EditorState>(() => createEditorState(value))
     const [characterCount, setCharacterCount] = useState(0)
 
     useEffect(() => {
-        const textLength = editorState.getCurrentContent().getPlainText('').length
-        setCharacterCount(textLength)
+        const contentState = editorState.getCurrentContent()
+        const plainText = contentState.getPlainText('')
+        setCharacterCount(plainText.length)
     }, [editorState])
 
     const handleChangeContent = useCallback(
         (state: EditorState) => {
             const contentState = state.getCurrentContent()
-            const contentRaw = JSON.stringify(convertToRaw(contentState))
-            const text = contentState.getPlainText('')
+            const contentRaw = convertToRaw(contentState)
+            const json = JSON.stringify(contentRaw)
             setEditorState(state)
-            onChange(contentRaw)
-            setCharacterCount(text.length)
+            onChange(json)
         },
         [onChange],
     )
@@ -43,7 +52,7 @@ export const DescriptionInput = ({ value, onChange }: DescriptionInputProps) => 
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
                         <h2 className="text-h5-m sm:text-h5">{t('pages.add_place.about.title')}</h2>
-                        <div className="text-black-40">
+                        <div className={classNames(characterCount > maxLength ? 'text-red-100' : 'text-black-40')}>
                             {characterCount} / {maxLength}
                         </div>
                     </div>
