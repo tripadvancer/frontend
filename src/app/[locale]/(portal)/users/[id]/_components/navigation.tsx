@@ -7,9 +7,7 @@ import type { IUser } from '@/utils/types/user'
 import { NavigationPrivate } from './navigation-private'
 import { NavigationPublic } from './navigation-public'
 
-type NavProps = IUser
-
-export const Navigation = async ({ id }: NavProps) => {
+export const Navigation = async ({ id }: IUser) => {
     const doesSessionExist = await Session.doesSessionExist()
 
     if (doesSessionExist) {

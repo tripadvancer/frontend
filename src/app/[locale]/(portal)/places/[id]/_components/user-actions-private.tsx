@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import { Confirmation } from '@/components/confirmation'
+import { Confirmation } from '@/components/ui/confirmation'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { deletePlaceById } from '@/services/places'

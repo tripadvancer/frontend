@@ -43,7 +43,7 @@ export const Categories = ({ selectedCategoryIds, locale }: CategoryProps) => {
                 scroll={false}
                 replace={true}
                 className={classNames(
-                    'hover-animated flex h-8 cursor-pointer items-center justify-center rounded-full bg-blue-20 px-4 text-small text-blue-100 hover:bg-blue-active hover:text-blue-20',
+                    'hover-animated flex-center h-8 cursor-pointer rounded-full bg-blue-20 px-4 text-small text-blue-100 hover:bg-blue-active hover:text-blue-20',
                     {
                         'bg-blue-active text-blue-20': selectedCategoryIds.length === 0,
                     },
@@ -58,7 +58,7 @@ export const Categories = ({ selectedCategoryIds, locale }: CategoryProps) => {
                     scroll={false}
                     replace={true}
                     className={classNames(
-                        'hover-animated flex h-8 cursor-pointer items-center justify-center rounded-full bg-blue-20 px-4 text-small text-blue-100 sm:hover:bg-blue-active sm:hover:text-blue-20',
+                        'hover-animated flex-center h-8 cursor-pointer rounded-full bg-blue-20 px-4 text-small text-blue-100 sm:hover:bg-blue-active sm:hover:text-blue-20',
                         {
                             'bg-blue-active text-blue-20': selectedCategoryIds.includes(category.id),
                         },

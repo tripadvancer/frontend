@@ -1,8 +1,8 @@
 'use client'
 
-import { createContext, useContext, useMemo, useState } from 'react'
+import { ReactNode, createContext, useContext, useMemo, useState } from 'react'
 
-import { Toast, ToastContainer, ToastType } from '@/components/toast'
+import { Toast, ToastContainer, ToastType } from '@/components/ui/toast'
 
 interface ToastInterface {
     id: number
@@ -16,7 +16,7 @@ interface ToastContextInterface {
 }
 
 type ToastProviderProps = {
-    children: React.ReactNode
+    children: ReactNode
 }
 
 const defaultValue: ToastContextInterface = {

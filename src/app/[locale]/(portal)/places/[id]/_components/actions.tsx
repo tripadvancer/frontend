@@ -2,15 +2,13 @@
 
 import type { IPlace } from '@/utils/types/place'
 
-import { ButtonIcon } from '@/components/forms/button-icon/button-icon'
-import { Button } from '@/components/forms/button/button'
-import { ToggleFavoriteButton } from '@/components/toggle-favorite-button'
+import { ButtonIcon } from '@/components/ui/button-icon'
+import { FormButton } from '@/components/ui/form-button'
+import { PlaceFavoriteButton } from '@/components/ui/place-favorite-button'
 import { navigateToLocation } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type ActionsProps = IPlace
-
-export const Actions = (place: ActionsProps) => {
+export const Actions = (place: IPlace) => {
     const t = useI18n()
 
     const handleNavigateToLocation = () => {
@@ -19,7 +17,7 @@ export const Actions = (place: ActionsProps) => {
 
     return (
         <div className="flex gap-x-2">
-            <Button className="flex-auto" onClick={handleNavigateToLocation}>
+            <FormButton className="flex-auto" onClick={handleNavigateToLocation}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path
                         fillRule="evenodd"
@@ -31,7 +29,7 @@ export const Actions = (place: ActionsProps) => {
                     />
                 </svg>
                 {t('place.navigation')}
-            </Button>
+            </FormButton>
             <ButtonIcon onClick={() => alert('Don`t implemented yet')}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -44,7 +42,7 @@ export const Actions = (place: ActionsProps) => {
                     />
                 </svg>
             </ButtonIcon>
-            <ToggleFavoriteButton {...place} />
+            <PlaceFavoriteButton {...place} />
         </div>
     )
 }

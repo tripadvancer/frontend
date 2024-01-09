@@ -1,7 +1,7 @@
 import type { PaginatedResponse } from '@/utils/types/common'
 import type { IPlacePreview } from '@/utils/types/place'
 
-import { Paginator } from '@/components/paginator'
+import { Paginator } from '@/components/ui/paginator'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { Place } from './place'

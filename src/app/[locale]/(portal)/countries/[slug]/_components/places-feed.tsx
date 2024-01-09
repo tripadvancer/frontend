@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
-import { ShowMore } from '@/components/show-more'
+import { ShowMore } from '@/components/ui/show-more'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { Place } from './place'

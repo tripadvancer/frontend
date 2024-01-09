@@ -3,14 +3,12 @@ import Link from 'next/link'
 
 import { IPlaceNearby } from '@/utils/types/place'
 
-import { ImageNotFound } from '@/components/image-not-found'
+import { ImageNotFound } from '@/components/ui/image-not-found'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-type PlaceNearbyProps = IPlaceNearby
-
-export const PlaceNearby = async (place: PlaceNearbyProps) => {
+export const PlaceNearby = async (place: IPlaceNearby) => {
     const t = await getI18n()
 
     // Rounding meters to kilometers

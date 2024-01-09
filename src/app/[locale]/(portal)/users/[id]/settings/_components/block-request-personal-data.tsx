@@ -1,7 +1,7 @@
 'use client'
 
-import { Confirmation } from '@/components/confirmation'
-import { ButtonMinor } from '@/components/forms/button-minor/button-minor'
+import { Confirmation } from '@/components/ui/confirmation'
+import { FormButtonMinor } from '@/components/ui/form-button-minor'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { requestPersonalData } from '@/services/user'
@@ -37,9 +37,9 @@ export const BlockRequestPersonalData = () => {
                 <p>{t('pages.user.account.request_personal_data.text')}</p>
             </div>
             <div>
-                <ButtonMinor variant="blue" onClick={handleRequestPersonalData}>
+                <FormButtonMinor variant="blue" onClick={handleRequestPersonalData}>
                     {t('pages.user.account.request_personal_data.action')}
-                </ButtonMinor>
+                </FormButtonMinor>
             </div>
         </div>
     )

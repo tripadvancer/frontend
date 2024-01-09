@@ -6,17 +6,15 @@ import { useRouter } from 'next/navigation'
 
 import type { IPlace } from '@/utils/types/place'
 
-import { Achievement } from '@/components/achievement'
-import { SignIn } from '@/components/auth/sign-in'
-import { Switcher } from '@/components/forms/switcher/switcher'
+import { SignIn } from '@/components/features/auth/sign-in'
+import { Achievement } from '@/components/ui/achievement'
+import { FormSwitcher } from '@/components/ui/form-switcher'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { addPlaceToVisited, deletePlaceFromVisited } from '@/services/visited'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PlaceAchivementProps = IPlace
-
-export const PlaceAchivement = ({ id, title, isVisited }: PlaceAchivementProps) => {
+export const PlaceAchivement = ({ id, title, isVisited }: IPlace) => {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()
@@ -55,7 +53,7 @@ export const PlaceAchivement = ({ id, title, isVisited }: PlaceAchivementProps) 
                 <div className="overflow-hidden">
                     ...........................................................................................................................................................................................................
                 </div>
-                <Switcher checked={isVisited} onChange={toggleVisited} />
+                <FormSwitcher checked={isVisited} onChange={toggleVisited} />
             </div>
         </Achievement>
     )

@@ -1,7 +1,7 @@
 'use client'
 
-import { Confirmation } from '@/components/confirmation'
-import { ButtonMinor } from '@/components/forms/button-minor/button-minor'
+import { Confirmation } from '@/components/ui/confirmation'
+import { FormButtonMinor } from '@/components/ui/form-button-minor'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { requestUserDeletion } from '@/services/user'
@@ -38,9 +38,9 @@ export const BlockRequestUserDeletion = () => {
                 <p>{t('pages.user.account.request_user_deletion.text')}</p>
             </div>
             <div>
-                <ButtonMinor variant="red" onClick={handleRequestUserDeletion}>
+                <FormButtonMinor variant="red" onClick={handleRequestUserDeletion}>
                     {t('pages.user.account.request_user_deletion.action')}
-                </ButtonMinor>
+                </FormButtonMinor>
             </div>
         </div>
     )

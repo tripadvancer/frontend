@@ -2,8 +2,8 @@ import { Suspense } from 'react'
 
 import type { IPlace } from '@/utils/types/place'
 
-import { ReviewsFeed } from '@/components/reviews-feed/reviews-feed'
-import { ReviewsFeedSkeleton } from '@/components/reviews-feed/reviews-feed-skeleton'
+import { ReviewsFeed } from '@/components/features/reviews-feed/reviews-feed'
+import { ReviewsFeedSkeleton } from '@/components/features/reviews-feed/reviews-feed-skeleton'
 import { getReviewsByPlaceId } from '@/services/reviews'
 import { getI18n } from '@/utils/i18n/i18n.server'
 

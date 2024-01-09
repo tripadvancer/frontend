@@ -4,8 +4,8 @@ import { useState } from 'react'
 
 import { useRouter } from 'next/navigation'
 
-import { ConfirmationMini } from '@/components/confirmation-mini'
-import { FileInput } from '@/components/forms/file-input/file-input'
+import { ConfirmationMini } from '@/components/ui/confirmation-mini'
+import { FormFileInput } from '@/components/ui/form-file-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { deleteUserAvatar, updateUserAvatar } from '@/services/user'
@@ -80,7 +80,7 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
                 </div>
             )}
 
-            <FileInput
+            <FormFileInput
                 fileName={fileName}
                 maxFileSize={maxFileSize}
                 isUploading={isUploading}

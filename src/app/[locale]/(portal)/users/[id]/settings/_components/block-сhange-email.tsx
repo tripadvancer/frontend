@@ -1,7 +1,7 @@
 'use client'
 
-import { ChangeEmail } from '@/components/auth/change-email'
-import { ButtonMinor } from '@/components/forms/button-minor/button-minor'
+import { ChangeEmail } from '@/components/features/auth/change-email'
+import { FormButtonMinor } from '@/components/ui/form-button-minor'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -20,9 +20,9 @@ export const BlockChangeEmail = () => {
                 <p>{t('pages.user.account.change_email.text')}</p>
             </div>
             <div>
-                <ButtonMinor variant="blue" onClick={handleChangeEmail}>
+                <FormButtonMinor variant="blue" onClick={handleChangeEmail}>
                     {t('pages.user.account.change_email.action')}
-                </ButtonMinor>
+                </FormButtonMinor>
             </div>
         </div>
     )

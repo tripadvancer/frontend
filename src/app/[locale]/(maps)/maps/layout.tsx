@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import type { Metadata } from 'next/types'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -6,6 +8,6 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 }
 
-export default function MapsLayout({ children }: { children: React.ReactNode }) {
+export default function MapsLayout({ children }: { children: ReactNode }) {
     return children
 }

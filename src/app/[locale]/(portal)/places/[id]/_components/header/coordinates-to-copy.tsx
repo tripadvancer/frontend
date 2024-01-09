@@ -5,9 +5,7 @@ import type { IPlace } from '@/utils/types/place'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type CoordinatesToCopyProps = IPlace
-
-export const CoordinatesToCopy = ({ location }: CoordinatesToCopyProps) => {
+export const CoordinatesToCopy = ({ location }: IPlace) => {
     const t = useI18n()
     const toast = useToast()
     const coordinates = location.coordinates

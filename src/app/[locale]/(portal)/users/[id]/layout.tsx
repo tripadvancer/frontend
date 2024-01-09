@@ -1,11 +1,13 @@
-import { Avatar } from '@/components/avatar/avatar'
+import { ReactNode } from 'react'
+
+import { Avatar } from '@/components/ui/avatar'
 import { getUserById } from '@/services/users'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { Navigation } from './_components/navigation'
 import { UserAchievement } from './_components/user-achievement'
 
-export default async function UserLayout({ params, children }: { params: { id: string }; children: React.ReactNode }) {
+export default async function UserLayout({ params, children }: { params: { id: string }; children: ReactNode }) {
     const t = await getI18n()
     const user = await getUserById(params.id)
 

@@ -7,9 +7,7 @@ import type { IPlace } from '@/utils/types/place'
 import { UserActionsPrivate } from './user-actions-private'
 import { UserActionsPublic } from './user-actions-public'
 
-type UserActionsProps = IPlace
-
-export const UserActions = async ({ id, author }: UserActionsProps) => {
+export const UserActions = async ({ id, author }: IPlace) => {
     const doesSessionExist = await Session.doesSessionExist()
 
     if (doesSessionExist) {

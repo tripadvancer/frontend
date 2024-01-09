@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import type { Metadata } from 'next/types'
 
 import { getCountryByCode } from '@/services/countries'
@@ -13,6 +15,6 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     }
 }
 
-export default function PlaceLayout({ children }: { children: React.ReactNode }) {
+export default function PlaceLayout({ children }: { children: ReactNode }) {
     return children
 }

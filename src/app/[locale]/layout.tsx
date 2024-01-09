@@ -1,7 +1,9 @@
+import { ReactNode } from 'react'
+
 import { Roboto } from 'next/font/google'
 import type { Metadata } from 'next/types'
 
-import { TailwindIndicator } from '@/components/tailwind-indicator'
+import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 import { DialogProvider } from '@/providers/dialog-provider'
 import { ToastProvider } from '@/providers/toast-provider'
 import { ReduxProvider } from '@/redux/provider'
@@ -12,6 +14,8 @@ import '../globals.css'
 
 import 'yet-another-react-lightbox/plugins/captions.css'
 import 'yet-another-react-lightbox/styles.css'
+
+// export const runtime = 'edge'
 
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],
@@ -58,13 +62,7 @@ export const metadata: Metadata = {
     },
 }
 
-export default async function RootLayout({
-    children,
-    params,
-}: {
-    children: React.ReactNode
-    params: { locale: string }
-}) {
+export default async function RootLayout({ children, params }: { children: ReactNode; params: { locale: string } }) {
     const locale = params.locale
 
     return (

@@ -2,7 +2,7 @@ export const PlaceNearbySkeleton = () => {
     return (
         <div role="status" className="flex-none animate-pulse">
             <div className="flex flex-row gap-4">
-                <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-black-5">
+                <div className="flex-center h-20 w-20 rounded-lg bg-black-5">
                     <svg
                         className="w-10 text-black-15 opacity-30"
                         aria-hidden="true"

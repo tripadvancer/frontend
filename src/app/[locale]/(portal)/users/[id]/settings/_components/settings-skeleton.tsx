@@ -1,7 +1,6 @@
-import { ButtonSkeleton } from '@/components/forms/button/button-skeleton'
-import { FileInputSkeleton } from '@/components/forms/file-input/file-input-skeleton'
-import { InputSkeleton } from '@/components/forms/input/input-skeleton'
-import { TextareaSkeleton } from '@/components/forms/textarea/textarea-skeleton'
+import { FormButtonSkeleton } from '@/components/ui/form-button-skeleton'
+import { FormInputSkeleton } from '@/components/ui/form-input-skeleton'
+import { FormTextareaSkeleton } from '@/components/ui/form-textarea-skeleton'
 
 export const SettingsSkeleton = () => {
     return (
@@ -9,15 +8,15 @@ export const SettingsSkeleton = () => {
             <section>
                 <div className="flex flex-col gap-y-8">
                     <div className="flex flex-col gap-y-4">
-                        <FileInputSkeleton labeled />
-                        <InputSkeleton labeled />
-                        <TextareaSkeleton labeled />
+                        <FormInputSkeleton labeled />
+                        <FormInputSkeleton labeled />
+                        <FormTextareaSkeleton labeled />
                     </div>
                     <div className="flex flex-col gap-y-2">
-                        <InputSkeleton labeled />
-                        <InputSkeleton />
+                        <FormInputSkeleton labeled />
+                        <FormInputSkeleton />
                     </div>
-                    <ButtonSkeleton />
+                    <FormButtonSkeleton />
                 </div>
             </section>
             <section>

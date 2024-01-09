@@ -3,13 +3,11 @@ import Link from 'next/link'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
-import { ImageNotFound } from '@/components/image-not-found'
+import { ImageNotFound } from '@/components/ui/image-not-found'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 
-type PlaceType = IPlacePreview
-
-export const Place = ({ id, title, cover }: PlaceType) => {
+export const Place = ({ id, title, cover }: IPlacePreview) => {
     return (
         <Link href={`/places/${id}`} className="text-black-100">
             <div className="mb-2">

@@ -29,7 +29,7 @@ export default async function CountryPage({
 
     return (
         <div className="flex flex-col">
-            <div className="relative z-10 -mb-8 flex flex-[540px] items-center justify-center pb-8">
+            <div className="flex-center relative z-10 -mb-8 flex-[540px] pb-8">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
                     <Image
                         src={`https://source.unsplash.com/1920x1280/?${country.name[params.locale]}`}

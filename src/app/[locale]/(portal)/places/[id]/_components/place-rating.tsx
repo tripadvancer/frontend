@@ -2,12 +2,10 @@ import Link from 'next/link'
 
 import type { IPlace } from '@/utils/types/place'
 
-import { Rating } from '@/components/rating'
+import { Rating } from '@/components/ui/rating'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-type PlaceRatingProps = IPlace
-
-export const PlaceRating = async ({ avgRating, reviewsCount }: PlaceRatingProps) => {
+export const PlaceRating = async ({ avgRating, reviewsCount }: IPlace) => {
     const t = await getI18n()
 
     return (

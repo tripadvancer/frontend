@@ -9,14 +9,12 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import type { IPhoto } from '@/utils/types/photo'
 import type { IPlace } from '@/utils/types/place'
 
-import { Photo } from '@/components/photo'
+import { Photo } from '@/components/ui/photo'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PhotosListProps = IPlace
-
-export const PhotosList = ({ title, author, photos, cover }: PhotosListProps) => {
+export const PhotosList = ({ title, author, photos, cover }: IPlace) => {
     const t = useI18n()
     const photosWithCover: IPhoto[] = cover ? [{ id: 0, url: cover }, ...photos] : photos
 

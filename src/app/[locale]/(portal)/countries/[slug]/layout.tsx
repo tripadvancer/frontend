@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import type { Metadata } from 'next/types'
 
 import { getCountryBySlug } from '@/services/countries'
@@ -30,6 +32,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
 }
 
-export default function CountryLayout({ children }: { children: React.ReactNode }) {
+export default function CountryLayout({ children }: { children: ReactNode }) {
     return children
 }

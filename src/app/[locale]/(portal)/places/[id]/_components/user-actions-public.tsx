@@ -2,9 +2,9 @@
 
 import Session from 'supertokens-web-js/recipe/session'
 
-import { ClaimEmailError } from '@/components/auth/claim-email-error'
-import { SignIn } from '@/components/auth/sign-in'
-import { PlaceComplain } from '@/components/complain/place-complain'
+import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
+import { SignIn } from '@/components/features/auth/sign-in'
+import { PlaceComplain } from '@/components/features/complain/place-complain'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 

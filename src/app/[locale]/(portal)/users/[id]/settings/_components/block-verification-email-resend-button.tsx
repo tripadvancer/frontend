@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverification'
 
-import { ButtonMinor } from '@/components/forms/button-minor/button-minor'
+import { FormButtonMinor } from '@/components/ui/form-button-minor'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -27,8 +27,8 @@ export const BlockVerificationEmailResendButton = () => {
     }
 
     return (
-        <ButtonMinor variant="blue" isLoading={isLoading} onClick={handleResendVerificationEmail}>
+        <FormButtonMinor variant="blue" isLoading={isLoading} onClick={handleResendVerificationEmail}>
             {t('pages.user.account.verify_email.action')}
-        </ButtonMinor>
+        </FormButtonMinor>
     )
 }

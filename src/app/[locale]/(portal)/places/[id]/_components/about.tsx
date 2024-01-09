@@ -4,9 +4,7 @@ import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { DraftToHtml } from './draft-to-html'
 
-type AboutProps = IPlace
-
-export const About = async ({ description }: AboutProps) => {
+export const About = async ({ description }: IPlace) => {
     const t = await getI18n()
 
     return (

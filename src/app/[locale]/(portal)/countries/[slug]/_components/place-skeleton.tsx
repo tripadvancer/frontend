@@ -2,7 +2,7 @@ export const PlaceSkeleton = () => {
     return (
         <div className="flex flex-row gap-4">
             <div className="flex-none">
-                <div className="flex aspect-square w-32 animate-pulse items-center justify-center rounded-2xl bg-black-5 xl:w-40">
+                <div className="flex-center aspect-square w-32 animate-pulse rounded-2xl bg-black-5 xl:w-40">
                     <svg
                         className="w-12 text-black-15 opacity-30"
                         aria-hidden="true"

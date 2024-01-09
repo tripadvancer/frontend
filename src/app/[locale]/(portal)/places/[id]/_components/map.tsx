@@ -4,9 +4,7 @@ import type { IPlace } from '@/utils/types/place'
 
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-type MapProps = IPlace
-
-export const Map = async ({ title, location }: MapProps) => {
+export const Map = async ({ title, location }: IPlace) => {
     const t = await getI18n()
 
     const mapboxAccessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN

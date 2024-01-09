@@ -5,15 +5,13 @@ import Link from 'next/link'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
-import { ImageNotFound } from '@/components/image-not-found'
-import { Rating } from '@/components/rating'
+import { ImageNotFound } from '@/components/ui/image-not-found'
+import { Rating } from '@/components/ui/rating'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PlaceProps = IPlacePreview
-
-export const Place = ({ id, title, avgRating, reviewsCount, cover }: PlaceProps) => {
+export const Place = ({ id, title, avgRating, reviewsCount, cover }: IPlacePreview) => {
     const t = useI18n()
 
     return (

@@ -9,9 +9,9 @@ import { useRouter } from 'next/navigation'
 
 import type { IUserInfo, UpdateUserInfoInputs } from '@/utils/types/user'
 
-import { Button } from '@/components/forms/button/button'
-import { Input } from '@/components/forms/input/input'
-import { Textarea } from '@/components/forms/textarea/textarea'
+import { FormButton } from '@/components/ui/form-button'
+import { FormInput } from '@/components/ui/form-input'
+import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { updateUserInfo } from '@/services/user'
@@ -23,9 +23,7 @@ const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 
-type SettingsFormProps = IUserInfo
-
-export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
+export const SettingsForm = ({ name, info, avatar }: IUserInfo) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()
@@ -93,7 +91,7 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
                     <label htmlFor="name" className="font-medium">
                         {t('pages.user.settings.forms.fields.username.label')}
                     </label>
-                    <Input
+                    <FormInput
                         type="text"
                         name="name"
                         value={formik.values.name}
@@ -108,7 +106,7 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
                     <label htmlFor="info" className="font-medium">
                         {t('pages.user.settings.forms.fields.info.label')}
                     </label>
-                    <Textarea
+                    <FormTextarea
                         name="info"
                         value={formik.values.info}
                         placeholder={t('placeholder.action.about_user')}
@@ -120,9 +118,9 @@ export const SettingsForm = ({ name, info, avatar }: SettingsFormProps) => {
                 </div>
             </div>
 
-            <Button className="w-full" type="submit" isLoading={isLoading}>
+            <FormButton className="w-full" type="submit" isLoading={isLoading}>
                 {t('common.action.save_changes')}
-            </Button>
+            </FormButton>
         </form>
     )
 }

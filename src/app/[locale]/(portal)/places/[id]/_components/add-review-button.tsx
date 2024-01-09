@@ -2,10 +2,10 @@
 
 import Session from 'supertokens-web-js/recipe/session'
 
-import { ClaimEmailError } from '@/components/auth/claim-email-error'
-import { SignIn } from '@/components/auth/sign-in'
-import { ButtonMinor } from '@/components/forms/button-minor/button-minor'
-import { AddReview } from '@/components/review-form/add-review'
+import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
+import { SignIn } from '@/components/features/auth/sign-in'
+import { AddReview } from '@/components/features/review-form/add-review'
+import { FormButtonMinor } from '@/components/ui/form-button-minor'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -32,7 +32,7 @@ export const AddReviewButton = ({ placeId, isDisabled }: AddReviewButtonProps) =
     }
 
     return (
-        <ButtonMinor variant="blue" className="w-full rounded-lg" isDisabled={isDisabled} onClick={handleClick}>
+        <FormButtonMinor variant="blue" className="w-full rounded-lg" isDisabled={isDisabled} onClick={handleClick}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
                     fillRule="evenodd"
@@ -40,6 +40,6 @@ export const AddReviewButton = ({ placeId, isDisabled }: AddReviewButtonProps) =
                 />
             </svg>
             {t('review.user_actions.add')}
-        </ButtonMinor>
+        </FormButtonMinor>
     )
 }

@@ -1,17 +1,17 @@
 'use client'
 
-import { useEffect } from 'react'
+import { ReactNode, useEffect } from 'react'
 
 import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
 
-import { GlobalLoading } from '@/components/global-loading'
+import { GlobalLoading } from '@/components/ui/global-loading'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type TryRefreshComponentProps = {
-    fallback?: React.ReactNode
+    fallback?: ReactNode
 }
 
 export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {

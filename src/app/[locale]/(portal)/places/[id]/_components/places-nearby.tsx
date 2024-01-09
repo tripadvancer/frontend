@@ -8,9 +8,7 @@ import { getI18n } from '@/utils/i18n/i18n.server'
 import { PlaceNearby } from './place-nearby'
 import { PlacesNearbySkeleton } from './places-nearby-skeleton'
 
-type PlacesNearbyProps = IPlace
-
-export const PlacesNearby = async ({ id }: PlacesNearbyProps) => {
+export const PlacesNearby = async ({ id }: IPlace) => {
     const t = await getI18n()
     const placesNearby = await getPlacesNearby(id.toString())
 

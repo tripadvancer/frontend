@@ -5,9 +5,7 @@ import type { IPlace } from '@/utils/types/place'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 
-type CoverProps = IPlace
-
-export const Cover = ({ title, cover }: CoverProps) => {
+export const Cover = ({ title, cover }: IPlace) => {
     const src = makeImageUrl(cover, ImageVariant.PUBLIC)
 
     return (

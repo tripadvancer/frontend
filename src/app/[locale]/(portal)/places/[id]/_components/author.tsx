@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import type { IPlace } from '@/utils/types/place'
 
-import { Avatar } from '@/components/avatar/avatar'
+import { Avatar } from '@/components/ui/avatar'
 import { FormattedDate } from '@/utils/helpers'
 
 type AuthorProps = IPlace & {
