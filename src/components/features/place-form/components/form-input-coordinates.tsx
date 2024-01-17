@@ -4,12 +4,12 @@ import { FormEvent } from 'react'
 
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type InputCoordinatesProps = {
+type FormInputCoordinatesProps = {
     value: string
     onChange: (value: string | null) => void
 }
 
-export const InputCoordinates = ({ value, onChange }: InputCoordinatesProps) => {
+export const FormInputCoordinates = ({ value, onChange }: FormInputCoordinatesProps) => {
     const t = useI18n()
 
     const handleInput = (e: FormEvent<HTMLDivElement>) => {

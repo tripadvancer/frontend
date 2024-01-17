@@ -10,11 +10,6 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 const maxLength = validationConfig.place.description.maxLength
 
-type DescriptionInputProps = {
-    value: string
-    onChange: (value: string) => void
-}
-
 const createEditorState = (value: string) => {
     if (value.length > 0) {
         return EditorState.createWithContent(convertFromRaw(JSON.parse(value)))
@@ -23,7 +18,12 @@ const createEditorState = (value: string) => {
     return EditorState.createEmpty()
 }
 
-export const DescriptionInput = ({ value, onChange }: DescriptionInputProps) => {
+type FormInputDescriptionProps = {
+    value: string
+    onChange: (value: string) => void
+}
+
+export const FormInputDescription = ({ value, onChange }: FormInputDescriptionProps) => {
     const t = useI18n()
 
     const [editorState, setEditorState] = useState<EditorState>(() => createEditorState(value))

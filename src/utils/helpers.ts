@@ -1,3 +1,5 @@
+import { EditorState, convertFromRaw } from 'draft-js'
+
 import type { ICoordinates } from '@/utils/types/geo'
 
 import { ImageVariant } from '@/utils/enums'
@@ -23,9 +25,15 @@ export function extractCoordinates(value: string): ICoordinates {
     }
 }
 
-export function navigateToLocation(lat: number, lng: number): void {
-    const url = `https://maps.google.com/maps?q=${lat},${lng}`
-    window.open(url, '_blank')
+export function navigateToLocation(lat: number, lng: number, provider?: string): void {
+    switch (provider) {
+        case 'waze':
+            window.open(`https://waze.com/ul?ll=${lat},${lng}&navigate=yes`, '_blank')
+            break
+        default:
+            window.open(`https://maps.google.com/maps?q=${lat},${lng}`, '_blank')
+            break
+    }
 }
 
 export function isValidCoordinate(coordinates: string): boolean {
@@ -45,15 +53,11 @@ export function parseQueryString(input: string | undefined, validationArray: num
     return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
 }
 
-export function getDescriptionLength(value: string): number {
+export function getDescriptionLength(value: string | undefined): number {
+    // const contentState = convertFromRaw(JSON.parse(value))
+    // const plainText = contentState.getPlainText('')
+    // const charCount = plainText.length
+    // return charCount
+
     return 0
-
-    // if (typeof value === 'string') {
-    //     const contentState = convertFromRaw(JSON.parse(value))
-    //     const plainText = contentState.getPlainText('')
-    //     const charCount = plainText.length
-    //     return charCount
-    // }
-
-    // return 0
 }

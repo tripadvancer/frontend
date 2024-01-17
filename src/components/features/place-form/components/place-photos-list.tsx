@@ -12,7 +12,7 @@ import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { PlacePhotoInput } from './place-photo-input'
+import { FormInputPhoto } from './form-input-photo'
 
 const maxPhotosCount = validationConfig.place.photos.maxCount
 
@@ -74,7 +74,7 @@ export const PlacePhotosList = ({ photos, onChange }: PlacePhotosListProps) => {
                 </div>
                 <div className="flex-1">
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-                        <PlacePhotoInput
+                        <FormInputPhoto
                             currentPhotosCount={photos.length}
                             maxPhotosCount={maxPhotosCount}
                             isUploading={isUploading}

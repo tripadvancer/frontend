@@ -22,15 +22,15 @@ export const Categories = ({ selectedCategoryIds, locale }: CategoryProps) => {
 
     // Create a query string with selected categories
     const createQueryString = useCallback(
-        (id: number) => {
+        (categoryId: number) => {
             const params = new URLSearchParams(searchParams)
 
             // Toggle the ID in selectedCategoryIds, for example: /?categories=1,2,3
-            const updatedCategories = selectedCategoryIds.includes(id)
-                ? selectedCategoryIds.filter(item => item !== id)
-                : [...selectedCategoryIds, id]
+            const updatedSelectedCategoryIds = selectedCategoryIds.includes(categoryId)
+                ? selectedCategoryIds.filter(id => id !== categoryId)
+                : [...selectedCategoryIds, categoryId]
 
-            params.set('categories', updatedCategories.join())
+            params.set('categories', updatedSelectedCategoryIds.join())
             return params.toString()
         },
         [searchParams, selectedCategoryIds],

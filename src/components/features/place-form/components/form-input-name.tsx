@@ -4,12 +4,12 @@ import { FormEvent, useState } from 'react'
 
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type InputPlaceNameProps = {
+type FormInputNameProps = {
     value: string
     onChange: (value: string | null) => void
 }
 
-export const InputPlaceName = ({ value, onChange }: InputPlaceNameProps) => {
+export const FormInputName = ({ value, onChange }: FormInputNameProps) => {
     const t = useI18n()
 
     const [showPlaceholder, setShowPlaceholder] = useState<boolean>(true)

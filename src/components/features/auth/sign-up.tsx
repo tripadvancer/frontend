@@ -52,10 +52,6 @@ export const SignUp = () => {
             .required(t('validation.required'))
             .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
             .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
-        // Password validator makes sure that the provided password:
-        // 1) has a minimum of 8 characters
-        // 2) contains at least one lowercase character
-        // 3) contains at least one number
         password: Yup.string()
             .required(t('validation.required'))
             .min(userPasswordMinLength, t('validation.text.min_length', { min_length: userPasswordMinLength }))

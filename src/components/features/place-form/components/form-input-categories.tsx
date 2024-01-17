@@ -1,18 +1,24 @@
+import { useEffect } from 'react'
+
 import { useDialog } from '@/providers/dialog-provider'
 
-import { SelectCategories } from './select-categories'
+import { FormSelectCategories } from './form-select-categories'
 
-type InputCoordinatesProps = {
+type FormInputCoordinatesProps = {
     value: number[]
     onChange: (value: number[]) => void
 }
 
-export const InputCategories = ({ value, onChange }: InputCoordinatesProps) => {
+export const FormInputCategories = ({ value, onChange }: FormInputCoordinatesProps) => {
     const dialog = useDialog()
 
     const handleSelectCategories = () => {
-        dialog.open(<SelectCategories />)
+        dialog.open(<FormSelectCategories selectedCategoryIds={value} setSelectedCategoryIds={onChange} />)
     }
+
+    useEffect(() => {
+        console.log(value)
+    }, [value])
 
     return (
         <div className="flex gap-2">
@@ -20,11 +26,9 @@ export const InputCategories = ({ value, onChange }: InputCoordinatesProps) => {
                 className="hover-animated flex h-8 cursor-pointer items-center gap-x-2 rounded-full border border-white px-4 text-small text-white hover:border-blue-active hover:text-blue-active"
                 onClick={handleSelectCategories}
             >
+                {/* prettier-ignore */}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        fillRule="evenodd"
-                        d="M7.01005 8.98995H2L2 7.01005H7.01005V2H8.98995V7.01005H14L14 8.98995H8.98995V14H7.01005V8.98995Z"
-                    />
+                    <path fillRule="evenodd" d="M7.01005 8.98995H2L2 7.01005H7.01005V2H8.98995V7.01005H14L14 8.98995H8.98995V14H7.01005V8.98995Z" />
                 </svg>
                 Category
             </div>
