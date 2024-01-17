@@ -1,5 +1,3 @@
-import { EditorState, convertFromRaw } from 'draft-js'
-
 import type { ICoordinates } from '@/utils/types/geo'
 
 import { ImageVariant } from '@/utils/enums'
@@ -36,11 +34,6 @@ export function navigateToLocation(lat: number, lng: number, provider?: string):
     }
 }
 
-export function isValidCoordinate(coordinates: string): boolean {
-    const reg = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)(\s*,\s*|\s+)([-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?))$/
-    return reg.test(coordinates)
-}
-
 export function parseQueryString(input: string | undefined, validationArray: number[]): number[] {
     if (input === undefined || input === '') {
         return []
@@ -51,13 +44,4 @@ export function parseQueryString(input: string | undefined, validationArray: num
 
     // Filter out NaN and numbers not in validationArray
     return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
-}
-
-export function getDescriptionLength(value: string | undefined): number {
-    // const contentState = convertFromRaw(JSON.parse(value))
-    // const plainText = contentState.getPlainText('')
-    // const charCount = plainText.length
-    // return charCount
-
-    return 0
 }

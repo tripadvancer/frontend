@@ -1,7 +1,7 @@
+import { convertFromRaw } from 'draft-js'
 import * as Yup from 'yup'
 
 import { validationConfig } from '@/configs/validation.config'
-import { getDescriptionLength, isValidCoordinate } from '@/utils/helpers'
 
 const titleMinLength = validationConfig.place.title.minLength
 const titleMaxLength = validationConfig.place.title.maxLength
@@ -41,3 +41,19 @@ export const validationSchema = (t: any) =>
             .required(t('validation.place.categories.required'))
             .max(maxCategories, t('validation.place.categories.max_count', { max_count: maxCategories })),
     })
+
+function isValidCoordinate(coordinates: string): boolean {
+    const reg = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)(\s*,\s*|\s+)([-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?))$/
+    return reg.test(coordinates)
+}
+
+function getDescriptionLength(value: string | undefined): number {
+    if (typeof value === 'string') {
+        const contentState = convertFromRaw(JSON.parse(value))
+        const plainText = contentState.getPlainText('')
+        const charCount = plainText.length
+        return charCount
+    }
+
+    return 0
+}
