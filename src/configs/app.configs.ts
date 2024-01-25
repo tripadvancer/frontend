@@ -11,8 +11,6 @@ export const WIDGET_PAGINATION_LIMIT = 10
 
 export const SEARCH_VALUE_MIN_LENGTH = 2
 
-export const MAX_FILE_SIZE = 10e6 // 10Mb
-
 export const UNIQUE_PLACE_RADIUS = 15 // meters
 
 export const RANDOM_MIN_DISTANCE = 10 // km

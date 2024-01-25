@@ -1,0 +1,45 @@
+'use client'
+
+import classNames from 'classnames'
+
+type FormRatingInputProps = {
+    value: number
+    size: number
+    error?: string
+    className?: string
+    onChange: (value: number) => void
+}
+
+export const FormRatingInput = ({ value, size, error, className, onChange }: FormRatingInputProps) => {
+    const handleClick = (selectedValue: number) => {
+        onChange(selectedValue !== value ? selectedValue : 0)
+    }
+
+    return (
+        <div className={className}>
+            <div className="group flex text-orange-100">
+                {Array(5)
+                    .fill(null)
+                    .map((_, index) => (
+                        <svg
+                            key={index}
+                            width={size}
+                            height={size}
+                            viewBox="0 0 16 16"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className={classNames(
+                                'peer cursor-pointer transition-opacity duration-300 ease-in-out group-hover:opacity-100 peer-hover:opacity-30',
+                                Math.round(value) >= index + 1 ? 'opacity-100' : 'opacity-30',
+                            )}
+                            onClick={() => handleClick(index + 1)}
+                        >
+                            <path d="M4.42507 9.87848L3.58125 14.7983L7.99955 12.4755L12.4178 14.7983L11.574 9.87848L15.1485 6.39422L10.2087 5.67642L7.99955 1.2002L5.7904 5.67642L0.850586 6.39422L4.42507 9.87848Z" />
+                        </svg>
+                    ))}
+            </div>
+
+            {error && <div className="mt-2 text-small text-red-100">{error}</div>}
+        </div>
+    )
+}

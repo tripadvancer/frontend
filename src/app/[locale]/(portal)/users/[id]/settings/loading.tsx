@@ -1,3 +1,5 @@
+import { SettingsSkeleton } from './_components/settings-skeleton'
+
 export default function Loading() {
-    return <div>Loading settings ...</div>
+    return <SettingsSkeleton />
 }

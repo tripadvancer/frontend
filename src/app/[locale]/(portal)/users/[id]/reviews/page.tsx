@@ -1,7 +1,7 @@
-import { ReviewFeed } from '@/components/reviews-feed/reviews-feed'
+import { ReviewsFeed } from '@/components/features/reviews-feed/reviews-feed'
 import { getReviewsByUserId } from '@/services/reviews'
 
-export default async function UserReviews({
+export default async function UserReviewsPage({
     params,
     searchParams,
 }: {
@@ -12,5 +12,5 @@ export default async function UserReviews({
     const currentPage = searchParams.page ?? '1'
     const reviews = await getReviewsByUserId(userId, currentPage)
 
-    return <ReviewFeed reviews={reviews} currentPage={parseInt(currentPage)} />
+    return <ReviewsFeed reviews={reviews} currentPage={parseInt(currentPage)} variant="user-page" />
 }

@@ -3,21 +3,45 @@
 @tailwind utilities;
 
 body {
-    @apply text-black-100 text-base antialiased;
+    @apply text-base text-black-100 antialiased;
 }
 
-a:hover {
-    @apply hover-animated sm:text-blue-active;
+a {
+    @apply link;
+}
+
+.link {
+    @apply hover-animated cursor-pointer text-blue-100 hover:text-blue-active;
+}
+
+.link-red {
+    @apply hover-animated cursor-pointer text-red-100 hover:text-red-active;
 }
 
 .container {
-    @apply sm:px-8 sm:max-w-[1184px] mx-auto w-full px-4;
+    @apply mx-auto w-full px-4 sm:max-w-[1184px] sm:px-8;
 }
 
 .inner-container {
-    @apply sm:max-w-[928px] mx-auto w-full;
+    @apply mx-auto w-full sm:max-w-[928px];
 }
 
 .hover-animated {
     @apply transition-colors duration-300 ease-in-out;
+}
+
+.flex-center {
+    @apply flex items-center justify-center;
+}
+
+.DraftEditor-root {
+    @apply relative;
+}
+
+.public-DraftEditorPlaceholder-root {
+    @apply absolute z-0 text-black-40;
+}
+
+.DraftEditor-editorContainer {
+    @apply relative z-10;
 }

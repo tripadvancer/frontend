@@ -1,16 +1,17 @@
 export const validationConfig = {
+    common: {
+        maxFileSize: 10e6, // 10Mb
+    },
     user: {
         name: {
             minLength: 2,
             maxLength: 40,
         },
-        password: {
-            minLength: 4,
-            maxLength: 32,
-        },
         info: {
-            minLength: 2,
             maxLength: 1000,
+        },
+        password: {
+            minLength: 8,
         },
     },
     place: {
@@ -23,7 +24,6 @@ export const validationConfig = {
             maxLength: 2000,
         },
         category: {
-            minCount: 1,
             maxCount: 3,
         },
         location: {

@@ -1,8 +1,7 @@
-import type { ICategory } from '@/types/category'
-import type { ICoordinates } from '@/types/geo'
+import type { ICoordinates } from '@/utils/types/geo'
 
-import { i18nConfig } from '@/configs/i18n.config'
-import { CategoriesEnum, CategoryI18nKeys, ImageVariant } from '@/utils/enums'
+import { ImageVariant } from '@/utils/enums'
+import { i18nConfig } from '@/utils/i18n/i18n.config'
 
 export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
     return `${url}/${imageVariant}`
@@ -24,14 +23,15 @@ export function extractCoordinates(value: string): ICoordinates {
     }
 }
 
-export function navigateToLocation(lat: number, lng: number): void {
-    const url = `https://maps.google.com/maps?q=${lat},${lng}`
-    window.open(url, '_blank')
-}
-
-export function isValidCoordinate(coordinates: string): boolean {
-    const reg = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)(\s*,\s*|\s+)([-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?))$/
-    return reg.test(coordinates)
+export function navigateToLocation(lat: number, lng: number, provider?: string): void {
+    switch (provider) {
+        case 'waze':
+            window.open(`https://waze.com/ul?ll=${lat},${lng}&navigate=yes`, '_blank')
+            break
+        default:
+            window.open(`https://maps.google.com/maps?q=${lat},${lng}`, '_blank')
+            break
+    }
 }
 
 export function parseQueryString(input: string | undefined, validationArray: number[]): number[] {
@@ -44,13 +44,4 @@ export function parseQueryString(input: string | undefined, validationArray: num
 
     // Filter out NaN and numbers not in validationArray
     return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
-}
-
-export function localizeCategories(categories: ICategory[], t: any): ICategory[] {
-    return categories
-        .map(category => ({
-            ...category,
-            localizedName: t(CategoryI18nKeys[CategoriesEnum[category.name]]),
-        }))
-        .sort((a, b) => a.localizedName.localeCompare(b.localizedName))
 }

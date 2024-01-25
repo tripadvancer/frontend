@@ -1,5 +1,5 @@
-import { ReviewSkeleton } from '@/components/reviews-feed/review-skeleton'
+import { ReviewsFeedSkeleton } from '@/components/features/reviews-feed/reviews-feed-skeleton'
 
 export default function Loading() {
-    return Array.from({ length: 3 }).map((_, i) => <ReviewSkeleton key={i} />)
+    return <ReviewsFeedSkeleton />
 }

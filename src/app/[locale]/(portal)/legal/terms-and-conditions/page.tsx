@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: 'Terms and Conditions',
 }
 
-export default function LegalTermsAndConditions() {
+export default function LegalTermsAndConditionsPage() {
     return (
         <article className="inner-container">
             <h1 className="mb-4 text-center text-h1-m sm:text-h1">Terms and Conditions</h1>
@@ -197,19 +197,15 @@ export default function LegalTermsAndConditions() {
                     <li className="mb-3">
                         the licenses applicable to&nbsp;the external images used on&nbsp;the platform include, but are
                         not limited&nbsp;to, the following:{' '}
-                        <Link
-                            href="https://creativecommons.org/publicdomain/zero/1.0"
-                            className="text-blue-100"
-                            target="_blank"
-                        >
+                        <Link href="https://creativecommons.org/publicdomain/zero/1.0" target="_blank">
                             CC0 1.0
                         </Link>
                         ,{' '}
-                        <Link href="https://unsplash.com/license" className="text-blue-100" target="_blank">
+                        <Link href="https://unsplash.com/license" target="_blank">
                             Unsplash free license
                         </Link>
                         ,{' '}
-                        <Link href="https://www.pexels.com/license/" className="text-blue-100" target="_blank">
+                        <Link href="https://www.pexels.com/license/" target="_blank">
                             Pexels free license
                         </Link>
                         ;
@@ -373,10 +369,7 @@ export default function LegalTermsAndConditions() {
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Agreement,
                     we&nbsp;encourage you to&nbsp;contact us&nbsp;using the details below:{' '}
-                    <Link href="mailto:support@tripadvancer.me" className="text-blue-100">
-                        support@tripadvancer.me
-                    </Link>
-                    .
+                    <Link href="mailto:support@tripadvancer.me">support@tripadvancer.me</Link>.
                 </p>
             </article>
 

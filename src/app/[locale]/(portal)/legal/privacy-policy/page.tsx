@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: 'Privacy Policy',
 }
 
-export default function LegalPrivacyPolicy() {
+export default function LegalPrivacyPolicyPage() {
     return (
         <article className="inner-container">
             <h1 className="mb-4 text-center text-h1-m sm:text-h1">Privacy Policy</h1>
@@ -118,10 +118,7 @@ export default function LegalPrivacyPolicy() {
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Privacy Policy,
                     we&nbsp;encourage you to contact&nbsp;us using the details below:{' '}
-                    <Link href="mailto:support@tripadvancer.me" className="text-blue-100">
-                        support@tripadvancer.me
-                    </Link>
-                    .
+                    <Link href="mailto:support@tripadvancer.me">support@tripadvancer.me</Link>.
                 </p>
             </article>
 

@@ -1,0 +1,71 @@
+'use client'
+
+import { useFormik } from 'formik'
+
+import type { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/types/place'
+
+import { useI18n } from '@/utils/i18n/i18n.client'
+
+import { FormErrorMesage } from './components/form-error-mesage'
+import { FormInputCategories } from './components/form-input-categories'
+import { FormInputCover } from './components/form-input-cover'
+import { FormInputDescription } from './components/form-input-description'
+import { FormSubmit } from './components/form-submit'
+import { PlacePhotosList } from './components/place-photos-list'
+import { validationSchema } from './validation-schema'
+
+type PlaceFormProps = {
+    initialValues: CreatePlaceInputs | UpdatePlaceInputs
+    isLoading: boolean
+    onSubmit: (values: CreatePlaceInputs | UpdatePlaceInputs) => Promise<void>
+}
+
+export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps) => {
+    const t = useI18n()
+
+    const formik = useFormik({
+        initialValues,
+        validateOnBlur: false,
+        validateOnChange: false,
+        validationSchema: validationSchema(t),
+        onSubmit,
+    })
+
+    return (
+        <form className="flex flex-col" onSubmit={formik.handleSubmit}>
+            <div className="flex-center relative z-10 -mb-8 flex-[540px] pb-8">
+                <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
+                    {/* {cover && <Image src={src} alt={title} fill priority className="object-cover" />} */}
+                    <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-30" />
+                </div>
+                <section className="container relative z-30 py-8">
+                    <div className="flex-center m-auto flex-col gap-y-4 sm:w-2/3">
+                        <FormInputCover />
+                        {/* <InputPlaceName value={formik.values?.title} onChange={formik.handleChange} /> */}
+                        {/* <FormInputCoordinates value={formik.values?.location} onChange={formik.handleChange} /> */}
+                        <FormInputCategories
+                            value={formik.values.categories}
+                            onChange={value => formik.setFieldValue('categories', value)}
+                        />
+                    </div>
+                </section>
+            </div>
+            <div className="relative z-20 flex-1 rounded-t-4xl bg-white">
+                <div className="container py-24">
+                    <div className="inner-container flex flex-col gap-y-16">
+                        <FormInputDescription
+                            value={formik.values.description}
+                            onChange={value => formik.setFieldValue('description', value)}
+                        />
+                        <PlacePhotosList
+                            photos={formik.values.photos}
+                            onChange={value => formik.setFieldValue('photos', value)}
+                        />
+                        <FormErrorMesage errors={formik.errors} />
+                        <FormSubmit isLoading={isLoading} />
+                    </div>
+                </div>
+            </div>
+        </form>
+    )
+}
