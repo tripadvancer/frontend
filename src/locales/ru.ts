@@ -50,6 +50,7 @@ export default {
     'common.action.cancel': 'Отмена',
     'common.action.ok': 'Ок',
     'common.action.save_changes': 'Сохранить изменения',
+    'common.action.confirm': 'Подтвердить',
 
     'claim.email.title': 'Ваш email не подтверждён',
     'claim.email.message': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',

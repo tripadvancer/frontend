@@ -50,6 +50,7 @@ export default {
     'common.action.cancel': 'Cancel',
     'common.action.ok': 'Ok',
     'common.action.save_changes': 'Save changes',
+    'common.action.confirm': 'Confirm',
 
     'claim.email.title': 'Your email is not verified',
     'claim.email.message': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',

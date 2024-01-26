@@ -61,8 +61,10 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                             photos={formik.values.photos}
                             onChange={value => formik.setFieldValue('photos', value)}
                         />
-                        <FormErrorMesage errors={formik.errors} />
-                        <FormSubmit isLoading={isLoading} />
+                        <div className="flex flex-col gap-y-4">
+                            <FormErrorMesage errors={formik.errors} />
+                            <FormSubmit isLoading={isLoading} />
+                        </div>
                     </div>
                 </div>
             </div>

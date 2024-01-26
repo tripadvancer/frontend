@@ -1,3 +1,5 @@
+import { FormikErrors } from 'formik'
+
 import type { ICoordinates } from '@/utils/types/geo'
 
 import { ImageVariant } from '@/utils/enums'
@@ -44,4 +46,34 @@ export function parseQueryString(input: string | undefined, validationArray: num
 
     // Filter out NaN and numbers not in validationArray
     return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
+}
+
+/**
+ * Returns an array of all the errors in the formik errors object.
+ * @param {FormikErrors<Values>} errors - The formik errors object.
+ * @returns {string[]} - An array of all the errors in the formik errors object.
+ */
+export function getFormikErrors<Values>(errors: FormikErrors<Values>): string[] {
+    const errorMessages: string[] = []
+
+    for (const key in errors) {
+        if (errors.hasOwnProperty(key)) {
+            const error = errors[key]
+            if (typeof error === 'object') {
+                if (Array.isArray(error)) {
+                    for (const item of error) {
+                        const nestedErrors = getFormikErrors(item)
+                        errorMessages.push(...nestedErrors)
+                    }
+                } else if (error !== undefined) {
+                    const nestedErrors = getFormikErrors(error)
+                    errorMessages.push(...nestedErrors)
+                }
+            } else if (error !== undefined) {
+                errorMessages.push(error)
+            }
+        }
+    }
+
+    return errorMessages
 }
