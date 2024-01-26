@@ -1,5 +1,7 @@
 import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
 
+import { userAgent } from 'next/server'
+
 import { getSSRSession } from '@/utils/supertokens/session.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
@@ -16,14 +18,16 @@ export const Header = async () => {
         return <TryRefreshComponent />
     }
 
+    // todo: create helper for get claim value on client and server
     const emailVerificationClaim = await session?.getClaimValue(EmailVerificationClaim)
     const emailIsNotVerified = emailVerificationClaim === false // because it can be undefined
+    const accessTokenPayload = session?.getAccessTokenPayload()
 
     return (
         <>
             <div className="absolute left-0 right-0 top-0 -z-10 h-[200px] bg-blue-20" />
             <header className="sticky top-0 z-40 bg-blue-20">
-                {emailIsNotVerified && <EmailVerificationNotice />}
+                {emailIsNotVerified && <EmailVerificationNotice userId={accessTokenPayload.userId} />}
                 <div className="container relative flex h-[56px] items-center justify-between sm:h-[76px]">
                     <MapLink />
                     <Logo />
