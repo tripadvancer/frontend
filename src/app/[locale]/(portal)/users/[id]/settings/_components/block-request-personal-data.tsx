@@ -1,7 +1,6 @@
 'use client'
 
 import { Confirmation } from '@/components/ui/confirmation'
-import { FormButtonMinor } from '@/components/ui/form-button-minor'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { requestPersonalData } from '@/services/user'
@@ -31,16 +30,14 @@ export const BlockRequestPersonalData = () => {
     }
 
     return (
-        <div className="flex flex-col gap-y-4">
-            <div className="flex flex-col gap-y-2 text-black-70">
-                <p className="font-medium">{t('pages.user.account.request_personal_data.title')}</p>
-                <p>{t('pages.user.account.request_personal_data.text')}</p>
-            </div>
-            <div>
-                <FormButtonMinor variant="blue" onClick={handleRequestPersonalData}>
+        <div className="flex flex-col gap-y-4 border-t border-black-15 py-8 last:border-b">
+            <div className="flex items-center justify-between">
+                <div className="text-h7-m sm:text-h7">{t('pages.user.account.request_personal_data.title')}</div>
+                <div className="link font-bold" onClick={handleRequestPersonalData}>
                     {t('pages.user.account.request_personal_data.action')}
-                </FormButtonMinor>
+                </div>
             </div>
+            <div>{t('pages.user.account.request_personal_data.text')}</div>
         </div>
     )
 }

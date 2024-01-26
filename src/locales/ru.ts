@@ -268,19 +268,19 @@ export default {
     'pages.user.account.verify_email.text': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
     'pages.user.account.verify_email.action': 'Отправить письмо ещё раз',
 
-    'pages.user.account.change_email.title': 'Ваш email',
+    'pages.user.account.change_email.title': 'Email',
     'pages.user.account.change_email.text': 'Ваш адрес электронной почты будет использоваться для входа в систему, получения уведомлений и восстановления пароля.',
     'pages.user.account.change_email.action': 'Изменить email',
 
-    'pages.user.account.change_password.title': 'Ваш пароль',
+    'pages.user.account.change_password.title': 'Пароль',
     'pages.user.account.change_password.text': 'Мы рекомендуем вам использовать пароль, отличный от других ваших учетных записей в Интернете, а так же изменять его время от времени.',
     'pages.user.account.change_password.action': 'Изменить пароль',
 
-    'pages.user.account.request_personal_data.title': 'Ваши персональные данные',
+    'pages.user.account.request_personal_data.title': 'Персональные данные',
     'pages.user.account.request_personal_data.text': 'Вы можете запросить копию своих персональных данных, которые мы храним. Это включает в себя любые данные, которые вы предоставили нам при регистрации, такие как имя пользователя, адрес электронной почты и другие дополнительные сведения.',
-    'pages.user.account.request_personal_data.action': 'Запросить персональные данные',
+    'pages.user.account.request_personal_data.action': 'Запросить',
 
-    'pages.user.account.request_user_deletion.title': 'Удалить учётную запись',
+    'pages.user.account.request_user_deletion.title': 'Учётная запись',
     'pages.user.account.request_user_deletion.text': 'Вы можете запросить удаление своей учётной записи и всех связанных с ней данных. Вы сможете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
     'pages.user.account.request_user_deletion.action': 'Удалить учётную запись',
 

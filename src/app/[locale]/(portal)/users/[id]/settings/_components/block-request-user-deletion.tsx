@@ -1,7 +1,6 @@
 'use client'
 
 import { Confirmation } from '@/components/ui/confirmation'
-import { FormButtonMinor } from '@/components/ui/form-button-minor'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { requestUserDeletion } from '@/services/user'
@@ -32,16 +31,14 @@ export const BlockRequestUserDeletion = () => {
     }
 
     return (
-        <div className="flex flex-col gap-y-4">
-            <div className="flex flex-col gap-y-2 text-black-70">
-                <p className="font-medium">{t('pages.user.account.request_user_deletion.title')}</p>
-                <p>{t('pages.user.account.request_user_deletion.text')}</p>
-            </div>
-            <div>
-                <FormButtonMinor variant="red" onClick={handleRequestUserDeletion}>
+        <div className="flex flex-col gap-y-4 border-t border-black-15 py-8 last:border-b">
+            <div className="flex items-center justify-between">
+                <div className="text-h7-m sm:text-h7">{t('pages.user.account.request_user_deletion.title')}</div>
+                <div className="link-red font-bold" onClick={handleRequestUserDeletion}>
                     {t('pages.user.account.request_user_deletion.action')}
-                </FormButtonMinor>
+                </div>
             </div>
+            <div>{t('pages.user.account.request_user_deletion.text')}</div>
         </div>
     )
 }
