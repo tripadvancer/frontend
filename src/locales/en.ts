@@ -4,7 +4,7 @@ export default {
     'cookie_consent.policy_link': 'Cookie Policy',
     'cookie_consent.got_it': 'Got it!',
 
-    'email_verification_notice.text': 'Your email has not been verified. Please confirm email by clicking the link in the email we send you during registration. {learn_more_link}',
+    'email_verification_notice.text': 'Your email has not been verified. Please confirm it by clicking the link in the email we sent you during the registration. {learn_more_link}',
     'email_verification_notice.learn_more_link': 'Learn more',
 
     'about.title': 'Planing a trip but don`t know where to go?',
