@@ -291,5 +291,7 @@ export default {
     'pages.add_place.photos.title': 'Фотографии',
     'pages.add_place.photos.info': 'Вы можете загрузить до {max_count} фотографий.',
     'pages.add_place.submit': 'Добавить место',
-    'pages.add_place.submit.info': 'Добавляя новый объект на карту, вы принимаете {terms_link}, {privacy_link} и даете согласие на их обработку.'
+    'pages.add_place.submit.info': 'Добавляя новый объект на карту, вы принимаете {terms_link}, {privacy_link} и даете согласие на их обработку.',
+    'pages.add_place.categories.add_category.button': 'Добавить категорию',
+    'pages.add_place.categories.add_category.title': 'Выберите до {max_count} категорий',
 } as const

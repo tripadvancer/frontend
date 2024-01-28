@@ -287,4 +287,6 @@ export default {
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
+    'pages.add_place.categories.add_category.button': 'Add category',
+    'pages.add_place.categories.add_category.title': 'Select up to {max_count} categories',
 } as const
