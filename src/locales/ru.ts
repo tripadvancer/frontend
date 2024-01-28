@@ -4,6 +4,9 @@ export default {
     'cookie_consent.policy_link': 'Политике использования файлов cookie',
     'cookie_consent.got_it': 'Понятно!',
 
+    'email_verification_notice.text': 'Ваш адрес электронной почты не был подтверждён. Подтвердите Ваш email, перейдя по ссылке в отправленном при регистрации письме. {learn_more_link}',
+    'email_verification_notice.learn_more_link': 'Узнать больше',
+
     'about.title': 'Планируете путешествие, но не знаете куда поехать?',
     'about.description': 'Tripadvancer поможет Вам открыть мир с новой стороны, найти интересные места и отправиться в увлекательное путешествие.',
 
@@ -51,10 +54,6 @@ export default {
     'common.action.ok': 'Ок',
     'common.action.save_changes': 'Сохранить изменения',
     'common.action.confirm': 'Подтвердить',
-
-    'claim.email.title': 'Ваш email не подтверждён',
-    'claim.email.message': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
-    'claim.email.resend_verification_email': 'Отправить письмо ещё раз',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -172,20 +171,38 @@ export default {
     'review.form.fields.text.label': 'Отзыв',
     'review.form.fields.photos.label': 'Фотографии',
 
-    'auth.third_party.callback.redirecting': 'Идет перенаправление...',
-    'auth.third_party.callback.checking_status': 'Мы проверяем статус Вашей учётной записи...',
-    'auth.third_party.callback.error.email_not_provided': 'Мы не получили Ваш email от социальной сети. Пожалуйста, попробуйте другой способ входа.',
-    'auth.third_party.callback.error.email_already_exists': 'Похоже, у вас уже есть учетная запись с другим методом входа. Пожалуйста, используйте её для входа.',
+    'auth.change_email.title': 'Изменить email',
+    'auth.change_email.info': 'Введите свой новый адрес электронной почты ниже, и мы отправим вам письмо с подтверждением:',
 
-    'auth.signup.title': 'Регистрация',
-    'auth.signup.third_party.title': 'Или зарегистрируйтесь, используя свой email',
-    'auth.signup.submit': 'Зарегистрироваться',
-    'auth.signup.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
-    'auth.signup.to_back': 'Уже зарегистрированы? {sign_in_link}',
+    'auth.change_password.title': 'Изменить пароль',
+    'auth.change_password.info': 'Создайте новый пароль длиной не менее 8 символов, содержащий сочетание букв и цифр:',
 
-    'auth.completing_signup.title': 'Подтвердите Ваш email',
-    'auth.completing_signup.message': 'Мы отправили вам письмо с подтверждением. Пожалуйста, проверьте свой почтовый ящик и следуйте инструкциям в письме, чтобы завершить процесс подтверждения.',
-    'auth.completing_signup.resend_verification_email': 'Отправить письмо ещё раз',
+    'auth.claim_email_error.title': 'Ваш email не подтверждён',
+    'auth.claim_email_error.message': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
+    'auth.claim_email_error.resend_verification_email': 'Отправить письмо ещё раз',
+    'auth.claim_email_error.go_to_settings': 'Или измените свой email. {settings_link}',
+    'auth.claim_email_error.settings_link': 'Настройки',
+
+    'auth.confirm_user_deletion.loading': 'Начинаем процесс удаления Вашей учётной записи...',
+    'auth.confirm_user_deletion.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для удаления учётной записи.',
+    'auth.confirm_user_deletion.ok': 'Процесс удаления Вашей учётной записи начат. Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
+
+    'auth.forgot_password_completing.title': 'Восстановление пароля',
+    'auth.forgot_password_completing.message': 'Мы отправили Вам письмо с инструкциями по восстановлению пароля.',
+
+    'auth.forgot_password.title': 'Забыли пароль?',
+    'auth.forgot_password.submit': 'Восстановить пароль',
+    'auth.forgot_password.info': 'Укажите Ваш email и мы вышлем письмо с инструкцией по восстановлению пароля:',
+    'auth.forgot_password.to_back': '{sign_in_link} или {sign_up_link}',
+
+    'auth.reset_password.title': 'Введите новый пароль для Вашей учётной записи',
+    'auth.reset_password.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления пароля.',
+    'auth.reset_password.ok': 'Ваш пароль был успешно изменён.',
+    'auth.reset_password.submit': 'Изменить пароль',
+
+    'auth.restore_user.loading': 'Восстанавливаем Вашу учётную запись...',
+    'auth.restore_user.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления учётной записи.',
+    'auth.restore_user.ok': 'Ваша учётная запись была восстановлена.',
 
     'auth.signin.title': 'Вход',
     'auth.signin.third_party.or': 'Или',
@@ -193,36 +210,24 @@ export default {
     'auth.signin.link.forgot_password': 'Забыли пароль?',
     'auth.signin.to_back': 'Нет учётной записи? {sign_up_link}',
 
-    'auth.forgot_password.title': 'Забыли пароль?',
-    'auth.forgot_password.submit': 'Восстановить пароль',
-    'auth.forgot_password.info': 'Укажите Ваш email и мы вышлем письмо с инструкцией по восстановлению пароля:',
-    'auth.forgot_password.to_back': '{sign_in_link} или {sign_up_link}',
+    'auth.signup_completing.title': 'Подтвердите Ваш email',
+    'auth.signup_completing.message': 'Мы отправили вам письмо с подтверждением. Пожалуйста, проверьте свой почтовый ящик и следуйте инструкциям в письме, чтобы завершить процесс подтверждения.',
+    'auth.signup_completing.resend_verification_email': 'Отправить письмо ещё раз',
 
-    'auth.completing_forgot_password.title': 'Восстановление пароля',
-    'auth.completing_forgot_password.message': 'Мы отправили Вам письмо с инструкциями по восстановлению пароля.',
+    'auth.signup.title': 'Регистрация',
+    'auth.signup.third_party.title': 'Или зарегистрируйтесь, используя свой email',
+    'auth.signup.submit': 'Зарегистрироваться',
+    'auth.signup.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
+    'auth.signup.to_back': 'Уже зарегистрированы? {sign_in_link}',
 
-    'auth.change_password.title': 'Изменить пароль',
-    'auth.change_password.info': 'Создайте новый пароль длиной не менее 8 символов, содержащий сочетание букв и цифр:',
+    'auth.third_party_callback.redirecting': 'Идет перенаправление...',
+    'auth.third_party_callback.checking_status': 'Мы проверяем статус Вашей учётной записи...',
+    'auth.third_party_callback.error.email_not_provided': 'Мы не получили Ваш email от социальной сети. Пожалуйста, попробуйте другой способ входа.',
+    'auth.third_party_callback.error.email_already_exists': 'Похоже, у вас уже есть учетная запись с другим методом входа. Пожалуйста, используйте её для входа.',
 
-    'auth.change_email.title': 'Изменить email',
-    'auth.change_email.info': 'Введите свой новый адрес электронной почты ниже, и мы отправим вам письмо с подтверждением:',
-
-    'pages.auth.verify.loading': 'Проверяем ваш email...',
-    'pages.auth.verify.token_expired': 'Ссылка для подтверждения email устарела. Пожалуйста, залогиньтесь снова, чтобы мы могли отправить Вам новую ссылку для подтверждения.',
-    'pages.auth.verify.ok': 'Ваш email был подтверждён.',
-
-    'pages.auth.restore_user.loading': 'Восстанавливаем Вашу учётную запись...',
-    'pages.auth.restore_user.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления учётной записи.',
-    'pages.auth.restore_user.ok': 'Ваша учётная запись была восстановлена.',
-
-    'pages.auth.confirm_user_deletion.loading': 'Начинаем процесс удаления Вашей учётной записи...',
-    'pages.auth.confirm_user_deletion.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для удаления учётной записи.',
-    'pages.auth.confirm_user_deletion.ok': 'Процесс удаления Вашей учётной записи начат. Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
-
-    'pages.auth.reset_password.title': 'Введите новый пароль для Вашей учётной записи',
-    'pages.auth.reset_password.token_expired': 'Срок действия ссылки истёк. Пожалуйста, запросите новую ссылку для восстановления пароля.',
-    'pages.auth.reset_password.ok': 'Ваш пароль был успешно изменён.',
-    'pages.auth.reset_password.submit': 'Изменить пароль',
+    'auth.verify_email.loading': 'Проверяем ваш email...',
+    'auth.verify_email.token_expired': 'Ссылка для подтверждения email устарела. Пожалуйста, залогиньтесь снова, чтобы мы могли отправить Вам новую ссылку для подтверждения.',
+    'auth.verify_email.ok': 'Ваш email был подтверждён.',
 
     'pages.not_found.title': 'Страница не найдена',
     'pages.not_found.text': 'Извините, но похоже, Вы забрели в неизведанные территории. Страница, которую Вы искали, либо была перемещена, удалена, либо никогда не существовала.',
@@ -265,19 +270,19 @@ export default {
     'pages.user.account.verify_email.text': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
     'pages.user.account.verify_email.action': 'Отправить письмо ещё раз',
 
-    'pages.user.account.change_email.title': 'Ваш email',
+    'pages.user.account.change_email.title': 'Email',
     'pages.user.account.change_email.text': 'Ваш адрес электронной почты будет использоваться для входа в систему, получения уведомлений и восстановления пароля.',
     'pages.user.account.change_email.action': 'Изменить email',
 
-    'pages.user.account.change_password.title': 'Ваш пароль',
+    'pages.user.account.change_password.title': 'Пароль',
     'pages.user.account.change_password.text': 'Мы рекомендуем вам использовать пароль, отличный от других ваших учетных записей в Интернете, а так же изменять его время от времени.',
     'pages.user.account.change_password.action': 'Изменить пароль',
 
-    'pages.user.account.request_personal_data.title': 'Ваши персональные данные',
+    'pages.user.account.request_personal_data.title': 'Персональные данные',
     'pages.user.account.request_personal_data.text': 'Вы можете запросить копию своих персональных данных, которые мы храним. Это включает в себя любые данные, которые вы предоставили нам при регистрации, такие как имя пользователя, адрес электронной почты и другие дополнительные сведения.',
-    'pages.user.account.request_personal_data.action': 'Запросить персональные данные',
+    'pages.user.account.request_personal_data.action': 'Запросить',
 
-    'pages.user.account.request_user_deletion.title': 'Удалить учётную запись',
+    'pages.user.account.request_user_deletion.title': 'Учётная запись',
     'pages.user.account.request_user_deletion.text': 'Вы можете запросить удаление своей учётной записи и всех связанных с ней данных. Вы сможете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
     'pages.user.account.request_user_deletion.action': 'Удалить учётную запись',
 

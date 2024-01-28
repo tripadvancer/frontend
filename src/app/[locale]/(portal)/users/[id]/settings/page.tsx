@@ -8,7 +8,6 @@ import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-comp
 import { BlockChangePassword } from './_components/block-change-password'
 import { BlockRequestPersonalData } from './_components/block-request-personal-data'
 import { BlockRequestUserDeletion } from './_components/block-request-user-deletion'
-import { BlockVerificationEmail } from './_components/block-verification-email'
 import { BlockChangeEmail } from './_components/block-сhange-email'
 import { SettingsForm } from './_components/settings-form'
 import { SettingsSkeleton } from './_components/settings-skeleton'
@@ -43,7 +42,6 @@ export default async function UserSettingsPage({ params }: { params: { id: strin
                 <section>
                     <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.user.settings.account.title')}</h2>
                     <div className="flex flex-col gap-y-8">
-                        <BlockVerificationEmail />
                         <BlockChangeEmail />
                         <BlockChangePassword />
                         <BlockRequestPersonalData />

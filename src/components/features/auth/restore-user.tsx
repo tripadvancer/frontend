@@ -31,14 +31,14 @@ export const RestoreUser = ({ token }: RestoreUserProps) => {
     })
 
     if (!status) {
-        return <p className="text-center">{t('pages.auth.restore_user.loading')}</p>
+        return <p className="text-center">{t('auth.restore_user.loading')}</p>
     }
 
     return (
         <>
             <p className="text-center">
-                {status === 'OK' && t('pages.auth.restore_user.ok')}
-                {status === 'INVALID_TOKEN_ERROR' && t('pages.auth.restore_user.token_expired')}
+                {status === 'OK' && t('auth.restore_user.ok')}
+                {status === 'INVALID_TOKEN_ERROR' && t('auth.restore_user.token_expired')}
             </p>
             <LinkButton href="/" className="w-full">
                 {t('common.action.go_home')}

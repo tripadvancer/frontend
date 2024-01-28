@@ -4,6 +4,9 @@ export default {
     'cookie_consent.policy_link': 'Cookie Policy',
     'cookie_consent.got_it': 'Got it!',
 
+    'email_verification_notice.text': 'Your email has not been verified. Please confirm it by clicking the link in the email we sent you during the registration. {learn_more_link}',
+    'email_verification_notice.learn_more_link': 'Learn more',
+
     'about.title': 'Planing a trip but don`t know where to go?',
     'about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
 
@@ -52,10 +55,6 @@ export default {
     'common.action.save_changes': 'Save changes',
     'common.action.confirm': 'Confirm',
 
-    'claim.email.title': 'Your email is not verified',
-    'claim.email.message': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
-    'claim.email.resend_verification_email': 'Resend Verification Email',
-
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
 
@@ -95,9 +94,9 @@ export default {
     'placeholder.action.review': 'Share your impressions in detail — this way you will help others learn more about this place',
     'placeholder.action.complain.comment': 'Add your comment here',
     'placeholder.action.password': 'Enter your password',
-    'placeholder.action.new_password': 'Enter your new password',
-    'placeholder.action.email': 'Enter your email address',
-    'placeholder.action.new_email': 'Enter your new email address',
+    'placeholder.action.new_password': 'Enter new password',
+    'placeholder.action.email': 'Enter email address',
+    'placeholder.action.new_email': 'Enter new email address',
 
     'success.send_complaint': 'Your complaint has been sent.',
     'success.copy_coordinates': 'Coordinates has been copied to the clipboard.',
@@ -168,20 +167,38 @@ export default {
     'review.form.fields.text.label': 'Review',
     'review.form.fields.photos.label': 'Photos',
 
-    'auth.third_party.callback.redirecting': 'You are being redirected...',
-    'auth.third_party.callback.checking_status': 'We are checking your status...',
-    'auth.third_party.callback.error.email_not_provided': 'No email provided by social login. Please use another form of login.',
-    'auth.third_party.callback.error.email_already_exists': 'Seems like you already have an account with another method. Please use that instead.',
+    'auth.change_email.title': 'Change email',
+    'auth.change_email.info': 'Enter your new email address below and we will send you a verification email:',
 
-    'auth.signup.title': 'Sign up',
-    'auth.signup.third_party.title': 'Or, sign up with your email address',
-    'auth.signup.submit': 'Sign up',
-    'auth.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
-    'auth.signup.to_back': 'Have an account? {sign_in_link}',
+    'auth.change_password.title': 'Change password',
+    'auth.change_password.info': 'Create a new password that is at least 8 characters long and contains a mix of letters and numbers:',
 
-    'auth.completing_signup.title': 'Completing sign up',
-    'auth.completing_signup.message': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
-    'auth.completing_signup.resend_verification_email': 'Resend Verification Email',
+    'auth.claim_email_error.title': 'Your email is not verified',
+    'auth.claim_email_error.message': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
+    'auth.claim_email_error.resend_verification_email': 'Resend Verification Email',
+    'auth.claim_email_error.go_to_settings': 'Or change your email. {settings_link}',
+    'auth.claim_email_error.settings_link': 'Settings',
+
+    'auth.confirm_user_deletion.loading': 'Starting the deletion process...',
+    'auth.confirm_user_deletion.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
+    'auth.confirm_user_deletion.ok': 'The deletion process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.',
+
+    'auth.forgot_password_completing.title': 'Completing the recovery',
+    'auth.forgot_password_completing.message': 'We sent you an email with instructions on how to reset your password.',
+
+    'auth.forgot_password.title': 'Forgot your password?',
+    'auth.forgot_password.submit': 'Restore password',
+    'auth.forgot_password.info': 'To reset your password, please enter your email address. We will send an email to the provided address with instructions on how to reset your password:',
+    'auth.forgot_password.to_back': '{sign_in_link} or {sign_up_link}',
+
+    'auth.reset_password.title': 'Enter your new password below',
+    'auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
+    'auth.reset_password.ok': 'Your password has been reset.',
+    'auth.reset_password.submit': 'Reset password',
+
+    'auth.restore_user.loading': 'Restoring your account...',
+    'auth.restore_user.token_expired': 'The restore link has expired. Please request a new restore link.',
+    'auth.restore_user.ok': 'Your account has been restored.',
 
     'auth.signin.title': 'Sign in',
     'auth.signin.third_party.or': 'Or',
@@ -189,36 +206,24 @@ export default {
     'auth.signin.link.forgot_password': 'Forgot password?',
     'auth.signin.to_back': 'Don’t have an account? {sign_up_link}',
 
-    'auth.forgot_password.title': 'Forgot your password?',
-    'auth.forgot_password.submit': 'Restore password',
-    'auth.forgot_password.info': 'To reset your password, please enter your email address. We will send an email to the provided address with instructions on how to reset your password:',
-    'auth.forgot_password.to_back': '{sign_in_link} or {sign_up_link}',
+    'auth.signup_completing.title': 'Completing sign up',
+    'auth.signup_completing.message': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
+    'auth.signup_completing.resend_verification_email': 'Resend Verification Email',
 
-    'auth.completing_forgot_password.title': 'Completing the recovery',
-    'auth.completing_forgot_password.message': 'We sent you an email with instructions on how to reset your password.',
+    'auth.signup.title': 'Sign up',
+    'auth.signup.third_party.title': 'Or, sign up with your email address',
+    'auth.signup.submit': 'Sign up',
+    'auth.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
+    'auth.signup.to_back': 'Have an account? {sign_in_link}',
 
-    'auth.change_password.title': 'Change password',
-    'auth.change_password.info': 'Create a new password that is at least 8 characters long and contains a mix of letters and numbers:',
+    'auth.third_party_callback.redirecting': 'You are being redirected...',
+    'auth.third_party_callback.checking_status': 'We are checking your status...',
+    'auth.third_party_callback.error.email_not_provided': 'No email provided by social login. Please use another form of login.',
+    'auth.third_party_callback.error.email_already_exists': 'Seems like you already have an account with another method. Please use that instead.',
 
-    'auth.change_email.title': 'Change email',
-    'auth.change_email.info': 'Enter your new email address below and we will send you a verification email:',
-
-    'pages.auth.verify.loading': 'Verifying your email...',
-    'pages.auth.verify.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
-    'pages.auth.verify.ok': 'Your email has been verified.',
-
-    'pages.auth.restore_user.loading': 'Restoring your account...',
-    'pages.auth.restore_user.token_expired': 'The restore link has expired. Please request a new restore link.',
-    'pages.auth.restore_user.ok': 'Your account has been restored.',
-
-    'pages.auth.confirm_user_deletion.loading': 'Starting the deletion process...',
-    'pages.auth.confirm_user_deletion.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
-    'pages.auth.confirm_user_deletion.ok': 'The deletion process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.',
-
-    'pages.auth.reset_password.title': 'Enter your new password below',
-    'pages.auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
-    'pages.auth.reset_password.ok': 'Your password has been reset.',
-    'pages.auth.reset_password.submit': 'Reset password',
+    'auth.verify_email.loading': 'Verifying your email...',
+    'auth.verify_email.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
+    'auth.verify_email.ok': 'Your email has been verified.',
 
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
@@ -260,21 +265,21 @@ export default {
     'pages.user.account.verify_email.text': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
     'pages.user.account.verify_email.action': 'Resend Verification Email',
 
-    'pages.user.account.change_email.title': 'Your email',
+    'pages.user.account.change_email.title': 'Email',
     'pages.user.account.change_email.text': 'Your email will be used for signing in, receiving notifications and resetting your password.',
     'pages.user.account.change_email.action': 'Change email',
 
-    'pages.user.account.change_password.title': 'Your password',
-    'pages.user.account.change_password.text': 'We recommend you to use a strong password that you don not use elsewhere and change it regularly.',
+    'pages.user.account.change_password.title': 'Password',
+    'pages.user.account.change_password.text': 'We recommend that you use a password that is different from your other online accounts and change it from time to time.',
     'pages.user.account.change_password.action': 'Change password',
 
-    'pages.user.account.request_personal_data.title': 'Your personal data',
-    'pages.user.account.request_personal_data.text': 'You can request a copy of your personal data we have stored on Tripadvancer. We will send you a file with your personal data to your email.',
-    'pages.user.account.request_personal_data.action': 'Request personal data',
+    'pages.user.account.request_personal_data.title': 'Personal Information',
+    'pages.user.account.request_personal_data.text': 'You may request a copy of the personal data we hold about you. This includes any information you provided to us when you registered, such as your username, email address and other additional information.',
+    'pages.user.account.request_personal_data.action': 'Get a copy of data',
 
-    'pages.user.account.request_user_deletion.title': 'Delete your account',
-    'pages.user.account.request_user_deletion.text': 'You can delete your account and all data associated with it. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.',
-    'pages.user.account.request_user_deletion.action': 'Delete your account',
+    'pages.user.account.request_user_deletion.title': 'Account',
+    'pages.user.account.request_user_deletion.text': 'You may request deletion of your account and all data associated with it. You will be able to restore your account using the link sent to your email before the deletion process is completed.',
+    'pages.user.account.request_user_deletion.action': 'Delete account',
 
     'pages.add_place.about.title': 'About this place',
     'pages.add_place.about.info': 'Tell us what inspired you so you can help others learn more about this place.',

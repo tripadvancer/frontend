@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-export const LayoutFooter = async () => {
+export const Footer = async () => {
     const t = await getI18n()
 
     return (
