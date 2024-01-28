@@ -73,7 +73,7 @@ export const RessetPassword = () => {
         return (
             <form className="flex w-full flex-col gap-y-8" onSubmit={formik.handleSubmit}>
                 <div className="flex flex-col gap-y-2">
-                    <p className="text-center">{t('pages.auth.reset_password.title')}</p>
+                    <p className="text-center">{t('auth.reset_password.title')}</p>
                     <FormInput
                         type="password"
                         name="password"
@@ -86,7 +86,7 @@ export const RessetPassword = () => {
                     />
                 </div>
                 <FormButton type="submit" className="w-full" isLoading={isLoading}>
-                    {t('pages.auth.reset_password.submit')}
+                    {t('auth.reset_password.submit')}
                 </FormButton>
             </form>
         )
@@ -95,8 +95,8 @@ export const RessetPassword = () => {
     return (
         <>
             <p className="text-center">
-                {status === 'RESET_PASSWORD_INVALID_TOKEN_ERROR' && t('pages.auth.reset_password.token_expired')}
-                {status === 'OK' && t('pages.auth.reset_password.ok')}
+                {status === 'RESET_PASSWORD_INVALID_TOKEN_ERROR' && t('auth.reset_password.token_expired')}
+                {status === 'OK' && t('auth.reset_password.ok')}
             </p>
             <Link
                 href="/"

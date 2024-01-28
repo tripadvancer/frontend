@@ -28,14 +28,14 @@ export const VerifyEmail = () => {
     })
 
     if (!status) {
-        return <p className="text-center">{t('pages.auth.verify.loading')}</p>
+        return <p className="text-center">{t('auth.verify_email.loading')}</p>
     }
 
     return (
         <>
             <p className="text-center">
-                {status === 'EMAIL_VERIFICATION_INVALID_TOKEN_ERROR' && t('pages.auth.verify.token_expired')}
-                {status === 'OK' && t('pages.auth.verify.ok')}
+                {status === 'EMAIL_VERIFICATION_INVALID_TOKEN_ERROR' && t('auth.verify_email.token_expired')}
+                {status === 'OK' && t('auth.verify_email.ok')}
             </p>
             <LinkButton href="/" className="w-full">
                 {t('common.action.go_home')}

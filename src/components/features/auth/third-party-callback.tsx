@@ -40,13 +40,13 @@ export const ThirdPartyCallback = () => {
     return (
         <>
             <p className="text-center">
-                {status === 'NO_EMAIL_GIVEN_BY_PROVIDER' && t('auth.third_party.callback.error.email_not_provided')}
-                {status === 'EMAIL_ALREADY_EXISTS_ERROR' && t('auth.third_party.callback.error.email_already_exists')}
+                {status === 'NO_EMAIL_GIVEN_BY_PROVIDER' && t('auth.third_party_callback.error.email_not_provided')}
+                {status === 'EMAIL_ALREADY_EXISTS_ERROR' && t('auth.third_party_callback.error.email_already_exists')}
                 {status === 'SIGN_IN_UP_NOT_ALLOWED' && t('common.error')}
                 {status === 'GENERAL_ERROR' && t('common.error')}
-                {status === 'OK' && t('auth.third_party.callback.redirecting')}
+                {status === 'OK' && t('auth.third_party_callback.redirecting')}
 
-                {!status && t('auth.third_party.callback.checking_status')}
+                {!status && t('auth.third_party_callback.checking_status')}
             </p>
 
             {status && status !== 'OK' && (

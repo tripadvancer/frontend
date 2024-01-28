@@ -25,9 +25,13 @@ export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
             return
         }
 
+        // todo: create helper for get claim value on client and server
         const validationErrors = await Session.validateClaims()
+        const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
+        const userId = accessTokenPayload.userId
         const hasClaims = validationErrors.length > 0
-        dialog.open(hasClaims ? <ClaimEmailError /> : <ReviewComplain reviewId={reviewId} />)
+
+        dialog.open(hasClaims ? <ClaimEmailError userId={userId} /> : <ReviewComplain reviewId={reviewId} />)
     }
 
     const items: DropdownItemProps[] = [

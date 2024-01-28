@@ -34,14 +34,14 @@ export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
     })
 
     if (!status) {
-        return <p className="text-center">{t('pages.auth.confirm_user_deletion.loading')}</p>
+        return <p className="text-center">{t('auth.confirm_user_deletion.loading')}</p>
     }
 
     return (
         <>
             <p className="text-center">
-                {status === 'OK' && t('pages.auth.confirm_user_deletion.ok')}
-                {status === 'INVALID_TOKEN_ERROR' && t('pages.auth.confirm_user_deletion.token_expired')}
+                {status === 'OK' && t('auth.confirm_user_deletion.ok')}
+                {status === 'INVALID_TOKEN_ERROR' && t('auth.confirm_user_deletion.token_expired')}
             </p>
             <LinkButton href="/" className="w-full">
                 {t('common.action.go_home')}

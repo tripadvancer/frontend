@@ -10,8 +10,8 @@ export const ForgotPasswordCompleting = () => {
 
     return (
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
-            <h1 className="text-h7 sm:text-h7-m">{t('auth.completing_forgot_password.title')}</h1>
-            <p className="text-center">{t('auth.completing_forgot_password.message')}</p>
+            <h1 className="text-h7 sm:text-h7-m">{t('auth.forgot_password_completing.title')}</h1>
+            <p className="text-center">{t('auth.forgot_password_completing.message')}</p>
             <FormButtonStroke type="button" className="w-full" onClick={dialog.close}>
                 {t('common.action.ok')}
             </FormButtonStroke>
