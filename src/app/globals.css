@@ -22,6 +22,10 @@ a {
     @apply hover-animated cursor-pointer text-orange-100 hover:text-orange-active;
 }
 
+.link-white {
+    @apply hover-animated cursor-pointer text-white hover:text-blue-active;
+}
+
 .container {
     @apply mx-auto w-full px-4 sm:max-w-[1184px] sm:px-8;
 }

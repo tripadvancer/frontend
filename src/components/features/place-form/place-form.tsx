@@ -12,8 +12,10 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { FormErrorMesage } from './components/form-error-mesage'
 import { FormInputCategories } from './components/form-input-categories'
+import { FormInputCoordinates } from './components/form-input-coordinates'
 import { FormInputCover } from './components/form-input-cover'
 import { FormInputDescription } from './components/form-input-description'
+import { FormInputTitle } from './components/form-input-title'
 import { FormSubmit } from './components/form-submit'
 import { PlacePhotosList } from './components/place-photos-list'
 import { validationSchema } from './validation-schema'
@@ -56,8 +58,8 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                             value={formik.values.cover}
                             onChange={value => formik.setFieldValue('cover', value)}
                         />
-                        {/* <InputPlaceName value={formik.values?.title} onChange={formik.handleChange} /> */}
-                        {/* <FormInputCoordinates value={formik.values?.location} onChange={formik.handleChange} /> */}
+                        <FormInputTitle value={formik.values.title} onChange={formik.handleChange} />
+                        <FormInputCoordinates value={formik.values.location} onChange={formik.handleChange} />
                         <FormInputCategories
                             value={formik.values.categories}
                             onChange={value => formik.setFieldValue('categories', value)}

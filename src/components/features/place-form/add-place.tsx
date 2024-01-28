@@ -23,7 +23,7 @@ export const AddPlace = () => {
         description: '',
         location: '',
         photos: [],
-        cover: '',
+        cover: null,
         categories: [],
     }
 

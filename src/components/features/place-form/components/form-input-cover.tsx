@@ -48,8 +48,8 @@ export const FormInputCover = ({ value, onChange }: FormInputCoverProps) => {
     }
 
     return (
-        <div className="font-medium text-white">
-            <div className="cursor-pointer" onClick={() => hiddenFileInput.current?.click()}>
+        <div>
+            <div className="link-white font-medium" onClick={() => hiddenFileInput.current?.click()}>
                 {t('placeholder.action.place.cover')}
             </div>
 
