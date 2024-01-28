@@ -114,6 +114,24 @@ export async function updatePlaceById(placeId: string, body: UpdatePlaceInputs):
     }
 }
 
+export async function placeCoverUpload(file: File): Promise<{ url: string }> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/images/place-cover'
+    const formData = new FormData()
+
+    formData.append('file', file)
+
+    const res = await fetch(url, {
+        method: 'POST',
+        body: formData,
+    })
+
+    if (!res.ok) {
+        throw new Error(res.statusText)
+    }
+
+    return res.json()
+}
+
 export async function placePhotoUpload(file: File): Promise<{ url: string }> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/images/place-photo'
     const formData = new FormData()

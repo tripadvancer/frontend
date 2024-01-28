@@ -88,6 +88,7 @@ export default {
     'placeholder.username': 'Имя пользователя',
     'placeholder.file': 'Выберите файл ...',
     'placeholder.file.loading': 'Загрузка файла ...',
+    'placeholder.action.place.cover': 'Загрузите обложку (jpg, png до 10 Мб)',
     'placeholder.action.username': 'Введите имя пользователя',
     'placeholder.action.about_user': 'Напишите что-нибудь о себе',
     'placeholder.action.about_place': 'Введте описание места',

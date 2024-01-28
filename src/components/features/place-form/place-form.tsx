@@ -2,8 +2,12 @@
 
 import { useFormik } from 'formik'
 
+import Image from 'next/image'
+
 import type { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/types/place'
 
+import { ImageVariant } from '@/utils/enums'
+import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { FormErrorMesage } from './components/form-error-mesage'
@@ -35,12 +39,23 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
             <div className="flex-center relative z-10 -mb-8 flex-[540px] pb-8">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
-                    {/* {cover && <Image src={src} alt={title} fill priority className="object-cover" />} */}
+                    {formik.values.cover && (
+                        <Image
+                            src={makeImageUrl(formik.values.cover, ImageVariant.PUBLIC)}
+                            alt=""
+                            fill
+                            priority
+                            className="object-cover"
+                        />
+                    )}
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-30" />
                 </div>
                 <section className="container relative z-30 py-8">
                     <div className="flex-center m-auto flex-col gap-y-4 sm:w-2/3">
-                        <FormInputCover />
+                        <FormInputCover
+                            value={formik.values.cover}
+                            onChange={value => formik.setFieldValue('cover', value)}
+                        />
                         {/* <InputPlaceName value={formik.values?.title} onChange={formik.handleChange} /> */}
                         {/* <FormInputCoordinates value={formik.values?.location} onChange={formik.handleChange} /> */}
                         <FormInputCategories

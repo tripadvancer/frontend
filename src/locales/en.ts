@@ -88,6 +88,7 @@ export default {
     'placeholder.username': 'Username',
     'placeholder.file': 'Select file ...',
     'placeholder.file.loading': 'Loading ...',
+    'placeholder.action.place.cover': 'Upload the cover (jpg, png up to 10 MB)',
     'placeholder.action.username': 'Enter your username',
     'placeholder.action.about_user': 'Enter information about yourself...',
     'placeholder.action.about_place': 'Enter a description',
