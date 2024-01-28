@@ -4,6 +4,9 @@ export default {
     'cookie_consent.policy_link': 'Политике использования файлов cookie',
     'cookie_consent.got_it': 'Понятно!',
 
+    'email_verification_notice.text': 'Ваш адрес электронной почты не был подтверждён. Подтвердите Ваш email, перейдя по ссылке в отправленном при регистрации письме. {learn_more_link}',
+    'email_verification_notice.learn_more_link': 'Узнать больше',
+
     'about.title': 'Планируете путешествие, но не знаете куда поехать?',
     'about.description': 'Tripadvancer поможет Вам открыть мир с новой стороны, найти интересные места и отправиться в увлекательное путешествие.',
 
