@@ -27,7 +27,7 @@ export const FormInputCategories = ({ value, onChange }: FormInputCoordinatesPro
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" d="M7.01005 8.98995H2L2 7.01005H7.01005V2H8.98995V7.01005H14L14 8.98995H8.98995V14H7.01005V8.98995Z" />
                 </svg>
-                    Category
+                    Add category
                 </div>
             )}
             {value.map(categoryId => (

@@ -38,7 +38,7 @@ export const validationSchema = (t: any) =>
         ),
 
         categories: Yup.array()
-            .required(t('validation.place.categories.required'))
+            .min(1, t('validation.place.categories.required'))
             .max(maxCategories, t('validation.place.categories.max_count', { max_count: maxCategories })),
     })
 
