@@ -18,6 +18,10 @@ a {
     @apply hover-animated cursor-pointer text-red-100 hover:text-red-active;
 }
 
+.link-orange {
+    @apply hover-animated cursor-pointer text-orange-100 hover:text-orange-active;
+}
+
 .container {
     @apply mx-auto w-full px-4 sm:max-w-[1184px] sm:px-8;
 }

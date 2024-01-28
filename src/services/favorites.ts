@@ -1,5 +1,7 @@
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
+
 export async function addPlaceToFavorite(placeId: number): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/favorites'
+    const url = apiUrl + '/favorites'
     const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -14,7 +16,7 @@ export async function addPlaceToFavorite(placeId: number): Promise<void> {
 }
 
 export async function deletePlaceFromFavorite(placeId: number): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + `/favorites/${placeId}`
+    const url = apiUrl + `/favorites/${placeId}`
     const res = await fetch(url, {
         method: 'DELETE',
     })

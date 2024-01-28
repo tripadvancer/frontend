@@ -3,7 +3,7 @@ import { MapEvent, MapLayerMouseEvent, ViewState, ViewStateChangeEvent, useMap }
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import { IPlacePreview } from '@/utils/types/place'
+import type { IPlacePreview } from '@/utils/types/place'
 
 import { getPlaceByBounds } from '@/services/places'
 

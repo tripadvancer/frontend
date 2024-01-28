@@ -55,8 +55,10 @@ export const FormInputPhoto = ({ currentPhotosCount, maxPhotosCount, isUploading
     return (
         <div
             className={classNames(
-                'hover-animated flex-center aspect-square size-full cursor-pointer rounded-lg border border-blue-20 text-blue-100 enabled:hover:border-blue-active enabled:hover:text-blue-active',
+                'hover-animated flex-center aspect-square size-full rounded-lg border border-blue-20 text-blue-100',
                 {
+                    'cursor-pointer hover:border-blue-active hover:text-blue-active':
+                        currentPhotosCount < maxPhotosCount,
                     'cursor-not-allowed opacity-30': currentPhotosCount >= maxPhotosCount,
                     'cursor-wait': isUploading,
                 },

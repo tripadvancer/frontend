@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 
-import { getAuthorisationURLWithQueryParamsAndSetState } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
-
 import { useRouter } from 'next/navigation'
+
+import { getAuthorisationURLWithQueryParamsAndSetState } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 
 import { FormButtonStroke } from '@/components/ui/form-button-stroke'
 import { useToast } from '@/providers/toast-provider'

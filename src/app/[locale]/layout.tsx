@@ -67,18 +67,18 @@ export default async function RootLayout({ children, params }: { children: React
 
     return (
         <html lang={locale}>
-            <body className={roboto.className}>
-                <ReduxProvider>
-                    <I18nProvider locale={locale}>
-                        <SuperTokensProvider>
+            <SuperTokensProvider>
+                <body className={roboto.className}>
+                    <ReduxProvider>
+                        <I18nProvider locale={locale}>
                             <ToastProvider>
                                 <DialogProvider>{children}</DialogProvider>
                             </ToastProvider>
-                        </SuperTokensProvider>
-                    </I18nProvider>
-                </ReduxProvider>
-                <TailwindIndicator />
-            </body>
+                        </I18nProvider>
+                    </ReduxProvider>
+                    <TailwindIndicator />
+                </body>
+            </SuperTokensProvider>
         </html>
     )
 }

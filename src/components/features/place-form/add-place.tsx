@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { CreatePlaceInputs } from '@/utils/types/place'
+import type { CreatePlaceInputs } from '@/utils/types/place'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'

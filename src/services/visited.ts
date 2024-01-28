@@ -1,5 +1,7 @@
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
+
 export async function addPlaceToVisited(placeId: number): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/visited'
+    const url = apiUrl + '/visited'
     const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -14,7 +16,7 @@ export async function addPlaceToVisited(placeId: number): Promise<void> {
 }
 
 export async function deletePlaceFromVisited(placeId: number): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/visited/' + placeId
+    const url = apiUrl + '/visited/' + placeId
     const res = await fetch(url, {
         method: 'DELETE',
     })

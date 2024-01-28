@@ -13,8 +13,8 @@
     "arrowParens": "avoid",
     "importOrder": [
         "^react(.*)",
-        "<THIRD_PARTY_MODULES>",
         "next/(.*)",
+        "<THIRD_PARTY_MODULES>",
         "^@/utils/types/(.*)",
         "^@/(.*)$",
         "^[./]",

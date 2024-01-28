@@ -2,8 +2,8 @@
 
 import Session from 'supertokens-web-js/recipe/session'
 
-import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
+import { VerificationEmailError } from '@/components/features/auth/verification-email-error'
 import { ReviewComplain } from '@/components/features/complain/review-complain'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { useDialog } from '@/providers/dialog-provider'
@@ -27,7 +27,7 @@ export const ActionsPublic = ({ reviewId }: ActionsPublicProps) => {
 
         const validationErrors = await Session.validateClaims()
         const hasClaims = validationErrors.length > 0
-        dialog.open(hasClaims ? <ClaimEmailError /> : <ReviewComplain reviewId={reviewId} />)
+        dialog.open(hasClaims ? <VerificationEmailError /> : <ReviewComplain reviewId={reviewId} />)
     }
 
     const items: DropdownItemProps[] = [

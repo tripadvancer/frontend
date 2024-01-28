@@ -1,7 +1,9 @@
-import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/types/complaint'
+import type { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/types/complaint'
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 export async function placeComplaint({ placeId, reason, text }: PlaceComplaintInputs): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId + '/complaints'
+    const url = apiUrl + '/places/' + placeId + '/complaints'
     const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -19,7 +21,7 @@ export async function placeComplaint({ placeId, reason, text }: PlaceComplaintIn
 }
 
 export async function reviewComplaint({ reviewId, reason, text }: ReviewComplaintInputs): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/reviews/' + reviewId + '/complaints'
+    const url = apiUrl + '/reviews/' + reviewId + '/complaints'
     const res = await fetch(url, {
         method: 'POST',
         headers: {

@@ -3,15 +3,16 @@ import { LngLatBounds } from 'react-map-gl/maplibre'
 import { notFound } from 'next/navigation'
 
 import type { PaginatedResponse } from '@/utils/types/common'
-import { GeoJsonCollection } from '@/utils/types/geo'
+import type { GeoJsonCollection } from '@/utils/types/geo'
 import type { CreatePlaceInputs, IPlace, IPlaceNearby, IPlacePreview, UpdatePlaceInputs } from '@/utils/types/place'
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 export async function getPlacesByCountryCode(
     countryCode: string,
     categoriesIds: string | undefined,
 ): Promise<IPlacePreview[]> {
-    const url =
-        process.env.NEXT_PUBLIC_API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
+    const url = apiUrl + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -33,7 +34,7 @@ export async function getPlaceByBounds({
     const ne_lng = '&ne_lng=' + mapBounds?.getNorthEast().lng
     const sw_lat = '&sw_lat=' + mapBounds?.getSouthWest().lat
     const sw_lng = '&sw_lng=' + mapBounds?.getSouthWest().lng
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places' + categories_ids + ne_lat + ne_lng + sw_lat + sw_lng
+    const url = apiUrl + '/places' + categories_ids + ne_lat + ne_lng + sw_lat + sw_lng
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -44,7 +45,7 @@ export async function getPlaceByBounds({
 }
 
 export async function getPlacesByUserId(userId: string, page: string): Promise<PaginatedResponse<IPlacePreview>> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + userId + '/places?page=' + page
+    const url = apiUrl + '/users/' + userId + '/places?page=' + page
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -55,7 +56,7 @@ export async function getPlacesByUserId(userId: string, page: string): Promise<P
 }
 
 export async function getPlaceById(placeId: string, accessToken?: string): Promise<IPlace> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
+    const url = apiUrl + '/places/' + placeId
     const res = await fetch(url, {
         headers: accessToken ? { Authorization: 'Bearer ' + accessToken } : {},
     })
@@ -72,7 +73,7 @@ export async function getPlaceById(placeId: string, accessToken?: string): Promi
 }
 
 export async function getPlacesNearby(placeId: string): Promise<IPlaceNearby[]> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId + '/nearby'
+    const url = apiUrl + '/places/' + placeId + '/nearby'
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -83,7 +84,7 @@ export async function getPlacesNearby(placeId: string): Promise<IPlaceNearby[]> 
 }
 
 export async function createPlace(body: CreatePlaceInputs): Promise<{ id: number }> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places'
+    const url = apiUrl + '/places'
     const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -100,7 +101,7 @@ export async function createPlace(body: CreatePlaceInputs): Promise<{ id: number
 }
 
 export async function updatePlaceById(placeId: string, body: UpdatePlaceInputs): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
+    const url = apiUrl + '/places/' + placeId
     const res = await fetch(url, {
         method: 'PATCH',
         headers: {
@@ -114,8 +115,26 @@ export async function updatePlaceById(placeId: string, body: UpdatePlaceInputs):
     }
 }
 
+export async function placeCoverUpload(file: File): Promise<{ url: string }> {
+    const url = apiUrl + '/images/place-cover'
+    const formData = new FormData()
+
+    formData.append('file', file)
+
+    const res = await fetch(url, {
+        method: 'POST',
+        body: formData,
+    })
+
+    if (!res.ok) {
+        throw new Error(res.statusText)
+    }
+
+    return res.json()
+}
+
 export async function placePhotoUpload(file: File): Promise<{ url: string }> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/images/place-photo'
+    const url = apiUrl + '/images/place-photo'
     const formData = new FormData()
 
     formData.append('file', file)
@@ -133,7 +152,7 @@ export async function placePhotoUpload(file: File): Promise<{ url: string }> {
 }
 
 export async function deletePlaceById(placeId: string): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
+    const url = apiUrl + '/places/' + placeId
     const res = await fetch(url, {
         method: 'DELETE',
     })

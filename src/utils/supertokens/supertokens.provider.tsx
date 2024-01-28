@@ -2,13 +2,13 @@
 
 import { ReactNode } from 'react'
 
-import SuperTokensAuth from 'supertokens-web-js'
+import SuperTokensWebJs from 'supertokens-web-js'
 
 import { clientConfig } from './supertokens.client'
 
 if (typeof window !== 'undefined') {
     // we only want to call this init function on the frontend, so we check typeof window !== 'undefined'
-    SuperTokensAuth.init(clientConfig())
+    SuperTokensWebJs.init(clientConfig())
 }
 
 export const SuperTokensProvider = ({ children }: { children: ReactNode }) => {

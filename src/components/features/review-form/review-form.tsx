@@ -3,7 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
+import type { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormButtonStroke } from '@/components/ui/form-button-stroke'

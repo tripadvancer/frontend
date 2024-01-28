@@ -2,14 +2,16 @@
 
 import { useState } from 'react'
 
+import Link from 'next/link'
+
 import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverification'
 
-import { FormButtonStroke } from '@/components/ui/form-button-stroke'
+import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const ClaimEmailError = () => {
+export const VerificationEmailError = () => {
     const t = useI18n()
     const toast = useToast()
     const dialog = useDialog()
@@ -33,14 +35,14 @@ export const ClaimEmailError = () => {
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
             <h1 className="text-h7-m sm:text-h7">{t('claim.email.title')}</h1>
             <p className="text-center">{t('claim.email.message')}</p>
-            <FormButtonStroke
-                type="button"
-                className="w-full"
-                isLoading={isLoading}
-                onClick={handleResendVerificationEmail}
-            >
+            <FormButton type="button" className="w-full" isLoading={isLoading} onClick={handleResendVerificationEmail}>
                 {t('claim.email.resend_verification_email')}
-            </FormButtonStroke>
+            </FormButton>
+            <div className="text-center">
+                {t('claim.email.change_email', {
+                    settings_link: <Link href="#">{t('claim.email.settings_link')}</Link>,
+                })}
+            </div>
         </div>
     )
 }

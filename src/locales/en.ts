@@ -4,6 +4,9 @@ export default {
     'cookie_consent.policy_link': 'Cookie Policy',
     'cookie_consent.got_it': 'Got it!',
 
+    'mail_verification.notice': 'Your email has not been verified. Please confirm email by clicking the link in the email we send you during registration.',
+    'mail_verification.learn_more': 'Learn more',
+
     'about.title': 'Planing a trip but don`t know where to go?',
     'about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
 
@@ -33,6 +36,10 @@ export default {
     'common.empty_message.reviews': 'There are no reviews here at the moment.',
     'common.empty_message.places': 'There are no places here at the moment.',
 
+    'common.status.loading': 'Loading ...',
+    'common.status.processing': 'Processing ...',
+    'common.status.sending': 'Sending ...',
+
     'common.distance.km': '{distance} km',
 
     'common.link.sign_up': 'Sign up',
@@ -54,6 +61,8 @@ export default {
     'claim.email.title': 'Your email is not verified',
     'claim.email.message': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
     'claim.email.resend_verification_email': 'Resend Verification Email',
+    'claim.email.change_email': 'Or change your email. {settings_link}',
+    'claim.email.settings_link': 'Settings',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -87,6 +96,7 @@ export default {
     'placeholder.username': 'Username',
     'placeholder.file': 'Select file ...',
     'placeholder.file.loading': 'Loading ...',
+    'placeholder.action.place.cover': 'Upload the cover (jpg, png up to 10 MB)',
     'placeholder.action.username': 'Enter your username',
     'placeholder.action.about_user': 'Enter information about yourself...',
     'placeholder.action.about_place': 'Enter a description',
@@ -258,21 +268,21 @@ export default {
     'pages.user.account.verify_email.text': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
     'pages.user.account.verify_email.action': 'Resend Verification Email',
 
-    'pages.user.account.change_email.title': 'Your email',
-    'pages.user.account.change_email.text': 'Your email will be used for signing in, receiving notifications and resetting your password.',
+    'pages.user.account.change_email.title': 'Email',
+    'pages.user.account.change_email.info': 'Your email will be used for signing in, receiving notifications and resetting your password.',
     'pages.user.account.change_email.action': 'Change email',
 
-    'pages.user.account.change_password.title': 'Your password',
-    'pages.user.account.change_password.text': 'We recommend you to use a strong password that you don not use elsewhere and change it regularly.',
+    'pages.user.account.change_password.title': 'Password',
+    'pages.user.account.change_password.info': 'We recommend that you use a password that is different from your other online accounts and change it from time to time.',
     'pages.user.account.change_password.action': 'Change password',
 
-    'pages.user.account.request_personal_data.title': 'Your personal data',
-    'pages.user.account.request_personal_data.text': 'You can request a copy of your personal data we have stored on Tripadvancer. We will send you a file with your personal data to your email.',
-    'pages.user.account.request_personal_data.action': 'Request personal data',
+    'pages.user.account.request_personal_data.title': 'Personal Information',
+    'pages.user.account.request_personal_data.info': 'You may request a copy of the personal data we hold about you. This includes any information you provided to us when you registered, such as your username, email address and other additional information.',
+    'pages.user.account.request_personal_data.action': 'Get a copy of data',
 
-    'pages.user.account.request_user_deletion.title': 'Delete your account',
-    'pages.user.account.request_user_deletion.text': 'You can delete your account and all data associated with it. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.',
-    'pages.user.account.request_user_deletion.action': 'Delete your account',
+    'pages.user.account.request_user_deletion.title': 'Account',
+    'pages.user.account.request_user_deletion.info': 'You may request deletion of your account and all data associated with it. You will be able to restore your account using the link sent to your email before the deletion process is completed.',
+    'pages.user.account.request_user_deletion.action': 'Delete account',
 
     'pages.add_place.about.title': 'About this place',
     'pages.add_place.about.info': 'Tell us what inspired you so you can help others learn more about this place.',

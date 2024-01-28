@@ -2,8 +2,8 @@
 
 import Session from 'supertokens-web-js/recipe/session'
 
-import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
+import { VerificationEmailError } from '@/components/features/auth/verification-email-error'
 import { PlaceComplain } from '@/components/features/complain/place-complain'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -26,7 +26,7 @@ export const UserActionsPublic = ({ placeId }: UserActionsPublicProps) => {
 
         const validationErrors = await Session.validateClaims()
         const hasClaims = validationErrors.length > 0
-        dialog.open(hasClaims ? <ClaimEmailError /> : <PlaceComplain placeId={placeId} />)
+        dialog.open(hasClaims ? <VerificationEmailError /> : <PlaceComplain placeId={placeId} />)
     }
 
     return (

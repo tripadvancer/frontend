@@ -1,13 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-
 import { useFormik } from 'formik'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import * as Yup from 'yup'
 
-import { useRouter } from 'next/navigation'
-
-import { ChangeUserEmailInputs } from '@/utils/types/user'
+import type { ChangeUserEmailInputs } from '@/utils/types/user'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'

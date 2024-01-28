@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { useRouter } from 'next/navigation'
 
-import { IReview, UpdateReviewInputs } from '@/utils/types/review'
+import type { IReview, UpdateReviewInputs } from '@/utils/types/review'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { IPlaceNearby } from '@/utils/types/place'
+import type { IPlaceNearby } from '@/utils/types/place'
 
 import { ImageNotFound } from '@/components/ui/image-not-found'
 import { ImageVariant } from '@/utils/enums'

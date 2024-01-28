@@ -4,6 +4,9 @@ export default {
     'cookie_consent.policy_link': 'Политике использования файлов cookie',
     'cookie_consent.got_it': 'Понятно!',
 
+    'mail_verification.notice': 'Ваш email не подтверждён. Перейдите по ссылке в письме регистрации.',
+    'mail_verification.learn_more': 'Узнать больше',
+
     'about.title': 'Планируете путешествие, но не знаете куда поехать?',
     'about.description': 'Tripadvancer поможет Вам открыть мир с новой стороны, найти интересные места и отправиться в увлекательное путешествие.',
 
@@ -32,7 +35,11 @@ export default {
     'common.error': 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.',
     'common.empty_message.reviews': 'Здесь пока нет отзывов.',
     'common.empty_message.places': 'Здесь пока нет мест.',
-    
+
+    'common.status.loading': 'Загрузка ...',
+    'common.status.processing': 'Обработка ...',
+    'common.status.sending': 'Отправка ...',
+
     'common.distance.km': '{distance} км',
 
     'common.link.sign_up': 'Зарегистрироваться',
@@ -54,6 +61,8 @@ export default {
     'claim.email.title': 'Ваш email не подтверждён',
     'claim.email.message': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
     'claim.email.resend_verification_email': 'Отправить письмо ещё раз',
+    'claim.email.change_email': 'Или измените свой email. {settings_link}',
+    'claim.email.settings_link': 'Настройки',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -87,6 +96,7 @@ export default {
     'placeholder.username': 'Имя пользователя',
     'placeholder.file': 'Выберите файл ...',
     'placeholder.file.loading': 'Загрузка файла ...',
+    'placeholder.action.place.cover': 'Загрузите обложку (jpg, png до 10 Мб)',
     'placeholder.action.username': 'Введите имя пользователя',
     'placeholder.action.about_user': 'Напишите что-нибудь о себе',
     'placeholder.action.about_place': 'Введте описание места',
@@ -263,21 +273,21 @@ export default {
     'pages.user.account.verify_email.text': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
     'pages.user.account.verify_email.action': 'Отправить письмо ещё раз',
 
-    'pages.user.account.change_email.title': 'Ваш email',
-    'pages.user.account.change_email.text': 'Ваш адрес электронной почты будет использоваться для входа в систему, получения уведомлений и восстановления пароля.',
+    'pages.user.account.change_email.title': 'Email',
+    'pages.user.account.change_email.info': 'Ваш электронный адрес будет использоваться для входа, получения уведомлений и сброса пароля.',
     'pages.user.account.change_email.action': 'Изменить email',
 
-    'pages.user.account.change_password.title': 'Ваш пароль',
-    'pages.user.account.change_password.text': 'Мы рекомендуем вам использовать пароль, отличный от других ваших учетных записей в Интернете, а так же изменять его время от времени.',
+    'pages.user.account.change_password.title': 'Пароль',
+    'pages.user.account.change_password.info': 'Мы рекомендуем использовать пароль, отличающийся от тех, которые вы используете для других онлайн-аккаунтов, и периодически менять его.',
     'pages.user.account.change_password.action': 'Изменить пароль',
 
-    'pages.user.account.request_personal_data.title': 'Ваши персональные данные',
-    'pages.user.account.request_personal_data.text': 'Вы можете запросить копию своих персональных данных, которые мы храним. Это включает в себя любые данные, которые вы предоставили нам при регистрации, такие как имя пользователя, адрес электронной почты и другие дополнительные сведения.',
-    'pages.user.account.request_personal_data.action': 'Запросить персональные данные',
+    'pages.user.account.request_personal_data.title': 'Персональные данные',
+    'pages.user.account.request_personal_data.info': 'Вы можете запросить копию персональных данных, которые мы храним о вас. Это включает в себя любую информацию, которую вы предоставили нам при регистрации, такую как ваше имя пользователя, адрес электронной почты и другая дополнительная информация.',
+    'pages.user.account.request_personal_data.action': 'Получить коипю',
 
-    'pages.user.account.request_user_deletion.title': 'Удалить учётную запись',
-    'pages.user.account.request_user_deletion.text': 'Вы можете запросить удаление своей учётной записи и всех связанных с ней данных. Вы сможете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
-    'pages.user.account.request_user_deletion.action': 'Удалить учётную запись',
+    'pages.user.account.request_user_deletion.title': 'Аккаунт',
+    'pages.user.account.request_user_deletion.info': 'Вы можете запросить удаление вашей учетной записи и всех данных, связанных с ней. Вы сможете восстановить свою учетную запись, используя ссылку, отправленную на вашу электронную почту, до завершения процесса удаления.',
+    'pages.user.account.request_user_deletion.action': 'Удалить аккаунт',
 
     'pages.add_place.about.title': 'О месте',
     'pages.add_place.about.info': 'Расскажите, что вдохновило Вас — так Вы поможете остальным узнать больше об этом месте',

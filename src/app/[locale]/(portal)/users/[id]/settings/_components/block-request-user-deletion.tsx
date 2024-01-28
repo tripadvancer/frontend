@@ -1,11 +1,12 @@
 'use client'
 
 import { Confirmation } from '@/components/ui/confirmation'
-import { FormButtonMinor } from '@/components/ui/form-button-minor'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { requestUserDeletion } from '@/services/user'
 import { useI18n } from '@/utils/i18n/i18n.client'
+
+import { SettingsAccountBlock } from './settings-account-block'
 
 export const BlockRequestUserDeletion = () => {
     const t = useI18n()
@@ -32,16 +33,12 @@ export const BlockRequestUserDeletion = () => {
     }
 
     return (
-        <div className="flex flex-col gap-y-4">
-            <div className="flex flex-col gap-y-2 text-black-70">
-                <p className="font-medium">{t('pages.user.account.request_user_deletion.title')}</p>
-                <p>{t('pages.user.account.request_user_deletion.text')}</p>
-            </div>
-            <div>
-                <FormButtonMinor variant="red" onClick={handleRequestUserDeletion}>
-                    {t('pages.user.account.request_user_deletion.action')}
-                </FormButtonMinor>
-            </div>
-        </div>
+        <SettingsAccountBlock
+            title={t('pages.user.account.request_user_deletion.title')}
+            info={t('pages.user.account.request_user_deletion.info')}
+            action={t('pages.user.account.request_user_deletion.action')}
+            variant="red"
+            onClick={handleRequestUserDeletion}
+        />
     )
 }

@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 
+import { useRouter } from 'next/navigation'
+
 import { useFormik } from 'formik'
 import { emailPasswordSignIn } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 import * as Yup from 'yup'
-
-import { useRouter } from 'next/navigation'
 
 import type { SignInInputs } from '@/utils/types/auth'
 
@@ -100,7 +100,7 @@ export const SignIn = () => {
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
             <h1 className="text-center text-h7-m sm:text-h7">{t('auth.signin.title')}</h1>
-            <div className="flex flex-col gap-y-4">
+            <div className="flex flex-col gap-y-6">
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading} />
                     <ThirdPartyButton provider="facebook" isDisabled={isLoading} />

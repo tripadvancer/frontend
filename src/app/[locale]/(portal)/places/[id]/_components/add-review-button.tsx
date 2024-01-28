@@ -2,8 +2,8 @@
 
 import Session from 'supertokens-web-js/recipe/session'
 
-import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
+import { VerificationEmailError } from '@/components/features/auth/verification-email-error'
 import { AddReview } from '@/components/features/review-form/add-review'
 import { FormButtonMinor } from '@/components/ui/form-button-minor'
 import { useDialog } from '@/providers/dialog-provider'
@@ -28,7 +28,7 @@ export const AddReviewButton = ({ placeId, isDisabled }: AddReviewButtonProps) =
 
         const validationErrors = await Session.validateClaims()
         const hasClaims = validationErrors.length > 0
-        dialog.open(hasClaims ? <ClaimEmailError /> : <AddReview placeId={placeId} />)
+        dialog.open(hasClaims ? <VerificationEmailError /> : <AddReview placeId={placeId} />)
     }
 
     return (

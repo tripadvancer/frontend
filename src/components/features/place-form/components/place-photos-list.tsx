@@ -32,7 +32,7 @@ export const PlacePhotosList = ({ photos, onChange }: PlacePhotosListProps) => {
         const uploadPromises = Array.from(files).map(async file => {
             try {
                 setIsUploading(true)
-                const res = await placePhotoUpload(file as File)
+                const res = await placePhotoUpload(file)
                 return res.url
             } catch {
                 toast.error(t('common.error'))
@@ -41,13 +41,9 @@ export const PlacePhotosList = ({ photos, onChange }: PlacePhotosListProps) => {
             }
         })
 
-        try {
-            const urls = await Promise.all(uploadPromises)
-            const filteredUrls = urls.filter(url => url !== undefined) as string[]
-            onChange([...photos, ...filteredUrls])
-        } catch (error) {
-            toast.error(t('common.error'))
-        }
+        const urls = await Promise.all(uploadPromises)
+        const filteredUrls = urls.filter(url => url !== undefined) as string[]
+        onChange([...photos, ...filteredUrls])
     }
 
     const handlePhotoDelete = (url: string) => {

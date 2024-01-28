@@ -10,8 +10,10 @@ import type {
     UpdateUserInfoResponse,
 } from '@/utils/types/user'
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
+
 export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user'
+    const url = apiUrl + '/user'
     const res = await fetch(url, {
         headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -26,7 +28,7 @@ export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
 }
 
 export async function updateUserInfo(body: UpdateUserInfoInputs): Promise<UpdateUserInfoResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user'
+    const url = apiUrl + '/user'
     const res = await fetch(url, {
         method: 'PATCH',
         headers: {
@@ -43,7 +45,7 @@ export async function updateUserInfo(body: UpdateUserInfoInputs): Promise<Update
 }
 
 export async function changeUserPassword(body: ChangeUserPasswordInputs): Promise<ChangeUserPasswordResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/password'
+    const url = apiUrl + '/user/password'
     const res = await fetch(url, {
         method: 'PATCH',
         headers: {
@@ -60,7 +62,7 @@ export async function changeUserPassword(body: ChangeUserPasswordInputs): Promis
 }
 
 export async function changeUserEmail(body: ChangeUserEmailInputs): Promise<ChangeUserEmailResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/email'
+    const url = apiUrl + '/user/email'
     const res = await fetch(url, {
         method: 'PATCH',
         headers: {
@@ -77,7 +79,7 @@ export async function changeUserEmail(body: ChangeUserEmailInputs): Promise<Chan
 }
 
 export async function updateUserAvatar(file: File): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/avatar'
+    const url = apiUrl + '/user/avatar'
     const formData = new FormData()
 
     formData.append('file', file)
@@ -93,7 +95,7 @@ export async function updateUserAvatar(file: File): Promise<void> {
 }
 
 export async function deleteUserAvatar(): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/avatar'
+    const url = apiUrl + '/user/avatar'
     const res = await fetch(url, {
         method: 'DELETE',
     })
@@ -104,7 +106,7 @@ export async function deleteUserAvatar(): Promise<void> {
 }
 
 export async function requestPersonalData(): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/personal-data'
+    const url = apiUrl + '/user/personal-data'
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -113,7 +115,7 @@ export async function requestPersonalData(): Promise<void> {
 }
 
 export async function requestUserDeletion(): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user'
+    const url = apiUrl + '/user'
     const res = await fetch(url, {
         method: 'DELETE',
     })
@@ -124,7 +126,7 @@ export async function requestUserDeletion(): Promise<void> {
 }
 
 export async function confirmUserDeletion(token: string): Promise<ConfirmUserDeletionResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/confirm-deletion'
+    const url = apiUrl + '/user/confirm-deletion'
     const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -141,7 +143,7 @@ export async function confirmUserDeletion(token: string): Promise<ConfirmUserDel
 }
 
 export async function restoreUser(token: string): Promise<RestoreUserResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/restore'
+    const url = apiUrl + '/user/restore'
     const res = await fetch(url, {
         method: 'POST',
         headers: {

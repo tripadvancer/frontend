@@ -2,7 +2,7 @@
 
 import Session from 'supertokens-web-js/recipe/session'
 
-import { IReview } from '@/utils/types/review'
+import type { IReview } from '@/utils/types/review'
 
 import { ActionsPrivate } from './actions-private'
 import { ActionsPublic } from './actions-public'

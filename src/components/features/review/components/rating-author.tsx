@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { IReview } from '@/utils/types/review'
+import type { IReview } from '@/utils/types/review'
 
 import { Avatar } from '@/components/ui/avatar'
 import { Rating } from '@/components/ui/rating'
