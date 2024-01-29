@@ -14,7 +14,7 @@ export const FormInputCoordinates = ({ value, onChange }: FormInputCoordinatesPr
     return (
         <FormContentEditable
             value={value}
-            className="relative w-full text-center text-big text-white before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:cursor-text focus:outline-none"
+            className="w-full text-center text-big text-white"
             placeholder={t('placeholder.place.coordinates')}
             onChange={onChange}
         />

@@ -14,7 +14,7 @@ export const FormInputTitle = ({ value, onChange }: FormInputTitleProps) => {
     return (
         <FormContentEditable
             value={value}
-            className="relative w-full text-center text-h1-m text-white before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:cursor-text focus:outline-none sm:text-h1"
+            className="w-full text-center text-h1-m text-white sm:text-h1"
             placeholder={t('placeholder.place.title')}
             onChange={onChange}
         />

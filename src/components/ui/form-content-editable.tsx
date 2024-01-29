@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react'
 
+import classNames from 'classnames'
+
 type FormContentEditableProps = {
     value: string
     className?: string
@@ -42,7 +44,10 @@ export const FormContentEditable = ({ value, className, placeholder, onChange }:
             suppressContentEditableWarning
             contentEditable
             spellCheck={false}
-            className={className}
+            className={classNames(
+                'relative before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:cursor-text before:text-nowrap focus:outline-none',
+                className,
+            )}
             onInput={handleInput}
             onPaste={handlePaste}
             onKeyDown={handleKeyDown}
