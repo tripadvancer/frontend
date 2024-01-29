@@ -97,6 +97,8 @@ export default {
     'placeholder.action.new_password': 'Введите новый пароль',
     'placeholder.action.email': 'Введите email',
     'placeholder.action.new_email': 'Введите новый email',
+    'placeholder.place.title': 'Название места',
+    'placeholder.place.coordinates': 'Координаты',
 
     'success.send_complaint': 'Ваша жалоба была успешно отправлена.',
     'success.copy_coordinates': 'Координаты были скопированы в буфер обмена.',

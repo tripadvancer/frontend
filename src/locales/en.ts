@@ -97,6 +97,8 @@ export default {
     'placeholder.action.new_password': 'Enter new password',
     'placeholder.action.email': 'Enter email address',
     'placeholder.action.new_email': 'Enter new email address',
+    'placeholder.place.title': 'Place title',
+    'placeholder.place.coordinates': 'Coordinates',
 
     'success.send_complaint': 'Your complaint has been sent.',
     'success.copy_coordinates': 'Coordinates has been copied to the clipboard.',
