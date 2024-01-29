@@ -1,3 +1,5 @@
+import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
+
 import { notFound } from 'next/navigation'
 
 import { AddPlace } from '@/components/features/place-form/add-place'
@@ -13,6 +15,14 @@ export default async function AddPlacePage() {
         }
 
         return <TryRefreshComponent />
+    }
+
+    // todo: create helper for get claim value on client and server
+    const emailVerificationClaim = await session?.getClaimValue(EmailVerificationClaim)
+    const emailIsNotVerified = emailVerificationClaim === false // because it can be undefined
+
+    if (emailIsNotVerified) {
+        notFound()
     }
 
     return <AddPlace />
