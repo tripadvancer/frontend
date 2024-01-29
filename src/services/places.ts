@@ -99,14 +99,14 @@ export async function createPlace(body: CreatePlaceInputs): Promise<{ id: number
     return res.json()
 }
 
-export async function updatePlaceById(placeId: string, body: UpdatePlaceInputs): Promise<void> {
+export async function updatePlaceById({ placeId, ...patch }: UpdatePlaceInputs): Promise<void> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
     const res = await fetch(url, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify(patch),
     })
 
     if (!res.ok) {
