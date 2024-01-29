@@ -53,3 +53,8 @@ a {
 .DraftEditor-editorContainer {
     @apply relative z-10;
 }
+
+[contentEditable='true']:empty:before {
+    content: attr(data-placeholder);
+    color: text-white;
+}

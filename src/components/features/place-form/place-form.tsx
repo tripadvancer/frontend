@@ -58,8 +58,14 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                             value={formik.values.cover}
                             onChange={value => formik.setFieldValue('cover', value)}
                         />
-                        <FormInputTitle value={formik.values.title} onChange={formik.handleChange} />
-                        <FormInputCoordinates value={formik.values.location} onChange={formik.handleChange} />
+                        <FormInputTitle
+                            value={formik.values.title}
+                            onChange={value => formik.setFieldValue('title', value)}
+                        />
+                        <FormInputCoordinates
+                            value={formik.values.location}
+                            onChange={value => formik.setFieldValue('location', value)}
+                        />
                         <FormInputCategories
                             value={formik.values.categories}
                             onChange={value => formik.setFieldValue('categories', value)}

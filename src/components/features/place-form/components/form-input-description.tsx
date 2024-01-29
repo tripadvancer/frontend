@@ -35,7 +35,7 @@ export const FormInputDescription = ({ value, onChange }: FormInputDescriptionPr
         setCharacterCount(plainText.length)
     }, [editorState])
 
-    const handleChangeContent = useCallback(
+    const handleChange = useCallback(
         (state: EditorState) => {
             const contentState = state.getCurrentContent()
             const contentRaw = convertToRaw(contentState)
@@ -67,7 +67,7 @@ export const FormInputDescription = ({ value, onChange }: FormInputDescriptionPr
                         editorState={editorState}
                         placeholder={t('placeholder.action.about_place')}
                         stripPastedStyles
-                        onChange={handleChangeContent}
+                        onChange={handleChange}
                     />
                 </div>
             </div>

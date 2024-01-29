@@ -21,6 +21,7 @@ export const FormSelectCategories = ({ value, onChange }: FormSelectCategoriesPr
     const t = useI18n()
     const dialog = useDialog()
     const currentLocale = useCurrentLocale()
+
     const [selectedCategoryIds, setSelectedCategoryIds] = useState<number[]>(value)
 
     const handleCategoryClick = (categoryId: number) => {
