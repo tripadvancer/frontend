@@ -36,9 +36,17 @@ export const useMapEventHandlers = () => {
     const handleLoad = useCallback(async (event: MapEvent) => {
         const map = event.target
 
-        const placePinImage = new Image()
-        placePinImage.src = '/images/pin.svg'
-        placePinImage.onload = () => map.addImage('place-pin', placePinImage)
+        const pinOrangeImage = new Image()
+        pinOrangeImage.src = '/images/pin-orange.svg'
+        pinOrangeImage.onload = () => map.addImage('pin-orange', pinOrangeImage)
+
+        const pinBlueImage = new Image()
+        pinBlueImage.src = '/images/pin-blue.svg'
+        pinBlueImage.onload = () => map.addImage('pin-blue', pinBlueImage)
+
+        const pinGrayImage = new Image()
+        pinGrayImage.src = '/images/pin-gray.svg'
+        pinGrayImage.onload = () => map.addImage('pin-gray', pinGrayImage)
 
         const bounds = map.getBounds()
         const places = await getPlaceByBounds({ mapBounds: bounds, selectedCategories: [] })
@@ -105,7 +113,7 @@ export const useMapEventHandlers = () => {
             const feature = event.features[0]
             if (feature) {
                 const place = feature.properties as IPlacePreview
-                alert(place.title)
+                alert(`Place id ${place.id}`)
             }
         }
 
