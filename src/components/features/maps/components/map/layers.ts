@@ -6,7 +6,7 @@ export const placesLayer: SymbolLayer = {
     type: 'symbol',
     layout: {
         'icon-image': 'place-pin',
-        'icon-size': 0.8,
+        'icon-size': 0.75,
         'icon-allow-overlap': false,
         'icon-ignore-placement': false,
     },
