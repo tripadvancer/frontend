@@ -26,6 +26,10 @@ a {
     @apply hover-animated cursor-pointer text-white hover:text-blue-active;
 }
 
+.link-black {
+    @apply hover-animated cursor-pointer text-black-100 hover:text-blue-active;
+}
+
 .container {
     @apply mx-auto w-full px-4 sm:max-w-[1184px] sm:px-8;
 }
@@ -52,6 +56,10 @@ a {
 
 .DraftEditor-editorContainer {
     @apply relative z-10;
+}
+
+.maplibregl-popup-content {
+    @apply rounded-lg p-4 text-base shadow-small !important;
 }
 
 [contentEditable='true']:empty:before {

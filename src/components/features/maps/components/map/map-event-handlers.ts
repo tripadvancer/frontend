@@ -22,6 +22,8 @@ export const useMapEventHandlers = () => {
         zoom: 5,
     })
 
+    const [popupInfo, setPopupInfo] = useState<IPlacePreview | null>(null)
+
     /**
      * This function is called when the map is loaded.
      * It adds the places layer to the map and loads the places.
@@ -62,22 +64,19 @@ export const useMapEventHandlers = () => {
      * This function is called when the map is moved.
      * It updates the url query string with the new map viewState.
      */
-    const handleMoveEnd = useCallback(
-        async (event: ViewStateChangeEvent) => {
-            const vs = viewStateToStr(event.viewState)
-            router.replace(pathname + '?' + createQueryString('vs', vs, searchParams))
+    const handleMoveEnd = useCallback(async (event: ViewStateChangeEvent) => {
+        // const vs = viewStateToStr(event.viewState)
+        // router.replace(pathname + '?' + createQueryString('vs', vs, searchParams))
 
-            const map = event.target
-            const bounds = map.getBounds()
-            const places = await getPlaceByBounds({ mapBounds: bounds, selectedCategories: [] })
-            const source = map.getSource('places-source') as GeoJSONSource
+        const map = event.target
+        const bounds = map.getBounds()
+        const places = await getPlaceByBounds({ mapBounds: bounds, selectedCategories: [] })
+        const source = map.getSource('places-source') as GeoJSONSource
 
-            if (source) {
-                source.setData(places)
-            }
-        },
-        [pathname, router, searchParams],
-    )
+        if (source) {
+            source.setData(places)
+        }
+    }, [])
 
     /**
      * This function is called when the mouse enters a feature on the map.
@@ -105,8 +104,11 @@ export const useMapEventHandlers = () => {
         if (event.features) {
             const feature = event.features[0]
             if (feature) {
-                const place = feature.properties as IPlacePreview
-                alert(`Place id ${place.id}`)
+                const coordinates = JSON.parse(feature.properties.coordinates)
+                const place = { ...feature.properties, coordinates } as IPlacePreview
+                setPopupInfo(place)
+            } else {
+                setPopupInfo(null)
             }
         }
 
@@ -117,20 +119,21 @@ export const useMapEventHandlers = () => {
      * This function is called when the map is loaded.
      * It updates the map viewState state from the url query string.
      */
-    useEffect(() => {
-        const vs = searchParams.get('vs')
+    // useEffect(() => {
+    //     const vs = searchParams.get('vs')
 
-        if (vs) {
-            const updatedViewState = strToViewState(vs)
-            setViewState(updatedViewState)
-        } else {
-            const updatedVs = viewStateToStr(viewState)
-            router.replace(pathname + '?' + createQueryString('vs', updatedVs, searchParams))
-        }
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    //     if (vs) {
+    //         const updatedViewState = strToViewState(vs)
+    //         setViewState(updatedViewState)
+    //     } else {
+    //         const updatedVs = viewStateToStr(viewState)
+    //         router.replace(pathname + '?' + createQueryString('vs', updatedVs, searchParams))
+    //     }
+    // }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     return {
         ...viewState,
+        popupInfo,
         onLoad: handleLoad,
         onMove: handleMove,
         onMoveEnd: handleMoveEnd,
