@@ -1,14 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import {
-    GeoJSONSource,
-    Map,
-    MapEvent,
-    MapLayerMouseEvent,
-    ViewState,
-    ViewStateChangeEvent,
-} from 'react-map-gl/maplibre'
+import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
@@ -72,7 +65,7 @@ export const useMapEventHandlers = () => {
     const handleMoveEnd = useCallback(
         async (event: ViewStateChangeEvent) => {
             const vs = viewStateToStr(event.viewState)
-            router.push(pathname + '?' + createQueryString('vs', vs, searchParams))
+            router.replace(pathname + '?' + createQueryString('vs', vs, searchParams))
 
             const map = event.target
             const bounds = map.getBounds()
@@ -132,7 +125,7 @@ export const useMapEventHandlers = () => {
             setViewState(updatedViewState)
         } else {
             const updatedVs = viewStateToStr(viewState)
-            router.push(pathname + '?' + createQueryString('vs', updatedVs, searchParams))
+            router.replace(pathname + '?' + createQueryString('vs', updatedVs, searchParams))
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
