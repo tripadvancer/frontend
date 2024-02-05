@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { revalidateTag } from 'next/cache'
 import { useRouter } from 'next/navigation'
 
 import { IPlace, UpdatePlaceInputs } from '@/utils/types/place'

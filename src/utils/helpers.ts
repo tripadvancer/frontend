@@ -48,6 +48,12 @@ export function parseQueryString(input: string | undefined, validationArray: num
     return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
 }
 
+export function updateSelectedCategories(selectedCategories: number[], categoryId: number): number[] {
+    return selectedCategories.includes(categoryId)
+        ? selectedCategories.filter(id => id !== categoryId)
+        : [...selectedCategories, categoryId]
+}
+
 /**
  * Returns an array of all the errors in the formik errors object.
  * @param {FormikErrors<Values>} errors - The formik errors object.

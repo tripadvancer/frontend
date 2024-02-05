@@ -62,7 +62,9 @@ export const FormSelectCategories = ({ value, onChange }: FormSelectCategoriesPr
                     </div>
                 ))}
             </div>
-            <FormButtonStroke onClick={handleChange}>{t('common.action.confirm')}</FormButtonStroke>
+            <FormButtonStroke onClick={handleChange} isDisabled={selectedCategoryIds.length === 0}>
+                {t('common.action.confirm')}
+            </FormButtonStroke>
         </div>
     )
 }

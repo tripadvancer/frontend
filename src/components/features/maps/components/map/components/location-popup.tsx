@@ -61,7 +61,7 @@ export const LocationPopup = (location: ILocationPreview) => {
                 </FormButtonStroke>
             </Popup>
             <Marker latitude={latitude} longitude={longitude}>
-                <Image src="/images/pin-blue.svg" alt="Location marker" width={20} height={20} />
+                <Image src="/images/pin-blue-active.svg" alt="Location marker" width={20} height={20} />
             </Marker>
         </>
     )

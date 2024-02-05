@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -8,12 +8,15 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import type { CoordinatesTuple } from '@/utils/types/geo'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 
+import { getSelectedCategories } from '@/redux/features/map-slice'
+import { useAppSelector } from '@/redux/hooks'
 import { getPlaceByBounds } from '@/services/places'
 
 export const useMapEventHandlers = () => {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+    const selectedCategories = useAppSelector(getSelectedCategories)
 
     const [viewState, setViewState] = useState<Partial<ViewState>>({
         latitude: 54.887928,
@@ -24,33 +27,41 @@ export const useMapEventHandlers = () => {
     const [placePopupInfo, setPlacePopupInfo] = useState<IPlacePreview | null>(null)
     const [locationPopupInfo, setLocationPopupInfo] = useState<ILocationPreview | null>(null)
 
+    useEffect(() => {
+        console.log('Selected categories will be updated')
+        router.refresh()
+    }, [router, selectedCategories])
+
     /**
      * This function is called when the map is loaded.
      * It adds the places layer to the map and loads the places.
      */
-    const handleLoad = useCallback(async (event: MapEvent) => {
-        const map = event.target
+    const handleLoad = useCallback(
+        async (event: MapEvent) => {
+            const map = event.target
 
-        const pinOrangeImage = new Image()
-        pinOrangeImage.src = '/images/pin-orange.svg'
-        pinOrangeImage.onload = () => map.addImage('pin-orange', pinOrangeImage)
+            const pinOrangeImage = new Image()
+            pinOrangeImage.src = '/images/pin-orange.svg'
+            pinOrangeImage.onload = () => map.addImage('pin-orange', pinOrangeImage)
 
-        const pinBlueImage = new Image()
-        pinBlueImage.src = '/images/pin-blue.svg'
-        pinBlueImage.onload = () => map.addImage('pin-blue', pinBlueImage)
+            const pinBlueImage = new Image()
+            pinBlueImage.src = '/images/pin-blue.svg'
+            pinBlueImage.onload = () => map.addImage('pin-blue', pinBlueImage)
 
-        const pinGrayImage = new Image()
-        pinGrayImage.src = '/images/pin-gray.svg'
-        pinGrayImage.onload = () => map.addImage('pin-gray', pinGrayImage)
+            const pinGrayImage = new Image()
+            pinGrayImage.src = '/images/pin-gray.svg'
+            pinGrayImage.onload = () => map.addImage('pin-gray', pinGrayImage)
 
-        const bounds = map.getBounds()
-        const places = await getPlaceByBounds({ mapBounds: bounds, selectedCategories: [] })
-        const source = map.getSource('places-source') as GeoJSONSource
+            const mapBounds = map.getBounds()
+            const places = await getPlaceByBounds({ mapBounds, selectedCategories })
+            const source = map.getSource('places-source') as GeoJSONSource
 
-        if (source) {
-            source.setData(places)
-        }
-    }, [])
+            if (source) {
+                source.setData(places)
+            }
+        },
+        [selectedCategories],
+    )
 
     /**
      * This function is called when the map is moved.
@@ -64,19 +75,22 @@ export const useMapEventHandlers = () => {
      * This function is called when the map is moved.
      * It updates the url query string with the new map viewState.
      */
-    const handleMoveEnd = useCallback(async (event: ViewStateChangeEvent) => {
-        // const vs = viewStateToStr(event.viewState)
-        // router.replace(pathname + '?' + createQueryString('vs', vs, searchParams))
+    const handleMoveEnd = useCallback(
+        async (event: ViewStateChangeEvent) => {
+            // const vs = viewStateToStr(event.viewState)
+            // router.replace(pathname + '?' + createQueryString('vs', vs, searchParams))
 
-        const map = event.target
-        const bounds = map.getBounds()
-        const places = await getPlaceByBounds({ mapBounds: bounds, selectedCategories: [] })
-        const source = map.getSource('places-source') as GeoJSONSource
+            const map = event.target
+            const mapBounds = map.getBounds()
+            const places = await getPlaceByBounds({ mapBounds, selectedCategories })
+            const source = map.getSource('places-source') as GeoJSONSource
 
-        if (source) {
-            source.setData(places)
-        }
-    }, [])
+            if (source) {
+                source.setData(places)
+            }
+        },
+        [selectedCategories],
+    )
 
     /**
      * This function is called when the mouse enters a feature on the map.
