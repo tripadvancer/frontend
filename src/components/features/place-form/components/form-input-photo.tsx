@@ -58,7 +58,7 @@ export const FormInputPhoto = ({ currentPhotosCount, maxPhotosCount, isUploading
                 'hover-animated flex-center aspect-square size-full cursor-pointer rounded-lg border border-blue-20 text-blue-100 hover:border-blue-active hover:text-blue-active',
                 {
                     'pointer-events-none cursor-not-allowed opacity-30': currentPhotosCount >= maxPhotosCount,
-                    'cursor-wait': isUploading,
+                    'pointer-events-none cursor-wait': isUploading,
                 },
             )}
             onClick={handleClickFileInput}
