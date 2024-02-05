@@ -34,7 +34,7 @@ export const BlockRequestUserDeletion = () => {
         <div className="flex flex-col gap-y-4 border-t border-black-15 py-8 last:border-b">
             <div className="flex items-center justify-between">
                 <div className="text-h7-m sm:text-h7">{t('pages.user.account.request_user_deletion.title')}</div>
-                <div className="link-red font-bold" onClick={handleRequestUserDeletion}>
+                <div className="link-red font-medium" onClick={handleRequestUserDeletion}>
                     {t('pages.user.account.request_user_deletion.action')}
                 </div>
             </div>

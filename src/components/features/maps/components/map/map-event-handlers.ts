@@ -1,15 +1,14 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-import { IPlacePreview } from '@/utils/types/place'
+import type { CoordinatesTuple } from '@/utils/types/geo'
+import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 
 import { getPlaceByBounds } from '@/services/places'
-
-import { createQueryString, strToViewState, viewStateToStr } from './helpers'
 
 export const useMapEventHandlers = () => {
     const router = useRouter()
@@ -22,7 +21,8 @@ export const useMapEventHandlers = () => {
         zoom: 5,
     })
 
-    const [popupInfo, setPopupInfo] = useState<IPlacePreview | null>(null)
+    const [placePopupInfo, setPlacePopupInfo] = useState<IPlacePreview | null>(null)
+    const [locationPopupInfo, setLocationPopupInfo] = useState<ILocationPreview | null>(null)
 
     /**
      * This function is called when the map is loaded.
@@ -101,17 +101,25 @@ export const useMapEventHandlers = () => {
      * It popup a modal with the place details.
      */
     const handleClick = useCallback((event: MapLayerMouseEvent) => {
+        setPlacePopupInfo(null)
+        setLocationPopupInfo(null)
+
         if (event.features) {
             const feature = event.features[0]
             if (feature) {
                 const coordinates = JSON.parse(feature.properties.coordinates)
                 const place = { ...feature.properties, coordinates } as IPlacePreview
-                setPopupInfo(place)
-            } else {
-                setPopupInfo(null)
+                setPlacePopupInfo(place)
             }
         }
 
+        event.originalEvent.stopPropagation()
+    }, [])
+
+    const handleContextMenu = useCallback((event: MapLayerMouseEvent) => {
+        const coordinates = [event.lngLat.lat, event.lngLat.lng] as CoordinatesTuple
+        setPlacePopupInfo(null)
+        setLocationPopupInfo({ coordinates })
         event.originalEvent.stopPropagation()
     }, [])
 
@@ -133,12 +141,14 @@ export const useMapEventHandlers = () => {
 
     return {
         ...viewState,
-        popupInfo,
+        placePopupInfo,
+        locationPopupInfo,
         onLoad: handleLoad,
         onMove: handleMove,
         onMoveEnd: handleMoveEnd,
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave,
         onClick: handleClick,
+        onContextMenu: handleContextMenu,
     }
 }

@@ -12,8 +12,8 @@
     "dependencies": {
         "@reduxjs/toolkit": "^2.1.0",
         "@types/mapbox-gl": "^2.7.20",
-        "@types/node": "^20.11.15",
-        "@types/react": "^18.2.51",
+        "@types/node": "^20.11.16",
+        "@types/react": "^18.2.53",
         "@types/react-dom": "^18.2.18",
         "async-mutex": "^0.4.1",
         "classnames": "^2.5.1",
@@ -46,7 +46,7 @@
         "@types/uuid": "^9.0.8",
         "autoprefixer": "^10.4.17",
         "postcss": "^8.4.33",
-        "prettier": "^3.2.4",
+        "prettier": "^3.2.5",
         "prettier-plugin-tailwindcss": "^0.5.11",
         "tailwindcss": "^3.4.1"
     }

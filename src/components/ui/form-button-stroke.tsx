@@ -8,6 +8,7 @@ type FormButtonStrokeProps = {
     children: ReactNode
     type?: 'button' | 'submit'
     variant?: 'blue' | 'orange' | 'red'
+    size?: 'small' | 'medium'
     className?: string
     isDisabled?: boolean
     isLoading?: boolean
@@ -18,6 +19,7 @@ export const FormButtonStroke = ({
     children,
     type = 'button',
     variant = 'blue',
+    size = 'medium',
     className = '',
     isDisabled,
     isLoading,
@@ -27,8 +29,10 @@ export const FormButtonStroke = ({
         <button
             type={type}
             className={classNames(
-                'hover-animated relative h-10 rounded-lg border px-6 text-center font-medium focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
+                'hover-animated relative rounded-lg border px-6 text-center font-medium focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                 {
+                    'h-10': size === 'medium',
+                    'h-8 text-small': size === 'small',
                     'border-blue-20 text-blue-100 enabled:hover:border-blue-active enabled:hover:text-blue-active':
                         variant === 'blue',
                     'border-orange-20 text-orange-100 enabled:hover:border-orange-active enabled:hover:text-orange-active':

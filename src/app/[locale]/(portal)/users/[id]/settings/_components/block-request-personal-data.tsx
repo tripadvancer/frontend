@@ -33,7 +33,7 @@ export const BlockRequestPersonalData = () => {
         <div className="flex flex-col gap-y-4 border-t border-black-15 py-8 last:border-b">
             <div className="flex items-center justify-between">
                 <div className="text-h7-m sm:text-h7">{t('pages.user.account.request_personal_data.title')}</div>
-                <div className="link font-bold" onClick={handleRequestPersonalData}>
+                <div className="link font-medium" onClick={handleRequestPersonalData}>
                     {t('pages.user.account.request_personal_data.action')}
                 </div>
             </div>

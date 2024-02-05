@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useSearchParams } from 'next/navigation'
+
 import { CreatePlaceInputs } from '@/utils/types/place'
 
 import { useDialog } from '@/providers/dialog-provider'
@@ -15,13 +17,18 @@ export const AddPlace = () => {
     const t = useI18n()
     const dialog = useDialog()
     const toast = useToast()
+    const searchParams = useSearchParams()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
+
+    const lat = searchParams.get('lat')
+    const lng = searchParams.get('lng')
+    const location = lat && lng ? `${lat},${lng}` : ''
 
     const initialValues: CreatePlaceInputs = {
         title: '',
         description: '',
-        location: '',
+        location,
         photos: [],
         cover: null,
         categories: [],

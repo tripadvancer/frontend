@@ -27,6 +27,10 @@ export type IPlacePreview = Pick<
     coordinates: CoordinatesTuple
 }
 
+export type ILocationPreview = {
+    coordinates: CoordinatesTuple
+}
+
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & { distance: number }
 
 export type CreatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover' | 'categories'> & {
