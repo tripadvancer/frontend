@@ -13,7 +13,7 @@ export const BlockChangePassword = () => {
             <div className="flex items-center justify-between">
                 <div className="text-h7-m sm:text-h7">{t('pages.user.account.change_password.title')}</div>
                 <div
-                    className="link font-bold"
+                    className="link font-medium"
                     onClick={() => {
                         dialog.open(<ChangePassword />)
                     }}

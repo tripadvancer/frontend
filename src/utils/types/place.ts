@@ -24,7 +24,11 @@ export type IPlacePreview = Pick<
     IPlace,
     'id' | 'title' | 'cover' | 'isFavorite' | 'isVisited' | 'avgRating' | 'reviewsCount'
 > & {
-    coordinates?: CoordinatesTuple
+    coordinates: CoordinatesTuple
+}
+
+export type ILocationPreview = {
+    coordinates: CoordinatesTuple
 }
 
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & { distance: number }
