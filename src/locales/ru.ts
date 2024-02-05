@@ -90,7 +90,7 @@ export default {
     'placeholder.action.place.cover': 'Загрузите обложку (jpg, png до 10 Мб)',
     'placeholder.action.username': 'Введите имя пользователя',
     'placeholder.action.about_user': 'Напишите что-нибудь о себе',
-    'placeholder.action.about_place': 'Введте описание места',
+    'placeholder.action.about_place': 'Введите описание места',
     'placeholder.action.review': 'Развернуто поделитесь своими впечатлениями - так Вы поможете остальным узнать больше о месте',
     'placeholder.action.complain.comment': 'Опишите причину жалобы',
     'placeholder.action.password': 'Введите пароль',

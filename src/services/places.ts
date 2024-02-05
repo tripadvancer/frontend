@@ -58,6 +58,7 @@ export async function getPlaceById(placeId: string, accessToken?: string): Promi
     const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
     const res = await fetch(url, {
         headers: accessToken ? { Authorization: 'Bearer ' + accessToken } : {},
+        cache: 'no-store',
     })
 
     if (!res.ok) {
