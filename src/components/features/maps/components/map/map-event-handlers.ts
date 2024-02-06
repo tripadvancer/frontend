@@ -1,36 +1,53 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
+import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent, useMap } from 'react-map-gl/maplibre'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import type { CoordinatesTuple } from '@/utils/types/geo'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 
-import { getSelectedCategories } from '@/redux/features/map-slice'
-import { useAppSelector } from '@/redux/hooks'
+import { getSelectedCategories, getViewState, setViewState } from '@/redux/features/map-slice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { getPlaceByBounds } from '@/services/places'
+
+import { createQueryString, viewStateToStr } from './helpers'
 
 export const useMapEventHandlers = () => {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+    const dispatch = useAppDispatch()
     const selectedCategories = useAppSelector(getSelectedCategories)
+    const viewState = useAppSelector(getViewState)
 
-    const [viewState, setViewState] = useState<Partial<ViewState>>({
-        latitude: 54.887928,
-        longitude: 25.954196,
-        zoom: 5,
-    })
+    const { mainMap } = useMap()
 
     const [placePopupInfo, setPlacePopupInfo] = useState<IPlacePreview | null>(null)
     const [locationPopupInfo, setLocationPopupInfo] = useState<ILocationPreview | null>(null)
 
+    /**
+     * This function is updated source data.
+     */
+    const updateSourceData = useCallback(
+        async (map: any): Promise<void> => {
+            if (map) {
+                const mapBounds = map.getBounds()
+                const places = await getPlaceByBounds({ mapBounds, selectedCategories })
+                const source = map.getSource('places-source') as GeoJSONSource
+
+                if (source) {
+                    source.setData(places)
+                }
+            }
+        },
+        [selectedCategories],
+    )
+
     useEffect(() => {
-        console.log('Selected categories will be updated')
-        router.refresh()
-    }, [router, selectedCategories])
+        updateSourceData(mainMap)
+    }, [selectedCategories]) // eslint-disable-line react-hooks/exhaustive-deps
 
     /**
      * This function is called when the map is loaded.
@@ -67,29 +84,33 @@ export const useMapEventHandlers = () => {
      * This function is called when the map is moved.
      * It updates the map viewState state.
      */
-    const handleMove = useCallback((event: ViewStateChangeEvent) => {
-        setViewState(event.viewState)
-    }, [])
+    const handleMove = useCallback(
+        (event: ViewStateChangeEvent) => {
+            dispatch(setViewState(event.viewState))
+        },
+        [dispatch],
+    )
 
     /**
      * This function is called when the map is moved.
-     * It updates the url query string with the new map viewState.
+     * It updates the data source.
      */
-    const handleMoveEnd = useCallback(
+    const handleDragEnd = useCallback(
         async (event: ViewStateChangeEvent) => {
-            // const vs = viewStateToStr(event.viewState)
-            // router.replace(pathname + '?' + createQueryString('vs', vs, searchParams))
-
-            const map = event.target
-            const mapBounds = map.getBounds()
-            const places = await getPlaceByBounds({ mapBounds, selectedCategories })
-            const source = map.getSource('places-source') as GeoJSONSource
-
-            if (source) {
-                source.setData(places)
-            }
+            updateSourceData(event.target)
         },
-        [selectedCategories],
+        [updateSourceData],
+    )
+
+    /**
+     * This function is called when the map is zoomed.
+     * It updates the data source.
+     */
+    const handleZoomEnd = useCallback(
+        async (event: ViewStateChangeEvent) => {
+            updateSourceData(event.target)
+        },
+        [updateSourceData],
     )
 
     /**
@@ -97,8 +118,7 @@ export const useMapEventHandlers = () => {
      * It changes the cursor to a pointer.
      */
     const handleMouseEnter = useCallback((event: MapLayerMouseEvent) => {
-        const map = event.target
-        map.getCanvas().style.cursor = 'pointer'
+        event.target.getCanvas().style.cursor = 'pointer'
     }, [])
 
     /**
@@ -106,8 +126,7 @@ export const useMapEventHandlers = () => {
      * It changes the cursor back to the default.
      */
     const handleMouseLeave = useCallback((event: MapLayerMouseEvent) => {
-        const map = event.target
-        map.getCanvas().style.cursor = ''
+        event.target.getCanvas().style.cursor = ''
     }, [])
 
     /**
@@ -130,6 +149,10 @@ export const useMapEventHandlers = () => {
         event.originalEvent.stopPropagation()
     }, [])
 
+    /**
+     * This function is called when the mouse right clicks on the map.
+     * It popup a modal with the location details.
+     */
     const handleContextMenu = useCallback((event: MapLayerMouseEvent) => {
         const coordinates = [event.lngLat.lat, event.lngLat.lng] as CoordinatesTuple
         setPlacePopupInfo(null)
@@ -159,7 +182,8 @@ export const useMapEventHandlers = () => {
         locationPopupInfo,
         onLoad: handleLoad,
         onMove: handleMove,
-        onMoveEnd: handleMoveEnd,
+        onDragEnd: handleDragEnd,
+        onZoomEnd: handleZoomEnd,
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave,
         onClick: handleClick,

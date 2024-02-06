@@ -7,6 +7,8 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { CreatePlaceInputs } from '@/utils/types/place'
 
 import { useToast } from '@/providers/toast-provider'
+import { setViewState } from '@/redux/features/map-slice'
+import { useAppDispatch } from '@/redux/hooks'
 import { createPlace } from '@/services/places'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -17,6 +19,7 @@ export const AddPlace = () => {
     const router = useRouter()
     const toast = useToast()
     const searchParams = useSearchParams()
+    const dispatch = useAppDispatch()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -36,9 +39,14 @@ export const AddPlace = () => {
     const handleSubmit = async (values: CreatePlaceInputs) => {
         try {
             setIsLoading(true)
-            const place = await createPlace(values)
+            await createPlace(values)
             toast.success(t('success.create_place'))
-            router.push(`/places/${place.id}`)
+            const mapViewState = {
+                latitude: values.location.split(',').map(Number)[0],
+                longitude: values.location.split(',').map(Number)[1],
+            }
+            dispatch(setViewState(mapViewState))
+            router.push('/maps')
         } catch (err) {
             toast.error(t('common.error'))
         } finally {
