@@ -1,4 +1,4 @@
-import { LngLatBounds } from 'react-map-gl/maplibre'
+import { LngLatBounds } from 'react-map-gl'
 
 import { notFound } from 'next/navigation'
 

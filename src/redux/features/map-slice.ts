@@ -1,4 +1,4 @@
-import type { ViewState } from 'react-map-gl/maplibre'
+import type { ViewState } from 'react-map-gl'
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 

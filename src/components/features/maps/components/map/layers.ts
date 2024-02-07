@@ -1,4 +1,4 @@
-import { SymbolLayer } from 'react-map-gl/maplibre'
+import { SymbolLayer } from 'react-map-gl'
 
 export const placesLayer: SymbolLayer = {
     id: 'icon-layer',

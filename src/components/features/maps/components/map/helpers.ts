@@ -1,4 +1,4 @@
-import { ViewState } from 'react-map-gl/maplibre'
+import { ViewState } from 'react-map-gl'
 
 export function viewStateToStr(viewState: Partial<ViewState>): string {
     const { latitude, longitude, zoom } = viewState

@@ -1,6 +1,6 @@
 'use client'
 
-import { MapProvider } from 'react-map-gl/maplibre'
+import { MapProvider } from 'react-map-gl'
 
 import { Mapbox } from './components/map/mapbox'
 import { Widget } from './components/widget/widget'

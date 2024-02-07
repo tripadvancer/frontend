@@ -1,4 +1,4 @@
-import { Popup } from 'react-map-gl/maplibre'
+import { Popup } from 'react-map-gl'
 
 import Link from 'next/link'
 

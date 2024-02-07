@@ -1,6 +1,6 @@
 'use client'
 
-import { Layer, Map as ReactMapGl, Source } from 'react-map-gl/maplibre'
+import { Layer, Map as ReactMapGl, Source } from 'react-map-gl'
 
 import { LocationPopup } from './components/location-popup'
 import { PlacePopup } from './components/place-popup'

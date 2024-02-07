@@ -1,4 +1,4 @@
-import type { LngLat } from 'react-map-gl/maplibre'
+import type { LngLat } from 'react-map-gl'
 
 import type { GeoJsonPoint } from '@/utils/types/geo'
 import type { IPhoto } from '@/utils/types/photo'

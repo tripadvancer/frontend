@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect } from 'react'
-import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent, useMap } from 'react-map-gl/maplibre'
+import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent, useMap } from 'react-map-gl'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 

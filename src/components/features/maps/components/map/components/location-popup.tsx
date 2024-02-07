@@ -1,6 +1,6 @@
 'use client'
 
-import { Marker, Popup } from 'react-map-gl/maplibre'
+import { Marker, Popup } from 'react-map-gl'
 
 import Session from 'supertokens-web-js/recipe/session'
 
