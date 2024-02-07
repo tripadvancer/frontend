@@ -67,6 +67,9 @@ export default async function RootLayout({ children, params }: { children: React
 
     return (
         <html lang={locale}>
+            <head>
+                <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet" />
+            </head>
             <body className={roboto.className}>
                 <ReduxProvider>
                     <I18nProvider locale={locale}>

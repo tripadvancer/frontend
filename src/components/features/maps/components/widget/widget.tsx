@@ -11,7 +11,7 @@ export const Widget = () => {
     const selectedCategories = useAppSelector(getSelectedCategories)
 
     return (
-        <div className="fixed z-50 w-full rounded-b-2xl bg-white shadow-small sm:right-8 sm:top-8 sm:w-[448px] sm:rounded-2xl">
+        <div className="fixed z-40 w-full rounded-b-2xl bg-white shadow-small sm:right-8 sm:top-8 sm:w-[448px] sm:rounded-2xl">
             <div className="p-4 sm:p-8">
                 <Image src="/images/logo.svg" width="140" height="24" alt="Tripadvancer" />
             </div>

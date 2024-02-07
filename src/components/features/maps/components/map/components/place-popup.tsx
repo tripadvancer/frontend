@@ -2,13 +2,12 @@
 
 import { Popup } from 'react-map-gl/maplibre'
 
-import Image from 'next/image'
 import Link from 'next/link'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
-import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
+import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
+import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 
 export const PlacePopup = (place: IPlacePreview) => {
     return (
@@ -19,19 +18,14 @@ export const PlacePopup = (place: IPlacePreview) => {
             closeOnClick={false}
             closeButton={false}
         >
-            <div>
+            <div className="flex w-56 flex-col gap-y-4">
                 <Link href={`/places/${place.id}`} target="_blank" className="link-black flex gap-x-4">
-                    {place.cover && (
-                        <Image
-                            src={makeImageUrl(place.cover, ImageVariant.PREVIEW)}
-                            width="80"
-                            height="80"
-                            className="rounded-lg"
-                            alt={place.title}
-                        />
-                    )}
-                    <div className="font-medium">{place.title}</div>
+                    <PlacePreviewCover {...place} />
+                    <div>
+                        <div className="line-clamp-4 break-words font-medium">{place.title}</div>
+                    </div>
                 </Link>
+                <PlacePreviewRating {...place} />
             </div>
         </Popup>
     )

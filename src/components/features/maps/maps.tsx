@@ -2,14 +2,14 @@
 
 import { MapProvider } from 'react-map-gl'
 
-import { Map } from './components/map/map'
+import { Mapbox } from './components/map/mapbox'
 import { Widget } from './components/widget/widget'
 
 export const Maps = () => {
     return (
         <MapProvider>
             <Widget />
-            <Map />
+            <Mapbox />
         </MapProvider>
     )
 }

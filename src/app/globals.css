@@ -58,8 +58,14 @@ a {
     @apply relative z-10;
 }
 
+.mapboxgl-popup-content,
 .maplibregl-popup-content {
     @apply rounded-lg p-4 text-base shadow-small !important;
+}
+
+.mapboxgl-popup,
+.maplibregl-popup {
+    @apply max-w-none !important;
 }
 
 [contentEditable='true']:empty:before {

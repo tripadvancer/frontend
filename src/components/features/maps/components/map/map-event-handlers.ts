@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent, useMap } from 'react-map-gl/maplibre'
+import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent, useMap } from 'react-map-gl'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
@@ -11,8 +11,6 @@ import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import { getSelectedCategories, getViewState, setViewState } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { getPlaceByBounds } from '@/services/places'
-
-import { createQueryString, viewStateToStr } from './helpers'
 
 export const useMapEventHandlers = () => {
     const router = useRouter()
@@ -140,7 +138,7 @@ export const useMapEventHandlers = () => {
         if (event.features) {
             const feature = event.features[0]
             if (feature) {
-                const coordinates = JSON.parse(feature.properties.coordinates)
+                const coordinates = JSON.parse(feature.properties?.coordinates)
                 const place = { ...feature.properties, coordinates } as IPlacePreview
                 setPlacePopupInfo(place)
             }
