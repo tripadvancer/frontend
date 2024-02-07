@@ -1,4 +1,6 @@
-import type { CoordinatesTuple, GeoJsonPoint } from '@/utils/types/geo'
+import type { LngLat } from 'react-map-gl/maplibre'
+
+import type { GeoJsonPoint } from '@/utils/types/geo'
 import type { IPhoto } from '@/utils/types/photo'
 import type { IUserInfo } from '@/utils/types/user'
 
@@ -24,11 +26,11 @@ export type IPlacePreview = Pick<
     IPlace,
     'id' | 'title' | 'cover' | 'isFavorite' | 'isVisited' | 'avgRating' | 'reviewsCount'
 > & {
-    coordinates: CoordinatesTuple
+    coordinates: number[]
 }
 
 export type ILocationPreview = {
-    coordinates: CoordinatesTuple
+    coordinates: LngLat
 }
 
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & { distance: number }

@@ -1,11 +1,10 @@
 'use client'
 
 import { useCallback, useEffect } from 'react'
-import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent, useMap } from 'react-map-gl'
+import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent, useMap } from 'react-map-gl/maplibre'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-import type { CoordinatesTuple } from '@/utils/types/geo'
 import type { IPlacePreview } from '@/utils/types/place'
 
 import {
@@ -146,7 +145,13 @@ export const useMapEventHandlers = () => {
             if (event.features) {
                 const feature = event.features[0]
                 if (feature) {
-                    const coordinates = JSON.parse(feature.properties?.coordinates)
+                    // @ts-ignore
+                    const coordinates = feature.geometry.coordinates.slice()
+
+                    while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
+                        coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360
+                    }
+
                     const place = { ...feature.properties, coordinates } as IPlacePreview
                     dispatch(setPlacePopupInfo(place))
                 }
@@ -163,7 +168,7 @@ export const useMapEventHandlers = () => {
      */
     const handleContextMenu = useCallback(
         (event: MapLayerMouseEvent) => {
-            const coordinates = [event.lngLat.lat, event.lngLat.lng] as CoordinatesTuple
+            const coordinates = event.lngLat
             dispatch(setLocationPopupInfo({ coordinates }))
             event.originalEvent.stopPropagation()
         },

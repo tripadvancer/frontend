@@ -1,11 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { ViewState } from 'react-map-gl'
+import { ViewState } from 'react-map-gl/maplibre'
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import type { CoordinatesTuple } from '@/utils/types/geo'
 import type { CreatePlaceInputs, IPlacePreview } from '@/utils/types/place'
 
 import { useToast } from '@/providers/toast-provider'

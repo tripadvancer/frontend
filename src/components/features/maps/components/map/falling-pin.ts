@@ -15,6 +15,7 @@ export function createFallingPin(map: any): StyleImageInterface {
             const canvas = document.createElement('canvas')
             canvas.width = this.width
             canvas.height = this.height
+            // @ts-ignore
             this.context = canvas.getContext('2d')
         },
 

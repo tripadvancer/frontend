@@ -11,10 +11,8 @@ export type GeoJsonFeature<T> = {
 
 export type GeoJsonPoint = {
     type: 'Point'
-    coordinates: CoordinatesTuple
+    coordinates: number[]
 }
-
-export type CoordinatesTuple = number[]
 
 export type ICoordinates = {
     lng: number

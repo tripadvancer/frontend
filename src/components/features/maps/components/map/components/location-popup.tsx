@@ -14,11 +14,14 @@ import { SignIn } from '@/components/features/auth/sign-in'
 import { FormButtonStroke } from '@/components/ui/form-button-stroke'
 import { useDialog } from '@/providers/dialog-provider'
 
-export const LocationPopup = (location: ILocationPreview) => {
+export const LocationPopup = ({ coordinates }: ILocationPreview) => {
     const dialog = useDialog()
     const router = useRouter()
-    const latitude = Number(location.coordinates[0].toFixed(6))
-    const longitude = Number(location.coordinates[1].toFixed(6))
+
+    const wrappedCoordinates = coordinates.wrap()
+    // Round coordinates to 6 decimal places
+    wrappedCoordinates.lat = Number(wrappedCoordinates.lat.toFixed(6))
+    wrappedCoordinates.lng = Number(wrappedCoordinates.lng.toFixed(6))
 
     const handleClick = async () => {
         const doesSessionExist = await Session.doesSessionExist()
@@ -39,28 +42,28 @@ export const LocationPopup = (location: ILocationPreview) => {
             return
         }
 
-        const addPlaceUrl = '/add-place?lat=' + latitude + '&lng=' + longitude
+        const addPlaceUrl = '/add-place?lat=' + wrappedCoordinates.lat + '&lng=' + wrappedCoordinates.lng
         router.push(addPlaceUrl)
     }
 
     return (
         <>
             <Popup
-                latitude={location.coordinates[0]}
-                longitude={location.coordinates[1]}
+                latitude={coordinates.lat}
+                longitude={coordinates.lng}
                 offset={[0, -5] as [number, number]}
                 closeOnClick={false}
                 closeButton={false}
             >
                 <div>Selected location</div>
                 <div className="mb-4 text-small text-black-40">
-                    {latitude}, {longitude}
+                    {wrappedCoordinates.lat}, {wrappedCoordinates.lng}
                 </div>
                 <FormButtonStroke size="small" variant="blue" onClick={handleClick}>
                     Add place here
                 </FormButtonStroke>
             </Popup>
-            <Marker latitude={latitude} longitude={longitude}>
+            <Marker latitude={coordinates.lat} longitude={coordinates.lng}>
                 <Image src="/images/pin-blue-active.svg" alt="Location marker" width={20} height={20} />
             </Marker>
         </>

@@ -20,9 +20,7 @@ export const PlacePopup = (place: IPlacePreview) => {
             <div className="flex w-56 flex-col gap-y-4">
                 <Link href={`/places/${place.id}`} target="_blank" className="link-black flex gap-x-4">
                     <PlacePreviewCover {...place} />
-                    <div>
-                        <div className="line-clamp-4 break-words font-medium">{place.title}</div>
-                    </div>
+                    <div className="line-clamp-4 break-words font-medium">{place.title}</div>
                 </Link>
                 <div className="flex items-center justify-between">
                     <PlacePreviewRating {...place} />
