@@ -1,13 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import { ViewState } from 'react-map-gl'
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import { CreatePlaceInputs } from '@/utils/types/place'
+import type { CoordinatesTuple } from '@/utils/types/geo'
+import type { CreatePlaceInputs, IPlacePreview } from '@/utils/types/place'
 
 import { useToast } from '@/providers/toast-provider'
-import { setViewState } from '@/redux/features/map-slice'
+import { setPlacePopupInfo, setViewState } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { createPlace } from '@/services/places'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -39,13 +41,26 @@ export const AddPlace = () => {
     const handleSubmit = async (values: CreatePlaceInputs) => {
         try {
             setIsLoading(true)
-            await createPlace(values)
-            toast.success(t('success.create_place'))
-            const mapViewState = {
-                latitude: values.location.split(',').map(Number)[0],
-                longitude: values.location.split(',').map(Number)[1],
+            const place = await createPlace(values)
+            const latitude = values.location.split(',').map(Number)[0]
+            const longitude = values.location.split(',').map(Number)[1]
+            const mapViewState: Partial<ViewState> = {
+                latitude,
+                longitude,
+            }
+            const placePopupInfo: IPlacePreview = {
+                id: place.id,
+                title: values.title,
+                cover: values.cover,
+                isFavorite: false,
+                isVisited: false,
+                avgRating: 0,
+                reviewsCount: 0,
+                coordinates: [longitude, latitude],
             }
             dispatch(setViewState(mapViewState))
+            dispatch(setPlacePopupInfo(placePopupInfo))
+            toast.success(t('success.create_place'))
             router.push('/maps')
         } catch (err) {
             toast.error(t('common.error'))

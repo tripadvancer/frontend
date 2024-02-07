@@ -1,51 +1,26 @@
 'use client'
 
-import { useState } from 'react'
-
-import Session from 'supertokens-web-js/recipe/session'
-
-import { useRouter } from 'next/navigation'
-
-import type { IPlace } from '@/utils/types/place'
-
-import { SignIn } from '@/components/features/auth/sign-in'
 import { ButtonIcon } from '@/components/ui/button-icon'
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { addPlaceToFavorite, deletePlaceFromFavorite } from '@/services/favorites'
-import { useI18n } from '@/utils/i18n/i18n.client'
+import { useToggleFavorite } from '@/utils/hooks/use-toggle-favorite'
 
-export const PlaceFavoriteButton = ({ id, isFavorite }: IPlace) => {
-    const t = useI18n()
-    const router = useRouter()
-    const dialog = useDialog()
-    const toast = useToast()
+type PlaceFavoriteButtonProps = {
+    id: number
+    size?: 'small' | 'medium'
+    isFavorite: boolean
+}
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
-
-    // todo: put it in hook
-    const handleToggleFavorite = async () => {
-        const doesSessionExist = await Session.doesSessionExist()
-
-        if (!doesSessionExist) {
-            dialog.open(<SignIn />)
-            return
-        }
-
-        try {
-            setIsLoading(true)
-            isFavorite ? await deletePlaceFromFavorite(id) : await addPlaceToFavorite(id)
-            router.refresh()
-        } catch {
-            toast.error(t('common.error'))
-        } finally {
-            setIsLoading(false)
-        }
-    }
+export const PlaceFavoriteButton = ({ id, size, isFavorite }: PlaceFavoriteButtonProps) => {
+    const { isLoading, toggleFavorite } = useToggleFavorite(id, isFavorite)
 
     return (
-        <ButtonIcon isLoading={isLoading} onClick={handleToggleFavorite}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <ButtonIcon size={size} isLoading={isLoading} onClick={toggleFavorite}>
+            <svg
+                width={size === 'small' ? 16 : 24}
+                height={size === 'small' ? 16 : 24}
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+            >
                 <path
                     d={
                         isFavorite

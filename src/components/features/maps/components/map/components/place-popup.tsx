@@ -1,11 +1,10 @@
-'use client'
-
 import { Popup } from 'react-map-gl/maplibre'
 
 import Link from 'next/link'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
+import { PlacePreviewActions } from '@/components/ui/place-preview-actions'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 
@@ -25,7 +24,10 @@ export const PlacePopup = (place: IPlacePreview) => {
                         <div className="line-clamp-4 break-words font-medium">{place.title}</div>
                     </div>
                 </Link>
-                <PlacePreviewRating {...place} />
+                <div className="flex items-center justify-between">
+                    <PlacePreviewRating {...place} />
+                    <PlacePreviewActions {...place} />
+                </div>
             </div>
         </Popup>
     )

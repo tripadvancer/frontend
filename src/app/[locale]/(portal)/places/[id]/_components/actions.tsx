@@ -30,7 +30,7 @@ export const Actions = (place: IPlace) => {
                 </svg>
                 {t('place.navigation')}
             </FormButton>
-            <ButtonIcon onClick={() => alert('Don`t implemented yet')}>
+            <ButtonIcon size="medium" onClick={() => alert('Don`t implemented yet')}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path
                         fillRule="evenodd"

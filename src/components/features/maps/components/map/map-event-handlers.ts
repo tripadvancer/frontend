@@ -1,14 +1,23 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent, useMap } from 'react-map-gl'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import type { CoordinatesTuple } from '@/utils/types/geo'
-import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import type { IPlacePreview } from '@/utils/types/place'
 
-import { getSelectedCategories, getViewState, setViewState } from '@/redux/features/map-slice'
+import {
+    closePopups,
+    getLocationPopupInfo,
+    getPlacePopupInfo,
+    getSelectedCategories,
+    getViewState,
+    setLocationPopupInfo,
+    setPlacePopupInfo,
+    setViewState,
+} from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { getPlaceByBounds } from '@/services/places'
 
@@ -19,11 +28,10 @@ export const useMapEventHandlers = () => {
     const dispatch = useAppDispatch()
     const selectedCategories = useAppSelector(getSelectedCategories)
     const viewState = useAppSelector(getViewState)
+    const placePopupInfo = useAppSelector(getPlacePopupInfo)
+    const locationPopupInfo = useAppSelector(getLocationPopupInfo)
 
     const { mainMap } = useMap()
-
-    const [placePopupInfo, setPlacePopupInfo] = useState<IPlacePreview | null>(null)
-    const [locationPopupInfo, setLocationPopupInfo] = useState<ILocationPreview | null>(null)
 
     /**
      * This function is updated source data.
@@ -131,32 +139,36 @@ export const useMapEventHandlers = () => {
      * This function is called when the mouse clicks a feature on the map.
      * It popup a modal with the place details.
      */
-    const handleClick = useCallback((event: MapLayerMouseEvent) => {
-        setPlacePopupInfo(null)
-        setLocationPopupInfo(null)
+    const handleClick = useCallback(
+        (event: MapLayerMouseEvent) => {
+            dispatch(closePopups())
 
-        if (event.features) {
-            const feature = event.features[0]
-            if (feature) {
-                const coordinates = JSON.parse(feature.properties?.coordinates)
-                const place = { ...feature.properties, coordinates } as IPlacePreview
-                setPlacePopupInfo(place)
+            if (event.features) {
+                const feature = event.features[0]
+                if (feature) {
+                    const coordinates = JSON.parse(feature.properties?.coordinates)
+                    const place = { ...feature.properties, coordinates } as IPlacePreview
+                    dispatch(setPlacePopupInfo(place))
+                }
             }
-        }
 
-        event.originalEvent.stopPropagation()
-    }, [])
+            event.originalEvent.stopPropagation()
+        },
+        [dispatch],
+    )
 
     /**
      * This function is called when the mouse right clicks on the map.
      * It popup a modal with the location details.
      */
-    const handleContextMenu = useCallback((event: MapLayerMouseEvent) => {
-        const coordinates = [event.lngLat.lat, event.lngLat.lng] as CoordinatesTuple
-        setPlacePopupInfo(null)
-        setLocationPopupInfo({ coordinates })
-        event.originalEvent.stopPropagation()
-    }, [])
+    const handleContextMenu = useCallback(
+        (event: MapLayerMouseEvent) => {
+            const coordinates = [event.lngLat.lat, event.lngLat.lng] as CoordinatesTuple
+            dispatch(setLocationPopupInfo({ coordinates }))
+            event.originalEvent.stopPropagation()
+        },
+        [dispatch],
+    )
 
     /**
      * This function is called when the map is loaded.
