@@ -15,7 +15,7 @@ export const FormSubmit = ({ isLoading }: FormSubmitProps) => {
     return (
         <div className="flex flex-col lg:flex-row lg:gap-x-8">
             <div className="flex-1">
-                <FormButton type="submit" isLoading={isLoading} className="mb-4 w-full">
+                <FormButton htmlType="submit" className="mb-4 w-full" isLoading={isLoading}>
                     {t('common.action.save_changes')}
                 </FormButton>
                 <p className="text-center text-small text-black-40">

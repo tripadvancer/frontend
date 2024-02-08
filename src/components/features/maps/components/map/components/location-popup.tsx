@@ -11,7 +11,7 @@ import type { ILocationPreview } from '@/utils/types/place'
 
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
-import { FormButtonStroke } from '@/components/ui/form-button-stroke'
+import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 
 export const LocationPopup = ({ coordinates }: ILocationPreview) => {
@@ -19,7 +19,7 @@ export const LocationPopup = ({ coordinates }: ILocationPreview) => {
     const router = useRouter()
 
     const wrappedCoordinates = coordinates.wrap()
-    // Round coordinates to 6 decimal places
+    // Round coordinates to 6 decimal places to avoid floating point errors
     wrappedCoordinates.lat = Number(wrappedCoordinates.lat.toFixed(6))
     wrappedCoordinates.lng = Number(wrappedCoordinates.lng.toFixed(6))
 
@@ -59,9 +59,9 @@ export const LocationPopup = ({ coordinates }: ILocationPreview) => {
                 <div className="mb-4 text-small text-black-40">
                     {wrappedCoordinates.lat}, {wrappedCoordinates.lng}
                 </div>
-                <FormButtonStroke size="small" variant="blue" onClick={handleClick}>
+                <FormButton type="stroke" size="small" onClick={handleClick}>
                     Add place here
-                </FormButtonStroke>
+                </FormButton>
             </Popup>
             <Marker latitude={coordinates.lat} longitude={coordinates.lng}>
                 <Image src="/images/pin-blue-active.svg" alt="Location marker" width={20} height={20} />

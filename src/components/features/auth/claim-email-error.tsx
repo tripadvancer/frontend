@@ -46,7 +46,12 @@ export const ClaimEmailError = ({ userId }: ClaimEmailErrorProps) => {
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
             <h1 className="text-h7-m sm:text-h7">{t('auth.claim_email_error.title')}</h1>
             <p className="text-center">{t('auth.claim_email_error.message')}</p>
-            <FormButton type="button" className="w-full" isLoading={isLoading} onClick={handleResendVerificationEmail}>
+            <FormButton
+                htmlType="button"
+                className="w-full"
+                isLoading={isLoading}
+                onClick={handleResendVerificationEmail}
+            >
                 {t('auth.claim_email_error.resend_verification_email')}
             </FormButton>
             <div className="text-center">

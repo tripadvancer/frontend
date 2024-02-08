@@ -100,7 +100,7 @@ export const ForgotPassword = () => {
                 />
             </div>
             <div className="flex flex-col gap-y-4">
-                <FormButton type="submit" className="w-full" isLoading={isLoading}>
+                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                     {t('auth.forgot_password.submit')}
                 </FormButton>
                 <div className="text-center">

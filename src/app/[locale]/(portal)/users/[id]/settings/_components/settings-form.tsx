@@ -118,7 +118,7 @@ export const SettingsForm = ({ name, info, avatar }: IUserInfo) => {
                 </div>
             </div>
 
-            <FormButton className="w-full" type="submit" isLoading={isLoading}>
+            <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                 {t('common.action.save_changes')}
             </FormButton>
         </form>

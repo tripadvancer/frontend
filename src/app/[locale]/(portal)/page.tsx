@@ -69,7 +69,7 @@ export default async function HomePage() {
                     <Image src="/images/map.svg" width={1120} height={400} alt="" />
                     <Link
                         href="/maps"
-                        className="hover-animated absolute left-1/2 top-1/2 flex h-10 -translate-x-1/2 -translate-y-1/2 items-center whitespace-nowrap rounded-lg bg-orange-100 px-6   text-white hover:bg-orange-active hover:text-white"
+                        className="hover-animated absolute left-1/2 top-1/2 flex h-10 -translate-x-1/2 -translate-y-1/2 items-center whitespace-nowrap rounded-lg bg-orange-100 px-6 text-white hover:bg-orange-active hover:text-white"
                     >
                         {t('pages.home.map.cta')}
                     </Link>

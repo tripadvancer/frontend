@@ -33,7 +33,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
                 />
                 <h2 className="mb-8 text-h3-m sm:text-h3">{t('pages.error.title')}</h2>
                 <p className="mb-8 text-big text-black-70">{t('pages.error.text')}</p>
-                <FormButton type="button" onClick={() => reset()}>
+                <FormButton htmlType="button" onClick={() => reset()}>
                     {t('common.action.try_again')}
                 </FormButton>
             </div>

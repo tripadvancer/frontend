@@ -1,6 +1,6 @@
 'use client'
 
-import { FormButtonStroke } from '@/components/ui/form-button-stroke'
+import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -12,9 +12,9 @@ export const SignUpCompleting = () => {
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
             <h1 className="text-h7-m sm:text-h7">{t('auth.signup_completing.title')}</h1>
             <p className="text-center">{t('auth.signup_completing.message')}</p>
-            <FormButtonStroke type="button" className="w-full" onClick={dialog.close}>
+            <FormButton type="stroke" htmlType="button" className="w-full" onClick={dialog.close}>
                 {t('common.action.ok')}
-            </FormButtonStroke>
+            </FormButton>
         </div>
     )
 }

@@ -106,7 +106,7 @@ export const ChangePassword = () => {
                     onChange={formik.handleChange}
                 />
             </div>
-            <FormButton type="submit" className="w-full" isLoading={isLoading}>
+            <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                 {t('common.action.save_changes')}
             </FormButton>
         </form>

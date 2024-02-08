@@ -6,7 +6,6 @@ import * as Yup from 'yup'
 import { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
 
 import { FormButton } from '@/components/ui/form-button'
-import { FormButtonStroke } from '@/components/ui/form-button-stroke'
 import { FormRatingInput } from '@/components/ui/form-rating-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
@@ -84,10 +83,12 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 </div>
             </div>
             <div className="flex gap-x-2">
-                <FormButton type="submit" isLoading={isLoading}>
+                <FormButton htmlType="submit" isLoading={isLoading}>
                     {t('common.action.send')}
                 </FormButton>
-                <FormButtonStroke onClick={() => dialog.close()}>{t('common.action.cancel')}</FormButtonStroke>
+                <FormButton type="stroke" onClick={() => dialog.close()}>
+                    {t('common.action.cancel')}
+                </FormButton>
             </div>
         </form>
     )

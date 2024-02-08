@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import classNames from 'classnames'
 
-import { FormButtonStroke } from '@/components/ui/form-button-stroke'
+import { FormButton } from '@/components/ui/form-button'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
@@ -62,9 +62,9 @@ export const FormSelectCategories = ({ value, onChange }: FormSelectCategoriesPr
                     </div>
                 ))}
             </div>
-            <FormButtonStroke onClick={handleChange} isDisabled={selectedCategoryIds.length === 0}>
+            <FormButton type="stroke" isDisabled={selectedCategoryIds.length === 0} onClick={handleChange}>
                 {t('common.action.confirm')}
-            </FormButtonStroke>
+            </FormButton>
         </div>
     )
 }

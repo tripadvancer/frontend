@@ -33,6 +33,8 @@ export const mapSlice = createSlice({
             const categoryId = action.payload
             const updatedSelectedCategories = updateSelectedCategories(state.selectedCategories, categoryId)
             state.selectedCategories = updatedSelectedCategories
+            state.placePopupInfo = null
+            state.locationPopupInfo = null
         },
         resetSelectedCategories(state) {
             state.selectedCategories = []

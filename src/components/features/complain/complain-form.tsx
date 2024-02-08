@@ -6,7 +6,6 @@ import * as Yup from 'yup'
 import type { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/types/complaint'
 
 import { FormButton } from '@/components/ui/form-button'
-import { FormButtonStroke } from '@/components/ui/form-button-stroke'
 import { FormInput } from '@/components/ui/form-input'
 import { FormRadio } from '@/components/ui/form-radio'
 import { validationConfig } from '@/configs/validation.config'
@@ -67,10 +66,12 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
                 />
             </div>
             <div className="flex gap-x-2">
-                <FormButton type="submit" isLoading={isLoading}>
+                <FormButton htmlType="submit" isLoading={isLoading}>
                     {t('common.action.send')}
                 </FormButton>
-                <FormButtonStroke onClick={() => dialog.close()}>{t('common.action.cancel')}</FormButtonStroke>
+                <FormButton type="stroke" onClick={() => dialog.close()}>
+                    {t('common.action.cancel')}
+                </FormButton>
             </div>
         </form>
     )
