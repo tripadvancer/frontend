@@ -20,22 +20,6 @@ export enum ComplaintReasonsI18nKeys {
     OTHER = 'other',
 }
 
-export enum WidgetDefaultLists {
-    VISITED = 'VISITED',
-    FAVORITES = 'FAVORITES',
-}
-
-export enum SearchSuggestionType {
-    PLACE = 'PLACE',
-    LOCATION = 'LOCATION',
-}
-
-export enum ImageUploadStatus {
-    UPLOADING = 'UPLOADING',
-    SUCCESS = 'SUCCESS',
-    FAILED = 'FAILED',
-}
-
 export enum ImageVariant {
     PUBLIC = 'public',
     PREVIEW = 'preview',
@@ -49,20 +33,18 @@ export enum Keys {
     DOWN = 'ArrowDown',
 }
 
-export enum ApiErrorStatusCode {
-    BAD_REQUEST = 400,
-    UNAUTHORIZED = 401,
-    FORBIDDEN = 403,
-    NOT_FOUND = 404,
+export enum WidgetTabsEnum {
+    ALL = 'ALL',
+    SAVED = 'SAVED',
 }
 
-export enum UserRoles {
-    USER = 'USER',
-    ADMIN = 'ADMIN',
+export enum WidgetListsEnum {
+    FAVORITES = 'FAVORITES',
+    VISITED = 'VISITED',
 }
 
-export enum UserStatus {
-    NOT_ACTIVATED = 'NOT_ACTIVATED',
-    ACTIVATED = 'ACTIVATED',
-    PENDING_DELETE = 'PENDING_DELETE',
+export enum MapDataSourcesEnum {
+    ALL_PLACES = 'ALL_PLACES',
+    FAVORITES_PLACES = 'FAVORITES_PLACES',
+    VISITED_PLACES = 'VISITED_PLACES',
 }

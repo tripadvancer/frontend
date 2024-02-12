@@ -1,58 +1,27 @@
 'use client'
 
-import { useCallback, useEffect } from 'react'
-import { GeoJSONSource, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent, useMap } from 'react-map-gl'
-
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useCallback } from 'react'
+import { MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
 import {
     closePopups,
     getLocationPopupInfo,
+    getMapViewState,
     getPlacePopupInfo,
-    getSelectedCategories,
-    getViewState,
     setLocationPopupInfo,
+    setMapBounds,
+    setMapViewState,
     setPlacePopupInfo,
-    setViewState,
 } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { getPlaceByBounds } from '@/services/places'
 
 export const useMapEventHandlers = () => {
-    const router = useRouter()
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
     const dispatch = useAppDispatch()
-    const selectedCategories = useAppSelector(getSelectedCategories)
-    const viewState = useAppSelector(getViewState)
+    const viewState = useAppSelector(getMapViewState)
     const placePopupInfo = useAppSelector(getPlacePopupInfo)
     const locationPopupInfo = useAppSelector(getLocationPopupInfo)
-
-    const { mainMap } = useMap()
-
-    /**
-     * This function is updated source data.
-     */
-    const updateSourceData = useCallback(
-        async (map: any): Promise<void> => {
-            if (map) {
-                const mapBounds = map.getBounds()
-                const places = await getPlaceByBounds({ mapBounds, selectedCategories })
-                const source = map.getSource('places-source') as GeoJSONSource
-
-                if (source) {
-                    source.setData(places)
-                }
-            }
-        },
-        [selectedCategories],
-    )
-
-    useEffect(() => {
-        updateSourceData(mainMap)
-    }, [selectedCategories]) // eslint-disable-line react-hooks/exhaustive-deps
 
     /**
      * This function is called when the map is loaded.
@@ -75,14 +44,9 @@ export const useMapEventHandlers = () => {
             pinGrayImage.onload = () => map.addImage('pin-gray', pinGrayImage)
 
             const mapBounds = map.getBounds()
-            const places = await getPlaceByBounds({ mapBounds, selectedCategories })
-            const source = map.getSource('places-source') as GeoJSONSource
-
-            if (source) {
-                source.setData(places)
-            }
+            dispatch(setMapBounds(mapBounds))
         },
-        [selectedCategories],
+        [dispatch],
     )
 
     /**
@@ -91,31 +55,22 @@ export const useMapEventHandlers = () => {
      */
     const handleMove = useCallback(
         (event: ViewStateChangeEvent) => {
-            dispatch(setViewState(event.viewState))
+            dispatch(setMapViewState(event.viewState))
         },
         [dispatch],
     )
 
     /**
      * This function is called when the map is moved.
-     * It updates the data source.
+     * It updates the bounds state.
      */
-    const handleDragEnd = useCallback(
-        async (event: ViewStateChangeEvent) => {
-            updateSourceData(event.target)
+    const handleMoveEnd = useCallback(
+        (event: ViewStateChangeEvent) => {
+            const map = event.target
+            const mapBounds = map.getBounds()
+            dispatch(setMapBounds(mapBounds))
         },
-        [updateSourceData],
-    )
-
-    /**
-     * This function is called when the map is zoomed.
-     * It updates the data source.
-     */
-    const handleZoomEnd = useCallback(
-        async (event: ViewStateChangeEvent) => {
-            updateSourceData(event.target)
-        },
-        [updateSourceData],
+        [dispatch],
     )
 
     /**
@@ -175,30 +130,13 @@ export const useMapEventHandlers = () => {
         [dispatch],
     )
 
-    /**
-     * This function is called when the map is loaded.
-     * It updates the map viewState state from the url query string.
-     */
-    // useEffect(() => {
-    //     const vs = searchParams.get('vs')
-
-    //     if (vs) {
-    //         const updatedViewState = strToViewState(vs)
-    //         setViewState(updatedViewState)
-    //     } else {
-    //         const updatedVs = viewStateToStr(viewState)
-    //         router.replace(pathname + '?' + createQueryString('vs', updatedVs, searchParams))
-    //     }
-    // }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
     return {
         ...viewState,
         placePopupInfo,
         locationPopupInfo,
         onLoad: handleLoad,
         onMove: handleMove,
-        onDragEnd: handleDragEnd,
-        onZoomEnd: handleZoomEnd,
+        onMoveEnd: handleMoveEnd,
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave,
         onClick: handleClick,

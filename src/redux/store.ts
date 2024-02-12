@@ -4,23 +4,26 @@ import storage from 'redux-persist/lib/storage'
 
 import mapReducer from '@/redux/features/map-slice'
 import userReducer from '@/redux/features/user-slice'
+import { apiSliceWithCredentials } from '@/redux/services/api'
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['user'],
+    whitelist: ['map', 'user'],
 }
 
 const reducers = combineReducers({
     map: mapReducer,
     user: userReducer,
+    [apiSliceWithCredentials.reducerPath]: apiSliceWithCredentials.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
     reducer: persistedReducer,
-    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware({ serializableCheck: false }).concat([apiSliceWithCredentials.middleware]),
     devTools: process.env.NODE_ENV !== 'production',
 })
 

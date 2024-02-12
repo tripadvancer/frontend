@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import 'react-indiana-drag-scroll/dist/style.css'
 
 import { Roboto } from 'next/font/google'
 import type { Metadata } from 'next/types'

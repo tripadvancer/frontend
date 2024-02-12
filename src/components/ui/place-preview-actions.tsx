@@ -1,10 +1,19 @@
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
+import { closePopups } from '@/redux/features/map-slice'
+import { useAppDispatch } from '@/redux/hooks'
+import { navigateToLocation } from '@/utils/helpers'
 import { useToggleFavorite } from '@/utils/hooks/use-toggle-favorite'
 
 export const PlacePreviewActions = (place: IPlacePreview) => {
-    const { isLoading, toggleFavorite } = useToggleFavorite(place.id, place.isFavorite)
+    const dispatch = useAppDispatch()
+
+    const { isLoading, toggleFavorite } = useToggleFavorite(place.id, place.isFavorite, () => dispatch(closePopups()))
+
+    const handleNavigateToLocation = () => {
+        navigateToLocation(place.coordinates[1], place.coordinates[0])
+    }
 
     return (
         <div className="flex gap-x-1">
@@ -21,7 +30,7 @@ export const PlacePreviewActions = (place: IPlacePreview) => {
                 isLoading={isLoading}
                 onClick={toggleFavorite}
             />
-            <FormButton type="stroke" size="small">
+            <FormButton type="stroke" size="small" onClick={handleNavigateToLocation}>
                 Route
             </FormButton>
         </div>

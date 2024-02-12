@@ -1,9 +1,6 @@
-import { LngLatBounds } from 'react-map-gl'
-
 import { notFound } from 'next/navigation'
 
 import type { PaginatedResponse } from '@/utils/types/common'
-import { GeoJsonCollection } from '@/utils/types/geo'
 import type { CreatePlaceInputs, IPlace, IPlaceNearby, IPlacePreview, UpdatePlaceInputs } from '@/utils/types/place'
 
 export async function getPlacesByCountryCode(
@@ -12,28 +9,6 @@ export async function getPlacesByCountryCode(
 ): Promise<IPlacePreview[]> {
     const url =
         process.env.NEXT_PUBLIC_API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
-    const res = await fetch(url)
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
-}
-
-export async function getPlaceByBounds({
-    mapBounds,
-    selectedCategories,
-}: {
-    mapBounds: LngLatBounds
-    selectedCategories: number[]
-}): Promise<GeoJsonCollection<IPlacePreview>> {
-    const categories_ids = '?categories_ids=' + selectedCategories.join()
-    const ne_lat = '&ne_lat=' + mapBounds?.getNorthEast().lat
-    const ne_lng = '&ne_lng=' + mapBounds?.getNorthEast().lng
-    const sw_lat = '&sw_lat=' + mapBounds?.getSouthWest().lat
-    const sw_lng = '&sw_lng=' + mapBounds?.getSouthWest().lng
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places' + categories_ids + ne_lat + ne_lng + sw_lat + sw_lng
     const res = await fetch(url)
 
     if (!res.ok) {

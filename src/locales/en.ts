@@ -135,6 +135,7 @@ export default {
     'user_achievement.statistic.added_photos': 'Added photos',
     'user_achievement.statistic.added_reviews': 'Written reviews',
     'user_achievement.statistic.visited_places': 'Visited places',
+    'user_achievement.statistic.visited_countries': 'Visited countries',
 
     'user_tabs.places': 'Added places',
     'user_tabs.reviews': 'Written reviews',
@@ -226,6 +227,9 @@ export default {
     'auth.verify_email.loading': 'Verifying your email...',
     'auth.verify_email.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
     'auth.verify_email.ok': 'Your email has been verified.',
+
+    'widget.common.error': 'An unexpected error has occurred.{br}Please try again later.',
+    'widget.places_all.no_places': 'No places found.{br}Try changing categories or zooming out the map.',
 
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',

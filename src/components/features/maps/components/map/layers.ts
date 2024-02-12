@@ -17,3 +17,27 @@ export const placesLayer: SymbolLayer = {
         'icon-ignore-placement': false,
     },
 }
+
+export const visitedPlacesLayer: SymbolLayer = {
+    id: 'icon-layer',
+    source: 'places-source',
+    type: 'symbol',
+    layout: {
+        'icon-image': 'pin-gray',
+        'icon-size': 0.75,
+        'icon-allow-overlap': false,
+        'icon-ignore-placement': false,
+    },
+}
+
+export const favoritesPlacesLayer: SymbolLayer = {
+    id: 'icon-layer',
+    source: 'places-source',
+    type: 'symbol',
+    layout: {
+        'icon-image': 'pin-blue',
+        'icon-size': 0.75,
+        'icon-allow-overlap': false,
+        'icon-ignore-placement': false,
+    },
+}

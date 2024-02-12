@@ -8,7 +8,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import type { CreatePlaceInputs, IPlacePreview } from '@/utils/types/place'
 
 import { useToast } from '@/providers/toast-provider'
-import { setPlacePopupInfo, setViewState } from '@/redux/features/map-slice'
+import { setMapViewState, setPlacePopupInfo } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { createPlace } from '@/services/places'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -57,7 +57,7 @@ export const AddPlace = () => {
                 reviewsCount: 0,
                 coordinates: [longitude, latitude],
             }
-            dispatch(setViewState(mapViewState))
+            dispatch(setMapViewState(mapViewState))
             dispatch(setPlacePopupInfo(placePopupInfo))
             toast.success(t('success.create_place'))
             router.push('/maps')

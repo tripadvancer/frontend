@@ -135,6 +135,7 @@ export default {
     'user_achievement.statistic.added_photos': 'Добавлено фото',
     'user_achievement.statistic.added_reviews': 'Написано отзывов',
     'user_achievement.statistic.visited_places': 'Посещено мест',
+    'user_achievement.statistic.visited_countries': 'Посещено стран',
 
     'user_tabs.places': 'Мои места',
     'user_tabs.reviews': 'Мои отзывы',

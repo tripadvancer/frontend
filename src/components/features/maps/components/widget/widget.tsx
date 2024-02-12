@@ -1,32 +1,33 @@
-import Image from 'next/image'
+import ScrollContainer from 'react-indiana-drag-scroll'
 
-import { getSelectedCategories } from '@/redux/features/map-slice'
+import classNames from 'classnames'
+
+import { getWidgetPlacesVisibility } from '@/redux/features/map-slice'
 import { useAppSelector } from '@/redux/hooks'
 
-import { Categories } from './components/categories'
-import { Places } from './components/places'
-import { Section } from './components/section'
+import { WidgetCategories } from './components/widget-categories'
+import { WidgetHeader } from './components/widget-header'
+import { WidgetPlaces } from './components/widget-places'
+import { WidgetViewToggle } from './components/widget-view-toggle'
 
 export const Widget = () => {
-    const selectedCategories = useAppSelector(getSelectedCategories)
+    const isPlacesVisible = useAppSelector(getWidgetPlacesVisibility)
 
     return (
-        <div className="fixed z-40 w-full rounded-b-2xl bg-white shadow-small sm:right-8 sm:top-8 sm:w-[448px] sm:rounded-2xl">
-            <div className="p-4 sm:p-8">
-                <Image src="/images/logo.svg" width="140" height="24" alt="Tripadvancer" />
-            </div>
-
-            <Section
-                title="Categories"
-                variant="blue"
-                info={selectedCategories.length > 0 ? `${selectedCategories.length} selected` : ''}
-            >
-                <Categories />
-            </Section>
-
-            <Section title="Places" variant="white">
-                <Places />
-            </Section>
+        <div className="fixed right-0 top-0 z-40 h-full w-full sm:w-[512px]">
+            <ScrollContainer className="absolute h-full w-full cursor-auto sm:p-8">
+                <div
+                    className={classNames(
+                        'bg-white shadow-medium sm:h-auto sm:rounded-2xl',
+                        `${isPlacesVisible ? 'h-full' : 'rounded-b-2xl'}`,
+                    )}
+                >
+                    <WidgetHeader />
+                    <WidgetCategories />
+                    <WidgetPlaces />
+                    <WidgetViewToggle />
+                </div>
+            </ScrollContainer>
         </div>
     )
 }
