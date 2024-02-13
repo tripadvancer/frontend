@@ -12,8 +12,10 @@ export const WidgetCategory = ({ name, isSelected, onClick }: CategoryProps) => 
     return (
         <div
             className={classNames(
-                'hover-animated flex h-8 items-center justify-center rounded-full px-4 text-blue-100 hover:text-blue-active',
-                `${isSelected ? 'bg-blue-20' : 'bg-white'}`,
+                'hover-animated flex h-8 cursor-pointer items-center justify-center rounded-full bg-white px-4 text-small text-blue-100 hover:text-blue-active',
+                {
+                    '!bg-blue-20': isSelected,
+                },
             )}
             onClick={onClick}
         >

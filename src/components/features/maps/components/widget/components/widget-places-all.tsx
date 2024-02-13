@@ -1,3 +1,5 @@
+'use client'
+
 import { getMapBounds, getWidgetSelectedCategories } from '@/redux/features/map-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
@@ -12,6 +14,7 @@ export const WidgetPlacesAll = () => {
     const mapBounds = useAppSelector(getMapBounds)
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
     const response = placesAPI.useGetPlacesQuery({ mapBounds, selectedCategories }, { skip: !mapBounds })
+    const places = response.data?.features.map(({ properties }) => properties) ?? []
 
     if (response.isError) {
         return <WidgetMessage onReload={response.refetch} isLoading={response.isLoading} />
@@ -22,7 +25,7 @@ export const WidgetPlacesAll = () => {
     }
 
     if (response.isSuccess && response.data.features.length > 0) {
-        return <WidgetPlacesFeed geoJson={response.data ?? { type: 'FeatureCollection', features: [] }} />
+        return <WidgetPlacesFeed places={places} />
     }
 
     return <WidgetPlacePreviewSkeleton />

@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 
-import type { GeoJsonCollection } from '@/utils/types/geo'
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
@@ -11,9 +10,7 @@ import { WidgetPlacePreview } from './widget-place-preview'
 
 const PAGINATION_LIMIT = 10
 
-export const WidgetPlacesFeed = ({ geoJson }: { geoJson: GeoJsonCollection<IPlacePreview> }) => {
-    const places: IPlacePreview[] = geoJson.features.map(({ properties }) => properties) ?? []
-
+export const WidgetPlacesFeed = ({ places }: { places: IPlacePreview[] }) => {
     const [currentPage, setCurrentPage] = useState(1)
 
     return (
@@ -23,14 +20,7 @@ export const WidgetPlacesFeed = ({ geoJson }: { geoJson: GeoJsonCollection<IPlac
             ))}
 
             {places.length > currentPage * PAGINATION_LIMIT && (
-                <FormButton
-                    type="stroke"
-                    size="small"
-                    shape="rounded"
-                    onClick={() => {
-                        setCurrentPage(prev => prev + 1)
-                    }}
-                >
+                <FormButton type="stroke" size="small" shape="rounded" onClick={() => setCurrentPage(prev => prev + 1)}>
                     Load more ...
                 </FormButton>
             )}

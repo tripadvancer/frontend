@@ -1,7 +1,7 @@
 import { SymbolLayer } from 'react-map-gl'
 
 export const placesLayer: SymbolLayer = {
-    id: 'icon-layer',
+    id: 'places-layer',
     source: 'places-source',
     type: 'symbol',
     layout: {
@@ -19,7 +19,7 @@ export const placesLayer: SymbolLayer = {
 }
 
 export const visitedPlacesLayer: SymbolLayer = {
-    id: 'icon-layer',
+    id: 'visited-places-layer',
     source: 'places-source',
     type: 'symbol',
     layout: {
@@ -30,8 +30,8 @@ export const visitedPlacesLayer: SymbolLayer = {
     },
 }
 
-export const favoritesPlacesLayer: SymbolLayer = {
-    id: 'icon-layer',
+export const favoritePlacesLayer: SymbolLayer = {
+    id: 'favorite-places-layer',
     source: 'places-source',
     type: 'symbol',
     layout: {
