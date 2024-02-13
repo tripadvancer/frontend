@@ -13,8 +13,11 @@ import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
+import { closePopups } from '@/redux/features/map-slice'
+import { useAppDispatch } from '@/redux/hooks'
 
 export const LocationPopup = ({ coordinates }: ILocationPreview) => {
+    const dispatch = useAppDispatch()
     const dialog = useDialog()
     const router = useRouter()
 
@@ -43,6 +46,7 @@ export const LocationPopup = ({ coordinates }: ILocationPreview) => {
         }
 
         const addPlaceUrl = '/add-place?lat=' + wrappedCoordinates.lat + '&lng=' + wrappedCoordinates.lng
+        dispatch(closePopups())
         router.push(addPlaceUrl)
     }
 
