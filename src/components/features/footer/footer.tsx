@@ -20,7 +20,7 @@ export const Footer = async () => {
                         <Link href="/legal/privacy-policy">Privacy Policy</Link>•
                         <Link href="/legal/cookie-policy">Cookie Policy</Link>
                     </nav>
-                    <div className="text-center text-black-40">© Tripadvancer, 2023</div>
+                    <div className="text-center text-black-40">© Tripadvancer, 2024</div>
                 </div>
             </div>
         </footer>
