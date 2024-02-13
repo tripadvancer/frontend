@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 
-import { categoriesDictionary } from '@/utils/dictionaries/categories'
+import { getSortedCategories } from '@/utils/dictionaries/categories'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type CategoryProps = {
@@ -19,6 +19,7 @@ export const Categories = ({ selectedCategoryIds, locale }: CategoryProps) => {
     const t = useI18n()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+    const sortedCategories = getSortedCategories(locale)
 
     // Create a query string with selected categories
     const createQueryString = useCallback(
@@ -51,7 +52,7 @@ export const Categories = ({ selectedCategoryIds, locale }: CategoryProps) => {
             >
                 {t('categories.all')}
             </Link>
-            {categoriesDictionary.map(category => (
+            {sortedCategories.map(category => (
                 <Link
                     key={category.id}
                     href={{ query: createQueryString(category.id) }}

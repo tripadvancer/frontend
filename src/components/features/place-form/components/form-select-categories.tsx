@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import { FormButton } from '@/components/ui/form-button'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
-import { categoriesDictionary } from '@/utils/dictionaries/categories'
+import { getSortedCategories } from '@/utils/dictionaries/categories'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
 type FormSelectCategoriesProps = {
@@ -21,6 +21,7 @@ export const FormSelectCategories = ({ value, onChange }: FormSelectCategoriesPr
     const t = useI18n()
     const dialog = useDialog()
     const currentLocale = useCurrentLocale()
+    const sortedCategories = getSortedCategories(currentLocale)
 
     const [selectedCategoryIds, setSelectedCategoryIds] = useState<number[]>(value)
 
@@ -44,7 +45,7 @@ export const FormSelectCategories = ({ value, onChange }: FormSelectCategoriesPr
                 })}
             </h1>
             <div className="flex flex-wrap justify-center gap-1">
-                {categoriesDictionary.map(category => (
+                {sortedCategories.map(category => (
                     <div
                         key={category.id}
                         className={classNames(

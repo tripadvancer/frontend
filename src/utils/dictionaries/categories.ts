@@ -104,3 +104,7 @@ export const categoriesDictionary: CategoryDict[] = [
         },
     },
 ]
+
+export const getSortedCategories = (locale: string): CategoryDict[] => {
+    return categoriesDictionary.sort((a, b) => a.localizedName[locale].localeCompare(b.localizedName[locale]))
+}
