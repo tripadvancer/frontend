@@ -14,12 +14,12 @@ export const Widget = () => {
     const isPlacesVisible = useAppSelector(getWidgetPlacesVisibility)
 
     return (
-        <div className="fixed right-0 top-0 z-40 h-full w-full sm:w-[512px]">
-            <ScrollContainer className="absolute h-full w-full cursor-auto sm:p-8">
+        <div className="fixed right-0 top-0 z-40 max-h-screen w-full sm:w-[512px]">
+            <ScrollContainer className="max-h-screen w-full cursor-auto sm:p-8">
                 <div
                     className={classNames(
-                        'bg-white shadow-medium sm:h-auto sm:rounded-2xl',
-                        `${isPlacesVisible ? 'h-full' : 'rounded-b-2xl'}`,
+                        'bg-white shadow-medium sm:rounded-2xl',
+                        `${isPlacesVisible ? '' : 'rounded-b-2xl'}`,
                     )}
                 >
                     <WidgetHeader />
