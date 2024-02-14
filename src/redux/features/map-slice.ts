@@ -18,8 +18,10 @@ interface MapState {
         selectedCategories: number[]
         activeTab: WidgetTabsEnum
         activeList: WidgetListsEnum | null
-        isCategoriesVisible: boolean
-        isPlacesVisible: boolean
+        isAboutOpened: boolean
+        isMenuOpened: boolean
+        isCategoriesOpened: boolean
+        isPlacesOpened: boolean
         isShowOnlySavedPlaces: boolean
     }
 }
@@ -38,8 +40,10 @@ export const initialState: MapState = {
         selectedCategories: [],
         activeTab: WidgetTabsEnum.ALL,
         activeList: null,
-        isCategoriesVisible: false,
-        isPlacesVisible: true,
+        isAboutOpened: false,
+        isMenuOpened: false,
+        isCategoriesOpened: false,
+        isPlacesOpened: false,
         isShowOnlySavedPlaces: true,
     },
 }
@@ -151,11 +155,19 @@ export const mapSlice = createSlice({
                 state.dataSource = MapDataSourcesEnum.ALL_PLACES
             }
         },
-        toggleWidgetCategoriesVisibility(state) {
-            state.widget.isCategoriesVisible = !state.widget.isCategoriesVisible
+        toggleWidgetAbout(state) {
+            state.widget.isMenuOpened = false
+            state.widget.isAboutOpened = !state.widget.isAboutOpened
         },
-        toggleWidgetPlacesVisibility(state) {
-            state.widget.isPlacesVisible = !state.widget.isPlacesVisible
+        toggleWidgetMenu(state) {
+            state.widget.isMenuOpened = !state.widget.isMenuOpened
+            state.widget.isAboutOpened = false
+        },
+        toggleWidgetCategories(state) {
+            state.widget.isCategoriesOpened = !state.widget.isCategoriesOpened
+        },
+        toggleWidgetPlaces(state) {
+            state.widget.isPlacesOpened = !state.widget.isPlacesOpened
         },
     },
 })
@@ -168,8 +180,10 @@ export const getLocationPopupInfo = (state: RootState) => state.map.locationPopu
 export const getWidgetSelectedCategories = (state: RootState) => state.map.widget.selectedCategories
 export const getWidgetActiveTab = (state: RootState) => state.map.widget.activeTab
 export const getWidgetActiveList = (state: RootState) => state.map.widget.activeList
-export const getWidgetCategoriesVisibility = (state: RootState) => state.map.widget.isCategoriesVisible
-export const getWidgetPlacesVisibility = (state: RootState) => state.map.widget.isPlacesVisible
+export const getWidgetIsAboutOpened = (state: RootState) => state.map.widget.isAboutOpened
+export const getWidgetIsMenuOpened = (state: RootState) => state.map.widget.isMenuOpened
+export const getWidgetIsCategoriesOpened = (state: RootState) => state.map.widget.isCategoriesOpened
+export const getWidgetIsPlacesOpened = (state: RootState) => state.map.widget.isPlacesOpened
 export const getShowOnlySavedPlaces = (state: RootState) => state.map.widget.isShowOnlySavedPlaces
 
 export const {
@@ -184,8 +198,10 @@ export const {
     setWidgetActiveList,
     resetWidgetActiveList,
     toggleShowOnlySavedPlaces,
-    toggleWidgetCategoriesVisibility,
-    toggleWidgetPlacesVisibility,
+    toggleWidgetAbout,
+    toggleWidgetMenu,
+    toggleWidgetCategories,
+    toggleWidgetPlaces,
 } = mapSlice.actions
 
 export default mapSlice.reducer

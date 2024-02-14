@@ -28,7 +28,7 @@ export const Mapbox = () => {
 
     return (
         <ReactMapGl
-            id="mainMap"
+            id="main"
             mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
             mapStyle="mapbox://styles/mapbox/streets-v11"
             interactiveLayerIds={[placesLayer.id, favoritePlacesLayer.id, visitedPlacesLayer.id]}

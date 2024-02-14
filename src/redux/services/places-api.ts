@@ -3,14 +3,14 @@ import { LngLatBounds } from 'react-map-gl'
 import type { GeoJsonCollection } from '@/utils/types/geo'
 import type { IPlacePreview } from '@/utils/types/place'
 
-import { apiSliceWithCredentials } from './api'
+import { api } from './api'
 
 interface GetPlacesParams {
     mapBounds: LngLatBounds | undefined
     selectedCategories: number[]
 }
 
-export const placesAPI = apiSliceWithCredentials.injectEndpoints({
+export const placesAPI = api.injectEndpoints({
     endpoints: build => ({
         getPlaces: build.query<GeoJsonCollection<IPlacePreview>, GetPlacesParams>({
             query: params => ({

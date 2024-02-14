@@ -10,14 +10,14 @@ import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 
 export const WidgetPlacePreview = (place: IPlacePreview) => {
     return (
-        <div className="group flex gap-x-4">
-            <Link href={`places/${place.id}`} target="_blank">
+        <div className="flex gap-x-4">
+            <Link href={`places/${place.id}`} className="peer" target="_blank">
                 <PlacePreviewCover {...place} />
             </Link>
-            <div className="flex flex-1 flex-col justify-between">
+            <div className="flex flex-1 flex-col justify-between text-black-100 peer-hover:text-blue-active">
                 <Link
                     href={`places/${place.id}`}
-                    className="link-black line-clamp-4 break-words font-medium group-hover:text-blue-active"
+                    className="line-clamp-4 break-words font-medium text-inherit"
                     target="_blank"
                 >
                     {place.title}

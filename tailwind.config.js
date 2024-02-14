@@ -4,7 +4,6 @@ module.exports = {
         container: false,
     },
     content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
-    important: true,
     theme: {
         extend: {
             fontSize: {

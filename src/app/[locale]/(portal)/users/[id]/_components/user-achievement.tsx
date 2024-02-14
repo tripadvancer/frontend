@@ -3,7 +3,13 @@ import { IUserStatistics } from '@/utils/types/user'
 import { Achievement } from '@/components/ui/achievement'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-export const UserAchievement = async ({ places, placePhotos, placeReviews, visitedPlaces }: IUserStatistics) => {
+export const UserAchievement = async ({
+    places,
+    placePhotos,
+    placeReviews,
+    visitedPlaces,
+    visitedCountries,
+}: IUserStatistics) => {
     const t = await getI18n()
 
     return (
@@ -21,7 +27,7 @@ export const UserAchievement = async ({ places, placePhotos, placeReviews, visit
                 <Achievement.Item label={t('user_achievement.statistic.added_photos')} value={placePhotos} />
                 <Achievement.Item label={t('user_achievement.statistic.added_reviews')} value={placeReviews} />
                 <Achievement.Item label={t('user_achievement.statistic.visited_places')} value={visitedPlaces} />
-                <Achievement.Item label={t('user_achievement.statistic.visited_countries')} value={visitedPlaces} />
+                <Achievement.Item label={t('user_achievement.statistic.visited_countries')} value={visitedCountries} />
             </Achievement.Items>
         </Achievement>
     )

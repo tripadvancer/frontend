@@ -45,8 +45,8 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
     return result
 }
 
-export const apiSliceWithCredentials = createApi({
+export const api = createApi({
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Favorites', 'Places', 'Visited'],
+    tagTypes: ['Favorites', 'Places', 'UserInfo', 'Visited'],
     endpoints: () => ({}),
 })

@@ -1,7 +1,7 @@
 'use client'
 
 import { IconChevron } from '@/components/ui/icon-chevron'
-import { getWidgetActiveTab, getWidgetPlacesVisibility, toggleWidgetPlacesVisibility } from '@/redux/features/map-slice'
+import { getWidgetActiveTab, getWidgetIsPlacesOpened, toggleWidgetPlaces } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabsEnum } from '@/utils/enums'
 
@@ -12,20 +12,20 @@ import { WidgetTabs } from './widget-tabs'
 export const WidgetPlaces = () => {
     const dispatch = useAppDispatch()
     const activeTab = useAppSelector(getWidgetActiveTab)
-    const isPlacesVisible = useAppSelector(getWidgetPlacesVisibility)
+    const isPlacesOpened = useAppSelector(getWidgetIsPlacesOpened)
 
-    const toggleVisibility = () => {
-        dispatch(toggleWidgetPlacesVisibility())
+    const togglePlaces = () => {
+        dispatch(toggleWidgetPlaces())
     }
 
     return (
         <div className="flex flex-col gap-y-4 p-4 sm:p-8">
-            <div className="flex cursor-pointer items-center justify-between" onClick={toggleVisibility}>
+            <div className="flex cursor-pointer items-center justify-between" onClick={togglePlaces}>
                 <div className="text-caps uppercase">Places</div>
-                <IconChevron position={isPlacesVisible ? 'down' : 'up'} />
+                <IconChevron position={isPlacesOpened ? 'down' : 'up'} />
             </div>
 
-            {isPlacesVisible && (
+            {isPlacesOpened && (
                 <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
                     <WidgetTabs />
                     {activeTab === WidgetTabsEnum.ALL && <WidgetPlacesAll />}

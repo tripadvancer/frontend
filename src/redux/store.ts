@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage'
 
 import mapReducer from '@/redux/features/map-slice'
 import userReducer from '@/redux/features/user-slice'
-import { apiSliceWithCredentials } from '@/redux/services/api'
+import { api } from '@/redux/services/api'
 
 const persistConfig = {
     key: 'root',
@@ -15,15 +15,14 @@ const persistConfig = {
 const reducers = combineReducers({
     map: mapReducer,
     user: userReducer,
-    [apiSliceWithCredentials.reducerPath]: apiSliceWithCredentials.reducer,
+    [api.reducerPath]: api.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
     reducer: persistedReducer,
-    middleware: getDefaultMiddleware =>
-        getDefaultMiddleware({ serializableCheck: false }).concat([apiSliceWithCredentials.middleware]),
+    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat([api.middleware]),
     devTools: process.env.NODE_ENV !== 'production',
 })
 

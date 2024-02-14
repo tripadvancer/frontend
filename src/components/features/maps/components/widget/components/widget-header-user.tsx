@@ -1,6 +1,43 @@
-export const WidgetHeaderUser = () => {
+'use client'
+
+import type { IUserInfo } from '@/utils/types/user'
+
+import { SignIn } from '@/components/features/auth/sign-in'
+import { Avatar } from '@/components/ui/avatar'
+import { useDialog } from '@/providers/dialog-provider'
+import { getWidgetIsMenuOpened, toggleWidgetMenu } from '@/redux/features/map-slice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+
+type WidgetHeaderUserProps = {
+    userInfo: IUserInfo | null
+}
+
+export const WidgetHeaderUser = ({ userInfo }: WidgetHeaderUserProps) => {
+    const dialog = useDialog()
+    const dispatch = useAppDispatch()
+    const isMenuOpened = useAppSelector(getWidgetIsMenuOpened)
+
+    const toggleMenu = () => {
+        dispatch(toggleWidgetMenu())
+    }
+
+    if (userInfo) {
+        return (
+            <div className="cursor-pointer" onClick={toggleMenu}>
+                {isMenuOpened ? (
+                    // prettier-ignore
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M13.4545 12L20 18.5455L18.5455 20L12 13.4545L5.45455 20L4 18.5455L10.5455 12L4 5.45455L5.45455 4L12 10.5455L18.5455 4L20 5.45455L13.4545 12Z" />
+                    </svg>
+                ) : (
+                    <Avatar size={24} {...userInfo} />
+                )}
+            </div>
+        )
+    }
+
     return (
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={() => dialog.open(<SignIn />)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
                     fillRule="evenodd"

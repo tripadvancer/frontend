@@ -15,6 +15,7 @@ export type IUserStatistics = {
     placePhotos: number
     placeReviews: number
     visitedPlaces: number
+    visitedCountries: number
 }
 
 export type IUserInfo = Pick<IUser, 'id' | 'name' | 'info' | 'avatar'>

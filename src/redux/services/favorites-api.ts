@@ -1,9 +1,9 @@
 import type { GeoJsonCollection } from '@/utils/types/geo'
 import type { IPlacePreview } from '@/utils/types/place'
 
-import { apiSliceWithCredentials } from './api'
+import { api } from './api'
 
-export const favoritesAPI = apiSliceWithCredentials.injectEndpoints({
+export const favoritesAPI = api.injectEndpoints({
     endpoints: build => ({
         getFavorites: build.query<GeoJsonCollection<IPlacePreview>, void>({
             query: () => 'favorites',
