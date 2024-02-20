@@ -1,3 +1,5 @@
+'use client'
+
 export const WidgetSearch = () => {
     return (
         <div className="relative mr-8">

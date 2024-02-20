@@ -1,8 +1,9 @@
+'use client'
+
 import ScrollContainer from 'react-indiana-drag-scroll'
 
 import type { IUserInfo } from '@/utils/types/user'
 
-import { IconChevron } from '@/components/ui/icon-chevron'
 import { getWidgetActiveTab, getWidgetIsPlacesOpened, toggleWidgetPlaces } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabsEnum } from '@/utils/enums'
@@ -13,6 +14,7 @@ import { WidgetHeader } from './components/widget-header'
 import { WidgetPlacesAll } from './components/widget-places-all'
 import { WidgetPlacesSaved } from './components/widget-places-saved'
 import { WidgetSearch } from './components/widget-search'
+import { WidgetSection } from './components/widget-section'
 import { WidgetTabs } from './components/widget-tabs'
 
 type WidgetPlacesProps = {
@@ -33,25 +35,21 @@ export const WidgetPlaces = ({ userInfo, onFlip }: WidgetPlacesProps) => {
                 <div className="relative flex flex-col gap-y-8 rounded-2xl bg-blue-10 p-4 sm:p-8">
                     <WidgetFlipToggler variant="random" onClick={onFlip} />
                     <WidgetSearch />
-                    <WidgetCategories />
+                    <WidgetCategories variant="blue" />
                 </div>
 
-                <div className="flex flex-col gap-y-4 p-4 sm:p-8">
-                    <div
-                        className="flex cursor-pointer items-center justify-between"
-                        onClick={() => dispatch(toggleWidgetPlaces())}
+                <div className="p-4 sm:p-8">
+                    <WidgetSection
+                        title="Places"
+                        isExpanded={isPlacesOpened}
+                        onToggle={() => dispatch(toggleWidgetPlaces())}
                     >
-                        <div className="text-caps uppercase">Places</div>
-                        <IconChevron position={isPlacesOpened ? 'down' : 'up'} />
-                    </div>
-
-                    {isPlacesOpened && (
                         <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
                             <WidgetTabs />
                             {activeTab === WidgetTabsEnum.ALL && <WidgetPlacesAll />}
                             {activeTab === WidgetTabsEnum.SAVED && <WidgetPlacesSaved />}
                         </div>
-                    )}
+                    </WidgetSection>
                 </div>
             </div>
         </ScrollContainer>

@@ -1,3 +1,5 @@
+'use client'
+
 import { resetWidgetActiveList } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 

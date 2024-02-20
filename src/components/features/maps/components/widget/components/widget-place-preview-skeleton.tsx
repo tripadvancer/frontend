@@ -1,3 +1,5 @@
+'use client'
+
 export const WidgetPlacePreviewSkeleton = () => {
     return (
         <div role="status" className="flex flex-col gap-4">

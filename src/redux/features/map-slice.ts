@@ -6,7 +6,6 @@ import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 
 import type { RootState } from '@/redux/store'
 import { MapDataSourcesEnum, WidgetListsEnum, WidgetTabsEnum } from '@/utils/enums'
-import { updateSelectedCategories } from '@/utils/helpers'
 
 interface MapState {
     viewState: Partial<ViewState>
@@ -70,10 +69,8 @@ export const mapSlice = createSlice({
             state.placePopupInfo = null
             state.locationPopupInfo = null
         },
-        setWidgetSelectedCategories(state, action: PayloadAction<number>) {
-            const categoryId = action.payload
-            const updatedSelectedCategories = updateSelectedCategories(state.widget.selectedCategories, categoryId)
-            state.widget.selectedCategories = updatedSelectedCategories
+        setWidgetSelectedCategories(state, action: PayloadAction<number[]>) {
+            state.widget.selectedCategories = action.payload
             state.placePopupInfo = null
             state.locationPopupInfo = null
         },

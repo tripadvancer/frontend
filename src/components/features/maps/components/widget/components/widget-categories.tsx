@@ -1,59 +1,38 @@
 'use client'
 
-import { IconChevron } from '@/components/ui/icon-chevron'
+import { Categories } from '@/components/ui/categories'
 import {
     getWidgetIsCategoriesOpened,
     getWidgetSelectedCategories,
-    resetWidgetSelectedCategories,
     setWidgetSelectedCategories,
     toggleWidgetCategories,
 } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { getSortedCategories } from '@/utils/dictionaries/categories'
-import { useCurrentLocale } from '@/utils/i18n/i18n.client'
 
-import { WidgetCategory } from './widget-category'
+import { WidgetSection } from './widget-section'
 
-export const WidgetCategories = () => {
+type WidgetCategoriesProps = {
+    variant: 'blue' | 'orange'
+}
+
+export const WidgetCategories = ({ variant }: WidgetCategoriesProps) => {
     const dispatch = useAppDispatch()
-    const currentLocale = useCurrentLocale()
     const isCategoriesOpened = useAppSelector(getWidgetIsCategoriesOpened)
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
-    const sortedCategories = getSortedCategories(currentLocale)
 
     return (
-        <div className="flex flex-col gap-y-4">
-            <div
-                className="flex cursor-pointer items-center justify-between"
-                onClick={() => dispatch(toggleWidgetCategories())}
-            >
-                <div className="text-caps uppercase">Categories</div>
-                <div className="flex items-center justify-center gap-2">
-                    {selectedCategories.length > 0 && (
-                        <div className="text-small text-blue-100">{`${selectedCategories.length} selected`}</div>
-                    )}
-                    <IconChevron position={isCategoriesOpened ? 'down' : 'up'} />
-                </div>
-            </div>
-
-            {isCategoriesOpened && (
-                <div className="flex flex-wrap gap-2">
-                    <WidgetCategory
-                        name="All categories"
-                        isSelected={selectedCategories.length === 0}
-                        onClick={() => dispatch(resetWidgetSelectedCategories())}
-                    />
-
-                    {sortedCategories.map(category => (
-                        <WidgetCategory
-                            key={category.id}
-                            name={category.localizedName[currentLocale]}
-                            isSelected={selectedCategories.includes(category.id)}
-                            onClick={() => dispatch(setWidgetSelectedCategories(category.id))}
-                        />
-                    ))}
-                </div>
-            )}
-        </div>
+        <WidgetSection
+            title="Categories"
+            variant={variant}
+            info={selectedCategories.length > 0 ? `${selectedCategories.length} selected` : undefined}
+            isExpanded={isCategoriesOpened}
+            onToggle={() => dispatch(toggleWidgetCategories())}
+        >
+            <Categories
+                variant={variant}
+                selectedCategories={selectedCategories}
+                onClick={(selectedCategories: number[]) => dispatch(setWidgetSelectedCategories(selectedCategories))}
+            />
+        </WidgetSection>
     )
 }
