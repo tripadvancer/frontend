@@ -1,3 +1,5 @@
+import ScrollContainer from 'react-indiana-drag-scroll'
+
 import type { IUserInfo } from '@/utils/types/user'
 
 import { IconChevron } from '@/components/ui/icon-chevron'
@@ -24,32 +26,34 @@ export const WidgetPlaces = ({ userInfo, onFlip }: WidgetPlacesProps) => {
     const isPlacesOpened = useAppSelector(getWidgetIsPlacesOpened)
 
     return (
-        <div className="rounded-b-2xl bg-white shadow-small sm:rounded-2xl">
-            <WidgetHeader userInfo={userInfo} />
+        <ScrollContainer className="max-h-screen w-full sm:p-8">
+            <div className="rounded-b-2xl bg-white shadow-small sm:rounded-2xl">
+                <WidgetHeader userInfo={userInfo} />
 
-            <div className="relative flex flex-col gap-y-8 rounded-2xl bg-blue-10 p-4 sm:p-8">
-                <WidgetFlipToggler variant="random" onClick={onFlip} />
-                <WidgetSearch />
-                <WidgetCategories />
-            </div>
-
-            <div className="flex flex-col gap-y-4 p-4 sm:p-8">
-                <div
-                    className="flex cursor-pointer items-center justify-between"
-                    onClick={() => dispatch(toggleWidgetPlaces())}
-                >
-                    <div className="text-caps uppercase">Places</div>
-                    <IconChevron position={isPlacesOpened ? 'down' : 'up'} />
+                <div className="relative flex flex-col gap-y-8 rounded-2xl bg-blue-10 p-4 sm:p-8">
+                    <WidgetFlipToggler variant="random" onClick={onFlip} />
+                    <WidgetSearch />
+                    <WidgetCategories />
                 </div>
 
-                {isPlacesOpened && (
-                    <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
-                        <WidgetTabs />
-                        {activeTab === WidgetTabsEnum.ALL && <WidgetPlacesAll />}
-                        {activeTab === WidgetTabsEnum.SAVED && <WidgetPlacesSaved />}
+                <div className="flex flex-col gap-y-4 p-4 sm:p-8">
+                    <div
+                        className="flex cursor-pointer items-center justify-between"
+                        onClick={() => dispatch(toggleWidgetPlaces())}
+                    >
+                        <div className="text-caps uppercase">Places</div>
+                        <IconChevron position={isPlacesOpened ? 'down' : 'up'} />
                     </div>
-                )}
+
+                    {isPlacesOpened && (
+                        <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
+                            <WidgetTabs />
+                            {activeTab === WidgetTabsEnum.ALL && <WidgetPlacesAll />}
+                            {activeTab === WidgetTabsEnum.SAVED && <WidgetPlacesSaved />}
+                        </div>
+                    )}
+                </div>
             </div>
-        </div>
+        </ScrollContainer>
     )
 }
