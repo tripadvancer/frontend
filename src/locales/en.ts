@@ -54,6 +54,7 @@ export default {
     'common.action.ok': 'Ok',
     'common.action.save_changes': 'Save changes',
     'common.action.confirm': 'Confirm',
+    'common.action.load_more': 'Load more ...',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -229,7 +230,24 @@ export default {
     'auth.verify_email.ok': 'Your email has been verified.',
 
     'widget.common.error': 'An unexpected error has occurred.{br}Please try again later.',
-    'widget.places_all.no_places': 'No places found.{br}Try changing categories or zooming out the map.',
+    'widget.common.error.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
+
+    'widget.categories.title': 'Categories',
+    'widget.categories#one': '{count} selected',
+    'widget.categories#other': '{count} selected',
+
+    'widget.places.title': 'Places',
+    'widget.all_places.title': 'All places',
+    'widget.saved_places.title': 'Saved',
+    'widget.saved_places.favorites.title': 'Favorites',
+    'widget.saved_places.visited.title': 'Visited places',
+    
+    'widget.saved_places.info': 'Select a list to view your places.',
+    'widget.saved_places.show_on_the_map': 'Show on the map',
+
+    'widget.all_places.empty': 'No places found.{br}Try changing categories or zooming out the map.',
+    'widget.saved_places.favorites.empty': 'Your favorites are empty.{br}Add the place to your favorites to see it here.',
+    'widget.saved_places.visited.empty': 'You have not visited any places yet.{br}Add the place to your visited to see it here.',
 
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',

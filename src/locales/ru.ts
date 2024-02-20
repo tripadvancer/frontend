@@ -54,6 +54,7 @@ export default {
     'common.action.ok': 'Ок',
     'common.action.save_changes': 'Сохранить изменения',
     'common.action.confirm': 'Подтвердить',
+    'common.action.load_more': 'Загрузить ещё ...',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -231,6 +232,29 @@ export default {
     'auth.verify_email.loading': 'Проверяем ваш email...',
     'auth.verify_email.token_expired': 'Ссылка для подтверждения email устарела. Пожалуйста, залогиньтесь снова, чтобы мы могли отправить Вам новую ссылку для подтверждения.',
     'auth.verify_email.ok': 'Ваш email был подтверждён.',
+
+    'widget.common.error': 'Произошла непредвиденная ошибка.{br}Пожалуйста, попробуйте позже.',
+    'widget.common.error.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть свои сохранённые места.',
+
+    'widget.categories.title': 'Категории',
+
+    'widget.categories#one': 'выбрана {count} категория',
+    'widget.categories#few': 'выбрано {count} категории',
+    'widget.categories#many': 'выбрано {count} категорий',
+    'widget.categories#other': 'выбрано {count} категорий',
+
+    'widget.places.title': 'Места',
+    'widget.all_places.title': 'Все',
+    'widget.saved_places.title': 'Мои места',
+    'widget.saved_places.favorites.title': 'Избранное',
+    'widget.saved_places.visited.title': 'Посещённые места',
+    
+    'widget.saved_places.info': 'Выберите список, чтобы увидеть сохранённые места.',
+    'widget.saved_places.show_on_the_map': 'Показать на карте',
+
+    'widget.all_places.empty': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличить масштаб.',
+    'widget.saved_places.favorites.empty': 'Ваше избранное пусто.{br}Добавьте место в избранное, чтобы увидеть его здесь.',
+    'widget.saved_places.visited.empty': 'Вы еще не посетили ни одного места.{br}Добавьте место в свой список посещенных мест, чтобы увидеть его здесь.',
 
     'pages.not_found.title': 'Страница не найдена',
     'pages.not_found.text': 'Извините, но похоже, Вы забрели в неизведанные территории. Страница, которую Вы искали, либо была перемещена, удалена, либо никогда не существовала.',

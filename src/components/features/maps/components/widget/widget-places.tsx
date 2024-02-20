@@ -7,6 +7,7 @@ import type { IUserInfo } from '@/utils/types/user'
 import { getWidgetActiveTab, getWidgetIsPlacesOpened, toggleWidgetPlaces } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabsEnum } from '@/utils/enums'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetCategories } from './components/widget-categories'
 import { WidgetFlipToggler } from './components/widget-flip-toggler'
@@ -23,6 +24,7 @@ type WidgetPlacesProps = {
 }
 
 export const WidgetPlaces = ({ userInfo, onFlip }: WidgetPlacesProps) => {
+    const t = useI18n()
     const dispatch = useAppDispatch()
     const activeTab = useAppSelector(getWidgetActiveTab)
     const isPlacesOpened = useAppSelector(getWidgetIsPlacesOpened)
@@ -40,7 +42,7 @@ export const WidgetPlaces = ({ userInfo, onFlip }: WidgetPlacesProps) => {
 
                 <div className="p-4 sm:p-8">
                     <WidgetSection
-                        title="Places"
+                        title={t('widget.places.title')}
                         isExpanded={isPlacesOpened}
                         onToggle={() => dispatch(toggleWidgetPlaces())}
                     >

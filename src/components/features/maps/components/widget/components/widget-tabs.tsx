@@ -11,30 +11,23 @@ import {
 } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabsEnum } from '@/utils/enums'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 type TabType = {
     id: WidgetTabsEnum
     caption: string
-    authRequired?: boolean
 }
 
 export const WidgetTabs = () => {
+    const t = useI18n()
     const dispatch = useAppDispatch()
     const activeTab = useAppSelector(getWidgetActiveTab)
     const showOnlySavedPlaces = useAppSelector(getShowOnlySavedPlaces)
 
     const tabs: TabType[] = [
-        { id: WidgetTabsEnum.ALL, caption: 'All places' },
-        { id: WidgetTabsEnum.SAVED, caption: 'Saved', authRequired: true },
+        { id: WidgetTabsEnum.ALL, caption: t('widget.all_places.title') },
+        { id: WidgetTabsEnum.SAVED, caption: t('widget.saved_places.title') },
     ]
-
-    const toggleShowPlaces = () => {
-        dispatch(toggleShowOnlySavedPlaces())
-    }
-
-    const handleTabClick = (tab: TabType) => {
-        dispatch(setWidgetActiveTab(tab.id))
-    }
 
     return (
         <div className="flex items-center justify-between">
@@ -48,7 +41,7 @@ export const WidgetTabs = () => {
                                 'border-b-2 border-black-100 !text-black-100': activeTab === tab.id,
                             },
                         )}
-                        onClick={() => handleTabClick(tab)}
+                        onClick={() => dispatch(setWidgetActiveTab(tab.id))}
                     >
                         {tab.caption}
                     </li>
@@ -57,10 +50,13 @@ export const WidgetTabs = () => {
 
             {activeTab === WidgetTabsEnum.SAVED && (
                 <div className="flex items-center gap-x-2">
-                    <div onClick={toggleShowPlaces} className="cursor-pointer">
-                        Show on the map
+                    <div onClick={() => dispatch(toggleShowOnlySavedPlaces())} className="cursor-pointer">
+                        {t('widget.saved_places.show_on_the_map')}
                     </div>
-                    <FormSwitcher checked={showOnlySavedPlaces} onChange={toggleShowPlaces} />
+                    <FormSwitcher
+                        checked={showOnlySavedPlaces}
+                        onChange={() => dispatch(toggleShowOnlySavedPlaces())}
+                    />
                 </div>
             )}
         </div>

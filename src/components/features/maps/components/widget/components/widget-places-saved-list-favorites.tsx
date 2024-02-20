@@ -17,7 +17,7 @@ export const WidgetPlacesSavedListFavorites = () => {
     }
 
     if (response.isSuccess && response.data.features.length === 0) {
-        return <WidgetMessage message={t('widget.places_all.no_places', { br: <br /> })} />
+        return <WidgetMessage message={t('widget.saved_places.favorites.empty', { br: <br /> })} />
     }
 
     if (response.isSuccess && response.data.features.length > 0) {

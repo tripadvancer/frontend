@@ -5,12 +5,14 @@ import { useState } from 'react'
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetPlacePreview } from './widget-place-preview'
 
 const PAGINATION_LIMIT = 10
 
 export const WidgetPlacesFeed = ({ places }: { places: IPlacePreview[] }) => {
+    const t = useI18n()
     const [currentPage, setCurrentPage] = useState(1)
 
     return (
@@ -27,7 +29,7 @@ export const WidgetPlacesFeed = ({ places }: { places: IPlacePreview[] }) => {
                     className="flex-grow"
                     onClick={() => setCurrentPage(prev => prev + 1)}
                 >
-                    Load more ...
+                    {t('common.action.load_more')}
                 </FormButton>
             )}
         </div>
