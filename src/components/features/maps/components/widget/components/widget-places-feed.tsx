@@ -20,7 +20,13 @@ export const WidgetPlacesFeed = ({ places }: { places: IPlacePreview[] }) => {
             ))}
 
             {places.length > currentPage * PAGINATION_LIMIT && (
-                <FormButton type="stroke" size="small" shape="rounded" onClick={() => setCurrentPage(prev => prev + 1)}>
+                <FormButton
+                    type="stroke"
+                    size="small"
+                    shape="rounded"
+                    className="flex-grow"
+                    onClick={() => setCurrentPage(prev => prev + 1)}
+                >
                     Load more ...
                 </FormButton>
             )}

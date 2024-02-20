@@ -1,29 +1,55 @@
 'use client'
 
+import { useState } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-import { IUserInfo } from '@/utils/types/user'
+import { animated, useSpring } from '@react-spring/web'
+import classNames from 'classnames'
 
-import { WidgetCategories } from './components/widget-categories'
-import { WidgetHeader } from './components/widget-header'
-import { WidgetHeaderAbout } from './components/widget-header-about'
-import { WidgetHeaderUserMenu } from './components/widget-header-user-menu'
-import { WidgetPlaces } from './components/widget-places'
+import type { IUserInfo } from '@/utils/types/user'
+
+import { WidgetPlaces } from './widget-places'
+import { WidgetRandom } from './widget-random'
 
 type WidgetProps = {
     userInfo: IUserInfo | null
 }
 
 export const Widget = ({ userInfo }: WidgetProps) => {
+    const [isFlipped, setIsFlipped] = useState<boolean>(false)
+    const [isAnimating, setIsAnimating] = useState<boolean>(false)
+
+    const { transform } = useSpring({
+        transform: `rotateY(${isFlipped ? 180 : 0}deg)`,
+        config: { mass: 8, tension: 500, friction: 80 },
+        onStart: () => setIsAnimating(true),
+        onRest: () => setIsAnimating(false),
+    })
+
     return (
-        <ScrollContainer className="fixed right-0 top-0 z-40 max-h-screen w-full cursor-auto sm:w-[512px] sm:p-8">
-            <div role="widget" className="rounded-b-2xl bg-white shadow-small sm:rounded-2xl">
-                <WidgetHeader userInfo={userInfo} />
-                <WidgetHeaderAbout />
-                {userInfo && <WidgetHeaderUserMenu {...userInfo} />}
-                <WidgetCategories />
-                <WidgetPlaces />
-            </div>
-        </ScrollContainer>
+        <div
+            className={classNames('perspective fixed right-0 top-0 z-40 sm:w-[512px]', {
+                'pointer-events-none h-[120%]': isAnimating,
+            })}
+        >
+            <animated.div className="preserve-3d relative h-full" style={{ transform }}>
+                <ScrollContainer
+                    className={classNames('backface-hidden absolute top-0 max-h-screen w-full sm:p-8', {
+                        'max-h-full': isAnimating,
+                    })}
+                >
+                    <WidgetPlaces userInfo={userInfo} onFlip={() => setIsFlipped(!isFlipped)} />
+                </ScrollContainer>
+
+                <ScrollContainer
+                    className={classNames('rotate-y-180 backface-hidden absolute top-0 max-h-screen w-full sm:p-8', {
+                        'max-h-full': isAnimating,
+                    })}
+                >
+                    <WidgetPlaces userInfo={userInfo} onFlip={() => setIsFlipped(!isFlipped)} />
+                    {/* <WidgetRandom userInfo={userInfo} onFlip={() => setIsFlipped(!isFlipped)} /> */}
+                </ScrollContainer>
+            </animated.div>
+        </div>
     )
 }

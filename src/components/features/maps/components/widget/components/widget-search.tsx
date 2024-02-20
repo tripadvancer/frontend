@@ -1,6 +1,6 @@
 export const WidgetSearch = () => {
     return (
-        <div className="relative">
+        <div className="relative mr-8">
             <svg
                 width="16"
                 height="16"

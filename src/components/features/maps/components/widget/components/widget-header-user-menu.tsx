@@ -13,7 +13,11 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { api } from '@/redux/services/api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const WidgetHeaderUserMenu = ({ id }: IUserInfo) => {
+type WidgetHeaderUserMenuProps = {
+    userInfo: IUserInfo | null
+}
+
+export const WidgetHeaderUserMenu = ({ userInfo }: WidgetHeaderUserMenuProps) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()
@@ -31,10 +35,14 @@ export const WidgetHeaderUserMenu = ({ id }: IUserInfo) => {
         }
     }
 
+    if (!userInfo) {
+        return null
+    }
+
     if (isMenuOpened) {
         return (
             <nav className="flex flex-col items-end gap-y-4 px-4 pb-8 pt-4 text-big-bold sm:px-8 sm:pt-0">
-                <Link href={`users/${id}/places`} className="flex items-center gap-x-2">
+                <Link href={`users/${userInfo.id}/places`} className="flex items-center gap-x-2">
                     {t('header.user_menu.places')}
                     {/* prettier-ignore */}
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +50,7 @@ export const WidgetHeaderUserMenu = ({ id }: IUserInfo) => {
                 </svg>
                 </Link>
 
-                <Link href={`users/${id}/reviews`} className="flex items-center gap-x-2">
+                <Link href={`users/${userInfo.id}/reviews`} className="flex items-center gap-x-2">
                     {t('header.user_menu.reviews')}
                     {/* prettier-ignore */}
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +58,7 @@ export const WidgetHeaderUserMenu = ({ id }: IUserInfo) => {
                 </svg>
                 </Link>
 
-                <Link href={`users/${id}/settings`} className="flex items-center gap-x-2">
+                <Link href={`users/${userInfo.id}/settings`} className="flex items-center gap-x-2">
                     {t('header.user_menu.settings')}
                     {/* prettier-ignore */}
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -17,13 +17,9 @@ export const WidgetHeaderUser = ({ userInfo }: WidgetHeaderUserProps) => {
     const dispatch = useAppDispatch()
     const isMenuOpened = useAppSelector(getWidgetIsMenuOpened)
 
-    const toggleMenu = () => {
-        dispatch(toggleWidgetMenu())
-    }
-
     if (userInfo) {
         return (
-            <div className="cursor-pointer" onClick={toggleMenu}>
+            <div className="cursor-pointer" onClick={() => dispatch(toggleWidgetMenu())}>
                 {isMenuOpened ? (
                     // prettier-ignore
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
