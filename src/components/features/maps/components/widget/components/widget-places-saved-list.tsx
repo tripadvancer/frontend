@@ -1,5 +1,6 @@
 'use client'
 
+import { ArrowLeftIcon16 } from '@/components/ui/icons'
 import { resetWidgetActiveList } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 
@@ -17,10 +18,7 @@ export const WidgetPlacesSavedList = ({ children, caption }: WidgetPlacesSavedLi
                 className="hover-animated flex cursor-pointer items-center gap-x-2 text-big-bold hover:text-blue-active"
                 onClick={() => dispatch(resetWidgetActiveList())}
             >
-                {/* prettier-ignore */}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M5.70069 6.94868H14V9.05132H5.70069L8.88371 12.5132L7.51668 14L2 8L7.51668 2L8.88371 3.48679L5.70069 6.94868Z" />
-                </svg>
+                <ArrowLeftIcon16 />
                 {caption}
             </div>
             {children}

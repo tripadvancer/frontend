@@ -1,5 +1,6 @@
 'use client'
 
+import { ArrowRightIcon16 } from '@/components/ui/icons'
 import { getWidgetActiveList, setWidgetActiveList } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetListsEnum } from '@/utils/enums'
@@ -49,10 +50,7 @@ export const WidgetPlacesSaved = () => {
                         onClick={() => handleListClick(list.id)}
                     >
                         {list.caption}
-                        {/* prettier-ignore */}
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path clipRule="evenodd" d="M9.99092 9.05132H2V6.94868H9.99092L6.54265 3.48679L8.02359 2L14 8L8.02359 14L6.54265 12.5132L9.99092 9.05132Z" />
-                        </svg>
+                        <ArrowRightIcon16 />
                     </div>
                 ))}
             </div>

@@ -7,7 +7,7 @@ import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
 interface DialogContextInterface {
-    open(content: ReactNode): void
+    open(content: React.ReactNode): void
     close(): void
 }
 
@@ -28,9 +28,9 @@ export function useDialog(): DialogContextInterface {
     return context
 }
 
-export function DialogProvider({ children }: { children: ReactNode }) {
+export function DialogProvider({ children }: { children: React.ReactNode }) {
     const [content, setContent] = useState<ReactNode>(null)
-    const open = useCallback((content: ReactNode) => setContent(content), [])
+    const open = useCallback((content: React.ReactNode) => setContent(content), [])
     const close = useCallback(() => setContent(null), [])
 
     useKeypress(Keys.ESCAPE, () => close())

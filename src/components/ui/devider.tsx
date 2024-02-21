@@ -1,7 +1,5 @@
-import { ReactNode } from 'react'
-
 type DeviderProps = {
-    children: ReactNode
+    children: React.ReactNode
 }
 
 export const Devider = ({ children }: DeviderProps) => {

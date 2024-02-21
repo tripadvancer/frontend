@@ -1,7 +1,5 @@
 'use client'
 
-import { ReactNode } from 'react'
-
 import SuperTokensAuth from 'supertokens-web-js'
 
 import { clientConfig } from './supertokens.client'
@@ -11,6 +9,6 @@ if (typeof window !== 'undefined') {
     SuperTokensAuth.init(clientConfig())
 }
 
-export const SuperTokensProvider = ({ children }: { children: ReactNode }) => {
+export const SuperTokensProvider = ({ children }: { children: React.ReactNode }) => {
     return children
 }

@@ -11,7 +11,7 @@ import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type TryRefreshComponentProps = {
-    fallback?: ReactNode
+    fallback?: React.ReactNode
 }
 
 export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {

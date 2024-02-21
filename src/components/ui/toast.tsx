@@ -1,14 +1,11 @@
 'use client'
 
-import { ReactNode } from 'react'
-
-import classNames from 'classnames'
-
+import { CloseIcon16 } from '@/components/ui/icons'
 import { useTimeout } from '@/utils/hooks/use-timeout'
 
 export enum ToastType {
-    success = 'success',
-    error = 'error',
+    success = 'green',
+    error = 'red',
 }
 
 type ToastProps = {
@@ -20,32 +17,19 @@ type ToastProps = {
 export const Toast = ({ type, message, onClose }: ToastProps) => {
     useTimeout(onClose, 5000)
     return (
-        <div
-            className={classNames('relative rounded-2xl py-8 pl-8 pr-16 shadow-medium', {
-                'bg-green-10': type === ToastType.success,
-                'bg-red-10': type === ToastType.error,
-            })}
-        >
+        <div className={`relative rounded-2xl bg-${type}-10 py-8 pl-8 pr-16 shadow-medium`}>
             {message}
             <div
-                className={classNames('absolute right-8 top-1/2 -translate-y-1/2 cursor-pointer', {
-                    'text-green-100': type === ToastType.success,
-                    'text-red-100': type === ToastType.error,
-                })}
+                className={`absolute right-8 top-1/2 -translate-y-1/2 cursor-pointer text-${type}-100`}
                 onClick={onClose}
             >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        fillRule="evenodd"
-                        d="M8 9.48679L3.48679 14L2 12.5132L6.51321 8L2 3.48679L3.48679 2L8 6.51321L12.5132 2L14 3.48679L9.48679 8L14 12.5132L12.5132 14L8 9.48679Z"
-                    />
-                </svg>
+                <CloseIcon16 />
             </div>
         </div>
     )
 }
 
-export const ToastContainer = ({ children }: { children: ReactNode }) => {
+export const ToastContainer = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className="fixed left-0 right-0 top-4 z-50 px-4 sm:px-8">
             <div className="inner-container flex flex-col gap-5">{children}</div>

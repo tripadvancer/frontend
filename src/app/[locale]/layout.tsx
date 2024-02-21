@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import 'react-indiana-drag-scroll/dist/style.css'
 
 import { Roboto } from 'next/font/google'
@@ -63,7 +62,13 @@ export const metadata: Metadata = {
     },
 }
 
-export default async function RootLayout({ children, params }: { children: ReactNode; params: { locale: string } }) {
+export default async function RootLayout({
+    children,
+    params,
+}: {
+    children: React.ReactNode
+    params: { locale: string }
+}) {
     const locale = params.locale
 
     return (

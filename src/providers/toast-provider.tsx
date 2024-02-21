@@ -16,7 +16,7 @@ interface ToastContextInterface {
 }
 
 type ToastProviderProps = {
-    children: ReactNode
+    children: React.ReactNode
 }
 
 const defaultValue: ToastContextInterface = {
