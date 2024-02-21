@@ -55,6 +55,7 @@ export default {
     'common.action.save_changes': 'Сохранить изменения',
     'common.action.confirm': 'Подтвердить',
     'common.action.load_more': 'Загрузить ещё ...',
+    'common.action.route': 'Маршрут',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',

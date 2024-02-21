@@ -1,6 +1,6 @@
 'use client'
 
-import { IconChevron } from '@/components/ui/icon-chevron'
+import { ChevronBottomIcon16, ChevronTopIcon16 } from '@/components/ui/icons'
 
 type WidgetSectionProps = {
     children: React.ReactNode
@@ -18,7 +18,7 @@ export const WidgetSection = ({ children, title, variant, info, isExpanded, onTo
                 <div className="text-caps uppercase">{title}</div>
                 <div className="flex items-center justify-center gap-2">
                     {info && <span className={`text-small text-${variant}-100`}>{info}</span>}
-                    <IconChevron position={isExpanded ? 'down' : 'up'} />
+                    {isExpanded ? <ChevronBottomIcon16 /> : <ChevronTopIcon16 />}
                 </div>
             </div>
 

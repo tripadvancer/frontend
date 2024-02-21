@@ -3,13 +3,8 @@
 import { CloseIcon16 } from '@/components/ui/icons'
 import { useTimeout } from '@/utils/hooks/use-timeout'
 
-export enum ToastType {
-    success = 'green',
-    error = 'red',
-}
-
 type ToastProps = {
-    type: ToastType
+    type: 'green' | 'red'
     message: string
     onClose: () => void
 }

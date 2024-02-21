@@ -2,11 +2,11 @@
 
 import { ReactNode, createContext, useContext, useMemo, useState } from 'react'
 
-import { Toast, ToastContainer, ToastType } from '@/components/ui/toast'
+import { Toast, ToastContainer } from '@/components/ui/toast'
 
 interface ToastInterface {
     id: number
-    type: ToastType
+    type: 'green' | 'red'
     message: string
 }
 
@@ -41,13 +41,13 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
 
     const success = (message: string) => {
         const id = Date.now()
-        const type = ToastType.success
+        const type = 'green'
         setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, type }])
     }
 
     const error = (message: string) => {
         const id = Date.now()
-        const type = ToastType.error
+        const type = 'red'
         setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, type }])
     }
 

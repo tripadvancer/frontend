@@ -3,20 +3,17 @@
 import classNames from 'classnames'
 
 type WidgetFlipToggleProps = {
-    variant: 'places' | 'random'
+    variant: 'blue' | 'orange'
     onClick: () => void
 }
 
 export const WidgetFlipToggler = ({ variant, onClick }: WidgetFlipToggleProps) => {
     return (
         <div
-            className={classNames('hover-animated absolute -right-2 top-6 cursor-pointer', {
-                'text-orange-100 hover:text-orange-active': variant === 'random',
-                'text-blue-100 hover:text-blue-active': variant === 'places',
-            })}
+            className={`hover-animated absolute -right-2 top-6 cursor-pointer text-${variant}-100 hover:text-${variant}-active`}
             onClick={onClick}
         >
-            {variant === 'places' && (
+            {variant === 'blue' && (
                 <svg width="58" height="48" viewBox="0 0 58 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.289561 13.4856C-0.759689 10.8581 1.17215 8 3.99734 8H58V40C58 44.4183 54.4242 48 50.0132 48H3.99734C1.17215 48 -0.75969 45.1419 0.28956 42.5144L5.49251 29.4856C5.87334 28.5319 5.87334 27.4681 5.49251 26.5144L0.289561 13.4856Z" />
                     <path d="M58 8C58 3.58173 54.4242 -1.93129e-07 50.0132 0V8L58 8Z" />
@@ -28,7 +25,7 @@ export const WidgetFlipToggler = ({ variant, onClick }: WidgetFlipToggleProps) =
                 </svg>
             )}
 
-            {variant === 'random' && (
+            {variant === 'orange' && (
                 <svg width="58" height="48" viewBox="0 0 58 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.289561 13.4856C-0.759689 10.8581 1.17215 8 3.99734 8H58V40C58 44.4183 54.4242 48 50.0132 48H3.99734C1.17215 48 -0.75969 45.1419 0.28956 42.5144L5.49251 29.4856C5.87334 28.5319 5.87334 27.4681 5.49251 26.5144L0.289561 13.4856Z" />
                     <path d="M58 8C58 3.58173 54.4242 -1.93129e-07 50.0132 0V8L58 8Z" />

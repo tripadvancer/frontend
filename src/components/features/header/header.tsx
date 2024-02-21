@@ -1,4 +1,5 @@
-import { EmailVerificationNotice } from '../email-verification-notice/email-verification-notice'
+import { EmailVerificationNotice } from '@/components/features/email-verification-notice/email-verification-notice'
+
 import { LanguageChanger } from './components/language-changer'
 import { Logo } from './components/logo'
 import { MapLink } from './components/map-link'

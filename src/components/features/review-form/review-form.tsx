@@ -52,7 +52,6 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     </label>
                     <FormRatingInput
                         value={formik.values.rating}
-                        size={32}
                         error={formik.errors.rating}
                         onChange={value => formik.setFieldValue('rating', value)}
                     />

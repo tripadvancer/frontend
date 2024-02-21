@@ -21,7 +21,7 @@ export const WidgetRandom = ({ userInfo, onFlip }: WidgetRandomProps) => {
                 <WidgetHeader userInfo={userInfo} />
 
                 <div className="relative flex flex-col gap-y-8 rounded-2xl bg-orange-10 p-4 sm:p-8">
-                    <WidgetFlipToggler variant="random" onClick={onFlip} />
+                    <WidgetFlipToggler variant="blue" onClick={onFlip} />
                     <WidgetSearch />
                     <WidgetCategories variant="orange" />
                 </div>

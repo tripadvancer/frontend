@@ -55,6 +55,7 @@ export default {
     'common.action.save_changes': 'Save changes',
     'common.action.confirm': 'Confirm',
     'common.action.load_more': 'Load more ...',
+    'common.action.route': 'Route',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
