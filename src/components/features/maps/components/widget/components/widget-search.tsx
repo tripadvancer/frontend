@@ -4,7 +4,7 @@ import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
 
 export const WidgetSearch = () => {
     return (
-        <div className="relative mr-8">
+        <div className="relative mr-12 sm:mr-8">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 transform text-blue-100">
                 <SearchIcon16 />
             </div>

@@ -34,7 +34,7 @@ export const WidgetPlaces = ({ userInfo, onFlip }: WidgetPlacesProps) => {
             <div className="rounded-b-2xl bg-white shadow-small sm:rounded-2xl">
                 <WidgetHeader userInfo={userInfo} />
 
-                <div className="relative flex flex-col gap-y-8 rounded-2xl bg-blue-10 p-4 sm:p-8">
+                <div className="relative flex flex-col gap-y-4 overflow-hidden rounded-2xl bg-blue-10 p-4 sm:gap-y-8 sm:overflow-visible sm:p-8">
                     <WidgetFlipToggler variant="orange" onClick={onFlip} />
                     <WidgetSearch />
                     <WidgetCategories variant="blue" />

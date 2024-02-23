@@ -10,7 +10,7 @@ type WidgetFlipToggleProps = {
 export const WidgetFlipToggler = ({ variant, onClick }: WidgetFlipToggleProps) => {
     return (
         <div
-            className={`hover-animated absolute -right-2 top-6 cursor-pointer text-${variant}-100 hover:text-${variant}-active`}
+            className={`hover-animated absolute -right-2 top-2 cursor-pointer sm:top-6 text-${variant}-100 hover:text-${variant}-active`}
             onClick={onClick}
         >
             {variant === 'blue' && (

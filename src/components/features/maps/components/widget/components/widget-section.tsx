@@ -31,7 +31,7 @@ export const WidgetSection = ({ children, title, variant, info, isExpanded, onTo
                 <div className="text-caps uppercase">{title}</div>
                 <div className="flex items-center justify-center gap-2">
                     {renderInfo()}
-                    {isExpanded ? <ChevronBottomIcon16 /> : <ChevronTopIcon16 />}
+                    {isExpanded ? <ChevronTopIcon16 /> : <ChevronBottomIcon16 />}
                 </div>
             </div>
 

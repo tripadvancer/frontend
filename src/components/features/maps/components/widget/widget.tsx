@@ -19,7 +19,7 @@ export const Widget = ({ userInfo }: WidgetProps) => {
     }
 
     return (
-        <div className="fixed right-0 top-0 z-40 sm:w-[512px]">
+        <div className="fixed right-0 top-0 z-40 w-full sm:w-[512px]">
             {isFlipped ? (
                 <WidgetRandom userInfo={userInfo} onFlip={toggleFlip} />
             ) : (

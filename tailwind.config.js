@@ -153,7 +153,8 @@ module.exports = {
             },
             boxShadow: {
                 medium: '0 16px 32px rgba(2, 14, 25, 0.16)',
-                small: '0 8px 16px rgba(2, 14, 25, 0.08)',
+                // small: '0 8px 16px rgba(2, 14, 25, 0.08)',
+                small: '0px 8px 16px rgba(2, 14, 25, .32)',
             },
             borderRadius: {
                 '4xl': '2rem',
