@@ -16,7 +16,6 @@ import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { useAppDispatch } from '@/redux/hooks'
-import { api } from '@/redux/services/api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPassword } from './forgot-password'
@@ -60,7 +59,6 @@ export const SignIn = () => {
                 case 'OK':
                     dialog.close()
                     router.refresh()
-                    dispatch(api.util.invalidateTags(['Places']))
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
@@ -80,6 +78,7 @@ export const SignIn = () => {
             }
         } catch (err) {
             toast.error(t('common.error'))
+            console.error(err)
         } finally {
             setIsLoading(false)
         }

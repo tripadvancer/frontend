@@ -17,7 +17,7 @@ export const WidgetPlacesAll = () => {
     const places = response.data?.features.map(({ properties }) => properties) ?? []
 
     if (response.isError) {
-        return <WidgetMessage onReload={response.refetch} isLoading={response.isLoading} />
+        return <WidgetMessage onAction={response.refetch} isLoading={response.isLoading} />
     }
 
     if (response.isSuccess && response.data.features.length === 0) {

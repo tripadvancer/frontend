@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -14,7 +12,7 @@ import { FormInput } from '@/components/ui/form-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { updateUserInfo } from '@/services/user'
+import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { AvatarUploader } from './avatar-uploader'
@@ -28,7 +26,7 @@ export const SettingsForm = ({ name, info, avatar }: IUserInfo) => {
     const router = useRouter()
     const toast = useToast()
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [updateUserInfo, { isLoading }] = userAPI.useUpdateUserInfoMutation()
 
     const initialValues = {
         name: name,
@@ -44,29 +42,25 @@ export const SettingsForm = ({ name, info, avatar }: IUserInfo) => {
     })
 
     const handleSubmit = async (values: UpdateUserInfoInputs) => {
-        try {
-            setIsLoading(true)
-            const response = await updateUserInfo(values)
+        await updateUserInfo(values)
+            .unwrap()
+            .then(response => {
+                switch (response.status) {
+                    case 'OK':
+                        router.refresh()
+                        toast.success(t('success.update_user_info'))
+                        break
 
-            switch (response.status) {
-                case 'OK':
-                    router.refresh()
-                    toast.success(t('success.update_user_info'))
-                    break
+                    case 'USERNAME_ALREADY_EXISTS_ERROR':
+                        formik.setErrors({ name: t('validation.username.already_exists') })
+                        break
 
-                case 'USERNAME_ALREADY_EXISTS_ERROR':
-                    formik.setErrors({ name: t('validation.username.already_exists') })
-                    break
-
-                default:
-                    toast.error(t('common.error'))
-                    break
-            }
-        } catch (err: any) {
-            toast.error(err.message)
-        } finally {
-            setIsLoading(false)
-        }
+                    default:
+                        toast.error(t('common.error'))
+                        break
+                }
+            })
+            .catch(() => toast.error(t('common.error')))
     }
 
     const formik = useFormik({

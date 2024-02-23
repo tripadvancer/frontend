@@ -6,15 +6,15 @@ import type { IUserInfo } from '@/utils/types/user'
 import type { RootState } from '@/redux/store'
 
 interface UserState {
-    userInfo: IUserInfo | null
     userLocation: ICoordinates | null
+    isAuth: boolean
     isOnboarded: boolean
     isCookieAccepted: boolean
 }
 
 export const initialState: UserState = {
-    userInfo: null,
     userLocation: null,
+    isAuth: false,
     isOnboarded: false,
     isCookieAccepted: false,
 }
@@ -24,10 +24,10 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setCredentials(state, action: PayloadAction<IUserInfo>) {
-            state.userInfo = action.payload
+            state.isAuth = true
         },
         unSetCredentials(state) {
-            state.userInfo = null
+            state.isAuth = false
         },
         setUserLocation(state, action: PayloadAction<ICoordinates>) {
             state.userLocation = action.payload
@@ -41,7 +41,7 @@ export const userSlice = createSlice({
     },
 })
 
-export const getUserInfo = (state: RootState) => state.user.userInfo
+export const getIsAuth = (state: RootState) => state.user.isAuth
 export const getUserLocation = (state: RootState) => state.user.userLocation
 export const getIsOnboarded = (state: RootState) => state.user.isOnboarded
 export const getIsCookieAccepted = (state: RootState) => state.user.isCookieAccepted

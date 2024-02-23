@@ -19,11 +19,10 @@ import { WidgetSection } from './components/widget-section'
 import { WidgetTabs } from './components/widget-tabs'
 
 type WidgetPlacesProps = {
-    userInfo: IUserInfo | null
     onFlip: () => void
 }
 
-export const WidgetPlaces = ({ userInfo, onFlip }: WidgetPlacesProps) => {
+export const WidgetPlaces = ({ onFlip }: WidgetPlacesProps) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
     const activeTab = useAppSelector(getWidgetActiveTab)
@@ -32,7 +31,7 @@ export const WidgetPlaces = ({ userInfo, onFlip }: WidgetPlacesProps) => {
     return (
         <ScrollContainer className="max-h-screen w-full sm:p-8">
             <div className="rounded-b-2xl bg-white shadow-small sm:rounded-2xl">
-                <WidgetHeader userInfo={userInfo} />
+                <WidgetHeader />
 
                 <div className="relative flex flex-col gap-y-4 overflow-hidden rounded-2xl bg-blue-10 p-4 sm:gap-y-8 sm:overflow-visible sm:p-8">
                     <WidgetFlipToggler variant="orange" onClick={onFlip} />

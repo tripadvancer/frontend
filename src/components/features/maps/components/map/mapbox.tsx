@@ -3,6 +3,7 @@
 import { Layer, Map as ReactMapGl, Source } from 'react-map-gl'
 
 import { getMapBounds, getMapDataSource, getWidgetSelectedCategories } from '@/redux/features/map-slice'
+import { getIsAuth } from '@/redux/features/user-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { favoritesAPI } from '@/redux/services/favorites-api'
 import { placesAPI } from '@/redux/services/places-api'
@@ -18,13 +19,23 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 
 export const Mapbox = () => {
     const handlers = useMapEventHandlers()
-    const mapDataSource = useAppSelector(getMapDataSource)
+    const isAuth = useAppSelector(getIsAuth)
     const mapBounds = useAppSelector(getMapBounds)
+    const mapDataSource = useAppSelector(getMapDataSource)
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
 
-    const placesResponse = placesAPI.useGetPlacesQuery({ mapBounds, selectedCategories }, { skip: !mapBounds })
-    const favoritesResponse = favoritesAPI.useGetFavoritesQuery()
-    const visitedResponse = visitedAPI.useGetVisitedQuery()
+    const placesResponse = placesAPI.useGetPlacesQuery(
+        { mapBounds, selectedCategories },
+        { skip: !mapBounds || mapDataSource !== MapDataSourcesEnum.ALL_PLACES },
+    )
+
+    const favoritesResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
+        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.FAVORITES_PLACES,
+    })
+
+    const visitedResponse = visitedAPI.useGetVisitedQuery(undefined, {
+        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
+    })
 
     return (
         <ReactMapGl

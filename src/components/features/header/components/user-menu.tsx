@@ -7,8 +7,6 @@ import { useRouter } from 'next/navigation'
 import { Dropdown } from '@/components/ui/dropdown'
 import { PointIcon16, ReviewIcon16, SettingsIcon16, SignOutIcon16 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
-import { useAppDispatch } from '@/redux/hooks'
-import { api } from '@/redux/services/api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type UserMenuProps = {
@@ -18,14 +16,12 @@ type UserMenuProps = {
 
 export const UserMenu = ({ children, userId }: UserMenuProps) => {
     const t = useI18n()
-    const dispatch = useAppDispatch()
     const router = useRouter()
     const toast = useToast()
 
     const signOut = async () => {
         try {
             await Session.signOut()
-            dispatch(api.util.invalidateTags(['Places']))
             router.push('/')
             router.refresh()
         } catch (err) {

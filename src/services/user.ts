@@ -6,8 +6,6 @@ import type {
     ConfirmUserDeletionResponse,
     IUserInfo,
     RestoreUserResponse,
-    UpdateUserInfoInputs,
-    UpdateUserInfoResponse,
 } from '@/utils/types/user'
 
 export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
@@ -16,23 +14,6 @@ export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
         headers: {
             Authorization: `Bearer ${accessToken}`,
         },
-    })
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
-}
-
-export async function updateUserInfo(body: UpdateUserInfoInputs): Promise<UpdateUserInfoResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user'
-    const res = await fetch(url, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
     })
 
     if (!res.ok) {

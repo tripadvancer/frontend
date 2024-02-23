@@ -1,18 +1,12 @@
 'use client'
 
-import type { IUserInfo } from '@/utils/types/user'
-
 import { WidgetHeaderAbout } from './widget-header-about'
 import { WidgetHeaderAboutToggler } from './widget-header-about-toggler'
 import { WidgetHeaderLogo } from './widget-header-logo'
 import { WidgetHeaderUser } from './widget-header-user'
 import { WidgetHeaderUserMenu } from './widget-header-user-menu'
 
-type WidgetHeaderProps = {
-    userInfo: IUserInfo | null
-}
-
-export const WidgetHeader = ({ userInfo }: WidgetHeaderProps) => {
+export const WidgetHeader = () => {
     return (
         <div role="widget-header">
             <div className="flex items-center justify-between p-4 sm:p-8">
@@ -20,10 +14,10 @@ export const WidgetHeader = ({ userInfo }: WidgetHeaderProps) => {
                     <WidgetHeaderAboutToggler />
                     <WidgetHeaderLogo />
                 </div>
-                <WidgetHeaderUser userInfo={userInfo} />
+                <WidgetHeaderUser />
             </div>
             <WidgetHeaderAbout />
-            <WidgetHeaderUserMenu userInfo={userInfo} />
+            <WidgetHeaderUserMenu />
         </div>
     )
 }

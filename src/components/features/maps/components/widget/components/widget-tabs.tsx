@@ -9,6 +9,7 @@ import {
     setWidgetActiveTab,
     toggleShowOnlySavedPlaces,
 } from '@/redux/features/map-slice'
+import { getIsAuth } from '@/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -23,6 +24,7 @@ export const WidgetTabs = () => {
     const dispatch = useAppDispatch()
     const activeTab = useAppSelector(getWidgetActiveTab)
     const showOnlySavedPlaces = useAppSelector(getShowOnlySavedPlaces)
+    const isAuth = useAppSelector(getIsAuth)
 
     const tabs: TabType[] = [
         { id: WidgetTabsEnum.ALL, caption: t('widget.all_places.title') },
@@ -48,7 +50,7 @@ export const WidgetTabs = () => {
                 ))}
             </ul>
 
-            {activeTab === WidgetTabsEnum.SAVED && (
+            {isAuth && activeTab === WidgetTabsEnum.SAVED && (
                 <div className="flex items-center gap-x-2">
                     <div onClick={() => dispatch(toggleShowOnlySavedPlaces())} className="cursor-pointer">
                         {t('widget.saved_places.show_on_the_map')}

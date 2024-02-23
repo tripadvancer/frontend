@@ -1,4 +1,4 @@
-import { SettingsSkeleton } from './_components/settings-skeleton'
+import { SettingsSkeleton } from '@/components/features/user-settings/components/settings-skeleton'
 
 export default function Loading() {
     return <SettingsSkeleton />

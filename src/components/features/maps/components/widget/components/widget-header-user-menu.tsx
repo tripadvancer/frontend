@@ -5,31 +5,27 @@ import Session from 'supertokens-web-js/recipe/session'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import { IUserInfo } from '@/utils/types/user'
-
 import { PointIcon24, ReviewIcon24, SettingsIcon24, SignOutIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { getWidgetIsMenuOpened, toggleWidgetMenu } from '@/redux/features/map-slice'
+import { getIsAuth } from '@/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { api } from '@/redux/services/api'
+import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type WidgetHeaderUserMenuProps = {
-    userInfo: IUserInfo | null
-}
-
-export const WidgetHeaderUserMenu = ({ userInfo }: WidgetHeaderUserMenuProps) => {
+export const WidgetHeaderUserMenu = () => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()
     const dispatch = useAppDispatch()
+    const isAuth = useAppSelector(getIsAuth)
     const isMenuOpened = useAppSelector(getWidgetIsMenuOpened)
+    const userInfo = userAPI.useGetUserInfoQuery(undefined, { skip: !isAuth }).data
 
     const signOut = async () => {
         try {
             await Session.signOut()
             dispatch(toggleWidgetMenu())
-            dispatch(api.util.invalidateTags(['Places']))
             router.refresh()
         } catch (err) {
             toast.error(t('common.error'))
