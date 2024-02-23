@@ -6,7 +6,7 @@ import { Toast, ToastContainer } from '@/components/ui/toast'
 
 interface ToastInterface {
     id: number
-    type: 'green' | 'red'
+    variant: 'green' | 'red'
     message: string
 }
 
@@ -41,14 +41,14 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
 
     const success = (message: string) => {
         const id = Date.now()
-        const type = 'green'
-        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, type }])
+        const variant = 'green'
+        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, variant }])
     }
 
     const error = (message: string) => {
         const id = Date.now()
-        const type = 'red'
-        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, type }])
+        const variant = 'red'
+        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, variant }])
     }
 
     const close = (id: number) =>
@@ -61,7 +61,12 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
             {children}
             <ToastContainer>
                 {toasts.map((toast: ToastInterface) => (
-                    <Toast key={toast.id} type={toast.type} message={toast.message} onClose={() => close(toast.id)} />
+                    <Toast
+                        key={toast.id}
+                        variant={toast.variant}
+                        message={toast.message}
+                        onClose={() => close(toast.id)}
+                    />
                 ))}
             </ToastContainer>
         </ToastContext.Provider>

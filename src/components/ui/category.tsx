@@ -10,12 +10,23 @@ type CategoryProps = {
 }
 
 export const Category = ({ children, variant, isSelected, onClick }: CategoryProps) => {
+    const colorVariants = {
+        blue: 'text-blue-100 hover:text-blue-active',
+        orange: 'text-orange-100 hover:text-orange-active',
+    }
+
+    const selectedColorVariants = {
+        blue: '!bg-blue-20',
+        orange: '!bg-orange-20',
+    }
+
     return (
         <div
             className={classNames(
-                `hover-animated flex h-8 cursor-pointer items-center rounded-full bg-white px-4 text-small text-${variant}-100 hover:text-${variant}-active`,
+                colorVariants[variant],
+                'hover-animated flex h-8 cursor-pointer items-center rounded-full bg-white px-4 text-small',
                 {
-                    [`!bg-${variant}-20`]: isSelected,
+                    [selectedColorVariants[variant]]: isSelected,
                 },
             )}
             onClick={onClick}

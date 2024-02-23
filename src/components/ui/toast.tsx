@@ -1,21 +1,32 @@
 'use client'
 
+import classNames from 'classnames'
+
 import { CloseIcon16 } from '@/components/ui/icons'
 import { useTimeout } from '@/utils/hooks/use-timeout'
 
 type ToastProps = {
-    type: 'green' | 'red'
+    variant: 'green' | 'red'
     message: string
     onClose: () => void
 }
 
-export const Toast = ({ type, message, onClose }: ToastProps) => {
+export const Toast = ({ variant, message, onClose }: ToastProps) => {
     useTimeout(onClose, 5000)
+
     return (
-        <div className={`relative rounded-2xl bg-${type}-10 py-8 pl-8 pr-16 shadow-medium`}>
+        <div
+            className={classNames('relative rounded-2xl py-8 pl-8 pr-16 shadow-medium', {
+                'bg-green-10': variant === 'green',
+                'bg-red-10': variant === 'red',
+            })}
+        >
             {message}
             <div
-                className={`absolute right-8 top-1/2 -translate-y-1/2 cursor-pointer text-${type}-100`}
+                className={classNames('absolute right-8 top-1/2 -translate-y-1/2 cursor-pointer', {
+                    'text-green-100': variant === 'green',
+                    'text-red-100': variant === 'red',
+                })}
                 onClick={onClose}
             >
                 <CloseIcon16 />
