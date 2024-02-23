@@ -37,7 +37,7 @@ export const AddReviewButton = ({ placeId, isDisabled }: AddReviewButtonProps) =
     }
 
     return (
-        <FormButton variant="lightBlue" size="small" icon={<ReviewIcon16 />} className="w-full" onClick={handleClick}>
+        <FormButton variant="light-blue" size="small" icon={<ReviewIcon16 />} className="w-full" onClick={handleClick}>
             {t('review.user_actions.add')}
         </FormButton>
     )
