@@ -9,20 +9,26 @@ import { EmailVerificationLearnMoreLink } from './email-verification-learn-more-
 export const EmailVerificationNotice = async () => {
     const t = useI18n()
     const doesSessionExist = await Session.doesSessionExist()
-    const validationErrors = await Session.validateClaims()
-    const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
 
-    if (doesSessionExist && validationErrors.length > 0) {
-        return (
-            <div className="relative z-50 bg-orange-10 py-2 text-center text-small text-black-70">
-                <div className="container">
-                    {t('email_verification_notice.text', {
-                        learn_more_link: <EmailVerificationLearnMoreLink userId={accessTokenPayload.userId} />,
-                    })}
-                </div>
-            </div>
-        )
+    if (!doesSessionExist) {
+        return null
     }
 
-    return null
+    const validationErrors = await Session.validateClaims()
+
+    if (validationErrors.length !== 0) {
+        return null
+    }
+
+    const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
+
+    return (
+        <div className="relative z-50 bg-orange-10 py-2 text-center text-small text-black-70">
+            <div className="container">
+                {t('email_verification_notice.text', {
+                    learn_more_link: <EmailVerificationLearnMoreLink userId={accessTokenPayload.userId} />,
+                })}
+            </div>
+        </div>
+    )
 }
