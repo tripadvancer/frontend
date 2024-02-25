@@ -1,27 +1,20 @@
-import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
+'use client'
 
-import { getI18n } from '@/utils/i18n/i18n.server'
-import { getSSRSession } from '@/utils/supertokens/session.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import Session from 'supertokens-web-js/recipe/session'
+
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { EmailVerificationLearnMoreLink } from './email-verification-learn-more-link'
 
 export const EmailVerificationNotice = async () => {
-    const t = await getI18n()
-    const { session, hasToken } = await getSSRSession()
+    const t = useI18n()
+    const doesSessionExist = await Session.doesSessionExist()
+    const validationErrors = await Session.validateClaims()
+    const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
 
-    if (!session && hasToken) {
-        return <TryRefreshComponent />
-    }
-
-    // todo: create helper for get claim value on client and server
-    const emailVerificationClaim = await session?.getClaimValue(EmailVerificationClaim)
-    const emailIsNotVerified = emailVerificationClaim === false // because it can be undefined
-    const accessTokenPayload = session?.getAccessTokenPayload()
-
-    if (emailIsNotVerified) {
+    if (doesSessionExist && validationErrors.length > 0) {
         return (
-            <div className="bg-orange-10 py-2 text-center text-small text-black-70">
+            <div className="relative z-50 bg-orange-10 py-2 text-center text-small text-black-70">
                 <div className="container">
                     {t('email_verification_notice.text', {
                         learn_more_link: <EmailVerificationLearnMoreLink userId={accessTokenPayload.userId} />,

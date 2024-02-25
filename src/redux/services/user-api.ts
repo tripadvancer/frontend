@@ -40,11 +40,11 @@ export const userAPI = api.injectEndpoints({
                 body,
             }),
         }),
-        updateUserAvatar: build.mutation<void, File>({
-            query: file => ({
+        updateUserAvatar: build.mutation<void, FormData>({
+            query: formData => ({
                 url: 'user/avatar',
                 method: 'PATCH',
-                body: file,
+                body: formData,
             }),
             invalidatesTags: ['UserInfo'],
         }),

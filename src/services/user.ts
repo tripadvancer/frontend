@@ -57,33 +57,6 @@ export async function changeUserEmail(body: ChangeUserEmailInputs): Promise<Chan
     return res.json()
 }
 
-export async function updateUserAvatar(file: File): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/avatar'
-    const formData = new FormData()
-
-    formData.append('file', file)
-
-    const res = await fetch(url, {
-        method: 'PATCH',
-        body: formData,
-    })
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-}
-
-export async function deleteUserAvatar(): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user/avatar'
-    const res = await fetch(url, {
-        method: 'DELETE',
-    })
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-}
-
 export async function requestPersonalData(): Promise<void> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/user/personal-data'
     const res = await fetch(url)
