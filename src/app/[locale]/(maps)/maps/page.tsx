@@ -1,5 +1,5 @@
 import { CookieConsent } from '@/components/features/cookie-consent/cookie-consent'
-import { EmailVerification } from '@/components/features/email-verification-notice/email-verification'
+import { EmailVerification } from '@/components/features/email-verification/email-verification'
 import { Maps } from '@/components/features/maps/maps'
 
 export default async function MapsPage() {

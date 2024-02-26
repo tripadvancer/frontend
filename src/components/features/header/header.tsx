@@ -1,4 +1,4 @@
-import { EmailVerification } from '@/components/features/email-verification-notice/email-verification'
+import { EmailVerification } from '@/components/features/email-verification/email-verification'
 
 import { LanguageChanger } from './components/language-changer'
 import { Logo } from './components/logo'
