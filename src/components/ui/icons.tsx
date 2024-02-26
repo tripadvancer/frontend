@@ -1,6 +1,7 @@
 // SVGR generates a React component for each SVG file
 
 // Icons 48x48
+export { default as FlagIcon48 } from '/public/images/icons/48/flag.svg'
 export { default as CameraIcon48 } from '/public/images/icons/48/camera.svg'
 
 // Icons 32x32

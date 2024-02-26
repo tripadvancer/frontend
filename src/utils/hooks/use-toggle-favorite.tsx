@@ -15,7 +15,11 @@ interface toggleFavoriteInterface {
     toggleFavorite: () => void
 }
 
-export function useToggleFavorite(id: number, isFavorite: boolean, callback?: () => void): toggleFavoriteInterface {
+export function useToggleFavorite(
+    id: number,
+    isFavorite: boolean | undefined,
+    callback?: () => void,
+): toggleFavoriteInterface {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()

@@ -6,9 +6,10 @@ import { CopyIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const CoordinatesToCopy = ({ location }: IPlace) => {
+export const PlaceHeaderCoordinates = ({ location }: IPlace) => {
     const t = useI18n()
     const toast = useToast()
+
     const coordinates = location.coordinates
 
     const handleCopy = () => {

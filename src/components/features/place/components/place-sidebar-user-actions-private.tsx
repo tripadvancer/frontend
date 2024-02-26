@@ -14,7 +14,7 @@ type UserActionsPrivateProps = {
     placeId: number
 }
 
-export const UserActionsPrivate = ({ placeId }: UserActionsPrivateProps) => {
+export const PlaceSidebarUserActionsPrivate = ({ placeId }: UserActionsPrivateProps) => {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()

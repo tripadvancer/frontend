@@ -15,7 +15,7 @@ import '../globals.css'
 import 'yet-another-react-lightbox/plugins/captions.css'
 import 'yet-another-react-lightbox/styles.css'
 
-// export const runtime = 'edge'
+export const runtime = 'edge'
 
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],

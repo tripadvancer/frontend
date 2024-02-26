@@ -14,7 +14,7 @@ import { BlockChangeEmail } from './components/block-сhange-email'
 import { SettingsForm } from './components/settings-form'
 import { SettingsSkeleton } from './components/settings-skeleton'
 
-export const UserSettings = ({ userId }: { userId: number }) => {
+export const UserSettings = ({ userId }: { userId: string }) => {
     const t = useI18n()
     const isAuth = useAppSelector(getIsAuth)
     const userInfo = userAPI.useGetUserInfoQuery(undefined, { skip: !isAuth })
@@ -23,7 +23,7 @@ export const UserSettings = ({ userId }: { userId: number }) => {
         notFound()
     }
 
-    if (userInfo.data && userInfo.data.id !== userId) {
+    if (userInfo.data && userInfo.data.id !== parseInt(userId)) {
         notFound()
     }
 

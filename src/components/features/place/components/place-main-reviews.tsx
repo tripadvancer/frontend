@@ -7,17 +7,11 @@ import { ReviewsFeedSkeleton } from '@/components/features/reviews-feed/reviews-
 import { getReviewsByPlaceId } from '@/services/reviews'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-import { AddReviewButton } from './add-review-button'
+import { PlaceMainAddReviewButton } from './place-main-add-review-button'
 
-type ReviewsProps = IPlace & {
-    page: string
-}
-
-export const Reviews = async ({ id, isReviewed, page }: ReviewsProps) => {
+export const PlaceMainReviews = async ({ id, page = '1' }: IPlace & { page: string }) => {
     const t = await getI18n()
-    const currentPage = page ?? '1'
-
-    const reviews = await getReviewsByPlaceId(id.toString(), currentPage)
+    const reviews = await getReviewsByPlaceId(id.toString(), page)
 
     return (
         <section className="flex flex-col gap-y-8">
@@ -25,9 +19,9 @@ export const Reviews = async ({ id, isReviewed, page }: ReviewsProps) => {
                 {t('pages.place.reviews.title')}
             </h2>
             <div className="flex flex-col gap-y-8">
-                <AddReviewButton placeId={id} isDisabled={isReviewed} />
+                <PlaceMainAddReviewButton placeId={id} />
                 <Suspense fallback={<ReviewsFeedSkeleton />}>
-                    <ReviewsFeed reviews={reviews} currentPage={parseInt(currentPage)} variant="place-page" />
+                    <ReviewsFeed reviews={reviews} currentPage={parseInt(page)} variant="place-page" />
                 </Suspense>
             </div>
         </section>

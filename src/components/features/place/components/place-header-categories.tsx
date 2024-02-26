@@ -1,12 +1,11 @@
 import type { IPlace } from '@/utils/types/place'
 
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
+import { getCurrentLocale } from '@/utils/i18n/i18n.server'
 
-type CategoriesProps = IPlace & {
-    locale: string
-}
+export const PlaceHeaderCategories = ({ categories }: IPlace) => {
+    const locale = getCurrentLocale()
 
-export const Categories = async ({ categories, locale }: CategoriesProps) => {
     return (
         <div className="flex gap-2">
             {categories.map(category => (

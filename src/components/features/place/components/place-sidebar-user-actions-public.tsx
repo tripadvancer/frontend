@@ -13,7 +13,7 @@ type UserActionsPublicProps = {
     placeId: number
 }
 
-export const UserActionsPublic = ({ placeId }: UserActionsPublicProps) => {
+export const PlaceSidebarUserActionsPublic = ({ placeId }: UserActionsPublicProps) => {
     const t = useI18n()
     const dialog = useDialog()
 

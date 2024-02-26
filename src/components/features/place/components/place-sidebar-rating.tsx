@@ -5,7 +5,7 @@ import type { IPlace } from '@/utils/types/place'
 import { Rating } from '@/components/ui/rating'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-export const PlaceRating = async ({ avgRating, reviewsCount }: IPlace) => {
+export const PlaceSidebarRating = async ({ avgRating, reviewsCount }: IPlace) => {
     const t = await getI18n()
 
     return (

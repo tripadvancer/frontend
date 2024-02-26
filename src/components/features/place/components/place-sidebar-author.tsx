@@ -4,12 +4,10 @@ import type { IPlace } from '@/utils/types/place'
 
 import { Avatar } from '@/components/ui/avatar'
 import { FormattedDate } from '@/utils/helpers'
+import { getCurrentLocale } from '@/utils/i18n/i18n.server'
 
-type AuthorProps = IPlace & {
-    locale: string
-}
-
-export const Author = ({ author, createdAt, locale }: AuthorProps) => {
+export const PlaceSidebarAuthor = ({ author, createdAt }: IPlace) => {
+    const locale = getCurrentLocale()
     const formattedDate = FormattedDate(createdAt, locale)
 
     return (
