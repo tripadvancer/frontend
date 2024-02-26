@@ -1,11 +1,11 @@
 import { CookieConsent } from '@/components/features/cookie-consent/cookie-consent'
-import { EmailVerificationNotice } from '@/components/features/email-verification-notice/email-verification-notice'
+import { EmailVerification } from '@/components/features/email-verification-notice/email-verification'
 import { Maps } from '@/components/features/maps/maps'
 
 export default async function MapsPage() {
     return (
         <div className="h-screen w-screen">
-            <EmailVerificationNotice />
+            <EmailVerification />
             <Maps />
             <CookieConsent />
         </div>

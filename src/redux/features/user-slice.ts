@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import type { ICoordinates } from '@/utils/types/geo'
-import type { IUserInfo } from '@/utils/types/user'
 
 import type { RootState } from '@/redux/store'
 
@@ -23,7 +22,7 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setCredentials(state, action: PayloadAction<IUserInfo>) {
+        setCredentials(state) {
             state.isAuth = true
         },
         unSetCredentials(state) {
@@ -32,11 +31,11 @@ export const userSlice = createSlice({
         setUserLocation(state, action: PayloadAction<ICoordinates>) {
             state.userLocation = action.payload
         },
-        setOnboarded(state, action: PayloadAction<boolean>) {
-            state.isOnboarded = action.payload
+        setOnboarded(state) {
+            state.isOnboarded = true
         },
-        setCookieAccepted(state, action: PayloadAction<boolean>) {
-            state.isCookieAccepted = action.payload
+        setCookieAccepted(state) {
+            state.isCookieAccepted = true
         },
     },
 })

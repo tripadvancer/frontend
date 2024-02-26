@@ -1,4 +1,4 @@
-import { EmailVerificationNotice } from '@/components/features/email-verification-notice/email-verification-notice'
+import { EmailVerification } from '@/components/features/email-verification-notice/email-verification'
 
 import { LanguageChanger } from './components/language-changer'
 import { Logo } from './components/logo'
@@ -10,7 +10,7 @@ export const Header = async () => {
         <>
             <div className="absolute left-0 right-0 top-0 -z-10 h-[200px] bg-blue-20" />
             <header className="sticky top-0 z-40 bg-blue-20">
-                <EmailVerificationNotice />
+                <EmailVerification />
                 <div className="container relative flex h-[56px] items-center justify-between sm:h-[76px]">
                     <MapLink />
                     <Logo />
