@@ -46,23 +46,47 @@ export const Mapbox = () => {
             reuseMaps
             {...handlers}
         >
-            {mapDataSource === MapDataSourcesEnum.ALL_PLACES && placesResponse.isSuccess && (
-                <Source id="places-source" type="geojson" data={placesResponse.data}>
-                    <Layer {...placesLayer} />
-                </Source>
-            )}
+            <Source
+                id="places-source"
+                type="geojson"
+                data={placesResponse.data || { type: 'FeatureCollection', features: [] }}
+            >
+                <Layer
+                    {...placesLayer}
+                    layout={{
+                        ...placesLayer.layout,
+                        visibility: mapDataSource === MapDataSourcesEnum.ALL_PLACES ? 'visible' : 'none',
+                    }}
+                />
+            </Source>
 
-            {mapDataSource === MapDataSourcesEnum.FAVORITES_PLACES && favoritesResponse.isSuccess && (
-                <Source id="favorite-places-source" type="geojson" data={favoritesResponse.data}>
-                    <Layer {...favoritePlacesLayer} />
-                </Source>
-            )}
+            <Source
+                id="favorite-places-source"
+                type="geojson"
+                data={favoritesResponse.data || { type: 'FeatureCollection', features: [] }}
+            >
+                <Layer
+                    {...favoritePlacesLayer}
+                    layout={{
+                        ...favoritePlacesLayer.layout,
+                        visibility: mapDataSource === MapDataSourcesEnum.FAVORITES_PLACES ? 'visible' : 'none',
+                    }}
+                />
+            </Source>
 
-            {mapDataSource === MapDataSourcesEnum.VISITED_PLACES && visitedResponse.isSuccess && (
-                <Source id="visited-places-source" type="geojson" data={visitedResponse.data}>
-                    <Layer {...visitedPlacesLayer} />
-                </Source>
-            )}
+            <Source
+                id="visited-places-source"
+                type="geojson"
+                data={visitedResponse.data || { type: 'FeatureCollection', features: [] }}
+            >
+                <Layer
+                    {...visitedPlacesLayer}
+                    layout={{
+                        ...visitedPlacesLayer.layout,
+                        visibility: mapDataSource === MapDataSourcesEnum.VISITED_PLACES ? 'visible' : 'none',
+                    }}
+                />
+            </Source>
 
             {handlers.placePopupInfo && <PlacePopup {...handlers.placePopupInfo} />}
             {handlers.locationPopupInfo && <LocationPopup {...handlers.locationPopupInfo} />}

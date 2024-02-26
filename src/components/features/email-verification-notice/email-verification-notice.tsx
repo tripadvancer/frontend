@@ -8,14 +8,13 @@ import { EmailVerificationLearnMoreLink } from './email-verification-learn-more-
 
 export const EmailVerificationNotice = async () => {
     const t = useI18n()
-    const doesSessionExist = await Session.doesSessionExist()
 
+    const doesSessionExist = await Session.doesSessionExist()
     if (!doesSessionExist) {
         return null
     }
 
     const validationErrors = await Session.validateClaims()
-
     if (validationErrors.length !== 0) {
         return null
     }
