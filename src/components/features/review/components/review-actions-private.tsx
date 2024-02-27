@@ -12,12 +12,12 @@ import { useToast } from '@/providers/toast-provider'
 import { deleteReviewById } from '@/services/reviews'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type ActionsPrivateProps = {
+type ReviewActionsPrivateProps = {
     review: IReview
     reviewsCount: number
 }
 
-export const ActionsPrivate = ({ review, reviewsCount }: ActionsPrivateProps) => {
+export const ReviewActionsPrivate = ({ review, reviewsCount }: ReviewActionsPrivateProps) => {
     const t = useI18n()
     const router = useRouter()
     const pathname = usePathname()

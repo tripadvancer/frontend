@@ -4,24 +4,8 @@ import type {
     ChangeUserPasswordInputs,
     ChangeUserPasswordResponse,
     ConfirmUserDeletionResponse,
-    IUserInfo,
     RestoreUserResponse,
 } from '@/utils/types/user'
-
-export async function getUserInfo(accessToken: string): Promise<IUserInfo> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/user'
-    const res = await fetch(url, {
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    })
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
-}
 
 export async function changeUserPassword(body: ChangeUserPasswordInputs): Promise<ChangeUserPasswordResponse> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/user/password'

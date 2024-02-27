@@ -22,11 +22,11 @@ export const Place = async ({ placeId, reviewsCurrentPage }: { placeId: string; 
                 <div className="container py-24">
                     <div className="inner-container flex flex-col gap-y-16 lg:flex-row-reverse lg:gap-x-8">
                         <div className="flex w-full flex-col gap-y-8 lg:w-64">
-                            {/* <PlaceSidebarAchivement placeId={placeId} /> */}
+                            <PlaceSidebarAchivement {...place} />
                             <PlaceSidebarRating {...place} />
-                            {/* <PlaceSidebarActions placeId={placeId} /> */}
+                            <PlaceSidebarActions {...place} />
                             <PlaceSidebarAuthor {...place} />
-                            {/* <PlaceSidebarUserActions placeId={placeId} /> */}
+                            <PlaceSidebarUserActions {...place} />
                             <PlaceSidebarNearby {...place} />
                         </div>
 

@@ -2,8 +2,8 @@ import { Suspense } from 'react'
 
 import type { IPlace } from '@/utils/types/place'
 
-import { ReviewsFeed } from '@/components/features/reviews-feed/reviews-feed'
-import { ReviewsFeedSkeleton } from '@/components/features/reviews-feed/reviews-feed-skeleton'
+import { Reviews } from '@/components/features/reviews/reviews'
+import { ReviewsSkeleton } from '@/components/features/reviews/reviews-skeleton'
 import { getReviewsByPlaceId } from '@/services/reviews'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
@@ -20,8 +20,8 @@ export const PlaceMainReviews = async ({ id, page = '1' }: IPlace & { page: stri
             </h2>
             <div className="flex flex-col gap-y-8">
                 <PlaceMainAddReviewButton placeId={id} />
-                <Suspense fallback={<ReviewsFeedSkeleton />}>
-                    <ReviewsFeed reviews={reviews} currentPage={parseInt(page)} variant="place-page" />
+                <Suspense fallback={<ReviewsSkeleton />}>
+                    <Reviews reviews={reviews} currentPage={parseInt(page)} variant="place-page" />
                 </Suspense>
             </div>
         </section>

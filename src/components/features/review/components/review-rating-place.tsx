@@ -1,14 +1,12 @@
 import Link from 'next/link'
 
-import { IReview } from '@/utils/types/review'
+import type { IReview } from '@/utils/types/review'
 
 import { Rating } from '@/components/ui/rating'
 import { FormattedDate } from '@/utils/helpers'
 import { getCurrentLocale } from '@/utils/i18n/i18n.server'
 
-type RatingPlaceProps = IReview
-
-export const RatingPlace = ({ place, rating, createdAt }: RatingPlaceProps) => {
+export const ReviewRatingPlace = ({ place, rating, createdAt }: IReview) => {
     const locale = getCurrentLocale()
     const formattedDate = FormattedDate(createdAt, locale)
 

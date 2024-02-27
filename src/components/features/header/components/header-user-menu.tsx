@@ -14,7 +14,7 @@ type UserMenuProps = {
     userId: number
 }
 
-export const UserMenu = ({ children, userId }: UserMenuProps) => {
+export const HeaderUserMenu = ({ children, userId }: UserMenuProps) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()

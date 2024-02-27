@@ -23,9 +23,7 @@ export const clientConfig = (): SuperTokensConfig => {
 
                                 if (response.status === 'OK') {
                                     store.dispatch(userSlice.actions.setCredentials())
-                                    store.dispatch(
-                                        api.util.invalidateTags(['Favorites', 'Places', 'Reviews', 'Visited']),
-                                    )
+                                    store.dispatch(api.util.invalidateTags(['Favorites', 'Places', 'Visited']))
                                 }
 
                                 return response

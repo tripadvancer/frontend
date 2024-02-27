@@ -4,7 +4,7 @@ import { Dropdown } from '@/components/ui/dropdown'
 import { GlobeIcon24 } from '@/components/ui/icons'
 import { useChangeLocale, useCurrentLocale } from '@/utils/i18n/i18n.client'
 
-export const LanguageChanger = () => {
+export const HeaderLanguageChanger = () => {
     const changeLocale = useChangeLocale()
     const currentLocale = useCurrentLocale()
 
