@@ -18,6 +18,7 @@ export const userAPI = api.injectEndpoints({
             query: () => 'user',
             providesTags: ['UserInfo'],
         }),
+
         updateUserInfo: build.mutation<UpdateUserInfoResponse, UpdateUserInfoInputs>({
             query: body => ({
                 url: 'user',
@@ -26,6 +27,7 @@ export const userAPI = api.injectEndpoints({
             }),
             invalidatesTags: ['UserInfo'],
         }),
+
         changeUserPassword: build.mutation<ChangeUserPasswordResponse, ChangeUserPasswordInputs>({
             query: body => ({
                 url: 'user/password',
@@ -33,6 +35,7 @@ export const userAPI = api.injectEndpoints({
                 body,
             }),
         }),
+
         changeUserEmail: build.mutation<ChangeUserEmailResponse, ChangeUserEmailInputs>({
             query: body => ({
                 url: 'user/email',
@@ -40,6 +43,7 @@ export const userAPI = api.injectEndpoints({
                 body,
             }),
         }),
+
         updateUserAvatar: build.mutation<void, FormData>({
             query: formData => ({
                 url: 'user/avatar',
@@ -48,6 +52,7 @@ export const userAPI = api.injectEndpoints({
             }),
             invalidatesTags: ['UserInfo'],
         }),
+
         deleteUserAvatar: build.mutation<void, void>({
             query: () => ({
                 url: 'user/avatar',
@@ -55,15 +60,18 @@ export const userAPI = api.injectEndpoints({
             }),
             invalidatesTags: ['UserInfo'],
         }),
+
         requestPersonalData: build.mutation<void, void>({
             query: () => 'user/personal-data',
         }),
+
         requestUserDeletion: build.mutation<void, void>({
             query: () => ({
                 url: 'user',
                 method: 'DELETE',
             }),
         }),
+
         confirmUserDeletion: build.mutation<ConfirmUserDeletionResponse, { token: string }>({
             query: token => ({
                 url: 'user/confirm-deletion',
@@ -71,6 +79,7 @@ export const userAPI = api.injectEndpoints({
                 body: { token },
             }),
         }),
+
         restoreUser: build.mutation<RestoreUserResponse, { token: string }>({
             query: token => ({
                 url: 'user/restore',

@@ -11,6 +11,7 @@ export const complainAPI = api.injectEndpoints({
                 body,
             }),
         }),
+
         complainAboutReview: build.mutation<void, ReviewComplaintInputs>({
             query: ({ reviewId, ...body }) => ({
                 url: `reviews/${reviewId}/complaints`,

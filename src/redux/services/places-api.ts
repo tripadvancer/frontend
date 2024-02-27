@@ -1,7 +1,7 @@
 import { LngLatBounds } from 'react-map-gl'
 
 import type { GeoJsonCollection } from '@/utils/types/geo'
-import type { IPlace, IPlacePreview } from '@/utils/types/place'
+import type { IPlace, IPlaceMeta, IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
 
@@ -25,9 +25,15 @@ export const placesAPI = api.injectEndpoints({
             }),
             providesTags: ['Places'],
         }),
+
         getPlaceById: build.query<IPlace, number>({
             query: placeId => `places/${placeId}`,
             providesTags: (result, error, id) => [{ type: 'Places', id }],
+        }),
+
+        getPlaceMetaById: build.query<IPlaceMeta, number>({
+            query: placeId => `places/${placeId}/meta`,
+            providesTags: (result, error, id) => [{ type: 'PlacesMeta', id }],
         }),
     }),
     overrideExisting: false,

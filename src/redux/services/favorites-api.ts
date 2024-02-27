@@ -16,7 +16,11 @@ export const favoritesAPI = api.injectEndpoints({
                 method: 'POST',
                 body: { placeId },
             }),
-            invalidatesTags: ['Favorites', 'Places', 'Visited'],
+            invalidatesTags: (result, error, id) => [
+                { type: 'Favorites' },
+                { type: 'Places' },
+                { type: 'PlacesMeta', id },
+            ],
         }),
 
         deletePlaceFromFavorite: build.mutation<void, number>({
@@ -24,7 +28,11 @@ export const favoritesAPI = api.injectEndpoints({
                 url: `favorites/${id}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: ['Favorites', 'Places', 'Visited'],
+            invalidatesTags: (result, error, id) => [
+                { type: 'Favorites' },
+                { type: 'Places' },
+                { type: 'PlacesMeta', id },
+            ],
         }),
     }),
     overrideExisting: false,

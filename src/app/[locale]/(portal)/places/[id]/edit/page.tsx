@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { EditPlace } from '@/components/features/place-form/edit-place'
+import { ProtectClientRoute } from '@/components/ui/protect-client-route'
 import { getCountryByCode } from '@/services/countries'
 import { getPlaceById } from '@/services/places'
 
@@ -15,27 +16,5 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 }
 
 export default async function EditPlacePage({ params }: { params: { locale: string; id: string } }) {
-    // const { session, hasToken } = await getSSRSession()
-
-    // if (!session) {
-    //     if (!hasToken) {
-    //         notFound()
-    //     }
-
-    //     return <TryRefreshComponent />
-    // }
-
-    // // todo: create helper for get claim value on client and server
-    // const emailVerificationClaim = await session?.getClaimValue(EmailVerificationClaim)
-    // const emailIsNotVerified = emailVerificationClaim === false // because it can be undefined
-
-    // if (emailIsNotVerified) {
-    //     notFound()
-    // }
-
-    // const accessToken = session?.getAccessToken()
-    // const place = await getPlaceById(params.id, accessToken)
-
-    // return <EditPlace {...place} />
-    return <EditPlace placeId={params.id} />
+    return <ProtectClientRoute component={<EditPlace placeId={params.id} />} />
 }

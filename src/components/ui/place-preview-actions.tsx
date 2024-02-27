@@ -5,14 +5,13 @@ import { BookmarkFillIcon16, BookmarkIcon16 } from '@/components/ui/icons'
 import { closePopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { navigateToLocation } from '@/utils/helpers'
-import { useToggleFavorite } from '@/utils/hooks/use-toggle-favorite'
+import { useFavorite } from '@/utils/hooks/use-favorite'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const PlacePreviewActions = (place: IPlacePreview) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
-
-    const { isLoading, toggleFavorite } = useToggleFavorite(place.id, place.isFavorite, () => dispatch(closePopups()))
+    const favorite = useFavorite(place.id, place.isFavorite, () => dispatch(closePopups()))
 
     return (
         <div className="flex gap-x-1">
@@ -21,8 +20,8 @@ export const PlacePreviewActions = (place: IPlacePreview) => {
                 size="small"
                 icon={place.isFavorite ? <BookmarkFillIcon16 /> : <BookmarkIcon16 />}
                 className="flex-none"
-                isLoading={isLoading}
-                onClick={toggleFavorite}
+                isLoading={favorite.isLoading}
+                onClick={favorite.toggle}
             />
             <FormButton
                 type="stroke"

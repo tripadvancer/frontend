@@ -5,8 +5,8 @@ import { PlaceMainAbout } from './components/place-main-about'
 import { PlaceMainMap } from './components/place-main-map'
 import { PlaceMainPhotos } from './components/place-main-photos'
 import { PlaceMainReviews } from './components/place-main-reviews'
-import { PlaceSidebarAchivement } from './components/place-sidebar-achievement'
-import { PlaceSidebarActions } from './components/place-sidebar-actions'
+import { PlaceSidebarAchivementWrapper } from './components/place-sidebar-achievement'
+import { PlaceSidebarActionsWrapper } from './components/place-sidebar-actions'
 import { PlaceSidebarAuthor } from './components/place-sidebar-author'
 import { PlaceSidebarNearby } from './components/place-sidebar-nearby'
 import { PlaceSidebarRating } from './components/place-sidebar-rating'
@@ -22,9 +22,9 @@ export const Place = async ({ placeId, reviewsCurrentPage }: { placeId: string; 
                 <div className="container py-24">
                     <div className="inner-container flex flex-col gap-y-16 lg:flex-row-reverse lg:gap-x-8">
                         <div className="flex w-full flex-col gap-y-8 lg:w-64">
-                            <PlaceSidebarAchivement {...place} />
+                            <PlaceSidebarAchivementWrapper {...place} />
                             <PlaceSidebarRating {...place} />
-                            <PlaceSidebarActions {...place} />
+                            <PlaceSidebarActionsWrapper {...place} />
                             <PlaceSidebarAuthor {...place} />
                             <PlaceSidebarUserActions {...place} />
                             <PlaceSidebarNearby {...place} />

@@ -10,6 +10,7 @@ export const visitedAPI = api.injectEndpoints({
             query: () => 'visited',
             providesTags: ['Visited'],
         }),
+
         addPlaceToVisited: build.mutation<void, number>({
             query: placeId => ({
                 url: 'visited',
@@ -18,7 +19,7 @@ export const visitedAPI = api.injectEndpoints({
             }),
             async onQueryStarted(placeId, { dispatch, queryFulfilled }) {
                 const optimisticResult = dispatch(
-                    placesAPI.util.updateQueryData('getPlaceById', placeId, draft => {
+                    placesAPI.util.updateQueryData('getPlaceMetaById', placeId, draft => {
                         draft.isVisited = true
                     }),
                 )
@@ -28,8 +29,13 @@ export const visitedAPI = api.injectEndpoints({
                     optimisticResult.undo()
                 }
             },
-            invalidatesTags: (result, error, id) => [{ type: 'Visited' }, { type: 'Places' }, { type: 'Places', id }],
+            invalidatesTags: (result, error, id) => [
+                { type: 'Visited' },
+                { type: 'Places' },
+                { type: 'PlacesMeta', id },
+            ],
         }),
+
         deletePlaceFromVisited: build.mutation<void, number>({
             query: id => ({
                 url: `visited/${id}`,
@@ -37,7 +43,7 @@ export const visitedAPI = api.injectEndpoints({
             }),
             async onQueryStarted(placeId, { dispatch, queryFulfilled }) {
                 const optimisticResult = dispatch(
-                    placesAPI.util.updateQueryData('getPlaceById', placeId, draft => {
+                    placesAPI.util.updateQueryData('getPlaceMetaById', placeId, draft => {
                         draft.isVisited = false
                     }),
                 )
@@ -47,7 +53,11 @@ export const visitedAPI = api.injectEndpoints({
                     optimisticResult.undo()
                 }
             },
-            invalidatesTags: (result, error, id) => [{ type: 'Visited' }, { type: 'Places' }, { type: 'Places', id }],
+            invalidatesTags: (result, error, id) => [
+                { type: 'Visited' },
+                { type: 'Places' },
+                { type: 'PlacesMeta', id },
+            ],
         }),
     }),
     overrideExisting: false,

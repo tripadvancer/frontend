@@ -10,16 +10,12 @@ import { useToast } from '@/providers/toast-provider'
 import { favoritesAPI } from '@/redux/services/favorites-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-interface toggleFavoriteInterface {
+interface favoriteInterface {
     isLoading: boolean
-    toggleFavorite: () => void
+    toggle: () => void
 }
 
-export function useToggleFavorite(
-    id: number,
-    isFavorite: boolean | undefined,
-    callback?: () => void,
-): toggleFavoriteInterface {
+export function useFavorite(id: number, isFavorite: boolean | undefined, callback?: () => void): favoriteInterface {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()
@@ -28,7 +24,7 @@ export function useToggleFavorite(
     const [addPlaceToFavorite, { isLoading: isAdding }] = favoritesAPI.useAddPlaceToFavoriteMutation()
     const [deletePlaceFromFavorite, { isLoading: isDeleting }] = favoritesAPI.useDeletePlaceFromFavoriteMutation()
 
-    const toggleFavorite = async (): Promise<void> => {
+    const toggle = async (): Promise<void> => {
         const doesSessionExist = await Session.doesSessionExist()
 
         if (!doesSessionExist) {
@@ -48,5 +44,5 @@ export function useToggleFavorite(
             })
     }
 
-    return { isLoading: isAdding || isDeleting, toggleFavorite }
+    return { isLoading: isAdding || isDeleting, toggle }
 }

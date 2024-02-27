@@ -19,13 +19,9 @@ export const UserSettings = ({ userId }: { userId: string }) => {
     const isAuth = useAppSelector(getIsAuth)
     const userInfo = userAPI.useGetUserInfoQuery(undefined, { skip: !isAuth })
 
-    if (!isAuth) {
-        notFound()
-    }
-
-    if (userInfo.data && userInfo.data.id !== parseInt(userId)) {
-        notFound()
-    }
+    // if (userInfo.data && userInfo.data.id !== parseInt(userId)) {
+    //     notFound()
+    // }
 
     if (userInfo.isSuccess) {
         return (
