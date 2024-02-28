@@ -4,7 +4,7 @@ import { PlaceComplaintInputs } from '@/utils/types/complaint'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { complainAPI } from '@/redux/services/complain'
+import { complainAPI } from '@/redux/services/complain-api'
 import { ComplaintReasonsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
