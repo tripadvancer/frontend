@@ -7,18 +7,16 @@ import { Confirmation } from '@/components/ui/confirmation'
 import { DeleteIcon24, EditIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { deletePlaceById } from '@/services/places'
+import { placesAPI } from '@/redux/services/places-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type UserActionsPrivateProps = {
-    placeId: number
-}
-
-export const PlaceSidebarUserActionsPrivate = ({ placeId }: UserActionsPrivateProps) => {
+export const PlaceSidebarUserActionsPrivate = ({ placeId }: { placeId: number }) => {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
+
+    const [deletePlace] = placesAPI.useDeletePlaceMutation()
 
     const handleDeleteClick = () => {
         dialog.open(
@@ -26,16 +24,18 @@ export const PlaceSidebarUserActionsPrivate = ({ placeId }: UserActionsPrivatePr
                 variant="red"
                 title={t('confirm.delete_place.title')}
                 message={t('confirm.delete_place.message')}
-                onConfirm={async () => {
+                onConfirm={() => {
                     dialog.close()
-                    try {
-                        await deletePlaceById(placeId.toString())
-                        toast.success(t('success.delete_place'))
-                        router.push('/')
-                        router.refresh()
-                    } catch {
-                        toast.error(t('common.error'))
-                    }
+                    deletePlace(placeId)
+                        .unwrap()
+                        .then(() => {
+                            toast.success(t('success.delete_place'))
+                            router.push('/')
+                            router.refresh()
+                        })
+                        .catch(() => {
+                            toast.error(t('common.error'))
+                        })
                 }}
             />,
         )

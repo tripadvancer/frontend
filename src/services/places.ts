@@ -31,7 +31,7 @@ export async function getPlacesByUserId(userId: string, page: string): Promise<P
 
 export async function getPlaceById(placeId: string): Promise<IPlace> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
-    const res = await fetch(url)
+    const res = await fetch(url, { cache: 'no-store' })
 
     if (!res.ok) {
         if (res.status === 404) {
@@ -53,38 +53,6 @@ export async function getPlacesNearby(placeId: string): Promise<IPlaceNearby[]> 
     }
 
     return res.json()
-}
-
-export async function createPlace(body: CreatePlaceInputs): Promise<{ id: number }> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places'
-    const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-    })
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
-}
-
-export async function updatePlaceById({ placeId, ...patch }: UpdatePlaceInputs): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
-    const res = await fetch(url, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(patch),
-    })
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
 }
 
 export async function placeCoverUpload(file: File): Promise<{ url: string }> {
@@ -121,15 +89,4 @@ export async function placePhotoUpload(file: File): Promise<{ url: string }> {
     }
 
     return res.json()
-}
-
-export async function deletePlaceById(placeId: string): Promise<void> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
-    const res = await fetch(url, {
-        method: 'DELETE',
-    })
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
 }

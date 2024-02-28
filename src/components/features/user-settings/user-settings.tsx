@@ -4,12 +4,12 @@ import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
-import { BlockChangePassword } from './components/block-change-password'
-import { BlockRequestPersonalData } from './components/block-request-personal-data'
-import { BlockRequestUserDeletion } from './components/block-request-user-deletion'
-import { BlockChangeEmail } from './components/block-сhange-email'
-import { SettingsForm } from './components/settings-form'
-import { SettingsSkeleton } from './components/settings-skeleton'
+import { UserSettingsBlockChangePassword } from './components/user-settings-block-change-password'
+import { UserSettingsBlockRequestPersonalData } from './components/user-settings-block-request-personal-data'
+import { UserSettingsBlockRequestUserDeletion } from './components/user-settings-block-request-user-deletion'
+import { UserSettingsBlockChangeEmail } from './components/user-settings-block-сhange-email'
+import { UserSettingsForm } from './components/user-settings-form'
+import { UserSettingsSkeleton } from './user-settings-skeleton'
 
 export const UserSettings = () => {
     const t = useI18n()
@@ -21,15 +21,15 @@ export const UserSettings = () => {
             <div className="flex flex-col gap-y-8">
                 <div className="flex flex-col gap-y-16">
                     <section>
-                        <SettingsForm {...response.data} />
+                        <UserSettingsForm {...response.data} />
                     </section>
                     <section>
                         <h2 className="mb-8 text-h5-m sm:text-h5">{t('pages.user.settings.account.title')}</h2>
                         <div className="flex flex-col gap-y-8">
-                            <BlockChangeEmail />
-                            <BlockChangePassword />
-                            <BlockRequestPersonalData />
-                            <BlockRequestUserDeletion />
+                            <UserSettingsBlockChangeEmail />
+                            <UserSettingsBlockChangePassword />
+                            <UserSettingsBlockRequestPersonalData />
+                            <UserSettingsBlockRequestUserDeletion />
                         </div>
                     </section>
                 </div>
@@ -37,5 +37,5 @@ export const UserSettings = () => {
         )
     }
 
-    return <SettingsSkeleton />
+    return <UserSettingsSkeleton />
 }

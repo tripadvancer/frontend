@@ -18,12 +18,12 @@ const createEditorState = (value: string) => {
     return EditorState.createEmpty()
 }
 
-type FormInputDescriptionProps = {
+type PlaceFormInputDescriptionProps = {
     value: string
     onChange: (value: string) => void
 }
 
-export const FormInputDescription = ({ value, onChange }: FormInputDescriptionProps) => {
+export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDescriptionProps) => {
     const t = useI18n()
 
     const [editorState, setEditorState] = useState<EditorState>(() => createEditorState(value))

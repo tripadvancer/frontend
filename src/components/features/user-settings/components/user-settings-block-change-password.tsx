@@ -4,7 +4,7 @@ import { ChangePassword } from '@/components/features/auth/change-password'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const BlockChangePassword = () => {
+export const UserSettingsBlockChangePassword = () => {
     const t = useI18n()
     const dialog = useDialog()
 

@@ -3,12 +3,12 @@
 import { FormContentEditable } from '@/components/ui/form-content-editable'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type FormInputTitleProps = {
+type PlaceFormInputTitleProps = {
     value: string
     onChange: (value: string) => void
 }
 
-export const FormInputTitle = ({ value, onChange }: FormInputTitleProps) => {
+export const PlaceFormInputTitle = ({ value, onChange }: PlaceFormInputTitleProps) => {
     const t = useI18n()
 
     return (

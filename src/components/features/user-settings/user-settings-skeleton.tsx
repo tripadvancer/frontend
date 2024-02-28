@@ -2,7 +2,7 @@ import { FormButtonSkeleton } from '@/components/ui/form-button-skeleton'
 import { FormInputSkeleton } from '@/components/ui/form-input-skeleton'
 import { FormTextareaSkeleton } from '@/components/ui/form-textarea-skeleton'
 
-export const SettingsSkeleton = () => {
+export const UserSettingsSkeleton = () => {
     return (
         <div role="status" className="flex animate-pulse flex-col gap-y-16">
             <section>

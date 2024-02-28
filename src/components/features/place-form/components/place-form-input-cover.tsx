@@ -7,14 +7,14 @@ import { useToast } from '@/providers/toast-provider'
 import { placeCoverUpload } from '@/services/places'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type FormInputCoverProps = {
+type PlaceFormInputCoverProps = {
     value: string | null
     onChange: (value: string | null) => void
 }
 
 const maxFileSize = validationConfig.common.maxFileSize
 
-export const FormInputCover = ({ value, onChange }: FormInputCoverProps) => {
+export const PlaceFormInputCover = ({ value, onChange }: PlaceFormInputCoverProps) => {
     const t = useI18n()
     const toast = useToast()
     const hiddenFileInput = useRef<HTMLInputElement>(null)

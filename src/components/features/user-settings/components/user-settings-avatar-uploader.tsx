@@ -17,7 +17,7 @@ type AvatarUploaderProps = {
     currentAvatar: string | null
 }
 
-export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
+export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()

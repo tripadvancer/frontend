@@ -5,20 +5,20 @@ import { useDialog } from '@/providers/dialog-provider'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
-import { FormSelectCategories } from './form-select-categories'
+import { PlaceFormSelectCategories } from './place-form-select-categories'
 
-type FormInputCoordinatesProps = {
+type PlaceFormInputCategoriesProps = {
     value: number[]
     onChange: (value: number[]) => void
 }
 
-export const FormInputCategories = ({ value, onChange }: FormInputCoordinatesProps) => {
+export const PlaceFormInputCategories = ({ value, onChange }: PlaceFormInputCategoriesProps) => {
     const t = useI18n()
     const dialog = useDialog()
     const currentLocale = useCurrentLocale()
 
     const handleSelectCategories = () => {
-        dialog.open(<FormSelectCategories value={value} onChange={onChange} />)
+        dialog.open(<PlaceFormSelectCategories value={value} onChange={onChange} />)
     }
 
     return (

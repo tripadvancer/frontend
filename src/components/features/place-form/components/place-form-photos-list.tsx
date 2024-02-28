@@ -12,16 +12,16 @@ import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { FormInputPhoto } from './form-input-photo'
+import { PlaceFormInputPhoto } from './place-form-input-photo'
 
 const maxPhotosCount = validationConfig.place.photos.maxCount
 
-type PlacePhotosListProps = {
+type PlaceFormPhotosListProps = {
     photos: string[]
     onChange: (urls: string[]) => void
 }
 
-export const PlacePhotosList = ({ photos, onChange }: PlacePhotosListProps) => {
+export const PlaceFormPhotosList = ({ photos, onChange }: PlaceFormPhotosListProps) => {
     const t = useI18n()
     const toast = useToast()
 
@@ -74,7 +74,7 @@ export const PlacePhotosList = ({ photos, onChange }: PlacePhotosListProps) => {
                 </div>
                 <div className="flex-1">
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-                        <FormInputPhoto
+                        <PlaceFormInputPhoto
                             currentPhotosCount={photos.length}
                             maxPhotosCount={maxPhotosCount}
                             isUploading={isUploading}

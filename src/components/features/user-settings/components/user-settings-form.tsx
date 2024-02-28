@@ -15,13 +15,13 @@ import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { AvatarUploader } from './avatar-uploader'
+import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 
-export const SettingsForm = ({ name, info, avatar }: IUserInfo) => {
+export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()
@@ -78,7 +78,7 @@ export const SettingsForm = ({ name, info, avatar }: IUserInfo) => {
                     <label htmlFor="avatar" className="font-medium">
                         {t('pages.user.settings.forms.fields.avatar.label')}
                     </label>
-                    <AvatarUploader currentAvatar={avatar} />
+                    <UserSettingsAvatarUploader currentAvatar={avatar} />
                 </div>
 
                 <div className="flex flex-col gap-y-2">

@@ -10,20 +10,20 @@ import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { FormErrorMesage } from './components/form-error-mesage'
-import { FormInputCategories } from './components/form-input-categories'
-import { FormInputCoordinates } from './components/form-input-coordinates'
-import { FormInputCover } from './components/form-input-cover'
-import { FormInputDescription } from './components/form-input-description'
-import { FormInputTitle } from './components/form-input-title'
-import { FormSubmit } from './components/form-submit'
-import { PlacePhotosList } from './components/place-photos-list'
+import { PlaceFormErrorMesage } from './components/place-form-error-mesage'
+import { PlaceFormInputCategories } from './components/place-form-input-categories'
+import { PlaceFormInputCoordinates } from './components/place-form-input-coordinates'
+import { PlaceFormInputCover } from './components/place-form-input-cover'
+import { PlaceFormInputDescription } from './components/place-form-input-description'
+import { PlaceFormInputTitle } from './components/place-form-input-title'
+import { PlaceFormPhotosList } from './components/place-form-photos-list'
+import { PlaceFormSubmit } from './components/place-form-submit'
 import { validationSchema } from './validation-schema'
 
 type PlaceFormProps = {
     initialValues: CreatePlaceInputs | UpdatePlaceInputs
     isLoading: boolean
-    onSubmit: (values: CreatePlaceInputs | UpdatePlaceInputs) => Promise<void>
+    onSubmit: (inputs: CreatePlaceInputs | UpdatePlaceInputs) => void
 }
 
 export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps) => {
@@ -54,19 +54,19 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                 </div>
                 <section className="container relative z-30 py-8">
                     <div className="flex-center m-auto flex-col gap-y-4 sm:w-2/3">
-                        <FormInputCover
+                        <PlaceFormInputCover
                             value={formik.values.cover}
                             onChange={value => formik.setFieldValue('cover', value)}
                         />
-                        <FormInputTitle
+                        <PlaceFormInputTitle
                             value={formik.values.title}
                             onChange={value => formik.setFieldValue('title', value)}
                         />
-                        <FormInputCoordinates
+                        <PlaceFormInputCoordinates
                             value={formik.values.location}
                             onChange={value => formik.setFieldValue('location', value)}
                         />
-                        <FormInputCategories
+                        <PlaceFormInputCategories
                             value={formik.values.categories}
                             onChange={value => formik.setFieldValue('categories', value)}
                         />
@@ -76,17 +76,17 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
             <div className="relative z-20 flex-1 rounded-t-4xl bg-white">
                 <div className="container py-24">
                     <div className="inner-container flex flex-col gap-y-16">
-                        <FormInputDescription
+                        <PlaceFormInputDescription
                             value={formik.values.description}
                             onChange={value => formik.setFieldValue('description', value)}
                         />
-                        <PlacePhotosList
+                        <PlaceFormPhotosList
                             photos={formik.values.photos}
                             onChange={value => formik.setFieldValue('photos', value)}
                         />
                         <div className="flex flex-col gap-y-4">
-                            <FormErrorMesage errors={formik.errors} />
-                            <FormSubmit isLoading={isLoading} />
+                            <PlaceFormErrorMesage errors={formik.errors} />
+                            <PlaceFormSubmit isLoading={isLoading} />
                         </div>
                     </div>
                 </div>

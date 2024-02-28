@@ -4,7 +4,7 @@ import { ChangeEmail } from '@/components/features/auth/change-email'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const BlockChangeEmail = () => {
+export const UserSettingsBlockChangeEmail = () => {
     const t = useI18n()
     const dialog = useDialog()
 

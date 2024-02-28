@@ -12,14 +12,19 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 const maxFileSize = validationConfig.common.maxFileSize
 
-type FormInputPhotoProps = {
+type PlaceFormInputPhotoProps = {
     currentPhotosCount: number
     maxPhotosCount: number
     isUploading: boolean
     onChange: (files: FileList) => void
 }
 
-export const FormInputPhoto = ({ currentPhotosCount, maxPhotosCount, isUploading, onChange }: FormInputPhotoProps) => {
+export const PlaceFormInputPhoto = ({
+    currentPhotosCount,
+    maxPhotosCount,
+    isUploading,
+    onChange,
+}: PlaceFormInputPhotoProps) => {
     const t = useI18n()
     const toast = useToast()
 

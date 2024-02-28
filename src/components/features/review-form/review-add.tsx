@@ -11,11 +11,7 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ReviewForm } from './review-form'
 
-type AddReviewProps = {
-    placeId: number
-}
-
-export const ReviewformAdd = ({ placeId }: AddReviewProps) => {
+export const ReviewAdd = ({ placeId }: { placeId: number }) => {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()

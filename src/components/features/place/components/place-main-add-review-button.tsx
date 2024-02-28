@@ -1,6 +1,6 @@
 'use client'
 
-import { ReviewformAdd } from '@/components/features/review-form/review-form-add'
+import { ReviewAdd } from '@/components/features/review-form/review-add'
 import { FormButton } from '@/components/ui/form-button'
 import { ReviewIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
@@ -10,7 +10,7 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 export const PlaceMainAddReviewButton = ({ placeId }: { placeId: number }) => {
     const t = useI18n()
     const dialog = useDialog()
-    const handleClick = useSessionValidation(() => dialog.open(<ReviewformAdd placeId={placeId} />))
+    const handleClick = useSessionValidation(() => dialog.open(<ReviewAdd placeId={placeId} />))
 
     return (
         <FormButton variant="light-blue" size="small" icon={<ReviewIcon16 />} className="w-full" onClick={handleClick}>

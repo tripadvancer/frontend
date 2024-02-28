@@ -10,14 +10,14 @@ import { useDialog } from '@/providers/dialog-provider'
 import { getSortedCategories } from '@/utils/dictionaries/categories'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
-type FormSelectCategoriesProps = {
+type PlaceFormSelectCategoriesProps = {
     value: number[]
     onChange: (value: number[]) => void
 }
 
 const maxCategoriesCount = validationConfig.place.category.maxCount
 
-export const FormSelectCategories = ({ value, onChange }: FormSelectCategoriesProps) => {
+export const PlaceFormSelectCategories = ({ value, onChange }: PlaceFormSelectCategoriesProps) => {
     const t = useI18n()
     const dialog = useDialog()
     const currentLocale = useCurrentLocale()

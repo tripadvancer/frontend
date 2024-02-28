@@ -1,7 +1,7 @@
 import { LngLatBounds } from 'react-map-gl'
 
 import type { GeoJsonCollection } from '@/utils/types/geo'
-import type { IPlace, IPlaceMeta, IPlacePreview } from '@/utils/types/place'
+import type { CreatePlaceInputs, IPlace, IPlaceMeta, IPlacePreview, UpdatePlaceInputs } from '@/utils/types/place'
 
 import { api } from './api'
 
@@ -26,14 +26,32 @@ export const placesAPI = api.injectEndpoints({
             providesTags: ['Places'],
         }),
 
-        getPlaceById: build.query<IPlace, number>({
-            query: placeId => `places/${placeId}`,
-            providesTags: (result, error, placeId) => [{ type: 'Places', id: placeId }],
-        }),
-
         getPlaceMetaById: build.query<IPlaceMeta, number>({
             query: placeId => `places/${placeId}/meta`,
             providesTags: (result, error, placeId) => [{ type: 'PlacesMeta', id: placeId }],
+        }),
+
+        addPlace: build.mutation<{ id: number }, CreatePlaceInputs>({
+            query: inputs => ({
+                url: 'places',
+                method: 'POST',
+                body: inputs,
+            }),
+        }),
+
+        editPlace: build.mutation<void, UpdatePlaceInputs>({
+            query: inputs => ({
+                url: `places/${inputs.placeId}`,
+                method: 'PATCH',
+                body: inputs,
+            }),
+        }),
+
+        deletePlace: build.mutation<void, number>({
+            query: placeId => ({
+                url: `places/${placeId}`,
+                method: 'DELETE',
+            }),
         }),
     }),
     overrideExisting: false,

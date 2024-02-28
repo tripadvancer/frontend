@@ -6,7 +6,7 @@ import { useToast } from '@/providers/toast-provider'
 import { requestPersonalData } from '@/services/user'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const BlockRequestPersonalData = () => {
+export const UserSettingsBlockRequestPersonalData = () => {
     const t = useI18n()
     const dialog = useDialog()
     const toast = useToast()

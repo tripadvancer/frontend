@@ -11,7 +11,7 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ReviewForm } from './review-form'
 
-export const ReviewFormEdit = (review: IReview) => {
+export const ReviewEdit = (review: IReview) => {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()

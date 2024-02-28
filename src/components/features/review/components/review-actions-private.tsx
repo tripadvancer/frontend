@@ -4,14 +4,13 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import type { IReview } from '@/utils/types/review'
 
+import { ReviewEdit } from '@/components/features/review-form/review-edit'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { DeleteIcon16, EditIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
-
-import { ReviewFormEdit } from '../../review-form/review-form-edit'
 
 type ReviewActionsPrivateProps = {
     review: IReview
@@ -51,7 +50,7 @@ export const ReviewActionsPrivate = ({ review, reviewsCount }: ReviewActionsPriv
             caption: t('review.user_actions.edit'),
             value: 'edit',
             icon: <EditIcon16 />,
-            onClick: () => dialog.open(<ReviewFormEdit {...review} />),
+            onClick: () => dialog.open(<ReviewEdit {...review} />),
         },
         {
             caption: t('review.user_actions.delete'),

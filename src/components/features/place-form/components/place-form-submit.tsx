@@ -5,11 +5,7 @@ import Link from 'next/link'
 import { FormButton } from '@/components/ui/form-button'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type FormSubmitProps = {
-    isLoading: boolean
-}
-
-export const FormSubmit = ({ isLoading }: FormSubmitProps) => {
+export const PlaceFormSubmit = ({ isLoading }: { isLoading: boolean }) => {
     const t = useI18n()
 
     return (
