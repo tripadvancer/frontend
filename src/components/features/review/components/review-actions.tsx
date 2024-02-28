@@ -1,8 +1,8 @@
 'use client'
 
-import Session from 'supertokens-web-js/recipe/session'
-
 import type { IReview } from '@/utils/types/review'
+
+import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import { ReviewActionsPrivate } from './review-actions-private'
 import { ReviewActionsPublic } from './review-actions-public'
@@ -12,16 +12,11 @@ type ReviewActionsProps = {
     reviewsCount: number
 }
 
-export const ReviewActions = async ({ review, reviewsCount }: ReviewActionsProps) => {
-    const doesSessionExist = await Session.doesSessionExist()
+export const ReviewActions = ({ review, reviewsCount }: ReviewActionsProps) => {
+    const supertokens = useSupertokens()
 
-    if (doesSessionExist) {
-        const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
-        const activeUserId = accessTokenPayload.userId
-
-        if (activeUserId === review.user.id) {
-            return <ReviewActionsPrivate review={review} reviewsCount={reviewsCount} />
-        }
+    if (supertokens.isAuth && supertokens.activeUserId === review.user.id) {
+        return <ReviewActionsPrivate review={review} reviewsCount={reviewsCount} />
     }
 
     return <ReviewActionsPublic reviewId={review.id} />

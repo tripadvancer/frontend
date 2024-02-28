@@ -18,19 +18,19 @@ export const EditPlace = ({ placeId }: { placeId: string }) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()
-    const place = placesAPI.useGetPlaceByIdQuery(parseInt(placeId))
+    const response = placesAPI.useGetPlaceByIdQuery(parseInt(placeId))
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    if (place.isSuccess) {
+    if (response.isSuccess) {
         const initialValues: UpdatePlaceInputs = {
-            placeId: place.data.id,
-            title: place.data.title,
-            description: place.data.description,
-            location: place.data.location.coordinates[1] + ', ' + place.data.location.coordinates[0],
-            photos: place.data.photos.map(photo => photo.url),
-            cover: place.data.cover,
-            categories: place.data.categories,
+            placeId: response.data.id,
+            title: response.data.title,
+            description: response.data.description,
+            location: response.data.location.coordinates[1] + ', ' + response.data.location.coordinates[0],
+            photos: response.data.photos.map(photo => photo.url),
+            cover: response.data.cover,
+            categories: response.data.categories,
         }
 
         const handleSubmit = async (values: UpdatePlaceInputs) => {
@@ -38,7 +38,7 @@ export const EditPlace = ({ placeId }: { placeId: string }) => {
                 setIsLoading(true)
                 await updatePlaceById(values)
                 toast.success(t('success.create_place'))
-                router.push(`/places/${place.data.id}`)
+                router.push(`/places/${response.data.id}`)
             } catch (err) {
                 toast.error(t('common.error'))
             } finally {

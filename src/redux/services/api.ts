@@ -2,8 +2,6 @@ import { BaseQueryFn, FetchArgs, FetchBaseQueryError, createApi, fetchBaseQuery 
 import { Mutex } from 'async-mutex'
 import Session from 'supertokens-web-js/recipe/session'
 
-import { unSetCredentials } from '../features/user-slice'
-
 // Create a new mutex
 const mutex = new Mutex()
 
@@ -31,8 +29,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
                     if (hasSession) {
                         // todo: get new userInfo and revelidate tags???
                         result = await baseQuery(args, api, extraOptions)
-                    } else {
-                        api.dispatch(unSetCredentials())
                     }
                 })
             } finally {

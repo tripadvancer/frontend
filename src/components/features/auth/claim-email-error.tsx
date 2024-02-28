@@ -3,7 +3,6 @@
 import { useState } from 'react'
 
 import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverification'
-import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
 

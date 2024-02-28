@@ -8,7 +8,7 @@ import { DialogProvider } from '@/providers/dialog-provider'
 import { ToastProvider } from '@/providers/toast-provider'
 import { ReduxProvider } from '@/redux/provider'
 import { I18nProvider } from '@/utils/i18n/i18n.provider'
-import { SuperTokensProvider } from '@/utils/supertokens/supertokens.provider'
+import { SupertokensProvider } from '@/utils/supertokens/supertokens.provider'
 
 import '../globals.css'
 
@@ -79,11 +79,11 @@ export default async function RootLayout({
             <body className={roboto.className}>
                 <ReduxProvider>
                     <I18nProvider locale={locale}>
-                        <SuperTokensProvider>
+                        <SupertokensProvider>
                             <ToastProvider>
                                 <DialogProvider>{children}</DialogProvider>
                             </ToastProvider>
-                        </SuperTokensProvider>
+                        </SupertokensProvider>
                     </I18nProvider>
                 </ReduxProvider>
                 <TailwindIndicator />

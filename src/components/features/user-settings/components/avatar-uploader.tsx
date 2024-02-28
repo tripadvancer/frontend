@@ -28,7 +28,7 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
     const [updateUserAvatar, { isLoading: isUploading }] = userAPI.useUpdateUserAvatarMutation()
     const [deleteUserAvatar, { isLoading: isDeleting }] = userAPI.useDeleteUserAvatarMutation()
 
-    const handleChangeFileInput = async (files: FileList) => {
+    const handleChangeFileInput = (files: FileList) => {
         const file = files[0]
         const formData = new FormData()
 
@@ -55,7 +55,7 @@ export const AvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
         setIsDeleteAvatarConfirm(false)
     }
 
-    const handleConfirmDeleteAvatar = async () => {
+    const handleConfirmDeleteAvatar = () => {
         deleteUserAvatar()
             .unwrap()
             .then(() => {

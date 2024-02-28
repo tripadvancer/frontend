@@ -11,12 +11,12 @@ interface DialogContextInterface {
     close(): void
 }
 
-const defaultValue: DialogContextInterface = {
+const defaultValues: DialogContextInterface = {
     open: () => {},
     close: () => {},
 }
 
-export const DialogContext = createContext(defaultValue)
+export const DialogContext = createContext(defaultValues)
 
 export function useDialog(): DialogContextInterface {
     const context = useContext(DialogContext)

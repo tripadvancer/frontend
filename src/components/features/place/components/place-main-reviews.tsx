@@ -7,7 +7,7 @@ import { ReviewsSkeleton } from '@/components/features/reviews/reviews-skeleton'
 import { getReviewsByPlaceId } from '@/services/reviews'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-import { PlaceMainOwnRewiewWrapper } from './place-main-own-review'
+import { PlaceMainOwnReview } from './place-main-own-review'
 
 export const PlaceMainReviews = async ({ id, page = '1' }: IPlace & { page: string }) => {
     const t = await getI18n()
@@ -19,7 +19,7 @@ export const PlaceMainReviews = async ({ id, page = '1' }: IPlace & { page: stri
                 {t('pages.place.reviews.title')}
             </h2>
             <div className="flex flex-col gap-y-8">
-                <PlaceMainOwnRewiewWrapper placeId={id} />
+                <PlaceMainOwnReview placeId={id} />
                 <Suspense fallback={<ReviewsSkeleton />}>
                     <Reviews reviews={reviews} currentPage={parseInt(page)} variant="place-page" />
                 </Suspense>

@@ -1,29 +1,29 @@
-import Session from 'supertokens-web-js/recipe/session'
+import React from 'react'
 
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
 import { useDialog } from '@/providers/dialog-provider'
 
+import { useSupertokens } from '../supertokens/supertokens.hooks'
+
 export function useSessionValidation(callback: () => void) {
+    const supertokens = useSupertokens()
     const dialog = useDialog()
 
-    const handleClick = async () => {
-        const doesSessionExist = await Session.doesSessionExist()
+    const handleClick = () => {
+        supertokens.isAuth ? handleAuthenticatedUser() : handleUnauthenticatedUser()
+    }
 
-        if (!doesSessionExist) {
-            dialog.open(<SignIn />)
-            return
-        }
+    const handleAuthenticatedUser = () => {
+        !supertokens.isMailVerified ? showClaimEmailError() : callback()
+    }
 
-        const validationErrors = await Session.validateClaims()
-        const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
+    const showClaimEmailError = () => {
+        dialog.open(<ClaimEmailError userId={supertokens.activeUserId as number} />)
+    }
 
-        if (validationErrors.length > 0) {
-            dialog.open(<ClaimEmailError userId={accessTokenPayload.userId} />)
-            return
-        }
-
-        callback()
+    const handleUnauthenticatedUser = () => {
+        dialog.open(<SignIn />)
     }
 
     return handleClick

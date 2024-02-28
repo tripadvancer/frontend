@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import Session from 'supertokens-web-js/recipe/session'
 

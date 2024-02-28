@@ -1,14 +1,34 @@
 'use client'
 
-import SuperTokensAuth from 'supertokens-web-js'
+import Supertokens from 'supertokens-web-js'
+import Session from 'supertokens-web-js/recipe/session'
 
 import { clientConfig } from './supertokens.client'
+import { SupertokensContext, defaultValues } from './supertokens.context'
 
-if (typeof window !== 'undefined') {
-    // we only want to call this init function on the frontend, so we check typeof window !== 'undefined'
-    SuperTokensAuth.init(clientConfig())
+export const SupertokensProvider = async ({ children }: { children: React.ReactNode }) => {
+    const doesSessionExist = await Session.doesSessionExist()
+
+    if (doesSessionExist) {
+        const validationErrors = await Session.validateClaims()
+        const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
+
+        return (
+            <SupertokensContext.Provider
+                value={{
+                    activeUserId: accessTokenPayload.userId,
+                    isAuth: doesSessionExist,
+                    isMailVerified: validationErrors.length === 0,
+                }}
+            >
+                {children}
+            </SupertokensContext.Provider>
+        )
+    }
+
+    return <SupertokensContext.Provider value={defaultValues}>{children}</SupertokensContext.Provider>
 }
 
-export const SuperTokensProvider = ({ children }: { children: React.ReactNode }) => {
-    return children
+if (typeof window !== 'undefined') {
+    Supertokens.init(clientConfig())
 }

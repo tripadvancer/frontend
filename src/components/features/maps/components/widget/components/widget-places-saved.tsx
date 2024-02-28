@@ -4,10 +4,10 @@ import { SignIn } from '@/components/features/auth/sign-in'
 import { ArrowRightIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { getWidgetActiveList, setWidgetActiveList } from '@/redux/features/map-slice'
-import { getIsAuth } from '@/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetListsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
+import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import { WidgetMessage } from './widget-message'
 import { WidgetPlacesSavedList } from './widget-places-saved-list'
@@ -16,17 +16,17 @@ import { WidgetPlacesSavedListVisited } from './widget-places-saved-list-visited
 
 export const WidgetPlacesSaved = () => {
     const t = useI18n()
+    const supertokens = useSupertokens()
     const dialog = useDialog()
     const dispatch = useAppDispatch()
     const activeList = useAppSelector(getWidgetActiveList)
-    const isAuth = useAppSelector(getIsAuth)
 
     const defaultLists = [
         { id: WidgetListsEnum.FAVORITES, caption: t('widget.saved_places.favorites.title') },
         { id: WidgetListsEnum.VISITED, caption: t('widget.saved_places.visited.title') },
     ]
 
-    if (!isAuth) {
+    if (!supertokens.isAuth) {
         return (
             <WidgetMessage
                 message={t('widget.common.error.not_logged_in', { br: <br /> })}

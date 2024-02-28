@@ -28,7 +28,7 @@ export const useMapEventHandlers = () => {
      * It adds the places layer to the map and loads the places.
      */
     const handleLoad = useCallback(
-        async (event: MapEvent) => {
+        (event: MapEvent) => {
             const map = event.target
 
             if (!map.hasImage('pin-orange')) {

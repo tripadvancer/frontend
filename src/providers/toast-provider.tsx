@@ -19,12 +19,12 @@ type ToastProviderProps = {
     children: React.ReactNode
 }
 
-const defaultValue: ToastContextInterface = {
+const defaultValues: ToastContextInterface = {
     success: () => {},
     error: () => {},
 }
 
-export const ToastContext = createContext(defaultValue)
+export const ToastContext = createContext(defaultValues)
 
 export function useToast(): ToastContextInterface {
     const context = useContext(ToastContext)

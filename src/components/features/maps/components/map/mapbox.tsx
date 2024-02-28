@@ -3,12 +3,12 @@
 import { Layer, Map as ReactMapGl, Source } from 'react-map-gl'
 
 import { getMapBounds, getMapDataSource, getWidgetSelectedCategories } from '@/redux/features/map-slice'
-import { getIsAuth } from '@/redux/features/user-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { favoritesAPI } from '@/redux/services/favorites-api'
 import { placesAPI } from '@/redux/services/places-api'
 import { visitedAPI } from '@/redux/services/visited-api'
 import { MapDataSourcesEnum } from '@/utils/enums'
+import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import { LocationPopup } from './components/location-popup'
 import { PlacePopup } from './components/place-popup'
@@ -18,8 +18,8 @@ import { useMapEventHandlers } from './map-event-handlers'
 import 'maplibre-gl/dist/maplibre-gl.css'
 
 export const Mapbox = () => {
+    const supertokens = useSupertokens()
     const handlers = useMapEventHandlers()
-    const isAuth = useAppSelector(getIsAuth)
     const mapBounds = useAppSelector(getMapBounds)
     const mapDataSource = useAppSelector(getMapDataSource)
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
@@ -30,11 +30,11 @@ export const Mapbox = () => {
     )
 
     const favoritesResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
-        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.FAVORITES_PLACES,
+        skip: !supertokens.isAuth || mapDataSource !== MapDataSourcesEnum.FAVORITES_PLACES,
     })
 
     const visitedResponse = visitedAPI.useGetVisitedQuery(undefined, {
-        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
+        skip: !supertokens.isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
     })
 
     return (
