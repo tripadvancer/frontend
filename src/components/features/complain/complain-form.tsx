@@ -18,7 +18,7 @@ const textMaxLength = validationConfig.complain.maxLength
 type ComplainFormProps = {
     initialValues: PlaceComplaintInputs | ReviewComplaintInputs
     isLoading: boolean
-    onSubmit: (values: PlaceComplaintInputs | ReviewComplaintInputs) => Promise<void>
+    onSubmit: (inputs: PlaceComplaintInputs | ReviewComplaintInputs) => void
 }
 
 export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFormProps) => {

@@ -4,13 +4,14 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import type { IReview } from '@/utils/types/review'
 
-import { EditReview } from '@/components/features/review-form/edit-review'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { DeleteIcon16, EditIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { deleteReviewById } from '@/services/reviews'
+import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
+
+import { ReviewFormEdit } from '../../review-form/review-form-edit'
 
 type ReviewActionsPrivateProps = {
     review: IReview
@@ -24,21 +25,25 @@ export const ReviewActionsPrivate = ({ review, reviewsCount }: ReviewActionsPriv
     const searchParams = useSearchParams()
     const dialog = useDialog()
     const toast = useToast()
-
     const page = searchParams.get('page')
 
-    const handleDeleteReview = async () => {
-        try {
-            await deleteReviewById(review.id.toString())
-            dialog.close()
-            toast.success(t('success.delete_review'))
-            // Redirect to previous page if user delete last review on current page and current page is not first
-            reviewsCount === 1 && page && page !== '1'
-                ? router.push(`${pathname}?page=${parseInt(page) - 1}`)
-                : router.refresh()
-        } catch (err: any) {
-            toast.error(t('common.error'))
-        }
+    const [deleteReview] = reviewsAPI.useDeleteReviewMutation()
+
+    const handleDeleteReview = () => {
+        const inputs = { reviewId: review.id, placeId: review.place.id }
+
+        deleteReview(inputs)
+            .unwrap()
+            .then(() => {
+                dialog.close()
+                toast.success(t('success.delete_review'))
+                reviewsCount === 1 && page && page !== '1'
+                    ? router.push(`${pathname}?page=${parseInt(page) - 1}`)
+                    : router.refresh()
+            })
+            .catch(() => {
+                toast.error(t('common.error'))
+            })
     }
 
     const items: DropdownItemProps[] = [
@@ -46,7 +51,7 @@ export const ReviewActionsPrivate = ({ review, reviewsCount }: ReviewActionsPriv
             caption: t('review.user_actions.edit'),
             value: 'edit',
             icon: <EditIcon16 />,
-            onClick: () => dialog.open(<EditReview {...review} />),
+            onClick: () => dialog.open(<ReviewFormEdit {...review} />),
         },
         {
             caption: t('review.user_actions.delete'),

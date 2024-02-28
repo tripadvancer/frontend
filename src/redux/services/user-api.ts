@@ -20,27 +20,27 @@ export const userAPI = api.injectEndpoints({
         }),
 
         updateUserInfo: build.mutation<UpdateUserInfoResponse, UpdateUserInfoInputs>({
-            query: body => ({
+            query: inputs => ({
                 url: 'user',
                 method: 'PATCH',
-                body,
+                body: inputs,
             }),
             invalidatesTags: ['UserInfo'],
         }),
 
         changeUserPassword: build.mutation<ChangeUserPasswordResponse, ChangeUserPasswordInputs>({
-            query: body => ({
+            query: inputs => ({
                 url: 'user/password',
                 method: 'PATCH',
-                body,
+                body: inputs,
             }),
         }),
 
         changeUserEmail: build.mutation<ChangeUserEmailResponse, ChangeUserEmailInputs>({
-            query: body => ({
+            query: inputs => ({
                 url: 'user/email',
                 method: 'PATCH',
-                body,
+                body: inputs,
             }),
         }),
 

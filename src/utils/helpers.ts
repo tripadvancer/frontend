@@ -9,7 +9,7 @@ export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
     return `${url}/${imageVariant}`
 }
 
-export function FormattedDate(date: Date, locale: string = i18nConfig.defaultLocale) {
+export function formattedDate(date: Date, locale: string = i18nConfig.defaultLocale) {
     return new Date(date).toLocaleDateString(locale, {
         year: 'numeric',
         month: 'long',

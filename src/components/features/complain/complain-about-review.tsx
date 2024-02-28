@@ -1,12 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-
 import { ReviewComplaintInputs } from '@/utils/types/complaint'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { reviewComplaint } from '@/services/complain'
+import { complainAPI } from '@/redux/services/complain'
 import { ComplaintReasonsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -17,19 +15,18 @@ export const ComplainAboutReview = ({ reviewId }: { reviewId: number }) => {
     const dialog = useDialog()
     const toast = useToast()
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [complain, { isLoading }] = complainAPI.useComplainAboutReviewMutation()
 
-    const handleSubmit = async (values: ReviewComplaintInputs) => {
-        try {
-            setIsLoading(true)
-            await reviewComplaint(values)
-            toast.success(t('success.send_complaint'))
-            dialog.close()
-        } catch (err) {
-            toast.error(t('common.error'))
-        } finally {
-            setIsLoading(false)
-        }
+    const handleSubmit = (inputs: ReviewComplaintInputs) => {
+        complain(inputs)
+            .unwrap()
+            .then(() => {
+                toast.success(t('success.send_complaint'))
+                dialog.close()
+            })
+            .catch(() => {
+                toast.error(t('common.error'))
+            })
     }
 
     return (
@@ -43,7 +40,7 @@ export const ComplainAboutReview = ({ reviewId }: { reviewId: number }) => {
                     text: '',
                 }}
                 isLoading={isLoading}
-                onSubmit={values => handleSubmit(values as ReviewComplaintInputs)}
+                onSubmit={inputs => handleSubmit(inputs as ReviewComplaintInputs)}
             />
         </div>
     )

@@ -3,7 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
+import { AddReviewInputs, EditReviewInputs } from '@/utils/types/review'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormRatingInput } from '@/components/ui/form-rating-input'
@@ -12,15 +12,15 @@ import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { ReviewPhotosList } from './components/review-photos-list'
+import { ReviewFormPhotosList } from './components/review-form-photos-list'
 
 const reviewTextMinLength = validationConfig.review.text.minLength
 const reviewTextMaxLength = validationConfig.review.text.maxLength
 
 type ReviewFormProps = {
-    initialValues: CreateReviewInputs | UpdateReviewInputs
+    initialValues: AddReviewInputs | EditReviewInputs
     isLoading: boolean
-    onSubmit: (values: CreateReviewInputs | UpdateReviewInputs) => Promise<void>
+    onSubmit: (values: AddReviewInputs | EditReviewInputs) => void
 }
 
 export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {
@@ -75,7 +75,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     <label htmlFor="text" className="font-medium">
                         {t('review.form.fields.photos.label')}
                     </label>
-                    <ReviewPhotosList
+                    <ReviewFormPhotosList
                         photos={formik.values.photos}
                         onChange={value => formik.setFieldValue('photos', value)}
                     />

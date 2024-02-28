@@ -5,18 +5,18 @@ import { api } from './api'
 export const complainAPI = api.injectEndpoints({
     endpoints: build => ({
         complainAboutPlace: build.mutation<void, PlaceComplaintInputs>({
-            query: ({ placeId, ...body }) => ({
-                url: `places/${placeId}/complaints`,
+            query: inputs => ({
+                url: `places/${inputs.placeId}/complaints`,
                 method: 'POST',
-                body,
+                body: inputs,
             }),
         }),
 
         complainAboutReview: build.mutation<void, ReviewComplaintInputs>({
-            query: ({ reviewId, ...body }) => ({
-                url: `reviews/${reviewId}/complaints`,
+            query: inputs => ({
+                url: `reviews/${inputs.reviewId}/complaints`,
                 method: 'POST',
-                body,
+                body: inputs,
             }),
         }),
     }),

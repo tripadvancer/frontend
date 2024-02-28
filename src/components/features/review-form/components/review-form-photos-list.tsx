@@ -6,30 +6,34 @@ import Lightbox from 'yet-another-react-lightbox'
 
 import { PhotoPreview } from '@/components/ui/photo-preview'
 import { useToast } from '@/providers/toast-provider'
-import { reviewPhotoUpload } from '@/services/reviews'
+import { reviewsAPI } from '@/redux/services/reviews-api'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { FormInputPhoto } from './form-input-photo'
+import { ReviewFormInputPhoto } from './revew-form-input-photo'
 
-type ReviewPhotosListProps = {
+type ReviewFormPhotosListProps = {
     photos: string[]
     onChange: (urls: string[]) => void
 }
 
-export const ReviewPhotosList = ({ photos, onChange }: ReviewPhotosListProps) => {
+export const ReviewFormPhotosList = ({ photos, onChange }: ReviewFormPhotosListProps) => {
     const t = useI18n()
     const toast = useToast()
 
+    const [upload] = reviewsAPI.useReviewPhotoUploadMutation()
     const [indexSlide, setIndexSlide] = useState<number>(-1)
     const [isUploading, setIsUploading] = useState<boolean>(false)
 
     const handlePhotoUpload = async (files: FileList) => {
         const uploadPromises = Array.from(files).map(async file => {
+            const formData = new FormData()
+            formData.append('file', file)
+
             try {
                 setIsUploading(true)
-                const res = await reviewPhotoUpload(file as File)
+                const res = await upload(formData).unwrap()
                 return res.url
             } catch {
                 toast.error(t('common.error'))
@@ -53,7 +57,11 @@ export const ReviewPhotosList = ({ photos, onChange }: ReviewPhotosListProps) =>
 
     return (
         <div className="flex flex-col gap-y-2">
-            <FormInputPhoto currentPhotosCount={photos.length} isUploading={isUploading} onChange={handlePhotoUpload} />
+            <ReviewFormInputPhoto
+                currentPhotosCount={photos.length}
+                isUploading={isUploading}
+                onChange={handlePhotoUpload}
+            />
 
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
                 {photos.map((photo, index) => (

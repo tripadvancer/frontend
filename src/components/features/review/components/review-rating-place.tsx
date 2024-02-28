@@ -3,12 +3,11 @@ import Link from 'next/link'
 import type { IReview } from '@/utils/types/review'
 
 import { Rating } from '@/components/ui/rating'
-import { FormattedDate } from '@/utils/helpers'
+import { formattedDate } from '@/utils/helpers'
 import { getCurrentLocale } from '@/utils/i18n/i18n.server'
 
 export const ReviewRatingPlace = ({ place, rating, createdAt }: IReview) => {
     const locale = getCurrentLocale()
-    const formattedDate = FormattedDate(createdAt, locale)
 
     return (
         <div className="flex flex-col">
@@ -17,7 +16,7 @@ export const ReviewRatingPlace = ({ place, rating, createdAt }: IReview) => {
                 <Link href={`/places/${place.id}`} className="text-small-bold text-black-70">
                     {place.title}
                 </Link>
-                <div className="text-small text-black-40">{formattedDate}</div>
+                <div className="text-small text-black-40">{formattedDate(createdAt, locale)}</div>
             </div>
         </div>
     )

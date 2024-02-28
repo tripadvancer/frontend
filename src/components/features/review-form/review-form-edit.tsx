@@ -1,47 +1,43 @@
 'use client'
 
-import { useState } from 'react'
-
 import { useRouter } from 'next/navigation'
 
-import { IReview, UpdateReviewInputs } from '@/utils/types/review'
+import type { EditReviewInputs, IReview } from '@/utils/types/review'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { updateReviewById } from '@/services/reviews'
+import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ReviewForm } from './review-form'
 
-type EditReviewProps = IReview
-
-export const EditReview = (review: EditReviewProps) => {
+export const ReviewFormEdit = (review: IReview) => {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [editReview, { isLoading }] = reviewsAPI.useEditReviewMutation()
 
     const initialValues = {
+        placeId: review.place.id,
         reviewId: review.id,
         rating: review.rating,
         text: review.text,
         photos: review.photos.map(photo => photo.url),
     }
 
-    const handleSubmit = async (values: UpdateReviewInputs) => {
-        try {
-            setIsLoading(true)
-            await updateReviewById(values)
-            dialog.close()
-            router.refresh()
-            toast.success(t('success.edit_review'))
-        } catch (err: any) {
-            toast.error(err.message)
-        } finally {
-            setIsLoading(false)
-        }
+    const handleSubmit = (inputs: EditReviewInputs) => {
+        editReview(inputs)
+            .unwrap()
+            .then(() => {
+                dialog.close()
+                router.refresh()
+                toast.success(t('success.edit_review'))
+            })
+            .catch(() => {
+                toast.error(t('common.error'))
+            })
     }
 
     return (
@@ -51,7 +47,7 @@ export const EditReview = (review: EditReviewProps) => {
             <ReviewForm
                 initialValues={initialValues}
                 isLoading={isLoading}
-                onSubmit={values => handleSubmit(values as UpdateReviewInputs)}
+                onSubmit={inputs => handleSubmit(inputs as EditReviewInputs)}
             />
         </div>
     )

@@ -39,19 +39,15 @@ const PlaceSidebarAchivement = ({ id, title, isAuth }: IPlace & { isAuth: boolea
         })
     }
 
-    if (placeMeta.isSuccess) {
-        return (
-            <Achievement icon={<FlagIcon48 />} title={title}>
-                <div className="flex justify-between gap-x-1">
-                    <div className="whitespace-nowrap">{t('place.i_was_here')}</div>
-                    <div className="overflow-hidden">
-                        ...........................................................................................................................................................................................................
-                    </div>
-                    <FormSwitcher checked={placeMeta.data?.isVisited} onChange={toggleVisited} />
+    return (
+        <Achievement icon={<FlagIcon48 />} title={title}>
+            <div className="flex justify-between gap-x-1">
+                <div className="whitespace-nowrap">{t('place.i_was_here')}</div>
+                <div className="overflow-hidden">
+                    ...........................................................................................................................................................................................................
                 </div>
-            </Achievement>
-        )
-    }
-
-    return <div>Loading ...</div>
+                <FormSwitcher checked={!!placeMeta.data?.isVisited} onChange={toggleVisited} />
+            </div>
+        </Achievement>
+    )
 }

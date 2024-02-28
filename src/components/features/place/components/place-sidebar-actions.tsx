@@ -21,27 +21,23 @@ export const PlaceSidebarActions = ({ id, location, isAuth }: IPlace & { isAuth:
     const placeMeta = placesAPI.useGetPlaceMetaByIdQuery(id, { skip: !isAuth })
     const favorite = useFavorite(id, placeMeta.data?.isFavorite)
 
-    if (placeMeta.isSuccess) {
-        return (
-            <div className="flex gap-x-2">
-                <FormButton
-                    icon={<RouteIcon24 />}
-                    className="flex-auto"
-                    onClick={() => navigateToLocation(location.coordinates[1], location.coordinates[0])}
-                >
-                    {t('place.navigation')}
-                </FormButton>
-                <FormButton type="stroke" icon={<PinIcon24 />} className="flex-none" onClick={() => {}} />
-                <FormButton
-                    type="stroke"
-                    icon={placeMeta.data.isFavorite ? <BookmarkFillIcon24 /> : <BookmarkIcon24 />}
-                    className="flex-none"
-                    isLoading={favorite.isLoading}
-                    onClick={favorite.toggle}
-                />
-            </div>
-        )
-    }
-
-    return <div>Loading ...</div>
+    return (
+        <div className="flex gap-x-2">
+            <FormButton
+                icon={<RouteIcon24 />}
+                className="flex-auto"
+                onClick={() => navigateToLocation(location.coordinates[1], location.coordinates[0])}
+            >
+                {t('place.navigation')}
+            </FormButton>
+            <FormButton type="stroke" icon={<PinIcon24 />} className="flex-none" onClick={() => {}} />
+            <FormButton
+                type="stroke"
+                icon={!!placeMeta.data?.isFavorite ? <BookmarkFillIcon24 /> : <BookmarkIcon24 />}
+                className="flex-none"
+                isLoading={favorite.isLoading}
+                onClick={favorite.toggle}
+            />
+        </div>
+    )
 }

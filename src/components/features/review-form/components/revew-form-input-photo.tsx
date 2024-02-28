@@ -6,13 +6,13 @@ import { validationConfig } from '@/configs/validation.config'
 const maxFilesCount = validationConfig.review.photos.maxCount
 const maxFileSize = validationConfig.common.maxFileSize
 
-type FormInputPhotoProps = {
+type ReviewFormInputPhotoProps = {
     currentPhotosCount: number
     isUploading: boolean
     onChange: (files: FileList) => void
 }
 
-export const FormInputPhoto = ({ currentPhotosCount, isUploading, onChange }: FormInputPhotoProps) => {
+export const ReviewFormInputPhoto = ({ currentPhotosCount, isUploading, onChange }: ReviewFormInputPhotoProps) => {
     return (
         <FormFileInput
             multiple

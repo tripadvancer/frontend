@@ -29,16 +29,16 @@ export const visitedAPI = api.injectEndpoints({
                     optimisticResult.undo()
                 }
             },
-            invalidatesTags: (result, error, id) => [
+            invalidatesTags: (result, error, placeId) => [
                 { type: 'Visited' },
                 { type: 'Places' },
-                { type: 'PlacesMeta', id },
+                { type: 'PlacesMeta', id: placeId },
             ],
         }),
 
         deletePlaceFromVisited: build.mutation<void, number>({
-            query: id => ({
-                url: `visited/${id}`,
+            query: placeId => ({
+                url: `visited/${placeId}`,
                 method: 'DELETE',
             }),
             async onQueryStarted(placeId, { dispatch, queryFulfilled }) {
@@ -53,10 +53,10 @@ export const visitedAPI = api.injectEndpoints({
                     optimisticResult.undo()
                 }
             },
-            invalidatesTags: (result, error, id) => [
+            invalidatesTags: (result, error, placeId) => [
                 { type: 'Visited' },
                 { type: 'Places' },
-                { type: 'PlacesMeta', id },
+                { type: 'PlacesMeta', id: placeId },
             ],
         }),
     }),

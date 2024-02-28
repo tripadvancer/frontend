@@ -1,14 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-
 import { useRouter } from 'next/navigation'
 
-import { CreateReviewInputs } from '@/utils/types/review'
+import type { AddReviewInputs } from '@/utils/types/review'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { createReview } from '@/services/reviews'
+import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ReviewForm } from './review-form'
@@ -17,13 +15,13 @@ type AddReviewProps = {
     placeId: number
 }
 
-export const AddReview = ({ placeId }: AddReviewProps) => {
+export const ReviewformAdd = ({ placeId }: AddReviewProps) => {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [addReview, { isLoading }] = reviewsAPI.useAddReviewMutation()
 
     const initialValues = {
         placeId,
@@ -32,18 +30,17 @@ export const AddReview = ({ placeId }: AddReviewProps) => {
         photos: [],
     }
 
-    const handleSubmit = async (values: CreateReviewInputs) => {
-        try {
-            setIsLoading(true)
-            await createReview(values)
-            dialog.close()
-            router.refresh()
-            toast.success(t('success.create_review'))
-        } catch (err: any) {
-            toast.error(err.message)
-        } finally {
-            setIsLoading(false)
-        }
+    const handleSubmit = (inputs: AddReviewInputs) => {
+        addReview(inputs)
+            .unwrap()
+            .then(() => {
+                dialog.close()
+                router.refresh()
+                toast.success(t('success.create_review'))
+            })
+            .catch(() => {
+                toast.error(t('common.error'))
+            })
     }
 
     return (
@@ -53,7 +50,7 @@ export const AddReview = ({ placeId }: AddReviewProps) => {
             <ReviewForm
                 initialValues={initialValues}
                 isLoading={isLoading}
-                onSubmit={values => handleSubmit(values as CreateReviewInputs)}
+                onSubmit={inputs => handleSubmit(inputs as AddReviewInputs)}
             />
         </div>
     )

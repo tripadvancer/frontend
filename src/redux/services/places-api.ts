@@ -28,12 +28,12 @@ export const placesAPI = api.injectEndpoints({
 
         getPlaceById: build.query<IPlace, number>({
             query: placeId => `places/${placeId}`,
-            providesTags: (result, error, id) => [{ type: 'Places', id }],
+            providesTags: (result, error, placeId) => [{ type: 'Places', id: placeId }],
         }),
 
         getPlaceMetaById: build.query<IPlaceMeta, number>({
             query: placeId => `places/${placeId}/meta`,
-            providesTags: (result, error, id) => [{ type: 'PlacesMeta', id }],
+            providesTags: (result, error, placeId) => [{ type: 'PlacesMeta', id: placeId }],
         }),
     }),
     overrideExisting: false,
