@@ -7,9 +7,7 @@ import { PinIcon16 } from '@/components/ui/icons'
 import { getCountryByCode } from '@/services/countries'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
-type CountryPreviewProps = ICountry
-
-export const Country = ({ countryCode, placesCount }: CountryPreviewProps) => {
+export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
     const t = useI18n()
     const locale = useCurrentLocale()
     const country = getCountryByCode(countryCode)

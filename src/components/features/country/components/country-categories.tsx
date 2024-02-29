@@ -10,12 +10,12 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { getSortedCategories } from '@/utils/dictionaries/categories'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type CategoryProps = {
+type CountryCategoriesProps = {
     selectedCategoryIds: number[]
     locale: string
 }
 
-export const Categories = ({ selectedCategoryIds, locale }: CategoryProps) => {
+export const CountryCategories = ({ selectedCategoryIds, locale }: CountryCategoriesProps) => {
     const t = useI18n()
     const pathname = usePathname()
     const searchParams = useSearchParams()

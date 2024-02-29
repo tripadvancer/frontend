@@ -12,7 +12,7 @@ export const WidgetPlacePreview = (place: IPlacePreview) => {
     return (
         <div className="flex gap-x-4">
             <Link href={`places/${place.id}`} className="peer" target="_blank">
-                <PlacePreviewCover {...place} />
+                <PlacePreviewCover {...place} size={80} />
             </Link>
             <div className="flex flex-1 flex-col justify-between text-black-100 peer-hover:text-blue-active">
                 <Link

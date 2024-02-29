@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 
-import type { PaginatedResponse } from '@/utils/types/common'
 import type { IPlace, IPlaceNearby, IPlacePreview } from '@/utils/types/place'
 
 export async function getPlacesByCountryCode(
@@ -9,17 +8,6 @@ export async function getPlacesByCountryCode(
 ): Promise<IPlacePreview[]> {
     const url =
         process.env.NEXT_PUBLIC_API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
-    const res = await fetch(url)
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
-}
-
-export async function getPlacesByUserId(userId: string, page: string): Promise<PaginatedResponse<IPlacePreview>> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + userId + '/places?page=' + page
     const res = await fetch(url)
 
     if (!res.ok) {

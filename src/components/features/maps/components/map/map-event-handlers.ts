@@ -101,11 +101,6 @@ export const useMapEventHandlers = () => {
      */
     const handleClick = useCallback(
         (event: MapLayerMouseEvent) => {
-            if (placePopupInfo || locationPopupInfo) {
-                dispatch(closePopups())
-                return
-            }
-
             if (event.features) {
                 const feature = event.features[0]
                 if (feature) {
@@ -119,6 +114,11 @@ export const useMapEventHandlers = () => {
                     const place = { ...feature.properties, coordinates } as IPlacePreview
                     dispatch(setPlacePopupInfo(place))
                 } else {
+                    if (placePopupInfo || locationPopupInfo) {
+                        dispatch(closePopups())
+                        return
+                    }
+
                     const coordinates = event.lngLat
                     dispatch(setLocationPopupInfo({ coordinates }))
                 }

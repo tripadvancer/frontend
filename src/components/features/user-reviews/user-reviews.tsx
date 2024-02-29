@@ -3,12 +3,13 @@
 import { useState } from 'react'
 
 import { Review } from '@/components/features/review/review'
-import { ReviewSkeleton } from '@/components/features/review/review-skeleton'
 import { ShowMore } from '@/components/ui/show-more'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const UserReviewsList = ({ userId }: { userId: number }) => {
+import { UserReviewsSkeleton } from './user-reviews-skeleton'
+
+export const UserReviews = ({ userId }: { userId: number }) => {
     const t = useI18n()
     const [page, setPage] = useState(1)
     const response = reviewsAPI.useGetReviewsByUserIdQuery({ userId, page })
@@ -35,11 +36,5 @@ export const UserReviewsList = ({ userId }: { userId: number }) => {
         )
     }
 
-    return (
-        <div>
-            {Array.from({ length: 3 }).map((_, index) => (
-                <ReviewSkeleton key={index} />
-            ))}
-        </div>
-    )
+    return <UserReviewsSkeleton />
 }

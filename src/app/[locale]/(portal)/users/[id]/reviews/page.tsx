@@ -1,5 +1,5 @@
-import { UserReviewsList } from '@/components/features/user-reviews/user-reviews-list'
+import { UserReviews } from '@/components/features/user-reviews/user-reviews'
 
-export default async function UserReviewsPage({ params }: { params: { id: string } }) {
-    return <UserReviewsList userId={parseInt(params.id)} />
+export default function UserReviewsPage({ params }: { params: { id: string } }) {
+    return <UserReviews userId={parseInt(params.id)} />
 }

@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
 export default async function EditPlacePage({ params }: { params: { locale: string; id: string } }) {
     const place = await getPlaceById(params.id)
+
     return (
         <ProtectClientRoute userId={place.author.id}>
             <PlaceEdit {...place} />
