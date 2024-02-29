@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev -p 3000",
+        "dev": "next dev -p 3000 --turbo",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
@@ -13,7 +13,7 @@
         "@react-spring/web": "^9.7.3",
         "@reduxjs/toolkit": "^2.2.1",
         "@types/mapbox-gl": "^3.1.0",
-        "@types/node": "^20.11.20",
+        "@types/node": "^20.11.22",
         "@types/react": "^18.2.60",
         "@types/react-dom": "^18.2.19",
         "async-mutex": "^0.4.1",
