@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 
 import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
-export const ProtectClientRoute = ({ component, userId }: { component: React.ReactNode; userId?: number }) => {
+export const ProtectClientRoute = ({ children, userId }: { children: React.ReactNode; userId?: number }) => {
     const supertokens = useSupertokens()
     const router = useRouter()
 
@@ -13,5 +13,5 @@ export const ProtectClientRoute = ({ component, userId }: { component: React.Rea
         return null
     }
 
-    return component
+    return children
 }
