@@ -12,7 +12,7 @@ import { PlaceSidebarNearby } from './components/place-sidebar-nearby'
 import { PlaceSidebarRating } from './components/place-sidebar-rating'
 import { PlaceSidebarUserActions } from './components/place-sidebar-user-actions'
 
-export const Place = async ({ placeId, reviewsCurrentPage }: { placeId: string; reviewsCurrentPage: string }) => {
+export const Place = async ({ placeId }: { placeId: string }) => {
     const place = await getPlaceById(placeId)
 
     return (
@@ -33,7 +33,7 @@ export const Place = async ({ placeId, reviewsCurrentPage }: { placeId: string; 
                         <div className="flex flex-1 flex-col gap-y-16">
                             <PlaceMainAbout {...place} />
                             <PlaceMainPhotos {...place} />
-                            <PlaceMainReviews {...place} page={reviewsCurrentPage} />
+                            <PlaceMainReviews {...place} />
                             <PlaceMainMap {...place} />
                         </div>
                     </div>

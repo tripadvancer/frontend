@@ -14,12 +14,6 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     }
 }
 
-export default function PlacePage({
-    params,
-    searchParams,
-}: {
-    params: { id: string }
-    searchParams: { page: string }
-}) {
-    return <Place placeId={params.id} reviewsCurrentPage={searchParams.page} />
+export default function PlacePage({ params }: { params: { id: string } }) {
+    return <Place placeId={params.id} />
 }

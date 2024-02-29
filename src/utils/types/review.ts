@@ -15,16 +15,19 @@ export type IReview = {
 
 export type AddReviewInputs = Pick<IReview, 'text' | 'rating'> & {
     placeId: number
+    userId: number
     photos: string[]
 }
 
 export type EditReviewInputs = Pick<IReview, 'text' | 'rating'> & {
     reviewId: number
     placeId: number
+    userId: number
     photos: string[]
 }
 
 export type DeleteReviewInputs = {
     reviewId: number
     placeId: number
+    userId: number
 }

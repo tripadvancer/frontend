@@ -22,6 +22,7 @@ export const ReviewEdit = (review: IReview) => {
     const initialValues = {
         placeId: review.place.id,
         reviewId: review.id,
+        userId: review.user.id,
         rating: review.rating,
         text: review.text,
         photos: review.photos.map(photo => photo.url),

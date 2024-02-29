@@ -7,17 +7,12 @@ import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 import { ReviewActionsPrivate } from './review-actions-private'
 import { ReviewActionsPublic } from './review-actions-public'
 
-type ReviewActionsProps = {
-    review: IReview
-    reviewsCount: number
-}
-
-export const ReviewActions = ({ review, reviewsCount }: ReviewActionsProps) => {
+export const ReviewActions = (review: IReview) => {
     const supertokens = useSupertokens()
 
     if (supertokens.isAuth && supertokens.activeUserId === review.user.id) {
-        return <ReviewActionsPrivate review={review} reviewsCount={reviewsCount} />
+        return <ReviewActionsPrivate {...review} />
     }
 
-    return <ReviewActionsPublic reviewId={review.id} />
+    return <ReviewActionsPublic {...review} />
 }

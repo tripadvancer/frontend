@@ -1,7 +1,5 @@
 'use client'
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-
 import type { IReview } from '@/utils/types/review'
 
 import { ReviewEdit } from '@/components/features/review-form/review-edit'
@@ -12,30 +10,18 @@ import { useToast } from '@/providers/toast-provider'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type ReviewActionsPrivateProps = {
-    review: IReview
-    reviewsCount: number
-}
-
-export const ReviewActionsPrivate = ({ review, reviewsCount }: ReviewActionsPrivateProps) => {
+export const ReviewActionsPrivate = (review: IReview) => {
     const t = useI18n()
-    const router = useRouter()
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
     const dialog = useDialog()
     const toast = useToast()
-    const page = searchParams.get('page')
 
     const [deleteReview] = reviewsAPI.useDeleteReviewMutation()
 
     const handleDeleteReview = async () => {
         try {
-            await deleteReview({ reviewId: review.id, placeId: review.place.id })
+            await deleteReview({ reviewId: review.id, placeId: review.place.id, userId: review.user.id })
             dialog.close()
             toast.success(t('success.delete_review'))
-            reviewsCount === 1 && page && page !== '1'
-                ? router.push(`${pathname}?page=${parseInt(page) - 1}`)
-                : router.refresh()
         } catch {
             toast.error(t('common.error'))
         }

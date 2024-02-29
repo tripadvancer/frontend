@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 import type { IReview } from '@/utils/types/review'
@@ -5,10 +7,10 @@ import type { IReview } from '@/utils/types/review'
 import { Avatar } from '@/components/ui/avatar'
 import { Rating } from '@/components/ui/rating'
 import { formattedDate } from '@/utils/helpers'
-import { getCurrentLocale } from '@/utils/i18n/i18n.server'
+import { useCurrentLocale } from '@/utils/i18n/i18n.client'
 
 export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {
-    const locale = getCurrentLocale()
+    const locale = useCurrentLocale()
 
     return (
         <Link href={`/users/${user.id}`} className="group inline-flex items-start gap-2">

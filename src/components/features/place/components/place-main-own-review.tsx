@@ -42,7 +42,7 @@ export const PlaceMainOwnReview = ({ placeId }: { placeId: number }) => {
                                 </div>
                             </div>
                         </Link>
-                        <ReviewActionsPrivate review={response.data.ownReview} reviewsCount={0} />
+                        <ReviewActionsPrivate {...response.data.ownReview} />
                     </div>
                     <div>{text}</div>
                     <ReviewPhotosList title={place.title} description={user.name} photos={photos} />

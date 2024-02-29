@@ -2,10 +2,7 @@ import { ActionButtonSkeleton } from '@/components/ui/action-button-skeleton'
 
 export const ReviewSkeleton = () => {
     return (
-        <div
-            role="status"
-            className="flex animate-pulse flex-col gap-y-5 border-b border-black-15 py-8 first:border-t last:border-b-0 last:pb-0"
-        >
+        <div role="status" className="flex animate-pulse flex-col gap-y-5 border-b border-black-15 py-8 first:border-t">
             <div className="flex items-start justify-between sm:items-center">
                 <div className="flex flex-col gap-1">
                     <div className="h-3.5 w-20 rounded-full bg-black-5" />
