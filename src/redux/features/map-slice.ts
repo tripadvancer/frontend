@@ -19,8 +19,6 @@ interface MapState {
         activeList: WidgetListsEnum | null
         isAboutOpened: boolean
         isMenuOpened: boolean
-        isCategoriesOpened: boolean
-        isPlacesOpened: boolean
         isShowOnlySavedPlaces: boolean
     }
 }
@@ -41,8 +39,6 @@ export const initialState: MapState = {
         activeList: null,
         isAboutOpened: false,
         isMenuOpened: false,
-        isCategoriesOpened: false,
-        isPlacesOpened: false,
         isShowOnlySavedPlaces: true,
     },
 }
@@ -160,12 +156,6 @@ export const mapSlice = createSlice({
             state.widget.isMenuOpened = !state.widget.isMenuOpened
             state.widget.isAboutOpened = false
         },
-        toggleWidgetCategories(state) {
-            state.widget.isCategoriesOpened = !state.widget.isCategoriesOpened
-        },
-        toggleWidgetPlaces(state) {
-            state.widget.isPlacesOpened = !state.widget.isPlacesOpened
-        },
     },
 })
 
@@ -179,8 +169,6 @@ export const getWidgetActiveTab = (state: RootState) => state.map.widget.activeT
 export const getWidgetActiveList = (state: RootState) => state.map.widget.activeList
 export const getWidgetIsAboutOpened = (state: RootState) => state.map.widget.isAboutOpened
 export const getWidgetIsMenuOpened = (state: RootState) => state.map.widget.isMenuOpened
-export const getWidgetIsCategoriesOpened = (state: RootState) => state.map.widget.isCategoriesOpened
-export const getWidgetIsPlacesOpened = (state: RootState) => state.map.widget.isPlacesOpened
 export const getShowOnlySavedPlaces = (state: RootState) => state.map.widget.isShowOnlySavedPlaces
 
 export const {
@@ -197,8 +185,6 @@ export const {
     toggleShowOnlySavedPlaces,
     toggleWidgetAbout,
     toggleWidgetMenu,
-    toggleWidgetCategories,
-    toggleWidgetPlaces,
 } = mapSlice.actions
 
 export default mapSlice.reducer

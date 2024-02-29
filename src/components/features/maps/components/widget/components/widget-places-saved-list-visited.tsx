@@ -19,7 +19,7 @@ export const WidgetPlacesSavedListVisited = () => {
     }
 
     if (response.isSuccess && response.data.features.length === 0) {
-        return <WidgetMessage message={t('widget.saved_places.visited.empty', { br: <br /> })} />
+        return <WidgetMessage message={t('widget.places.saved_places.visited.empty_message', { br: <br /> })} />
     }
 
     if (response.isSuccess && response.data.features.length > 0) {

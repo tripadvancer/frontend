@@ -22,14 +22,14 @@ export const WidgetPlacesSaved = () => {
     const activeList = useAppSelector(getWidgetActiveList)
 
     const defaultLists = [
-        { id: WidgetListsEnum.FAVORITES, caption: t('widget.saved_places.favorites.title') },
-        { id: WidgetListsEnum.VISITED, caption: t('widget.saved_places.visited.title') },
+        { id: WidgetListsEnum.FAVORITES, caption: t('widget.places.saved_places.favorites.title') },
+        { id: WidgetListsEnum.VISITED, caption: t('widget.places.saved_places.visited.title') },
     ]
 
     if (!supertokens.isAuth) {
         return (
             <WidgetMessage
-                message={t('widget.common.error.not_logged_in', { br: <br /> })}
+                message={t('widget.places.saved_places.error.not_logged_in', { br: <br /> })}
                 actionCaption="Sign in"
                 onAction={() => dialog.open(<SignIn />)}
             />
@@ -38,7 +38,7 @@ export const WidgetPlacesSaved = () => {
 
     if (activeList === WidgetListsEnum.FAVORITES) {
         return (
-            <WidgetPlacesSavedList caption={t('widget.saved_places.favorites.title')}>
+            <WidgetPlacesSavedList caption={t('widget.places.saved_places.favorites.title')}>
                 <WidgetPlacesSavedListFavorites />
             </WidgetPlacesSavedList>
         )
@@ -46,7 +46,7 @@ export const WidgetPlacesSaved = () => {
 
     if (activeList === WidgetListsEnum.VISITED) {
         return (
-            <WidgetPlacesSavedList caption={t('widget.saved_places.visited.title')}>
+            <WidgetPlacesSavedList caption={t('widget.places.saved_places.visited.title')}>
                 <WidgetPlacesSavedListVisited />
             </WidgetPlacesSavedList>
         )
@@ -70,7 +70,7 @@ export const WidgetPlacesSaved = () => {
                     </div>
                 ))}
             </div>
-            <p className="text-center text-small text-black-40">{t('widget.saved_places.info')}</p>
+            <p className="text-center text-small text-black-40">{t('widget.places.saved_places.info')}</p>
         </div>
     )
 }

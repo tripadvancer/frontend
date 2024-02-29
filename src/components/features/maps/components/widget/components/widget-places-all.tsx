@@ -21,7 +21,7 @@ export const WidgetPlacesAll = () => {
     }
 
     if (response.isSuccess && response.data.features.length === 0) {
-        return <WidgetMessage message={t('widget.all_places.empty', { br: <br /> })} />
+        return <WidgetMessage message={t('widget.places.all_places.empty_message', { br: <br /> })} />
     }
 
     if (response.isSuccess && response.data.features.length > 0) {

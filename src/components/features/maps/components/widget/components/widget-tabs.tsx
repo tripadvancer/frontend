@@ -27,8 +27,8 @@ export const WidgetTabs = () => {
     const showOnlySavedPlaces = useAppSelector(getShowOnlySavedPlaces)
 
     const tabs: TabType[] = [
-        { id: WidgetTabsEnum.ALL, caption: t('widget.all_places.title') },
-        { id: WidgetTabsEnum.SAVED, caption: t('widget.saved_places.title') },
+        { id: WidgetTabsEnum.ALL, caption: t('widget.places.all_places.title') },
+        { id: WidgetTabsEnum.SAVED, caption: t('widget.places.saved_places.title') },
     ]
 
     return (
@@ -53,7 +53,7 @@ export const WidgetTabs = () => {
             {supertokens.isAuth && activeTab === WidgetTabsEnum.SAVED && (
                 <div className="flex items-center gap-x-2">
                     <div onClick={() => dispatch(toggleShowOnlySavedPlaces())} className="cursor-pointer">
-                        {t('widget.saved_places.show_on_the_map')}
+                        {t('widget.places.saved_places.show_on_the_map')}
                     </div>
                     <FormSwitcher
                         checked={showOnlySavedPlaces}

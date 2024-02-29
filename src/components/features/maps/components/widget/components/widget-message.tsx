@@ -14,7 +14,7 @@ export const WidgetMessage = ({ message, actionCaption, isLoading, onAction }: W
     const t = useI18n()
 
     return (
-        <div className="flex flex-col items-center justify-center gap-y-4">
+        <div className="mx-auto flex w-3/4 flex-col items-center justify-center gap-y-4">
             <div className="text-center text-small text-black-40">
                 {message ? message : t('widget.common.error', { br: <br /> })}
             </div>

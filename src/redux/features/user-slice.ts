@@ -11,7 +11,7 @@ interface UserState {
 }
 
 export const initialState: UserState = {
-    userLocation: null,
+    userLocation: { lat: 50.019663, lng: 20.230904 },
     isOnboarded: false,
     isCookieAccepted: false,
 }

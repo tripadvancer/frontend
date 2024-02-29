@@ -1,3 +1,5 @@
+import classNames from 'classnames'
+
 import Image from 'next/image'
 
 import { IPlacePreview } from '@/utils/types/place'
@@ -5,9 +7,24 @@ import { IPlacePreview } from '@/utils/types/place'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 
-export const PlacePreviewCover = ({ cover, title, size }: IPlacePreview & { size: number }) => {
+type PlacePreviewCoverProps = IPlacePreview & {
+    size?: number
+    isCover?: boolean
+}
+
+export const PlacePreviewCover = ({ cover, title, size, isCover }: PlacePreviewCoverProps) => {
     if (cover) {
-        return (
+        return isCover ? (
+            <Image
+                src={makeImageUrl(cover, ImageVariant.PUBLIC)}
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{ width: '100%', height: 'auto' }}
+                className="aspect-video rounded-lg"
+                alt={title}
+            />
+        ) : (
             <Image
                 src={makeImageUrl(cover, ImageVariant.PREVIEW)}
                 width={size}
@@ -20,7 +37,9 @@ export const PlacePreviewCover = ({ cover, title, size }: IPlacePreview & { size
 
     return (
         <div
-            className="flex-center aspect-square flex-none rounded-lg bg-black-5 text-white"
+            className={classNames('flex-center aspect-square flex-none rounded-lg bg-black-5 text-white', {
+                'aspect-video': !size,
+            })}
             style={{ maxWidth: size, maxHeight: size }}
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18" className="w-2/5">
