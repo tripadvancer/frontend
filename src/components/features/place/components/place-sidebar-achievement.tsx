@@ -29,9 +29,11 @@ export const PlaceSidebarAchivement = ({ id, title }: IPlace) => {
             return
         }
 
-        await (response.data?.isVisited ? deletePlaceFromVisited(id) : addPlaceToVisited(id)).unwrap().catch(() => {
+        try {
+            await (response.data?.isVisited ? deletePlaceFromVisited(id) : addPlaceToVisited(id))
+        } catch {
             toast.error(t('common.error'))
-        })
+        }
     }
 
     return (

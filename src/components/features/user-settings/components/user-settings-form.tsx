@@ -41,26 +41,24 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
         info: Yup.string().max(userInfoMaxLength, t('validation.text.max_length', { max_length: userInfoMaxLength })),
     })
 
-    const handleSubmit = async (values: UpdateUserInfoInputs) => {
-        await updateUserInfo(values)
-            .unwrap()
-            .then(response => {
-                switch (response.status) {
-                    case 'OK':
-                        router.refresh()
-                        toast.success(t('success.update_user_info'))
-                        break
-
-                    case 'USERNAME_ALREADY_EXISTS_ERROR':
-                        formik.setErrors({ name: t('validation.username.already_exists') })
-                        break
-
-                    default:
-                        toast.error(t('common.error'))
-                        break
-                }
-            })
-            .catch(() => toast.error(t('common.error')))
+    const handleSubmit = async (inputs: UpdateUserInfoInputs) => {
+        try {
+            const response = await updateUserInfo(inputs).unwrap()
+            switch (response.status) {
+                case 'OK':
+                    router.refresh()
+                    toast.success(t('success.update_user_info'))
+                    break
+                case 'USERNAME_ALREADY_EXISTS_ERROR':
+                    formik.setErrors({ name: t('validation.username.already_exists') })
+                    break
+                default:
+                    toast.error(t('common.error'))
+                    break
+            }
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     const formik = useFormik({

@@ -7,7 +7,7 @@ import Lightbox from 'yet-another-react-lightbox'
 import { PhotoPreview } from '@/components/ui/photo-preview'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { placePhotoUpload } from '@/services/places'
+import { placesAPI } from '@/redux/services/places-api'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -25,15 +25,19 @@ export const PlaceFormPhotosList = ({ photos, onChange }: PlaceFormPhotosListPro
     const t = useI18n()
     const toast = useToast()
 
+    const [upload] = placesAPI.usePlacePhotoUploadMutation()
     const [indexSlide, setIndexSlide] = useState<number>(-1)
     const [isUploading, setIsUploading] = useState<boolean>(false)
 
     const handlePhotoUpload = async (files: FileList) => {
         const uploadPromises = Array.from(files).map(async file => {
+            const formData = new FormData()
+            formData.append('file', file)
+
             try {
                 setIsUploading(true)
-                const res = await placePhotoUpload(file as File)
-                return res.url
+                const response = await upload(formData).unwrap()
+                return response.url
             } catch {
                 toast.error(t('common.error'))
             } finally {

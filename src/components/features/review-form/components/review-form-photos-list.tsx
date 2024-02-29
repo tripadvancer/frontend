@@ -33,8 +33,8 @@ export const ReviewFormPhotosList = ({ photos, onChange }: ReviewFormPhotosListP
 
             try {
                 setIsUploading(true)
-                const res = await upload(formData).unwrap()
-                return res.url
+                const response = await upload(formData).unwrap()
+                return response.url
             } catch {
                 toast.error(t('common.error'))
             } finally {

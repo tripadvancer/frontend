@@ -28,6 +28,7 @@ export const FormContentEditable = ({ value, className, placeholder, onChange }:
         const text = e.clipboardData.getData('text')
         if (contentEditableRef.current) {
             contentEditableRef.current.innerText = text || ''
+            onChange(text)
         }
     }
 

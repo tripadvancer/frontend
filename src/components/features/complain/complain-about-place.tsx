@@ -17,16 +17,14 @@ export const ComplainAboutPlace = ({ placeId }: { placeId: number }) => {
 
     const [complain, { isLoading }] = complainAPI.useComplainAboutPlaceMutation()
 
-    const handleSubmit = (inputs: PlaceComplaintInputs) => {
-        complain(inputs)
-            .unwrap()
-            .then(() => {
-                toast.success(t('success.send_complaint'))
-                dialog.close()
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-            })
+    const handleSubmit = async (inputs: PlaceComplaintInputs) => {
+        try {
+            await complain(inputs)
+            toast.success(t('success.send_complaint'))
+            dialog.close()
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     return (

@@ -53,6 +53,22 @@ export const placesAPI = api.injectEndpoints({
                 method: 'DELETE',
             }),
         }),
+
+        placeCoverUpload: build.mutation<{ url: string }, FormData>({
+            query: formData => ({
+                url: 'images/place-cover',
+                method: 'POST',
+                body: formData,
+            }),
+        }),
+
+        placePhotoUpload: build.mutation<{ url: string }, FormData>({
+            query: formData => ({
+                url: 'images/place-photo',
+                method: 'POST',
+                body: formData,
+            }),
+        }),
     }),
     overrideExisting: false,
 })

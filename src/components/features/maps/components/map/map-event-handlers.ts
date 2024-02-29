@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback } from 'react'
-import { MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl'
+import { MapEvent, MapLayerMouseEvent, MapLayerTouchEvent, ViewStateChangeEvent } from 'react-map-gl'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
@@ -101,7 +101,10 @@ export const useMapEventHandlers = () => {
      */
     const handleClick = useCallback(
         (event: MapLayerMouseEvent) => {
-            dispatch(closePopups())
+            if (placePopupInfo || locationPopupInfo) {
+                dispatch(closePopups())
+                return
+            }
 
             if (event.features) {
                 const feature = event.features[0]
@@ -115,12 +118,15 @@ export const useMapEventHandlers = () => {
 
                     const place = { ...feature.properties, coordinates } as IPlacePreview
                     dispatch(setPlacePopupInfo(place))
+                } else {
+                    const coordinates = event.lngLat
+                    dispatch(setLocationPopupInfo({ coordinates }))
                 }
             }
 
             event.originalEvent.stopPropagation()
         },
-        [dispatch],
+        [dispatch, locationPopupInfo, placePopupInfo],
     )
 
     /**

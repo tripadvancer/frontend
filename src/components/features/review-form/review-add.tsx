@@ -26,17 +26,15 @@ export const ReviewAdd = ({ placeId }: { placeId: number }) => {
         photos: [],
     }
 
-    const handleSubmit = (inputs: AddReviewInputs) => {
-        addReview(inputs)
-            .unwrap()
-            .then(() => {
-                dialog.close()
-                router.refresh()
-                toast.success(t('success.create_review'))
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-            })
+    const handleSubmit = async (inputs: AddReviewInputs) => {
+        try {
+            await addReview(inputs)
+            dialog.close()
+            router.refresh()
+            toast.success(t('success.create_review'))
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     return (

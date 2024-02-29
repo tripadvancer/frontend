@@ -17,16 +17,14 @@ export const ComplainAboutReview = ({ reviewId }: { reviewId: number }) => {
 
     const [complain, { isLoading }] = complainAPI.useComplainAboutReviewMutation()
 
-    const handleSubmit = (inputs: ReviewComplaintInputs) => {
-        complain(inputs)
-            .unwrap()
-            .then(() => {
-                toast.success(t('success.send_complaint'))
-                dialog.close()
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-            })
+    const handleSubmit = async (inputs: ReviewComplaintInputs) => {
+        try {
+            await complain(inputs)
+            toast.success(t('success.send_complaint'))
+            dialog.close()
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     return (

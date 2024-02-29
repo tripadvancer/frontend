@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import { useFormik } from 'formik'
 import Session from 'supertokens-web-js/recipe/session'
 import * as Yup from 'yup'
@@ -15,7 +13,7 @@ import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { changeUserPassword } from '@/services/user'
+import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 const userPasswordMinLength = validationConfig.user.password.minLength
@@ -26,7 +24,7 @@ export const ChangePassword = () => {
     const dialog = useDialog()
     const toast = useToast()
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [changeUserPassword, { isLoading }] = userAPI.useChangeUserPasswordMutation()
 
     const initialValues = {
         oldPassword: '',
@@ -41,11 +39,9 @@ export const ChangePassword = () => {
             .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.password.policy_violated')),
     })
 
-    const handleSubmit = async (values: ChangeUserPasswordInputs) => {
+    const handleSubmit = async (inputs: ChangeUserPasswordInputs) => {
         try {
-            setIsLoading(true)
-            const response = await changeUserPassword(values)
-
+            const response = await changeUserPassword(inputs).unwrap()
             switch (response.status) {
                 case 'OK':
                     await Session.signOut()
@@ -68,8 +64,6 @@ export const ChangePassword = () => {
             }
         } catch (err: any) {
             toast.error(t('common.error'))
-        } finally {
-            setIsLoading(false)
         }
     }
 

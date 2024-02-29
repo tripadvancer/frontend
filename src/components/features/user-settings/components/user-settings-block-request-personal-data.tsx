@@ -3,13 +3,15 @@
 import { Confirmation } from '@/components/ui/confirmation'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { requestPersonalData } from '@/services/user'
+import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const UserSettingsBlockRequestPersonalData = () => {
     const t = useI18n()
     const dialog = useDialog()
     const toast = useToast()
+
+    const [requestPersonalData] = userAPI.useRequestPersonalDataMutation()
 
     const handleRequestPersonalData = () => {
         dialog.open(

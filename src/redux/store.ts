@@ -9,7 +9,7 @@ import { api } from '@/redux/services/api'
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['map', 'user'],
+    whitelist: ['user'],
 }
 
 const reducers = combineReducers({

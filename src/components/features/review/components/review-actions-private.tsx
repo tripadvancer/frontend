@@ -28,21 +28,17 @@ export const ReviewActionsPrivate = ({ review, reviewsCount }: ReviewActionsPriv
 
     const [deleteReview] = reviewsAPI.useDeleteReviewMutation()
 
-    const handleDeleteReview = () => {
-        const inputs = { reviewId: review.id, placeId: review.place.id }
-
-        deleteReview(inputs)
-            .unwrap()
-            .then(() => {
-                dialog.close()
-                toast.success(t('success.delete_review'))
-                reviewsCount === 1 && page && page !== '1'
-                    ? router.push(`${pathname}?page=${parseInt(page) - 1}`)
-                    : router.refresh()
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-            })
+    const handleDeleteReview = async () => {
+        try {
+            await deleteReview({ reviewId: review.id, placeId: review.place.id })
+            dialog.close()
+            toast.success(t('success.delete_review'))
+            reviewsCount === 1 && page && page !== '1'
+                ? router.push(`${pathname}?page=${parseInt(page) - 1}`)
+                : router.refresh()
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     const items: DropdownItemProps[] = [

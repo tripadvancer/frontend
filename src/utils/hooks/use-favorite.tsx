@@ -10,12 +10,12 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { useSupertokens } from '../supertokens/supertokens.hooks'
 
-interface favoriteInterface {
+interface FavoriteInterface {
     isLoading: boolean
     toggle: () => void
 }
 
-export function useFavorite(id: number, isFavorite: boolean | undefined, callback?: () => void): favoriteInterface {
+export function useFavorite(id: number, isFavorite: boolean | undefined, callback?: () => void): FavoriteInterface {
     const t = useI18n()
     const supertokens = useSupertokens()
     const router = useRouter()
@@ -31,16 +31,13 @@ export function useFavorite(id: number, isFavorite: boolean | undefined, callbac
             return
         }
 
-        await (isFavorite ? deletePlaceFromFavorite(id) : addPlaceToFavorite(id))
-            .unwrap()
-            .then(() => {
-                // todo: maybe callback not needed
-                callback && callback()
-                router.refresh()
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-            })
+        try {
+            await (isFavorite ? deletePlaceFromFavorite(id) : addPlaceToFavorite(id))
+            callback && callback()
+            router.refresh()
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     return { isLoading: isAdding || isDeleting, toggle }

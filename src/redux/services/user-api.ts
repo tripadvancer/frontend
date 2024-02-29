@@ -72,7 +72,7 @@ export const userAPI = api.injectEndpoints({
             }),
         }),
 
-        confirmUserDeletion: build.mutation<ConfirmUserDeletionResponse, { token: string }>({
+        confirmUserDeletion: build.mutation<ConfirmUserDeletionResponse, string>({
             query: token => ({
                 url: 'user/confirm-deletion',
                 method: 'POST',
@@ -80,7 +80,7 @@ export const userAPI = api.injectEndpoints({
             }),
         }),
 
-        restoreUser: build.mutation<RestoreUserResponse, { token: string }>({
+        restoreUser: build.mutation<RestoreUserResponse, string>({
             query: token => ({
                 url: 'user/restore',
                 method: 'POST',

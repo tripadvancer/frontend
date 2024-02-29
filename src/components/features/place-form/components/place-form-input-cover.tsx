@@ -1,10 +1,10 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { placeCoverUpload } from '@/services/places'
+import { placesAPI } from '@/redux/services/places-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type PlaceFormInputCoverProps = {
@@ -19,7 +19,7 @@ export const PlaceFormInputCover = ({ value, onChange }: PlaceFormInputCoverProp
     const toast = useToast()
     const hiddenFileInput = useRef<HTMLInputElement>(null)
 
-    const [isUploading, setIsUploading] = useState<boolean>(false)
+    const [upload, { isLoading }] = placesAPI.usePlaceCoverUploadMutation()
 
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files?.length) {
@@ -32,19 +32,18 @@ export const PlaceFormInputCover = ({ value, onChange }: PlaceFormInputCoverProp
             }
 
             try {
-                setIsUploading(true)
-                const res = await placeCoverUpload(file)
-                onChange(res.url)
+                const formData = new FormData()
+                formData.append('file', file)
+                const response = await upload(formData).unwrap()
+                onChange(response.url)
             } catch {
                 toast.error(t('common.error'))
-            } finally {
-                setIsUploading(false)
             }
         }
     }
 
-    if (isUploading) {
-        return <div className="font-medium text-white">Uploading...</div>
+    if (isLoading) {
+        return <div className="font-medium text-white">{t('placeholder.file.loading')}</div>
     }
 
     return (
@@ -58,7 +57,7 @@ export const PlaceFormInputCover = ({ value, onChange }: PlaceFormInputCoverProp
                 type="file"
                 className="hidden"
                 accept="image/jpg, image/jpeg, image/png, image/webp"
-                disabled={isUploading}
+                disabled={isLoading}
                 onChange={handleFileChange}
             />
         </div>

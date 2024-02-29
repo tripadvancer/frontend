@@ -28,23 +28,20 @@ export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProp
     const [updateUserAvatar, { isLoading: isUploading }] = userAPI.useUpdateUserAvatarMutation()
     const [deleteUserAvatar, { isLoading: isDeleting }] = userAPI.useDeleteUserAvatarMutation()
 
-    const handleChangeFileInput = (files: FileList) => {
+    const handleChangeFileInput = async (files: FileList) => {
         const file = files[0]
-        const formData = new FormData()
 
-        formData.append('file', file)
-
-        updateUserAvatar(formData)
-            .unwrap()
-            .then(() => {
-                toast.success(t('success.update_user_avatar'))
-                setFileName(file.name)
-                router.refresh()
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-                setFileName('')
-            })
+        try {
+            const formData = new FormData()
+            formData.append('file', file)
+            await updateUserAvatar(formData)
+            toast.success(t('success.update_user_avatar'))
+            setFileName(file.name)
+            router.refresh()
+        } catch {
+            toast.error(t('common.error'))
+            setFileName('')
+        }
     }
 
     const handleClickDeleteAvatar = () => {
@@ -55,20 +52,17 @@ export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProp
         setIsDeleteAvatarConfirm(false)
     }
 
-    const handleConfirmDeleteAvatar = () => {
-        deleteUserAvatar()
-            .unwrap()
-            .then(() => {
-                toast.success(t('success.update_user_avatar'))
-                router.refresh()
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-            })
-            .finally(() => {
-                setFileName('')
-                setIsDeleteAvatarConfirm(false)
-            })
+    const handleConfirmDeleteAvatar = async () => {
+        try {
+            await deleteUserAvatar()
+            toast.success(t('success.update_user_avatar'))
+            router.refresh()
+        } catch {
+            toast.error(t('common.error'))
+        } finally {
+            setFileName('')
+            setIsDeleteAvatarConfirm(false)
+        }
     }
 
     return (

@@ -27,17 +27,15 @@ export const ReviewEdit = (review: IReview) => {
         photos: review.photos.map(photo => photo.url),
     }
 
-    const handleSubmit = (inputs: EditReviewInputs) => {
-        editReview(inputs)
-            .unwrap()
-            .then(() => {
-                dialog.close()
-                router.refresh()
-                toast.success(t('success.edit_review'))
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-            })
+    const handleSubmit = async (inputs: EditReviewInputs) => {
+        try {
+            await editReview(inputs)
+            dialog.close()
+            router.refresh()
+            toast.success(t('success.edit_review'))
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     return (

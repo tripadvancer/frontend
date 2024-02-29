@@ -27,16 +27,14 @@ export const PlaceEdit = (place: IPlace) => {
         categories: place.categories,
     }
 
-    const handleSubmit = (inputs: UpdatePlaceInputs) => {
-        editPlace(inputs)
-            .unwrap()
-            .then(() => {
-                toast.success(t('success.create_place'))
-                router.push(`/places/${place.id}`)
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-            })
+    const handleSubmit = async (inputs: UpdatePlaceInputs) => {
+        try {
+            await editPlace(inputs)
+            toast.success(t('success.create_place'))
+            router.push(`/places/${place.id}`)
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     return (

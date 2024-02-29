@@ -34,36 +34,34 @@ export const PlaceAdd = () => {
         categories: [],
     }
 
-    const handleSubmit = (inputs: CreatePlaceInputs) => {
-        addPlace(inputs)
-            .unwrap()
-            .then(place => {
-                const latitude = inputs.location.split(',').map(Number)[0]
-                const longitude = inputs.location.split(',').map(Number)[1]
-                dispatch(
-                    setMapViewState({
-                        latitude,
-                        longitude,
-                    }),
-                )
-                dispatch(
-                    setPlacePopupInfo({
-                        id: place.id,
-                        title: inputs.title,
-                        cover: inputs.cover,
-                        isFavorite: false,
-                        isVisited: false,
-                        avgRating: 0,
-                        reviewsCount: 0,
-                        coordinates: [longitude, latitude],
-                    }),
-                )
-                toast.success(t('success.create_place'))
-                router.push('/maps')
-            })
-            .catch(() => {
-                toast.error(t('common.error'))
-            })
+    const handleSubmit = async (inputs: CreatePlaceInputs) => {
+        try {
+            const response = await addPlace(inputs).unwrap()
+            const latitude = inputs.location.split(',').map(Number)[0]
+            const longitude = inputs.location.split(',').map(Number)[1]
+            dispatch(
+                setMapViewState({
+                    latitude,
+                    longitude,
+                }),
+            )
+            dispatch(
+                setPlacePopupInfo({
+                    id: response.id,
+                    title: inputs.title,
+                    cover: inputs.cover,
+                    isFavorite: false,
+                    isVisited: false,
+                    avgRating: 0,
+                    reviewsCount: 0,
+                    coordinates: [longitude, latitude],
+                }),
+            )
+            toast.success(t('success.create_place'))
+            router.push('/maps')
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     return (

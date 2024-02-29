@@ -24,18 +24,16 @@ export const PlaceSidebarUserActionsPrivate = ({ placeId }: { placeId: number })
                 variant="red"
                 title={t('confirm.delete_place.title')}
                 message={t('confirm.delete_place.message')}
-                onConfirm={() => {
+                onConfirm={async () => {
                     dialog.close()
-                    deletePlace(placeId)
-                        .unwrap()
-                        .then(() => {
-                            toast.success(t('success.delete_place'))
-                            router.push('/')
-                            router.refresh()
-                        })
-                        .catch(() => {
-                            toast.error(t('common.error'))
-                        })
+                    try {
+                        await deletePlace(placeId)
+                        toast.success(t('success.delete_place'))
+                        router.push('/')
+                        router.refresh()
+                    } catch {
+                        toast.error(t('common.error'))
+                    }
                 }}
             />,
         )

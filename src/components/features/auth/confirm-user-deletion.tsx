@@ -6,7 +6,7 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { LinkButton } from '@/components/ui/link-button'
 import { useToast } from '@/providers/toast-provider'
-import { confirmUserDeletion } from '@/services/user'
+import { userAPI } from '@/redux/services/user-api'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -19,13 +19,14 @@ export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
     const toast = useToast()
 
     const [status, setStatus] = useState<string>()
+    const [confirmUserDeletion] = userAPI.useConfirmUserDeletionMutation()
 
     useOnMountUnsafe(() => {
         const handleConfirmUserRemoval = async () => {
             try {
-                const response = await confirmUserDeletion(token)
-                await Session.signOut()
+                const response = await confirmUserDeletion(token).unwrap()
                 setStatus(response.status)
+                await Session.signOut()
             } catch (err) {
                 toast.error(t('common.error'))
             }
