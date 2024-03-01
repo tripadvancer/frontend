@@ -8,7 +8,7 @@ import { PlacePreviewActions } from '@/components/ui/place-preview-actions'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 
-export const PlacePopup = (place: IPlacePreview) => {
+export const MapPopupPlace = (place: IPlacePreview) => {
     return (
         <Popup
             latitude={place.coordinates[1]}

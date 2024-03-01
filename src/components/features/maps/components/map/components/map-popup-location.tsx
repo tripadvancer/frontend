@@ -12,7 +12,7 @@ import { closePopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { useSessionValidation } from '@/utils/hooks/use-session-validation'
 
-export const LocationPopup = ({ coordinates }: ILocationPreview) => {
+export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
     const dispatch = useAppDispatch()
     const router = useRouter()
 

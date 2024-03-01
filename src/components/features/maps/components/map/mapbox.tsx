@@ -1,17 +1,23 @@
 'use client'
 
-import { Layer, Map as ReactMapGl, Source } from 'react-map-gl'
+import { useCallback, useEffect, useRef } from 'react'
+import { Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl'
 
+import { LocationIcon16, MinusIcon16, PlusIcon16, QuestionIcon16 } from '@/components/ui/icons'
 import { getMapBounds, getMapDataSource, getWidgetSelectedCategories } from '@/redux/features/map-slice'
+import { getUserLocation } from '@/redux/features/user-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { favoritesAPI } from '@/redux/services/favorites-api'
 import { placesAPI } from '@/redux/services/places-api'
 import { visitedAPI } from '@/redux/services/visited-api'
 import { MapDataSourcesEnum } from '@/utils/enums'
+import { useUserLocation } from '@/utils/hooks/use-user-location'
 import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
-import { LocationPopup } from './components/location-popup'
-import { PlacePopup } from './components/place-popup'
+import { MapControl } from './components/map-control'
+import { MapPinUser } from './components/map-pin-user'
+import { MapPopupLocation } from './components/map-popup-location'
+import { MapPopupPlace } from './components/map-popup-place'
 import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './layers'
 import { useMapEventHandlers } from './map-event-handlers'
 
@@ -23,6 +29,11 @@ export const Mapbox = () => {
     const mapBounds = useAppSelector(getMapBounds)
     const mapDataSource = useAppSelector(getMapDataSource)
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
+    const userLocation = useAppSelector(getUserLocation)
+
+    const mapRef = useRef<MapRef>(null)
+
+    const { handleLocate, isLocating } = useUserLocation()
 
     const placesResponse = placesAPI.useGetPlacesQuery(
         { mapBounds, selectedCategories },
@@ -37,9 +48,24 @@ export const Mapbox = () => {
         skip: !supertokens.isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
     })
 
+    const handleZoomIn = useCallback(() => {
+        mapRef.current?.zoomIn({ duration: 500 })
+    }, [])
+
+    const handleZoomOut = useCallback(() => {
+        mapRef.current?.zoomOut({ duration: 500 })
+    }, [])
+
+    useEffect(() => {
+        if (userLocation) {
+            mapRef.current?.flyTo({ center: [userLocation.lng, userLocation.lat], zoom: 12, essential: true })
+        }
+    }, [userLocation])
+
     return (
         <ReactMapGl
             id="main"
+            ref={mapRef}
             mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
             mapStyle="mapbox://styles/mapbox/streets-v11"
             interactiveLayerIds={[placesLayer.id, favoritePlacesLayer.id, visitedPlacesLayer.id]}
@@ -88,8 +114,32 @@ export const Mapbox = () => {
                 />
             </Source>
 
-            {handlers.placePopupInfo && <PlacePopup {...handlers.placePopupInfo} />}
-            {handlers.locationPopupInfo && <LocationPopup {...handlers.locationPopupInfo} />}
+            <div className="absolute left-2 top-2 flex flex-col gap-y-1">
+                <MapControl onClick={() => {}}>
+                    <PlusIcon16 onClick={handleZoomIn} />
+                </MapControl>
+
+                <MapControl onClick={() => {}}>
+                    <MinusIcon16 onClick={handleZoomOut} />
+                </MapControl>
+
+                <MapControl isLoading={isLocating} onClick={handleLocate}>
+                    <LocationIcon16 />
+                </MapControl>
+
+                <MapControl onClick={() => {}}>
+                    <QuestionIcon16 />
+                </MapControl>
+            </div>
+
+            {userLocation && (
+                <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="bottom">
+                    <MapPinUser />
+                </Marker>
+            )}
+
+            {handlers.placePopupInfo && <MapPopupPlace {...handlers.placePopupInfo} />}
+            {handlers.locationPopupInfo && <MapPopupLocation {...handlers.locationPopupInfo} />}
         </ReactMapGl>
     )
 }
