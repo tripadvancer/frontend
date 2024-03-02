@@ -17,7 +17,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
     const router = useRouter()
 
     const wrappedCoordinates = coordinates.wrap()
-    // Round coordinates to 6 decimal places to avoid floating point errors
+    // Round coordinates to 6 decimal places
     wrappedCoordinates.lat = Number(wrappedCoordinates.lat.toFixed(6))
     wrappedCoordinates.lng = Number(wrappedCoordinates.lng.toFixed(6))
 

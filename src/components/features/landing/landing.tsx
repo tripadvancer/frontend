@@ -31,9 +31,12 @@ export const Landing = async () => {
                         <Image src="/images/pic-1.svg" width={448} height={448} className="m-auto block" alt="" />
                         <section>
                             <h3 className="mb-4 text-h5-m sm:mb-8 sm:text-h5">
-                                {t('pages.home.features.places.title', { br: <br /> })}
+                                {t('onboarding.features.places.title', { br: <br /> })}
                             </h3>
-                            <p>{t('pages.home.features.places.description')}</p>
+                            <div className="flex flex-col gap-y-4">
+                                <p>{t('onboarding.features.places.description.1')}</p>
+                                <p>{t('onboarding.features.places.description.2')}</p>
+                            </div>
                         </section>
                     </div>
 
@@ -41,9 +44,9 @@ export const Landing = async () => {
                         <Image src="/images/pic-2.svg" width={448} height={448} className="m-auto block" alt="" />
                         <section className="sm:-order-1 sm:text-right">
                             <h3 className="mb-4 text-h5-m sm:mb-8 sm:text-h5">
-                                {t('pages.home.features.random.title', { br: <br /> })}
+                                {t('onboarding.features.random.title', { br: <br /> })}
                             </h3>
-                            <p>{t('pages.home.features.random.description')}</p>
+                            <p>{t('onboarding.features.random.description')}</p>
                         </section>
                     </div>
 
@@ -51,9 +54,9 @@ export const Landing = async () => {
                         <Image src="/images/pic-3.svg" width={448} height={448} className="m-auto block" alt="" />
                         <section>
                             <h3 className="mb-4 text-h5-m sm:mb-8 sm:text-h5">
-                                {t('pages.home.features.lists.title', { br: <br /> })}
+                                {t('onboarding.features.lists.title', { br: <br /> })}
                             </h3>
-                            <p>{t('pages.home.features.lists.description')}</p>
+                            <p>{t('onboarding.features.lists.description')}</p>
                         </section>
                     </div>
                 </div>

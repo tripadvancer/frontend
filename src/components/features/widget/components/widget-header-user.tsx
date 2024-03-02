@@ -18,7 +18,7 @@ export const WidgetHeaderUser = () => {
 
     if (response.isSuccess) {
         return (
-            <div className="cursor-pointer" onClick={() => dispatch(toggleWidgetMenu())}>
+            <div onClick={() => dispatch(toggleWidgetMenu())}>
                 {isMenuOpened ? <CloseIcon24 /> : <Avatar size={24} {...response.data} />}
             </div>
         )

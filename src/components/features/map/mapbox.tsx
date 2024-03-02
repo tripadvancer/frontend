@@ -18,8 +18,8 @@ import { MapControl } from './components/map-control'
 import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
-import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './layers'
 import { useMapEventHandlers } from './map-event-handlers'
+import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './map-layers'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
