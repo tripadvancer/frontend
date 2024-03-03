@@ -23,7 +23,7 @@ export default {
     'confirm_mini.no': 'No',
 
     'confirm.delete_place.title': 'Delete place',
-    'confirm.delete_place.message': 'Are you sure you want to delete this place and all data associated with it?',
+    'confirm.delete_place.message': 'Are you sure you want to delete this place and all data associated with it? This action is irreversible.',
 
     'confirm.request_personal_data.title': 'Send personal data',
     'confirm.request_personal_data.message': 'Are you sure you want to send your personal data to your email?',
@@ -111,7 +111,7 @@ export default {
     'placeholder.place.coordinates': 'Enter coordinates',
 
     'success.send_complaint': 'Your complaint has been sent.',
-    'success.copy_coordinates': 'Coordinates has been copied to the clipboard.',
+    'success.copy_coordinates': 'Coordinates have been copied to the clipboard.',
     'success.create_place': 'Your place has been added.',
     'success.edit_place': 'Your place has been updated.',
     'success.delete_place': 'The place has been deleted.',
