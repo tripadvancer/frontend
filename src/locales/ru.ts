@@ -256,6 +256,8 @@ export default {
     'widget.places.saved_places.visited.title': 'Посещённые места',
     'widget.places.saved_places.visited.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в свой список посещенных мест, чтобы увидеть его здесь.',
 
+    'widget.categories.title': 'Категории',
+
     'widget.categories.selected#one': 'выбрана {count} категория',
     'widget.categories.selected#few': 'выбрано {count} категории',
     'widget.categories.selected#many': 'выбрано {count} категорий',

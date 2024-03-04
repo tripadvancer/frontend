@@ -16,6 +16,12 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
     const dispatch = useAppDispatch()
     const router = useRouter()
 
+    // check if wrap is a function
+    // todo
+    if (typeof coordinates.wrap !== 'function') {
+        dispatch(closePopups())
+    }
+
     const wrappedCoordinates = coordinates.wrap()
     // Round coordinates to 6 decimal places
     wrappedCoordinates.lat = Number(wrappedCoordinates.lat.toFixed(6))

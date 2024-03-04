@@ -9,7 +9,7 @@ export const PlaceMainReviews = async ({ id }: IPlace) => {
     const t = await getI18n()
 
     return (
-        <section className="flex flex-col gap-y-8">
+        <section className="flex flex-col gap-y-8" id="reviews">
             <h2 className="text-h5-m sm:text-h5">{t('pages.place.reviews.title')}</h2>
             <div className="flex flex-col gap-y-8">
                 <PlaceMainOwnReview placeId={id} />
