@@ -26,7 +26,7 @@ export const UserReviews = ({ userId }: { userId: number }) => {
         return (
             <div className="flex flex-col gap-y-8">
                 {response.data.items.map((review, index) => (
-                    <Review key={index} review={review} variant="place-page" />
+                    <Review key={index} review={review} variant="user-page" />
                 ))}
 
                 {response.data.totalPages > page && (
