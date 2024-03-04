@@ -59,17 +59,22 @@ export const WidgetPLacesTabs = () => {
                 ))}
             </ul>
 
-            {supertokens.isAuth && widgetState.places.activeList && (
-                <div className="flex items-center gap-x-2">
-                    <div onClick={() => dispatch(toggleWidgetPlacesShowOnlySavedPlaces())} className="cursor-pointer">
-                        {t('widget.places.saved_places.show_on_the_map')}
+            {supertokens.isAuth &&
+                widgetState.places.activeTab === WidgetTabsEnum.SAVED &&
+                widgetState.places.activeList && (
+                    <div className="flex items-center gap-x-2">
+                        <div
+                            onClick={() => dispatch(toggleWidgetPlacesShowOnlySavedPlaces())}
+                            className="cursor-pointer"
+                        >
+                            {t('widget.places.saved_places.show_on_the_map')}
+                        </div>
+                        <FormSwitcher
+                            checked={widgetState.places.isShowOnlySavedPlaces}
+                            onChange={handleShowOnlySavedPlacesChange}
+                        />
                     </div>
-                    <FormSwitcher
-                        checked={widgetState.places.isShowOnlySavedPlaces}
-                        onChange={handleShowOnlySavedPlacesChange}
-                    />
-                </div>
-            )}
+                )}
         </div>
     )
 }
