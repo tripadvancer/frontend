@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import type { CreatePlaceInputs } from '@/utils/types/place'
 
 import { useToast } from '@/providers/toast-provider'
-import { setMapViewState, setPlacePopupInfo } from '@/redux/features/map-slice'
+import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -46,7 +46,7 @@ export const PlaceAdd = () => {
                 }),
             )
             dispatch(
-                setPlacePopupInfo({
+                setMapPlacePopupInfo({
                     id: response.id,
                     title: inputs.title,
                     cover: inputs.cover,

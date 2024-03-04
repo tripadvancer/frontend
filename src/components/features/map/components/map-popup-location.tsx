@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import type { ILocationPreview } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
-import { closePopups } from '@/redux/features/map-slice'
+import { closeMapPopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { useSessionValidation } from '@/utils/hooks/use-session-validation'
 
@@ -16,13 +16,19 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
     const dispatch = useAppDispatch()
     const router = useRouter()
 
+    // check if wrap is a function
+    // todo
+    if (typeof coordinates.wrap !== 'function') {
+        dispatch(closeMapPopups())
+    }
+
     const wrappedCoordinates = coordinates.wrap()
     // Round coordinates to 6 decimal places
     wrappedCoordinates.lat = Number(wrappedCoordinates.lat.toFixed(6))
     wrappedCoordinates.lng = Number(wrappedCoordinates.lng.toFixed(6))
 
     const handleClick = useSessionValidation(() => {
-        dispatch(closePopups())
+        dispatch(closeMapPopups())
         router.push(`/add-place?lat=${wrappedCoordinates.lat}&lng=${wrappedCoordinates.lng}`)
     })
 

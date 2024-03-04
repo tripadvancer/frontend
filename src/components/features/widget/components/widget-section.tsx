@@ -9,11 +9,11 @@ type WidgetSectionProps = {
     title: string
     variant: 'blue' | 'orange'
     info?: string
+    isOpened: boolean
+    onToggle: () => void
 }
 
-export const WidgetSection = ({ children, title, variant, info }: WidgetSectionProps) => {
-    const [isExpanded, setIsExpanded] = useState<boolean>(false)
-
+export const WidgetSection = ({ children, title, variant, info, isOpened, onToggle }: WidgetSectionProps) => {
     const infoColorVariants = {
         blue: 'text-blue-100',
         orange: 'text-orange-100',
@@ -21,18 +21,15 @@ export const WidgetSection = ({ children, title, variant, info }: WidgetSectionP
 
     return (
         <div className="flex flex-col gap-y-4">
-            <div
-                className="flex cursor-pointer items-center justify-between"
-                onClick={() => setIsExpanded(!isExpanded)}
-            >
+            <div className="flex cursor-pointer items-center justify-between" onClick={onToggle}>
                 <div className="text-caps uppercase">{title}</div>
                 <div className="flex items-center justify-center gap-2">
                     {info && <span className={`text-small ${infoColorVariants[variant]}`}>{info}</span>}
-                    {isExpanded ? <ChevronTopIcon16 /> : <ChevronBottomIcon16 />}
+                    {isOpened ? <ChevronTopIcon16 /> : <ChevronBottomIcon16 />}
                 </div>
             </div>
 
-            {isExpanded && children}
+            {isOpened && children}
         </div>
     )
 }

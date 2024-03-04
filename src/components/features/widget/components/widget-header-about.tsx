@@ -2,15 +2,15 @@
 
 import Link from 'next/link'
 
-import { getWidgetIsAboutOpened } from '@/redux/features/map-slice'
+import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const WidgetHeaderAbout = () => {
     const t = useI18n()
-    const isAboutOpened = useAppSelector(getWidgetIsAboutOpened)
+    const widgetState = useAppSelector(getWidgetState)
 
-    if (isAboutOpened) {
+    if (widgetState.isAboutOpened) {
         return (
             <div className="flex flex-col gap-y-4 px-4 pb-8 pt-4 sm:px-8 sm:pt-0">
                 <div className="flex flex-col gap-y-2">

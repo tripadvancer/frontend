@@ -1,6 +1,7 @@
 'use client'
 
-import classNames from 'classnames'
+import { closeMapPopups } from '@/redux/features/map-slice'
+import { useAppDispatch } from '@/redux/hooks'
 
 type WidgetFlipToggleProps = {
     variant: 'blue' | 'orange'
@@ -8,10 +9,17 @@ type WidgetFlipToggleProps = {
 }
 
 export const WidgetFlipToggler = ({ variant, onClick }: WidgetFlipToggleProps) => {
+    const dispatch = useAppDispatch()
+
+    const handleToggle = () => {
+        onClick()
+        dispatch(closeMapPopups())
+    }
+
     return (
         <div
             className={`hover-animated absolute -right-2 top-2 cursor-pointer sm:top-6 text-${variant}-100 hover:text-${variant}-active`}
-            onClick={onClick}
+            onClick={handleToggle}
         >
             {variant === 'blue' && (
                 <svg width="58" height="48" viewBox="0 0 58 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

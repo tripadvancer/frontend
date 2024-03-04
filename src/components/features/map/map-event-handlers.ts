@@ -6,22 +6,18 @@ import { MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl
 import type { IPlacePreview } from '@/utils/types/place'
 
 import {
-    closePopups,
-    getLocationPopupInfo,
-    getMapViewState,
-    getPlacePopupInfo,
-    setLocationPopupInfo,
+    closeMapPopups,
+    getMapState,
     setMapBounds,
+    setMapLocationPopupInfo,
+    setMapPlacePopupInfo,
     setMapViewState,
-    setPlacePopupInfo,
 } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 export const useMapEventHandlers = () => {
     const dispatch = useAppDispatch()
-    const viewState = useAppSelector(getMapViewState)
-    const placePopupInfo = useAppSelector(getPlacePopupInfo)
-    const locationPopupInfo = useAppSelector(getLocationPopupInfo)
+    const mapState = useAppSelector(getMapState)
 
     /**
      * This function is called when the map is loaded.
@@ -112,21 +108,21 @@ export const useMapEventHandlers = () => {
                     }
 
                     const place = { ...feature.properties, coordinates } as IPlacePreview
-                    dispatch(setPlacePopupInfo(place))
+                    dispatch(setMapPlacePopupInfo(place))
                 } else {
-                    if (placePopupInfo || locationPopupInfo) {
-                        dispatch(closePopups())
+                    if (mapState.placePopupInfo || mapState.locationPopupInfo) {
+                        dispatch(closeMapPopups())
                         return
                     }
 
                     const coordinates = event.lngLat
-                    dispatch(setLocationPopupInfo({ coordinates }))
+                    dispatch(setMapLocationPopupInfo({ coordinates }))
                 }
             }
 
             event.originalEvent.stopPropagation()
         },
-        [dispatch, locationPopupInfo, placePopupInfo],
+        [dispatch, mapState],
     )
 
     /**
@@ -136,16 +132,16 @@ export const useMapEventHandlers = () => {
     const handleContextMenu = useCallback(
         (event: MapLayerMouseEvent) => {
             const coordinates = event.lngLat
-            dispatch(setLocationPopupInfo({ coordinates }))
+            dispatch(setMapLocationPopupInfo({ coordinates }))
             event.originalEvent.stopPropagation()
         },
         [dispatch],
     )
 
     return {
-        ...viewState,
-        placePopupInfo,
-        locationPopupInfo,
+        ...mapState.viewState,
+        placePopupInfo: mapState.placePopupInfo,
+        locationPopupInfo: mapState.locationPopupInfo,
         onLoad: handleLoad,
         onMove: handleMove,
         onDragEnd: handleMoveEnd,

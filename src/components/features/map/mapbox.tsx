@@ -4,8 +4,9 @@ import { useCallback, useEffect, useRef } from 'react'
 import { Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl'
 
 import { LocationIcon16, MinusIcon16, PlusIcon16, QuestionIcon16 } from '@/components/ui/icons'
-import { getMapBounds, getMapDataSource, getWidgetSelectedCategories } from '@/redux/features/map-slice'
+import { getMapState } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
+import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { favoritesAPI } from '@/redux/services/favorites-api'
 import { placesAPI } from '@/redux/services/places-api'
@@ -26,9 +27,9 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 export const Mapbox = () => {
     const supertokens = useSupertokens()
     const handlers = useMapEventHandlers()
-    const mapBounds = useAppSelector(getMapBounds)
-    const mapDataSource = useAppSelector(getMapDataSource)
-    const selectedCategories = useAppSelector(getWidgetSelectedCategories)
+    const mapBounds = useAppSelector(getMapState).bounds
+    const mapDataSource = useAppSelector(getWidgetState).dataSource
+    const selectedCategories = useAppSelector(getWidgetState).places.selectedCategories
     const userLocation = useAppSelector(getUserLocation)
 
     const mapRef = useRef<MapRef>(null)

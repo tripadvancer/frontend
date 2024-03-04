@@ -3,7 +3,8 @@
 import { SignIn } from '@/components/features/auth/sign-in'
 import { ArrowRightIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
-import { getWidgetActiveList, setWidgetActiveList } from '@/redux/features/map-slice'
+import { closeMapPopups } from '@/redux/features/map-slice'
+import { getWidgetState, setWidgetPlacesActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetListsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -19,7 +20,7 @@ export const WidgetPlacesSaved = () => {
     const supertokens = useSupertokens()
     const dialog = useDialog()
     const dispatch = useAppDispatch()
-    const activeList = useAppSelector(getWidgetActiveList)
+    const widgetState = useAppSelector(getWidgetState)
 
     const defaultLists = [
         { id: WidgetListsEnum.FAVORITES, caption: t('widget.places.saved_places.favorites.title') },
@@ -36,7 +37,7 @@ export const WidgetPlacesSaved = () => {
         )
     }
 
-    if (activeList === WidgetListsEnum.FAVORITES) {
+    if (widgetState.places.activeList === WidgetListsEnum.FAVORITES) {
         return (
             <WidgetPlacesSavedList caption={t('widget.places.saved_places.favorites.title')}>
                 <WidgetPlacesSavedListFavorites />
@@ -44,7 +45,7 @@ export const WidgetPlacesSaved = () => {
         )
     }
 
-    if (activeList === WidgetListsEnum.VISITED) {
+    if (widgetState.places.activeList === WidgetListsEnum.VISITED) {
         return (
             <WidgetPlacesSavedList caption={t('widget.places.saved_places.visited.title')}>
                 <WidgetPlacesSavedListVisited />
@@ -53,7 +54,8 @@ export const WidgetPlacesSaved = () => {
     }
 
     const handleListClick = (listId: WidgetListsEnum) => {
-        dispatch(setWidgetActiveList(listId))
+        dispatch(setWidgetPlacesActiveList(listId))
+        dispatch(closeMapPopups())
     }
 
     return (

@@ -1,16 +1,16 @@
 'use client'
 
 import { CloseIcon24, MenuIcon24 } from '@/components/ui/icons'
-import { getWidgetIsAboutOpened, toggleWidgetAbout } from '@/redux/features/map-slice'
+import { getWidgetState, toggleWidgetAboutOpened } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 export const WidgetHeaderAboutToggler = () => {
     const dispatch = useAppDispatch()
-    const isAboutOpened = useAppSelector(getWidgetIsAboutOpened)
+    const widgetState = useAppSelector(getWidgetState)
 
     return (
-        <div className="cursor-pointer" onClick={() => dispatch(toggleWidgetAbout())}>
-            {isAboutOpened ? <CloseIcon24 /> : <MenuIcon24 />}
+        <div className="cursor-pointer" onClick={() => dispatch(toggleWidgetAboutOpened())}>
+            {widgetState.isAboutOpened ? <CloseIcon24 /> : <MenuIcon24 />}
         </div>
     )
 }
