@@ -21,6 +21,12 @@ export const PlaceSidebarNearby = async ({ id }: IPlace) => {
         return null
     }
 
+    const getDistance = (distance: number) => {
+        return distance < 1000
+            ? t('common.distance.m', { distance })
+            : t('common.distance.km', { distance: (distance / 1000).toFixed(1) })
+    }
+
     return (
         <section>
             <h3 className="mb-4 text-caps uppercase">{t('pages.place.place_nearby.title')}</h3>
@@ -46,13 +52,9 @@ export const PlaceSidebarNearby = async ({ id }: IPlace) => {
                                 ) : (
                                     <ImageNotFound className="w-20 rounded-lg" />
                                 )}
-                                <div className="flex flex-col justify-between">
-                                    <div className="line-clamp-2 font-medium">{placeNearby.title}</div>
-                                    <div className="text-small text-black-40">
-                                        {t('common.distance.km', {
-                                            distance: Math.round(placeNearby.distance / 100) / 10,
-                                        })}
-                                    </div>
+                                <div className="flex flex-col gap-y-1">
+                                    <div className="line-clamp-3 font-medium">{placeNearby.title}</div>
+                                    <div className="text-small text-black-40">{getDistance(placeNearby.distance)}</div>
                                 </div>
                             </div>
                         </Link>
