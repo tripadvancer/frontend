@@ -20,6 +20,7 @@ export const favoritesAPI = api.injectEndpoints({
                 { type: 'Favorites' },
                 { type: 'Places' },
                 { type: 'PlacesMeta', id: placeId },
+                { type: 'Visited' },
             ],
         }),
 
@@ -32,6 +33,7 @@ export const favoritesAPI = api.injectEndpoints({
                 { type: 'Favorites' },
                 { type: 'Places' },
                 { type: 'PlacesMeta', id: placeId },
+                { type: 'Visited' },
             ],
         }),
     }),
