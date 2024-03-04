@@ -46,8 +46,8 @@ export const PlaceSidebarNearby = async ({ id }: IPlace) => {
                                 ) : (
                                     <ImageNotFound className="w-20 rounded-lg" />
                                 )}
-                                <div className="flex flex-col justify-between">
-                                    <div className="line-clamp-2 font-medium">{placeNearby.title}</div>
+                                <div className="flex flex-col gap-y-1">
+                                    <div className="line-clamp-3 font-medium">{placeNearby.title}</div>
                                     <div className="text-small text-black-40">
                                         {t('common.distance.km', {
                                             distance: Math.round(placeNearby.distance / 100) / 10,
