@@ -45,6 +45,7 @@ export default {
     'common.empty_message.places': 'Здесь пока нет мест.',
     
     'common.distance.km': '{distance} км',
+    'common.distance.m': '{distance} м',
 
     'common.link.sign_up': 'Зарегистрироваться',
     'common.link.sign_in': 'Войти',
