@@ -15,6 +15,7 @@ import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
+import { useAppDispatch } from '@/redux/hooks'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPassword } from './forgot-password'
@@ -23,6 +24,7 @@ import { ThirdPartyButton } from './third-party-button'
 
 export const SignIn = () => {
     const t = useI18n()
+    const dispatch = useAppDispatch()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -76,6 +78,7 @@ export const SignIn = () => {
             }
         } catch (err) {
             toast.error(t('common.error'))
+            console.error(err)
         } finally {
             setIsLoading(false)
         }
@@ -129,7 +132,7 @@ export const SignIn = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-y-4">
-                <FormButton type="submit" className="w-full" isLoading={isLoading}>
+                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                     {t('auth.signin.submit')}
                 </FormButton>
                 <div className="text-center text-small">

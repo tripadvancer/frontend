@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { IUser } from '@/utils/types/user'
+import type { IUser } from '@/utils/types/user'
 
 export async function getUserById(userId: string): Promise<IUser> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + userId

@@ -30,7 +30,7 @@ export const CookieConsent = () => {
                     </div>
                 </div>
                 <div className="flex-none">
-                    <FormButton variant="orange" onClick={() => dispatch(setCookieAccepted(true))}>
+                    <FormButton variant="orange" onClick={() => dispatch(setCookieAccepted())}>
                         {t('cookie_consent.got_it')}
                     </FormButton>
                 </div>

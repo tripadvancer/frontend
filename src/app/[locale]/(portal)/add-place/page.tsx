@@ -1,19 +1,10 @@
-import { notFound } from 'next/navigation'
+import { PlaceAdd } from '@/components/features/place-form/place-add'
+import { ProtectClientRoute } from '@/components/ui/protect-client-route'
 
-import { AddPlace } from '@/components/features/place-form/add-place'
-import { getSSRSession } from '@/utils/supertokens/session.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
-
-export default async function AddPlacePage() {
-    const { session, hasToken } = await getSSRSession()
-
-    if (!session) {
-        if (!hasToken) {
-            notFound()
-        }
-
-        return <TryRefreshComponent />
-    }
-
-    return <AddPlace />
+export default function AddPlacePage() {
+    return (
+        <ProtectClientRoute>
+            <PlaceAdd />
+        </ProtectClientRoute>
+    )
 }

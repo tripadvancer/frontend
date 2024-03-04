@@ -10,7 +10,7 @@ export const Footer = async () => {
             <div className="container">
                 <div className="border-t border-black-70" />
                 <div className="inner-container py-8">
-                    <section className="mb-5 text-center  text-black-70">
+                    <section className="mb-5 text-center text-black-70">
                         <h5 className="font-medium">{t('about.title')}</h5>
                         <p>{t('about.description')}</p>
                     </section>
@@ -20,7 +20,7 @@ export const Footer = async () => {
                         <Link href="/legal/privacy-policy">Privacy Policy</Link>•
                         <Link href="/legal/cookie-policy">Cookie Policy</Link>
                     </nav>
-                    <div className="text-center text-black-40">© Tripadvancer, 2023</div>
+                    <div className="text-center text-black-40">© Tripadvancer, 2024</div>
                 </div>
             </div>
         </footer>

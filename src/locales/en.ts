@@ -10,12 +10,20 @@ export default {
     'about.title': 'Planing a trip but don`t know where to go?',
     'about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
 
+    'onboarding.features.places.title': 'Discover and share{br}interesting places',
+    'onboarding.features.places.description.1': 'Find captivating places and distinctive landmarks to craft your unforgettable journey. Share your thoughts on visited locations by leaving reviews and ratings.',
+    'onboarding.features.places.description.2': 'Additionally, contribute by adding new, undiscovered places to the map, helping fellow travelers explore hidden gems.',
+    'onboarding.features.random.title': 'Try Our Random{br}Destination Picker',
+    'onboarding.features.random.description': 'Stuck on where to go in your free time? Utilize our feature for a random choice of nearby destinations! Simply pick a category and choose a comfortable distance. Let the exploration begin!',
+    'onboarding.features.lists.title': 'Create Your Personalized{br}Travel Lists',
+    'onboarding.features.lists.description': 'Craft, modify, and manage your own tailored travel experiences by curating lists of favorite places. Save, edit, and organize Points of Interest for easy access on your journeys. Your personalized adventure starts here!',
+
     'confirm_mini.title': 'Sure?',
     'confirm_mini.yes': 'Yes',
     'confirm_mini.no': 'No',
 
     'confirm.delete_place.title': 'Delete place',
-    'confirm.delete_place.message': 'Are you sure you want to delete this place and all data associated with it?',
+    'confirm.delete_place.message': 'Are you sure you want to delete this place and all data associated with it? This action is irreversible.',
 
     'confirm.request_personal_data.title': 'Send personal data',
     'confirm.request_personal_data.message': 'Are you sure you want to send your personal data to your email?',
@@ -37,6 +45,7 @@ export default {
     'common.empty_message.places': 'There are no places here at the moment.',
 
     'common.distance.km': '{distance} km',
+    'common.distance.m': '{distance} m',
 
     'common.link.sign_up': 'Sign up',
     'common.link.sign_in': 'Sign in',
@@ -53,6 +62,9 @@ export default {
     'common.action.cancel': 'Cancel',
     'common.action.ok': 'Ok',
     'common.action.save_changes': 'Save changes',
+    'common.action.confirm': 'Confirm',
+    'common.action.load_more': 'Load more ...',
+    'common.action.route': 'Route',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -86,6 +98,7 @@ export default {
     'placeholder.username': 'Username',
     'placeholder.file': 'Select file ...',
     'placeholder.file.loading': 'Loading ...',
+    'placeholder.action.place.cover': 'Upload the cover (jpg, png up to 10 MB)',
     'placeholder.action.username': 'Enter your username',
     'placeholder.action.about_user': 'Enter information about yourself...',
     'placeholder.action.about_place': 'Enter a description',
@@ -95,9 +108,11 @@ export default {
     'placeholder.action.new_password': 'Enter new password',
     'placeholder.action.email': 'Enter email address',
     'placeholder.action.new_email': 'Enter new email address',
+    'placeholder.place.title': 'Enter place title',
+    'placeholder.place.coordinates': 'Enter coordinates',
 
     'success.send_complaint': 'Your complaint has been sent.',
-    'success.copy_coordinates': 'Coordinates has been copied to the clipboard.',
+    'success.copy_coordinates': 'Coordinates have been copied to the clipboard.',
     'success.create_place': 'Your place has been added.',
     'success.edit_place': 'Your place has been updated.',
     'success.delete_place': 'The place has been deleted.',
@@ -131,6 +146,7 @@ export default {
     'user_achievement.statistic.added_photos': 'Added photos',
     'user_achievement.statistic.added_reviews': 'Written reviews',
     'user_achievement.statistic.visited_places': 'Visited places',
+    'user_achievement.statistic.visited_countries': 'Visited countries',
 
     'user_tabs.places': 'Added places',
     'user_tabs.reviews': 'Written reviews',
@@ -223,6 +239,35 @@ export default {
     'auth.verify_email.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
     'auth.verify_email.ok': 'Your email has been verified.',
 
+    'widget.common.error': 'An unexpected error has occurred.{br}Please try again later.',
+    
+    'widget.places.title': 'Places',
+    'widget.places.all_places.title': 'All places',
+    'widget.places.all_places.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
+    'widget.places.saved_places.title': 'Saved',
+    'widget.places.saved_places.info': 'Select a list to view your places.',
+    'widget.places.saved_places.show_on_the_map': 'Show on the map',
+    'widget.places.saved_places.error.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
+    'widget.places.saved_places.favorites.title': 'Favorites',
+    'widget.places.saved_places.favorites.empty_message': 'Your favorites are empty.{br}Add the place to your favorites to see it here.',
+    'widget.places.saved_places.visited.title': 'Visited places',
+    'widget.places.saved_places.visited.empty_message': 'You have not visited any places yet.{br}Add the place to your visited to see it here.',
+
+    'widget.categories.title': 'Categories',
+    'widget.categories.selected#one': '{count} selected',
+    'widget.categories.selected#other': '{count} selected',
+
+    'widget.random.title': 'Random place around you',
+    'widget.random.intro': 'Select categories, radius around you and get a random place you might like.',
+    'widget.random.button': 'Find a random place',
+    'widget.random.button_coundown': 'Find a random place in ({countdown})',
+    'widget.random.error.not_location': 'To find a random place around you, you need to allow access to your location.',
+    'widget.random.error.not_found': 'No places matching your filters found.{br}Try changing the category or radius.',
+
+    'map.popup.location.title': 'Selected location',
+    'map.popup.location.add_place': 'Add place here',
+    'map.popup.location.i_am_here': 'I am here',
+
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
 
@@ -233,12 +278,6 @@ export default {
     'pages.home.countries.description': 'Uncover unique spots recommended by fellow travelers. Immerse yourself in captivating sights, diverse cultures, and renowned landmarks. Ready to start your adventure? Simply select the country of your choice and let the journey unfold!',
     'pages.home.features.title': 'Our features',
     'pages.home.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
-    'pages.home.features.places.title': 'Discover and share{br}interesting places',
-    'pages.home.features.places.description': 'Find captivating places and distinctive landmarks to craft your unforgettable journey. Share your thoughts on visited locations by leaving reviews and ratings. Additionally, contribute by adding new, undiscovered places to the map, helping fellow travelers explore hidden gems.',
-    'pages.home.features.random.title': 'Try Our Random{br}Destination Picker',
-    'pages.home.features.random.description': 'Stuck on where to go in your free time? Utilize our feature for a random choice of nearby destinations! Simply pick a category and choose a comfortable distance. Let the exploration begin!',
-    'pages.home.features.lists.title': 'Create Your Personalized{br}Travel Lists',
-    'pages.home.features.lists.description': 'Craft, modify, and manage your own tailored travel experiences by curating lists of favorite places. Save, edit, and organize Points of Interest for easy access on your journeys. Your personalized adventure starts here!',
     'pages.home.map.title': 'Embark on a Global Journey',
     'pages.home.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
     'pages.home.map.cta': 'Explore the map',
@@ -285,4 +324,6 @@ export default {
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
+    'pages.add_place.categories.add_category.button': 'Add category',
+    'pages.add_place.categories.add_category.title': 'Select up to {max_count} categories',
 } as const

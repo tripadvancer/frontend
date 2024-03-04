@@ -13,26 +13,22 @@ type NavProps = {
     className?: string
 }
 
-export const Nav = async ({ links, className }: NavProps) => {
+export const Nav = ({ links, className }: NavProps) => {
     const pathname = usePathname()
 
     return (
         <nav className={classNames('flex gap-x-4 text-big-bold', className)}>
-            {links.map(link => {
-                const isActive = pathname.includes(link.href)
-
-                return (
-                    <Link
-                        key={link.href}
-                        href={link.href}
-                        className={classNames('whitespace-nowrap', {
-                            'border-b-2 border-black-100 text-black-100 hover:text-black-100': isActive,
-                        })}
-                    >
-                        {link.caption}
-                    </Link>
-                )
-            })}
+            {links.map(link => (
+                <Link
+                    key={link.href}
+                    href={link.href}
+                    className={classNames('whitespace-nowrap', {
+                        'border-b-2 border-black-100 text-black-100 hover:text-black-100': pathname.includes(link.href),
+                    })}
+                >
+                    {link.caption}
+                </Link>
+            ))}
         </nav>
     )
 }

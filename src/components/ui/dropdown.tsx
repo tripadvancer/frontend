@@ -12,7 +12,7 @@ import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
 
 export type DropdownItemProps = {
     caption: string
-    icon?: ReactNode
+    icon?: React.ReactNode
     value: string
     isRed?: boolean
     isCurrent?: boolean
@@ -22,7 +22,7 @@ export type DropdownItemProps = {
 
 type DropdownProps = {
     items: DropdownItemProps[]
-    children?: ReactNode
+    children?: React.ReactNode
     currentItem?: string
 }
 

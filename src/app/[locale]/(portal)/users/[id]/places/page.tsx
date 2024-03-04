@@ -1,17 +1,5 @@
-import { getPlacesByUserId } from '@/services/places'
+import { UserPlaces } from '@/components/features/user-places/user-places'
 
-import { PlacesFeed } from './_components/places-feed'
-
-export default async function UserPlacesPage({
-    params,
-    searchParams,
-}: {
-    params: { id: string }
-    searchParams: { page: string }
-}) {
-    const userId = params.id
-    const currentPage = searchParams.page ?? '1'
-    const places = await getPlacesByUserId(userId, currentPage)
-
-    return <PlacesFeed places={places} currentPage={parseInt(currentPage)} />
+export default function UserPlacesPage({ params }: { params: { id: string } }) {
+    return <UserPlaces userId={parseInt(params.id)} />
 }

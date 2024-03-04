@@ -1,9 +1,7 @@
-import { ReactNode } from 'react'
-
 type AchievementProps = {
     title: string
-    icon: ReactNode
-    children?: ReactNode
+    icon: React.ReactNode
+    children?: React.ReactNode
 }
 
 export const Achievement = ({ title, icon, children }: AchievementProps) => {
@@ -23,7 +21,7 @@ type AchievementItemProps = {
     value: number
 }
 
-const AchievementItems = ({ children }: { children: ReactNode }) => {
+const AchievementItems = ({ children }: { children: React.ReactNode }) => {
     return <ul>{children}</ul>
 }
 

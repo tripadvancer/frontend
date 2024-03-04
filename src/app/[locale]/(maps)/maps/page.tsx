@@ -1,21 +1,17 @@
-'use client'
+import { CookieConsent } from '@/components/features/cookie-consent/cookie-consent'
+import { EmailVerification } from '@/components/features/email-verification/email-verification'
+import { Mapbox } from '@/components/features/map/mapbox'
+import { Onboarding } from '@/components/features/onboarding/onboarding'
+import { Widget } from '@/components/features/widget/widget'
 
-import { MapProvider } from 'react-map-gl'
-
-import { MapMapbox } from './_components/map-mapbox'
-import { MapOSM } from './_components/map-osm'
-import { Widget } from './_components/widget'
-
-export default function MapsPage() {
-    const mapSource = process.env.NEXT_PUBLIC_MAP_SOURCE
-
+export default async function MapsPage() {
     return (
-        <MapProvider>
+        <div className="h-screen w-screen">
+            <EmailVerification />
             <Widget />
-            <div className="h-screen w-screen">
-                {mapSource === 'osm' && <MapOSM />}
-                {mapSource === 'mapbox' && <MapMapbox />}
-            </div>
-        </MapProvider>
+            <Mapbox />
+            <Onboarding />
+            <CookieConsent />
+        </div>
     )
 }

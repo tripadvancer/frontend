@@ -1,7 +1,6 @@
 'use client'
 
 import { FormButton } from '@/components/ui/form-button'
-import { FormButtonStroke } from '@/components/ui/form-button-stroke'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -27,9 +26,9 @@ export const Confirmation = ({ title, message, variant = 'blue', onConfirm }: Co
                 <FormButton variant={variant} onClick={onConfirm}>
                     {t('confirm.yes')}
                 </FormButton>
-                <FormButtonStroke variant={variant} onClick={() => dialog.close()}>
+                <FormButton type="stroke" variant={variant} onClick={() => dialog.close()}>
                     {t('confirm.no')}
-                </FormButtonStroke>
+                </FormButton>
             </div>
         </div>
     )

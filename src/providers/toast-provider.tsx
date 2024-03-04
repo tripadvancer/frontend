@@ -2,11 +2,11 @@
 
 import { ReactNode, createContext, useContext, useMemo, useState } from 'react'
 
-import { Toast, ToastContainer, ToastType } from '@/components/ui/toast'
+import { Toast, ToastContainer } from '@/components/ui/toast'
 
 interface ToastInterface {
     id: number
-    type: ToastType
+    variant: 'green' | 'red'
     message: string
 }
 
@@ -16,15 +16,15 @@ interface ToastContextInterface {
 }
 
 type ToastProviderProps = {
-    children: ReactNode
+    children: React.ReactNode
 }
 
-const defaultValue: ToastContextInterface = {
+const defaultValues: ToastContextInterface = {
     success: () => {},
     error: () => {},
 }
 
-export const ToastContext = createContext(defaultValue)
+export const ToastContext = createContext(defaultValues)
 
 export function useToast(): ToastContextInterface {
     const context = useContext(ToastContext)
@@ -41,14 +41,14 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
 
     const success = (message: string) => {
         const id = Date.now()
-        const type = ToastType.success
-        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, type }])
+        const variant = 'green'
+        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, variant }])
     }
 
     const error = (message: string) => {
         const id = Date.now()
-        const type = ToastType.error
-        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, type }])
+        const variant = 'red'
+        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, message, variant }])
     }
 
     const close = (id: number) =>
@@ -61,7 +61,12 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
             {children}
             <ToastContainer>
                 {toasts.map((toast: ToastInterface) => (
-                    <Toast key={toast.id} type={toast.type} message={toast.message} onClose={() => close(toast.id)} />
+                    <Toast
+                        key={toast.id}
+                        variant={toast.variant}
+                        message={toast.message}
+                        onClose={() => close(toast.id)}
+                    />
                 ))}
             </ToastContainer>
         </ToastContext.Provider>

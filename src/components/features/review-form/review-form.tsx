@@ -3,25 +3,24 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
+import { AddReviewInputs, EditReviewInputs } from '@/utils/types/review'
 
 import { FormButton } from '@/components/ui/form-button'
-import { FormButtonStroke } from '@/components/ui/form-button-stroke'
 import { FormRatingInput } from '@/components/ui/form-rating-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { ReviewPhotosList } from './components/review-photos-list'
+import { ReviewFormPhotosList } from './components/review-form-photos-list'
 
 const reviewTextMinLength = validationConfig.review.text.minLength
 const reviewTextMaxLength = validationConfig.review.text.maxLength
 
 type ReviewFormProps = {
-    initialValues: CreateReviewInputs | UpdateReviewInputs
+    initialValues: AddReviewInputs | EditReviewInputs
     isLoading: boolean
-    onSubmit: (values: CreateReviewInputs | UpdateReviewInputs) => Promise<void>
+    onSubmit: (values: AddReviewInputs | EditReviewInputs) => void
 }
 
 export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {
@@ -53,7 +52,6 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     </label>
                     <FormRatingInput
                         value={formik.values.rating}
-                        size={32}
                         error={formik.errors.rating}
                         onChange={value => formik.setFieldValue('rating', value)}
                     />
@@ -77,17 +75,19 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     <label htmlFor="text" className="font-medium">
                         {t('review.form.fields.photos.label')}
                     </label>
-                    <ReviewPhotosList
+                    <ReviewFormPhotosList
                         photos={formik.values.photos}
                         onChange={value => formik.setFieldValue('photos', value)}
                     />
                 </div>
             </div>
             <div className="flex gap-x-2">
-                <FormButton type="submit" isLoading={isLoading}>
+                <FormButton htmlType="submit" isLoading={isLoading}>
                     {t('common.action.send')}
                 </FormButton>
-                <FormButtonStroke onClick={() => dialog.close()}>{t('common.action.cancel')}</FormButtonStroke>
+                <FormButton type="stroke" onClick={() => dialog.close()}>
+                    {t('common.action.cancel')}
+                </FormButton>
             </div>
         </form>
     )

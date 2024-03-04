@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -13,7 +11,7 @@ import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { changeUserEmail } from '@/services/user'
+import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const ChangeEmail = () => {
@@ -22,7 +20,7 @@ export const ChangeEmail = () => {
     const dialog = useDialog()
     const toast = useToast()
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [changeUserEmail, { isLoading }] = userAPI.useChangeUserEmailMutation()
 
     const initialValues = {
         newEmail: '',
@@ -39,10 +37,9 @@ export const ChangeEmail = () => {
         password: Yup.string().required(t('validation.required')),
     })
 
-    const handleSubmit = async (values: ChangeUserEmailInputs) => {
+    const handleSubmit = async (inputs: ChangeUserEmailInputs) => {
         try {
-            setIsLoading(true)
-            const response = await changeUserEmail(values)
+            const response = await changeUserEmail(inputs).unwrap()
 
             switch (response.status) {
                 case 'OK':
@@ -65,8 +62,6 @@ export const ChangeEmail = () => {
             }
         } catch (err) {
             toast.error(t('common.error'))
-        } finally {
-            setIsLoading(false)
         }
     }
 
@@ -103,7 +98,7 @@ export const ChangeEmail = () => {
                     onChange={formik.handleChange}
                 />
             </div>
-            <FormButton type="submit" className="w-full" isLoading={isLoading}>
+            <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                 {t('common.action.save_changes')}
             </FormButton>
         </form>

@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { LinkButton } from '@/components/ui/link-button'
 import { useToast } from '@/providers/toast-provider'
-import { restoreUser } from '@/services/user'
+import { userAPI } from '@/redux/services/user-api'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -17,11 +17,12 @@ export const RestoreUser = ({ token }: RestoreUserProps) => {
     const toast = useToast()
 
     const [status, setStatus] = useState<string>()
+    const [restoreUser] = userAPI.useRestoreUserMutation()
 
     useOnMountUnsafe(() => {
         const handleRestoreUser = async () => {
             try {
-                const response = await restoreUser(token)
+                const response = await restoreUser(token).unwrap()
                 setStatus(response.status)
             } catch (err) {
                 toast.error(t('common.error'))

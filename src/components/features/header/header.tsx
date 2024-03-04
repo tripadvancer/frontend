@@ -1,39 +1,30 @@
-import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
+import Link from 'next/link'
 
-import { userAgent } from 'next/server'
+import { EmailVerification } from '@/components/features/email-verification/email-verification'
+import { MapIcon24 } from '@/components/ui/icons'
+import { getI18n } from '@/utils/i18n/i18n.server'
 
-import { getSSRSession } from '@/utils/supertokens/session.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
-
-import { EmailVerificationNotice } from '../email-verification-notice/email-verification-notice'
-import { LanguageChanger } from './components/language-changer'
-import { Logo } from './components/logo'
-import { MapLink } from './components/map-link'
-import { User } from './components/user'
+import { HeaderLanguageChanger } from './components/header-language-changer'
+import { HeaderLogo } from './components/header-logo'
+import { HeaderUser } from './components/header-user'
 
 export const Header = async () => {
-    const { session, hasToken } = await getSSRSession()
-
-    if (!session && hasToken) {
-        return <TryRefreshComponent />
-    }
-
-    // todo: create helper for get claim value on client and server
-    const emailVerificationClaim = await session?.getClaimValue(EmailVerificationClaim)
-    const emailIsNotVerified = emailVerificationClaim === false // because it can be undefined
-    const accessTokenPayload = session?.getAccessTokenPayload()
+    const t = await getI18n()
 
     return (
         <>
             <div className="absolute left-0 right-0 top-0 -z-10 h-[200px] bg-blue-20" />
             <header className="sticky top-0 z-40 bg-blue-20">
-                {emailIsNotVerified && <EmailVerificationNotice userId={accessTokenPayload.userId} />}
+                <EmailVerification />
                 <div className="container relative flex h-[56px] items-center justify-between sm:h-[76px]">
-                    <MapLink />
-                    <Logo />
+                    <Link href="/maps" className="flex items-center gap-x-2 text-big-bold">
+                        <MapIcon24 />
+                        <span className="hidden sm:block">{t('header.link.map')}</span>
+                    </Link>
+                    <HeaderLogo />
                     <div className="flex gap-x-4 sm:gap-x-6">
-                        <User />
-                        <LanguageChanger />
+                        <HeaderUser />
+                        <HeaderLanguageChanger />
                     </div>
                 </div>
             </header>

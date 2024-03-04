@@ -10,6 +10,14 @@ export default {
     'about.title': 'Планируете путешествие, но не знаете куда поехать?',
     'about.description': 'Tripadvancer поможет Вам открыть мир с новой стороны, найти интересные места и отправиться в увлекательное путешествие.',
 
+    'onboarding.features.places.title': 'Находите интересные места и делитесь ими',
+    'onboarding.features.places.description.1': 'Найдите уникальные места и спланируйте незабываемое путешествие. Делитесь впечатлениями о посещённых локациях, оставляя отзывы и оценки.',
+    'onboarding.features.places.description.2': 'Добавляйте на карту свои интересные места, если их там ещё нет.',
+    'onboarding.features.random.title': 'Находите случайные места{br}рядом с Вами',
+    'onboarding.features.random.description': 'Задумались, куда бы отправиться в свободное время? Попробуйте нашу функцию поиска случайного пункта назначения! Просто выберите категорию, установите удобное расстояние — и вперёд, к захватывающим приключениям!',
+    'onboarding.features.lists.title': 'Создавайте собственные{br}списки мест',
+    'onboarding.features.lists.description': 'Создавайте, редактируйте и управляйте собственными впечатлениями от путешествий, составляя списки любимых мест. Сохраняйте, редактируйте и систематизируйте достопримечательности для быстрого доступа во время путешествий. Начните своё собственное приключение!',
+
     'confirm_mini.title': 'Уверены?',
     'confirm_mini.yes': 'Да',
     'confirm_mini.no': 'Нет',
@@ -37,6 +45,7 @@ export default {
     'common.empty_message.places': 'Здесь пока нет мест.',
     
     'common.distance.km': '{distance} км',
+    'common.distance.m': '{distance} м',
 
     'common.link.sign_up': 'Зарегистрироваться',
     'common.link.sign_in': 'Войти',
@@ -53,6 +62,9 @@ export default {
     'common.action.cancel': 'Отмена',
     'common.action.ok': 'Ок',
     'common.action.save_changes': 'Сохранить изменения',
+    'common.action.confirm': 'Подтвердить',
+    'common.action.load_more': 'Загрузить ещё ...',
+    'common.action.route': 'Маршрут',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -86,15 +98,18 @@ export default {
     'placeholder.username': 'Имя пользователя',
     'placeholder.file': 'Выберите файл ...',
     'placeholder.file.loading': 'Загрузка файла ...',
+    'placeholder.action.place.cover': 'Загрузите обложку (jpg, png до 10 Мб)',
     'placeholder.action.username': 'Введите имя пользователя',
     'placeholder.action.about_user': 'Напишите что-нибудь о себе',
-    'placeholder.action.about_place': 'Введте описание места',
-    'placeholder.action.review': 'Развернуто поделитесь своими впечатлениями - так Вы поможете остальным узнать больше о месте',
+    'placeholder.action.about_place': 'Введите описание места',
+    'placeholder.action.review': 'Развёрнуто поделитесь своими впечатлениями - так Вы поможете остальным узнать больше о месте',
     'placeholder.action.complain.comment': 'Опишите причину жалобы',
     'placeholder.action.password': 'Введите пароль',
     'placeholder.action.new_password': 'Введите новый пароль',
     'placeholder.action.email': 'Введите email',
     'placeholder.action.new_email': 'Введите новый email',
+    'placeholder.place.title': 'Ввведите название места',
+    'placeholder.place.coordinates': 'Введите координаты места',
 
     'success.send_complaint': 'Ваша жалоба была успешно отправлена.',
     'success.copy_coordinates': 'Координаты были скопированы в буфер обмена.',
@@ -106,7 +121,7 @@ export default {
     'success.delete_review': 'Отзыв был успешно удалён.',
     'success.change_user_password': 'Ваш пароль был успешно изменён.',
     'success.change_user_email': 'Мы отправили вам письмо с подтверждением. После подтверждения нового адреса электронной почты вы сможете войти в систему, используя его.',
-    'success.update_user_avatar': 'Ваша аватарка была успешно обновлена.',
+    'success.update_user_avatar': 'Ваш аватар был успешно обновлён.',
     'success.update_user_info': 'Ваш профиль был успешно обновлён.',
     'success.request_personal_data': 'Мы отправили Вам письмо с копией Ваших персональных данных.',
     'success.request_user_deletion': 'Этот процесс может занять до нескольких дней. Вы можете восстановить свою учётную запись, используя ссылку, отправленную на Ваш email, до завершения процесса удаления.',
@@ -131,6 +146,7 @@ export default {
     'user_achievement.statistic.added_photos': 'Добавлено фото',
     'user_achievement.statistic.added_reviews': 'Написано отзывов',
     'user_achievement.statistic.visited_places': 'Посещено мест',
+    'user_achievement.statistic.visited_countries': 'Посещено стран',
 
     'user_tabs.places': 'Мои места',
     'user_tabs.reviews': 'Мои отзывы',
@@ -176,7 +192,7 @@ export default {
     'auth.change_password.info': 'Создайте новый пароль длиной не менее 8 символов, содержащий сочетание букв и цифр:',
 
     'auth.claim_email_error.title': 'Ваш email не подтверждён',
-    'auth.claim_email_error.message': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
+    'auth.claim_email_error.message': 'Подтверждённые аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
     'auth.claim_email_error.resend_verification_email': 'Отправить письмо ещё раз',
     'auth.claim_email_error.go_to_settings': 'Или измените свой email. {settings_link}',
     'auth.claim_email_error.settings_link': 'Настройки',
@@ -218,14 +234,46 @@ export default {
     'auth.signup.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
     'auth.signup.to_back': 'Уже зарегистрированы? {sign_in_link}',
 
-    'auth.third_party_callback.redirecting': 'Идет перенаправление...',
+    'auth.third_party_callback.redirecting': 'Идёт перенаправление...',
     'auth.third_party_callback.checking_status': 'Мы проверяем статус Вашей учётной записи...',
     'auth.third_party_callback.error.email_not_provided': 'Мы не получили Ваш email от социальной сети. Пожалуйста, попробуйте другой способ входа.',
-    'auth.third_party_callback.error.email_already_exists': 'Похоже, у вас уже есть учетная запись с другим методом входа. Пожалуйста, используйте её для входа.',
+    'auth.third_party_callback.error.email_already_exists': 'Похоже, у вас уже есть учётная запись с другим методом входа. Пожалуйста, используйте её для входа.',
 
     'auth.verify_email.loading': 'Проверяем ваш email...',
     'auth.verify_email.token_expired': 'Ссылка для подтверждения email устарела. Пожалуйста, залогиньтесь снова, чтобы мы могли отправить Вам новую ссылку для подтверждения.',
     'auth.verify_email.ok': 'Ваш email был подтверждён.',
+
+    'widget.common.error': 'Произошла непредвиденная ошибка.{br}Пожалуйста, попробуйте позже.',
+    
+    'widget.places.title': 'Места',
+    'widget.places.all_places.title': 'Все',
+    'widget.places.all_places.empty_message': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличить масштаб.',
+    'widget.places.saved_places.title': 'Мои места',
+    'widget.places.saved_places.info': 'Выберите список, чтобы увидеть сохранённые места.',
+    'widget.places.saved_places.show_on_the_map': 'Показать на карте',
+    'widget.places.saved_places.error.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть свои сохранённые места.',
+    'widget.places.saved_places.favorites.title': 'Избранное',
+    'widget.places.saved_places.favorites.empty_message': 'Ваше избранное пусто.{br}Добавьте место в избранное, чтобы увидеть его здесь.',
+    'widget.places.saved_places.visited.title': 'Посещённые места',
+    'widget.places.saved_places.visited.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в свой список посещённых мест, чтобы увидеть его здесь.',
+
+
+    'widget.categories.title': 'Категории',
+    'widget.categories.selected#one': 'выбрана {count} категория',
+    'widget.categories.selected#few': 'выбрано {count} категории',
+    'widget.categories.selected#many': 'выбрано {count} категорий',
+    'widget.categories.selected#other': 'выбрано {count} категорий',
+
+    'widget.random.title': 'Случайное место рядом с Вами',
+    'widget.random.intro': 'Выберите категории, радиус вокруг Вас и получите случайное место, которое может Вам понравиться.',
+    'widget.random.button': 'Найти случайное место',
+    'widget.random.button_coundown': 'Найти случайное место ({countdown})',
+    'widget.random.error.not_location': 'Чтобы найти случайное место рядом с Вами, необходимо разрешить доступ к Вашему местоположению.',
+    'widget.random.error.not_found': 'Не найдено мест, соответствующих Вашим фильтрам.<0 />Попробуйте изменить категории или радиус.',
+
+    'map.popup.location.title': 'Выбранное место',
+    'map.popup.location.add_place': 'Добавить место',
+    'map.popup.location.i_am_here': 'Я здесь',
 
     'pages.not_found.title': 'Страница не найдена',
     'pages.not_found.text': 'Извините, но похоже, Вы забрели в неизведанные территории. Страница, которую Вы искали, либо была перемещена, удалена, либо никогда не существовала.',
@@ -237,14 +285,8 @@ export default {
     'pages.home.countries.description': 'Открывайте для себя удивительные места, которые рекомендуют путешественники. Наслаждайтесь захватывающими видами и погружайтесь в разнообразные культуры, знакомьтесь с известными достопримечательностями. Готовы начать своё приключение? Просто выберите страну и отправляйтесь в увлекательное путешествие!',
     'pages.home.features.title': 'Наши возможности',
     'pages.home.features.description': 'Исследуйте функции нашего приложения и погружайтесь в уютное сообщество путешественников. Находите поистине уникальные места, рекомендованные другими туристами, и планируйте собственную поездку. Присоединяйтесь к формированию пространства, где каждый становится частью чего-то по-настоящему особенного!',
-    'pages.home.features.places.title': 'Находите и делитесь интересными местами',
-    'pages.home.features.places.description': 'Найдите уникальные места и спланируйте незабываемое путешествие. Делитесь впечатлениями о посещённых локациях, оставляя отзывы и оценки. Добавляйте на карту свои интересные места, если их там ещё нет.',
-    'pages.home.features.random.title': 'Находите случайные места{br}рядом с Вами',
-    'pages.home.features.random.description': 'Задумались, куда бы отправиться в свободное время? Попробуйте нашу функцию поиска случайного пункта назначения! Просто выберите категорию и установите удобное расстояние — и вперёд, к захватывающим приключениям!',
-    'pages.home.features.lists.title': 'Создавайте собственные{br}списки мест',
-    'pages.home.features.lists.description': 'Создавайте, редактируйте и управляйте собственными впечатлениями от путешествий, составляя списки любимых мест. Сохраняйте, редактируйте и систематизируйте достопримечательности для быстрого доступа во время путешествий. Начните своё собственное приключение!',
     'pages.home.map.title': 'Отправьтесь в глобальное путешествие',
-    'pages.home.map.description': 'Дайте волю своему внутреннему исследователю! Откройте карту и окунитесь в потрясающий мир увлекательных мест, которые просто ждут, чтобы Вы их обнаружили. Очередное приключение ждет Вас всего в одном касании кнопки — начать путешествие как никогда просто!',
+    'pages.home.map.description': 'Дайте волю своему внутреннему исследователю! Откройте карту и окунитесь в потрясающий мир увлекательных мест, которые просто ждут, чтобы Вы их обнаружили. Очередное приключение ждёт Вас всего в одном касании кнопки — начать путешествие как никогда просто!',
     'pages.home.map.cta': 'Исследовать карту',
 
     'pages.country.description': 'Здесь собраны удивительные места, рекомендованные опытными путешественниками. Откройте для себя уникальные черты такой страны, как {country}, следуя советам тех, кто уже её посетил. Создайте свой неповторимый маршрут и погрузитесь в увлекательное путешествие всего в несколько кликов!',
@@ -258,14 +300,14 @@ export default {
     'pages.place.place_nearby.title': 'Места рядом',
 
     'pages.user.about_me': 'Обо мне',
-    'pages.user.settings.forms.fields.avatar.label': 'Аватарка',
+    'pages.user.settings.forms.fields.avatar.label': 'Аватар',
     'pages.user.settings.forms.fields.username.label': 'Имя пользователя',
     'pages.user.settings.forms.fields.info.label': 'Расскажите о себе',
     'pages.user.settings.forms.submit': 'Сохранить',
     'pages.user.settings.account.title': 'Ваша учётная запись',
     
     'pages.user.account.verify_email.title': 'Ваш email не подтверждён',
-    'pages.user.account.verify_email.text': 'Подтвержденные аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
+    'pages.user.account.verify_email.text': 'Подтверждённые аккаунты имеют больше возможностей. Пожалуйста, подтвердите Ваш email, перейдя по ссылке в письме, которое мы отправили Вам при регистрации.',
     'pages.user.account.verify_email.action': 'Отправить письмо ещё раз',
 
     'pages.user.account.change_email.title': 'Email',
@@ -273,7 +315,7 @@ export default {
     'pages.user.account.change_email.action': 'Изменить email',
 
     'pages.user.account.change_password.title': 'Пароль',
-    'pages.user.account.change_password.text': 'Мы рекомендуем вам использовать пароль, отличный от других ваших учетных записей в Интернете, а так же изменять его время от времени.',
+    'pages.user.account.change_password.text': 'Мы рекомендуем Вам использовать пароль, отличный от других Ваших учётных записей в Интернете, а так же изменять его время от времени.',
     'pages.user.account.change_password.action': 'Изменить пароль',
 
     'pages.user.account.request_personal_data.title': 'Персональные данные',
@@ -289,5 +331,7 @@ export default {
     'pages.add_place.photos.title': 'Фотографии',
     'pages.add_place.photos.info': 'Вы можете загрузить до {max_count} фотографий.',
     'pages.add_place.submit': 'Добавить место',
-    'pages.add_place.submit.info': 'Добавляя новый объект на карту, вы принимаете {terms_link}, {privacy_link} и даете согласие на их обработку.'
+    'pages.add_place.submit.info': 'Добавляя новый объект на карту, вы принимаете {terms_link}, {privacy_link} и даёте согласие на их обработку.',
+    'pages.add_place.categories.add_category.button': 'Добавить категорию',
+    'pages.add_place.categories.add_category.title': 'Выберите до {max_count} категорий',
 } as const

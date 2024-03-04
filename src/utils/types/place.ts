@@ -1,5 +1,8 @@
-import type { CoordinatesTuple, GeoJsonPoint } from '@/utils/types/geo'
+import type { LngLat } from 'react-map-gl'
+
+import type { GeoJsonPoint } from '@/utils/types/geo'
 import type { IPhoto } from '@/utils/types/photo'
+import type { IReview } from '@/utils/types/review'
 import type { IUserInfo } from '@/utils/types/user'
 
 export type IPlace = {
@@ -15,16 +18,22 @@ export type IPlace = {
     avgRating: number | null
     reviewsCount: number
     createdAt: Date
-    isFavorite: boolean
-    isVisited: boolean
-    isReviewed: boolean
 }
 
-export type IPlacePreview = Pick<
-    IPlace,
-    'id' | 'title' | 'cover' | 'isFavorite' | 'isVisited' | 'avgRating' | 'reviewsCount'
-> & {
-    coordinates?: CoordinatesTuple
+export type IPlaceMeta = {
+    ownReview: null | IReview
+    isFavorite: boolean
+    isVisited: boolean
+}
+
+export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & {
+    coordinates: number[]
+    isFavorite: boolean
+    isVisited: boolean
+}
+
+export type ILocationPreview = {
+    coordinates: LngLat
 }
 
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & { distance: number }

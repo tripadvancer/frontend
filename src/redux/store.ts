@@ -2,23 +2,29 @@ import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/t
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
+import mapReducer from '@/redux/features/map-slice'
 import userReducer from '@/redux/features/user-slice'
+import widgetReducer from '@/redux/features/widget-slice'
+import { api } from '@/redux/services/api'
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['user'],
+    whitelist: ['map', 'user', 'widget'],
 }
 
 const reducers = combineReducers({
+    map: mapReducer,
     user: userReducer,
+    widget: widgetReducer,
+    [api.reducerPath]: api.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
     reducer: persistedReducer,
-    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
+    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat([api.middleware]),
     devTools: process.env.NODE_ENV !== 'production',
 })
 

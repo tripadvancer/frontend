@@ -85,7 +85,7 @@ export const RessetPassword = () => {
                         onChange={formik.handleChange}
                     />
                 </div>
-                <FormButton type="submit" className="w-full" isLoading={isLoading}>
+                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                     {t('auth.reset_password.submit')}
                 </FormButton>
             </form>

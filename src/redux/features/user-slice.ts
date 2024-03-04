@@ -23,11 +23,11 @@ export const userSlice = createSlice({
         setUserLocation(state, action: PayloadAction<ICoordinates>) {
             state.userLocation = action.payload
         },
-        setOnboarded(state, action: PayloadAction<boolean>) {
-            state.isOnboarded = action.payload
+        setOnboarded(state) {
+            state.isOnboarded = true
         },
-        setCookieAccepted(state, action: PayloadAction<boolean>) {
-            state.isCookieAccepted = action.payload
+        setCookieAccepted(state) {
+            state.isCookieAccepted = true
         },
     },
 })

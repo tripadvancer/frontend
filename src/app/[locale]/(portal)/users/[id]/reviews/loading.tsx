@@ -1,5 +1,5 @@
-import { ReviewsFeedSkeleton } from '@/components/features/reviews-feed/reviews-feed-skeleton'
+import { UserReviewsSkeleton } from '@/components/features/user-reviews/user-reviews-skeleton'
 
 export default function Loading() {
-    return <ReviewsFeedSkeleton />
+    return <UserReviewsSkeleton />
 }
