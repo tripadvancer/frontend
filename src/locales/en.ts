@@ -45,6 +45,7 @@ export default {
     'common.empty_message.places': 'There are no places here at the moment.',
 
     'common.distance.km': '{distance} km',
+    'common.distance.m': '{distance} m',
 
     'common.link.sign_up': 'Sign up',
     'common.link.sign_in': 'Sign in',
