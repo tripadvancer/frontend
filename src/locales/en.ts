@@ -263,6 +263,9 @@ export default {
     'widget.random.error.not_location': 'To find a random place around you, you need to allow access to your location.',
     'widget.random.error.not_found': 'No places matching your filters found.{br}Try changing the category or radius.',
 
+    'map.popup.location.add_place': 'Add place here',
+    'map.popup.location.i_am_here': 'I am here',
+
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
 

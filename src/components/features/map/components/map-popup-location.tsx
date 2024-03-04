@@ -11,8 +11,10 @@ import { FormButton } from '@/components/ui/form-button'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { useSessionValidation } from '@/utils/hooks/use-session-validation'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
+    const t = useI18n()
     const dispatch = useAppDispatch()
     const router = useRouter()
 
@@ -46,7 +48,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
                     {wrappedCoordinates.lat}, {wrappedCoordinates.lng}
                 </div>
                 <FormButton type="stroke" size="small" onClick={handleClick}>
-                    Add place here
+                    {t('map.popup.location.add_place')}
                 </FormButton>
             </Popup>
             <Marker latitude={coordinates.lat} longitude={coordinates.lng}>
