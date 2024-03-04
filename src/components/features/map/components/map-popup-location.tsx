@@ -43,7 +43,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
                 closeOnClick={false}
                 closeButton={false}
             >
-                <div>Selected location</div>
+                <div>{t('map.popup.location.title')}</div>
                 <div className="mb-4 text-small text-black-40">
                     {wrappedCoordinates.lat}, {wrappedCoordinates.lng}
                 </div>

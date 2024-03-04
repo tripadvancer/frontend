@@ -271,6 +271,7 @@ export default {
     'widget.random.error.not_location': 'Чтобы найти случайное место рядом с Вами, необходимо разрешить доступ к Вашему местоположению.',
     'widget.random.error.not_found': 'Не найдено мест, соответствующих Вашим фильтрам.<0 />Попробуйте изменить категории или радиус.',
 
+    'map.popup.location.title': 'Выбранное место',
     'map.popup.location.add_place': 'Добавить место',
     'map.popup.location.i_am_here': 'Я здесь',
 
