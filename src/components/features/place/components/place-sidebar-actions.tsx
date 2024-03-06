@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import type { IPlace, IPlacePreview } from '@/utils/types/place'
+import type { IPlace } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
 import { BookmarkFillIcon24, BookmarkIcon24, PinIcon24, RouteIcon24 } from '@/components/ui/icons'
@@ -32,14 +32,11 @@ export const PlaceSidebarActions = (place: IPlace) => {
         )
         dispatch(
             setMapPlacePopupInfo({
-                id: place.id,
-                title: place.title,
-                cover: place.cover,
-                avgRating: place.avgRating,
-                reviewsCount: place.reviewsCount,
+                ...place,
                 coordinates: place.location.coordinates,
-                isFavorite: response.data?.isFavorite,
-            } as IPlacePreview),
+                isFavorite: response.data?.isFavorite || false,
+                isVisited: response.data?.isVisited || false,
+            }),
         )
         router.push('/maps')
     }
