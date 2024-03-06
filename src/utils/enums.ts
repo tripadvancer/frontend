@@ -33,6 +33,11 @@ export enum Keys {
     DOWN = 'ArrowDown',
 }
 
+export enum WidgetSide {
+    PLACES = 'PLACES',
+    RANDOM = 'RANDOM',
+}
+
 export enum WidgetTabsEnum {
     ALL = 'ALL',
     SAVED = 'SAVED',

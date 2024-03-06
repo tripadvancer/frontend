@@ -1,10 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import type { RootState } from '@/redux/store'
-import { MapDataSourcesEnum, WidgetListsEnum, WidgetTabsEnum } from '@/utils/enums'
+import { MapDataSourcesEnum, WidgetListsEnum, WidgetSide, WidgetTabsEnum } from '@/utils/enums'
 
 interface WidgetState {
     dataSource: MapDataSourcesEnum
+    widgetSide: WidgetSide
     places: {
         isOpened: boolean
         isCategoryFilterOpened: boolean
@@ -25,6 +26,7 @@ interface WidgetState {
 
 export const initialState: WidgetState = {
     dataSource: MapDataSourcesEnum.ALL_PLACES,
+    widgetSide: WidgetSide.PLACES,
     places: {
         isOpened: true,
         isCategoryFilterOpened: false,
@@ -43,10 +45,37 @@ export const initialState: WidgetState = {
     isMenuOpened: false,
 }
 
+function setWidgetDataSource(state: WidgetState) {
+    if (state.widgetSide === WidgetSide.PLACES && state.places.isShowOnlySavedPlaces) {
+        switch (state.places.activeTab) {
+            case WidgetTabsEnum.ALL:
+                state.dataSource = MapDataSourcesEnum.ALL_PLACES
+                break
+            case WidgetTabsEnum.SAVED:
+                if (state.places.activeList === WidgetListsEnum.FAVORITES) {
+                    state.dataSource = MapDataSourcesEnum.FAVORITES_PLACES
+                }
+                if (state.places.activeList === WidgetListsEnum.VISITED) {
+                    state.dataSource = MapDataSourcesEnum.VISITED_PLACES
+                }
+                break
+            default:
+                state.dataSource = MapDataSourcesEnum.ALL_PLACES
+                break
+        }
+    } else {
+        state.dataSource = MapDataSourcesEnum.ALL_PLACES
+    }
+}
+
 export const widgetSlice = createSlice({
     name: 'map',
     initialState,
     reducers: {
+        setWidgetSide(state, action: PayloadAction<WidgetSide>) {
+            state.widgetSide = action.payload
+            setWidgetDataSource(state)
+        },
         toggleWidgetPlacesOpened(state) {
             state.places.isOpened = !state.places.isOpened
         },
@@ -72,42 +101,11 @@ export const widgetSlice = createSlice({
         },
         setWidgetPlacesActiveTab(state, action: PayloadAction<WidgetTabsEnum>) {
             state.places.activeTab = action.payload
-
-            if (state.places.isShowOnlySavedPlaces) {
-                switch (action.payload) {
-                    case WidgetTabsEnum.ALL:
-                        state.dataSource = MapDataSourcesEnum.ALL_PLACES
-                        break
-                    case WidgetTabsEnum.SAVED:
-                        if (state.places.activeList === WidgetListsEnum.FAVORITES) {
-                            state.dataSource = MapDataSourcesEnum.FAVORITES_PLACES
-                        }
-                        if (state.places.activeList === WidgetListsEnum.VISITED) {
-                            state.dataSource = MapDataSourcesEnum.VISITED_PLACES
-                        }
-                        break
-                    default:
-                        state.dataSource = MapDataSourcesEnum.ALL_PLACES
-                        break
-                }
-            }
+            setWidgetDataSource(state)
         },
         setWidgetPlacesActiveList(state, action: PayloadAction<WidgetListsEnum | null>) {
             state.places.activeList = action.payload
-
-            if (state.places.isShowOnlySavedPlaces) {
-                switch (action.payload) {
-                    case WidgetListsEnum.FAVORITES:
-                        state.dataSource = MapDataSourcesEnum.FAVORITES_PLACES
-                        break
-                    case WidgetListsEnum.VISITED:
-                        state.dataSource = MapDataSourcesEnum.VISITED_PLACES
-                        break
-                    default:
-                        state.dataSource = MapDataSourcesEnum.ALL_PLACES
-                        break
-                }
-            }
+            setWidgetDataSource(state)
         },
         resetWidgetPLacesActiveList(state) {
             state.places.activeList = null
@@ -115,27 +113,7 @@ export const widgetSlice = createSlice({
         },
         toggleWidgetPlacesShowOnlySavedPlaces(state) {
             state.places.isShowOnlySavedPlaces = !state.places.isShowOnlySavedPlaces
-
-            if (state.places.isShowOnlySavedPlaces) {
-                switch (state.places.activeTab) {
-                    case WidgetTabsEnum.ALL:
-                        state.dataSource = MapDataSourcesEnum.ALL_PLACES
-                        break
-                    case WidgetTabsEnum.SAVED:
-                        if (state.places.activeList === WidgetListsEnum.FAVORITES) {
-                            state.dataSource = MapDataSourcesEnum.FAVORITES_PLACES
-                        }
-                        if (state.places.activeList === WidgetListsEnum.VISITED) {
-                            state.dataSource = MapDataSourcesEnum.VISITED_PLACES
-                        }
-                        break
-                    default:
-                        state.dataSource = MapDataSourcesEnum.ALL_PLACES
-                        break
-                }
-            } else {
-                state.dataSource = MapDataSourcesEnum.ALL_PLACES
-            }
+            setWidgetDataSource(state)
         },
         setWidgetRandomSelectedCategories(state, action) {
             state.random.selectedCategories = action.payload
@@ -149,6 +127,7 @@ export const widgetSlice = createSlice({
 export const getWidgetState = (state: RootState) => state.widget
 
 export const {
+    setWidgetSide,
     toggleWidgetPlacesOpened,
     toggleWidgetPlacesCategoryFilterOpened,
     toggleWidgetRandomOpened,
