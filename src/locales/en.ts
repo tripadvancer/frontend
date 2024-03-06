@@ -268,6 +268,9 @@ export default {
     'map.popup.location.add_place': 'Add place here',
     'map.popup.location.i_am_here': 'I am here',
 
+    'places_nearby_warning.title': 'Attention',
+    'places_nearby_warning.message': 'Sorry, adding a new place in this area is not possible, as there are already other locations within a {radius} radius. If it is an existing place, please share your review. Otherwise, contact our support service.',
+
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
 

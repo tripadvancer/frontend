@@ -8,15 +8,22 @@ import { useRouter } from 'next/navigation'
 import type { ILocationPreview } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
+import { useDialog } from '@/providers/dialog-provider'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
+import { placesAroundAPI } from '@/redux/services/places-around-api'
 import { useSessionValidation } from '@/utils/hooks/use-session-validation'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
+import { PlacesNearbyWarning } from '../../places-nearby-warning/places-nearby-warning'
+
 export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
     const t = useI18n()
-    const dispatch = useAppDispatch()
+    const dialog = useDialog()
     const router = useRouter()
+    const dispatch = useAppDispatch()
+
+    const [searchPlacesAround, { isLoading }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
     // check if wrap is a function
     // todo
@@ -29,7 +36,19 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
     wrappedCoordinates.lat = Number(wrappedCoordinates.lat.toFixed(6))
     wrappedCoordinates.lng = Number(wrappedCoordinates.lng.toFixed(6))
 
-    const handleClick = useSessionValidation(() => {
+    const handleClick = useSessionValidation(async () => {
+        const response = await searchPlacesAround({
+            lat: wrappedCoordinates.lat,
+            lng: wrappedCoordinates.lng,
+            radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
+            categories: [],
+        })
+
+        if (response.data?.length) {
+            dialog.open(<PlacesNearbyWarning places={response.data} />)
+            return
+        }
+
         dispatch(closeMapPopups())
         router.push(`/add-place?lat=${wrappedCoordinates.lat}&lng=${wrappedCoordinates.lng}`)
     })
@@ -47,7 +66,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
                 <div className="mb-4 text-small text-black-40">
                     {wrappedCoordinates.lat}, {wrappedCoordinates.lng}
                 </div>
-                <FormButton type="stroke" size="small" onClick={handleClick}>
+                <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleClick}>
                     {t('map.popup.location.add_place')}
                 </FormButton>
             </Popup>

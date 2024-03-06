@@ -4,18 +4,23 @@ import { useRouter } from 'next/navigation'
 
 import type { IPlace, UpdatePlaceInputs } from '@/utils/types/place'
 
+import { PlacesNearbyWarning } from '@/components/features/places-nearby-warning/places-nearby-warning'
+import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { placesAPI } from '@/redux/services/places-api'
+import { placesAroundAPI } from '@/redux/services/places-around-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { PlaceForm } from './place-form'
 
 export const PlaceEdit = (place: IPlace) => {
     const t = useI18n()
+    const dialog = useDialog()
     const router = useRouter()
     const toast = useToast()
 
     const [editPlace, { isLoading }] = placesAPI.useEditPlaceMutation()
+    const [searchPlacesAround, { isLoading: isSearchingPlacesAround }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
     const initialValues: UpdatePlaceInputs = {
         placeId: place.id,
@@ -28,6 +33,18 @@ export const PlaceEdit = (place: IPlace) => {
     }
 
     const handleSubmit = async (inputs: UpdatePlaceInputs) => {
+        const response = await searchPlacesAround({
+            lat: inputs.location.split(',').map(Number)[0],
+            lng: inputs.location.split(',').map(Number)[1],
+            radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
+            categories: [],
+        })
+
+        if (response.data?.length && response.data[0].id !== place.id) {
+            dialog.open(<PlacesNearbyWarning places={response.data} />)
+            return
+        }
+
         try {
             await editPlace(inputs)
             toast.success(t('success.create_place'))
