@@ -25,21 +25,10 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
 
     const [searchPlacesAround, { isLoading }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
-    // check if wrap is a function
-    // todo
-    if (typeof coordinates.wrap !== 'function') {
-        dispatch(closeMapPopups())
-    }
-
-    const wrappedCoordinates = coordinates.wrap()
-    // Round coordinates to 6 decimal places
-    wrappedCoordinates.lat = Number(wrappedCoordinates.lat.toFixed(6))
-    wrappedCoordinates.lng = Number(wrappedCoordinates.lng.toFixed(6))
-
     const handleClick = useSessionValidation(async () => {
         const response = await searchPlacesAround({
-            lat: wrappedCoordinates.lat,
-            lng: wrappedCoordinates.lng,
+            lat: coordinates.lat,
+            lng: coordinates.lng,
             radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
             categories: [],
         })
@@ -50,7 +39,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
         }
 
         dispatch(closeMapPopups())
-        router.push(`/add-place?lat=${wrappedCoordinates.lat}&lng=${wrappedCoordinates.lng}`)
+        router.push(`/add-place?lat=${coordinates.lat}&lng=${coordinates.lng}`)
     })
 
     return (
@@ -64,7 +53,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
             >
                 <div>{t('map.popup.location.title')}</div>
                 <div className="mb-4 text-small text-black-40">
-                    {wrappedCoordinates.lat}, {wrappedCoordinates.lng}
+                    {coordinates.lat}, {coordinates.lng}
                 </div>
                 <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleClick}>
                     {t('map.popup.location.add_place')}

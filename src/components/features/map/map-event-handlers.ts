@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback } from 'react'
-import { MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl'
+import { LngLat, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
@@ -18,6 +18,15 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 export const useMapEventHandlers = () => {
     const dispatch = useAppDispatch()
     const mapState = useAppSelector(getMapState)
+
+    const showLocationPopup = useCallback(
+        (coordinates: LngLat) => {
+            coordinates.lat = Number(coordinates.lat.toFixed(6))
+            coordinates.lng = Number(coordinates.lng.toFixed(6))
+            dispatch(setMapLocationPopupInfo({ coordinates }))
+        },
+        [dispatch],
+    )
 
     /**
      * This function is called when the map is loaded.
@@ -115,14 +124,13 @@ export const useMapEventHandlers = () => {
                         return
                     }
 
-                    const coordinates = event.lngLat
-                    dispatch(setMapLocationPopupInfo({ coordinates }))
+                    showLocationPopup(event.lngLat.wrap())
                 }
             }
 
             event.originalEvent.stopPropagation()
         },
-        [dispatch, mapState],
+        [dispatch, mapState, showLocationPopup],
     )
 
     /**
@@ -131,11 +139,10 @@ export const useMapEventHandlers = () => {
      */
     const handleContextMenu = useCallback(
         (event: MapLayerMouseEvent) => {
-            const coordinates = event.lngLat
-            dispatch(setMapLocationPopupInfo({ coordinates }))
+            showLocationPopup(event.lngLat.wrap())
             event.originalEvent.stopPropagation()
         },
-        [dispatch],
+        [showLocationPopup],
     )
 
     return {
