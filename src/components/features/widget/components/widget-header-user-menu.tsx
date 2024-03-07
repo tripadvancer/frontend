@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation'
 
 import { PointIcon24, ReviewIcon24, SettingsIcon24, SignOutIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
-import { getWidgetState, toggleWidgetMenuOpened } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { getWidgetState } from '@/redux/features/widget-slice'
+import { useAppSelector } from '@/redux/hooks'
 import { useI18n } from '@/utils/i18n/i18n.client'
 import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
@@ -17,13 +17,11 @@ export const WidgetHeaderUserMenu = () => {
     const supertokens = useSupertokens()
     const router = useRouter()
     const toast = useToast()
-    const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
 
     const signOut = async () => {
         try {
             await Session.signOut()
-            dispatch(toggleWidgetMenuOpened())
             router.refresh()
         } catch (err) {
             toast.error(t('common.error'))
