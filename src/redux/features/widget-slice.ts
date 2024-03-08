@@ -72,6 +72,9 @@ export const widgetSlice = createSlice({
     name: 'map',
     initialState,
     reducers: {
+        resetWidgetState() {
+            return initialState
+        },
         setWidgetSide(state, action: PayloadAction<WidgetSide>) {
             state.widgetSide = action.payload
             setWidgetDataSource(state)
@@ -127,6 +130,7 @@ export const widgetSlice = createSlice({
 export const getWidgetState = (state: RootState) => state.widget
 
 export const {
+    resetWidgetState,
     setWidgetSide,
     toggleWidgetPlacesOpened,
     toggleWidgetPlacesCategoryFilterOpened,
