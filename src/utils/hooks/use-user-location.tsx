@@ -22,7 +22,7 @@ export function useUserLocation(): UserLocationHookInterface {
                     setMapViewState({
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude,
-                        zoom: 12,
+                        zoom: parseInt(process.env.NEXT_PUBLIC_MAP_DEFAULT_ZOOM || '16', 10),
                     }),
                 )
                 setIsLocating(false)
