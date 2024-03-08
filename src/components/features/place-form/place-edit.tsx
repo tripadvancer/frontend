@@ -40,7 +40,7 @@ export const PlaceEdit = (place: IPlace) => {
             categories: [],
         })
 
-        if (response.data && response.data.length > 0 && !response.data.map(place => place.id).includes(place.id)) {
+        if (response.data && response.data.length > 0 && !response.data.some(p => p.id === place.id)) {
             dialog.open(<PlacesNearbyWarning places={response.data} />)
             return
         }
