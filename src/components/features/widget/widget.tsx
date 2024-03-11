@@ -12,13 +12,13 @@ export const Widget = () => {
     const widgetState = useAppSelector(getWidgetState)
 
     return (
-        <>
+        <div className="pointer-events-none fixed bottom-0 right-0 top-0 z-40 w-full sm:w-[512px]">
             {widgetState.widgetSide === WidgetSide.PLACES && (
                 <WidgetPlaces onFlip={() => dispatch(setWidgetSide(WidgetSide.RANDOM))} />
             )}
             {widgetState.widgetSide === WidgetSide.RANDOM && (
                 <WidgetRandom onFlip={() => dispatch(setWidgetSide(WidgetSide.PLACES))} />
             )}
-        </>
+        </div>
     )
 }
