@@ -1,7 +1,7 @@
 import 'react-indiana-drag-scroll/dist/style.css'
 
 import { Roboto } from 'next/font/google'
-import type { Metadata } from 'next/types'
+import type { Metadata, Viewport } from 'next/types'
 
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 import { DialogProvider } from '@/providers/dialog-provider'
@@ -21,6 +21,13 @@ const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],
     weight: ['400', '500', '700'],
 })
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+}
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string),
