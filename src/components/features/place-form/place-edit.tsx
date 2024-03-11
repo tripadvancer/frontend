@@ -40,8 +40,11 @@ export const PlaceEdit = (place: IPlace) => {
             categories: [],
         })
 
-        if (response.data && response.data.length > 0 && !response.data.some(p => p.id === place.id)) {
-            dialog.open(<PlacesNearbyWarning places={response.data} />)
+        // exclude the current place from the response
+        const placeNearby = response.data?.filter(p => p.id !== place.id) || []
+
+        if (placeNearby.length > 0) {
+            dialog.open(<PlacesNearbyWarning places={placeNearby} />)
             return
         }
 
