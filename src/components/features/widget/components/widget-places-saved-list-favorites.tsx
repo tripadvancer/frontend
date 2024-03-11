@@ -5,8 +5,8 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import { WidgetMessage } from './widget-message'
-import { WidgetPlacePreviewSkeleton } from './widget-place-preview-skeleton'
 import { WidgetPlacesFeed } from './widget-places-feed'
+import { WidgetPlacesPlaceSkeleton } from './widget-places-place-skeleton'
 
 export const WidgetPlacesSavedListFavorites = () => {
     const t = useI18n()
@@ -26,5 +26,5 @@ export const WidgetPlacesSavedListFavorites = () => {
         return <WidgetPlacesFeed places={places} />
     }
 
-    return <WidgetPlacePreviewSkeleton />
+    return <WidgetPlacesPlaceSkeleton />
 }

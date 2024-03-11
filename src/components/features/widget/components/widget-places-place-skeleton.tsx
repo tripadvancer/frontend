@@ -1,6 +1,6 @@
 'use client'
 
-export const WidgetPlacePreviewSkeleton = () => {
+export const WidgetPlacesPlaceSkeleton = () => {
     return (
         <div role="status" className="flex flex-col gap-4">
             <div className="h-20 animate-pulse rounded-lg bg-gray-200" />

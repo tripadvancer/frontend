@@ -33,7 +33,7 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                             <div className="mb-2">
                                 <PlacePreviewCover {...place} size={192} />
                             </div>
-                            <div className="font-medium">{place.title}</div>
+                            <div className="line-clamp-3 break-words font-medium">{place.title}</div>
                         </Link>
                     ))}
                 </div>

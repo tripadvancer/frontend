@@ -32,8 +32,8 @@ export const CountryPlace = (place: IPlacePreview) => {
                         <ImageNotFound className="w-32 rounded-2xl xl:w-40" />
                     )}
                 </div>
-                <div className="flex flex-col justify-between">
-                    <div className="line-clamp-3 text-h7-m sm:text-h7">{place.title}</div>
+                <div className="flex flex-col justify-between overflow-hidden">
+                    <div className="line-clamp-4 break-words text-h7-m sm:text-h7">{place.title}</div>
                     <div>
                         <Rating value={place.avgRating ?? 0} size={16} />
                         <div className="text-small text-black-40">

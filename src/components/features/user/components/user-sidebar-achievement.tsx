@@ -3,7 +3,7 @@ import { IUserStatistics } from '@/utils/types/user'
 import { Achievement } from '@/components/ui/achievement'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-export const UserAchievement = async ({
+export const UserSidebarAchievement = async ({
     places,
     placePhotos,
     placeReviews,

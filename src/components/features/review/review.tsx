@@ -20,7 +20,7 @@ export const Review = ({ review, variant }: ReviewProps) => {
                 <ReviewActions {...review} />
             </div>
 
-            <div>{review.text}</div>
+            <div className="break-words">{review.text}</div>
             <ReviewPhotosList title={review.place.title} description={review.user.name} photos={review.photos} />
         </div>
     )

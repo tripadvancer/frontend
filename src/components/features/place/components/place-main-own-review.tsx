@@ -44,7 +44,7 @@ export const PlaceMainOwnReview = ({ placeId }: { placeId: number }) => {
                         </Link>
                         <ReviewActionsPrivate {...response.data.ownReview} />
                     </div>
-                    <div>{text}</div>
+                    <div className="break-words">{text}</div>
                     <ReviewPhotosList title={place.title} description={user.name} photos={photos} />
                 </div>
             )
