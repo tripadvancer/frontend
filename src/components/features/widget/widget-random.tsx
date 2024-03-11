@@ -6,6 +6,7 @@ import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState, setWidgetRandomRadius, toggleWidgetRandomOpened } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { useScrollability } from '@/utils/hooks/use-scrollability'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetFlipToggler } from './components/widget-flip-toggler'
@@ -25,6 +26,8 @@ export const WidgetRandom = ({ onFlip }: WidgetRandomProps) => {
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
     const userLocation = useAppSelector(getUserLocation)
+
+    const [containerRef, isScrollable] = useScrollability()
     const [searchRandomPlace, { data, error, isFetching, isSuccess }] = placesAroundAPI.useLazyGetRandomPlaceQuery()
 
     const handleRandomClick = () => {
@@ -39,43 +42,51 @@ export const WidgetRandom = ({ onFlip }: WidgetRandomProps) => {
     }
 
     return (
-        <ScrollContainer className="max-h-screen w-full cursor-auto sm:p-8">
-            <div className="rounded-b-2xl bg-white shadow-large sm:rounded-2xl">
-                <WidgetHeader />
+        <div
+            className="fixed bottom-0 right-0 top-0 z-40 w-full sm:w-[512px]"
+            style={{ pointerEvents: isScrollable ? 'auto' : 'none' }}
+        >
+            <ScrollContainer className="max-h-screen w-full cursor-auto sm:p-8">
+                <div
+                    ref={containerRef}
+                    className="pointer-events-auto rounded-b-2xl bg-white shadow-large sm:rounded-2xl"
+                >
+                    <WidgetHeader />
 
-                <div className="relative flex flex-col gap-y-8 rounded-2xl bg-orange-10 p-4 sm:p-8">
-                    <WidgetFlipToggler variant="blue" onClick={onFlip} />
-                    <p className="mr-12 text-black-70 sm:mr-8">{t('widget.random.intro')}</p>
-                    <WidgetRandomCategories />
-                </div>
+                    <div className="relative flex flex-col gap-y-8 rounded-2xl bg-orange-10 p-4 sm:p-8">
+                        <WidgetFlipToggler variant="blue" onClick={onFlip} />
+                        <p className="mr-12 text-black-70 sm:mr-8">{t('widget.random.intro')}</p>
+                        <WidgetRandomCategories />
+                    </div>
 
-                <div className="p-4 sm:p-8">
-                    <WidgetSection
-                        title={t('widget.random.title')}
-                        variant="orange"
-                        isOpened={widgetState.random.isOpened}
-                        onToggle={() => dispatch(toggleWidgetRandomOpened())}
-                    >
-                        <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
-                            <WidgetRandomSlider
-                                value={widgetState.random.radius}
-                                onChange={value => dispatch(setWidgetRandomRadius(value))}
-                            />
-                            <WidgetRandomButton
-                                isLoading={isFetching}
-                                isUserLocated={!!userLocation}
-                                onClick={handleRandomClick}
-                            />
-                            <WidgetRandomResults
-                                place={data}
-                                isSuccess={isSuccess}
-                                isError={!!error}
-                                isUserLocated={!!userLocation}
-                            />
-                        </div>
-                    </WidgetSection>
+                    <div className="p-4 sm:p-8">
+                        <WidgetSection
+                            title={t('widget.random.title')}
+                            variant="orange"
+                            isOpened={widgetState.random.isOpened}
+                            onToggle={() => dispatch(toggleWidgetRandomOpened())}
+                        >
+                            <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
+                                <WidgetRandomSlider
+                                    value={widgetState.random.radius}
+                                    onChange={value => dispatch(setWidgetRandomRadius(value))}
+                                />
+                                <WidgetRandomButton
+                                    isLoading={isFetching}
+                                    isUserLocated={!!userLocation}
+                                    onClick={handleRandomClick}
+                                />
+                                <WidgetRandomResults
+                                    place={data}
+                                    isSuccess={isSuccess}
+                                    isError={!!error}
+                                    isUserLocated={!!userLocation}
+                                />
+                            </div>
+                        </WidgetSection>
+                    </div>
                 </div>
-            </div>
-        </ScrollContainer>
+            </ScrollContainer>
+        </div>
     )
 }

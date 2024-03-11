@@ -122,9 +122,9 @@ export const Mapbox = () => {
                     <LocationIcon16 />
                 </MapControl>
 
-                <MapControl onClick={() => {}}>
+                {/* <MapControl onClick={() => {}}>
                     <QuestionIcon16 />
-                </MapControl>
+                </MapControl> */}
             </div>
 
             {userLocation && (

@@ -27,7 +27,7 @@ export const PlaceSidebarActions = (place: IPlace) => {
             setMapViewState({
                 latitude: place.location.coordinates[1],
                 longitude: place.location.coordinates[0],
-                zoom: parseInt(process.env.NEXT_PUBLIC_MAP_DEFAULT_ZOOM || '16', 10),
+                zoom: parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM || '16', 10),
             }),
         )
         dispatch(

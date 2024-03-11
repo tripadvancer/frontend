@@ -1,21 +1,124 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
+
+import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { ISearchItem } from '@/utils/types/search'
+
 import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
+import { Spinner } from '@/components/ui/spinner'
+import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
+import { useAppDispatch } from '@/redux/hooks'
+import { searchAPI } from '@/redux/services/search-api'
+import { Keys } from '@/utils/enums'
+import { useDebounce } from '@/utils/hooks/use-debounce'
+import { useKeypress } from '@/utils/hooks/use-keypress'
+import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
+import { useI18n } from '@/utils/i18n/i18n.client'
+
+import { WidgetSearchAutocomplete } from './widget-search-autocomplete'
 
 export const WidgetSearch = () => {
+    const t = useI18n()
+    const dispatch = useAppDispatch()
+    const [searchTerm, setSearchTerm] = useState<string>('')
+    const [suggestions, setSuggestions] = useState<ISearchItem<IPlacePreview | ILocationPreview>[]>([])
+    const [isSuggestionsVisible, setIsSuggestionsVisible] = useState<boolean>(false)
+
+    const inputRef = useRef<HTMLInputElement>(null)
+    const suggestionsRef = useRef<HTMLDivElement>(null)
+
+    // Fetch search results
+    const debouncedSearchTerm = useDebounce(searchTerm, 500)
+    const query = debouncedSearchTerm
+    const skip = debouncedSearchTerm.length < 2
+    const searchResult = searchAPI.useSearchQuery({ query }, { skip })
+
+    useEffect(() => {
+        setSuggestions([])
+
+        if (searchTerm.length >= 2 && searchResult.isSuccess) {
+            const items = searchResult.data
+            const coordinates = items.coordinates.map(coordinate => ({ ...coordinate }))
+            const places = items.places.map(place => ({ ...place }))
+            const locations = items.locations.map(location => ({ ...location }))
+            // Merge all search results into one array
+            setSuggestions([...coordinates, ...places, ...locations])
+        }
+    }, [searchResult, searchTerm])
+
+    useEffect(() => {
+        setIsSuggestionsVisible(suggestions.length > 0)
+    }, [suggestions])
+
+    useOnClickOutside(suggestionsRef, () => {
+        setIsSuggestionsVisible(false)
+    })
+
+    useKeypress(Keys.ESCAPE, () => {
+        setIsSuggestionsVisible(false)
+    })
+
+    const handleClearSearch = () => {
+        setSearchTerm('')
+        setSuggestions([])
+        inputRef.current?.focus()
+    }
+
+    const handleSelect = (cursor: number) => {
+        dispatch(
+            setMapViewState({
+                latitude: suggestions[cursor].coordinates.lat,
+                longitude: suggestions[cursor].coordinates.lng,
+                zoom: parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM || '16', 10),
+            }),
+        )
+
+        if (suggestions[cursor].type === 'location') {
+            dispatch(setMapLocationPopupInfo(suggestions[cursor].properties as ILocationPreview))
+        }
+
+        if (suggestions[cursor].type === 'place') {
+            dispatch(setMapPlacePopupInfo(suggestions[cursor].properties as IPlacePreview))
+        }
+
+        setIsSuggestionsVisible(false)
+    }
+
+    const handleSearchClick = () => {
+        if (searchTerm.length > 0) {
+            setIsSuggestionsVisible(true)
+        }
+    }
+
     return (
         <div className="relative mr-12 sm:mr-8">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 transform text-blue-100">
-                <SearchIcon16 />
+                {searchResult.isFetching ? <Spinner size={16} /> : <SearchIcon16 />}
             </div>
+
             <input
+                ref={inputRef}
                 type="text"
+                value={searchTerm}
                 className="hover-animated h-10 w-full rounded-lg border border-blue-20 bg-white px-10 placeholder:text-black-40 hover:border-blue-100 focus:border-blue-100 focus:outline-none"
-                placeholder="Find a place"
+                placeholder={t('widget.search.placeholder')}
+                onChange={e => setSearchTerm(e.target.value)}
+                onClick={handleSearchClick}
             />
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 transform text-black-15">
-                <CloseIcon16 />
-            </div>
+
+            {searchTerm.length > 0 && (
+                <div
+                    className="hover-animated absolute right-4 top-1/2 -translate-y-1/2 transform cursor-pointer text-black-15 hover:text-blue-active"
+                    onClick={handleClearSearch}
+                >
+                    <CloseIcon16 />
+                </div>
+            )}
+
+            {isSuggestionsVisible && (
+                <WidgetSearchAutocomplete ref={suggestionsRef} suggestions={suggestions} onSelect={handleSelect} />
+            )}
         </div>
     )
 }
