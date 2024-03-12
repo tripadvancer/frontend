@@ -4,11 +4,11 @@ import { Avatar } from '@/components/ui/avatar'
 
 export const UserName = (user: IUser) => {
     return (
-        <h1 className="mb-8 flex items-center gap-4 text-h1-m sm:text-h1 lg:mb-16 lg:flex-row">
-            <div className="grow-0">
+        <h1 className="mb-8 flex flex-col items-center gap-4 overflow-hidden text-h1-m sm:text-h1 lg:mb-16 lg:flex-row">
+            <div className="flex-none">
                 <Avatar {...user} size={64} />
             </div>
-            <div className="grow-1 overflow-hidden truncate">{user.name}</div>
+            <div className="max-w-full break-words text-center lg:overflow-hidden lg:truncate">{user.name}</div>
         </h1>
     )
 }
