@@ -11,7 +11,6 @@ type WidgetRandomResultsProps = {
     place: IPlacePreview | undefined
     isSuccess: boolean
     isError: boolean
-
     isUserLocated: boolean
 }
 

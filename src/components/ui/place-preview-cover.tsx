@@ -10,9 +10,10 @@ import { makeImageUrl } from '@/utils/helpers'
 type PlacePreviewCoverProps = IPlacePreview & {
     size?: number
     isCover?: boolean
+    isRounded?: boolean
 }
 
-export const PlacePreviewCover = ({ cover, title, size, isCover }: PlacePreviewCoverProps) => {
+export const PlacePreviewCover = ({ cover, title, size, isCover, isRounded }: PlacePreviewCoverProps) => {
     if (cover) {
         return isCover ? (
             <Image
@@ -21,7 +22,7 @@ export const PlacePreviewCover = ({ cover, title, size, isCover }: PlacePreviewC
                 height={0}
                 sizes="100vw"
                 style={{ width: '100%', height: 'auto' }}
-                className="aspect-video rounded-lg"
+                className={classNames(isRounded ? 'rounded-full' : 'rounded-lg', 'aspect-video')}
                 alt={title}
             />
         ) : (
@@ -29,7 +30,7 @@ export const PlacePreviewCover = ({ cover, title, size, isCover }: PlacePreviewC
                 src={makeImageUrl(cover, ImageVariant.PREVIEW)}
                 width={size}
                 height={size}
-                className="rounded-lg"
+                className={isRounded ? 'rounded-full' : 'rounded-lg'}
                 alt={title}
             />
         )
@@ -37,9 +38,11 @@ export const PlacePreviewCover = ({ cover, title, size, isCover }: PlacePreviewC
 
     return (
         <div
-            className={classNames('flex-center aspect-square flex-none rounded-lg bg-black-5 text-white', {
-                'aspect-video': !size,
-            })}
+            className={classNames(
+                'flex-center aspect-square flex-none bg-black-5 text-white',
+                isRounded ? 'rounded-full' : 'rounded-lg',
+                !size && 'aspect-video',
+            )}
             style={{ maxWidth: size, maxHeight: size }}
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18" className="w-2/5">
