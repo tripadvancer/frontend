@@ -61,7 +61,6 @@ export const ForgotPassword = () => {
                     break
             }
         } catch (err) {
-            console.error(err)
             toast.error(t('common.error'))
         } finally {
             setIsLoading(false)
