@@ -78,7 +78,6 @@ export const SignIn = () => {
             }
         } catch (err) {
             toast.error(t('common.error'))
-            console.error(err)
         } finally {
             setIsLoading(false)
         }

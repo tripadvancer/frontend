@@ -19,7 +19,7 @@ export const WidgetHeaderAbout = () => {
                 </div>
                 <ul className="flex flex-col gap-y-2">
                     <li>
-                        <Link href="">Contact Us</Link>
+                        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>Contact Us</Link>
                     </li>
                     <li>
                         <Link href="">Terms and Conditions</Link>
