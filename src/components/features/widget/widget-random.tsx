@@ -39,7 +39,7 @@ export const WidgetRandom = ({ onFlip }: WidgetRandomProps) => {
     }
 
     return (
-        <ScrollContainer className="max-h-screen w-full sm:p-8">
+        <ScrollContainer className="max-h-screen w-full cursor-auto sm:p-8">
             <div className="rounded-b-2xl bg-white shadow-large sm:rounded-2xl">
                 <WidgetHeader />
 

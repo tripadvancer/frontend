@@ -1,6 +1,6 @@
 import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import storage from 'redux-persist/es/storage'
 
 import mapReducer from '@/redux/features/map-slice'
 import userReducer from '@/redux/features/user-slice'

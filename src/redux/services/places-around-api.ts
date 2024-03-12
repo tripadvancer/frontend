@@ -1,4 +1,4 @@
-import type { IPlacePreview } from '@/utils/types/place'
+import type { IPlaceNearby, IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
 
@@ -14,6 +14,17 @@ export const placesAroundAPI = api.injectEndpoints({
         getRandomPlace: build.query<IPlacePreview, GetPlacesAroundParams>({
             query: params => ({
                 url: 'places-around/random',
+                params: {
+                    lng: params.lng,
+                    lat: params.lat,
+                    radius: params.radius,
+                    categories_ids: params.categories.join(),
+                },
+            }),
+        }),
+        getPlacesAround: build.query<IPlaceNearby[], GetPlacesAroundParams>({
+            query: params => ({
+                url: 'places-around',
                 params: {
                     lng: params.lng,
                     lat: params.lat,

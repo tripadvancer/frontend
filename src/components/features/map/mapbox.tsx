@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import { Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl'
 
 import { LocationIcon16, MinusIcon16, PlusIcon16, QuestionIcon16 } from '@/components/ui/icons'
@@ -56,12 +56,6 @@ export const Mapbox = () => {
     const handleZoomOut = useCallback(() => {
         mapRef.current?.zoomOut({ duration: 500 })
     }, [])
-
-    useEffect(() => {
-        if (userLocation) {
-            mapRef.current?.flyTo({ center: [userLocation.lng, userLocation.lat], zoom: 12, essential: true })
-        }
-    }, [userLocation])
 
     return (
         <ReactMapGl
