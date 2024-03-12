@@ -13,17 +13,19 @@ export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {
     const locale = useCurrentLocale()
 
     return (
-        <Link href={`/users/${user.id}`} className="group inline-flex items-start gap-2">
-            <Avatar {...user} size={32} />
-            <div className="flex flex-col">
+        <div className="flex flex-row gap-x-2 overflow-hidden">
+            <div className="grow-0">
+                <Avatar {...user} size={32} />
+            </div>
+            <div className="grow-1 overflow-hidden">
                 <Rating value={rating} size={16} />
-                <div className="sm:flex sm:gap-x-2">
-                    <div className="hover-animated text-small-bold text-black-70 group-hover:text-blue-active">
+                <div className="flex flex-col gap-x-2 sm:flex-row">
+                    <Link href={`/users/${user.id}`} className="break-words text-small-bold text-black-70">
                         {user.name}
-                    </div>
+                    </Link>
                     <div className="text-small text-black-40">{formattedDate(createdAt, locale)}</div>
                 </div>
             </div>
-        </Link>
+        </div>
     )
 }

@@ -12,10 +12,10 @@ export const ReviewRatingPlace = ({ place, rating, createdAt }: IReview) => {
     const locale = useCurrentLocale()
 
     return (
-        <div className="flex flex-col">
+        <div className="overflow-hidden">
             <Rating value={rating} size={16} />
-            <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2">
-                <Link href={`/places/${place.id}`} className="text-small-bold text-black-70">
+            <div className="flex flex-col gap-x-2 sm:flex-row">
+                <Link href={`/places/${place.id}`} className="break-words text-small-bold text-black-70">
                     {place.title}
                 </Link>
                 <div className="text-small text-black-40">{formattedDate(createdAt, locale)}</div>
