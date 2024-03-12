@@ -25,6 +25,7 @@ export const WidgetRandom = ({ onFlip }: WidgetRandomProps) => {
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
     const userLocation = useAppSelector(getUserLocation)
+
     const [searchRandomPlace, { data, error, isFetching, isSuccess }] = placesAroundAPI.useLazyGetRandomPlaceQuery()
 
     const handleRandomClick = () => {
@@ -40,7 +41,7 @@ export const WidgetRandom = ({ onFlip }: WidgetRandomProps) => {
 
     return (
         <ScrollContainer className="max-h-screen w-full cursor-auto sm:p-8">
-            <div className="rounded-b-2xl bg-white shadow-large sm:rounded-2xl">
+            <div className="pointer-events-auto rounded-b-2xl bg-white shadow-large sm:rounded-2xl">
                 <WidgetHeader />
 
                 <div className="relative flex flex-col gap-y-8 rounded-2xl bg-orange-10 p-4 sm:p-8">

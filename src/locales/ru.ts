@@ -245,6 +245,8 @@ export default {
     'auth.verify_email.ok': 'Ваш email был подтверждён.',
 
     'widget.common.error': 'Произошла непредвиденная ошибка.{br}Пожалуйста, попробуйте позже.',
+
+    'widget.search.placeholder': 'Найти место',
     
     'widget.places.title': 'Места',
     'widget.places.all_places.title': 'Все',

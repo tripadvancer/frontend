@@ -10,6 +10,7 @@ import type { ILocationPreview } from '@/utils/types/place'
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 import { closeMapPopups } from '@/redux/features/map-slice'
+import { setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
 import { useSessionValidation } from '@/utils/hooks/use-session-validation'
@@ -25,7 +26,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
 
     const [searchPlacesAround, { isLoading }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
-    const handleClick = useSessionValidation(async () => {
+    const handleAddPlaceClick = useSessionValidation(async () => {
         const response = await searchPlacesAround({
             lat: coordinates.lat,
             lng: coordinates.lng,
@@ -42,6 +43,11 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
         router.push(`/add-place?lat=${coordinates.lat}&lng=${coordinates.lng}`)
     })
 
+    const handleIAmHereClick = useSessionValidation(async () => {
+        dispatch(closeMapPopups())
+        dispatch(setUserLocation({ lat: coordinates.lat, lng: coordinates.lng }))
+    })
+
     return (
         <>
             <Popup
@@ -55,9 +61,14 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
                 <div className="mb-4 text-small text-black-40">
                     {coordinates.lat}, {coordinates.lng}
                 </div>
-                <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleClick}>
-                    {t('map.popup.location.add_place')}
-                </FormButton>
+                <div className="flex flex-col gap-y-1">
+                    <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleIAmHereClick}>
+                        {t('map.popup.location.i_am_here')}
+                    </FormButton>
+                    <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
+                        {t('map.popup.location.add_place')}
+                    </FormButton>
+                </div>
             </Popup>
             <Marker latitude={coordinates.lat} longitude={coordinates.lng}>
                 <Image src="/images/pin-blue-active.svg" alt="Location marker" width={20} height={20} />

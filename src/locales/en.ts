@@ -241,6 +241,8 @@ export default {
     'auth.verify_email.ok': 'Your email has been verified.',
 
     'widget.common.error': 'An unexpected error has occurred.{br}Please try again later.',
+
+    'widget.search.placeholder': 'Find a place',
     
     'widget.places.title': 'Places',
     'widget.places.all_places.title': 'All places',
