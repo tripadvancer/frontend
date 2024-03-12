@@ -110,7 +110,7 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
                 </div>
             </div>
 
-            <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+            <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
                 {t('common.action.save_changes')}
             </FormButton>
         </form>
