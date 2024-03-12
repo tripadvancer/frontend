@@ -20,7 +20,7 @@ export const HeaderUser = () => {
         return (
             <HeaderUserMenu userId={response.data.id}>
                 <div className="link flex gap-x-2 text-big-bold">
-                    <div className="hidden sm:block">{t('header.user_menu.my_profile')}</div>
+                    <div className="hidden md:block">{t('header.user_menu.my_profile')}</div>
                     <Avatar {...response.data} size={24} />
                 </div>
             </HeaderUserMenu>
@@ -29,7 +29,7 @@ export const HeaderUser = () => {
 
     return (
         <div className="link flex items-center gap-x-2 text-big-bold" onClick={() => dialog.open(<SignIn />)}>
-            <span className="hidden sm:block">{t('common.link.sign_in')}</span>
+            <span className="hidden md:block">{t('common.link.sign_in')}</span>
             <UserIcon24 />
         </div>
     )
