@@ -369,7 +369,7 @@ export default function LegalTermsAndConditionsPage() {
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Agreement,
                     we&nbsp;encourage you to&nbsp;contact us&nbsp;using the details below:{' '}
-                    <Link href="mailto:support@tripadvancer.me">support@tripadvancer.me</Link>.
+                    <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{process.env.NEXT_PUBLIC_EMAIL}</Link>.
                 </p>
             </article>
 

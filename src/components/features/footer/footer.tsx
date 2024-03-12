@@ -15,7 +15,7 @@ export const Footer = async () => {
                         <p>{t('about.description')}</p>
                     </section>
                     <nav className="flex flex-row flex-wrap justify-center gap-x-2 text-black-40">
-                        <Link href="mailto:support@tripadvancer.me">Contact Us</Link>•
+                        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>Contact Us</Link>•
                         <Link href="/legal/terms-and-conditions">Terms and Conditions</Link>•
                         <Link href="/legal/privacy-policy">Privacy Policy</Link>•
                         <Link href="/legal/cookie-policy">Cookie Policy</Link>
