@@ -65,6 +65,7 @@ export default {
     'common.action.confirm': 'Подтвердить',
     'common.action.load_more': 'Загрузить ещё ...',
     'common.action.route': 'Маршрут',
+    'common.action.locate_me': 'Найти меня',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -271,7 +272,8 @@ export default {
     'widget.random.button': 'Найти случайное место',
     'widget.random.button_coundown': 'Найти случайное место ({countdown})',
     'widget.random.error.not_location': 'Чтобы найти случайное место рядом с Вами, необходимо разрешить доступ к Вашему местоположению.',
-    'widget.random.error.not_found': 'Не найдено мест, соответствующих Вашим фильтрам.<0 />Попробуйте изменить категории или радиус.',
+    'widget.random.error.not_location.info': 'Или нажмите на любое место на карте и выберите "Я здесь".',
+    'widget.random.error.not_found': 'Не найдено мест, соответствующих Вашим фильтрам. Попробуйте изменить категории или радиус.',
 
     'map.popup.location.title': 'Выбранное место',
     'map.popup.location.add_place': 'Добавить место',

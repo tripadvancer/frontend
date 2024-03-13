@@ -65,6 +65,7 @@ export default {
     'common.action.confirm': 'Confirm',
     'common.action.load_more': 'Load more ...',
     'common.action.route': 'Route',
+    'common.action.locate_me': 'Locate me',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -264,7 +265,8 @@ export default {
     'widget.random.button': 'Find a random place',
     'widget.random.button_coundown': 'Find a random place in ({countdown})',
     'widget.random.error.not_location': 'To find a random place around you, you need to allow access to your location.',
-    'widget.random.error.not_found': 'No places matching your filters found.{br}Try changing the category or radius.',
+    'widget.random.error.not_location.info': 'Or click on any place on the map and select "I am here".',
+    'widget.random.error.not_found': 'No places matching your filters found. Try changing the category or radius.',
 
     'map.popup.location.title': 'Selected location',
     'map.popup.location.add_place': 'Add place here',

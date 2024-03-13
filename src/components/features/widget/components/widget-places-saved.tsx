@@ -31,7 +31,7 @@ export const WidgetPlacesSaved = () => {
         return (
             <WidgetMessage
                 message={t('widget.places.saved_places.error.not_logged_in', { br: <br /> })}
-                actionCaption="Sign in"
+                actionCaption={t('common.link.sign_in')}
                 onAction={() => dialog.open(<SignIn />)}
             />
         )
