@@ -31,7 +31,7 @@ export const HeaderLanguageChanger = () => {
             currentItem={currentLocale}
         >
             <div className="link flex items-center gap-x-2 text-big-bold">
-                <span className="hidden sm:block">
+                <span className="hidden md:block">
                     {currentLocale === 'en' && 'English'}
                     {currentLocale === 'ru' && 'Русский'}
                 </span>

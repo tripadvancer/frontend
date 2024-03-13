@@ -19,7 +19,7 @@ export const Header = async () => {
                 <div className="container relative flex h-[56px] items-center justify-between sm:h-[76px]">
                     <Link href="/maps" className="flex items-center gap-x-2 text-big-bold">
                         <MapIcon24 />
-                        <span className="hidden sm:block">{t('header.link.map')}</span>
+                        <span className="hidden md:block">{t('header.link.map')}</span>
                     </Link>
                     <HeaderLogo />
                     <div className="flex gap-x-4 sm:gap-x-6">

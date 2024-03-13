@@ -34,7 +34,7 @@ export const WidgetRandomPlace = (place: IPlacePreview) => {
                 <div className="w-full">
                     <PlacePreviewCover {...place} isCover />
                 </div>
-                <div className="font-medium">{place.title}</div>
+                <div className="break-words font-medium">{place.title}</div>
             </Link>
             <div className="flex items-center justify-between">
                 <PlacePreviewRating {...place} />

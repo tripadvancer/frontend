@@ -1,3 +1,5 @@
+import classNames from 'classnames'
+
 import type { IReview } from '@/utils/types/review'
 
 import { ReviewActions } from './components/review-actions'
@@ -8,19 +10,20 @@ import { ReviewRatingPlace } from './components/review-rating-place'
 type ReviewProps = {
     review: IReview
     variant: 'place-page' | 'user-page'
+    className?: string
 }
 
-export const Review = ({ review, variant }: ReviewProps) => {
+export const Review = ({ review, variant, className }: ReviewProps) => {
     return (
-        <div className="flex flex-col gap-y-5 border-b border-black-15 py-8 first:border-t">
-            <div className="flex items-start justify-between sm:items-center">
+        <div className={classNames('flex flex-col gap-y-5 border-b border-black-15 py-8 first:border-t', className)}>
+            <div className="flex items-start justify-between gap-x-8 sm:items-center">
                 {variant === 'place-page' && <ReviewRatingAuthor {...review} />}
                 {variant === 'user-page' && <ReviewRatingPlace {...review} />}
 
                 <ReviewActions {...review} />
             </div>
 
-            <div>{review.text}</div>
+            <div className="break-words">{review.text}</div>
             <ReviewPhotosList title={review.place.title} description={review.user.name} photos={review.photos} />
         </div>
     )

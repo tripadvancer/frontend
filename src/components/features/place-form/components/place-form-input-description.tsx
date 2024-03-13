@@ -62,7 +62,7 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
 
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
                 <div className="w-full text-black-40 lg:w-64">{t('pages.add_place.about.info')}</div>
-                <div className="flex-1 text-big">
+                <div className="flex-1 overflow-hidden break-words text-big">
                     <Editor
                         editorState={editorState}
                         placeholder={t('placeholder.action.about_place')}

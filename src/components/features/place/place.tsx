@@ -1,7 +1,7 @@
 import { getPlaceById } from '@/services/places'
 
 import { PlaceHeader } from './components/place-header'
-import { PlaceMainAbout } from './components/place-main-about'
+import { PlaceMainDescription } from './components/place-main-description'
 import { PlaceMainMap } from './components/place-main-map'
 import { PlaceMainPhotos } from './components/place-main-photos'
 import { PlaceMainReviews } from './components/place-main-reviews'
@@ -30,8 +30,8 @@ export const Place = async ({ placeId }: { placeId: string }) => {
                             <PlaceSidebarNearby {...place} />
                         </div>
 
-                        <div className="flex flex-1 flex-col gap-y-16">
-                            <PlaceMainAbout {...place} />
+                        <div className="flex flex-1 flex-col gap-y-16 overflow-hidden">
+                            <PlaceMainDescription {...place} />
                             <PlaceMainPhotos {...place} />
                             <PlaceMainReviews {...place} />
                             <PlaceMainMap {...place} />
