@@ -43,10 +43,10 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
         router.push(`/add-place?lat=${coordinates.lat}&lng=${coordinates.lng}`)
     })
 
-    const handleIAmHereClick = useSessionValidation(async () => {
+    const handleIAmHereClick = () => {
         dispatch(closeMapPopups())
         dispatch(setUserLocation({ lat: coordinates.lat, lng: coordinates.lng }))
-    })
+    }
 
     return (
         <>

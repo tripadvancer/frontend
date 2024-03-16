@@ -15,17 +15,13 @@ export const PlaceMainOwnReview = ({ placeId }: { placeId: number }) => {
         return <ReviewSkeleton />
     }
 
-    if (response.isSuccess) {
-        if (response.data.ownReview) {
-            return (
-                <div className="rounded-lg bg-blue-10 p-4 sm:p-8">
-                    <Review review={response.data.ownReview} variant="place-page" className="border-none !p-0" />
-                </div>
-            )
-        }
-
-        return <PlaceMainAddReviewButton placeId={placeId} />
+    if (response.isSuccess && response.data.ownReview) {
+        return (
+            <div className="rounded-lg bg-blue-10 p-4 sm:p-8">
+                <Review review={response.data.ownReview} variant="place-page" className="border-none !p-0" />
+            </div>
+        )
     }
 
-    return null
+    return <PlaceMainAddReviewButton placeId={placeId} />
 }
