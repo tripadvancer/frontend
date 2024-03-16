@@ -26,7 +26,7 @@ export const WidgetPlaces = ({ onFlip }: WidgetPlacesProps) => {
     const widgetState = useAppSelector(getWidgetState)
 
     return (
-        <ScrollContainer className="pointer-events-auto max-h-full w-full cursor-auto sm:p-8">
+        <ScrollContainer className="pointer-events-auto max-h-full w-full cursor-auto pb-8 sm:p-8">
             <div className="rounded-b-2xl bg-white shadow-large sm:rounded-2xl">
                 <WidgetHeader />
 
