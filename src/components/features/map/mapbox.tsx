@@ -64,6 +64,7 @@ export const Mapbox = () => {
             mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
             mapStyle="mapbox://styles/mapbox/streets-v11"
             interactiveLayerIds={[placesLayer.id, favoritePlacesLayer.id, visitedPlacesLayer.id]}
+            attributionControl={false}
             reuseMaps
             {...handlers}
         >
@@ -109,13 +110,13 @@ export const Mapbox = () => {
                 />
             </Source>
 
-            <div className="absolute left-2 top-2 flex flex-col gap-y-1">
-                <MapControl onClick={() => {}}>
-                    <PlusIcon16 onClick={handleZoomIn} />
+            <div className="absolute bottom-2 right-2 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2">
+                <MapControl desktopOnly onClick={handleZoomIn}>
+                    <PlusIcon16 />
                 </MapControl>
 
-                <MapControl onClick={() => {}}>
-                    <MinusIcon16 onClick={handleZoomOut} />
+                <MapControl desktopOnly onClick={handleZoomOut}>
+                    <MinusIcon16 />
                 </MapControl>
 
                 <MapControl isLoading={isLocating} onClick={handleLocate}>

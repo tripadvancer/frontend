@@ -6,18 +6,18 @@ import { Spinner } from '@/components/ui/spinner'
 
 type MapControlProps = {
     children: React.ReactNode
+    desktopOnly?: boolean
     isLoading?: boolean
     onClick: () => void
 }
 
-export const MapControl = ({ children, isLoading, onClick }: MapControlProps) => {
+export const MapControl = ({ children, desktopOnly, isLoading, onClick }: MapControlProps) => {
     return (
         <button
             className={classNames(
-                'shadow-black flex-center hover-animated size-8 cursor-pointer rounded-lg bg-white hover:text-blue-active',
-                {
-                    'text-blue-active': isLoading,
-                },
+                'hover-animated size-10 cursor-pointer items-center justify-center rounded-lg bg-white shadow-black hover:text-blue-active sm:size-8',
+                `${desktopOnly ? 'hidden sm:flex' : 'flex'}`,
+                `${isLoading ? 'cursor-not-allowed' : ''}`,
             )}
             disabled={isLoading}
             onClick={onClick}
