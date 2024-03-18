@@ -4,6 +4,7 @@ import Link from 'next/link'
 import type { ICountry } from '@/utils/types/country'
 
 import { PinIcon16 } from '@/components/ui/icons'
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { getCountryByCode } from '@/services/countries'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
@@ -18,8 +19,8 @@ export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
         <figure className="group overflow-hidden rounded-2xl bg-orange-10">
             <Link href={`/countries/${countrySlug}`}>
                 <div className="w-full overflow-hidden">
-                    <Image
-                        src={`https://source.unsplash.com/256x256/?${countryName}`}
+                    <ImageWithFallback
+                        src={`/images/countries/preview/${countryCode.toLowerCase()}.jpg`}
                         width={256}
                         height={256}
                         placeholder="blur"
