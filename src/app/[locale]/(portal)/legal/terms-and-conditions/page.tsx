@@ -3,6 +3,9 @@ import type { Metadata } from 'next/types'
 
 export const metadata: Metadata = {
     title: 'Terms and Conditions',
+    alternates: {
+        canonical: 'legal/terms-and-conditions',
+    },
 }
 
 export default function LegalTermsAndConditionsPage() {

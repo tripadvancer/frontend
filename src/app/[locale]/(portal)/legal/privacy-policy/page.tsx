@@ -3,6 +3,9 @@ import type { Metadata } from 'next/types'
 
 export const metadata: Metadata = {
     title: 'Privacy Policy',
+    alternates: {
+        canonical: 'legal/privacy-policy',
+    },
 }
 
 export default function LegalPrivacyPolicyPage() {
