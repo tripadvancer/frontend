@@ -12,6 +12,10 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
     return {
         title: `Edit | ${place.title} | ${countryName}`,
+        robots: 'noindex, nofollow',
+        alternates: {
+            canonical: `/places/${params.id}/edit`,
+        },
     }
 }
 
