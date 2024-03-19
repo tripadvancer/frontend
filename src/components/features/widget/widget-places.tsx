@@ -2,6 +2,8 @@
 
 import ScrollContainer from 'react-indiana-drag-scroll'
 
+import classNames from 'classnames'
+
 import { getWidgetState, toggleWidgetPlacesOpened } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabsEnum } from '@/utils/enums'
@@ -17,16 +19,17 @@ import { WidgetSearch } from './components/widget-search'
 import { WidgetSection } from './components/widget-section'
 
 type WidgetPlacesProps = {
+    className: string
     onFlip: () => void
 }
 
-export const WidgetPlaces = ({ onFlip }: WidgetPlacesProps) => {
+export const WidgetPlaces = ({ className, onFlip }: WidgetPlacesProps) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
 
     return (
-        <ScrollContainer className="pointer-events-auto max-h-full w-full cursor-auto pb-8 sm:p-8">
+        <ScrollContainer className={classNames('pointer-events-auto max-h-full w-full cursor-auto sm:px-8', className)}>
             <div className="rounded-b-2xl bg-white shadow-large sm:rounded-2xl">
                 <WidgetHeader />
 

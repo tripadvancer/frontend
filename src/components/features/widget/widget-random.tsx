@@ -2,6 +2,8 @@
 
 import ScrollContainer from 'react-indiana-drag-scroll'
 
+import classNames from 'classnames'
+
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState, setWidgetRandomRadius, toggleWidgetRandomOpened } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
@@ -17,10 +19,11 @@ import { WidgetRandomSlider } from './components/widget-random-slider'
 import { WidgetSection } from './components/widget-section'
 
 type WidgetRandomProps = {
+    className: string
     onFlip: () => void
 }
 
-export const WidgetRandom = ({ onFlip }: WidgetRandomProps) => {
+export const WidgetRandom = ({ className, onFlip }: WidgetRandomProps) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
@@ -40,7 +43,7 @@ export const WidgetRandom = ({ onFlip }: WidgetRandomProps) => {
     }
 
     return (
-        <ScrollContainer className="pointer-events-auto max-h-full w-full cursor-auto sm:p-8">
+        <ScrollContainer className={classNames('pointer-events-auto max-h-full w-full cursor-auto sm:px-8', className)}>
             <div className="rounded-b-2xl bg-white shadow-large sm:rounded-2xl">
                 <WidgetHeader />
 
