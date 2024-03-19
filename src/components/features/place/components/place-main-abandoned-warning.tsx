@@ -4,7 +4,7 @@ import { AlertIcon16 } from '@/components/ui/icons'
 import { Notice } from '@/components/ui/notice'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-export const PlaceHeaderAbandonedWarning = async ({ categories }: IPlace) => {
+export const PlaceMainAbandonedWarning = async ({ categories }: IPlace) => {
     const t = await getI18n()
 
     // abandoned category id = 1 from categoriesDictionary
