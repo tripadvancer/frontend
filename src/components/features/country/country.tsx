@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { ICountryDict } from '@/utils/types/country'
@@ -11,6 +10,7 @@ import { parseQueryString } from '@/utils/helpers'
 import { getCurrentLocale, getI18n } from '@/utils/i18n/i18n.server'
 
 import { CountryCategories } from './components/country-categories'
+import { CountryCover } from './components/country-cover'
 import { CountryPlaces } from './components/country-places'
 import { CountryPlacesSkeleton } from './components/places-feed-skeleton'
 
@@ -31,13 +31,7 @@ export const Country = async ({
         <div className="flex flex-col">
             <div className="flex-center relative z-10 -mb-8 flex-[540px] pb-8">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
-                    <Image
-                        src={`https://source.unsplash.com/1920x1280/?${country.name[locale]}`}
-                        className="object-cover"
-                        alt={country.name[locale]}
-                        fill
-                        priority
-                    />
+                    <CountryCover countryCode={country.code} />
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-30" />
                 </div>
                 <section className="container relative z-30 py-8 text-center">

@@ -1,19 +1,14 @@
-import 'react-indiana-drag-scroll/dist/style.css'
-
 import { Roboto } from 'next/font/google'
 import type { Metadata, Viewport } from 'next/types'
 
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
-import { DialogProvider } from '@/providers/dialog-provider'
-import { ToastProvider } from '@/providers/toast-provider'
-import { ReduxProvider } from '@/redux/provider'
-import { I18nProvider } from '@/utils/i18n/i18n.provider'
-import { SupertokensProvider } from '@/utils/supertokens/supertokens.provider'
 
 import '../globals.css'
-
+import 'react-indiana-drag-scroll/dist/style.css'
 import 'yet-another-react-lightbox/plugins/captions.css'
 import 'yet-another-react-lightbox/styles.css'
+
+import { Providers } from './providers'
 
 export const runtime = 'edge'
 
@@ -84,15 +79,7 @@ export default async function RootLayout({
                 <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet" />
             </head>
             <body className={roboto.className}>
-                <ReduxProvider>
-                    <I18nProvider locale={locale}>
-                        <SupertokensProvider>
-                            <ToastProvider>
-                                <DialogProvider>{children}</DialogProvider>
-                            </ToastProvider>
-                        </SupertokensProvider>
-                    </I18nProvider>
-                </ReduxProvider>
+                <Providers locale={locale}>{children}</Providers>
                 <TailwindIndicator />
             </body>
         </html>

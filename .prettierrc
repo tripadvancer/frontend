@@ -12,13 +12,13 @@
     "bracketSameLine": false,
     "arrowParens": "avoid",
     "importOrder": [
-        "^react(.*)",
+        "^react((?!\\.css).)*$",
         "<THIRD_PARTY_MODULES>",
         "next/(.*)",
         "^@/utils/types/(.*)",
         "^@/(.*)$",
-        "^[./]",
-        "(.*).css"
+        "(.*).css",
+        "^[./]"
     ],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true
