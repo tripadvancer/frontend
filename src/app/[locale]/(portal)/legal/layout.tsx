@@ -1,6 +1,12 @@
 import { setStaticParamsLocale } from 'next-international/server'
 
+import type { Metadata } from 'next/types'
+
 import { getStaticParams } from '@/utils/i18n/i18n.server'
+
+export const metadata: Metadata = {
+    robots: 'noindex, nofollow',
+}
 
 export function generateStaticParams() {
     return getStaticParams()
