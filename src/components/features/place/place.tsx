@@ -1,6 +1,7 @@
 import { getPlaceById } from '@/services/places'
 
 import { PlaceHeader } from './components/place-header'
+import { PlaceHeaderAbandonedWarning } from './components/place-header-abandoned-warning'
 import { PlaceMainDescription } from './components/place-main-description'
 import { PlaceMainMap } from './components/place-main-map'
 import { PlaceMainPhotos } from './components/place-main-photos'
@@ -31,6 +32,7 @@ export const Place = async ({ placeId }: { placeId: string }) => {
                         </div>
 
                         <div className="flex flex-1 flex-col gap-y-16 overflow-hidden">
+                            <PlaceHeaderAbandonedWarning {...place} />
                             <PlaceMainDescription {...place} />
                             <PlaceMainPhotos {...place} />
                             <PlaceMainReviews {...place} />

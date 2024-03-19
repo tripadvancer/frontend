@@ -7,6 +7,8 @@ export default {
     'email_verification_notice.text': 'Your email has not been verified. Please confirm it by clicking the link in the email we sent you during the registration. {learn_more_link}',
     'email_verification_notice.learn_more_link': 'Learn more',
 
+    'abandoned_warning': 'Places in the "Abandoned" category might be dangerous, be careful.',
+
     'about.title': 'Planing a trip but don`t know where to go?',
     'about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
 
