@@ -9,8 +9,8 @@ export const EmailVerificationNotice = ({ userId }: { userId: number }) => {
     const dialog = useDialog()
 
     return (
-        <div className="relative z-50 bg-orange-10 py-2 text-center text-small text-black-70">
-            <div className="container">
+        <div className="relative bg-orange-10 py-2 text-small text-black-70">
+            <div className="container text-center">
                 {t('email_verification_notice.text', {
                     learn_more_link: (
                         <span className="link-orange" onClick={() => dialog.open(<ClaimEmailError userId={userId} />)}>

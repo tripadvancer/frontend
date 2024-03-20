@@ -8,6 +8,7 @@ export { default as CameraIcon48 } from '/public/images/icons/48/camera.svg'
 export { default as StarIcon32 } from '/public/images/icons/32/star.svg'
 
 // Icons 24x24
+export { default as AlertIcon24 } from '/public/images/icons/24/alert.svg'
 export { default as BookmarkFillIcon24 } from '/public/images/icons/24/bookmark-fill.svg'
 export { default as BookmarkIcon24 } from '/public/images/icons/24/bookmark.svg'
 export { default as CloseIcon24 } from '/public/images/icons/24/close.svg'
