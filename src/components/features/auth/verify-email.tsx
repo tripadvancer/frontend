@@ -21,7 +21,6 @@ export const VerifyEmail = () => {
                 const response = await verifyEmail()
                 setStatus(response.status)
             } catch (err) {
-                console.log(err)
                 toast.error(t('common.error'))
             }
         }
