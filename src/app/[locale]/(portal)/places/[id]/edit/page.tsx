@@ -23,7 +23,7 @@ export default async function EditPlacePage({ params }: { params: { locale: stri
     const place = await getPlaceById(params.id)
 
     return (
-        <ProtectClientRoute userId={place.author.id}>
+        <ProtectClientRoute userId={place.author.id} isVerifiedRequired>
             <PlaceEdit {...place} />
         </ProtectClientRoute>
     )
