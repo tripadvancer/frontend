@@ -222,15 +222,18 @@ export default {
     'auth.signin.link.forgot_password': 'Forgot password?',
     'auth.signin.to_back': 'Don’t have an account? {sign_up_link}',
 
-    'auth.signup_completing.title': 'Completing sign up',
-    'auth.signup_completing.message': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
-    'auth.signup_completing.resend_verification_email': 'Resend Verification Email',
+    'auth.signin_reject.title': 'Your account is pending deletion',
+    'auth.signin_reject.message': 'We have sent you the instructions to restore your account. Please note that there is a limited time window available for account restoration.',
 
     'auth.signup.title': 'Sign up',
     'auth.signup.third_party.title': 'Or, sign up with your email address',
     'auth.signup.submit': 'Sign up',
     'auth.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
     'auth.signup.to_back': 'Have an account? {sign_in_link}',
+
+    'auth.signup_completing.title': 'Completing sign up',
+    'auth.signup_completing.message': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
+    'auth.signup_completing.resend_verification_email': 'Resend Verification Email',
 
     'auth.third_party_callback.redirecting': 'You are being redirected...',
     'auth.third_party_callback.checking_status': 'We are checking your status...',
