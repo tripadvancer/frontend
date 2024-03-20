@@ -236,7 +236,7 @@ export default {
     'auth.signup.to_back': 'Уже зарегистрированы? {sign_in_link}',
 
     'auth.signup_completing.title': 'Подтвердите Ваш email',
-    'auth.signup_completing.message': 'Мы отправили вам письмо с подтверждением. Пожалуйста, проверьте свой почтовый ящик и следуйте инструкциям в письме, чтобы завершить процесс подтверждения.',
+    'auth.signup_completing.message': 'Мы отправили Вам письмо с подтверждением. Пожалуйста, проверьте свой почтовый ящик и следуйте инструкциям в письме, чтобы завершить процесс подтверждения.',
     'auth.signup_completing.resend_verification_email': 'Отправить письмо ещё раз',
 
     'auth.third_party_callback.redirecting': 'Идёт перенаправление...',
