@@ -1,7 +1,6 @@
 'use client'
 
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
-import { Notice } from '@/components/ui/notice'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -10,8 +9,8 @@ export const EmailVerificationNotice = ({ userId }: { userId: number }) => {
     const dialog = useDialog()
 
     return (
-        <Notice type="info">
-            <p className="text-center">
+        <div className="relative bg-orange-10 py-2 text-small text-black-70">
+            <div className="container text-center">
                 {t('email_verification_notice.text', {
                     learn_more_link: (
                         <span className="link-orange" onClick={() => dialog.open(<ClaimEmailError userId={userId} />)}>
@@ -19,7 +18,7 @@ export const EmailVerificationNotice = ({ userId }: { userId: number }) => {
                         </span>
                     ),
                 })}
-            </p>
-        </Notice>
+            </div>
+        </div>
     )
 }
