@@ -1,6 +1,7 @@
 'use client'
 
 import Supertokens from 'supertokens-web-js'
+import { EmailVerificationClaim } from 'supertokens-web-js/recipe/emailverification'
 import Session from 'supertokens-web-js/recipe/session'
 
 import { clientConfig } from './supertokens.client'
@@ -10,7 +11,7 @@ export const SupertokensProvider = async ({ children }: { children: React.ReactN
     const doesSessionExist = await Session.doesSessionExist()
 
     if (doesSessionExist) {
-        const validationErrors = await Session.validateClaims()
+        const isMailVerified = await Session.getClaimValue({ claim: EmailVerificationClaim })
         const accessTokenPayload = await Session.getAccessTokenPayloadSecurely()
 
         return (
@@ -18,7 +19,7 @@ export const SupertokensProvider = async ({ children }: { children: React.ReactN
                 value={{
                     activeUserId: accessTokenPayload.userId,
                     isAuth: doesSessionExist,
-                    isMailVerified: validationErrors.length === 0,
+                    isMailVerified: !!isMailVerified,
                 }}
             >
                 {children}
