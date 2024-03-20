@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function AddPlacePage() {
     return (
-        <ProtectClientRoute>
+        <ProtectClientRoute isVerifiedRequired>
             <PlaceAdd />
         </ProtectClientRoute>
     )

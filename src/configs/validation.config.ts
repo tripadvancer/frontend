@@ -5,7 +5,7 @@ export const validationConfig = {
     user: {
         name: {
             minLength: 2,
-            maxLength: 40,
+            maxLength: 25,
         },
         info: {
             maxLength: 1000,

@@ -15,16 +15,15 @@ import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { useAppDispatch } from '@/redux/hooks'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPassword } from './forgot-password'
+import { SignInReject } from './sign-in-reject'
 import { SignUp } from './sign-up'
 import { ThirdPartyButton } from './third-party-button'
 
 export const SignIn = () => {
     const t = useI18n()
-    const dispatch = useAppDispatch()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -47,6 +46,13 @@ export const SignIn = () => {
     })
 
     const handleSubmit = async (values: SignInInputs) => {
+        setIsLoading(true)
+
+        const formFields = [
+            { id: 'email', value: values.email },
+            { id: 'password', value: values.password },
+        ]
+
         try {
             setIsLoading(true)
             const formFields = [
@@ -54,7 +60,6 @@ export const SignIn = () => {
                 { id: 'password', value: values.password },
             ]
             const response = await emailPasswordSignIn({ formFields })
-
             switch (response.status) {
                 case 'OK':
                     dialog.close()
@@ -76,8 +81,12 @@ export const SignIn = () => {
                     toast.error(t('common.error'))
                     break
             }
-        } catch (err) {
-            toast.error(t('common.error'))
+        } catch (err: any) {
+            if (err.status === 403) {
+                dialog.open(<SignInReject />)
+            } else {
+                toast.error(t('common.error'))
+            }
         } finally {
             setIsLoading(false)
         }

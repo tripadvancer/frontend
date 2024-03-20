@@ -7,6 +7,8 @@ export default {
     'email_verification_notice.text': 'Ваш адрес электронной почты не был подтверждён. Подтвердите Ваш email, перейдя по ссылке в отправленном при регистрации письме. {learn_more_link}',
     'email_verification_notice.learn_more_link': 'Узнать больше',
 
+    'abandoned_warning': 'Места в категории "Заброшки" могут быть опасны, будьте осторожны.',
+
     'about.title': 'Планируете путешествие, но не знаете куда поехать?',
     'about.description': 'Tripadvancer поможет Вам открыть мир с новой стороны, найти интересные места и отправиться в увлекательное путешествие.',
 
@@ -226,15 +228,18 @@ export default {
     'auth.signin.link.forgot_password': 'Забыли пароль?',
     'auth.signin.to_back': 'Нет учётной записи? {sign_up_link}',
 
-    'auth.signup_completing.title': 'Подтвердите Ваш email',
-    'auth.signup_completing.message': 'Мы отправили вам письмо с подтверждением. Пожалуйста, проверьте свой почтовый ящик и следуйте инструкциям в письме, чтобы завершить процесс подтверждения.',
-    'auth.signup_completing.resend_verification_email': 'Отправить письмо ещё раз',
+    'auth.signin_reject.title': 'Ваша учётная запись в процессе удаления',
+    'auth.signin_reject.message': 'Мы отправили Вам инструкции по восстановлению Вашей учётной записи. Обратите внимание, что восстановление учётной записи доступно ограниченное время.',
 
     'auth.signup.title': 'Регистрация',
     'auth.signup.third_party.title': 'Или зарегистрируйтесь, используя свой email',
     'auth.signup.submit': 'Зарегистрироваться',
     'auth.signup.info': 'Завершая процесс регистрации, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
     'auth.signup.to_back': 'Уже зарегистрированы? {sign_in_link}',
+
+    'auth.signup_completing.title': 'Подтвердите Ваш email',
+    'auth.signup_completing.message': 'Мы отправили Вам письмо с подтверждением. Пожалуйста, проверьте свой почтовый ящик и следуйте инструкциям в письме, чтобы завершить процесс подтверждения.',
+    'auth.signup_completing.resend_verification_email': 'Отправить письмо ещё раз',
 
     'auth.third_party_callback.redirecting': 'Идёт перенаправление...',
     'auth.third_party_callback.checking_status': 'Мы проверяем статус Вашей учётной записи...',
