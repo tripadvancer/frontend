@@ -22,13 +22,19 @@ export const WidgetHeaderAbout = () => {
                         <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>Contact Us</Link>
                     </li>
                     <li>
-                        <Link href="">Terms and Conditions</Link>
+                        <Link href="/legal/terms-and-conditions" target="_blank">
+                            Terms and Conditions
+                        </Link>
                     </li>
                     <li>
-                        <Link href="">Privacy Policy</Link>
+                        <Link href="/legal/privacy-policy" target="_blank">
+                            Privacy Policy
+                        </Link>
                     </li>
                     <li>
-                        <Link href="">Cookie Policy</Link>
+                        <Link href="/legal/cookie-policy" target="_blank">
+                            Cookie Policy
+                        </Link>
                     </li>
                 </ul>
                 <p className="text-black-70">© Tripadvancer, 2024</p>
