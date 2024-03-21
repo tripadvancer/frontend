@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 import type { Metadata, Viewport } from 'next/types'
 
@@ -80,6 +81,7 @@ export default async function RootLayout({
             </head>
             <body className={roboto.className}>
                 <Providers locale={locale}>{children}</Providers>
+                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MENSUREMENT_ID as string} />
                 <TailwindIndicator />
             </body>
         </html>
