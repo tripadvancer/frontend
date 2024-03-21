@@ -11,7 +11,7 @@ import 'yet-another-react-lightbox/styles.css'
 
 import { Providers } from './providers'
 
-export const runtime = 'edge'
+// export const runtime = 'edge'
 
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],
