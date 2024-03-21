@@ -26,6 +26,8 @@ const nextConfig = {
         return config
     },
 
+    output: 'standalone',
+
     images: {
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
