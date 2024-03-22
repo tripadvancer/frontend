@@ -1,36 +1,40 @@
-'use client'
-
-import { SignIn } from '@/components/features/auth/sign-in'
 import { Avatar } from '@/components/ui/avatar'
-import { UserIcon24 } from '@/components/ui/icons'
-import { useDialog } from '@/providers/dialog-provider'
-import { userAPI } from '@/redux/services/user-api'
-import { useI18n } from '@/utils/i18n/i18n.client'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
+import { getUserById } from '@/services/users'
+import { getI18n } from '@/utils/i18n/i18n.server'
+import { getSSRSession } from '@/utils/supertokens/session.utils'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
+import { HeaderSignInLink } from './header-signin-link'
 import { HeaderUserMenu } from './header-user-menu'
 
-export const HeaderUser = () => {
-    const t = useI18n()
-    const supertokens = useSupertokens()
-    const dialog = useDialog()
-    const response = userAPI.useGetUserInfoQuery(undefined, { skip: !supertokens.isAuth })
+export const HeaderUser = async () => {
+    const t = await getI18n()
+    const { session, hasToken } = await getSSRSession()
 
-    if (response.isSuccess) {
-        return (
-            <HeaderUserMenu userId={response.data.id}>
-                <div className="link flex gap-x-2 text-big-bold">
-                    <div className="hidden md:block">{t('header.user_menu.my_profile')}</div>
-                    <Avatar {...response.data} size={24} />
-                </div>
-            </HeaderUserMenu>
-        )
+    if (!session) {
+        if (!hasToken) {
+            /**
+             * This means that there is no session and no session tokens.
+             */
+            return <HeaderSignInLink />
+        }
+
+        /**
+         * This means that the session does not exist but we have session tokens for the user. In this case
+         * the `TryRefreshComponent` will try to refresh the session.
+         */
+        return <TryRefreshComponent />
     }
 
+    const userId = session.getAccessTokenPayload().userId
+    const user = await getUserById(userId)
+
     return (
-        <div className="link flex items-center gap-x-2 text-big-bold" onClick={() => dialog.open(<SignIn />)}>
-            <span className="hidden md:block">{t('common.link.sign_in')}</span>
-            <UserIcon24 />
-        </div>
+        <HeaderUserMenu userId={user.id}>
+            <div className="link flex gap-x-2 text-big-bold">
+                <div className="hidden md:block">{t('header.user_menu.my_profile')}</div>
+                <Avatar {...user} size={24} />
+            </div>
+        </HeaderUserMenu>
     )
 }
