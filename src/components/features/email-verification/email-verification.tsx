@@ -1,14 +1,22 @@
-'use client'
+import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
 
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
+import { getSSRSession } from '@/utils/supertokens/session.utils'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 import { EmailVerificationNotice } from './email-verification-notice'
 
-export const EmailVerification = () => {
-    const supertokens = useSupertokens()
+export const EmailVerification = async () => {
+    const { session, hasToken } = await getSSRSession()
 
-    if (supertokens.isAuth && !supertokens.isMailVerified) {
-        return <EmailVerificationNotice userId={supertokens.activeUserId as number} />
+    if (!session && hasToken) {
+        return <TryRefreshComponent />
+    }
+
+    const isMailVerified = await session?.getClaimValue(EmailVerificationClaim)
+
+    if (isMailVerified === false) {
+        const userId = session?.getAccessTokenPayload().userId
+        return <EmailVerificationNotice userId={userId} />
     }
 
     return null

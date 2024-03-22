@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { EmailVerification } from '@/components/features/email-verification/email-verification'
 import { MapIcon24 } from '@/components/ui/icons'
 import { getI18n } from '@/utils/i18n/i18n.server'
+import { getSSRSession } from '@/utils/supertokens/session.utils'
 
 import { HeaderLanguageChanger } from './components/header-language-changer'
 import { HeaderLogo } from './components/header-logo'
