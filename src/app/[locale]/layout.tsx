@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google'
 import type { Metadata, Viewport } from 'next/types'
 
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
+import { ensureSuperTokensInit } from '@/utils/supertokens/supertokens.server'
 
 import '../globals.css'
 import 'react-indiana-drag-scroll/dist/style.css'
@@ -62,6 +63,8 @@ export const metadata: Metadata = {
         images: '/images/og-image-1.jpg',
     },
 }
+
+ensureSuperTokensInit()
 
 export default async function RootLayout({
     children,
