@@ -1,8 +1,6 @@
 import SuperTokens from 'supertokens-node'
-import EmailPassword from 'supertokens-node/recipe/emailpassword'
 import EmailVerification from 'supertokens-node/recipe/emailverification'
 import Session from 'supertokens-node/recipe/session'
-import ThirdPartyEmailPassword from 'supertokens-node/recipe/thirdpartyemailpassword'
 import type { TypeInput } from 'supertokens-node/types'
 
 import { supertokensConfig } from './supertokens.config'
@@ -15,8 +13,6 @@ export let serverConfig = (): TypeInput => {
             apiKey: process.env.SUPERTOKENS_API_KEY,
         },
         recipeList: [
-            EmailPassword.init(),
-            ThirdPartyEmailPassword.init(),
             EmailVerification.init({
                 mode: 'OPTIONAL',
             }),
