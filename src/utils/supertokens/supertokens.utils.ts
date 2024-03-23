@@ -23,6 +23,6 @@ export async function getSSRSessionHelper(): Promise<{
     } catch (err: any) {
         error = err
     }
-    console.log(session)
+
     return { session, hasToken, hasInvalidClaims, error }
 }
