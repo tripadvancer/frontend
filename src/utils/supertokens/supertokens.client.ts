@@ -35,6 +35,7 @@ export const clientConfig = (): SuperTokensConfig => {
             }),
             EmailVerification.init(),
             Session.init({
+                sessionTokenFrontendDomain: '.tripadvancer.me',
                 override: {
                     functions: oI => {
                         return {
