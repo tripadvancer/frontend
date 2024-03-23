@@ -25,6 +25,8 @@ export async function getSSRSession(
         (req !== undefined ? req.cookies : cookies()).getAll().map(cookie => [cookie.name, cookie.value]),
     )
 
+    console.log(parsedCookies)
+
     /**
      * Pre parsed request is a wrapper exposed by SuperTokens. It is used as a helper to detect if the
      * original request contains session tokens. We then use this pre parsed request to call `getSession`

@@ -8,8 +8,6 @@ import { EmailVerificationNotice } from './email-verification-notice'
 export const EmailVerification = async () => {
     const { session, hasToken } = await getSSRSession()
 
-    console.log(session)
-
     if (!session && hasToken) {
         return <TryRefreshComponent />
     }
