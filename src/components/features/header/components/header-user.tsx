@@ -1,7 +1,7 @@
 import { Avatar } from '@/components/ui/avatar'
 import { getUserById } from '@/services/users'
 import { getI18n } from '@/utils/i18n/i18n.server'
-import { getSSRSession } from '@/utils/supertokens/session.utils'
+import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 import { HeaderSignInLink } from './header-signin-link'
@@ -9,7 +9,7 @@ import { HeaderUserMenu } from './header-user-menu'
 
 export const HeaderUser = async () => {
     const t = await getI18n()
-    const { session, hasToken } = await getSSRSession()
+    const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
         if (!hasToken) {

@@ -1,12 +1,12 @@
 import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
 
-import { getSSRSession } from '@/utils/supertokens/session.utils'
+import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 import { EmailVerificationNotice } from './email-verification-notice'
 
 export const EmailVerification = async () => {
-    const { session, hasToken } = await getSSRSession()
+    const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session && hasToken) {
         return <TryRefreshComponent />
