@@ -6,6 +6,10 @@ import { HTTPMethod } from 'supertokens-node/types'
 import { cookies, headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
+import { ensureSuperTokensInit } from './supertokens.server'
+
+ensureSuperTokensInit()
+
 export async function getSSRSession(
     req?: NextRequest,
     options?: VerifySessionOptions,
