@@ -8,12 +8,12 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetMessage } from './widget-message'
 import { WidgetPlacesFeed } from './widget-places-feed'
-import { WidgetPlacesPlaceSkeleton } from './widget-places-place-skeleton'
+import { WidgetPlacesFeedSkeleton } from './widget-places-feed-skeleton'
 
 export const WidgetPlacesAll = () => {
     const t = useI18n()
     const mapBounds = useAppSelector(getMapState).bounds
-    const selectedCategories = useAppSelector(getWidgetState).places.selectedCategories
+    const selectedCategories = useAppSelector(getWidgetState).selectedCategories
     const response = placesAPI.useGetPlacesQuery({ mapBounds, selectedCategories }, { skip: !mapBounds })
     const places = response.data?.features.map(({ properties }) => properties) ?? []
 
@@ -22,12 +22,12 @@ export const WidgetPlacesAll = () => {
     }
 
     if (response.isSuccess && response.data.features.length === 0) {
-        return <WidgetMessage message={t('widget.places.all_places.empty_message', { br: <br /> })} />
+        return <WidgetMessage message={t('widget.places.all.empty_message', { br: <br /> })} />
     }
 
     if (response.isSuccess && response.data.features.length > 0) {
         return <WidgetPlacesFeed places={places} />
     }
 
-    return <WidgetPlacesPlaceSkeleton />
+    return <WidgetPlacesFeedSkeleton />
 }

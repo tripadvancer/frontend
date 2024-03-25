@@ -1,63 +1,52 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import type { RootState } from '@/redux/store'
-import { MapDataSourcesEnum, WidgetListsEnum, WidgetSide, WidgetTabsEnum } from '@/utils/enums'
+import { MapDataSourcesEnum, WidgetListsEnum, WidgetTabsEnum } from '@/utils/enums'
 
 interface WidgetState {
+    activeList: WidgetListsEnum | null
+    activeTab: WidgetTabsEnum
     dataSource: MapDataSourcesEnum
-    widgetSide: WidgetSide
-    places: {
-        isOpened: boolean
-        isCategoryFilterOpened: boolean
-        selectedCategories: number[]
-        activeTab: WidgetTabsEnum
-        activeList: WidgetListsEnum | null
-        isShowOnlySavedPlaces: boolean
-    }
-    random: {
-        isOpened: boolean
-        isCategoryFilterOpened: boolean
-        selectedCategories: number[]
-        radius: number
-    }
     isAboutOpened: boolean
+    isCategoriesOpened: boolean
     isMenuOpened: boolean
+    isPlacesOpened: boolean
+    isShowOnlySavedPlaces: boolean
+    randomRadius: number
+    selectedCategories: number[]
+    widgetIsExpanded: boolean // only for mobile
 }
 
 export const initialState: WidgetState = {
+    activeList: null,
+    activeTab: WidgetTabsEnum.ALL,
     dataSource: MapDataSourcesEnum.ALL_PLACES,
-    widgetSide: WidgetSide.PLACES,
-    places: {
-        isOpened: true,
-        isCategoryFilterOpened: false,
-        selectedCategories: [],
-        activeTab: WidgetTabsEnum.ALL,
-        activeList: null,
-        isShowOnlySavedPlaces: true,
-    },
-    random: {
-        isOpened: true,
-        isCategoryFilterOpened: false,
-        selectedCategories: [],
-        radius: 50,
-    },
     isAboutOpened: false,
+    isCategoriesOpened: false,
     isMenuOpened: false,
+    isPlacesOpened: true,
+    isShowOnlySavedPlaces: true,
+    randomRadius: 50,
+    selectedCategories: [],
+    widgetIsExpanded: false,
 }
 
 function setWidgetDataSource(state: WidgetState) {
-    if (state.widgetSide === WidgetSide.PLACES && state.places.isShowOnlySavedPlaces) {
-        switch (state.places.activeTab) {
+    if (state.isShowOnlySavedPlaces) {
+        switch (state.activeTab) {
             case WidgetTabsEnum.ALL:
                 state.dataSource = MapDataSourcesEnum.ALL_PLACES
                 break
             case WidgetTabsEnum.SAVED:
-                if (state.places.activeList === WidgetListsEnum.FAVORITES) {
+                if (state.activeList === WidgetListsEnum.FAVORITES) {
                     state.dataSource = MapDataSourcesEnum.FAVORITES_PLACES
                 }
-                if (state.places.activeList === WidgetListsEnum.VISITED) {
+                if (state.activeList === WidgetListsEnum.VISITED) {
                     state.dataSource = MapDataSourcesEnum.VISITED_PLACES
                 }
+                break
+            case WidgetTabsEnum.RANDOM:
+                state.dataSource = MapDataSourcesEnum.ALL_PLACES
                 break
             default:
                 state.dataSource = MapDataSourcesEnum.ALL_PLACES
@@ -69,60 +58,50 @@ function setWidgetDataSource(state: WidgetState) {
 }
 
 export const widgetSlice = createSlice({
-    name: 'map',
+    name: 'widget',
     initialState,
     reducers: {
         resetWidgetState() {
             return initialState
         },
-        setWidgetSide(state, action: PayloadAction<WidgetSide>) {
-            state.widgetSide = action.payload
-            setWidgetDataSource(state)
+        toggleWidget(state) {
+            state.widgetIsExpanded = !state.widgetIsExpanded
         },
         toggleWidgetPlacesOpened(state) {
-            state.places.isOpened = !state.places.isOpened
+            state.isPlacesOpened = !state.isPlacesOpened
         },
-        toggleWidgetPlacesCategoryFilterOpened(state) {
-            state.places.isCategoryFilterOpened = !state.places.isCategoryFilterOpened
+        toggleWidgetCategoriesOpened(state) {
+            state.isCategoriesOpened = !state.isCategoriesOpened
         },
-        toggleWidgetRandomOpened(state) {
-            state.random.isOpened = !state.random.isOpened
-        },
-        toggleWidgetRandomCategoryFilterOpened(state) {
-            state.random.isCategoryFilterOpened = !state.random.isCategoryFilterOpened
-        },
-        toggleWidgetAboutOpened(state) {
+        toggleWidgetAbout(state) {
             state.isMenuOpened = false
             state.isAboutOpened = !state.isAboutOpened
         },
-        toggleWidgetMenuOpened(state) {
+        toggleWidgetMenu(state) {
             state.isAboutOpened = false
             state.isMenuOpened = !state.isMenuOpened
         },
-        setWidgetPlacesSelectedCategories(state, action) {
-            state.places.selectedCategories = action.payload
-        },
-        setWidgetPlacesActiveTab(state, action: PayloadAction<WidgetTabsEnum>) {
-            state.places.activeTab = action.payload
+        toggleWidgetShowOnlySavedPlaces(state) {
+            state.isShowOnlySavedPlaces = !state.isShowOnlySavedPlaces
             setWidgetDataSource(state)
         },
-        setWidgetPlacesActiveList(state, action: PayloadAction<WidgetListsEnum | null>) {
-            state.places.activeList = action.payload
+        setWidgetSelectedCategories(state, action: PayloadAction<number[]>) {
+            state.selectedCategories = action.payload
+        },
+        setWidgetActiveTab(state, action: PayloadAction<WidgetTabsEnum>) {
+            state.activeTab = action.payload
             setWidgetDataSource(state)
         },
-        resetWidgetPLacesActiveList(state) {
-            state.places.activeList = null
+        setWidgetActiveList(state, action: PayloadAction<WidgetListsEnum | null>) {
+            state.activeList = action.payload
+            setWidgetDataSource(state)
+        },
+        resetWidgetActiveList(state) {
+            state.activeList = null
             state.dataSource = MapDataSourcesEnum.ALL_PLACES
         },
-        toggleWidgetPlacesShowOnlySavedPlaces(state) {
-            state.places.isShowOnlySavedPlaces = !state.places.isShowOnlySavedPlaces
-            setWidgetDataSource(state)
-        },
-        setWidgetRandomSelectedCategories(state, action) {
-            state.random.selectedCategories = action.payload
-        },
         setWidgetRandomRadius(state, action) {
-            state.random.radius = action.payload
+            state.randomRadius = action.payload
         },
     },
 })
@@ -131,19 +110,16 @@ export const getWidgetState = (state: RootState) => state.widget
 
 export const {
     resetWidgetState,
-    setWidgetSide,
+    toggleWidget,
     toggleWidgetPlacesOpened,
-    toggleWidgetPlacesCategoryFilterOpened,
-    toggleWidgetRandomOpened,
-    toggleWidgetRandomCategoryFilterOpened,
-    toggleWidgetAboutOpened,
-    toggleWidgetMenuOpened,
-    setWidgetPlacesSelectedCategories,
-    setWidgetPlacesActiveTab,
-    setWidgetPlacesActiveList,
-    resetWidgetPLacesActiveList,
-    toggleWidgetPlacesShowOnlySavedPlaces,
-    setWidgetRandomSelectedCategories,
+    toggleWidgetCategoriesOpened,
+    toggleWidgetAbout,
+    toggleWidgetMenu,
+    toggleWidgetShowOnlySavedPlaces,
+    setWidgetSelectedCategories,
+    setWidgetActiveTab,
+    setWidgetActiveList,
+    resetWidgetActiveList,
     setWidgetRandomRadius,
 } = widgetSlice.actions
 

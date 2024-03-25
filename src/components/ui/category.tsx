@@ -24,7 +24,7 @@ export const Category = ({ children, variant, isSelected, onClick }: CategoryPro
         <div
             className={classNames(
                 colorVariants[variant],
-                'hover-animated flex h-8 cursor-pointer items-center rounded-full bg-white px-4 text-small',
+                'hover-animated flex h-8 cursor-pointer items-center whitespace-nowrap rounded-full bg-white px-4 text-small',
                 {
                     [selectedColorVariants[variant]]: isSelected,
                 },

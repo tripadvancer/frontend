@@ -13,7 +13,7 @@ import { useAppDispatch } from '@/redux/hooks'
 import { navigateToLocation } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const WidgetRandomPlace = (place: IPlacePreview) => {
+export const WidgetPlacesRandomPlace = (place: IPlacePreview) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
 

@@ -35,7 +35,7 @@ export const PlaceFormInputCategories = ({ value, onChange }: PlaceFormInputCate
             {value.map(categoryId => (
                 <div
                     key={categoryId}
-                    className="hover-animated flex h-8 cursor-pointer items-center gap-x-2 rounded-full border border-white px-4 text-small text-white hover:border-blue-active hover:text-blue-active"
+                    className="hover-animated flex h-8 cursor-pointer items-center gap-x-2 whitespace-nowrap rounded-full border border-white px-4 text-small text-white hover:border-blue-active hover:text-blue-active"
                     onClick={handleSelectCategories}
                 >
                     {categoriesDictionary.find(category => category.id === categoryId)?.localizedName[currentLocale]}

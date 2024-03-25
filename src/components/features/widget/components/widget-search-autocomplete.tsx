@@ -8,7 +8,7 @@ import type { ISearchItem } from '@/utils/types/search'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
-import { WidgetSearchAautocomplete } from './widget-search-autocomplete-item'
+import { WidgetSearchAutocompleteItem } from './widget-search-autocomplete-item'
 
 type WidgetSearchAutocompleteProps = {
     suggestions: ISearchItem<IPlacePreview | ILocationPreview>[]
@@ -40,7 +40,7 @@ const WidgetSearchAutocomplete = forwardRef<HTMLDivElement, WidgetSearchAutocomp
         return (
             <div ref={ref} className="absolute left-0 right-0 top-full z-40 rounded-lg bg-white p-1 shadow-small">
                 {suggestions.map((suggestion, index) => (
-                    <WidgetSearchAautocomplete
+                    <WidgetSearchAutocompleteItem
                         key={`search-result-item-${index}`}
                         item={suggestion}
                         isSelected={index === cursor}

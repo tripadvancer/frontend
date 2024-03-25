@@ -92,7 +92,7 @@ export const WidgetSearch = () => {
     }
 
     return (
-        <div className="relative mr-12 sm:mr-8">
+        <div className="relative">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 transform text-blue-100">
                 {searchResult.isFetching ? <Spinner size={16} /> : <SearchIcon16 />}
             </div>

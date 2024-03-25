@@ -15,6 +15,8 @@ import { MapDataSourcesEnum } from '@/utils/enums'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
 import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
+import 'maplibre-gl/dist/maplibre-gl.css'
+
 import { MapControl } from './components/map-control'
 import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
@@ -22,14 +24,12 @@ import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
 import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './map-layers'
 
-import 'maplibre-gl/dist/maplibre-gl.css'
-
 export const Mapbox = () => {
     const supertokens = useSupertokens()
     const handlers = useMapEventHandlers()
     const mapBounds = useAppSelector(getMapState).bounds
     const mapDataSource = useAppSelector(getWidgetState).dataSource
-    const selectedCategories = useAppSelector(getWidgetState).places.selectedCategories
+    const selectedCategories = useAppSelector(getWidgetState).selectedCategories
     const userLocation = useAppSelector(getUserLocation)
 
     const mapRef = useRef<MapRef>(null)
