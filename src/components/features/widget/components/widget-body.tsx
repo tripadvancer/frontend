@@ -1,5 +1,7 @@
 'use client'
 
+import { isMobile } from 'react-device-detect'
+
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 
@@ -10,7 +12,7 @@ import { WidgetSearch } from './widget-search'
 export const WidgetBody = () => {
     const widgetState = useAppSelector(getWidgetState)
 
-    if (!widgetState.widgetIsExpanded) {
+    if (isMobile && !widgetState.widgetIsExpanded) {
         return null
     }
 
@@ -20,7 +22,7 @@ export const WidgetBody = () => {
                 <WidgetSearch />
                 <WidgetCategories />
             </div>
-            <div className="p-4 sm:p-8">
+            <div className="p-4 pb-8 sm:p-8">
                 <WidgetPlaces />
             </div>
         </div>

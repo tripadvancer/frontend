@@ -66,6 +66,8 @@ export const widgetSlice = createSlice({
         },
         toggleWidget(state) {
             state.widgetIsExpanded = !state.widgetIsExpanded
+            state.isAboutOpened = false
+            state.isMenuOpened = false
         },
         toggleWidgetPlacesOpened(state) {
             state.isPlacesOpened = !state.isPlacesOpened
