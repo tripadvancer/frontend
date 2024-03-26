@@ -2,7 +2,7 @@
 
 import ReactSlider from 'react-slider'
 
-export const WidgetRandomSlider = ({ value, onChange }: { value: number; onChange: (value: number) => void }) => {
+export const WidgetPlacesRandomSlider = ({ value, onChange }: { value: number; onChange: (value: number) => void }) => {
     return (
         <ReactSlider
             min={10}

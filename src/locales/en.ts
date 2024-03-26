@@ -247,32 +247,35 @@ export default {
     'auth.verify_email.ok': 'Your email has been verified.',
 
     'widget.common.error': 'An unexpected error has occurred.{br}Please try again later.',
-
     'widget.search.placeholder': 'Find a place',
-    
-    'widget.places.title': 'Places',
-    'widget.places.all_places.title': 'All places',
-    'widget.places.all_places.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
-    'widget.places.saved_places.title': 'Saved',
-    'widget.places.saved_places.info': 'Select a list to view your places.',
-    'widget.places.saved_places.show_on_the_map': 'Show on the map',
-    'widget.places.saved_places.error.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
-    'widget.places.saved_places.favorites.title': 'Favorites',
-    'widget.places.saved_places.favorites.empty_message': 'Your favorites are empty.{br}Add the place to your favorites to see it here.',
-    'widget.places.saved_places.visited.title': 'Visited places',
-    'widget.places.saved_places.visited.empty_message': 'You have not visited any places yet.{br}Add the place to your visited to see it here.',
-
     'widget.categories.title': 'Categories',
     'widget.categories.selected#one': '{count} selected',
     'widget.categories.selected#other': '{count} selected',
+    
+    'widget.places.title': 'Places',
+    
+    'widget.places.all.title': 'All places',
+    'widget.places.all.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
 
-    'widget.random.title': 'Random place around you',
-    'widget.random.intro': 'Select categories, radius around you and get a random place you might like.',
-    'widget.random.button': 'Find a random place',
-    'widget.random.button_coundown': 'Find a random place in ({countdown})',
-    'widget.random.error.not_location': 'To find a random place around you, you need to allow access to your location.',
-    'widget.random.error.not_location.info': 'Or click on any place on the map and select "I am here".',
-    'widget.random.error.not_found': 'No places matching your filters found. Try changing the category or radius.',
+    'widget.places.saved.title': 'Saved',
+    'widget.places.saved.info': 'Select a list to view your places.',
+    'widget.places.saved.show_on_the_map': 'Show on the map',
+    'widget.places.saved.error.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
+    'widget.places.saved.favorites.title': 'Favorites',
+    'widget.places.saved.favorites.empty_message': 'Your favorites are empty.{br}Add the place to your favorites to see it here.',
+    'widget.places.saved.visited.title': 'Visited places',
+    'widget.places.saved.visited.empty_message': 'You have not visited any places yet.{br}Add the place to your visited to see it here.',
+
+    'widget.places.random.title': 'Random place',
+    'widget.places.random.intro': 'Select categories, radius around you and get a random place you might like.',
+    'widget.places.random.button': 'Find a random place',
+    'widget.places.random.button_coundown': 'Find a random place in ({countdown})',
+    'widget.places.random.error.not_location': 'To find a random place around you, you need to allow access to your location.',
+    'widget.places.random.error.not_location.info': 'Or click on any place on the map and select "I am here".',
+    'widget.places.random.error.not_found': 'No places matching your filters found. Try changing the category or radius.',
+
+    'widget.toggler.map': 'Map',
+    'widget.toggler.search_and_filters': 'Search and filters',
 
     'map.popup.location.title': 'Selected location',
     'map.popup.location.add_place': 'Add place here',

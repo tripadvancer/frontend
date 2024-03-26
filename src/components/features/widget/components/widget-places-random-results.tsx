@@ -2,12 +2,11 @@
 
 import { IPlacePreview } from '@/utils/types/place'
 
-import { InfoIcon16 } from '@/components/ui/icons'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetMessage } from './widget-message'
-import { WidgetRandomPlace } from './widget-random-place'
+import { WidgetPlacesRandomPlace } from './widget-places-random-place'
 
 type WidgetRandomResultsProps = {
     place: IPlacePreview | undefined
@@ -16,7 +15,7 @@ type WidgetRandomResultsProps = {
     isUserLocated: boolean
 }
 
-export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }: WidgetRandomResultsProps) => {
+export const WidgetPlacesRandomResults = ({ place, isSuccess, isError, isUserLocated }: WidgetRandomResultsProps) => {
     const t = useI18n()
     const { handleLocate, isLocating } = useUserLocation()
 
@@ -28,23 +27,25 @@ export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }
         return (
             <>
                 <WidgetMessage
-                    message={t('widget.random.error.not_location')}
+                    message={t('widget.places.random.error.not_location')}
                     actionCaption={t('common.action.locate_me')}
                     isLoading={isLocating}
                     onAction={handleLocate}
                 />
-                <p className="text-center text-small text-black-40">{t('widget.random.error.not_location.info')}</p>
+                <p className="text-center text-small text-black-40">
+                    {t('widget.places.random.error.not_location.info')}
+                </p>
             </>
         )
     }
 
     if (isSuccess && !place) {
-        return <WidgetMessage message={t('widget.random.error.not_found')} />
+        return <WidgetMessage message={t('widget.places.random.error.not_found')} />
     }
 
     if (isSuccess && place) {
-        return <WidgetRandomPlace {...place} />
+        return <WidgetPlacesRandomPlace {...place} />
     }
 
-    return null
+    return <div className="m-auto w-2/3 text-center text-small text-black-40">{t('widget.places.random.intro')}</div>
 }

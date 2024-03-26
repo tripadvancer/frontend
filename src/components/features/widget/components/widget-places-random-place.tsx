@@ -9,11 +9,12 @@ import { PinIcon16 } from '@/components/ui/icons'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
+import { toggleWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { navigateToLocation } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const WidgetRandomPlace = (place: IPlacePreview) => {
+export const WidgetPlacesRandomPlace = (place: IPlacePreview) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
 
@@ -26,6 +27,7 @@ export const WidgetRandomPlace = (place: IPlacePreview) => {
             }),
         )
         dispatch(setMapPlacePopupInfo(place))
+        dispatch(toggleWidget())
     }
 
     return (
