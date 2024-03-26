@@ -4,7 +4,6 @@ import type {
     ChangeUserPasswordInputs,
     ChangeUserPasswordResponse,
     ConfirmUserDeletionResponse,
-    IUserInfo,
     RestoreUserResponse,
     UpdateUserInfoInputs,
     UpdateUserInfoResponse,
@@ -14,18 +13,12 @@ import { api } from './api'
 
 export const userAPI = api.injectEndpoints({
     endpoints: build => ({
-        getUserInfo: build.query<IUserInfo, void>({
-            query: () => 'user',
-            providesTags: ['UserInfo'],
-        }),
-
         updateUserInfo: build.mutation<UpdateUserInfoResponse, UpdateUserInfoInputs>({
             query: inputs => ({
                 url: 'user',
                 method: 'PATCH',
                 body: inputs,
             }),
-            invalidatesTags: ['UserInfo'],
         }),
 
         changeUserPassword: build.mutation<ChangeUserPasswordResponse, ChangeUserPasswordInputs>({
@@ -50,7 +43,6 @@ export const userAPI = api.injectEndpoints({
                 method: 'PATCH',
                 body: formData,
             }),
-            invalidatesTags: ['UserInfo'],
         }),
 
         deleteUserAvatar: build.mutation<void, void>({
@@ -58,7 +50,6 @@ export const userAPI = api.injectEndpoints({
                 url: 'user/avatar',
                 method: 'DELETE',
             }),
-            invalidatesTags: ['UserInfo'],
         }),
 
         requestPersonalData: build.mutation<void, void>({
