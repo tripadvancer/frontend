@@ -8,7 +8,7 @@ import widgetReducer from '@/redux/features/widget-slice'
 import { api } from '@/redux/services/api'
 
 const persistConfig = {
-    key: 'root',
+    key: 'root2',
     storage,
     whitelist: ['map', 'user', 'widget'],
 }

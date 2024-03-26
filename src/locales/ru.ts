@@ -251,35 +251,37 @@ export default {
     'auth.verify_email.ok': 'Ваш email был подтверждён.',
 
     'widget.common.error': 'Произошла непредвиденная ошибка.{br}Пожалуйста, попробуйте позже.',
-
     'widget.search.placeholder': 'Найти место',
-    
-    'widget.places.title': 'Места',
-    'widget.places.all_places.title': 'Все',
-    'widget.places.all_places.empty_message': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличить масштаб.',
-    'widget.places.saved_places.title': 'Мои места',
-    'widget.places.saved_places.info': 'Выберите список, чтобы увидеть сохранённые места.',
-    'widget.places.saved_places.show_on_the_map': 'Показать на карте',
-    'widget.places.saved_places.error.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть свои сохранённые места.',
-    'widget.places.saved_places.favorites.title': 'Избранное',
-    'widget.places.saved_places.favorites.empty_message': 'Ваше избранное пусто.{br}Добавьте место в избранное, чтобы увидеть его здесь.',
-    'widget.places.saved_places.visited.title': 'Посещённые места',
-    'widget.places.saved_places.visited.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в свой список посещённых мест, чтобы увидеть его здесь.',
-
-
     'widget.categories.title': 'Категории',
     'widget.categories.selected#one': 'выбрана {count} категория',
     'widget.categories.selected#few': 'выбрано {count} категории',
     'widget.categories.selected#many': 'выбрано {count} категорий',
     'widget.categories.selected#other': 'выбрано {count} категорий',
+    
+    'widget.places.title': 'Места',
 
-    'widget.random.title': 'Случайное место рядом с Вами',
-    'widget.random.intro': 'Выберите категории, радиус вокруг Вас и получите случайное место, которое может Вам понравиться.',
-    'widget.random.button': 'Найти случайное место',
-    'widget.random.button_coundown': 'Найти случайное место ({countdown})',
-    'widget.random.error.not_location': 'Чтобы найти случайное место рядом с Вами, необходимо разрешить доступ к Вашему местоположению.',
-    'widget.random.error.not_location.info': 'Или нажмите на любое место на карте и выберите "Я здесь".',
-    'widget.random.error.not_found': 'Не найдено мест, соответствующих Вашим фильтрам. Попробуйте изменить категории или радиус.',
+    'widget.places.all.title': 'Все',
+    'widget.places.all.empty_message': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличить масштаб.',
+
+    'widget.places.saved.title': 'Мои места',
+    'widget.places.saved.info': 'Выберите список, чтобы увидеть сохранённые места.',
+    'widget.places.saved.show_on_the_map': 'Показать на карте',
+    'widget.places.saved.error.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть свои сохранённые места.',
+    'widget.places.saved.favorites.title': 'Избранное',
+    'widget.places.saved.favorites.empty_message': 'Ваше избранное пусто.{br}Добавьте место в избранное, чтобы увидеть его здесь.',
+    'widget.places.saved.visited.title': 'Посещённые',
+    'widget.places.saved.visited.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в свой список посещённых мест, чтобы увидеть его здесь.',
+    
+    'widget.places.random.title': 'Случайное место',
+    'widget.places.random.intro': 'Выберите категории, радиус вокруг Вас и получите случайное место, которое может Вам понравиться.',
+    'widget.places.random.button': 'Найти случайное место',
+    'widget.places.random.button_coundown': 'Найти случайное место ({countdown})',
+    'widget.places.random.error.not_location': 'Чтобы найти случайное место рядом с Вами, необходимо разрешить доступ к Вашему местоположению.',
+    'widget.places.random.error.not_location.info': 'Или нажмите на любое место на карте и выберите "Я здесь".',
+    'widget.places.random.error.not_found': 'Не найдено мест, соответствующих Вашим фильтрам. Попробуйте изменить категории или радиус.',
+
+    'widget.toggler.map': 'Карта',
+    'widget.toggler.search_and_filters': 'Поиск и фильтры',
 
     'map.popup.location.title': 'Выбранное место',
     'map.popup.location.add_place': 'Добавить место',

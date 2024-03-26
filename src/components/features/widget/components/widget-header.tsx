@@ -1,5 +1,3 @@
-'use client'
-
 import { WidgetHeaderAbout } from './widget-header-about'
 import { WidgetHeaderAboutToggler } from './widget-header-about-toggler'
 import { WidgetHeaderLogo } from './widget-header-logo'

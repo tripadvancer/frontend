@@ -11,7 +11,7 @@ type WidgetRandomButtonProps = {
     onClick: () => void
 }
 
-export const WidgetRandomButton = ({ isLoading, isUserLocated, onClick }: WidgetRandomButtonProps) => {
+export const WidgetPlacesRandomButton = ({ isLoading, isUserLocated, onClick }: WidgetRandomButtonProps) => {
     const t = useI18n()
     const [isDisabled, setIsDisabled] = useState<boolean>(false)
     const [countdown, setCountdown] = useState<number | null>(null)
@@ -42,8 +42,8 @@ export const WidgetRandomButton = ({ isLoading, isUserLocated, onClick }: Widget
             onClick={onClick}
         >
             {isDisabled && countdown !== null && countdown > 0
-                ? t('widget.random.button_coundown', { countdown })
-                : t('widget.random.button')}
+                ? t('widget.places.random.button_coundown', { countdown })
+                : t('widget.places.random.button')}
         </FormButton>
     )
 }

@@ -5,7 +5,6 @@ import type { Metadata, Viewport } from 'next/types'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 
 import '../globals.css'
-import 'react-indiana-drag-scroll/dist/style.css'
 import 'yet-another-react-lightbox/plugins/captions.css'
 import 'yet-another-react-lightbox/styles.css'
 

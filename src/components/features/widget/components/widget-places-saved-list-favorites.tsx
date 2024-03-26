@@ -6,7 +6,7 @@ import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import { WidgetMessage } from './widget-message'
 import { WidgetPlacesFeed } from './widget-places-feed'
-import { WidgetPlacesPlaceSkeleton } from './widget-places-place-skeleton'
+import { WidgetPlacesFeedSkeleton } from './widget-places-feed-skeleton'
 
 export const WidgetPlacesSavedListFavorites = () => {
     const t = useI18n()
@@ -19,12 +19,12 @@ export const WidgetPlacesSavedListFavorites = () => {
     }
 
     if (response.isSuccess && response.data.features.length === 0) {
-        return <WidgetMessage message={t('widget.places.saved_places.favorites.empty_message', { br: <br /> })} />
+        return <WidgetMessage message={t('widget.places.saved.favorites.empty_message', { br: <br /> })} />
     }
 
     if (response.isSuccess && response.data.features.length > 0) {
         return <WidgetPlacesFeed places={places} />
     }
 
-    return <WidgetPlacesPlaceSkeleton />
+    return <WidgetPlacesFeedSkeleton />
 }

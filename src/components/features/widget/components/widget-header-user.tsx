@@ -1,32 +1,30 @@
-'use client'
+import { getUserById } from '@/services/users'
+import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { SignIn } from '@/components/features/auth/sign-in'
-import { Avatar } from '@/components/ui/avatar'
-import { CloseIcon24, UserIcon24 } from '@/components/ui/icons'
-import { useDialog } from '@/providers/dialog-provider'
-import { getWidgetState, toggleWidgetMenuOpened } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { userAPI } from '@/redux/services/user-api'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
+import { WidgetHeaderSignInLink } from './widget-header-signin-link'
+import { WidgetHeaderUserMenuToggler } from './widget-header-user-menu-togler'
 
-export const WidgetHeaderUser = () => {
-    const supertokens = useSupertokens()
-    const dialog = useDialog()
-    const dispatch = useAppDispatch()
-    const widgetState = useAppSelector(getWidgetState)
-    const response = userAPI.useGetUserInfoQuery(undefined, { skip: !supertokens.isAuth })
+export const WidgetHeaderUser = async () => {
+    const { session, hasToken } = await getSSRSessionHelper()
 
-    if (response.isSuccess) {
-        return (
-            <div className="cursor-pointer" onClick={() => dispatch(toggleWidgetMenuOpened())}>
-                {widgetState.isMenuOpened ? <CloseIcon24 /> : <Avatar size={24} {...response.data} />}
-            </div>
-        )
+    if (!session) {
+        if (!hasToken) {
+            /**
+             * This means that there is no session and no session tokens.
+             */
+            return <WidgetHeaderSignInLink />
+        }
+
+        /**
+         * This means that the session does not exist but we have session tokens for the user. In this case
+         * the `TryRefreshComponent` will try to refresh the session.
+         */
+        return <TryRefreshComponent />
     }
 
-    return (
-        <div className="cursor-pointer" onClick={() => dialog.open(<SignIn />)}>
-            <UserIcon24 />
-        </div>
-    )
+    const userId = session.getAccessTokenPayload().userId
+    const user = await getUserById(userId)
+
+    return <WidgetHeaderUserMenuToggler {...user} />
 }
