@@ -129,7 +129,7 @@ export const SignUp = () => {
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading} />
-                    <ThirdPartyButton provider="facebook" isDisabled={isLoading} />
+                    {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
                 </div>
                 <Devider>{t('auth.signin.third_party.or')}</Devider>
                 <div className="flex flex-col gap-y-2">
