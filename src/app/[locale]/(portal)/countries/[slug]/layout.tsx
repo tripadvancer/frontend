@@ -9,23 +9,27 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {
         title: countryName,
         description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
+        alternates: {
+            canonical: `/countries/${params.slug}`,
+        },
         openGraph: {
             title: countryName,
             description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
             images: [
                 {
-                    url: `https://source.unsplash.com/1920x1280/?${countryName}`,
+                    url: `/images/countries/public/${country.code.toLowerCase()}.jpg`,
                     width: 1920,
                     height: 1280,
                     type: 'image/jpeg',
                     alt: countryName,
                 },
             ],
+            url: `/countries/${params.slug}`,
         },
         twitter: {
             title: countryName,
             description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
-            images: `https://source.unsplash.com/1920x1280/?${countryName}`,
+            images: `/images/countries/public/${country.code.toLowerCase()}.jpg`,
         },
     }
 }
