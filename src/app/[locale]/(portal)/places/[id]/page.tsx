@@ -3,6 +3,8 @@ import type { Metadata } from 'next/types'
 import { Place } from '@/components/features/place/place'
 import { getCountryByCode } from '@/services/countries'
 import { getPlaceById } from '@/services/places'
+import { ImageVariant } from '@/utils/enums'
+import { makeImageUrl } from '@/utils/helpers'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const place = await getPlaceById(params.id)
@@ -14,6 +16,25 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
         description: `Discover ${place.title} in ${countryName} with Tripadvancer. Plan your unforgettable journey now with our comprehensive travel guides and insider tips. Start your adventure today!`,
         alternates: {
             canonical: `/places/${params.id}`,
+        },
+        openGraph: {
+            title: `${place.title} | ${countryName}`,
+            description: `Discover ${place.title} in ${countryName} with Tripadvancer. Plan your unforgettable journey now with our comprehensive travel guides and insider tips. Start your adventure today!`,
+            images: [
+                {
+                    url: makeImageUrl(place.cover, ImageVariant.PUBLIC),
+                    width: 1920,
+                    height: 1280,
+                    type: 'image/jpeg',
+                    alt: place.title,
+                },
+            ],
+            url: `/places/${params.id}`,
+        },
+        twitter: {
+            title: `${place.title} | ${countryName}`,
+            description: `Discover ${place.title} in ${countryName} with Tripadvancer. Plan your unforgettable journey now with our comprehensive travel guides and insider tips. Start your adventure today!`,
+            images: makeImageUrl(place.cover, ImageVariant.PUBLIC),
         },
     }
 }
