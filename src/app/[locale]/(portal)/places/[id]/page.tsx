@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     return {
         title: `${place.title} | ${countryName}`,
         description: `Discover ${place.title} in ${countryName} with Tripadvancer. Plan your unforgettable journey now with our comprehensive travel guides and insider tips. Start your adventure today!`,
+        keywords: `${place.title}, ${countryName}, travel, tourism, vacation, holiday, trip, journey, adventure, guide, tips, what to see in ${countryName}, attractions of ${countryName}, spending weekends in ${countryName}, planning a trip around ${countryName} ,tourism in ${countryName}, things to do in ${countryName}`,
         alternates: {
             canonical: `/places/${params.id}`,
         },
