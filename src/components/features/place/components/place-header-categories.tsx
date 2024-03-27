@@ -7,7 +7,7 @@ export const PlaceHeaderCategories = ({ categories }: IPlace) => {
     const locale = getCurrentLocale()
 
     return (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex-center flex-wrap gap-2">
             {categories.map(category => (
                 <div
                     key={category}
