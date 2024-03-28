@@ -26,7 +26,7 @@ export type IPlaceMeta = {
     isVisited: boolean
 }
 
-export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & {
+export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & {
     coordinates: number[]
     isFavorite: boolean
     isVisited: boolean
