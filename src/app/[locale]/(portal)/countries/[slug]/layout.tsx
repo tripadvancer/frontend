@@ -9,6 +9,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {
         title: `What To Visit In ${countryName}`,
         description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
+        keywords: `${countryName}, travel, tourism, vacation, holiday, trip, journey, adventure, guide, tips, what to see in ${countryName}, attractions of ${countryName}, spending weekends in ${countryName}, planning a trip around ${countryName} ,tourism in ${countryName}, things to do in ${countryName}`,
         alternates: {
             canonical: `/countries/${params.slug}`,
         },
