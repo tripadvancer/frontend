@@ -7,13 +7,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const countryName = country?.name['en'] ?? ''
 
     return {
-        title: countryName,
+        title: `What To Visit In ${countryName}`,
         description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
         alternates: {
             canonical: `/countries/${params.slug}`,
         },
         openGraph: {
-            title: countryName,
+            title: `What To Visit In ${countryName}`,
             description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
             images: [
                 {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             url: `/countries/${params.slug}`,
         },
         twitter: {
-            title: countryName,
+            title: `What To Visit In ${countryName}`,
             description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
             images: `/images/countries/public/${country.code.toLowerCase()}.jpg`,
         },
