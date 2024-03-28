@@ -12,7 +12,7 @@ export type IPlace = {
     cover: string | null
     photos: IPhoto[]
     categories: number[]
-    countryCode: string
+    countryCode: string | null
     author: IUserInfo
     location: GeoJsonPoint
     avgRating: number | null

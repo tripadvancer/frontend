@@ -31,7 +31,7 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
             <div className="flex flex-col gap-y-8">
                 <div className="grid grid-cols-2 gap-4 last:mb-0 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-3">
                     {response.data.items.map(place => {
-                        const country = getCountryByCode(place.countryCode.toUpperCase())
+                        const country = getCountryByCode(place.countryCode)
 
                         return (
                             <Link href={`/places/${place.id}`} key={place.id} className="text-black-100">

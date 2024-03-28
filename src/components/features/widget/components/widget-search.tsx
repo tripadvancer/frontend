@@ -44,7 +44,7 @@ export const WidgetSearch = () => {
             const items = searchResult.data
             const coordinates = items.coordinates.map(coordinate => ({ ...coordinate }))
             const places = items.places.map(place => {
-                const country = getCountryByCode(place.properties.countryCode.toUpperCase())
+                const country = getCountryByCode(place.properties.countryCode)
                 return {
                     ...place,
                     info: country?.name[locale] ?? '', // Provide a default empty string value
