@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import { getWidgetState } from '@/redux/features/widget-slice'
@@ -13,10 +12,6 @@ import { WidgetSearch } from './widget-search'
 export const WidgetBody = () => {
     const widgetState = useAppSelector(getWidgetState)
     const isMobile = useMediaQuery({ query: '(max-width: 639px)' })
-
-    useEffect(() => {
-        console.log(isMobile)
-    }, [isMobile])
 
     if (isMobile && !widgetState.widgetIsExpanded) {
         return null
