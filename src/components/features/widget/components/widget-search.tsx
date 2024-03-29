@@ -11,17 +11,19 @@ import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '
 import { toggleWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { searchAPI } from '@/redux/services/search-api'
+import { getCountryByCode } from '@/services/countries'
 import { Keys } from '@/utils/enums'
 import { useDebounce } from '@/utils/hooks/use-debounce'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
-import { useI18n } from '@/utils/i18n/i18n.client'
+import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetSearchAutocomplete } from './widget-search-autocomplete'
 
 export const WidgetSearch = () => {
     const t = useI18n()
     const dispatch = useAppDispatch()
+    const locale = useCurrentLocale()
     const [searchTerm, setSearchTerm] = useState<string>('')
     const [suggestions, setSuggestions] = useState<ISearchItem<IPlacePreview | ILocationPreview>[]>([])
     const [isSuggestionsVisible, setIsSuggestionsVisible] = useState<boolean>(false)
@@ -41,12 +43,18 @@ export const WidgetSearch = () => {
         if (searchTerm.length >= 2 && searchResult.isSuccess) {
             const items = searchResult.data
             const coordinates = items.coordinates.map(coordinate => ({ ...coordinate }))
-            const places = items.places.map(place => ({ ...place }))
+            const places = items.places.map(place => {
+                const country = getCountryByCode(place.properties.countryCode)
+                return {
+                    ...place,
+                    info: country?.name[locale] ?? '', // Provide a default empty string value
+                }
+            })
             const locations = items.locations.map(location => ({ ...location }))
             // Merge all search results into one array
             setSuggestions([...coordinates, ...places, ...locations])
         }
-    }, [searchResult, searchTerm])
+    }, [locale, searchResult, searchTerm])
 
     useEffect(() => {
         setIsSuggestionsVisible(suggestions.length > 0)
