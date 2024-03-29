@@ -1,6 +1,7 @@
 'use client'
 
-import { FormContentEditable } from '@/components/ui/form-content-editable'
+import TextareaAutosize from 'react-textarea-autosize'
+
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type PlaceFormInputTitleProps = {
@@ -12,11 +13,11 @@ export const PlaceFormInputTitle = ({ value, onChange }: PlaceFormInputTitleProp
     const t = useI18n()
 
     return (
-        <FormContentEditable
+        <TextareaAutosize
             value={value}
-            className="w-full text-center text-h1-m text-white sm:text-h1"
+            onChange={e => onChange(e.target.value)}
+            className="w-full resize-none bg-transparent text-center text-h1-m text-white placeholder:text-white focus:outline-none"
             placeholder={t('placeholder.place.title')}
-            onChange={onChange}
         />
     )
 }

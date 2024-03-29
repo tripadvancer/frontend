@@ -22,7 +22,7 @@ export const PlaceFormInputCategories = ({ value, onChange }: PlaceFormInputCate
     }
 
     return (
-        <div className="flex gap-2">
+        <div className="flex-center flex-wrap gap-2">
             {value.length === 0 && (
                 <div
                     className="hover-animated flex h-8 cursor-pointer items-center gap-x-2 rounded-full border border-white px-4 text-small text-white hover:border-blue-active hover:text-blue-active"

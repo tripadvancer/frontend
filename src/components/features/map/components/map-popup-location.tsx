@@ -62,7 +62,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
                     {coordinates.lat}, {coordinates.lng}
                 </div>
                 <div className="flex flex-col gap-y-1">
-                    <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleIAmHereClick}>
+                    <FormButton type="stroke" size="small" onClick={handleIAmHereClick}>
                         {t('map.popup.location.i_am_here')}
                     </FormButton>
                     <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>

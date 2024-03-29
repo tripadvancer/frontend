@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback } from 'react'
+import { isMobile } from 'react-device-detect'
 
 import classNames from 'classnames'
 
@@ -44,9 +45,10 @@ export const CountryCategories = ({ selectedCategoryIds, locale }: CountryCatego
                 scroll={false}
                 replace={true}
                 className={classNames(
-                    'hover-animated flex-center h-8 cursor-pointer whitespace-nowrap rounded-full bg-blue-20 px-4 text-small text-blue-100 hover:bg-blue-active hover:text-blue-20',
+                    'flex-center h-8 cursor-pointer whitespace-nowrap rounded-full bg-blue-20 px-4 text-small text-blue-100',
                     {
                         'bg-blue-active text-blue-20': selectedCategoryIds.length === 0,
+                        'hover-animated hover:bg-blue-active hover:text-blue-20': !isMobile,
                     },
                 )}
             >

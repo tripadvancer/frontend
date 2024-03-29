@@ -68,6 +68,7 @@ export const PlaceAdd = () => {
                     id: response.id,
                     title: inputs.title,
                     cover: inputs.cover,
+                    countryCode: '',
                     isFavorite: false,
                     isVisited: false,
                     avgRating: 0,

@@ -3,8 +3,7 @@ import classNames from 'classnames'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
 
-import { PinIcon16 } from '@/components/ui/icons'
-import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
+import { PinIcon16, PointIcon16 } from '@/components/ui/icons'
 
 type WidgetSearchAutocompleteItemProps = {
     item: ISearchItem<IPlacePreview | ILocationPreview>
@@ -27,30 +26,18 @@ export const WidgetSearchAutocompleteItem = ({
             onClick={onClick}
             onMouseEnter={onMouseEnter}
         >
-            {item.type === 'place' && (
-                <div className="flex items-center gap-x-2 px-3 py-2">
-                    <div className="rounded-full">
-                        <PlacePreviewCover size={24} isRounded {...(item.properties as IPlacePreview)} />
-                    </div>
+            <div className="flex gap-x-2 px-3 py-2">
+                <div className="mt-[3px] text-black-40">
+                    {item.type === 'place' && <PinIcon16 />}
+                    {item.type === 'location' && <PointIcon16 />}
+                </div>
+                <div className="overflow-hidden">
                     <div className="hover-animated line-clamp-2 break-words group-hover:text-blue-active">
                         {item.title}
                     </div>
+                    <div className="line-clamp-2 break-words text-small text-black-40">{item.info}</div>
                 </div>
-            )}
-
-            {item.type === 'location' && (
-                <div className="flex gap-x-2 px-3 py-2">
-                    <div className="mt-[3px] text-black-40">
-                        <PinIcon16 />
-                    </div>
-                    <div className="overflow-hidden">
-                        <div className="hover-animated line-clamp-2 break-words group-hover:text-blue-active">
-                            {item.title}
-                        </div>
-                        <div className="line-clamp-2 break-words text-small text-black-40">{item.info}</div>
-                    </div>
-                </div>
-            )}
+            </div>
         </div>
     )
 }

@@ -1,6 +1,5 @@
 'use client'
 
-import { FormContentEditable } from '@/components/ui/form-content-editable'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type PlaceFormInputCoordinatesProps = {
@@ -12,11 +11,12 @@ export const PlaceFormInputCoordinates = ({ value, onChange }: PlaceFormInputCoo
     const t = useI18n()
 
     return (
-        <FormContentEditable
+        <input
+            type="text"
             value={value}
-            className="w-full text-center text-big text-white"
+            onChange={e => onChange(e.target.value)}
+            className="w-full bg-transparent text-center text-big text-white placeholder:text-white focus:outline-none"
             placeholder={t('placeholder.place.coordinates')}
-            onChange={onChange}
         />
     )
 }

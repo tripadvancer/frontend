@@ -12,7 +12,7 @@ export type IPlace = {
     cover: string | null
     photos: IPhoto[]
     categories: number[]
-    countryCode: string
+    countryCode: string | null
     author: IUserInfo
     location: GeoJsonPoint
     avgRating: number | null
@@ -26,7 +26,7 @@ export type IPlaceMeta = {
     isVisited: boolean
 }
 
-export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & {
+export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & {
     coordinates: number[]
     isFavorite: boolean
     isVisited: boolean

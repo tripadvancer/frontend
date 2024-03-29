@@ -43,12 +43,12 @@ export const PlaceFormInputCover = ({ value, onChange }: PlaceFormInputCoverProp
     }
 
     if (isLoading) {
-        return <div className="font-medium text-white">{t('placeholder.file.loading')}</div>
+        return <div className="text-center font-medium text-white">{t('placeholder.file.loading')}</div>
     }
 
     return (
         <div>
-            <div className="link-white font-medium" onClick={() => hiddenFileInput.current?.click()}>
+            <div className="link-white text-center font-medium" onClick={() => hiddenFileInput.current?.click()}>
                 {t('placeholder.action.place.cover')}
             </div>
 
