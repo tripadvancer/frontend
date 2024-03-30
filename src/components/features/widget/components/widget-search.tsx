@@ -9,7 +9,7 @@ import { ISearchItem } from '@/utils/types/search'
 import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { Spinner } from '@/components/ui/spinner'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { toggleWidget } from '@/redux/features/widget-slice'
+import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { searchAPI } from '@/redux/services/search-api'
 import { getCountryByCode } from '@/services/countries'
@@ -106,7 +106,7 @@ export const WidgetSearch = () => {
         }
 
         setIsSuggestionsVisible(false)
-        dispatch(toggleWidget())
+        dispatch(closeWidget())
     }
 
     const handleSearchClick = () => {

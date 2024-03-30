@@ -7,7 +7,7 @@ import type { IPlace } from '@/utils/types/place'
 import { FormButton } from '@/components/ui/form-button'
 import { BookmarkFillIcon24, BookmarkIcon24, PinIcon24, RouteIcon24 } from '@/components/ui/icons'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { toggleWidget } from '@/redux/features/widget-slice'
+import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
 import { navigateToLocation } from '@/utils/helpers'
@@ -39,7 +39,7 @@ export const PlaceSidebarActions = (place: IPlace) => {
                 isVisited: response.data?.isVisited || false,
             }),
         )
-        dispatch(toggleWidget())
+        dispatch(closeWidget())
         router.push('/maps')
     }
 
