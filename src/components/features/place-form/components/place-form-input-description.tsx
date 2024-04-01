@@ -48,7 +48,10 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
 
     return (
         <div className="flex flex-col gap-y-8">
-            <div className="flex flex-col lg:flex-row lg:gap-x-8">
+            <div className="flex flex-col gap-8 lg:flex-row-reverse">
+                <div className="w-full text-black-40 lg:w-64">
+                    <div className="lg:hidden">{t('pages.add_place.about.info')}</div>
+                </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
                         <h2 className="text-h5-m sm:text-h5">{t('pages.add_place.about.title')}</h2>
@@ -57,11 +60,10 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
                         </div>
                     </div>
                 </div>
-                <div className="hidden w-64 lg:block" />
             </div>
 
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
-                <div className="w-full text-black-40 lg:w-64">{t('pages.add_place.about.info')}</div>
+                <div className="hidden w-full text-black-40 lg:block lg:w-64">{t('pages.add_place.about.info')}</div>
                 <div className="flex-1 overflow-hidden break-words text-big">
                     <Editor
                         editorState={editorState}
