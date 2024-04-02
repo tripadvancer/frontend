@@ -60,7 +60,10 @@ export const PlaceFormPhotosList = ({ photos, onChange }: PlaceFormPhotosListPro
 
     return (
         <div className="flex flex-col gap-y-8">
-            <div className="flex flex-col lg:flex-row lg:gap-x-8">
+            <div className="flex flex-col gap-8 lg:flex-row-reverse">
+                <div className="w-full text-black-40 lg:w-64">
+                    <div className="lg:hidden">{t('pages.add_place.photos.info', { max_count: maxPhotosCount })}</div>
+                </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
                         <h2 className="text-h5-m sm:text-h5">{t('pages.add_place.photos.title')}</h2>
@@ -69,11 +72,10 @@ export const PlaceFormPhotosList = ({ photos, onChange }: PlaceFormPhotosListPro
                         </div>
                     </div>
                 </div>
-                <div className="hidden w-64 lg:block" />
             </div>
 
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
-                <div className="w-full text-black-40 lg:w-64">
+                <div className="hidden w-full text-black-40 lg:block lg:w-64">
                     {t('pages.add_place.photos.info', { max_count: maxPhotosCount })}
                 </div>
                 <div className="flex-1">

@@ -1,6 +1,6 @@
 'use client'
 
-import { forwardRef, useState } from 'react'
+import { CSSProperties, forwardRef, useState } from 'react'
 
 import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
@@ -11,12 +11,13 @@ import { useKeypress } from '@/utils/hooks/use-keypress'
 import { WidgetSearchAutocompleteItem } from './widget-search-autocomplete-item'
 
 type WidgetSearchAutocompleteProps = {
+    style: CSSProperties
     suggestions: ISearchItem<IPlacePreview | ILocationPreview>[]
     onSelect: (cursor: number) => void
 }
 
 const WidgetSearchAutocomplete = forwardRef<HTMLDivElement, WidgetSearchAutocompleteProps>(
-    function WidgetSearchAutocomplete({ suggestions, onSelect }, ref) {
+    function WidgetSearchAutocomplete({ style, suggestions, onSelect }, ref) {
         const [cursor, setCursor] = useState<number>(0)
 
         useKeypress(Keys.ENTER, () => {
@@ -38,7 +39,7 @@ const WidgetSearchAutocomplete = forwardRef<HTMLDivElement, WidgetSearchAutocomp
         })
 
         return (
-            <div ref={ref} className="absolute left-0 right-0 top-full z-40 rounded-lg bg-white p-1 shadow-small">
+            <div ref={ref} className="fixed z-40 rounded-lg bg-white p-1 shadow-small" style={style}>
                 {suggestions.map((suggestion, index) => (
                     <WidgetSearchAutocompleteItem
                         key={`search-result-item-${index}`}

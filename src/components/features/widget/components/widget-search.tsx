@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import { ISearchItem } from '@/utils/types/search'
@@ -8,7 +9,7 @@ import { ISearchItem } from '@/utils/types/search'
 import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { Spinner } from '@/components/ui/spinner'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { toggleWidget } from '@/redux/features/widget-slice'
+import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { searchAPI } from '@/redux/services/search-api'
 import { getCountryByCode } from '@/services/countries'
@@ -27,6 +28,10 @@ export const WidgetSearch = () => {
     const [searchTerm, setSearchTerm] = useState<string>('')
     const [suggestions, setSuggestions] = useState<ISearchItem<IPlacePreview | ILocationPreview>[]>([])
     const [isSuggestionsVisible, setIsSuggestionsVisible] = useState<boolean>(false)
+    const [suggestionsPosition, setSuggestionsPosition] = useState<{ top: number; left: number; width?: number }>({
+        top: 0,
+        left: 0,
+    })
 
     const inputRef = useRef<HTMLInputElement>(null)
     const suggestionsRef = useRef<HTMLDivElement>(null)
@@ -60,6 +65,15 @@ export const WidgetSearch = () => {
         setIsSuggestionsVisible(suggestions.length > 0)
     }, [suggestions])
 
+    useEffect(() => {
+        const inputRect = inputRef.current?.getBoundingClientRect()
+        setSuggestionsPosition({
+            top: inputRect?.bottom || 0,
+            left: inputRect?.left || 0,
+            width: inputRect?.width,
+        })
+    }, [isSuggestionsVisible])
+
     useOnClickOutside(suggestionsRef, () => {
         setIsSuggestionsVisible(false)
     })
@@ -92,7 +106,7 @@ export const WidgetSearch = () => {
         }
 
         setIsSuggestionsVisible(false)
-        dispatch(toggleWidget())
+        dispatch(closeWidget())
     }
 
     const handleSearchClick = () => {
@@ -126,9 +140,16 @@ export const WidgetSearch = () => {
                 </div>
             )}
 
-            {isSuggestionsVisible && (
-                <WidgetSearchAutocomplete ref={suggestionsRef} suggestions={suggestions} onSelect={handleSelect} />
-            )}
+            {isSuggestionsVisible &&
+                createPortal(
+                    <WidgetSearchAutocomplete
+                        ref={suggestionsRef}
+                        style={suggestionsPosition}
+                        suggestions={suggestions}
+                        onSelect={handleSelect}
+                    />,
+                    document.body,
+                )}
         </div>
     )
 }

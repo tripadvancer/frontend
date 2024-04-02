@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import type { IPlace } from '@/utils/types/place'
 
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { toggleWidget } from '@/redux/features/widget-slice'
+import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -38,7 +38,7 @@ export const PlaceMainMap = (place: IPlace) => {
                 isVisited: placeMetaResponse.data?.isVisited || false,
             }),
         )
-        dispatch(toggleWidget())
+        dispatch(closeWidget())
         router.push('/maps')
     }
 

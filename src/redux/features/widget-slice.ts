@@ -69,6 +69,11 @@ export const widgetSlice = createSlice({
             state.isAboutOpened = false
             state.isMenuOpened = false
         },
+        closeWidget(state) {
+            state.widgetIsExpanded = false
+            state.isAboutOpened = false
+            state.isMenuOpened = false
+        },
         toggleWidgetPlacesOpened(state) {
             state.isPlacesOpened = !state.isPlacesOpened
         },
@@ -113,6 +118,7 @@ export const getWidgetState = (state: RootState) => state.widget
 export const {
     resetWidgetState,
     toggleWidget,
+    closeWidget,
     toggleWidgetPlacesOpened,
     toggleWidgetCategoriesOpened,
     toggleWidgetAbout,
