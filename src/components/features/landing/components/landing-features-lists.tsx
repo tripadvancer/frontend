@@ -1,0 +1,25 @@
+import Image from 'next/image'
+
+import { getI18n } from '@/utils/i18n/i18n.server'
+
+export const LandingFeaturesLists = async () => {
+    const t = await getI18n()
+
+    return (
+        <div className="grid-row-2 grid items-center gap-y-8 sm:grid-cols-2 sm:grid-rows-none sm:gap-x-16">
+            <Image
+                src="/images/features-lists.svg"
+                width={448}
+                height={448}
+                className="m-auto block"
+                alt="Personalized travel lists"
+            />
+            <section>
+                <h3 className="mb-4 text-h5-m sm:mb-8 sm:text-h5">
+                    {t('onboarding.features.lists.title', { br: <br /> })}
+                </h3>
+                <p>{t('onboarding.features.lists.description')}</p>
+            </section>
+        </div>
+    )
+}
