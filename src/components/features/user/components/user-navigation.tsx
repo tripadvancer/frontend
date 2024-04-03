@@ -24,9 +24,9 @@ export const UserNavigation = async ({ userId }: { userId: string }) => {
         return <TryRefreshComponent />
     }
 
-    if (session.getAccessTokenPayload().userId !== userId) {
-        return <UserNavigationPublic userId={userId} />
+    if (session.getAccessTokenPayload().userId === Number(userId)) {
+        return <UserNavigationPrivate userId={userId} />
     }
 
-    return <UserNavigationPrivate userId={userId} />
+    return <UserNavigationPublic userId={userId} />
 }
