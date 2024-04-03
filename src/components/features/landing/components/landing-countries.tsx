@@ -9,18 +9,11 @@ export const LandingCountries = async () => {
     const countries = await getCountries()
     const userCountryCode = await getUserCountryCode()
 
-    // Prepare forbidden countries
-    const forbiddenCountries = process.env.COUNTRIES_FORBIDDEN?.split(',') || []
-
-    // Determine user's country and whether it's forbidden
+    // Determine user's country
     const userCountry = countries.find(country => country.countryCode.toLowerCase() === userCountryCode)
-    const userCountryIsForbidden = userCountryCode && forbiddenCountries.includes(userCountryCode)
-
-    // Determine if sorting is needed
-    const needToSort = userCountry && !userCountryIsForbidden
 
     // Sort countries accordingly
-    const sortCountries = needToSort
+    const sortCountries = userCountry
         ? [userCountry, ...countries.filter(country => country.countryCode.toLowerCase() !== userCountryCode)]
         : countries
 
