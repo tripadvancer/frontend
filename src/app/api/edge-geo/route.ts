@@ -11,8 +11,8 @@ export function GET(request: Request) {
         })
     }
 
-    // If environment is not production, return fake country code from .env NEXT_PUBLIC_TEXT_USER_COUNTRY
-    return new Response(JSON.stringify({ countryCode: process.env.NEXT_PUBLIC_TEXT_USER_COUNTRY }), {
+    // If environment is not production, return fake country code from .env NEXT_PUBLIC_TEST_USER_COUNTRY
+    return new Response(JSON.stringify({ countryCode: process.env.NEXT_PUBLIC_TEST_USER_COUNTRY }), {
         headers: { 'content-type': 'application/json' },
     })
 }

@@ -12,5 +12,5 @@ export const getUserCountryCode = async (): Promise<string | undefined> => {
 
     const { countryCode } = await res.json()
 
-    return countryCode.toLowerCase()
+    return countryCode?.toLowerCase()
 }
