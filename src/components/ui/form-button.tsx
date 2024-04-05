@@ -1,10 +1,12 @@
+import { ReactNode } from 'react'
+
 import classNames from 'classnames'
 
 import { Spinner } from '@/components/ui/spinner'
 
 type FormButtonProps = {
-    children?: React.ReactNode
-    icon?: React.ReactNode
+    children?: ReactNode
+    icon?: ReactNode
     size?: 'small' | 'medium'
     type?: 'primary' | 'stroke'
     variant?: 'blue' | 'orange' | 'red' | 'light-blue'

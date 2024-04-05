@@ -5,14 +5,15 @@ import { getCountries } from '@/services/countries'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { LandingCountries } from './components/landing-countries'
+import { LandingHeroCountry } from './components/landing-hero-country'
 
 export const Landing = async () => {
     const t = await getI18n()
     const countries = await getCountries()
 
     return (
-        <div className="container py-24">
-            <section className="mb-24">
+        <div className="container flex flex-col gap-y-24 py-24">
+            <section>
                 <h1 className="mb-4 text-center text-h1-m sm:text-h1">{t('pages.home.countries.title')}</h1>
                 <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
                     {t('pages.home.countries.description')}
@@ -20,7 +21,15 @@ export const Landing = async () => {
                 <LandingCountries countries={countries} />
             </section>
 
-            <section className="mb-24">
+            {/* <section>
+                <h2 className="mb-4 text-center text-h3-m sm:text-h3">Explore places near you</h2>
+                <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
+                    {t('pages.home.features.description')}
+                </p>
+                <LandingHeroCountry />
+            </section> */}
+
+            <section>
                 <h2 className="mb-4 text-center text-h3-m sm:text-h3">{t('pages.home.features.title')}</h2>
                 <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
                     {t('pages.home.features.description')}
