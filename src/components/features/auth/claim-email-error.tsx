@@ -43,7 +43,7 @@ export const ClaimEmailError = ({ userId }: ClaimEmailErrorProps) => {
 
     return (
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
-            <h1 className="text-h7-m sm:text-h7">{t('auth.claim_email_error.title')}</h1>
+            <h1 className="h7">{t('auth.claim_email_error.title')}</h1>
             <p className="text-center">{t('auth.claim_email_error.message')}</p>
             <FormButton
                 htmlType="button"

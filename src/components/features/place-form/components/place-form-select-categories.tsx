@@ -39,7 +39,7 @@ export const PlaceFormSelectCategories = ({ value, onChange }: PlaceFormSelectCa
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
-            <h1 className="text-center text-h7">
+            <h1 className="h7 text-center">
                 {t('pages.add_place.categories.add_category.title', {
                     max_count: maxCategoriesCount,
                 })}
@@ -49,7 +49,7 @@ export const PlaceFormSelectCategories = ({ value, onChange }: PlaceFormSelectCa
                     <div
                         key={category.id}
                         className={classNames(
-                            'hover-animated flex-center h-8 cursor-pointer rounded-full bg-blue-20 px-4 text-small text-blue-100 sm:hover:bg-blue-active sm:hover:text-blue-20',
+                            'flex-center hover-animated h-8 cursor-pointer rounded-full bg-blue-20 px-4 text-small text-blue-100 sm:hover:bg-blue-active sm:hover:text-blue-20',
                             {
                                 'bg-blue-active text-blue-20': selectedCategoryIds.includes(category.id),
                                 'pointer-events-none opacity-30':

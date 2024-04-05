@@ -33,7 +33,7 @@ export const CountryPlace = (place: IPlacePreview) => {
                     )}
                 </div>
                 <div className="flex flex-col justify-between overflow-hidden">
-                    <div className="line-clamp-4 break-words text-h7-m sm:text-h7">{place.title}</div>
+                    <div className="h7 line-clamp-4 break-words">{place.title}</div>
                     <div>
                         <Rating value={place.avgRating ?? 0} size={16} />
                         <div className="text-small text-black-40">

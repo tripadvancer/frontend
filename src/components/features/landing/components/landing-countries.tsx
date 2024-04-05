@@ -1,35 +1,29 @@
-'use client'
+import { getCountries } from '@/services/countries'
+import { getUserCountryCode } from '@/services/edge-geo'
+import { getI18n } from '@/utils/i18n/i18n.server'
 
-import { useState } from 'react'
+import { LandingCountriesFeed } from './landing-countries-feed'
 
-import type { ICountry } from '@/utils/types/country'
+export const LandingCountries = async () => {
+    const t = await getI18n()
+    const countries = await getCountries()
+    const userCountryCode = await getUserCountryCode()
 
-import { ShowMore } from '@/components/ui/show-more'
+    // Determine user's country
+    const userCountry = countries.find(country => country.countryCode.toLowerCase() === userCountryCode)
 
-import { LandingCountry } from './landing-country'
-
-const PAGINATION_LIMIT = 12
-
-type CountriesFeedProps = {
-    countries: ICountry[]
-}
-
-export const LandingCountries = ({ countries }: CountriesFeedProps) => {
-    const [currentPage, setCurrentPage] = useState(1)
-    const visibleCountries = countries.slice(0, currentPage * PAGINATION_LIMIT)
-
-    const handleLoadMore = () => {
-        setCurrentPage((prevPage: number) => prevPage + 1)
-    }
+    // Sort countries accordingly
+    const sortCountries = userCountry
+        ? [userCountry, ...countries.filter(country => country.countryCode.toLowerCase() !== userCountryCode)]
+        : countries
 
     return (
-        <div className="flex flex-col gap-y-8">
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
-                {visibleCountries.map((country, index) => (
-                    <LandingCountry key={index} {...country} />
-                ))}
-            </div>
-            {currentPage * PAGINATION_LIMIT < countries.length && <ShowMore onClick={handleLoadMore} />}
-        </div>
+        <section>
+            <h1 className="h1 mb-4 text-center">{t('pages.landing.countries.title')}</h1>
+            <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
+                {t('pages.landing.countries.description')}
+            </p>
+            <LandingCountriesFeed countries={sortCountries} />
+        </section>
     )
 }

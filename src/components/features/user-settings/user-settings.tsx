@@ -19,7 +19,7 @@ export const UserSettings = async ({ userId }: { userId: string }) => {
                 </section>
                 <section>
                     <h2 className="h5 mb-8">{t('pages.user.settings.account.title')}</h2>
-                    <div className="flex flex-col gap-y-8">
+                    <div className="flex flex-col">
                         <UserSettingsBlockChangeEmail />
                         <UserSettingsBlockChangePassword />
                         <UserSettingsBlockRequestPersonalData />

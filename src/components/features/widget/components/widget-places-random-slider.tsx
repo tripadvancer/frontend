@@ -14,7 +14,7 @@ export const WidgetPlacesRandomSlider = ({ value, onChange }: { value: number; o
             renderThumb={(props: any, state: any) => (
                 <div
                     {...props}
-                    className="flex-center trasform top-1 h-8 w-[70px] -translate-y-1/2 whitespace-nowrap rounded-full border-2 border-black-5 bg-white text-small-bold shadow-small focus:outline-none"
+                    className="trasform flex-center top-1 h-8 w-[70px] -translate-y-1/2 whitespace-nowrap rounded-full border-2 border-black-5 bg-white text-small-bold shadow-small focus:outline-none"
                 >
                     {state.valueNow} km
                 </div>

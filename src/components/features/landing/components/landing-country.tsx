@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import type { ICountry } from '@/utils/types/country'
@@ -30,9 +29,7 @@ export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
                     />
                 </div>
                 <figcaption className="flex flex-col justify-between p-4">
-                    <h4 className="mb-4 line-clamp-2 h-12 break-words text-h7-m sm:h-[52px] sm:text-h7">
-                        {countryName}
-                    </h4>
+                    <h4 className="h7-m mb-4 line-clamp-2 h-12 break-words sm:h7 sm:h-[52px]">{countryName}</h4>
                     <div className="flex flex-row items-center gap-x-2 text-blue-100">
                         <PinIcon16 />
                         {t('countries.places', { count: placesCount })}
