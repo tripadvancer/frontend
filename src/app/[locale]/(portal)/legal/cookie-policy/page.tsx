@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function LegalCookiePolicyPage() {
     return (
         <article className="inner-container">
-            <h1 className="mb-4 text-center text-h1-m sm:text-h1">Cookie Policy</h1>
+            <h1 className="h1 mb-4 text-center">Cookie Policy</h1>
 
             <article className="mb-16 text-center text-black-70">
                 <p className="mb-5">
@@ -24,7 +24,7 @@ export default function LegalCookiePolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">What are Cookies?</h2>
+                <h2 className="h5 mb-8">What are Cookies?</h2>
                 <p>
                     Cookies are small text files that are placed on&nbsp;your device (e.g., computer, smartphone,
                     or&nbsp;tablet) when you visit a&nbsp;website. They are widely used to&nbsp;make websites work
@@ -34,7 +34,7 @@ export default function LegalCookiePolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">How We&nbsp;Use Cookies</h2>
+                <h2 className="h5 mb-8">How We&nbsp;Use Cookies</h2>
                 <p className="mb-5">We&nbsp;use cookies for the following purposes:</p>
                 <ol className="list-outside list-decimal pl-12">
                     <li className="mb-3">
@@ -67,7 +67,7 @@ export default function LegalCookiePolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Your Cookie Choices</h2>
+                <h2 className="h5 mb-8">Your Cookie Choices</h2>
                 <p>
                     Most web browsers automatically accept cookies, but you can usually modify your browser settings to
                     decline cookies or&nbsp;to&nbsp;alert you when a&nbsp;cookie is&nbsp;being sent. However, please
@@ -77,7 +77,7 @@ export default function LegalCookiePolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Managing Cookies</h2>
+                <h2 className="h5 mb-8">Managing Cookies</h2>
                 <p>
                     You can manage your cookie preferences by&nbsp;adjusting the settings in&nbsp;your web browser. Each
                     browser has different methods for managing cookies, so&nbsp;please refer to&nbsp;the instructions
@@ -90,7 +90,7 @@ export default function LegalCookiePolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Updates to&nbsp;this Cookie Policy</h2>
+                <h2 className="h5 mb-8">Updates to&nbsp;this Cookie Policy</h2>
                 <p>
                     We&nbsp;may update this Cookie Policy from time to&nbsp;time to&nbsp;reflect changes in&nbsp;our
                     practices or&nbsp;for other operational, legal, or&nbsp;regulatory reasons. We&nbsp;encourage you
@@ -99,7 +99,7 @@ export default function LegalCookiePolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Contacting&nbsp;us</h2>
+                <h2 className="h5 mb-8">Contacting&nbsp;us</h2>
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Cookie Policy,
                     we&nbsp;encourage you to contact&nbsp;us using the details below:{' '}
@@ -107,7 +107,7 @@ export default function LegalCookiePolicyPage() {
                 </p>
             </article>
 
-            <p className="text-center  text-black-70">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
+            <p className="text-center text-black-70">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
         </article>
     )
 }

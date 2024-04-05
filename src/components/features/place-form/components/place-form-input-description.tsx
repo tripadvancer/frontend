@@ -54,7 +54,7 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
                 </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-h5-m sm:text-h5">{t('pages.add_place.about.title')}</h2>
+                        <h2 className="h5">{t('pages.add_place.about.title')}</h2>
                         <div className={classNames(characterCount > maxLength ? 'text-red-100' : 'text-black-40')}>
                             {characterCount} / {maxLength}
                         </div>

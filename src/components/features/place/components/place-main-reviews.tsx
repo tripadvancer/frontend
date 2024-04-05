@@ -10,7 +10,7 @@ export const PlaceMainReviews = async ({ id }: IPlace) => {
 
     return (
         <section className="flex scroll-m-24 flex-col gap-y-8 sm:scroll-m-28" id="reviews">
-            <h2 className="text-h5-m sm:text-h5">{t('pages.place.reviews.title')}</h2>
+            <h2 className="h5">{t('pages.place.reviews.title')}</h2>
             <div className="flex flex-col gap-y-8">
                 <PlaceMainOwnReview placeId={id} />
                 <PlaceMainReviewsList placeId={id} />
