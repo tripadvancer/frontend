@@ -1,7 +1,5 @@
 import { geolocation } from '@vercel/edge'
 
-export const runtime = 'edge'
-
 export function GET(request: Request) {
     if (process.env.NODE_ENV === 'production') {
         const { country, latitude, longitude } = geolocation(request)
