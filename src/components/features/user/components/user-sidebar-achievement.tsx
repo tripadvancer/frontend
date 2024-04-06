@@ -1,16 +1,10 @@
-import { IUserStatistics } from '@/utils/types/user'
-
 import { Achievement } from '@/components/ui/achievement'
+import { getUserById } from '@/services/users'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-export const UserSidebarAchievement = async ({
-    places,
-    placePhotos,
-    placeReviews,
-    visitedPlaces,
-    visitedCountries,
-}: IUserStatistics) => {
+export const UserSidebarAchievement = async ({ userId }: { userId: string }) => {
     const t = await getI18n()
+    const user = await getUserById(userId)
 
     return (
         <Achievement
@@ -23,11 +17,23 @@ export const UserSidebarAchievement = async ({
             }
         >
             <Achievement.Items>
-                <Achievement.Item label={t('user_achievement.statistic.added_places')} value={places} />
-                <Achievement.Item label={t('user_achievement.statistic.added_photos')} value={placePhotos} />
-                <Achievement.Item label={t('user_achievement.statistic.added_reviews')} value={placeReviews} />
-                <Achievement.Item label={t('user_achievement.statistic.visited_places')} value={visitedPlaces} />
-                <Achievement.Item label={t('user_achievement.statistic.visited_countries')} value={visitedCountries} />
+                <Achievement.Item label={t('user_achievement.statistic.added_places')} value={user._count.places} />
+                <Achievement.Item
+                    label={t('user_achievement.statistic.added_photos')}
+                    value={user._count.placePhotos}
+                />
+                <Achievement.Item
+                    label={t('user_achievement.statistic.added_reviews')}
+                    value={user._count.placeReviews}
+                />
+                <Achievement.Item
+                    label={t('user_achievement.statistic.visited_places')}
+                    value={user._count.visitedPlaces}
+                />
+                <Achievement.Item
+                    label={t('user_achievement.statistic.visited_countries')}
+                    value={user._count.visitedCountries}
+                />
             </Achievement.Items>
         </Achievement>
     )

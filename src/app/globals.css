@@ -61,6 +61,22 @@ a {
 .mapboxgl-popup-content,
 .maplibregl-popup-content {
     @apply rounded-lg p-4 text-base shadow-small !important;
+
+    .mapboxgl-popup-anchor-top-left & {
+        @apply rounded-tl-none !important;
+    }
+
+    .mapboxgl-popup-anchor-top-right & {
+        @apply rounded-tr-none !important;
+    }
+
+    .mapboxgl-popup-anchor-bottom-left & {
+        @apply rounded-bl-none !important;
+    }
+
+    .mapboxgl-popup-anchor-bottom-right & {
+        @apply rounded-br-none !important;
+    }
 }
 
 .mapboxgl-popup,

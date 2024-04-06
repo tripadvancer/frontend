@@ -1,9 +1,9 @@
-import type { IUser } from '@/utils/types/user'
-
+import { getUserById } from '@/services/users'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-export const UserSidebarAbout = async (user: IUser) => {
+export const UserSidebarAbout = async ({ userId }: { userId: string }) => {
     const t = await getI18n()
+    const user = await getUserById(userId)
 
     if (!user.info) {
         return null

@@ -1,3 +1,5 @@
+'use client'
+
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'

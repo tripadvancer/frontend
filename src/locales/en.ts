@@ -290,13 +290,15 @@ export default {
     'pages.error.title': 'Oops! Something Went Wrong',
     'pages.error.text': 'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
 
-    'pages.home.countries.title': 'Where are you going?',
-    'pages.home.countries.description': 'Uncover unique spots recommended by fellow travelers. Immerse yourself in captivating sights, diverse cultures, and renowned landmarks. Ready to start your adventure? Simply select the country of your choice and let the journey unfold!',
-    'pages.home.features.title': 'Our features',
-    'pages.home.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
-    'pages.home.map.title': 'Embark on a Global Journey',
-    'pages.home.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
-    'pages.home.map.cta': 'Explore the map',
+    'pages.landing.countries.title': 'Where are you going?',
+    'pages.landing.countries.description': 'Uncover unique spots recommended by fellow travelers. Immerse yourself in captivating sights, diverse cultures, and renowned landmarks. Ready to start your adventure? Simply select the country of your choice and let the journey unfold!',
+    
+    'pages.landing.features.title': 'Our features',
+    'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
+    
+    'pages.landing.map.title': 'Embark on a Global Journey',
+    'pages.landing.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
+    'pages.landing.map.cta': 'Explore the map',
 
     'pages.country.description': 'Here are incredible places recommended by experienced travelers. Discover the unique features of a country like {country}, following the advice of those who have already visited it. Craft your own special route and immerse yourself in an exciting journey with just a few clicks!',
     'pages.country.view_all': 'View all countries',

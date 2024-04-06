@@ -3,7 +3,7 @@
 import { Nav } from '@/components/ui/nav'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const UserNavigationPublic = ({ userId }: { userId: number }) => {
+export const UserNavigationPublic = ({ userId }: { userId: string }) => {
     const t = useI18n()
 
     const links = [
