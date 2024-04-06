@@ -12,6 +12,9 @@ export const LandingCountries = async () => {
     // Determine user's country
     const userCountry = countries.find(country => country.countryCode.toLowerCase() === userCountryCode)
 
+    console.log(countries)
+    console.log(userCountryCode, userCountry)
+
     // Sort countries accordingly
     const sortCountries = userCountry
         ? [userCountry, ...countries.filter(country => country.countryCode.toLowerCase() !== userCountryCode)]
