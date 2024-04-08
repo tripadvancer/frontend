@@ -2,13 +2,13 @@ import { Popup } from 'react-map-gl'
 
 import Link from 'next/link'
 
-import type { IPlacePreview } from '@/utils/types/place'
+import type { IPlacePopupInfo } from '@/utils/types/map'
 
 import { PlacePreviewActions } from '@/components/ui/place-preview-actions'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 
-export const MapPopupPlace = (place: IPlacePreview) => {
+export const MapPopupPlace = (place: IPlacePopupInfo) => {
     return (
         <Popup
             latitude={place.coordinates[1]}

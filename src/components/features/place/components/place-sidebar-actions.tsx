@@ -36,7 +36,6 @@ export const PlaceSidebarActions = (place: IPlace) => {
                 ...place,
                 coordinates: place.location.coordinates,
                 isFavorite: response.data?.isFavorite || false,
-                isVisited: response.data?.isVisited || false,
             }),
         )
         dispatch(closeWidget())

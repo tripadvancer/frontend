@@ -2,35 +2,31 @@ import classNames from 'classnames'
 
 import Image from 'next/image'
 
-import { IPlacePreview } from '@/utils/types/place'
+import type { IPlace } from '@/utils/types/place'
 
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers'
 
-type PlacePreviewCoverProps = IPlacePreview & {
+type PlacePreviewCoverProps = Pick<IPlace, 'title' | 'cover'> & {
     size?: number
-    isCover?: boolean
-    isRounded?: boolean
+    imageVariant?: ImageVariant
 }
 
-export const PlacePreviewCover = ({ cover, title, size, isCover, isRounded }: PlacePreviewCoverProps) => {
+export const PlacePreviewCover = ({
+    title,
+    cover,
+    size,
+    imageVariant = ImageVariant.PREVIEW,
+}: PlacePreviewCoverProps) => {
     if (cover) {
-        return isCover ? (
+        return (
             <Image
-                src={makeImageUrl(cover, ImageVariant.PUBLIC)}
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: '100%', height: 'auto' }}
-                className={classNames(isRounded ? 'rounded-full' : 'rounded-lg', 'aspect-video')}
-                alt={title}
-            />
-        ) : (
-            <Image
-                src={makeImageUrl(cover, ImageVariant.PREVIEW)}
-                width={size}
-                height={size}
-                className={isRounded ? 'rounded-full' : 'rounded-lg'}
+                src={makeImageUrl(cover, imageVariant)}
+                width={size ?? 0}
+                height={size ?? 0}
+                sizes={size ? '' : '100%'}
+                style={size ? {} : { width: '100%', height: 'auto' }}
+                className={classNames('rounded-lg', { 'aspect-video': imageVariant === ImageVariant.PUBLIC })}
                 alt={title}
             />
         )
@@ -38,11 +34,9 @@ export const PlacePreviewCover = ({ cover, title, size, isCover, isRounded }: Pl
 
     return (
         <div
-            className={classNames(
-                'flex-center aspect-square flex-none bg-black-5 text-white',
-                isRounded ? 'rounded-full' : 'rounded-lg',
-                !size && 'aspect-video',
-            )}
+            className={classNames('flex-center aspect-square flex-none rounded-lg bg-black-5 text-white', {
+                'aspect-video': imageVariant === ImageVariant.PUBLIC,
+            })}
             style={{ maxWidth: size, maxHeight: size }}
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18" className="w-2/5">

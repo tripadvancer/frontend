@@ -39,9 +39,7 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                                     <PlacePreviewCover {...place} size={192} />
                                 </div>
                                 <div className="line-clamp-3 break-words font-medium">{place.title}</div>
-                                {country && (
-                                    <div className="text-small text-black-40">{country?.name[locale]}</div>
-                                )}
+                                {country && <div className="text-small text-black-40">{country?.name[locale]}</div>}
                             </Link>
                         )
                     })}
