@@ -10,6 +10,7 @@ import { makeImageUrl } from '@/utils/helpers'
 type PlacePreviewCoverProps = Pick<IPlace, 'title' | 'cover'> & {
     size?: number
     imageVariant?: ImageVariant
+    className?: string
 }
 
 export const PlacePreviewCover = ({
@@ -17,6 +18,7 @@ export const PlacePreviewCover = ({
     cover,
     size,
     imageVariant = ImageVariant.PREVIEW,
+    className,
 }: PlacePreviewCoverProps) => {
     if (cover) {
         return (
@@ -24,9 +26,7 @@ export const PlacePreviewCover = ({
                 src={makeImageUrl(cover, imageVariant)}
                 width={size ?? 0}
                 height={size ?? 0}
-                sizes={size ? '' : '100%'}
-                style={size ? {} : { width: '100%', height: 'auto' }}
-                className={classNames('rounded-lg', { 'aspect-video': imageVariant === ImageVariant.PUBLIC })}
+                className={classNames('rounded-lg', className)}
                 alt={title}
             />
         )
@@ -34,9 +34,7 @@ export const PlacePreviewCover = ({
 
     return (
         <div
-            className={classNames('flex-center aspect-square flex-none rounded-lg bg-black-5 text-white', {
-                'aspect-video': imageVariant === ImageVariant.PUBLIC,
-            })}
+            className={classNames('flex-center aspect-square flex-none rounded-lg bg-black-5 text-white', className)}
             style={{ maxWidth: size, maxHeight: size }}
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18" className="w-2/5">

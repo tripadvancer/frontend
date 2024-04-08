@@ -26,15 +26,15 @@ export type IPlaceMeta = {
     isVisited: boolean
 }
 
-export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> &
-    Pick<IPlaceMeta, 'isFavorite' | 'isVisited'> & {
-        coordinates: number[]
-    }
+// prettier-ignore
+export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isFavorite' | 'isVisited'> & {
+    coordinates: number[]
+}
 
-export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover' | 'avgRating' | 'reviewsCount'> &
-    Pick<IPlaceMeta, 'isFavorite'> & {
-        coordinates: number[]
-    }
+// prettier-ignore
+export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isFavorite'> & {
+    coordinates: number[]
+}
 
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & { distance: number }
 

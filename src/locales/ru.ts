@@ -69,6 +69,8 @@ export default {
     'common.action.load_more': 'Загрузить ещё ...',
     'common.action.route': 'Маршрут',
     'common.action.locate_me': 'Найти меня',
+    'common.action.show_on_the_map': 'Показать на карте',
+    'common.action.view_all_places': 'Все места',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -265,7 +267,6 @@ export default {
 
     'widget.places.saved.title': 'Мои места',
     'widget.places.saved.info': 'Выберите список, чтобы увидеть сохранённые места.',
-    'widget.places.saved.show_on_the_map': 'Показать на карте',
     'widget.places.saved.error.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть свои сохранённые места.',
     'widget.places.saved.favorites.title': 'Избранное',
     'widget.places.saved.favorites.empty_message': 'Ваше избранное пусто.{br}Добавьте место в избранное, чтобы увидеть его здесь.',
@@ -298,6 +299,9 @@ export default {
 
     'pages.landing.countries.title': 'Выберите направление',
     'pages.landing.countries.description': 'Открывайте для себя удивительные места, которые рекомендуют путешественники. Наслаждайтесь захватывающими видами и погружайтесь в разнообразные культуры, знакомьтесь с известными достопримечательностями. Готовы начать своё приключение? Просто выберите страну и отправляйтесь в увлекательное путешествие!',
+
+    'page.landing.random_place.title': 'Места рядом с Вами',
+    'page.landing.random_place.description': 'Посмотрите, что интересного есть рядом с вами. Эти места рекомендуют другие путешественники и Вы можете посетить их уже сегодня.',
     
     'pages.landing.features.title': 'Наши возможности',
     'pages.landing.features.description': 'Исследуйте функции нашего приложения и погружайтесь в уютное сообщество путешественников. Находите поистине уникальные места, рекомендованные другими туристами, и планируйте собственную поездку. Присоединяйтесь к формированию пространства, где каждый становится частью чего-то по-настоящему особенного!',

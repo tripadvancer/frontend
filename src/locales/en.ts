@@ -69,6 +69,8 @@ export default {
     'common.action.load_more': 'Load more ...',
     'common.action.route': 'Route',
     'common.action.locate_me': 'Locate me',
+    'common.action.show_on_the_map': 'Show on the map',
+    'common.action.view_all_places': 'View all places',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -259,7 +261,6 @@ export default {
 
     'widget.places.saved.title': 'Saved',
     'widget.places.saved.info': 'Select a list to view your places.',
-    'widget.places.saved.show_on_the_map': 'Show on the map',
     'widget.places.saved.error.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
     'widget.places.saved.favorites.title': 'Favorites',
     'widget.places.saved.favorites.empty_message': 'Your favorites are empty.{br}Add the place to your favorites to see it here.',
@@ -292,6 +293,9 @@ export default {
 
     'pages.landing.countries.title': 'Where are you going?',
     'pages.landing.countries.description': 'Uncover unique spots recommended by fellow travelers. Immerse yourself in captivating sights, diverse cultures, and renowned landmarks. Ready to start your adventure? Simply select the country of your choice and let the journey unfold!',
+
+    'page.landing.random_place.title': 'Explore places near you',
+    'page.landing.random_place.description': 'Look for what interesting places are nearby. These locations are recommended by other travelers, and you can visit them today.',
     
     'pages.landing.features.title': 'Our features',
     'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
