@@ -40,7 +40,7 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                                 </div>
                                 <div className="line-clamp-3 break-words font-medium">{place.title}</div>
                                 {country && (
-                                    <div className="mt-2 text-small text-black-40">{country?.name[locale]}</div>
+                                    <div className="text-small text-black-40">{country?.name[locale]}</div>
                                 )}
                             </Link>
                         )
