@@ -2,6 +2,9 @@ import Link from 'next/link'
 
 import { IPlaceNearby } from '@/utils/types/place'
 
+import { FormButton } from '@/components/ui/form-button'
+import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
+import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -10,23 +13,37 @@ export const PlacesNearbyWarning = ({ places }: { places: IPlaceNearby[] }) => {
     const dialog = useDialog()
 
     return (
-        <div className="flex w-full flex-col gap-y-4 sm:w-104">
-            <h1 className="text-h7">{t('places_nearby_warning.title')}</h1>
-            <hr className="border-black-70" />
-            <p>
+        <div className="flex w-full flex-col gap-y-8 sm:w-104">
+            <h1 className="text-center text-h7">{t('places_nearby_warning.title')}</h1>
+            <p className="text-center">
                 {t('places_nearby_warning.message', {
                     radius: process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS,
                 })}
             </p>
-            <ul className="list-inside list-disc">
+
+            <div className="flex flex-col gap-y-4">
                 {places.map(place => (
-                    <li key={`place-nearby-${place.id}`}>
-                        <Link href={`/places/${place.id}`} className="link-black" target="_blank">
-                            {place.title}
+                    <div key={`place-nearby-${place.id}`} className="flex gap-x-4">
+                        <Link href={`places/${place.id}`} className="peer flex-none" target="_blank">
+                            <PlacePreviewCover {...place} size={80} />
                         </Link>
-                    </li>
+                        <div className="flex flex-1 flex-col justify-between overflow-hidden text-black-100 peer-hover:text-blue-active">
+                            <Link
+                                href={`places/${place.id}`}
+                                className="line-clamp-2 break-words font-medium text-inherit"
+                                target="_blank"
+                            >
+                                {place.title}
+                            </Link>
+                            <PlacePreviewRating {...place} />
+                        </div>
+                    </div>
                 ))}
-            </ul>
+            </div>
+
+            <FormButton type="stroke" onClick={() => dialog.close()}>
+                {t('common.action.ok')}
+            </FormButton>
         </div>
     )
 }
