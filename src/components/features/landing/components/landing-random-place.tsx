@@ -51,7 +51,7 @@ export const LandingRandomPlace = () => {
                             />
                         </Link>
                     </div>
-                    <div className="flex w-80 flex-none flex-col justify-between gap-y-8">
+                    <div className="flex flex-none flex-col justify-between gap-y-8 sm:w-80">
                         <div className="flex flex-col gap-y-4 sm:gap-y-8">
                             <div className="border-b border-black-70 pb-4 text-h7-m sm:text-h7">
                                 <Link href={`/places/${place.id}`} className="link-black line-clamp-2 break-words">
