@@ -266,6 +266,7 @@ export default {
     'widget.places.saved.favorites.empty_message': 'Your favorites are empty.{br}Add the place to your favorites to see it here.',
     'widget.places.saved.visited.title': 'Visited places',
     'widget.places.saved.visited.empty_message': 'You have not visited any places yet.{br}Add the place to your visited to see it here.',
+    'widget.places.saved.show_on_the_map': 'Show on the map',
 
     'widget.places.random.title': 'Random place',
     'widget.places.random.intro': 'Select categories, radius around you and get a random place you might like.',

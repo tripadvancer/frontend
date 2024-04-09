@@ -45,7 +45,7 @@ export const WidgetPlacesSavedList = ({ children, caption }: WidgetPlacesSavedLi
                 {supertokens.isAuth && widgetState.activeTab === WidgetTabsEnum.SAVED && widgetState.activeList && (
                     <div className="flex items-center gap-x-2">
                         <div onClick={() => dispatch(toggleWidgetShowOnlySavedPlaces())} className="cursor-pointer">
-                            {t('common.action.show_on_the_map')}
+                            {t('widget.places.saved.show_on_the_map')}
                         </div>
                         <FormSwitcher
                             checked={widgetState.isShowOnlySavedPlaces}

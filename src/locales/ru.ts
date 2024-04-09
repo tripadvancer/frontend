@@ -272,6 +272,7 @@ export default {
     'widget.places.saved.favorites.empty_message': 'Ваше избранное пусто.{br}Добавьте место в избранное, чтобы увидеть его здесь.',
     'widget.places.saved.visited.title': 'Посещённые',
     'widget.places.saved.visited.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в свой список посещённых мест, чтобы увидеть его здесь.',
+    'widget.places.saved.show_on_the_map': 'Показать на карте',
     
     'widget.places.random.title': 'Случайное место',
     'widget.places.random.intro': 'Выберите категории, радиус вокруг Вас и получите случайное место, которое может Вам понравиться.',
