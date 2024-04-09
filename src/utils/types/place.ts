@@ -36,7 +36,7 @@ export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover'
     coordinates: number[]
 }
 
-export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & { distance: number }
+export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & { distance: number }
 
 export type ILocationPreview = {
     coordinates: LngLat

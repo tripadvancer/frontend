@@ -283,7 +283,7 @@ export default {
     'map.popup.location.i_am_here': 'I am here',
 
     'places_nearby_warning.title': 'Attention',
-    'places_nearby_warning.message': 'Sorry, we cannot add a new spot in this area because of other existing places within {radius}m radius from this location. If the spot you are trying to add is in the list below, please share your review for it. Otherwise, feel free to contact our support team.',
+    'places_nearby_warning.message': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',
 
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
