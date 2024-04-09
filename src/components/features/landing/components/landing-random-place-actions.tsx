@@ -43,7 +43,7 @@ export const LandingRandomPlaceActions = (place: LandingRandomPlaceActionsType) 
                 </FormButton>
             )}
             <FormButton className="sm:basis-1/2" type="stroke" icon={<MapIcon16 />} onClick={handleShowOnMap}>
-                {t('common.action.show_on_the_map')}
+                {t('common.action.go_to_map')}
             </FormButton>
         </div>
     )

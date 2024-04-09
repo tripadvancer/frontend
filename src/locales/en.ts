@@ -69,7 +69,7 @@ export default {
     'common.action.load_more': 'Load more ...',
     'common.action.route': 'Route',
     'common.action.locate_me': 'Locate me',
-    'common.action.show_on_the_map': 'Show on the map',
+    'common.action.go_to_map': 'Go to map',
     'common.action.view_all_places': 'View all places',
 
     'paginator.prev': 'Prev',

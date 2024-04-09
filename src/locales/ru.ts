@@ -69,7 +69,7 @@ export default {
     'common.action.load_more': 'Загрузить ещё ...',
     'common.action.route': 'Маршрут',
     'common.action.locate_me': 'Найти меня',
-    'common.action.show_on_the_map': 'Показать на карте',
+    'common.action.go_to_map': 'На карту',
     'common.action.view_all_places': 'Все места',
 
     'paginator.prev': 'Назад',
