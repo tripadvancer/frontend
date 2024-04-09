@@ -295,7 +295,7 @@ export default {
     'pages.landing.countries.description': 'Uncover unique spots recommended by fellow travelers. Immerse yourself in captivating sights, diverse cultures, and renowned landmarks. Ready to start your adventure? Simply select the country of your choice and let the journey unfold!',
 
     'page.landing.random_place.title': 'Explore places near you',
-    'page.landing.random_place.description': 'Look for what interesting places are nearby. These locations are recommended by other travelers, and you can visit them today.',
+    'page.landing.random_place.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
     
     'pages.landing.features.title': 'Our features',
     'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
