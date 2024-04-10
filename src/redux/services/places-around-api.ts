@@ -21,7 +21,6 @@ export const placesAroundAPI = api.injectEndpoints({
                     categories_ids: params.categories.join(),
                 },
             }),
-            providesTags: ['Random'],
         }),
         getPlacesAround: build.query<IPlaceNearby[], GetPlacesAroundParams>({
             query: params => ({
