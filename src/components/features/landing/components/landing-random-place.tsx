@@ -3,10 +3,10 @@
 import Link from 'next/link'
 
 import { DraftToHtml } from '@/components/ui/draft-to-html'
+import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { internalApi } from '@/redux/services/api-internal'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
 import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { LandingRandomPlaceActions } from './landing-random-place-actions'
@@ -43,12 +43,13 @@ export const LandingRandomPlace = () => {
 
                 <div className="flex flex-col gap-8 rounded-2xl bg-orange-10 px-4 py-8 sm:p-8 md:h-[480px] md:flex-row">
                     <div className="md:w-1/2 md:flex-none lg:flex-1">
-                        <Link href={`/places/${place.id}`}>
-                            <div
-                                style={{
-                                    backgroundImage: `url(${makeImageUrl(place.cover, ImageVariant.PUBLIC)})`,
-                                }}
-                                className="h-[416px] w-full rounded-lg bg-cover bg-center md:h-full"
+                        <Link href={`/places/${place.id}`} className="inline-block h-[416px] w-full md:h-full">
+                            <PlacePreviewCover
+                                cover={place.cover}
+                                title={place.title}
+                                imageVariant={ImageVariant.PUBLIC}
+                                size={160}
+                                className="h-full w-full rounded-2xl object-cover"
                             />
                         </Link>
                     </div>

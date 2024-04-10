@@ -35,7 +35,13 @@ export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
         <div className="flex flex-col gap-y-2">
             <Link href={`places/${place.id}`} className="link-black flex flex-col gap-y-2" target="_blank">
                 <div className="w-full">
-                    <PlacePreviewCover {...place} imageVariant={ImageVariant.PUBLIC} />
+                    <PlacePreviewCover
+                        cover={place.cover}
+                        title={place.title}
+                        imageVariant={ImageVariant.PUBLIC}
+                        size={80}
+                        className="aspect-video w-full rounded-lg"
+                    />
                 </div>
                 <div className="break-words font-medium">{place.title}</div>
             </Link>

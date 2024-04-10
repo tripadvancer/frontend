@@ -256,7 +256,7 @@ export default {
     
     'widget.places.title': 'Places',
     
-    'widget.places.all.title': 'All places',
+    'widget.places.all.title': 'All',
     'widget.places.all.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
 
     'widget.places.saved.title': 'Saved',
@@ -268,7 +268,7 @@ export default {
     'widget.places.saved.visited.empty_message': 'You have not visited any places yet.{br}Add the place to your visited to see it here.',
     'widget.places.saved.show_on_the_map': 'Show on the map',
 
-    'widget.places.random.title': 'Random place',
+    'widget.places.random.title': 'Random',
     'widget.places.random.intro': 'Select categories, radius around you and get a random place you might like.',
     'widget.places.random.button': 'Find a random place',
     'widget.places.random.button_coundown': 'Find a random place in ({countdown})',

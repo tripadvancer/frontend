@@ -19,7 +19,12 @@ export const MapPopupPlace = (place: IPlacePopupInfo) => {
         >
             <div className="flex w-56 flex-col gap-y-4">
                 <Link href={`/places/${place.id}`} target="_blank" className="link-black flex gap-x-4">
-                    <PlacePreviewCover {...place} size={80} />
+                    <PlacePreviewCover
+                        cover={place.cover}
+                        title={place.title}
+                        size={80}
+                        className="aspect-square w-20 rounded-lg"
+                    />
                     <div className="line-clamp-4 break-words font-medium">{place.title}</div>
                 </Link>
                 <div className="flex items-center justify-between">

@@ -22,10 +22,8 @@ export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
                         src={`/images/countries/preview/${countryCode.toLowerCase()}.jpg`}
                         width={256}
                         height={256}
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8eftuPQAIOAMS40NHBQAAAABJRU5ErkJggg=="
+                        className="aspect-square w-full rounded-t-2xl transition duration-300 group-hover:scale-110"
                         alt={countryName}
-                        className="w-full rounded-t-2xl object-cover transition duration-300 group-hover:scale-110"
                     />
                 </div>
                 <figcaption className="flex flex-col justify-between p-4">
