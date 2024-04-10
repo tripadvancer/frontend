@@ -22,10 +22,10 @@ export const Header = async () => {
                             <MapIcon24 />
                             <span className="hidden md:block">{t('header.link.map')}</span>
                         </Link>
-                        <Link href="/blog" className="flex items-center gap-x-2 text-big-bold">
+                        {/* <Link href="/blog" className="flex items-center gap-x-2 text-big-bold">
                             <EditIcon24 />
                             <span className="hidden md:block">Blog</span>
-                        </Link>
+                        </Link> */}
                     </div>
                     <HeaderLogo />
                     <div className="flex gap-x-4 sm:gap-x-6">
