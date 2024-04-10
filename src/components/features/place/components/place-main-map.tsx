@@ -35,7 +35,6 @@ export const PlaceMainMap = (place: IPlace) => {
                 ...place,
                 coordinates: place.location.coordinates,
                 isFavorite: placeMetaResponse.data?.isFavorite || false,
-                isVisited: placeMetaResponse.data?.isVisited || false,
             }),
         )
         dispatch(closeWidget())
