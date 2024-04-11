@@ -46,13 +46,6 @@ export const SignIn = () => {
     })
 
     const handleSubmit = async (values: SignInInputs) => {
-        setIsLoading(true)
-
-        const formFields = [
-            { id: 'email', value: values.email },
-            { id: 'password', value: values.password },
-        ]
-
         try {
             setIsLoading(true)
             const formFields = [
