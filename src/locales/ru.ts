@@ -2,7 +2,7 @@ export default {
     'cookie_consent.title': 'Согласие на использование файлов cookie',
     'cookie_consent.description': 'Этот веб-сайт использует файлы cookie, чтобы обеспечить Вам максимальное удобство. Дополнительную информацию Вы можете найти в нашей {cookie_policy_link}.',
     'cookie_consent.policy_link': 'Политике использования файлов cookie',
-    'cookie_consent.got_it': 'Понятно!',
+    'cookie_consent.got_it': 'Понял!',      
 
     'email_verification_notice.text': 'Ваш адрес электронной почты не был подтверждён. Подтвердите Ваш email, перейдя по ссылке в отправленном при регистрации письме. {learn_more_link}',
     'email_verification_notice.learn_more_link': 'Узнать больше',
@@ -126,7 +126,7 @@ export default {
     'success.edit_review': 'Ваш отзыв был успешно обновлён.',
     'success.delete_review': 'Отзыв был успешно удалён.',
     'success.change_user_password': 'Ваш пароль был успешно изменён.',
-    'success.change_user_email': 'Мы отправили вам письмо с подтверждением. После подтверждения нового адреса электронной почты Вы сможете войти в систему, используя его.',
+    'success.change_user_email': 'Мы отправили Вам письмо с подтверждением. После подтверждения нового адреса электронной почты Вы сможете войти в систему, используя его.',
     'success.update_user_avatar': 'Ваш аватар был успешно обновлён.',
     'success.update_user_info': 'Ваш профиль был успешно обновлён.',
     'success.request_personal_data': 'Мы отправили Вам письмо с копией Ваших персональных данных.',
@@ -192,7 +192,7 @@ export default {
     'review.form.fields.photos.label': 'Фотографии',
 
     'auth.change_email.title': 'Изменить email',
-    'auth.change_email.info': 'Введите свой новый адрес электронной почты ниже, и мы отправим вам письмо с подтверждением:',
+    'auth.change_email.info': 'Введите свой новый адрес электронной почты ниже, и мы отправим Вам письмо с подтверждением:',
 
     'auth.change_password.title': 'Изменить пароль',
     'auth.change_password.info': 'Создайте новый пароль длиной не менее 8 символов, содержащий сочетание букв и цифр:',
@@ -246,7 +246,7 @@ export default {
     'auth.third_party_callback.redirecting': 'Идёт перенаправление...',
     'auth.third_party_callback.checking_status': 'Мы проверяем статус Вашей учётной записи...',
     'auth.third_party_callback.error.email_not_provided': 'Мы не получили Ваш email от социальной сети. Пожалуйста, попробуйте другой способ входа.',
-    'auth.third_party_callback.error.email_already_exists': 'Похоже, у вас уже есть учётная запись с другим методом входа. Пожалуйста, используйте её для входа.',
+    'auth.third_party_callback.error.email_already_exists': 'Похоже, у Вас уже есть учётная запись с другим методом входа. Пожалуйста, используйте её для входа.',
 
     'auth.verify_email.loading': 'Проверяем Ваш email...',
     'auth.verify_email.token_expired': 'Ссылка для подтверждения email устарела. Пожалуйста, залогиньтесь снова, чтобы мы могли отправить Вам новую ссылку для подтверждения.',
@@ -265,7 +265,7 @@ export default {
     'widget.places.all.title': 'Все',
     'widget.places.all.empty_message': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличить масштаб.',
 
-    'widget.places.saved.title': 'Сохраненные',
+    'widget.places.saved.title': 'Сохранённые',
     'widget.places.saved.info': 'Выберите список, чтобы увидеть сохранённые места.',
     'widget.places.saved.error.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть свои сохранённые места.',
     'widget.places.saved.favorites.title': 'Избранное',
