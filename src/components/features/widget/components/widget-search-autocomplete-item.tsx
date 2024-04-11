@@ -20,7 +20,7 @@ export const WidgetSearchAutocompleteItem = ({
 }: WidgetSearchAutocompleteItemProps) => {
     return (
         <div
-            className={classNames('hover-animated group relative cursor-pointer rounded-md', {
+            className={classNames('group hover-animated relative cursor-pointer rounded-md', {
                 ['bg-black-5']: isSelected,
             })}
             onClick={onClick}

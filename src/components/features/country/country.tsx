@@ -39,7 +39,7 @@ export const Country = async ({
                         <Link href="/" className="mb-4 inline-block font-medium text-white hover:text-white">
                             {t('pages.country.view_all')}
                         </Link>
-                        <h1 className="mb-4 text-h1-m text-white sm:text-h1">{country.name[locale]}</h1>
+                        <h1 className="h1 mb-4 text-white">{country.name[locale]}</h1>
                         <p className="text-big text-white">
                             {t('pages.country.description', { country: country.name[locale] })}
                         </p>

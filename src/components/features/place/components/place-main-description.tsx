@@ -8,8 +8,8 @@ export const PlaceMainDescription = async ({ description }: IPlace) => {
 
     return (
         <section className="flex flex-col gap-y-8">
-            <h2 className="text-h5-m sm:text-h5">{t('pages.place.about.title')}</h2>
-            <div className="break-words text-big">
+            <h2 className="h5">{t('pages.place.about.title')}</h2>
+            <div className="break-words">
                 <DraftToHtml draft={description} />
             </div>
         </section>

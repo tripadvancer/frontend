@@ -9,7 +9,7 @@ export const LandingFeatures = async () => {
 
     return (
         <section>
-            <h2 className="mb-4 text-center text-h3-m sm:text-h3">{t('pages.landing.features.title')}</h2>
+            <h2 className="h3 mb-4 text-center">{t('pages.landing.features.title')}</h2>
             <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
                 {t('pages.landing.features.description')}
             </p>

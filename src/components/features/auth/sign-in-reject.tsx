@@ -10,7 +10,7 @@ export const SignInReject = () => {
 
     return (
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
-            <h1 className="text-h7-m sm:text-h7">{t('auth.signin_reject.title')}</h1>
+            <h1 className="h7">{t('auth.signin_reject.title')}</h1>
             <p className="text-center">{t('auth.signin_reject.message')}</p>
             <FormButton type="stroke" htmlType="button" className="w-full" onClick={dialog.close}>
                 {t('common.action.ok')}

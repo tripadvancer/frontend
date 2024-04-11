@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+
     webpack(config) {
         // Grab the existing rule that handles SVG imports
         const fileLoaderRule = config.module.rules.find(rule => rule.test?.test?.('.svg'))
@@ -58,4 +60,5 @@ const nextConfig = {
     },
 }
 
-module.exports = nextConfig
+const withMDX = require('@next/mdx')()
+module.exports = withMDX(nextConfig)

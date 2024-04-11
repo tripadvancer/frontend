@@ -36,7 +36,7 @@ export const LandingRandomPlace = () => {
     if (isSuccess && place) {
         return (
             <section>
-                <h2 className="mb-4 text-center text-h3-m sm:text-h3">{t('page.landing.random_place.title')}</h2>
+                <h2 className="mb-4 text-center h3">{t('page.landing.random_place.title')}</h2>
                 <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
                     {t('page.landing.random_place.description')}
                 </p>
@@ -56,7 +56,7 @@ export const LandingRandomPlace = () => {
                     <div className="md:w-1/2 lg:w-80">
                         <div className="flex h-full flex-col justify-between gap-y-8">
                             <div className="flex flex-col gap-y-4 sm:gap-y-8">
-                                <div className="border-b border-black-70 pb-4 text-h7-m sm:text-h7">
+                                <div className="border-b border-black-70 pb-4 h7">
                                     <Link href={`/places/${place.id}`} className="link-black line-clamp-2 break-words">
                                         {place.title}
                                     </Link>

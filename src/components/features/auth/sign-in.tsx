@@ -110,7 +110,7 @@ export const SignIn = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="text-center text-h7-m sm:text-h7">{t('auth.signin.title')}</h1>
+            <h1 className="h7 text-center">{t('auth.signin.title')}</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading} />

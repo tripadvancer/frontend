@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { setStaticParamsLocale } from 'next-international/server'
 
 import type { Metadata } from 'next/types'
@@ -12,7 +14,7 @@ export function generateStaticParams() {
     return getStaticParams()
 }
 
-export default function LegalLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
+export default function LegalLayout({ children, params }: { children: ReactNode; params: { locale: string } }) {
     setStaticParamsLocale(params.locale)
     return <div className="container py-24">{children}</div>
 }

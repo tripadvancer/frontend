@@ -13,7 +13,7 @@ export const FormRadio = ({ id, name, value, caption, checked, onChange }: FormR
     return (
         <div className="flex">
             <label htmlFor={id} className="group flex cursor-pointer justify-center gap-x-2">
-                <div className="hover-animated flex-center h-5 w-5 flex-none rounded-full border border-black-15 group-hover:border-black-40">
+                <div className="flex-center hover-animated h-5 w-5 flex-none rounded-full border border-black-15 group-hover:border-black-40">
                     <input
                         id={id}
                         type="radio"
