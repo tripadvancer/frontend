@@ -61,7 +61,7 @@ export const PlaceFormInputPhoto = ({
     return (
         <div
             className={classNames(
-                'hover-animated flex-center aspect-square size-full cursor-pointer rounded-lg border border-blue-20 text-blue-100 hover:border-blue-active hover:text-blue-active',
+                'flex-center hover-animated aspect-square size-full cursor-pointer rounded-lg border border-blue-20 text-blue-100 hover:border-blue-active hover:text-blue-active',
                 {
                     'pointer-events-none cursor-not-allowed opacity-30': currentPhotosCount >= maxPhotosCount,
                     'pointer-events-none cursor-wait': isUploading,

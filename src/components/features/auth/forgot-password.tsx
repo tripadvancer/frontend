@@ -85,7 +85,7 @@ export const ForgotPassword = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="text-center text-h7 sm:text-h7-m">{t('auth.forgot_password.title')}</h1>
+            <h1 className="h7 text-center">{t('auth.forgot_password.title')}</h1>
             <div className="flex flex-col gap-y-2">
                 <p className="text-center">{t('auth.forgot_password.info')}</p>
                 <FormInput

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function LegalPrivacyPolicyPage() {
     return (
         <article className="inner-container">
-            <h1 className="mb-4 text-center text-h1-m sm:text-h1">Privacy Policy</h1>
+            <h1 className="h1 mb-4 text-center">Privacy Policy</h1>
 
             <article className="mb-16 text-center text-black-70">
                 <p className="mb-5">
@@ -23,7 +23,7 @@ export default function LegalPrivacyPolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Information We&nbsp;Collect</h2>
+                <h2 className="h5 mb-8">Information We&nbsp;Collect</h2>
                 <p className="mb-5">We&nbsp;only collect the following user data:</p>
                 <ul className="mb-5 list-outside list-disc pl-12">
                     <li className="mb-3">
@@ -47,7 +47,7 @@ export default function LegalPrivacyPolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Use of&nbsp;Personal Information</h2>
+                <h2 className="h5 mb-8">Use of&nbsp;Personal Information</h2>
                 <p className="mb-5">We&nbsp;use the collected information for the following purposes:</p>
                 <ul className="mb-5 list-outside list-disc pl-12">
                     <li className="mb-3">
@@ -66,7 +66,7 @@ export default function LegalPrivacyPolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Data Sharing</h2>
+                <h2 className="h5 mb-8">Data Sharing</h2>
                 <p>
                     We&nbsp;do&nbsp;not share your personal data with third-party services. However, please note that
                     images uploaded to&nbsp;our platform are stored on&nbsp;Cloudflare for the purpose of&nbsp;hosting
@@ -80,7 +80,7 @@ export default function LegalPrivacyPolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Data Access and Removal</h2>
+                <h2 className="h5 mb-8">Data Access and Removal</h2>
                 <p>
                     You have the right to&nbsp;request access to&nbsp;the personal data we&nbsp;store about you. Upon
                     your request, we&nbsp;will provide your personal data in&nbsp;a .csv file format. Additionally, you
@@ -89,7 +89,7 @@ export default function LegalPrivacyPolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Data Security</h2>
+                <h2 className="h5 mb-8">Data Security</h2>
                 <p>
                     We&nbsp;take appropriate measures to&nbsp;protect your personal information from unauthorized
                     access, alteration, disclosure, or&nbsp;destruction. We&nbsp;employ industry-standard security
@@ -98,7 +98,7 @@ export default function LegalPrivacyPolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Children&rsquo;s Privacy</h2>
+                <h2 className="h5 mb-8">Children&rsquo;s Privacy</h2>
                 <p>
                     Our platform is&nbsp;not intended for use by&nbsp;individuals under the age of&nbsp;18.
                     We&nbsp;do&nbsp;not knowingly collect personal information from children. If&nbsp;you believe that
@@ -108,7 +108,7 @@ export default function LegalPrivacyPolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Changes to&nbsp;the Privacy Policy</h2>
+                <h2 className="h5 mb-8">Changes to&nbsp;the Privacy Policy</h2>
                 <p>
                     We&nbsp;may update this Privacy Policy from time to&nbsp;time. We&nbsp;will notify you of&nbsp;any
                     significant changes by posting the updated Privacy Policy on&nbsp;our platform. Please review this
@@ -117,7 +117,7 @@ export default function LegalPrivacyPolicyPage() {
             </article>
 
             <article className="mb-16">
-                <h2 className="mb-8 text-h5-m sm:text-h5">Contacting&nbsp;us</h2>
+                <h2 className="h5 mb-8">Contacting&nbsp;us</h2>
                 <p>
                     If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Privacy Policy,
                     we&nbsp;encourage you to contact&nbsp;us using the details below:{' '}

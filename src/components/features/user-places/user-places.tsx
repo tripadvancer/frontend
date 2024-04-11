@@ -36,12 +36,15 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                         return (
                             <Link href={`/places/${place.id}`} key={place.id} className="text-black-100">
                                 <div className="mb-2">
-                                    <PlacePreviewCover {...place} size={192} />
+                                    <PlacePreviewCover
+                                        cover={place.cover}
+                                        title={place.title}
+                                        size={192}
+                                        className="aspect-square w-48 rounded-lg"
+                                    />
                                 </div>
                                 <div className="line-clamp-3 break-words font-medium">{place.title}</div>
-                                {country && (
-                                    <div className="text-small text-black-40">{country?.name[locale]}</div>
-                                )}
+                                {country && <div className="text-small text-black-40">{country?.name[locale]}</div>}
                             </Link>
                         )
                     })}

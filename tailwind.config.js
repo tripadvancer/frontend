@@ -9,104 +9,6 @@ module.exports = {
     theme: {
         extend: {
             fontSize: {
-                h1: [
-                    '3rem',
-                    {
-                        lineHeight: '3.5rem',
-                        fontWeight: '500',
-                    },
-                ],
-                'h1-m': [
-                    '2.75rem',
-                    {
-                        lineHeight: '3.25rem',
-                        fontWeight: '500',
-                    },
-                ],
-                h2: [
-                    '2.5rem',
-                    {
-                        lineHeight: '3rem',
-                        fontWeight: '500',
-                    },
-                ],
-                'h2-m': [
-                    '2.25rem',
-                    {
-                        lineHeight: '2.75rem',
-                        fontWeight: '500',
-                    },
-                ],
-                h3: [
-                    '2rem',
-                    {
-                        lineHeight: '2.5rem',
-                        fontWeight: '500',
-                    },
-                ],
-                'h3-m': [
-                    '1.75rem',
-                    {
-                        lineHeight: '2.25rem',
-                        fontWeight: '500',
-                    },
-                ],
-                h4: [
-                    '1.75rem',
-                    {
-                        lineHeight: '2.25rem',
-                        fontWeight: '500',
-                    },
-                ],
-                'h4-m': [
-                    '1.5rem',
-                    {
-                        lineHeight: '2rem',
-                        fontWeight: '500',
-                    },
-                ],
-                h5: [
-                    '1.5rem',
-                    {
-                        lineHeight: '2rem',
-                        fontWeight: '500',
-                    },
-                ],
-                'h5-m': [
-                    '1.25rem',
-                    {
-                        lineHeight: '1.75rem',
-                        fontWeight: '500',
-                    },
-                ],
-                h6: [
-                    '1.25rem',
-                    {
-                        lineHeight: '1.75rem',
-                        fontWeight: '500',
-                    },
-                ],
-                'h6-m': [
-                    '1.125rem',
-                    {
-                        lineHeight: '1.625rem',
-                        fontWeight: '500',
-                    },
-                ],
-                h7: [
-                    '1.125rem',
-                    {
-                        lineHeight: '1.625rem',
-                        fontWeight: '500',
-                    },
-                ],
-                'h7-m': [
-                    '1rem',
-                    {
-                        lineHeight: '1.5rem',
-                        fontWeight: '500',
-                    },
-                ],
                 big: [
                     '1rem',
                     {
@@ -124,13 +26,6 @@ module.exports = {
                     '0.875rem',
                     {
                         lineHeight: '1.25rem',
-                    },
-                ],
-                'base-bold': [
-                    '0.875rem',
-                    {
-                        lineHeight: '1.25rem',
-                        fontWeight: '500',
                     },
                 ],
                 small: [
@@ -205,37 +100,10 @@ module.exports = {
         },
     },
     plugins: [
-        plugin(function ({ addUtilities }) {
-            addUtilities(
-                {
-                    '.scrollbar-hide': {
-                        /* IE and Edge */
-                        '-ms-overflow-style': 'none',
-
-                        /* Firefox */
-                        'scrollbar-width': 'none',
-
-                        /* Safari and Chrome */
-                        '&::-webkit-scrollbar': {
-                            display: 'none',
-                        },
-                    },
-
-                    '.scrollbar-default': {
-                        /* IE and Edge */
-                        '-ms-overflow-style': 'auto',
-
-                        /* Firefox */
-                        'scrollbar-width': 'auto',
-
-                        /* Safari and Chrome */
-                        '&::-webkit-scrollbar': {
-                            display: 'block',
-                        },
-                    },
-                },
-                ['responsive'],
-            )
-        }),
+        require('./src/utils/tailwind/tailwind-custom-links.js'),
+        require('./src/utils/tailwind/tailwind-plugin-markdown.js'),
+        require('./src/utils/tailwind/tailwind-utilities-headers.js'),
+        require('./src/utils/tailwind/tailwind-utilities-scrollbar.js'),
+        require('./src/utils/tailwind/tailwind-utilities.js'),
     ],
 }

@@ -35,7 +35,6 @@ export const PlaceMainMap = (place: IPlace) => {
                 ...place,
                 coordinates: place.location.coordinates,
                 isFavorite: placeMetaResponse.data?.isFavorite || false,
-                isVisited: placeMetaResponse.data?.isVisited || false,
             }),
         )
         dispatch(closeWidget())
@@ -44,7 +43,7 @@ export const PlaceMainMap = (place: IPlace) => {
 
     return (
         <section className="flex flex-col gap-y-8">
-            <h2 className="text-h5-m sm:text-h5">{t('pages.place.map.title', { place_name: place.title })}</h2>
+            <h2 className="h5">{t('pages.place.map.title', { place_name: place.title })}</h2>
             <Image
                 src={`https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/pin-s+ff7d00(${longitude},${latitude})/${longitude},${latitude},12,0.00/640x320@2x?access_token=${mapboxAccessToken}`}
                 width={640}

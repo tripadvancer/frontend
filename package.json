@@ -10,13 +10,17 @@
         "format": "prettier --write src/**/*.'ts{,x}'"
     },
     "dependencies": {
+        "@mdx-js/loader": "^3.0.1",
+        "@mdx-js/react": "^3.0.1",
+        "@next/mdx": "^14.1.4",
         "@next/third-parties": "^14.1.4",
         "@react-spring/web": "^9.7.3",
         "@reduxjs/toolkit": "^2.2.3",
         "@types/mapbox-gl": "^3.1.0",
-        "@types/node": "^20.12.5",
+        "@types/mdx": "^2.0.12",
+        "@types/node": "^20.12.4",
         "@types/react": "^18.2.74",
-        "@types/react-dom": "^18.2.23",
+        "@types/react-dom": "^18.2.24",
         "@vercel/edge": "^1.1.1",
         "async-mutex": "^0.5.0",
         "classnames": "^2.5.1",
@@ -37,10 +41,11 @@
         "react-responsive": "^10.0.0",
         "react-scroll-parallax": "^3.4.5",
         "react-slider": "^2.0.6",
+        "react-textarea-autosize": "^8.5.3",
         "redux-persist": "^6.0.0",
         "supertokens-node": "^16.7.5",
         "supertokens-web-js": "^0.10.0",
-        "typescript": "^5.4.3",
+        "typescript": "^5.4.4",
         "uuid": "^9.0.1",
         "yet-another-react-lightbox": "^3.17.2",
         "yup": "^1.4.0"
@@ -57,7 +62,6 @@
         "postcss": "^8.4.38",
         "prettier": "^3.2.5",
         "prettier-plugin-tailwindcss": "^0.5.13",
-        "react-textarea-autosize": "^8.5.3",
         "tailwindcss": "^3.4.3"
     }
 }

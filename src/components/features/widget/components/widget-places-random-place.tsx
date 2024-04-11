@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 
-import type { IPlacePreview } from '@/utils/types/place'
+import type { IRandomPlace } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
 import { PinIcon16 } from '@/components/ui/icons'
@@ -11,10 +11,11 @@ import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
 import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
+import { ImageVariant } from '@/utils/enums'
 import { navigateToLocation } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const WidgetPlacesRandomPlace = (place: IPlacePreview) => {
+export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
 
@@ -34,7 +35,13 @@ export const WidgetPlacesRandomPlace = (place: IPlacePreview) => {
         <div className="flex flex-col gap-y-2">
             <Link href={`places/${place.id}`} className="link-black flex flex-col gap-y-2" target="_blank">
                 <div className="w-full">
-                    <PlacePreviewCover {...place} isCover />
+                    <PlacePreviewCover
+                        cover={place.cover}
+                        title={place.title}
+                        imageVariant={ImageVariant.PUBLIC}
+                        size={80}
+                        className="aspect-video w-full rounded-lg"
+                    />
                 </div>
                 <div className="break-words font-medium">{place.title}</div>
             </Link>

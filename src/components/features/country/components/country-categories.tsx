@@ -61,7 +61,7 @@ export const CountryCategories = ({ selectedCategoryIds, locale }: CountryCatego
                     scroll={false}
                     replace={true}
                     className={classNames(
-                        'hover-animated flex-center h-8 cursor-pointer whitespace-nowrap rounded-full bg-blue-20 px-4 text-small text-blue-100 sm:hover:bg-blue-active sm:hover:text-blue-20',
+                        'flex-center hover-animated h-8 cursor-pointer whitespace-nowrap rounded-full bg-blue-20 px-4 text-small text-blue-100 sm:hover:bg-blue-active sm:hover:text-blue-20',
                         {
                             'bg-blue-active text-blue-20': selectedCategoryIds.includes(category.id),
                         },

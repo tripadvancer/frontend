@@ -1,6 +1,6 @@
 'use client'
 
-import { IPlacePreview } from '@/utils/types/place'
+import type { IRandomPlace } from '@/utils/types/place'
 
 import { useUserLocation } from '@/utils/hooks/use-user-location'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -9,7 +9,7 @@ import { WidgetMessage } from './widget-message'
 import { WidgetPlacesRandomPlace } from './widget-places-random-place'
 
 type WidgetRandomResultsProps = {
-    place: IPlacePreview | undefined
+    place: IRandomPlace | undefined
     isSuccess: boolean
     isError: boolean
     isUserLocated: boolean
