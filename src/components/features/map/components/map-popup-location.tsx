@@ -5,7 +5,7 @@ import { Marker, Popup } from 'react-map-gl'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-import type { ILocationPreview } from '@/utils/types/place'
+import type { ILocationPopupInfo } from '@/utils/types/map'
 
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
@@ -18,7 +18,7 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { PlacesNearbyWarning } from '../../places-nearby-warning/places-nearby-warning'
 
-export const MapPopupLocation = ({ coordinates }: ILocationPreview) => {
+export const MapPopupLocation = ({ coordinates }: ILocationPopupInfo) => {
     const t = useI18n()
     const dialog = useDialog()
     const router = useRouter()

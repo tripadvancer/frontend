@@ -9,13 +9,11 @@ export const PlaceMainAbandonedWarning = async ({ categories }: IPlace) => {
     // abandoned category id = 1 from categoriesDictionary
     if (categories.includes(1)) {
         return (
-            <div className="relative rounded-lg bg-red-10 p-4 text-black-70">
-                <div className="flex gap-x-2 sm:items-center">
-                    <div className="text-red-100">
-                        <AlertIcon24 />
-                    </div>
-                    {t('abandoned_warning')}
+            <div className="flex gap-x-2 rounded-2xl border border-red-100 p-8 text-big sm:items-center">
+                <div className="text-red-100">
+                    <AlertIcon24 />
                 </div>
+                {t('abandoned_warning')}
             </div>
         )
     }

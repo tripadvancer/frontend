@@ -69,6 +69,8 @@ export default {
     'common.action.load_more': 'Load more ...',
     'common.action.route': 'Route',
     'common.action.locate_me': 'Locate me',
+    'common.action.go_to_map': 'Go to map',
+    'common.action.view_all_places': 'View all places',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -254,19 +256,19 @@ export default {
     
     'widget.places.title': 'Places',
     
-    'widget.places.all.title': 'All places',
+    'widget.places.all.title': 'All',
     'widget.places.all.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
 
     'widget.places.saved.title': 'Saved',
     'widget.places.saved.info': 'Select a list to view your places.',
-    'widget.places.saved.show_on_the_map': 'Show on the map',
     'widget.places.saved.error.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
     'widget.places.saved.favorites.title': 'Favorites',
     'widget.places.saved.favorites.empty_message': 'Your favorites are empty.{br}Add the place to your favorites to see it here.',
     'widget.places.saved.visited.title': 'Visited places',
     'widget.places.saved.visited.empty_message': 'You have not visited any places yet.{br}Add the place to your visited to see it here.',
+    'widget.places.saved.show_on_the_map': 'Show on the map',
 
-    'widget.places.random.title': 'Random place',
+    'widget.places.random.title': 'Random',
     'widget.places.random.intro': 'Select categories, radius around you and get a random place you might like.',
     'widget.places.random.button': 'Find a random place',
     'widget.places.random.button_coundown': 'Find a random place in ({countdown})',
@@ -282,7 +284,7 @@ export default {
     'map.popup.location.i_am_here': 'I am here',
 
     'places_nearby_warning.title': 'Attention',
-    'places_nearby_warning.message': 'Sorry, we cannot add a new spot in this area because of other existing places within {radius}m radius from this location. If the spot you are trying to add is in the list below, please share your review for it. Otherwise, feel free to contact our support team.',
+    'places_nearby_warning.message': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',
 
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
@@ -292,6 +294,9 @@ export default {
 
     'pages.landing.countries.title': 'Where are you going?',
     'pages.landing.countries.description': 'Uncover unique spots recommended by fellow travelers. Immerse yourself in captivating sights, diverse cultures, and renowned landmarks. Ready to start your adventure? Simply select the country of your choice and let the journey unfold!',
+
+    'page.landing.random_place.title': 'Explore places near you',
+    'page.landing.random_place.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
     
     'pages.landing.features.title': 'Our features',
     'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',

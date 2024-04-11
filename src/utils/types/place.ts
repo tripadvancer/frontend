@@ -21,22 +21,26 @@ export type IPlace = {
 }
 
 export type IPlaceMeta = {
-    ownReview: null | IReview
+    ownReview: IReview | null
     isFavorite: boolean
     isVisited: boolean
 }
 
-export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & {
+// prettier-ignore
+export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isFavorite' | 'isVisited'> & {
     coordinates: number[]
-    isFavorite: boolean
-    isVisited: boolean
 }
+
+// prettier-ignore
+export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isFavorite'> & {
+    coordinates: number[]
+}
+
+export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & { distance: number }
 
 export type ILocationPreview = {
     coordinates: LngLat
 }
-
-export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover'> & { distance: number }
 
 export type CreatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover' | 'categories'> & {
     location: string

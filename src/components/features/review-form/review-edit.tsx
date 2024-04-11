@@ -41,7 +41,7 @@ export const ReviewEdit = (review: IReview) => {
 
     return (
         <div className="flex w-full flex-col gap-y-4 sm:w-104">
-            <h1 className="text-h7">{t('review.form.edit.title')}</h1>
+            <h1 className="h7">{t('review.form.edit.title')}</h1>
             <hr className="border-black-70" />
             <ReviewForm
                 initialValues={initialValues}

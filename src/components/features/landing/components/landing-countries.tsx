@@ -9,7 +9,7 @@ export const LandingCountries = async () => {
 
     return (
         <section>
-            <h1 className="mb-4 text-center text-h1-m sm:text-h1">{t('pages.landing.countries.title')}</h1>
+            <h1 className="h1 mb-4 text-center">{t('pages.landing.countries.title')}</h1>
             <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
                 {t('pages.landing.countries.description')}
             </p>

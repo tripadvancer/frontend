@@ -1,6 +1,6 @@
 'use client'
 
-import type { IPlacePreview } from '@/utils/types/place'
+import type { IPlace, IPlaceMeta } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
 import { BookmarkFillIcon16, BookmarkIcon16 } from '@/components/ui/icons'
@@ -10,7 +10,12 @@ import { navigateToLocation } from '@/utils/helpers'
 import { useFavorite } from '@/utils/hooks/use-favorite'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const PlacePreviewActions = (place: IPlacePreview) => {
+type PlacePreviewActionsProps = Pick<IPlace, 'id'> &
+    Pick<IPlaceMeta, 'isFavorite'> & {
+        coordinates: number[]
+    }
+
+export const PlacePreviewActions = (place: PlacePreviewActionsProps) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
     const favorite = useFavorite(place.id, place.isFavorite, () => dispatch(closeMapPopups()))

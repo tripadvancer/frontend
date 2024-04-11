@@ -2,15 +2,15 @@ import type { LngLatBounds, ViewState } from 'react-map-gl'
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import type { ILocationPopupInfo, IPlacePopupInfo } from '@/utils/types/map'
 
 import type { RootState } from '@/redux/store'
 
 interface MapState {
     viewState: Partial<ViewState>
     bounds: LngLatBounds | undefined
-    placePopupInfo: IPlacePreview | null
-    locationPopupInfo: ILocationPreview | null
+    placePopupInfo: IPlacePopupInfo | null
+    locationPopupInfo: ILocationPopupInfo | null
 }
 
 export const initialState: MapState = {
@@ -34,11 +34,11 @@ export const mapSlice = createSlice({
         setMapBounds(state, action: PayloadAction<LngLatBounds>) {
             state.bounds = action.payload
         },
-        setMapPlacePopupInfo(state, action: PayloadAction<IPlacePreview | null>) {
+        setMapPlacePopupInfo(state, action: PayloadAction<IPlacePopupInfo | null>) {
             state.placePopupInfo = action.payload
             state.locationPopupInfo = null
         },
-        setMapLocationPopupInfo(state, action: PayloadAction<ILocationPreview | null>) {
+        setMapLocationPopupInfo(state, action: PayloadAction<ILocationPopupInfo | null>) {
             state.placePopupInfo = null
             state.locationPopupInfo = action.payload
         },

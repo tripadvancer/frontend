@@ -22,16 +22,12 @@ export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
                         src={`/images/countries/preview/${countryCode.toLowerCase()}.jpg`}
                         width={256}
                         height={256}
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8eftuPQAIOAMS40NHBQAAAABJRU5ErkJggg=="
+                        className="aspect-square w-full rounded-t-2xl transition duration-300 group-hover:scale-110"
                         alt={countryName}
-                        className="w-full rounded-t-2xl object-cover transition duration-300 group-hover:scale-110"
                     />
                 </div>
                 <figcaption className="flex flex-col justify-between p-4">
-                    <h4 className="mb-4 line-clamp-2 h-12 break-words text-h7-m sm:h-[52px] sm:text-h7">
-                        {countryName}
-                    </h4>
+                    <h4 className="h7-m mb-4 line-clamp-2 h-12 break-words sm:h7 sm:h-[52px]">{countryName}</h4>
                     <div className="flex flex-row items-center gap-x-2 text-blue-100">
                         <PinIcon16 />
                         {t('countries.places', { count: placesCount })}
