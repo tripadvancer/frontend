@@ -15,7 +15,7 @@ import { ImageVariant } from '@/utils/enums'
 import { navigateToLocation } from '@/utils/helpers'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
+export const WidgetRandomPlace = (place: IRandomPlace) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
 

@@ -36,16 +36,12 @@ export enum Keys {
 export enum WidgetTabsEnum {
     ALL = 'ALL',
     SAVED = 'SAVED',
-    RANDOM = 'RANDOM',
-}
-
-export enum WidgetListsEnum {
-    FAVORITES = 'FAVORITES',
     VISITED = 'VISITED',
+    RANDOM = 'RANDOM',
 }
 
 export enum MapDataSourcesEnum {
     ALL_PLACES = 'ALL_PLACES',
-    FAVORITES_PLACES = 'FAVORITES_PLACES',
+    SAVED_PLACES = 'SAVED_PLACES',
     VISITED_PLACES = 'VISITED_PLACES',
 }

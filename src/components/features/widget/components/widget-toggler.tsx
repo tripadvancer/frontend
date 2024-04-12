@@ -6,7 +6,7 @@ import { getWidgetState, toggleWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const WidgetBodyToggler = () => {
+export const WidgetToggler = () => {
     const t = useI18n()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)

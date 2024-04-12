@@ -42,7 +42,7 @@ export const Mapbox = () => {
     )
 
     const favoritesResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
-        skip: !supertokens.isAuth || mapDataSource !== MapDataSourcesEnum.FAVORITES_PLACES,
+        skip: !supertokens.isAuth || mapDataSource !== MapDataSourcesEnum.SAVED_PLACES,
     })
 
     const visitedResponse = visitedAPI.useGetVisitedQuery(undefined, {
@@ -91,7 +91,7 @@ export const Mapbox = () => {
                     {...favoritePlacesLayer}
                     layout={{
                         ...favoritePlacesLayer.layout,
-                        visibility: mapDataSource === MapDataSourcesEnum.FAVORITES_PLACES ? 'visible' : 'none',
+                        visibility: mapDataSource === MapDataSourcesEnum.SAVED_PLACES ? 'visible' : 'none',
                     }}
                 />
             </Source>

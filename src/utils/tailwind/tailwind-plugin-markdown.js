@@ -42,6 +42,9 @@ module.exports = function ({ addComponents, theme }) {
                 '@screen sm': {
                     paddingLeft: theme('spacing.12'),
                 },
+                '&:not(:last-child)': {
+                    marginBottom: theme('spacing.5'),
+                },
                 '& li:not(:last-child)': {
                     marginBottom: theme('spacing.3'),
                 },

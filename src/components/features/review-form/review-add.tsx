@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import type { AddReviewInputs } from '@/utils/types/review'
+import { CreateReviewInputs } from '@/utils/types/review'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
@@ -19,9 +19,9 @@ export const ReviewAdd = ({ placeId }: { placeId: number }) => {
     const dialog = useDialog()
     const toast = useToast()
 
-    const [addReview, { isLoading }] = reviewsAPI.useAddReviewMutation()
+    const [createReview, { isLoading }] = reviewsAPI.useCreateReviewMutation()
 
-    const initialValues = {
+    const initialValues: CreateReviewInputs = {
         placeId,
         userId: supertokens.activeUserId as number,
         rating: 0,
@@ -29,9 +29,9 @@ export const ReviewAdd = ({ placeId }: { placeId: number }) => {
         photos: [],
     }
 
-    const handleSubmit = async (inputs: AddReviewInputs) => {
+    const handleSubmit = async (inputs: CreateReviewInputs) => {
         try {
-            await addReview(inputs)
+            await createReview(inputs)
             dialog.close()
             router.refresh()
             toast.success(t('success.create_review'))
@@ -47,7 +47,7 @@ export const ReviewAdd = ({ placeId }: { placeId: number }) => {
             <ReviewForm
                 initialValues={initialValues}
                 isLoading={isLoading}
-                onSubmit={inputs => handleSubmit(inputs as AddReviewInputs)}
+                onSubmit={inputs => handleSubmit(inputs as CreateReviewInputs)}
             />
         </div>
     )

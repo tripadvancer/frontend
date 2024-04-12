@@ -1,5 +1,5 @@
 import type { PaginatedResponse } from '@/utils/types/common'
-import type { AddReviewInputs, DeleteReviewInputs, EditReviewInputs, IReview } from '@/utils/types/review'
+import type { CreateReviewInputs, DeleteReviewInputs, IReview, UpdateReviewInputs } from '@/utils/types/review'
 
 import { api } from './api'
 
@@ -51,7 +51,7 @@ export const reviewsAPI = api.injectEndpoints({
             providesTags: (result, error, { userId }) => [{ type: 'UserReviews', id: userId }],
         }),
 
-        addReview: build.mutation<void, AddReviewInputs>({
+        createReview: build.mutation<void, CreateReviewInputs>({
             query: inputs => ({
                 url: 'reviews',
                 method: 'POST',
@@ -64,7 +64,7 @@ export const reviewsAPI = api.injectEndpoints({
             ],
         }),
 
-        editReview: build.mutation<void, EditReviewInputs>({
+        updateReview: build.mutation<void, UpdateReviewInputs>({
             query: inputs => ({
                 url: `reviews/${inputs.reviewId}`,
                 method: 'PATCH',

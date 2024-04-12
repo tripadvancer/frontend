@@ -31,7 +31,7 @@ export const placesAPI = api.injectEndpoints({
             providesTags: (result, error, placeId) => [{ type: 'PlacesMeta', id: placeId }],
         }),
 
-        addPlace: build.mutation<{ id: number }, CreatePlaceInputs>({
+        createPlace: build.mutation<{ id: number }, CreatePlaceInputs>({
             query: inputs => ({
                 url: 'places',
                 method: 'POST',
@@ -39,7 +39,7 @@ export const placesAPI = api.injectEndpoints({
             }),
         }),
 
-        editPlace: build.mutation<void, UpdatePlaceInputs>({
+        updatePlace: build.mutation<void, UpdatePlaceInputs>({
             query: inputs => ({
                 url: `places/${inputs.placeId}`,
                 method: 'PATCH',

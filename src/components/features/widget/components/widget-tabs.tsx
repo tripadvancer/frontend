@@ -13,15 +13,16 @@ type TabType = {
     caption: string
 }
 
-export const WidgetPlacesTabs = () => {
+export const WidgetTabs = () => {
     const t = useI18n()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
 
     const tabs: TabType[] = [
-        { id: WidgetTabsEnum.ALL, caption: t('widget.places.all.title') },
-        { id: WidgetTabsEnum.SAVED, caption: t('widget.places.saved.title') },
-        { id: WidgetTabsEnum.RANDOM, caption: t('widget.places.random.title') },
+        { id: WidgetTabsEnum.ALL, caption: t('widget.tabs.all') },
+        { id: WidgetTabsEnum.SAVED, caption: t('widget.tabs.saved') },
+        { id: WidgetTabsEnum.VISITED, caption: t('widget.tabs.visited') },
+        { id: WidgetTabsEnum.RANDOM, caption: t('widget.tabs.random') },
     ]
 
     const handleTabClick = (tab: TabType) => {
