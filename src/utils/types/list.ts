@@ -1,4 +1,4 @@
-import type { IPlace, IPlacePreview } from './place'
+import type { IPlacePreview } from './place'
 
 export type IList = {
     id: number
@@ -9,12 +9,14 @@ export type IList = {
     isPublic: boolean
 }
 
+export type ISavedPlace = {
+    index: number
+    place: IPlacePreview
+}
+
 export type IListInfo = Pick<IList, 'id' | 'name' | 'description' | 'index' | 'addedAt' | 'isPublic'> & {
     userId: number
-    listToPlace: {
-        index: number
-        place: IPlacePreview
-    }[]
+    places: ISavedPlace[]
 }
 
 export type CreateListInputs = Pick<IList, 'name' | 'description'>

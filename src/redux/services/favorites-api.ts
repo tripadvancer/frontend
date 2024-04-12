@@ -12,7 +12,7 @@ export const favoritesAPI = api.injectEndpoints({
 
         addPlaceToFavorite: build.mutation<void, number>({
             query: placeId => ({
-                url: 'favorites',
+                url: 'lists/118/places',
                 method: 'POST',
                 body: { placeId },
             }),

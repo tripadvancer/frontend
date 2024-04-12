@@ -26,8 +26,8 @@ export const WidgetSaved = ({ isAuth }: { isAuth: boolean }) => {
         )
     }
 
-    if (widgetState.activeListId) {
-        return <WidgetSavedListsView listId={widgetState.activeListId} />
+    if (widgetState.activeList) {
+        return <WidgetSavedListsView {...widgetState.activeList} />
     }
 
     return (

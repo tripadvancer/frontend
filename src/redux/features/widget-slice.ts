@@ -1,12 +1,14 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
+import { IList } from '@/utils/types/list'
+
 import type { RootState } from '@/redux/store'
 import { MapDataSourcesEnum, WidgetTabsEnum } from '@/utils/enums'
 
 interface WidgetState {
     dataSource: MapDataSourcesEnum
     activeTab: WidgetTabsEnum
-    activeListId: number | null
+    activeList: IList | null
     isAboutOpened: boolean
     isCategoriesOpened: boolean
     isMenuOpened: boolean
@@ -20,7 +22,7 @@ interface WidgetState {
 export const initialState: WidgetState = {
     dataSource: MapDataSourcesEnum.ALL_PLACES,
     activeTab: WidgetTabsEnum.ALL,
-    activeListId: null,
+    activeList: null,
     isAboutOpened: false,
     isCategoriesOpened: false,
     isMenuOpened: false,
@@ -106,13 +108,13 @@ export const widgetSlice = createSlice({
             state.activeTab = action.payload
             setWidgetDataSource(state)
         },
-        setWidgetActiveList(state, action: PayloadAction<number | null>) {
-            state.activeListId = action.payload
+        setWidgetActiveList(state, action: PayloadAction<IList | null>) {
+            state.activeList = action.payload
             setWidgetDataSource(state)
         },
         resetWidgetActiveList(state) {
             state.dataSource = MapDataSourcesEnum.ALL_PLACES
-            state.activeListId = null
+            state.activeList = null
         },
         setWidgetRandomRadius(state, action) {
             state.randomRadius = action.payload

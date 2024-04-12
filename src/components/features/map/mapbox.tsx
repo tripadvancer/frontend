@@ -9,6 +9,7 @@ import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { favoritesAPI } from '@/redux/services/favorites-api'
+import { listAPI } from '@/redux/services/list-api'
 import { placesAPI } from '@/redux/services/places-api'
 import { visitedAPI } from '@/redux/services/visited-api'
 import { MapDataSourcesEnum } from '@/utils/enums'
@@ -29,6 +30,7 @@ export const Mapbox = () => {
     const handlers = useMapEventHandlers()
     const mapBounds = useAppSelector(getMapState).bounds
     const mapDataSource = useAppSelector(getWidgetState).dataSource
+    const activeList = useAppSelector(getWidgetState).activeList
     const selectedCategories = useAppSelector(getWidgetState).selectedCategories
     const userLocation = useAppSelector(getUserLocation)
 
@@ -41,8 +43,8 @@ export const Mapbox = () => {
         { skip: !mapBounds || mapDataSource !== MapDataSourcesEnum.ALL_PLACES },
     )
 
-    const favoritesResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
-        skip: !supertokens.isAuth || mapDataSource !== MapDataSourcesEnum.SAVED_PLACES,
+    const savedResponse = listAPI.useGetListPlacesQuery(activeList?.id ?? 0, {
+        skip: !supertokens.isAuth || (mapDataSource !== MapDataSourcesEnum.SAVED_PLACES && !activeList),
     })
 
     const visitedResponse = visitedAPI.useGetVisitedQuery(undefined, {
@@ -85,7 +87,7 @@ export const Mapbox = () => {
             <Source
                 id="favorite-places-source"
                 type="geojson"
-                data={favoritesResponse.data || { type: 'FeatureCollection', features: [] }}
+                data={savedResponse.data || { type: 'FeatureCollection', features: [] }}
             >
                 <Layer
                     {...favoritePlacesLayer}

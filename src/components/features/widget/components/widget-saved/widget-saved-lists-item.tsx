@@ -58,7 +58,7 @@ export const WidgetSavedListsItem = (list: IList) => {
     }
 
     const handleListClick = () => {
-        dispatch(setWidgetActiveList(list.id))
+        dispatch(setWidgetActiveList(list))
         dispatch(closeMapPopups())
     }
 
