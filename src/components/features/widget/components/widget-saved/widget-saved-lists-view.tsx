@@ -4,7 +4,7 @@ import type { IPlacePreview } from '@/utils/types/place'
 
 import { ArrowLeftIcon16 } from '@/components/ui/icons'
 import { closeMapPopups } from '@/redux/features/map-slice'
-import { resetWidgetActiveList } from '@/redux/features/widget-slice'
+import { resetWidgetActiveList, toggleWidgetShowOnlySavedPlaces } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -20,6 +20,11 @@ export const WidgetSavedListsView = ({ listId }: { listId: number }) => {
 
     const handleBackClick = () => {
         dispatch(resetWidgetActiveList())
+        dispatch(closeMapPopups())
+    }
+
+    const handleShowOnlySavedPlacesChange = () => {
+        dispatch(toggleWidgetShowOnlySavedPlaces())
         dispatch(closeMapPopups())
     }
 
