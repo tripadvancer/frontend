@@ -24,7 +24,7 @@ module.exports = function ({ addComponents, theme }) {
             justifyContent: 'center',
         },
         '.hover-animated': {
-            transitionProperty: 'color, background-color',
+            transitionProperty: 'color, background-color, border-color',
             transitionDuration: '300ms',
             transitionTimingFunction: 'ease-in-out',
         },

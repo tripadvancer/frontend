@@ -115,7 +115,7 @@ export default {
     'placeholder.action.email': 'Введите email',
     'placeholder.action.new_email': 'Введите новый email',
     'placeholder.place.title': 'Ввведите название места',
-    'placeholder.place.coordinates': 'Введите координаты места',
+    'placeholder.place.coordinates': 'Выберите местоположение',
 
     'success.send_complaint': 'Ваша жалоба была успешно отправлена.',
     'success.copy_coordinates': 'Координаты были скопированы в буфер обмена.',
