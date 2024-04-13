@@ -40,16 +40,11 @@ function setWidgetDataSource(state: WidgetState) {
                 state.dataSource = MapDataSourcesEnum.ALL_PLACES
                 break
             case WidgetTabsEnum.SAVED:
-                state.dataSource = MapDataSourcesEnum.SAVED_PLACES
-                // if (state.activeList?.type === WidgetListsEnum.FAVORITES) {
-                //     state.dataSource = MapDataSourcesEnum.FAVORITES_PLACES
-                // }
-                // if (state.activeList?.type === WidgetListsEnum.VISITED) {
-                //     state.dataSource = MapDataSourcesEnum.VISITED_PLACES
-                // }
-                // if (state.activeList?.type === WidgetListsEnum.USER_LISTS) {
-                //     state.dataSource = MapDataSourcesEnum.USER_LISTS
-                // }
+                if (state.activeList) {
+                    state.dataSource = MapDataSourcesEnum.SAVED_PLACES
+                } else {
+                    state.dataSource = MapDataSourcesEnum.ALL_PLACES
+                }
                 break
             case WidgetTabsEnum.VISITED:
                 state.dataSource = MapDataSourcesEnum.VISITED_PLACES
