@@ -115,7 +115,7 @@ export default {
     'placeholder.action.email': 'Enter email address',
     'placeholder.action.new_email': 'Enter new email address',
     'placeholder.place.title': 'Enter place title',
-    'placeholder.place.coordinates': 'Enter location',
+    'placeholder.place.coordinates': 'Select place location',
 
     'success.send_complaint': 'Your complaint has been sent.',
     'success.copy_coordinates': 'Coordinates have been copied to the clipboard.',
