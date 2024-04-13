@@ -2,15 +2,19 @@
 
 import type { IList } from '@/utils/types/list'
 
+import { FormSwitcher } from '@/components/ui/form-switcher'
 import { ArrowLeftIcon16 } from '@/components/ui/icons'
 import { closeMapPopups } from '@/redux/features/map-slice'
-import { resetWidgetActiveList, toggleWidgetShowOnlySavedPlaces } from '@/redux/features/widget-slice'
-import { useAppDispatch } from '@/redux/hooks'
+import { getWidgetState, resetWidgetActiveList, toggleWidgetShowOnlySavedPlaces } from '@/redux/features/widget-slice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetSavedListsViewPlaces } from './widget-saved-lists-view-places'
 
 export const WidgetSavedListsView = ({ id, name }: IList) => {
+    const t = useI18n()
     const dispatch = useAppDispatch()
+    const widgetState = useAppSelector(getWidgetState)
 
     const handleBackClick = () => {
         dispatch(resetWidgetActiveList())
@@ -34,17 +38,15 @@ export const WidgetSavedListsView = ({ id, name }: IList) => {
                     {name}
                 </div>
 
-                {/* {supertokens.isAuth && widgetState.activeTab === WidgetTabsEnum.SAVED && widgetState.activeList && (
-                    <div className="flex items-center gap-x-2">
-                        <div onClick={() => dispatch(toggleWidgetShowOnlySavedPlaces())} className="cursor-pointer">
-                            {t('widget.places.saved.show_on_the_map')}
-                        </div>
-                        <FormSwitcher
-                            checked={widgetState.isShowOnlySavedPlaces}
-                            onChange={handleShowOnlySavedPlacesChange}
-                        />
+                <div className="flex items-center gap-x-2">
+                    <div onClick={() => dispatch(toggleWidgetShowOnlySavedPlaces())} className="cursor-pointer">
+                        {t('widget.saved.lists.show_only_list')}
                     </div>
-                )} */}
+                    <FormSwitcher
+                        checked={widgetState.isShowOnlySavedPlaces}
+                        onChange={handleShowOnlySavedPlacesChange}
+                    />
+                </div>
             </div>
 
             <WidgetSavedListsViewPlaces listId={id} />
