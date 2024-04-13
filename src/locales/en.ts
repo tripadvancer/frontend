@@ -293,7 +293,7 @@ export default {
     'pages.error.text': 'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
 
     'pages.landing.countries.title': 'Where are you going?',
-    'pages.landing.countries.description': 'Uncover unique spots recommended by fellow travelers. Immerse yourself in captivating sights, diverse cultures, and renowned landmarks. Ready to start your adventure? Simply select the country of your choice and let the journey unfold!',
+    'pages.landing.countries.description': 'Discover the top attractions of every destination worldwide with our travel app. Explore the best places to visit in each country and uncover must-see sights, from iconic landmarks to hidden gems.',
 
     'page.landing.random_place.title': 'Explore places near you',
     'page.landing.random_place.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
@@ -302,10 +302,10 @@ export default {
     'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
     
     'pages.landing.map.title': 'Embark on a Global Journey',
-    'pages.landing.map.description': 'Unleash your inner explorer! Open the world map and dive into a treasure trove of exciting places waiting to be discovered. Your next adventure is just a tap away!',
+    'pages.landing.map.description': ' Try our interactive map to explore a diverse selection of must-see landmarks, hidden gems, and local attractions worldwide. Your next adventure awaits with just a tap!',
     'pages.landing.map.cta': 'Explore the map',
 
-    'pages.country.description': 'Here are incredible places recommended by experienced travelers. Discover the unique features of a country like {country}, following the advice of those who have already visited it. Craft your own special route and immerse yourself in an exciting journey with just a few clicks!',
+    'pages.country.description': 'Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.',
     'pages.country.view_all': 'View all countries',
 
     'pages.place.about.title': 'About this place',
