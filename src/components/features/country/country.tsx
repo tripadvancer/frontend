@@ -6,7 +6,7 @@ import { ICountryDict } from '@/utils/types/country'
 
 import { getPlacesByCountryCode } from '@/services/places'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
-import { parseQueryString } from '@/utils/helpers'
+import { parseQueryString } from '@/utils/helpers/common'
 import { getCurrentLocale, getI18n } from '@/utils/i18n/i18n.server'
 
 import { CountryCategories } from './components/country-categories'

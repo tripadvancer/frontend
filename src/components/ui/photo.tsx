@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
+import { makeImageUrl } from '@/utils/helpers/common'
 
 type PhotoProps = {
     url: string

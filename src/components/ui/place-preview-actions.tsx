@@ -6,7 +6,7 @@ import { FormButton } from '@/components/ui/form-button'
 import { BookmarkFillIcon16, BookmarkIcon16 } from '@/components/ui/icons'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { navigateToLocation } from '@/utils/helpers'
+import { navigateToLocation } from '@/utils/helpers/common'
 import { useFavorite } from '@/utils/hooks/use-favorite'
 import { useI18n } from '@/utils/i18n/i18n.client'
 

@@ -1,7 +1,5 @@
 import { FormikErrors } from 'formik'
 
-import type { ICoordinates } from '@/utils/types/geo'
-
 import { ImageVariant } from '@/utils/enums'
 import { i18nConfig } from '@/utils/i18n/i18n.config'
 
@@ -15,14 +13,6 @@ export function formattedDate(date: Date, locale: string = i18nConfig.defaultLoc
         month: 'long',
         day: 'numeric',
     })
-}
-
-export function extractCoordinates(value: string): ICoordinates {
-    const [lat, lng] = value.split(/[\s,]+/)
-    return {
-        lng: parseFloat(lng),
-        lat: parseFloat(lat),
-    }
 }
 
 export function navigateToLocation(lat: number, lng: number, provider?: string): void {
@@ -54,11 +44,6 @@ export function updateSelectedCategories(selectedCategories: number[], categoryI
         : [...selectedCategories, categoryId]
 }
 
-/**
- * Returns an array of all the errors in the formik errors object.
- * @param {FormikErrors<Values>} errors - The formik errors object.
- * @returns {string[]} - An array of all the errors in the formik errors object.
- */
 export function getFormikErrors<Values>(errors: FormikErrors<Values>): string[] {
     const errorMessages: string[] = []
 

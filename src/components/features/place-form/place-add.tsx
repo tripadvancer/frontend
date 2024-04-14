@@ -23,7 +23,7 @@ export const PlaceAdd = () => {
     const searchParams = useSearchParams()
     const dispatch = useAppDispatch()
 
-    const [addPlace, { isLoading }] = placesAPI.useAddPlaceMutation()
+    const [createPlace, { isLoading }] = placesAPI.useCreatePlaceMutation()
     const [searchPlacesAround, { isLoading: isSearchingPlacesAround }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
     const lat = searchParams.get('lat')
@@ -56,7 +56,7 @@ export const PlaceAdd = () => {
         }
 
         try {
-            const response = await addPlace(inputs).unwrap()
+            const response = await createPlace(inputs).unwrap()
             dispatch(
                 setMapViewState({
                     latitude,

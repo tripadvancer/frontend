@@ -4,7 +4,7 @@ import { Place } from '@/components/features/place/place'
 import { getCountryByCode } from '@/services/countries'
 import { getPlaceById } from '@/services/places'
 import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
+import { makeImageUrl } from '@/utils/helpers/common'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const place = await getPlaceById(params.id)
