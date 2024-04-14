@@ -3,7 +3,7 @@
 import { useCallback, useRef } from 'react'
 import { Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl'
 
-import { LocationIcon16, MinusIcon16, PlusIcon16, QuestionIcon16 } from '@/components/ui/icons'
+import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { getMapState } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'

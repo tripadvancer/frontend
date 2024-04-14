@@ -1,13 +1,12 @@
 'use client'
 
+import { LocationPicker } from '@/components/features/location-picker/location-picker'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { SelectCoordinates } from '../../select-coordinates/select-coordinates'
-
 type PlaceFormInputCoordinatesProps = {
     value: string
-    onChange: (value: string | null) => void
+    onChange: (value: string) => void
 }
 
 export const PlaceFormInputCoordinates = ({ value, onChange }: PlaceFormInputCoordinatesProps) => {
@@ -15,7 +14,7 @@ export const PlaceFormInputCoordinates = ({ value, onChange }: PlaceFormInputCoo
     const dialog = useDialog()
 
     const handleClick = () => {
-        dialog.open(<SelectCoordinates />)
+        dialog.open(<LocationPicker coordinates={value} onConfirm={onChange} />)
     }
 
     return (
@@ -26,14 +25,4 @@ export const PlaceFormInputCoordinates = ({ value, onChange }: PlaceFormInputCoo
             {value || t('placeholder.place.coordinates')}
         </div>
     )
-
-    // return (
-    //     <input
-    //         type="text"
-    //         value={value}
-    //         onChange={e => onChange(e.target.value)}
-    //         className="w-full bg-transparent text-center text-big text-white placeholder:text-white focus:outline-none"
-    //         placeholder={t('placeholder.place.coordinates')}
-    //     />
-    // )
 }
