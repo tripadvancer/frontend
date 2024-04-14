@@ -3,7 +3,7 @@ import Image from 'next/image'
 import type { IUserInfo } from '@/utils/types/user'
 
 import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
+import { makeImageUrl } from '@/utils/helpers/common'
 
 type AvatarProps = IUserInfo & {
     size: number

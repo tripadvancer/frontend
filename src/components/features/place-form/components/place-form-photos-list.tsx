@@ -9,7 +9,7 @@ import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { placesAPI } from '@/redux/services/places-api'
 import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
+import { makeImageUrl } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { PlaceFormInputPhoto } from './place-form-input-photo'

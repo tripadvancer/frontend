@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import { CreateReviewInputs } from '@/utils/types/review'
+import type { CreateReviewInputs } from '@/utils/types/review'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'

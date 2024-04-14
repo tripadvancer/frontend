@@ -1,6 +1,6 @@
-import { GeoJsonCollection } from '@/utils/types/geo'
+import type { GeoJsonCollection } from '@/utils/types/geo'
 import type { CreateListInputs, IList, IListInfo, UpdateListInputs } from '@/utils/types/list'
-import { IPlacePreview } from '@/utils/types/place'
+import type { IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
 

@@ -3,7 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { CreateListInputs, UpdateListInputs } from '@/utils/types/list'
+import type { CreateListInputs, UpdateListInputs } from '@/utils/types/list'
 
 import { CloseIcon16 } from '@/components/ui/icons'
 import { validationConfig } from '@/configs/validation.config'

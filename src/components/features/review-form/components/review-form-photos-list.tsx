@@ -8,7 +8,7 @@ import { PhotoPreview } from '@/components/ui/photo-preview'
 import { useToast } from '@/providers/toast-provider'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
+import { makeImageUrl } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ReviewFormInputPhoto } from './revew-form-input-photo'

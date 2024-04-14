@@ -2,7 +2,7 @@
 
 import { CSSProperties, forwardRef, useState } from 'react'
 
-import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
 
 import { Keys } from '@/utils/enums'

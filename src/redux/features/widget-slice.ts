@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import { IList } from '@/utils/types/list'
+import type { IList } from '@/utils/types/list'
 
 import type { RootState } from '@/redux/store'
 import { MapDataSourcesEnum, WidgetTabsEnum } from '@/utils/enums'

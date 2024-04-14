@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
-import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
-import { ISearchItem } from '@/utils/types/search'
+import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import type { ISearchItem } from '@/utils/types/search'
 
 import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { Spinner } from '@/components/ui/spinner'

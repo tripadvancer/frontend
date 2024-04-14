@@ -6,7 +6,7 @@ import type { IReview } from '@/utils/types/review'
 
 import { Avatar } from '@/components/ui/avatar'
 import { Rating } from '@/components/ui/rating'
-import { formattedDate } from '@/utils/helpers'
+import { formattedDate } from '@/utils/helpers/common'
 import { useCurrentLocale } from '@/utils/i18n/i18n.client'
 
 export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {

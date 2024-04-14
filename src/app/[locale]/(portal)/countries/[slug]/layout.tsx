@@ -8,14 +8,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
     return {
         title: `What To Visit In ${countryName}`,
-        description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
+        description: `Discover the best places to visit in ${countryName}, curated by fellow travelers who know it best. Find out the top things to do in ${countryName} based on insider recommendations.`,
         keywords: `${countryName}, travel, tourism, vacation, holiday, trip, journey, adventure, guide, tips, what to see in ${countryName}, attractions of ${countryName}, spending weekends in ${countryName}, planning a trip around ${countryName} ,tourism in ${countryName}, things to do in ${countryName}`,
         alternates: {
             canonical: `/countries/${params.slug}`,
         },
         openGraph: {
             title: `What To Visit In ${countryName}`,
-            description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
+            description: `Discover the best places to visit in ${countryName}, curated by fellow travelers who know it best. Find out the top things to do in ${countryName} based on insider recommendations.`,
             images: [
                 {
                     url: `/images/countries/public/${country.code.toLowerCase()}.jpg`,
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         },
         twitter: {
             title: `What To Visit In ${countryName}`,
-            description: `Discover ${countryName} with Tripadvancer, find interesting places and go to an amazing trip.`,
+            description: `Discover the best places to visit in ${countryName}, curated by fellow travelers who know it best. Find out the top things to do in ${countryName} based on insider recommendations.`,
             images: `/images/countries/public/${country.code.toLowerCase()}.jpg`,
         },
     }

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import { IRandomPlace } from '@/utils/types/place'
+import type { IRandomPlace } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
 import { MapIcon16 } from '@/components/ui/icons'

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { CreateListInputs } from '@/utils/types/list'
+import type { CreateListInputs } from '@/utils/types/list'
 
 import { FormButton } from '@/components/ui/form-button'
 import { PlusIcon16 } from '@/components/ui/icons'
