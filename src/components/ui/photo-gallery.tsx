@@ -10,7 +10,7 @@ import type { IPhoto } from '@/utils/types/photo'
 
 import { Photo } from '@/components/ui/photo'
 import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
+import { makeImageUrl } from '@/utils/helpers/common'
 
 type PhotoGalleryProps = {
     photos: IPhoto[]

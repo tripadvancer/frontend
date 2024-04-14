@@ -5,7 +5,7 @@ import type { IPlace } from '@/utils/types/place'
 import { ImageStub } from '@/components/ui/image-stub'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
+import { makeImageUrl } from '@/utils/helpers/common'
 
 type PlacePreviewCoverProps = Pick<IPlace, 'title' | 'cover'> & {
     size: number

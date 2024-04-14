@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { IPlace } from '@/utils/types/place'
 
 import { Avatar } from '@/components/ui/avatar'
-import { formattedDate } from '@/utils/helpers'
+import { formattedDate } from '@/utils/helpers/common'
 import { getCurrentLocale } from '@/utils/i18n/i18n.server'
 
 export const PlaceSidebarAuthor = ({ author, createdAt }: IPlace) => {

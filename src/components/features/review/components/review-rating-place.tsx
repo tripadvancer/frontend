@@ -5,7 +5,7 @@ import Link from 'next/link'
 import type { IReview } from '@/utils/types/review'
 
 import { Rating } from '@/components/ui/rating'
-import { formattedDate } from '@/utils/helpers'
+import { formattedDate } from '@/utils/helpers/common'
 import { useCurrentLocale } from '@/utils/i18n/i18n.client'
 
 export const ReviewRatingPlace = ({ place, rating, createdAt }: IReview) => {

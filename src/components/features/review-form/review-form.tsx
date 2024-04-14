@@ -3,7 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { AddReviewInputs, EditReviewInputs } from '@/utils/types/review'
+import { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormRatingInput } from '@/components/ui/form-rating-input'
@@ -18,9 +18,9 @@ const reviewTextMinLength = validationConfig.review.text.minLength
 const reviewTextMaxLength = validationConfig.review.text.maxLength
 
 type ReviewFormProps = {
-    initialValues: AddReviewInputs | EditReviewInputs
+    initialValues: CreateReviewInputs | UpdateReviewInputs
     isLoading: boolean
-    onSubmit: (values: AddReviewInputs | EditReviewInputs) => void
+    onSubmit: (values: CreateReviewInputs | UpdateReviewInputs) => void
 }
 
 export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {

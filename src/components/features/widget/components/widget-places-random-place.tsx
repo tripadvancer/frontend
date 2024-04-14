@@ -12,7 +12,7 @@ import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slic
 import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { ImageVariant } from '@/utils/enums'
-import { navigateToLocation } from '@/utils/helpers'
+import { navigateToLocation } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {

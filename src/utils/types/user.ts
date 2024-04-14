@@ -1,5 +1,3 @@
-import type { FormFieldError } from '@/utils/types/common'
-
 export type IUser = {
     id: number
     name: string

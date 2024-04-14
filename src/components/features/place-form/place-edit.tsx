@@ -19,7 +19,7 @@ export const PlaceEdit = (place: IPlace) => {
     const router = useRouter()
     const toast = useToast()
 
-    const [editPlace, { isLoading }] = placesAPI.useEditPlaceMutation()
+    const [updatePlace, { isLoading }] = placesAPI.useUpdatePlaceMutation()
     const [searchPlacesAround, { isLoading: isSearchingPlacesAround }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
     const initialValues: UpdatePlaceInputs = {
@@ -49,7 +49,7 @@ export const PlaceEdit = (place: IPlace) => {
         }
 
         try {
-            await editPlace(inputs)
+            await updatePlace(inputs)
             toast.success(t('success.edit_place'))
             router.push(`/places/${place.id}`)
         } catch {
