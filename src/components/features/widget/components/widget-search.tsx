@@ -7,7 +7,7 @@ import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import { ISearchItem } from '@/utils/types/search'
 
 import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
-import { WidgetSearchAutocomplete } from '@/components/ui/search-autocomplete'
+import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { Spinner } from '@/components/ui/spinner'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
 import { closeWidget } from '@/redux/features/widget-slice'
@@ -137,7 +137,7 @@ export const WidgetSearch = () => {
 
             {isSuggestionsVisible &&
                 createPortal(
-                    <WidgetSearchAutocomplete
+                    <SearchAutocomplete
                         ref={suggestionsRef}
                         style={suggestionsPosition}
                         suggestions={suggestions}

@@ -5,10 +5,13 @@ import { ViewState } from 'react-map-gl'
 
 import Image from 'next/image'
 
+import type { LngLat } from '@/utils/types/geo'
+
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 import {
     getDefaultViewState,
+    getFlyToViewState,
     stringCoordinatesIsValid,
     stringToViewState,
     viewStateToString,
@@ -32,6 +35,11 @@ export const LocationPicker = ({ location, onConfirm }: LocationPickerProps) => 
         locationIsValidStringCoordinates ? stringToViewState(location) : getDefaultViewState(),
     )
 
+    const handleLocationSelect = (lngLat: LngLat) => {
+        const viewState = getFlyToViewState(lngLat)
+        setViewState(viewState)
+    }
+
     const handleConfirm = async () => {
         onConfirm(viewStateToString(viewState))
         dialog.close()
@@ -41,7 +49,7 @@ export const LocationPicker = ({ location, onConfirm }: LocationPickerProps) => 
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
             <h1 className="h7 text-center">{t('location_picker.title')}</h1>
             <div className="flex flex-col gap-y-4">
-                <LocationPickerSearch />
+                <LocationPickerSearch onLocationSelect={handleLocationSelect} />
                 <div className="relative h-96 w-full overflow-hidden rounded-lg bg-black-15">
                     <LocationPickerMap viewState={viewState} onMove={setViewState} />
                     <Image
