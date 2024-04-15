@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Map as ReactMapGl, ViewState, ViewStateChangeEvent } from 'react-map-gl'
 
 import Image from 'next/image'
@@ -42,16 +42,14 @@ export const LocationPicker = ({ location, onConfirm }: LocationPickerProps) => 
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
-            <h1 className="h7 text-center">Pick place location</h1>
+            <h1 className="h7 text-center">{t('location_picker.title')}</h1>
             <div className="flex flex-col gap-y-4">
                 <FormInput
-                    type={'text'}
+                    type="text"
                     name={''}
                     value={viewStateToString(viewState)}
-                    placeholder="Enter address or coordinates"
-                    onChange={function (e: ChangeEvent<HTMLInputElement>): void {
-                        throw new Error('Function not implemented.')
-                    }}
+                    placeholder={t('location_picker.placeholder')}
+                    onChange={() => {}}
                 />
                 <div className="relative h-96 w-full bg-black-15">
                     <ReactMapGl

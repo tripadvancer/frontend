@@ -356,4 +356,7 @@ export default {
     'pages.add_place.submit.info': 'Добавляя новый объект на карту, Вы принимаете {terms_link}, {privacy_link} и даёте согласие на их обработку.',
     'pages.add_place.categories.add_category.button': 'Добавить категорию',
     'pages.add_place.categories.add_category.title': 'Выберите до {max_count} категорий',
+
+    'location_picker.title': 'Выберите местоположение',
+    'location_picker.placeholder': 'Начните вводить название места или адрес',
 } as const

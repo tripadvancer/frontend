@@ -255,7 +255,7 @@ export default {
     'widget.categories.selected#other': '{count} selected',
     
     'widget.places.title': 'Places',
-    
+
     'widget.places.all.title': 'All',
     'widget.places.all.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
 
@@ -349,4 +349,7 @@ export default {
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
     'pages.add_place.categories.add_category.button': 'Add category',
     'pages.add_place.categories.add_category.title': 'Select up to {max_count} categories',
+
+    'location_picker.title': 'Pick place location',
+    'location_picker.placeholder': 'Enter address or coordinates',
 } as const
