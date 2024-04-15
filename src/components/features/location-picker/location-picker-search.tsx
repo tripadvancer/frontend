@@ -80,6 +80,7 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
                 type="text"
                 name="search"
                 value={value}
+                autoFocus
                 autoComplete="off"
                 placeholder={t('location_picker.placeholder')}
                 className="hover-animated h-10 w-full rounded-lg border border-black-15 bg-white px-10 placeholder:text-black-40 focus:border-black-40 focus:outline-none disabled:cursor-no-drop"
@@ -97,7 +98,12 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
             )}
 
             {isAutocompleteVisible && (
-                <SearchAutocomplete ref={autocompleteRef} items={items} onSelect={handleSelect} />
+                <SearchAutocomplete
+                    ref={autocompleteRef}
+                    items={items}
+                    className="absolute left-0 right-0 top-full z-40"
+                    onSelect={handleSelect}
+                />
             )}
         </div>
     )

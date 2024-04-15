@@ -1,6 +1,8 @@
 'use client'
 
-import { Ref, forwardRef, memo, useEffect, useState } from 'react'
+import { CSSProperties, Ref, forwardRef, memo, useEffect, useState } from 'react'
+
+import classNames from 'classnames'
 
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
@@ -12,11 +14,13 @@ import { SearchAutocompleteItem } from './search-autocomplete-item'
 
 type SearchAutocompleteProps = {
     items: ISearchItem<IPlacePreview | ILocationPreview>[]
+    styles?: CSSProperties
+    className?: string
     onSelect: (item: ISearchItem<IPlacePreview | ILocationPreview>) => void
 }
 
-export const SearchAutocomplete = forwardRef(function SearchAutocomplete(
-    { items, onSelect }: SearchAutocompleteProps,
+function SearchAutocompleteComponent(
+    { items, styles, className, onSelect }: SearchAutocompleteProps,
     ref: Ref<HTMLDivElement>,
 ) {
     const [cursor, setCursor] = useState<number>(0)
@@ -44,7 +48,7 @@ export const SearchAutocomplete = forwardRef(function SearchAutocomplete(
     }
 
     return (
-        <div ref={ref} className="absolute left-0 right-0 top-full z-40 rounded-lg bg-white p-1 shadow-small">
+        <div ref={ref} className={classNames('rounded-lg bg-white p-1 shadow-small', className)} style={styles}>
             {items.map((item, index) => (
                 <SearchAutocompleteItem
                     key={`search-result-item-${index}`}
@@ -56,4 +60,6 @@ export const SearchAutocomplete = forwardRef(function SearchAutocomplete(
             ))}
         </div>
     )
-})
+}
+
+export const SearchAutocomplete = forwardRef(SearchAutocompleteComponent)

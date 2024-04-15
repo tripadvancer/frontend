@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
+import { useOnClickOutside } from 'usehooks-ts'
+
 import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import { ISearchItem } from '@/utils/types/search'
 
@@ -18,7 +20,6 @@ import { Keys } from '@/utils/enums'
 import { getFlyToViewState } from '@/utils/helpers/maps'
 import { useDebounce } from '@/utils/hooks/use-debounce'
 import { useKeypress } from '@/utils/hooks/use-keypress'
-import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
 export const WidgetSearch = () => {
