@@ -4,9 +4,9 @@ import type { IPlace, IPlaceMeta } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
 import { BookmarkFillIcon16, BookmarkIcon16 } from '@/components/ui/icons'
+import { RouteButton } from '@/components/ui/route-button'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { navigateToLocation } from '@/utils/helpers/common'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useFavorite } from '@/utils/hooks/use-favorite'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -32,9 +32,7 @@ export const PlacePreviewActions = (place: PlacePreviewActionsProps) => {
                 isLoading={favorite.isLoading}
                 onClick={favorite.toggle}
             />
-            <FormButton type="stroke" size="small" onClick={() => navigateToLocation(lngLat)}>
-                {t('common.action.route')}
-            </FormButton>
+            <RouteButton {...lngLat} />
         </div>
     )
 }
