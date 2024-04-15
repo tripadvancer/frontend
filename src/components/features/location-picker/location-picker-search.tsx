@@ -8,11 +8,12 @@ import type { LngLat } from '@/utils/types/geo'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
 
-import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
-import { Spinner } from '@/components/ui/spinner'
 import { searchAPI } from '@/redux/services/search-api'
+import { transformSearchCoordinates, transformSearchLocations } from '@/utils/helpers/search'
 import { useI18n } from '@/utils/i18n/i18n.client'
+
+import { WidgetPickerSearchInput } from './location-picker-search-input'
 
 export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (lngLat: LngLat) => void }) => {
     const t = useI18n()
@@ -35,8 +36,8 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
 
     useEffect(() => {
         if (isSuccess && data && value.length >= 2) {
-            const coordinates = data.coordinates.map(coordinate => ({ ...coordinate }))
-            const locations = data.locations.map(location => ({ ...location }))
+            const coordinates = transformSearchCoordinates(data)
+            const locations = transformSearchLocations(data)
             setItems([...coordinates, ...locations])
         } else {
             setItems([])
@@ -51,7 +52,7 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
         setIsAutocompleteVisible(false)
     })
 
-    const handleClearSearch = () => {
+    const handleClear = () => {
         setValue('')
         setItems([])
     }
@@ -72,30 +73,13 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
 
     return (
         <div className="relative">
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 transform text-blue-100">
-                {isFetching ? <Spinner size={16} /> : <SearchIcon16 />}
-            </div>
-
-            <input
-                type="text"
-                name="search"
+            <WidgetPickerSearchInput
                 value={value}
-                autoFocus
-                autoComplete="off"
-                placeholder={t('location_picker.placeholder')}
-                className="hover-animated h-10 w-full rounded-lg border border-black-15 bg-white px-10 placeholder:text-black-40 focus:border-black-40 focus:outline-none disabled:cursor-no-drop"
+                isLoading={isFetching}
+                onChange={setValue}
                 onClick={handleInputClick}
-                onChange={event => setValue(event.target.value)}
+                onClear={handleClear}
             />
-
-            {value.length > 0 && (
-                <div
-                    className="hover-animated absolute right-4 top-1/2 -translate-y-1/2 transform cursor-pointer text-black-15 hover:text-blue-active"
-                    onClick={handleClearSearch}
-                >
-                    <CloseIcon16 />
-                </div>
-            )}
 
             {isAutocompleteVisible && (
                 <SearchAutocomplete
