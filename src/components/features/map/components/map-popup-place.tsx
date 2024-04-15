@@ -7,12 +7,15 @@ import type { IPlacePopupInfo } from '@/utils/types/map'
 import { PlacePreviewActions } from '@/components/ui/place-preview-actions'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
+import { arrayToLngLat } from '@/utils/helpers/maps'
 
 export const MapPopupPlace = (place: IPlacePopupInfo) => {
+    const lngLat = arrayToLngLat(place.coordinates)
+
     return (
         <Popup
-            latitude={place.coordinates[1]}
-            longitude={place.coordinates[0]}
+            latitude={lngLat.lat}
+            longitude={lngLat.lng}
             offset={[0, -5] as [number, number]}
             closeOnClick={false}
             closeButton={false}

@@ -1,5 +1,7 @@
 import { FormikErrors } from 'formik'
 
+import type { LngLat } from '@/utils/types/geo'
+
 import { ImageVariant } from '@/utils/enums'
 import { i18nConfig } from '@/utils/i18n/i18n.config'
 
@@ -15,7 +17,7 @@ export function formattedDate(date: Date, locale: string = i18nConfig.defaultLoc
     })
 }
 
-export function navigateToLocation(lat: number, lng: number, provider?: string): void {
+export function navigateToLocation({ lat, lng }: LngLat, provider?: string): void {
     switch (provider) {
         case 'waze':
             window.open(`https://waze.com/ul?ll=${lat},${lng}&navigate=yes`, '_blank')

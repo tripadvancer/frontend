@@ -1,5 +1,3 @@
-import type { LngLat } from 'react-map-gl'
-
 import type { GeoJsonPoint } from '@/utils/types/geo'
 import type { IPhoto } from '@/utils/types/photo'
 import type { IReview } from '@/utils/types/review'
@@ -39,7 +37,7 @@ export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover'
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & { distance: number }
 
 export type ILocationPreview = {
-    coordinates: LngLat
+    coordinates: number[]
 }
 
 export type CreatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover' | 'categories'> & {

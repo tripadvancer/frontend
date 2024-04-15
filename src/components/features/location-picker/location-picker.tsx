@@ -8,29 +8,35 @@ import Image from 'next/image'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
+import {
+    getDefaultViewState,
+    stringCoordinatesIsValid,
+    stringToViewState,
+    viewStateToString,
+} from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type LocationPickerProps = {
-    coordinates: string
+    location: string
     onConfirm: (value: string) => void
 }
 
-export const LocationPicker = ({ coordinates, onConfirm }: LocationPickerProps) => {
+export const LocationPicker = ({ location, onConfirm }: LocationPickerProps) => {
     const t = useI18n()
     const dialog = useDialog()
 
-    const [viewState, setViewState] = useState<Partial<ViewState>>({
-        longitude: coordinates.split(',').map(Number)[1],
-        latitude: coordinates.split(',').map(Number)[0],
-        zoom: 16,
-    })
+    const locationIsValidStringCoordinates = stringCoordinatesIsValid(location)
+
+    const [viewState, setViewState] = useState<ViewState>(
+        locationIsValidStringCoordinates ? stringToViewState(location) : getDefaultViewState(),
+    )
 
     const handleMapMove = useCallback((event: ViewStateChangeEvent) => {
         setViewState(event.viewState)
     }, [])
 
-    const handleConfirm = () => {
-        onConfirm(`${viewState.latitude?.toFixed(5)}, ${viewState.longitude?.toFixed(5)}`)
+    const handleConfirm = async () => {
+        onConfirm(viewStateToString(viewState))
         dialog.close()
     }
 
@@ -41,7 +47,7 @@ export const LocationPicker = ({ coordinates, onConfirm }: LocationPickerProps) 
                 <FormInput
                     type={'text'}
                     name={''}
-                    value={viewState.latitude?.toFixed(5) + ', ' + viewState.longitude?.toFixed(5)}
+                    value={viewStateToString(viewState)}
                     placeholder="Enter address or coordinates"
                     onChange={function (e: ChangeEvent<HTMLInputElement>): void {
                         throw new Error('Function not implemented.')
@@ -57,10 +63,10 @@ export const LocationPicker = ({ coordinates, onConfirm }: LocationPickerProps) 
                         onMove={handleMapMove}
                     />
                     <Image
-                        src="images/pin-blue.svg"
+                        src="/images/pin-blue.svg"
                         width={27}
                         height={41}
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform"
+                        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform"
                         alt=""
                     />
                 </div>

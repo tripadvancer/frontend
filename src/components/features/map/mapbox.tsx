@@ -122,10 +122,6 @@ export const Mapbox = () => {
                 <MapControl isLoading={isLocating} onClick={handleLocate}>
                     <LocationIcon16 />
                 </MapControl>
-
-                {/* <MapControl onClick={() => {}}>
-                    <QuestionIcon16 />
-                </MapControl> */}
             </div>
 
             {userLocation && (
