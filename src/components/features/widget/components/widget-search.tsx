@@ -14,7 +14,7 @@ import { useAppDispatch } from '@/redux/hooks'
 import { searchAPI } from '@/redux/services/search-api'
 import { getCountryByCode } from '@/services/countries'
 import { Keys } from '@/utils/enums'
-import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
+import { getFlyToViewState } from '@/utils/helpers/maps'
 import { useDebounce } from '@/utils/hooks/use-debounce'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
@@ -92,15 +92,12 @@ export const WidgetSearch = () => {
     const handleSelect = (cursor: number) => {
         const viewState = getFlyToViewState(suggestions[cursor].coordinates)
         dispatch(setMapViewState(viewState))
-
         if (suggestions[cursor].type === 'location') {
             dispatch(setMapLocationPopupInfo(suggestions[cursor].properties as ILocationPreview))
         }
-
         if (suggestions[cursor].type === 'place') {
             dispatch(setMapPlacePopupInfo(suggestions[cursor].properties as IPlacePreview))
         }
-
         setIsSuggestionsVisible(false)
         dispatch(closeWidget())
     }

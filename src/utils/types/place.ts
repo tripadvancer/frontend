@@ -1,4 +1,4 @@
-import type { GeoJsonPoint } from '@/utils/types/geo'
+import type { GeoJsonPoint, LngLat } from '@/utils/types/geo'
 import type { IPhoto } from '@/utils/types/photo'
 import type { IReview } from '@/utils/types/review'
 import type { IUserInfo } from '@/utils/types/user'
@@ -37,7 +37,7 @@ export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover'
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & { distance: number }
 
 export type ILocationPreview = {
-    coordinates: number[]
+    coordinates: LngLat
 }
 
 export type CreatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover' | 'categories'> & {
