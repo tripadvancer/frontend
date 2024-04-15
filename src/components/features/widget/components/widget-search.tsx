@@ -7,6 +7,7 @@ import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import { ISearchItem } from '@/utils/types/search'
 
 import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
+import { WidgetSearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { Spinner } from '@/components/ui/spinner'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
 import { closeWidget } from '@/redux/features/widget-slice'
@@ -19,8 +20,6 @@ import { useDebounce } from '@/utils/hooks/use-debounce'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
-
-import { WidgetSearchAutocomplete } from './widget-search-autocomplete'
 
 export const WidgetSearch = () => {
     const t = useI18n()

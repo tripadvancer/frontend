@@ -5,19 +5,14 @@ import type { ISearchItem } from '@/utils/types/search'
 
 import { PinIcon16, PointIcon16 } from '@/components/ui/icons'
 
-type WidgetSearchAutocompleteItemProps = {
+type SearchAutocompleteItemProps = {
     item: ISearchItem<IPlacePreview | ILocationPreview>
     isSelected: boolean
     onMouseEnter: () => void
     onClick: () => void
 }
 
-export const WidgetSearchAutocompleteItem = ({
-    item,
-    isSelected,
-    onMouseEnter,
-    onClick,
-}: WidgetSearchAutocompleteItemProps) => {
+export const SearchAutocompleteItem = ({ item, isSelected, onMouseEnter, onClick }: SearchAutocompleteItemProps) => {
     return (
         <div
             className={classNames('group hover-animated relative cursor-pointer rounded-md', {

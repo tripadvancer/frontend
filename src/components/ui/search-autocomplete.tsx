@@ -2,13 +2,13 @@
 
 import { CSSProperties, forwardRef, useState } from 'react'
 
-import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
 
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
-import { WidgetSearchAutocompleteItem } from './widget-search-autocomplete-item'
+import { SearchAutocompleteItem } from './search-autocomplete-item'
 
 type WidgetSearchAutocompleteProps = {
     style: CSSProperties
@@ -41,7 +41,7 @@ const WidgetSearchAutocomplete = forwardRef<HTMLDivElement, WidgetSearchAutocomp
         return (
             <div ref={ref} className="fixed z-40 rounded-lg bg-white p-1 shadow-small" style={style}>
                 {suggestions.map((suggestion, index) => (
-                    <WidgetSearchAutocompleteItem
+                    <SearchAutocompleteItem
                         key={`search-result-item-${index}`}
                         item={suggestion}
                         isSelected={index === cursor}
