@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useEffect, useState } from 'react'
+import { Ref, forwardRef, memo, useEffect, useState } from 'react'
 
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
@@ -15,14 +15,11 @@ type SearchAutocompleteProps = {
     onSelect: (item: ISearchItem<IPlacePreview | ILocationPreview>) => void
 }
 
-export const SearchAutocomplete = ({ items, onSelect }: SearchAutocompleteProps) => {
-    const [isVisible, setIsVisible] = useState<boolean>(false)
+export const SearchAutocomplete = forwardRef(function SearchAutocomplete(
+    { items, onSelect }: SearchAutocompleteProps,
+    ref: Ref<HTMLDivElement>,
+) {
     const [cursor, setCursor] = useState<number>(0)
-
-    useEffect(() => {
-        console.log(items)
-        setIsVisible(items.length > 0)
-    }, [items])
 
     useKeypress(Keys.ENTER, () => {
         if (items.length > 0) {
@@ -44,15 +41,10 @@ export const SearchAutocomplete = ({ items, onSelect }: SearchAutocompleteProps)
 
     const handleSelect = (item: ISearchItem<IPlacePreview | ILocationPreview>) => {
         onSelect(item)
-        setIsVisible(false)
-    }
-
-    if (!isVisible) {
-        return null
     }
 
     return (
-        <div className="absolute left-0 right-0 top-full z-40 rounded-lg bg-white p-1 shadow-small">
+        <div ref={ref} className="absolute left-0 right-0 top-full z-40 rounded-lg bg-white p-1 shadow-small">
             {items.map((item, index) => (
                 <SearchAutocompleteItem
                     key={`search-result-item-${index}`}
@@ -64,4 +56,4 @@ export const SearchAutocomplete = ({ items, onSelect }: SearchAutocompleteProps)
             ))}
         </div>
     )
-}
+})
