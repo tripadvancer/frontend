@@ -92,12 +92,15 @@ export const WidgetSearch = () => {
     const handleSelect = (cursor: number) => {
         const viewState = getFlyToViewState(suggestions[cursor].coordinates)
         dispatch(setMapViewState(viewState))
+
         if (suggestions[cursor].type === 'location') {
             dispatch(setMapLocationPopupInfo(suggestions[cursor].properties as ILocationPreview))
         }
+
         if (suggestions[cursor].type === 'place') {
             dispatch(setMapPlacePopupInfo(suggestions[cursor].properties as IPlacePreview))
         }
+
         setIsSuggestionsVisible(false)
         dispatch(closeWidget())
     }

@@ -51,7 +51,7 @@ export const LocationPicker = ({ location, onConfirm }: LocationPickerProps) => 
                     placeholder={t('location_picker.placeholder')}
                     onChange={() => {}}
                 />
-                <div className="relative h-96 w-full bg-black-15">
+                <div className="relative h-96 w-full rounded-lg bg-black-15">
                     <ReactMapGl
                         {...viewState}
                         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}

@@ -21,9 +21,9 @@ export const useMapEventHandlers = () => {
 
     const showLocationPopup = useCallback(
         (lngLat: LngLat) => {
-            const latitude = Number(lngLat.lat.toFixed(6))
-            const longitude = Number(lngLat.lng.toFixed(6))
-            dispatch(setMapLocationPopupInfo({ coordinates: [longitude, latitude] }))
+            const lat = Number(lngLat.lat.toFixed(6))
+            const lng = Number(lngLat.lng.toFixed(6))
+            dispatch(setMapLocationPopupInfo({ coordinates: { lat, lng } }))
         },
         [dispatch],
     )

@@ -4,6 +4,7 @@ import { useCallback, useRef } from 'react'
 import { Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl'
 
 import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
+import { MapControl } from '@/components/ui/map-control'
 import { getMapState } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
@@ -17,7 +18,6 @@ import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
-import { MapControl } from './components/map-control'
 import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
