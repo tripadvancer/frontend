@@ -2,6 +2,8 @@
 
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
+import { Keys } from '@/utils/enums'
+import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type ConfirmationProps = {
@@ -14,6 +16,10 @@ type ConfirmationProps = {
 export const Confirmation = ({ title, message, variant = 'blue', onConfirm }: ConfirmationProps) => {
     const t = useI18n()
     const dialog = useDialog()
+
+    useKeypress(Keys.ENTER, () => {
+        onConfirm()
+    })
 
     return (
         <div className="w-full sm:w-104">

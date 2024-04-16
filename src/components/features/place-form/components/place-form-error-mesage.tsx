@@ -5,7 +5,7 @@ import { FormikErrors } from 'formik'
 import type { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/types/place'
 
 import { AlertIcon16 } from '@/components/ui/icons'
-import { getFormikErrors } from '@/utils/helpers'
+import { getFormikErrors } from '@/utils/helpers/common'
 
 type PlaceFormErrorMesageProps = {
     errors: FormikErrors<CreatePlaceInputs | UpdatePlaceInputs>

@@ -7,7 +7,7 @@ import Image from 'next/image'
 import type { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/types/place'
 
 import { ImageVariant } from '@/utils/enums'
-import { makeImageUrl } from '@/utils/helpers'
+import { makeImageUrl } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { PlaceFormErrorMesage } from './components/place-form-error-mesage'
