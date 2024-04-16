@@ -3,7 +3,7 @@ import { UserNavigation } from './components/user-navigation'
 import { UserSidebarAbout } from './components/user-sidebar-about'
 import { UserSidebarAchievement } from './components/user-sidebar-achievement'
 
-export const User = async ({ userId, children }: { userId: string; children: React.ReactNode }) => {
+export const User = ({ userId, children }: { userId: string; children: React.ReactNode }) => {
     return (
         <div className="container py-24">
             <div className="inner-container">
