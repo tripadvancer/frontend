@@ -1,4 +1,4 @@
-import type { LngLatBounds, ViewState } from 'react-map-gl'
+import type { LngLatBounds, ViewState } from 'react-map-gl/maplibre'
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 

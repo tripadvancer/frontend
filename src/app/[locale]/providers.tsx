@@ -1,5 +1,6 @@
 'use client'
 
+import { MapProvider } from 'react-map-gl/maplibre'
 import { ParallaxProvider } from 'react-scroll-parallax'
 
 import { DialogProvider } from '@/providers/dialog-provider'
@@ -14,9 +15,11 @@ export function Providers({ children, locale }: { children: React.ReactNode; loc
             <I18nProvider locale={locale}>
                 <SupertokensProvider>
                     <ToastProvider>
-                        <DialogProvider>
-                            <ParallaxProvider>{children}</ParallaxProvider>
-                        </DialogProvider>
+                        <MapProvider>
+                            <DialogProvider>
+                                <ParallaxProvider>{children}</ParallaxProvider>
+                            </DialogProvider>
+                        </MapProvider>
                     </ToastProvider>
                 </SupertokensProvider>
             </I18nProvider>

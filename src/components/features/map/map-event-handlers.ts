@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback } from 'react'
-import { LngLat, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl'
+import { LngLat, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
 import type { IPlacePreview } from '@/utils/types/place'
 

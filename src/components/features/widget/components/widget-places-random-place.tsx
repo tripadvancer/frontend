@@ -1,7 +1,5 @@
 'use client'
 
-import { array } from 'prop-types'
-
 import Link from 'next/link'
 
 import type { IRandomPlace } from '@/utils/types/place'
@@ -54,7 +52,7 @@ export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
                         className="flex-none"
                         onClick={handleShowOnMap}
                     />
-                    <FormButton type="stroke" size="small" onClick={() => navigateToLocation(lngLat)}>
+                    <FormButton type="stroke" size="small" onClick={() => navigateToLocation(lngLat, 'google')}>
                         {t('common.action.route')}
                     </FormButton>
                 </div>
