@@ -1,6 +1,6 @@
 'use client'
 
-import { Marker, Popup } from 'react-map-gl'
+import { Marker, Popup } from 'react-map-gl/maplibre'
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'

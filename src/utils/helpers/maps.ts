@@ -1,4 +1,4 @@
-import type { ViewState } from 'react-map-gl'
+import type { ViewState } from 'react-map-gl/maplibre'
 
 import type { LngLat } from '@/utils/types/geo'
 
