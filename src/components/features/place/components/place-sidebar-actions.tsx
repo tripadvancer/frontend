@@ -11,6 +11,7 @@ import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
 import { navigateToLocation } from '@/utils/helpers/common'
+import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
 import { useFavorite } from '@/utils/hooks/use-favorite'
 import { useI18n } from '@/utils/i18n/i18n.client'
 import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
@@ -22,15 +23,12 @@ export const PlaceSidebarActions = (place: IPlace) => {
     const supertokens = useSupertokens()
     const response = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !supertokens.isAuth })
     const favorite = useFavorite(place.id, response.data?.isFavorite)
+    const lngLat = arrayToLngLat(place.location.coordinates)
 
     const handleShowOnMap = () => {
-        dispatch(
-            setMapViewState({
-                latitude: place.location.coordinates[1],
-                longitude: place.location.coordinates[0],
-                zoom: parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM || '16', 10),
-            }),
-        )
+        const lngLat = arrayToLngLat(place.location.coordinates)
+        const viewState = getFlyToViewState(lngLat)
+        dispatch(setMapViewState(viewState))
         dispatch(
             setMapPlacePopupInfo({
                 ...place,
@@ -44,11 +42,7 @@ export const PlaceSidebarActions = (place: IPlace) => {
 
     return (
         <div className="flex gap-x-2">
-            <FormButton
-                icon={<RouteIcon24 />}
-                className="flex-auto"
-                onClick={() => navigateToLocation(place.location.coordinates[1], place.location.coordinates[0])}
-            >
+            <FormButton icon={<RouteIcon24 />} className="flex-auto" onClick={() => navigateToLocation(lngLat)}>
                 {t('place.navigation')}
             </FormButton>
             <FormButton type="stroke" icon={<PinIcon24 />} className="flex-none" onClick={handleShowOnMap} />

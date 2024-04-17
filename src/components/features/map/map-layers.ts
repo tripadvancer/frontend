@@ -1,4 +1,4 @@
-import { SymbolLayer } from 'react-map-gl'
+import { LineLayer, SymbolLayer } from 'react-map-gl/maplibre'
 
 export const placesLayer: SymbolLayer = {
     id: 'places-layer',

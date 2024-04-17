@@ -1,151 +1,124 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
-import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
-import type { ISearchItem } from '@/utils/types/search'
+import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
-import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
-import { Spinner } from '@/components/ui/spinner'
+import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { ISearchItem } from '@/utils/types/search'
+
+import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
 import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { searchAPI } from '@/redux/services/search-api'
-import { getCountryByCode } from '@/services/countries'
 import { Keys } from '@/utils/enums'
-import { useDebounce } from '@/utils/hooks/use-debounce'
+import { getFlyToViewState } from '@/utils/helpers/maps'
+import { transformFullSearchResult } from '@/utils/helpers/search'
 import { useKeypress } from '@/utils/hooks/use-keypress'
-import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
-import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
+import { useCurrentLocale } from '@/utils/i18n/i18n.client'
 
-import { WidgetSearchAutocomplete } from './widget-search-autocomplete'
+import { WidgetSearchInput } from './widget-search-input'
 
 export const WidgetSearch = () => {
-    const t = useI18n()
     const dispatch = useAppDispatch()
     const locale = useCurrentLocale()
-    const [searchTerm, setSearchTerm] = useState<string>('')
-    const [suggestions, setSuggestions] = useState<ISearchItem<IPlacePreview | ILocationPreview>[]>([])
-    const [isSuggestionsVisible, setIsSuggestionsVisible] = useState<boolean>(false)
-    const [suggestionsPosition, setSuggestionsPosition] = useState<{ top: number; left: number; width?: number }>({
+
+    const inputRef = useRef<HTMLInputElement>(null)
+    const autocompleteRef = useRef<HTMLDivElement>(null)
+
+    const [value, setValue] = useState<string>('')
+    const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview>[]>([])
+    const [isAutocompleteVisible, setIsAutocompleteVisible] = useState<boolean>(false)
+    const [autocompleteStyles, setAutocompleteStyles] = useState<{ top: number; left: number; width?: number }>({
         top: 0,
         left: 0,
     })
 
-    const inputRef = useRef<HTMLInputElement>(null)
-    const suggestionsRef = useRef<HTMLDivElement>(null)
+    const [search, { data, isFetching, isSuccess }] = searchAPI.useLazySearchQuery()
 
-    // Fetch search results
-    const debouncedSearchTerm = useDebounce(searchTerm, 500)
-    const query = debouncedSearchTerm
-    const skip = debouncedSearchTerm.length < 2
-    const searchResult = searchAPI.useSearchQuery({ query }, { skip })
-
-    useEffect(() => {
-        setSuggestions([])
-
-        if (searchTerm.length >= 2 && searchResult.isSuccess) {
-            const items = searchResult.data
-            const coordinates = items.coordinates.map(coordinate => ({ ...coordinate }))
-            const places = items.places.map(place => {
-                const country = getCountryByCode(place.properties.countryCode)
-                return {
-                    ...place,
-                    info: country?.name[locale] ?? '', // Provide a default empty string value
-                }
-            })
-            const locations = items.locations.map(location => ({ ...location }))
-            // Merge all search results into one array
-            setSuggestions([...coordinates, ...places, ...locations])
-        }
-    }, [locale, searchResult, searchTerm])
-
-    useEffect(() => {
-        setIsSuggestionsVisible(suggestions.length > 0)
-    }, [suggestions])
+    const debouncedSearch = useDebounceCallback(search, 500)
 
     useEffect(() => {
         const inputRect = inputRef.current?.getBoundingClientRect()
-        setSuggestionsPosition({
+        setAutocompleteStyles({
             top: inputRect?.bottom || 0,
             left: inputRect?.left || 0,
             width: inputRect?.width,
         })
-    }, [isSuggestionsVisible])
+    }, [])
 
-    useOnClickOutside(suggestionsRef, () => {
-        setIsSuggestionsVisible(false)
+    useEffect(() => {
+        if (value.length >= 2) {
+            debouncedSearch({ query: value })
+        }
+    }, [debouncedSearch, value])
+
+    useEffect(() => {
+        setItems(isSuccess && data && value.length >= 2 ? transformFullSearchResult(data, locale) : [])
+    }, [data, isSuccess, locale, value])
+
+    useEffect(() => {
+        setIsAutocompleteVisible(items.length > 0)
+    }, [items])
+
+    useOnClickOutside(autocompleteRef, () => {
+        setIsAutocompleteVisible(false)
     })
 
     useKeypress(Keys.ESCAPE, () => {
-        setIsSuggestionsVisible(false)
+        setIsAutocompleteVisible(false)
     })
 
-    const handleClearSearch = () => {
-        setSearchTerm('')
-        setSuggestions([])
-        inputRef.current?.focus()
+    const handleClear = () => {
+        setValue('')
+        setItems([])
     }
 
-    const handleSelect = (cursor: number) => {
-        dispatch(
-            setMapViewState({
-                latitude: suggestions[cursor].coordinates.lat,
-                longitude: suggestions[cursor].coordinates.lng,
-                zoom: parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM || '16', 10),
-            }),
-        )
+    const handleSelect = useCallback(
+        (item: ISearchItem<IPlacePreview | ILocationPreview>) => {
+            const viewState = getFlyToViewState(item.coordinates)
+            dispatch(setMapViewState(viewState))
 
-        if (suggestions[cursor].type === 'location') {
-            dispatch(setMapLocationPopupInfo(suggestions[cursor].properties as ILocationPreview))
-        }
+            if (item.type === 'location') {
+                dispatch(setMapLocationPopupInfo(item.properties as ILocationPreview))
+            }
 
-        if (suggestions[cursor].type === 'place') {
-            dispatch(setMapPlacePopupInfo(suggestions[cursor].properties as IPlacePreview))
-        }
+            if (item.type === 'place') {
+                dispatch(setMapPlacePopupInfo(item.properties as IPlacePreview))
+            }
 
-        setIsSuggestionsVisible(false)
-        dispatch(closeWidget())
-    }
+            dispatch(closeWidget())
+            setIsAutocompleteVisible(false)
+        },
+        [dispatch],
+    )
 
-    const handleSearchClick = () => {
-        if (searchTerm.length > 0) {
-            setIsSuggestionsVisible(true)
+    const handleInputClick = () => {
+        if (items.length > 0) {
+            setIsAutocompleteVisible(true)
         }
     }
 
     return (
         <div className="relative">
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 transform text-blue-100">
-                {searchResult.isFetching ? <Spinner size={16} /> : <SearchIcon16 />}
-            </div>
-
-            <input
+            <WidgetSearchInput
                 ref={inputRef}
-                type="text"
-                value={searchTerm}
-                className="hover-animated h-10 w-full rounded-lg border border-blue-20 bg-white px-10 placeholder:text-black-40 hover:border-blue-100 focus:border-blue-100 focus:outline-none"
-                placeholder={t('widget.search.placeholder')}
-                onChange={e => setSearchTerm(e.target.value)}
-                onClick={handleSearchClick}
+                value={value}
+                isLoading={isFetching}
+                onChange={setValue}
+                onClick={handleInputClick}
+                onClear={handleClear}
             />
 
-            {searchTerm.length > 0 && (
-                <div
-                    className="hover-animated absolute right-4 top-1/2 -translate-y-1/2 transform cursor-pointer text-black-15 hover:text-blue-active"
-                    onClick={handleClearSearch}
-                >
-                    <CloseIcon16 />
-                </div>
-            )}
-
-            {isSuggestionsVisible &&
+            {isAutocompleteVisible &&
                 createPortal(
-                    <WidgetSearchAutocomplete
-                        ref={suggestionsRef}
-                        style={suggestionsPosition}
-                        suggestions={suggestions}
+                    <SearchAutocomplete
+                        ref={autocompleteRef}
+                        items={items}
+                        className="fixed z-40"
+                        styles={autocompleteStyles}
                         onSelect={handleSelect}
                     />,
                     document.body,

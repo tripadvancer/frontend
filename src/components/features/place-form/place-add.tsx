@@ -11,6 +11,7 @@ import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slic
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { LngLatToArray, getFlyToViewState, stringToLngLat, stringToViewState } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { PlaceForm } from './place-form'
@@ -40,12 +41,10 @@ export const PlaceAdd = () => {
     }
 
     const handleSubmit = async (inputs: CreatePlaceInputs) => {
-        const latitude = inputs.location.split(',').map(Number)[0]
-        const longitude = inputs.location.split(',').map(Number)[1]
+        const lngLat = stringToLngLat(inputs.location)
 
         const response = await searchPlacesAround({
-            lat: latitude,
-            lng: longitude,
+            ...lngLat,
             radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
             categories: [],
         })
@@ -57,12 +56,8 @@ export const PlaceAdd = () => {
 
         try {
             const response = await createPlace(inputs).unwrap()
-            dispatch(
-                setMapViewState({
-                    latitude,
-                    longitude,
-                }),
-            )
+            const viewState = getFlyToViewState(lngLat)
+            dispatch(setMapViewState(viewState))
             dispatch(
                 setMapPlacePopupInfo({
                     id: response.id,
@@ -71,7 +66,7 @@ export const PlaceAdd = () => {
                     isFavorite: false,
                     avgRating: 0,
                     reviewsCount: 0,
-                    coordinates: [longitude, latitude],
+                    coordinates: LngLatToArray(lngLat),
                 }),
             )
             toast.success(t('success.create_place'))

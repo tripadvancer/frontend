@@ -3,16 +3,16 @@
 import { ReactNode, useRef, useState } from 'react'
 
 import classNames from 'classnames'
+import { useOnClickOutside } from 'usehooks-ts'
 
 import { ActionButton } from '@/components/ui/action-button'
 import { ConfirmationMini } from '@/components/ui/confirmation-mini'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
-import { useOnClickOutside } from '@/utils/hooks/use-on-click-outside'
 
 export type DropdownItemProps = {
     caption: string
-    icon?: React.ReactNode
+    icon?: ReactNode
     value: string
     isRed?: boolean
     isCurrent?: boolean
@@ -22,7 +22,7 @@ export type DropdownItemProps = {
 
 type DropdownProps = {
     items: DropdownItemProps[]
-    children?: React.ReactNode
+    children?: ReactNode
     currentItem?: string
 }
 
@@ -91,7 +91,7 @@ const DropdownItem = (props: DropdownItemProps) => {
     return (
         <li
             className={classNames(
-                'hover-animated flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-blue-100 last:mb-0 hover:bg-blue-10',
+                'flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-blue-100 last:mb-0 hover:bg-blue-10',
                 {
                     'font-medium': props.isCurrent,
                     'text-red-100': props.isRed,

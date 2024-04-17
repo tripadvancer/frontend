@@ -119,7 +119,7 @@ export default {
     'placeholder.action.new_email': 'Enter new email address',
     'placeholder.action.list_name': 'Enter list name',
     'placeholder.place.title': 'Enter place title',
-    'placeholder.place.coordinates': 'Enter coordinates',
+    'placeholder.place.coordinates': 'Pick place location',
 
     'success.send_complaint': 'Your complaint has been sent.',
     'success.copy_coordinates': 'Coordinates have been copied to the clipboard.',
@@ -352,4 +352,7 @@ export default {
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
     'pages.add_place.categories.add_category.button': 'Add category',
     'pages.add_place.categories.add_category.title': 'Select up to {max_count} categories',
+
+    'location_picker.title': 'Pick place location',
+    'location_picker.placeholder': 'Enter address or coordinates',
 } as const

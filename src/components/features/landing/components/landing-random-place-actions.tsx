@@ -10,6 +10,7 @@ import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slic
 import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { getCountryByCode } from '@/services/countries'
+import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type LandingRandomPlaceActionsType = IRandomPlace
@@ -20,13 +21,9 @@ export const LandingRandomPlaceActions = (place: LandingRandomPlaceActionsType) 
     const dispatch = useAppDispatch()
 
     const handleShowOnMap = () => {
-        dispatch(
-            setMapViewState({
-                latitude: place.coordinates[1],
-                longitude: place.coordinates[0],
-                zoom: parseInt(process.env.NEXT_PUBLIC_MAP_DEFAULT_ZOOM || '16', 10),
-            }),
-        )
+        const lngLat = arrayToLngLat(place.coordinates)
+        const viewState = getFlyToViewState(lngLat)
+        dispatch(setMapViewState(viewState))
         dispatch(setMapPlacePopupInfo(place))
         dispatch(closeWidget())
         router.push('/maps')

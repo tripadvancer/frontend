@@ -19,8 +19,7 @@ export const WidgetRandom = () => {
     const handleRandomClick = () => {
         if (userLocation) {
             searchRandomPlace({
-                lat: userLocation.lat,
-                lng: userLocation.lng,
+                ...userLocation,
                 radius: widgetState.randomRadius * 1000, // km to m
                 categories: widgetState.selectedCategories,
             })

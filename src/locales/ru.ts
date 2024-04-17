@@ -119,7 +119,7 @@ export default {
     'placeholder.action.new_email': 'Введите новый email',
     'placeholder.action.list_name': 'Введите название списка',
     'placeholder.place.title': 'Ввведите название места',
-    'placeholder.place.coordinates': 'Введите координаты места',
+    'placeholder.place.coordinates': 'Выберите местоположение',
 
     'success.send_complaint': 'Ваша жалоба была успешно отправлена.',
     'success.copy_coordinates': 'Координаты были скопированы в буфер обмена.',
@@ -359,4 +359,7 @@ export default {
     'pages.add_place.submit.info': 'Добавляя новый объект на карту, Вы принимаете {terms_link}, {privacy_link} и даёте согласие на их обработку.',
     'pages.add_place.categories.add_category.button': 'Добавить категорию',
     'pages.add_place.categories.add_category.title': 'Выберите до {max_count} категорий',
+
+    'location_picker.title': 'Выберите местоположение',
+    'location_picker.placeholder': 'Начните вводить название места или адрес',
 } as const

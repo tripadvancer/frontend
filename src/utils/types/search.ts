@@ -1,4 +1,4 @@
-import type { LngLat } from 'react-map-gl'
+import type { LngLat } from '@/utils/types/geo'
 
 import type { ILocationPreview, IPlacePreview } from './place'
 

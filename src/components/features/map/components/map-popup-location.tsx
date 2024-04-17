@@ -1,22 +1,22 @@
 'use client'
 
-import { Marker, Popup } from 'react-map-gl'
+import { Marker, Popup } from 'react-map-gl/maplibre'
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 import type { ILocationPopupInfo } from '@/utils/types/map'
 
+import { PlacesNearbyWarning } from '@/components/features/places-nearby-warning/places-nearby-warning'
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { LngLatToString, arrayToLngLat } from '@/utils/helpers/maps'
 import { useSessionValidation } from '@/utils/hooks/use-session-validation'
 import { useI18n } from '@/utils/i18n/i18n.client'
-
-import { PlacesNearbyWarning } from '../../places-nearby-warning/places-nearby-warning'
 
 export const MapPopupLocation = ({ coordinates }: ILocationPopupInfo) => {
     const t = useI18n()
@@ -28,8 +28,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPopupInfo) => {
 
     const handleAddPlaceClick = useSessionValidation(async () => {
         const response = await searchPlacesAround({
-            lat: coordinates.lat,
-            lng: coordinates.lng,
+            ...coordinates,
             radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
             categories: [],
         })
@@ -45,7 +44,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPopupInfo) => {
 
     const handleIAmHereClick = () => {
         dispatch(closeMapPopups())
-        dispatch(setUserLocation({ lat: coordinates.lat, lng: coordinates.lng }))
+        dispatch(setUserLocation(coordinates))
     }
 
     return (
@@ -58,9 +57,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPopupInfo) => {
                 closeButton={false}
             >
                 <div>{t('map.popup.location.title')}</div>
-                <div className="mb-4 text-small text-black-40">
-                    {coordinates.lat}, {coordinates.lng}
-                </div>
+                <div className="mb-4 text-small text-black-40">{LngLatToString(coordinates)}</div>
                 <div className="flex flex-col gap-y-1">
                     <FormButton type="stroke" size="small" onClick={handleIAmHereClick}>
                         {t('map.popup.location.i_am_here')}

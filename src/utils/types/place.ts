@@ -1,6 +1,4 @@
-import type { LngLat } from 'react-map-gl'
-
-import type { GeoJsonPoint } from '@/utils/types/geo'
+import type { GeoJsonPoint, LngLat } from '@/utils/types/geo'
 import type { IPhoto } from '@/utils/types/photo'
 import type { IReview } from '@/utils/types/review'
 import type { IUserInfo } from '@/utils/types/user'
