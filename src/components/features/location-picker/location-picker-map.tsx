@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useRef, useState } from 'react'
-import { MapRef, Map as ReactMapGl, ViewState, ViewStateChangeEvent } from 'react-map-gl'
+import { MapRef, Map as ReactMapGl, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
 import type { LngLat } from '@/utils/types/geo'
 
@@ -48,8 +48,7 @@ export const LocationPickerMap = ({ viewState, onMove }: LocationPickerMapProps)
         <ReactMapGl
             {...viewState}
             ref={mapRef}
-            mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
-            mapStyle="mapbox://styles/mapbox/streets-v11"
+            mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
             attributionControl={false}
             reuseMaps
             onMove={handleMapMove}

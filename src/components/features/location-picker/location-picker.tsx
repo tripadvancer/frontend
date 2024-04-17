@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ViewState } from 'react-map-gl'
+import { ViewState } from 'react-map-gl/maplibre'
 
 import Image from 'next/image'
 
