@@ -1,9 +1,6 @@
 'use client'
 
-import { GeoJSONSource, LngLatLike, useMap } from 'react-map-gl/maplibre'
-
-import polyline from '@mapbox/polyline'
-import { Configuration, CostingModel, RouteRequest, RouteResponse, RoutingApi } from '@stadiamaps/api'
+import { useMap } from 'react-map-gl/maplibre'
 
 import Link from 'next/link'
 
@@ -21,44 +18,8 @@ import { ImageVariant } from '@/utils/enums'
 import { navigateToLocation } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-function simple_route(
-    startLat: number,
-    startLon: number,
-    endLat: number,
-    endLon: number,
-    costing: CostingModel,
-    callback: (response: RouteResponse) => void,
-) {
-    const api = new RoutingApi()
-
-    // Build a request body for the route request
-    const req: RouteRequest = {
-        locations: [
-            {
-                lat: startLat,
-                lon: startLon,
-                type: 'break',
-            },
-            {
-                lat: endLat,
-                lon: endLon,
-                type: 'break',
-            },
-        ],
-        costing: costing,
-    }
-
-    api.route({ routeRequest: req })
-        .then(callback)
-        .catch(function (e) {
-            console.error(e)
-        })
-}
-
 export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
     const t = useI18n()
-    const { mainMap } = useMap()
-    const userLocation = useAppSelector(getUserLocation)
     const dispatch = useAppDispatch()
 
     const handleShowOnMap = () => {
@@ -71,35 +32,6 @@ export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
         )
         dispatch(setMapPlacePopupInfo(place))
         dispatch(closeWidget())
-    }
-
-    const handleRoute = () => {
-        simple_route(
-            userLocation?.lat as number,
-            userLocation?.lng as number,
-            place.coordinates[1],
-            place.coordinates[0],
-            CostingModel.Auto,
-            (response: RouteResponse) => {
-                // Construct a bounding box in the sw, ne format required by MapLibre. Note the lon, lat order.
-                var sw = [response.trip.summary.minLon, response.trip.summary.minLat] as LngLatLike
-                var ne = [response.trip.summary.maxLon, response.trip.summary.maxLat] as LngLatLike
-
-                // Zoom to the new bounding box to focus on the route,
-                // with a 50px padding around the edges. See https://maplibre.org/maplibre-gl-js/docs/API/classes/Map/#fitbounds
-                mainMap?.fitBounds([sw, ne], { padding: { top: 50, bottom: 50, left: 50, right: 562 } })
-
-                // For each leg of the trip...
-                response.trip.legs.forEach(function (leg, idx) {
-                    // Add a layer with the route polyline as an overlay on the map
-                    var layerID = 'leg-' + idx // Unique ID with request ID and leg index
-                    // Note: Our polylines have 6 digits of precision, not 5
-                    var geometry = polyline.toGeoJSON(leg.shape, 6)
-                    const source = mainMap?.getSource('route-source') as GeoJSONSource
-                    source.setData(geometry)
-                })
-            },
-        )
     }
 
     return (
@@ -129,10 +61,7 @@ export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
                     <FormButton
                         type="stroke"
                         size="small"
-                        // onClick={() => {
-                        //     navigateToLocation(place.coordinates[1], place.coordinates[0])
-                        // }}
-                        onClick={handleRoute}
+                        onClick={() => navigateToLocation(place.coordinates[1], place.coordinates[0], 'google')}
                     >
                         {t('common.action.route')}
                     </FormButton>
