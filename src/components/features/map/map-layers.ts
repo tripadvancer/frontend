@@ -1,4 +1,4 @@
-import { SymbolLayer } from 'react-map-gl'
+import { LineLayer, SymbolLayer } from 'react-map-gl/maplibre'
 
 export const placesLayer: SymbolLayer = {
     id: 'places-layer',
@@ -39,5 +39,19 @@ export const favoritePlacesLayer: SymbolLayer = {
         'icon-size': 0.75,
         'icon-allow-overlap': false,
         'icon-ignore-placement': false,
+    },
+}
+
+export const routeLayer: LineLayer = {
+    id: 'route-layer',
+    source: 'route-source',
+    type: 'line',
+    layout: {
+        'line-join': 'round',
+        'line-cap': 'round',
+    },
+    paint: {
+        'line-color': '#ff7d00',
+        'line-width': 4,
     },
 }

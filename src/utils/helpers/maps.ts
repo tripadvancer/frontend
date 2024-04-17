@@ -1,4 +1,4 @@
-import type { ViewState } from 'react-map-gl'
+import type { ViewState } from 'react-map-gl/maplibre'
 
 import type { ICoordinates } from '@/utils/types/geo'
 
