@@ -165,7 +165,10 @@ export default {
     'countries.places#other': '{count} мест',
 
     'place.i_was_here': 'Я был здесь',
-    'place.navigation': 'Маршрут',
+    'place.navigate': 'Навигация',
+    'place.save': 'Сохранить',
+    'place.saved': 'Сохранено',
+    'place.on_map': 'На карте',
 
     'place.user_actions.edit': 'Редактировать место',
     'place.user_actions.delete': 'Удалить место',

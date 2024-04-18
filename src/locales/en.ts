@@ -163,7 +163,10 @@ export default {
     'countries.places#other': '{count} places',
     
     'place.i_was_here': 'I was here',
-    'place.navigation': 'Navigation',
+    'place.navigate': 'Navigate',
+    'place.save': 'Save',
+    'place.saved': 'Saved',
+    'place.on_map': 'On map',
 
     'place.user_actions.edit': 'Edit place',
     'place.user_actions.delete': 'Delete place',
