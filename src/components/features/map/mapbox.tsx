@@ -22,7 +22,7 @@ import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
-import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './map-layers'
+import { favoritePlacesLayer, placesLayer, routeLayer, visitedPlacesLayer } from './map-layers'
 
 export const Mapbox = () => {
     const supertokens = useSupertokens()
@@ -67,6 +67,10 @@ export const Mapbox = () => {
             reuseMaps
             {...handlers}
         >
+            <Source id="route-source" type="geojson" data={{ type: 'FeatureCollection', features: [] }}>
+                <Layer {...routeLayer} />
+            </Source>
+
             <Source
                 id="places-source"
                 type="geojson"

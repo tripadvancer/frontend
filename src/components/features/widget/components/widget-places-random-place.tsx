@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import type { IRandomPlace } from '@/utils/types/place'
 
+import { PlaceButtonRoute } from '@/components/features/place-button-route/place-button-route'
 import { FormButton } from '@/components/ui/form-button'
 import { PinIcon16 } from '@/components/ui/icons'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
@@ -12,7 +13,6 @@ import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slic
 import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { ImageVariant } from '@/utils/enums'
-import { navigateToLocation } from '@/utils/helpers/common'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -52,9 +52,7 @@ export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
                         className="flex-none"
                         onClick={handleShowOnMap}
                     />
-                    <FormButton type="stroke" size="small" onClick={() => navigateToLocation(lngLat, 'google')}>
-                        {t('common.action.route')}
-                    </FormButton>
+                    <PlaceButtonRoute lngLat={lngLat} size="small" />
                 </div>
             </div>
         </div>

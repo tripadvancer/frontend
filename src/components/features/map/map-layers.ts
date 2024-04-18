@@ -41,3 +41,17 @@ export const favoritePlacesLayer: SymbolLayer = {
         'icon-ignore-placement': false,
     },
 }
+
+export const routeLayer: LineLayer = {
+    id: 'route-layer',
+    source: 'route-source',
+    type: 'line',
+    layout: {
+        'line-join': 'round',
+        'line-cap': 'round',
+    },
+    paint: {
+        'line-color': '#ff7d00',
+        'line-width': 4,
+    },
+}
