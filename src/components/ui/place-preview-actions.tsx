@@ -30,7 +30,7 @@ export const PlacePreviewActions = (place: PlacePreviewActionsProps) => {
                 isLoading={favorite.isLoading}
                 onClick={favorite.toggle}
             />
-            <PlaceButtonRoute lngLat={lngLat} size="small" />
+            <PlaceButtonRoute lngLat={lngLat} />
         </div>
     )
 }

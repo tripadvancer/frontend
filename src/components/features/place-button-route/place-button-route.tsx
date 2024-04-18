@@ -13,12 +13,7 @@ import { useAppSelector } from '@/redux/hooks'
 import { buildRoute } from '@/utils/helpers/route'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PlaceButtonRouteProps = {
-    lngLat: LngLat
-    size?: 'small' | 'medium'
-}
-
-export const PlaceButtonRoute = ({ lngLat, size }: PlaceButtonRouteProps) => {
+export const PlaceButtonRoute = ({ lngLat }: { lngLat: LngLat }) => {
     const t = useI18n()
     const userLocation = useAppSelector(getUserLocation)
     const { mainMap } = useMap()
@@ -45,7 +40,7 @@ export const PlaceButtonRoute = ({ lngLat, size }: PlaceButtonRouteProps) => {
     }
 
     return (
-        <FormButton type="stroke" size={size} onClick={handleRoute}>
+        <FormButton type="stroke" size="small" onClick={handleRoute}>
             {t('common.action.route')}
         </FormButton>
     )
