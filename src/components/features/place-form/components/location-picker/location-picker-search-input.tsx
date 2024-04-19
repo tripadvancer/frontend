@@ -17,7 +17,7 @@ export const WidgetPickerSearchInput = (props: WidgetPickerSearchInputProps) => 
 
     return (
         <div className="relative">
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 transform text-blue-100">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 transform">
                 {props.isLoading ? <Spinner size={16} /> : <SearchIcon16 />}
             </div>
 

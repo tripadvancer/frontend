@@ -343,13 +343,14 @@ export default {
 
     'pages.add_place.about.title': 'About this place',
     'pages.add_place.about.info': 'Tell us what inspired you so you can help others learn more about this place.',
+    'pages.add_place.add_category': 'Add category',
     'pages.add_place.photos.title': 'Photos',
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
-    'pages.add_place.categories.add_category.button': 'Add category',
-    'pages.add_place.categories.add_category.title': 'Select up to {max_count} categories',
+
+    'select_categories.info': 'Select up to {max_count} categories',
 
     'location_picker.title': 'Pick place location',
-    'location_picker.placeholder': 'Enter address or coordinates',
+    'location_picker.placeholder': 'Address or coordinates',
 } as const

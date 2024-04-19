@@ -5,7 +5,7 @@ import { useDialog } from '@/providers/dialog-provider'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
-import { PlaceFormSelectCategories } from './place-form-select-categories'
+import { SelectCategories } from './select-categories/select-categories'
 
 type PlaceFormInputCategoriesProps = {
     value: number[]
@@ -18,7 +18,7 @@ export const PlaceFormInputCategories = ({ value, onChange }: PlaceFormInputCate
     const currentLocale = useCurrentLocale()
 
     const handleSelectCategories = () => {
-        dialog.open(<PlaceFormSelectCategories value={value} onChange={onChange} />)
+        dialog.open(<SelectCategories value={value} onChange={onChange} />)
     }
 
     return (
@@ -29,7 +29,7 @@ export const PlaceFormInputCategories = ({ value, onChange }: PlaceFormInputCate
                     onClick={handleSelectCategories}
                 >
                     <PlusIcon16 />
-                    {t('pages.add_place.categories.add_category.button')}
+                    {t('pages.add_place.add_category')}
                 </div>
             )}
             {value.map(categoryId => (
