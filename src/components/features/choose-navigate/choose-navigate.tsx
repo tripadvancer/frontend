@@ -17,10 +17,10 @@ export const ChooseNavigate = ({ lngLat }: { lngLat: LngLat }) => {
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
             <h1 className="h7 text-center">{t('place.choose_navigation_app')}</h1>
             <div className="flex flex-wrap justify-between gap-2">
-                <ChooseNavigateItem caption="Google" onClick={() => navigateToLocation(lngLat, 'google')} />
-                <ChooseNavigateItem caption="Waze" onClick={() => dialog.close()} />
-                <ChooseNavigateItem caption="Apple" onClick={() => dialog.close()} />
-                <ChooseNavigateItem caption="Yandex" onClick={() => dialog.close()} />
+                <ChooseNavigateItem provider="google" lngLat={lngLat} />
+                <ChooseNavigateItem provider="waze" lngLat={lngLat} />
+                <ChooseNavigateItem provider="yandex" lngLat={lngLat} />
+                <ChooseNavigateItem provider="apple" lngLat={lngLat} />
             </div>
             <FormButton type="stroke" onClick={() => dialog.close()}>
                 {t('common.action.cancel')}
