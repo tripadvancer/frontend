@@ -169,6 +169,7 @@ export default {
     'place.save': 'Сохранить',
     'place.saved': 'Сохранено',
     'place.on_map': 'На карте',
+    'place.choose_navigation_app': 'Выберите приложение для навигации',
 
     'place.user_actions.edit': 'Редактировать место',
     'place.user_actions.delete': 'Удалить место',

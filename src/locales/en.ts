@@ -167,6 +167,7 @@ export default {
     'place.save': 'Save',
     'place.saved': 'Saved',
     'place.on_map': 'On map',
+    'place.choose_navigation_app': 'Choose Navigation App',
 
     'place.user_actions.edit': 'Edit place',
     'place.user_actions.delete': 'Delete place',
