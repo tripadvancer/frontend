@@ -26,7 +26,7 @@ export const PlaceSidebarActions = (place: IPlace) => {
     const lngLat = arrayToLngLat(place.location.coordinates)
 
     const { isAuth } = useSupertokens()
-    const { data, isFetching } = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !isAuth })
+    const { data } = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !isAuth })
     const { toggle, isLoading: isSaving } = useFavorite(place.id, data?.isFavorite)
 
     const handleNavigate = () => {
@@ -54,7 +54,7 @@ export const PlaceSidebarActions = (place: IPlace) => {
             <PlaceSidebarAction
                 caption={!!data?.isFavorite ? t('place.saved') : t('place.save')}
                 icon={!!data?.isFavorite ? <BookmarkFillIcon24 /> : <BookmarkIcon24 />}
-                isLoading={isFetching || isSaving}
+                isLoading={isSaving}
                 onClick={toggle}
             />
             <PlaceSidebarAction caption={t('place.on_map')} icon={<PinIcon24 />} onClick={handleShowOnMap} />
