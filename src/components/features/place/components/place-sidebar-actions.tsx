@@ -6,6 +6,7 @@ import type { IPlace } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
 import { BookmarkFillIcon24, BookmarkIcon24, PinIcon24, RouteIcon24 } from '@/components/ui/icons'
+import { useDialog } from '@/providers/dialog-provider'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
 import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
@@ -16,8 +17,11 @@ import { useFavorite } from '@/utils/hooks/use-favorite'
 import { useI18n } from '@/utils/i18n/i18n.client'
 import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
+import { SavePlaceForm } from '../../save-space-form/save-space-form'
+
 export const PlaceSidebarActions = (place: IPlace) => {
     const t = useI18n()
+    const dialog = useDialog()
     const router = useRouter()
     const dispatch = useAppDispatch()
     const supertokens = useSupertokens()
@@ -40,6 +44,10 @@ export const PlaceSidebarActions = (place: IPlace) => {
         router.push('/maps')
     }
 
+    const handleSavePlace = () => {
+        dialog.open(<SavePlaceForm />)
+    }
+
     return (
         <div className="flex gap-x-2">
             <FormButton icon={<RouteIcon24 />} className="flex-auto" onClick={() => navigateToLocation(lngLat)}>
@@ -51,7 +59,7 @@ export const PlaceSidebarActions = (place: IPlace) => {
                 icon={!!response.data?.isFavorite ? <BookmarkFillIcon24 /> : <BookmarkIcon24 />}
                 className="flex-none"
                 isLoading={favorite.isLoading}
-                onClick={favorite.toggle}
+                onClick={handleSavePlace}
             />
         </div>
     )

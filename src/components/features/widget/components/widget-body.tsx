@@ -15,16 +15,4 @@ export const WidgetBody = ({ children }: { children: ReactNode }) => {
     }
 
     return children
-
-    // return (
-    // <div>
-    //     <div className="relative flex flex-col gap-y-4 rounded-2xl bg-blue-10 p-4 sm:gap-y-8 sm:p-8">
-    //         <WidgetSearch />
-    //         <WidgetCategories />
-    //     </div>
-    //     <div className="p-4 pb-8 sm:p-8">
-    //         <WidgetPlaces />
-    //     </div>
-    // </div>
-    // )
 }
