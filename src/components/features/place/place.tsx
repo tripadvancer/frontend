@@ -36,7 +36,7 @@ export const Place = async ({ placeId }: { placeId: string }) => {
                             <PlaceMainDescription {...place} />
                             <PlaceMainPhotos {...place} />
                             <PlaceMainReviews {...place} />
-                            <PlaceMainMap {...place} />
+                            {/* <PlaceMainMap {...place} /> */}
                         </div>
                     </div>
                 </div>

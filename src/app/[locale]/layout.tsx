@@ -74,7 +74,7 @@ export default async function RootLayout({
     return (
         <html lang={locale}>
             <head>
-                <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet" />
+                <link href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css" rel="stylesheet" />
             </head>
             <body className={roboto.className}>
                 <Providers locale={locale}>{children}</Providers>

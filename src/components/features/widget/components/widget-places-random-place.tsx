@@ -1,5 +1,7 @@
 'use client'
 
+import { useMap } from 'react-map-gl/maplibre'
+
 import Link from 'next/link'
 
 import type { IRandomPlace } from '@/utils/types/place'
@@ -9,8 +11,9 @@ import { PinIcon16 } from '@/components/ui/icons'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
+import { getUserLocation } from '@/redux/features/user-slice'
 import { closeWidget } from '@/redux/features/widget-slice'
-import { useAppDispatch } from '@/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { ImageVariant } from '@/utils/enums'
 import { navigateToLocation } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -58,9 +61,7 @@ export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
                     <FormButton
                         type="stroke"
                         size="small"
-                        onClick={() => {
-                            navigateToLocation(place.coordinates[1], place.coordinates[0])
-                        }}
+                        onClick={() => navigateToLocation(place.coordinates[1], place.coordinates[0], 'google')}
                     >
                         {t('common.action.route')}
                     </FormButton>

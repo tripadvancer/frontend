@@ -1,4 +1,4 @@
-import type { LngLat } from 'react-map-gl'
+import type { LngLat } from 'react-map-gl/maplibre'
 
 import type { ILocationPreview, IPlacePreview } from './place'
 
