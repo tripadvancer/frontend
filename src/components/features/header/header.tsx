@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { EmailVerification } from '@/components/features/email-verification/email-verification'
-import { EditIcon24, MapIcon24 } from '@/components/ui/icons'
+import { MapIcon24 } from '@/components/ui/icons'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { HeaderLanguageChanger } from './components/header-language-changer'
@@ -22,10 +22,6 @@ export const Header = async () => {
                             <MapIcon24 />
                             <span className="hidden md:block">{t('header.link.map')}</span>
                         </Link>
-                        {/* <Link href="/blog" className="flex items-center gap-x-2 text-big-bold">
-                            <EditIcon24 />
-                            <span className="hidden md:block">Blog</span>
-                        </Link> */}
                     </div>
                     <HeaderLogo />
                     <div className="flex gap-x-4 sm:gap-x-6">

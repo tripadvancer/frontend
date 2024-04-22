@@ -115,7 +115,7 @@ export default {
     'placeholder.action.email': 'Enter email address',
     'placeholder.action.new_email': 'Enter new email address',
     'placeholder.place.title': 'Enter place title',
-    'placeholder.place.coordinates': 'Enter coordinates',
+    'placeholder.place.coordinates': 'Pick place location',
 
     'success.send_complaint': 'Your complaint has been sent.',
     'success.copy_coordinates': 'Coordinates have been copied to the clipboard.',
@@ -255,7 +255,7 @@ export default {
     'widget.categories.selected#other': '{count} selected',
     
     'widget.places.title': 'Places',
-    
+
     'widget.places.all.title': 'All',
     'widget.places.all.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
 
@@ -343,10 +343,14 @@ export default {
 
     'pages.add_place.about.title': 'About this place',
     'pages.add_place.about.info': 'Tell us what inspired you so you can help others learn more about this place.',
+    'pages.add_place.add_category': 'Add category',
     'pages.add_place.photos.title': 'Photos',
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
-    'pages.add_place.categories.add_category.button': 'Add category',
-    'pages.add_place.categories.add_category.title': 'Select up to {max_count} categories',
+
+    'select_categories.info': 'Select up to {max_count} categories',
+
+    'location_picker.title': 'Pick place location',
+    'location_picker.placeholder': 'Address or coordinates',
 } as const

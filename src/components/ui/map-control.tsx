@@ -1,11 +1,13 @@
 'use client'
 
+import { ReactNode } from 'react'
+
 import classNames from 'classnames'
 
 import { Spinner } from '@/components/ui/spinner'
 
 type MapControlProps = {
-    children: React.ReactNode
+    children: ReactNode
     desktopOnly?: boolean
     isLoading?: boolean
     onClick: () => void
