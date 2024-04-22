@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { EmailVerification } from '@/components/features/email-verification/email-verification'
+import { FormButton } from '@/components/ui/form-button'
 import { EditIcon24, MapIcon24 } from '@/components/ui/icons'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
@@ -17,20 +18,24 @@ export const Header = async () => {
             <header className="sticky top-0 z-40 bg-blue-20">
                 <EmailVerification />
                 <div className="container relative flex h-[56px] items-center justify-between sm:h-[76px]">
-                    <div className="flex gap-x-4 sm:gap-x-6">
+                    <HeaderLogo />
+                    {/* <div className="flex gap-x-4 sm:gap-x-6">
                         <Link href="/maps" className="flex items-center gap-x-2 text-big-bold">
                             <MapIcon24 />
                             <span className="hidden md:block">{t('header.link.map')}</span>
                         </Link>
-                        {/* <Link href="/blog" className="flex items-center gap-x-2 text-big-bold">
-                            <EditIcon24 />
-                            <span className="hidden md:block">Blog</span>
-                        </Link> */}
                     </div>
                     <HeaderLogo />
                     <div className="flex gap-x-4 sm:gap-x-6">
                         <HeaderUser />
                         <HeaderLanguageChanger />
+                    </div> */}
+                    <div className="flex items-center gap-x-4 sm:gap-x-6">
+                        <FormButton size="small" shape="rounded">
+                            Add place
+                        </FormButton>
+                        <HeaderUser />
+                        {/* <HeaderLanguageChanger /> */}
                     </div>
                 </div>
             </header>

@@ -16,7 +16,7 @@ export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
 
     return (
         <figure className="group overflow-hidden rounded-2xl bg-orange-10">
-            <Link href={`/countries/${countrySlug}`}>
+            <Link href={`/countries/${countrySlug}`} className="link-black">
                 <div className="w-full overflow-hidden">
                     <ImageWithFallback
                         src={`/images/countries/preview/${countryCode.toLowerCase()}.jpg`}
