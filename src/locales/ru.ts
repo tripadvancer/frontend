@@ -115,7 +115,7 @@ export default {
     'placeholder.action.email': 'Введите email',
     'placeholder.action.new_email': 'Введите новый email',
     'placeholder.place.title': 'Ввведите название места',
-    'placeholder.place.coordinates': 'Введите координаты места',
+    'placeholder.place.coordinates': 'Выберите местоположение',
 
     'success.send_complaint': 'Ваша жалоба была успешно отправлена.',
     'success.copy_coordinates': 'Координаты были скопированы в буфер обмена.',
@@ -350,10 +350,14 @@ export default {
 
     'pages.add_place.about.title': 'О месте',
     'pages.add_place.about.info': 'Расскажите, что вдохновило Вас — так Вы поможете остальным узнать больше об этом месте',
+    'pages.add_place.add_category': 'Добавить категорию',
     'pages.add_place.photos.title': 'Фотографии',
     'pages.add_place.photos.info': 'Вы можете загрузить до {max_count} фотографий.',
     'pages.add_place.submit': 'Добавить место',
     'pages.add_place.submit.info': 'Добавляя новый объект на карту, Вы принимаете {terms_link}, {privacy_link} и даёте согласие на их обработку.',
-    'pages.add_place.categories.add_category.button': 'Добавить категорию',
-    'pages.add_place.categories.add_category.title': 'Выберите до {max_count} категорий',
+
+    'select_categories.info': 'Выберите до {max_count} категорий',
+
+    'location_picker.title': 'Выберите местоположение',
+    'location_picker.placeholder': 'Адрес или координаты',
 } as const

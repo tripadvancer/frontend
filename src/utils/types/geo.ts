@@ -14,7 +14,7 @@ export type GeoJsonPoint = {
     coordinates: number[]
 }
 
-export type ICoordinates = {
+export type LngLat = {
     lng: number
     lat: number
 }

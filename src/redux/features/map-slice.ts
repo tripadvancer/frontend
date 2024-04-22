@@ -5,20 +5,17 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import type { ILocationPopupInfo, IPlacePopupInfo } from '@/utils/types/map'
 
 import type { RootState } from '@/redux/store'
+import { getDefaultViewState } from '@/utils/helpers/maps'
 
 interface MapState {
-    viewState: Partial<ViewState>
+    viewState: ViewState
     bounds: LngLatBounds | undefined
     placePopupInfo: IPlacePopupInfo | null
     locationPopupInfo: ILocationPopupInfo | null
 }
 
 export const initialState: MapState = {
-    viewState: {
-        latitude: 54.887928,
-        longitude: 25.954196,
-        zoom: 5,
-    },
+    viewState: getDefaultViewState(),
     bounds: undefined,
     placePopupInfo: null,
     locationPopupInfo: null,
@@ -28,7 +25,7 @@ export const mapSlice = createSlice({
     name: 'map',
     initialState,
     reducers: {
-        setMapViewState(state, action: PayloadAction<Partial<ViewState>>) {
+        setMapViewState(state, action: PayloadAction<ViewState>) {
             state.viewState = action.payload
         },
         setMapBounds(state, action: PayloadAction<LngLatBounds>) {

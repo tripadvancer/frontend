@@ -1,7 +1,5 @@
 'use client'
 
-import { useMap } from 'react-map-gl/maplibre'
-
 import Link from 'next/link'
 
 import type { IRandomPlace } from '@/utils/types/place'
@@ -11,25 +9,21 @@ import { PinIcon16 } from '@/components/ui/icons'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { getUserLocation } from '@/redux/features/user-slice'
 import { closeWidget } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useAppDispatch } from '@/redux/hooks'
 import { ImageVariant } from '@/utils/enums'
 import { navigateToLocation } from '@/utils/helpers/common'
+import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
+    const lngLat = arrayToLngLat(place.coordinates)
 
     const handleShowOnMap = () => {
-        dispatch(
-            setMapViewState({
-                latitude: place.coordinates[1],
-                longitude: place.coordinates[0],
-                zoom: parseInt(process.env.NEXT_PUBLIC_MAP_DEFAULT_ZOOM || '16', 10),
-            }),
-        )
+        const viewState = getFlyToViewState(lngLat)
+        dispatch(setMapViewState(viewState))
         dispatch(setMapPlacePopupInfo(place))
         dispatch(closeWidget())
     }
@@ -58,11 +52,7 @@ export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
                         className="flex-none"
                         onClick={handleShowOnMap}
                     />
-                    <FormButton
-                        type="stroke"
-                        size="small"
-                        onClick={() => navigateToLocation(place.coordinates[1], place.coordinates[0], 'google')}
-                    >
+                    <FormButton type="stroke" size="small" onClick={() => navigateToLocation(lngLat, 'google')}>
                         {t('common.action.route')}
                     </FormButton>
                 </div>

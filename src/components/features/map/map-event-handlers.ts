@@ -20,10 +20,10 @@ export const useMapEventHandlers = () => {
     const mapState = useAppSelector(getMapState)
 
     const showLocationPopup = useCallback(
-        (coordinates: LngLat) => {
-            coordinates.lat = Number(coordinates.lat.toFixed(6))
-            coordinates.lng = Number(coordinates.lng.toFixed(6))
-            dispatch(setMapLocationPopupInfo({ coordinates }))
+        (lngLat: LngLat) => {
+            const lat = Number(lngLat.lat.toFixed(6))
+            const lng = Number(lngLat.lng.toFixed(6))
+            dispatch(setMapLocationPopupInfo({ coordinates: { lat, lng } }))
         },
         [dispatch],
     )
