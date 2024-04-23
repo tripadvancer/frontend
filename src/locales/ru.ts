@@ -164,16 +164,14 @@ export default {
     'countries.places#many': '{count} мест',
     'countries.places#other': '{count} мест',
 
-    'place.i_was_here': 'Я был здесь',
-    'place.navigate': 'Навигация',
-    'place.save': 'Сохранить',
-    'place.saved': 'Сохранено',
-    'place.on_map': 'На карте',
-    'place.choose_navigation_app': 'Выберите приложение для навигации',
-
-    'place.user_actions.edit': 'Редактировать место',
-    'place.user_actions.delete': 'Удалить место',
-    'place.user_actions.complain': 'Пожаловаться на место',
+    'place.actions.i_was_here': 'Я был здесь',
+    'place.actions.navigate': 'Маршрут',
+    'place.actions.save': 'Сохранить',
+    'place.actions.show_on_map': 'Показать на карте',
+    'place.actions.share': 'Поделиться',
+    'place.actions.complain': 'Пожаловаться',
+    'place.actions.edit': 'Редактировать место',
+    'place.actions.delete': 'Удалить место',
 
     'place.reviews#zero': 'Нет отзывов',
     'place.reviews#one': '{count} отзыв',
@@ -324,6 +322,7 @@ export default {
     'pages.place.map.title': '{place_name} на карте',
     'pages.place.map.alt': 'Карта с местом {place_name}',
     'pages.place.place_nearby.title': 'Места рядом',
+    'pages.place.author.title': 'Автор',
 
     'pages.user.about_me': 'Обо мне',
     'pages.user.settings.forms.fields.avatar.label': 'Аватар',
@@ -354,13 +353,14 @@ export default {
 
     'pages.add_place.about.title': 'О месте',
     'pages.add_place.about.info': 'Расскажите, что вдохновило Вас — так Вы поможете остальным узнать больше об этом месте',
+    'pages.add_place.add_category': 'Добавить категорию',
     'pages.add_place.photos.title': 'Фотографии',
     'pages.add_place.photos.info': 'Вы можете загрузить до {max_count} фотографий.',
     'pages.add_place.submit': 'Добавить место',
     'pages.add_place.submit.info': 'Добавляя новый объект на карту, Вы принимаете {terms_link}, {privacy_link} и даёте согласие на их обработку.',
-    'pages.add_place.categories.add_category.button': 'Добавить категорию',
-    'pages.add_place.categories.add_category.title': 'Выберите до {max_count} категорий',
+
+    'select_categories.info': 'Выберите до {max_count} категорий',
 
     'location_picker.title': 'Выберите местоположение',
-    'location_picker.placeholder': 'Начните вводить название места или адрес',
+    'location_picker.placeholder': 'Адрес или координаты',
 } as const

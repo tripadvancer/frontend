@@ -5,6 +5,8 @@ import { getCountryByCode } from '@/services/countries'
 import { getPlaceById } from '@/services/places'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
+import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const place = await getPlaceById(params.id)
@@ -40,6 +42,23 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     }
 }
 
-export default function PlacePage({ params }: { params: { id: string } }) {
-    return <Place placeId={params.id} />
+export default async function PlacePage({ params }: { params: { id: string } }) {
+    const { session, hasToken } = await getSSRSessionHelper()
+
+    if (!session) {
+        if (!hasToken) {
+            /**
+             * This means that there is no session and no session tokens.
+             */
+            return <Place placeId={params.id} isAuth={false} />
+        }
+
+        /**
+         * This means that the session does not exist but we have session tokens for the user. In this case
+         * the `TryRefreshComponent` will try to refresh the session.
+         */
+        return <TryRefreshComponent />
+    }
+
+    return <Place placeId={params.id} userId={session.getAccessTokenPayload().userId} isAuth={true} />
 }

@@ -48,9 +48,9 @@ export const LocationPicker = ({ location, onConfirm }: LocationPickerProps) => 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
             <h1 className="h7 text-center">{t('location_picker.title')}</h1>
-            <div className="flex flex-col gap-y-4">
+            <div className="flex flex-col gap-y-2">
                 <LocationPickerSearch onLocationSelect={handleLocationSelect} />
-                <div className="relative h-96 w-full overflow-hidden rounded-lg bg-black-15">
+                <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-black-15">
                     <LocationPickerMap viewState={viewState} onMove={setViewState} />
                     <Image
                         src="/images/pin-blue.svg"
@@ -61,9 +61,7 @@ export const LocationPicker = ({ location, onConfirm }: LocationPickerProps) => 
                     />
                 </div>
             </div>
-            <FormButton type="stroke" onClick={handleConfirm}>
-                {t('common.action.confirm')}
-            </FormButton>
+            <FormButton onClick={handleConfirm}>{t('common.action.confirm')}</FormButton>
         </div>
     )
 }

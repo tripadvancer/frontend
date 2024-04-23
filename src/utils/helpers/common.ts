@@ -40,10 +40,10 @@ export function parseQueryString(input: string | undefined, validationArray: num
     return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
 }
 
-export function updateSelectedCategories(selectedCategories: number[], categoryId: number): number[] {
-    return selectedCategories.includes(categoryId)
-        ? selectedCategories.filter(id => id !== categoryId)
-        : [...selectedCategories, categoryId]
+export function updateSelectedCategories(selectedCategoryIds: number[], categoryId: number): number[] {
+    return selectedCategoryIds.includes(categoryId)
+        ? selectedCategoryIds.filter(id => id !== categoryId)
+        : [...selectedCategoryIds, categoryId]
 }
 
 export function getFormikErrors<Values>(errors: FormikErrors<Values>): string[] {

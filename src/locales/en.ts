@@ -162,16 +162,14 @@ export default {
     'countries.places#one': '{count} place',
     'countries.places#other': '{count} places',
     
-    'place.i_was_here': 'I was here',
-    'place.navigate': 'Navigate',
-    'place.save': 'Save',
-    'place.saved': 'Saved',
-    'place.on_map': 'On map',
-    'place.choose_navigation_app': 'Choose Navigation App',
-
-    'place.user_actions.edit': 'Edit place',
-    'place.user_actions.delete': 'Delete place',
-    'place.user_actions.complain': 'Complain about place',
+    'place.actions.i_was_here': 'I was here',
+    'place.actions.navigate': 'Navigate',
+    'place.actions.save': 'Save place',
+    'place.actions.show_on_map': 'Show on map',
+    'place.actions.share': 'Share place',
+    'place.actions.complain': 'Complain about a place',
+    'place.actions.edit': 'Edit place',
+    'place.actions.delete': 'Delete place',
 
     'place.reviews#zero': 'No reviews',
     'place.reviews#one': '{count} review',
@@ -318,6 +316,7 @@ export default {
     'pages.place.map.title': '{place_name} on map',
     'pages.place.map.alt': 'Map with location of {place_name}',
     'pages.place.place_nearby.title': 'Places nearby',
+    'pages.place.author.title': 'Author',
 
     'pages.user.about_me': 'About me',
     'pages.user.settings.forms.fields.avatar.label': 'Upload avatar',
@@ -347,13 +346,14 @@ export default {
 
     'pages.add_place.about.title': 'About this place',
     'pages.add_place.about.info': 'Tell us what inspired you so you can help others learn more about this place.',
+    'pages.add_place.add_category': 'Add category',
     'pages.add_place.photos.title': 'Photos',
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
-    'pages.add_place.categories.add_category.button': 'Add category',
-    'pages.add_place.categories.add_category.title': 'Select up to {max_count} categories',
+
+    'select_categories.info': 'Select up to {max_count} categories',
 
     'location_picker.title': 'Pick place location',
-    'location_picker.placeholder': 'Enter address or coordinates',
+    'location_picker.placeholder': 'Address or coordinates',
 } as const

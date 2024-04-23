@@ -13,12 +13,12 @@ export const ConfirmationMini = ({ onConfirm, onCancel }: ConfirmationMiniProps)
     return (
         <div className="flex gap-x-1">
             <span>{t('confirm_mini.title')}</span>
-            <span className="link-red" onClick={onCancel}>
-                {t('confirm_mini.no')}
-            </span>
-            <span>/</span>
             <span className="link-red" onClick={onConfirm}>
                 {t('confirm_mini.yes')}
+            </span>
+            <span>/</span>
+            <span className="link-red" onClick={onCancel}>
+                {t('confirm_mini.no')}
             </span>
         </div>
     )

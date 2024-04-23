@@ -4,7 +4,7 @@ import type { IUserInfo } from '@/utils/types/user'
 
 export type IReview = {
     id: number
-    place: Pick<IPlace, 'id' | 'title'>
+    place: Pick<IPlace, 'id' | 'title' | 'countryCode'>
     user: IUserInfo
     text: string
     rating: number

@@ -1,63 +1,55 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { ReactNode } from 'react'
 
 import type { IPlace } from '@/utils/types/place'
 
-import { BookmarkFillIcon24, BookmarkIcon24, PinIcon24, RouteIcon24 } from '@/components/ui/icons'
-import { useDialog } from '@/providers/dialog-provider'
-import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { closeWidget } from '@/redux/features/widget-slice'
-import { useAppDispatch } from '@/redux/hooks'
-import { placesAPI } from '@/redux/services/places-api'
-import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
-import { useFavorite } from '@/utils/hooks/use-favorite'
-import { useI18n } from '@/utils/i18n/i18n.client'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
+import { PlaceSidebarActionsCheckIn } from './place-sidebar-actions-check-in'
+import { PlaceSidebarActionsComplain } from './place-sidebar-actions-complain'
+import { PlaceSidebarActionsDelete } from './place-sidebar-actions-delete'
+import { PlaceSidebarActionsEdit } from './place-sidebar-actions-edit'
+import { PlaceSidebarActionsNavigate } from './place-sidebar-actions-navigate'
+import { PlaceSidebarActionsSave } from './place-sidebar-actions-save'
+import { PlaceSidebarActionsShare } from './place-sidebar-actions-share'
+import { PlaceSidebarActionsShowOnMap } from './place-sidebar-actions-show-on-map'
 
-import { ChooseNavigate } from '../../choose-navigate/choose-navigate'
-import { PlaceSidebarAction } from './place-sidebar-action'
+const Item = ({ children }: { children: ReactNode }) => {
+    return <div className="border-t border-dashed border-black-40 py-4 text-big-bold last:border-b">{children}</div>
+}
 
-export const PlaceSidebarActions = (place: IPlace) => {
-    const t = useI18n()
-    const dialog = useDialog()
-    const router = useRouter()
-    const dispatch = useAppDispatch()
-    const lngLat = arrayToLngLat(place.location.coordinates)
-
-    const { isAuth } = useSupertokens()
-    const { data } = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !isAuth })
-    const { toggle, isLoading: isSaving } = useFavorite(place.id, data?.isFavorite)
-
-    const handleNavigate = () => {
-        dialog.open(<ChooseNavigate lngLat={lngLat} />)
-    }
-
-    const handleShowOnMap = () => {
-        const lngLat = arrayToLngLat(place.location.coordinates)
-        const viewState = getFlyToViewState(lngLat)
-        dispatch(setMapViewState(viewState))
-        dispatch(
-            setMapPlacePopupInfo({
-                ...place,
-                coordinates: place.location.coordinates,
-                isFavorite: data?.isFavorite || false,
-            }),
-        )
-        dispatch(closeWidget())
-        router.push('/maps')
-    }
-
+export const PlaceSidebarActions = ({ place, userId, isAuth }: { place: IPlace; userId?: number; isAuth: boolean }) => {
     return (
-        <div className="flex justify-center gap-x-2">
-            <PlaceSidebarAction caption={t('place.navigate')} icon={<RouteIcon24 />} onClick={handleNavigate} />
-            <PlaceSidebarAction
-                caption={!!data?.isFavorite ? t('place.saved') : t('place.save')}
-                icon={!!data?.isFavorite ? <BookmarkFillIcon24 /> : <BookmarkIcon24 />}
-                isLoading={isSaving}
-                onClick={toggle}
-            />
-            <PlaceSidebarAction caption={t('place.on_map')} icon={<PinIcon24 />} onClick={handleShowOnMap} />
+        <div>
+            <Item>
+                <PlaceSidebarActionsCheckIn place={place} isAuth={isAuth} />
+            </Item>
+            <Item>
+                <PlaceSidebarActionsSave place={place} isAuth={isAuth} />
+            </Item>
+            <Item>
+                <PlaceSidebarActionsNavigate place={place} />
+            </Item>
+            <Item>
+                <PlaceSidebarActionsShowOnMap place={place} isAuth={isAuth} />
+            </Item>
+            <Item>
+                <PlaceSidebarActionsShare place={place} />
+            </Item>
+            {userId === place.author.id && (
+                <>
+                    <Item>
+                        <PlaceSidebarActionsEdit place={place} />
+                    </Item>
+                    <Item>
+                        <PlaceSidebarActionsDelete place={place} />
+                    </Item>
+                </>
+            )}
+            {userId !== place.author.id && (
+                <Item>
+                    <PlaceSidebarActionsComplain place={place} isAuth={isAuth} />
+                </Item>
+            )}
         </div>
     )
 }
