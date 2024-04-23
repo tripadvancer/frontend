@@ -363,4 +363,6 @@ export default {
 
     'location_picker.title': 'Выберите местоположение',
     'location_picker.placeholder': 'Адрес или координаты',
+
+    'choose_navigation_app.title': 'Выберите приложение для навигации',
 } as const

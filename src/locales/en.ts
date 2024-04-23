@@ -356,4 +356,6 @@ export default {
 
     'location_picker.title': 'Pick place location',
     'location_picker.placeholder': 'Address or coordinates',
+
+    'choose_navigation_app.title': 'Choose navigation app',
 } as const
