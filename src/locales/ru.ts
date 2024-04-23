@@ -164,12 +164,14 @@ export default {
     'countries.places#many': '{count} мест',
     'countries.places#other': '{count} мест',
 
-    'place.i_was_here': 'Я был здесь',
-    'place.navigation': 'Маршрут',
-
-    'place.user_actions.edit': 'Редактировать место',
-    'place.user_actions.delete': 'Удалить место',
-    'place.user_actions.complain': 'Пожаловаться на место',
+    'place.actions.i_was_here': 'Я был здесь',
+    'place.actions.navigate': 'Маршрут',
+    'place.actions.save': 'Сохранить',
+    'place.actions.show_on_map': 'Показать на карте',
+    'place.actions.share': 'Поделиться',
+    'place.actions.complain': 'Пожаловаться',
+    'place.actions.edit': 'Редактировать место',
+    'place.actions.delete': 'Удалить место',
 
     'place.reviews#zero': 'Нет отзывов',
     'place.reviews#one': '{count} отзыв',
@@ -320,6 +322,7 @@ export default {
     'pages.place.map.title': '{place_name} на карте',
     'pages.place.map.alt': 'Карта с местом {place_name}',
     'pages.place.place_nearby.title': 'Места рядом',
+    'pages.place.author.title': 'Автор',
 
     'pages.user.about_me': 'Обо мне',
     'pages.user.settings.forms.fields.avatar.label': 'Аватар',

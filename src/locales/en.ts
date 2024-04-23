@@ -162,12 +162,14 @@ export default {
     'countries.places#one': '{count} place',
     'countries.places#other': '{count} places',
     
-    'place.i_was_here': 'I was here',
-    'place.navigation': 'Navigation',
-
-    'place.user_actions.edit': 'Edit place',
-    'place.user_actions.delete': 'Delete place',
-    'place.user_actions.complain': 'Complain about place',
+    'place.actions.i_was_here': 'I was here',
+    'place.actions.navigate': 'Navigate',
+    'place.actions.save': 'Save place',
+    'place.actions.show_on_map': 'Show on map',
+    'place.actions.share': 'Share place',
+    'place.actions.complain': 'Complain about a place',
+    'place.actions.edit': 'Edit place',
+    'place.actions.delete': 'Delete place',
 
     'place.reviews#zero': 'No reviews',
     'place.reviews#one': '{count} review',
@@ -314,6 +316,7 @@ export default {
     'pages.place.map.title': '{place_name} on map',
     'pages.place.map.alt': 'Map with location of {place_name}',
     'pages.place.place_nearby.title': 'Places nearby',
+    'pages.place.author.title': 'Author',
 
     'pages.user.about_me': 'About me',
     'pages.user.settings.forms.fields.avatar.label': 'Upload avatar',
