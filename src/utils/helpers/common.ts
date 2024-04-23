@@ -17,17 +17,6 @@ export function formattedDate(date: Date, locale: string = i18nConfig.defaultLoc
     })
 }
 
-export function navigateToLocation({ lat, lng }: LngLat, provider?: string): void {
-    switch (provider) {
-        case 'waze':
-            window.open(`https://waze.com/ul?ll=${lat},${lng}&navigate=yes`, '_blank')
-            break
-        default:
-            window.open(`https://maps.google.com/maps?q=${lat},${lng}`, '_blank')
-            break
-    }
-}
-
 export function parseQueryString(input: string | undefined, validationArray: number[]): number[] {
     if (input === undefined || input === '') {
         return []
