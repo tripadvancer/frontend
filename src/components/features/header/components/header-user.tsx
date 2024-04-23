@@ -32,8 +32,8 @@ export const HeaderUser = async () => {
     return (
         <HeaderUserMenu userId={user.id}>
             <div className="link flex gap-x-2 text-big-bold">
-                <div className="hidden md:block">{t('header.user_menu.my_profile')}</div>
-                <Avatar {...user} size={24} />
+                {/* <div className="hidden md:block">{t('header.user_menu.my_profile')}</div> */}
+                <Avatar {...user} size={32} />
             </div>
         </HeaderUserMenu>
     )

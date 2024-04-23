@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { getI18n } from '@/utils/i18n/i18n.server'
@@ -23,6 +24,19 @@ export const Footer = async () => {
                     <div className="text-center text-black-40">© Tripadvancer, 2024</div>
                 </div>
             </div>
+
+            <a
+                href="https://www.producthunt.com/posts/tripadvancer?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-tripadvancer"
+                target="_blank"
+            >
+                <Image
+                    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=431644&theme=light"
+                    alt="Tripadvancer - Plan&#0032;your&#0032;trip&#0032;and&#0032;find&#0032;interesting&#0032;places | Product Hunt"
+                    style={{ width: '184px', height: '40px' }}
+                    width={184}
+                    height={40}
+                />
+            </a>
         </footer>
     )
 }

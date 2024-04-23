@@ -30,8 +30,8 @@ export const Header = async () => {
                         <HeaderUser />
                         <HeaderLanguageChanger />
                     </div> */}
-                    <div className="flex items-center gap-x-4 sm:gap-x-6">
-                        <FormButton size="small" shape="rounded">
+                    <div className="flex items-center gap-x-2">
+                        <FormButton variant="blue" size="small" shape="rounded">
                             Add place
                         </FormButton>
                         <HeaderUser />

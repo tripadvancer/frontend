@@ -2,13 +2,13 @@
 
 import Link from 'next/link'
 
-import type { IPlacePreview } from '@/utils/types/place'
+import type { IPlaceNearby, IPlacePreview } from '@/utils/types/place'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { Rating } from '@/components/ui/rating'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const CountryPlace = (place: IPlacePreview) => {
+export const PlacesFeedItem = (place: IPlacePreview | IPlaceNearby) => {
     const t = useI18n()
 
     return (
