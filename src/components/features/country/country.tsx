@@ -9,6 +9,7 @@ import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { parseQueryString } from '@/utils/helpers/common'
 import { getCurrentLocale, getI18n } from '@/utils/i18n/i18n.server'
 
+import { CountryAddPlaceWithAuth } from './components/country-add-place-with-auth'
 import { CountryCategories } from './components/country-categories'
 import { CountryCover } from './components/country-cover'
 import { CountryPlaces } from './components/country-places'
@@ -47,12 +48,20 @@ export const Country = async ({
                 </section>
             </div>
             <div className="relative z-20 flex-1 rounded-t-4xl bg-white">
-                <div className="container flex flex-col gap-y-16 py-24">
-                    <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />
-                    <Suspense fallback={<CountryPlacesSkeleton />}>
-                        <CountryPlaces places={places} />
-                    </Suspense>
-                </div>
+                {places.length === 0 && (
+                    <div className="container flex-center flex-col gap-y-8 py-24">
+                        <div className="text-center text-black-40">{t('pages.country.places.empty')}</div>
+                        <CountryAddPlaceWithAuth />
+                    </div>
+                )}
+                {places.length !== 0 && (
+                    <div className="container flex flex-col gap-y-16 py-24">
+                        <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />
+                        <Suspense fallback={<CountryPlacesSkeleton />}>
+                            <CountryPlaces places={places} />
+                        </Suspense>
+                    </div>
+                )}
             </div>
         </div>
     )

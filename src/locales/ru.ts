@@ -42,6 +42,7 @@ export default {
     'header.user_menu.settings': 'Настройки',
     'header.user_menu.log_out': 'Выйти',
     'header.link.map': 'Перейти на карту',
+    'header.link.company_blog': 'Блог',
 
     'common.error': 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.',
     'common.empty_message.reviews': 'Здесь пока нет отзывов.',
@@ -307,6 +308,7 @@ export default {
 
     'pages.country.description': 'Здесь собраны удивительные места, рекомендованные опытными путешественниками. Откройте для себя уникальные черты такой страны, как {country}, следуя советам тех, кто уже её посетил. Создайте свой неповторимый маршрут и погрузитесь в увлекательное путешествие всего в несколько кликов!',
     'pages.country.view_all': 'Все страны',
+    'pages.country.places.empty': 'В этой стране пока нет мест. Будьте первым, кто добавит место в эту страну!',
 
     'pages.place.about.title': 'О месте',
     'pages.place.photos.title': 'Фотографии',

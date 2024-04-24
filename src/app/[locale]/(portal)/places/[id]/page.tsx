@@ -40,6 +40,6 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     }
 }
 
-export default async function PlacePage({ params }: { params: { id: string } }) {
+export default function PlacePage({ params }: { params: { id: string } }) {
     return <Place placeId={params.id} />
 }

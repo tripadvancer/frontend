@@ -1,10 +1,12 @@
 'use client'
 
+import { ReactNode } from 'react'
+
 import { FormButton } from '@/components/ui/form-button'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type WidgetMessageProps = {
-    message?: React.ReactNode
+    message?: ReactNode
     actionCaption?: string
     isLoading?: boolean
     onAction?: () => void

@@ -1,11 +1,10 @@
-import Supertokens from 'supertokens-web-js'
+import { ReactNode } from 'react'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 import type { Metadata, Viewport } from 'next/types'
 
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
-import { clientConfig } from '@/utils/supertokens/supertokens.client'
 
 import '../globals.css'
 import 'yet-another-react-lightbox/plugins/captions.css'
@@ -65,17 +64,7 @@ export const metadata: Metadata = {
     },
 }
 
-if (typeof window !== 'undefined') {
-    Supertokens.init(clientConfig())
-}
-
-export default async function RootLayout({
-    children,
-    params,
-}: {
-    children: React.ReactNode
-    params: { locale: string }
-}) {
+export default async function RootLayout({ children, params }: { children: ReactNode; params: { locale: string } }) {
     const locale = params.locale
 
     return (

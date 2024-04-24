@@ -42,6 +42,7 @@ export default {
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
     'header.link.map': 'Go to map',
+    'header.link.company_blog': 'Company blog',
 
     'common.error': 'An unexpected error has occurred. Please try again later.',
     'common.empty_message.reviews': 'There are no reviews here at the moment.',
@@ -301,6 +302,7 @@ export default {
 
     'pages.country.description': 'Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.',
     'pages.country.view_all': 'View all countries',
+    'pages.country.places.empty': 'There are no places in this country yet. Be the first to add a place!',
 
     'pages.place.about.title': 'About this place',
     'pages.place.photos.title': 'Photos',

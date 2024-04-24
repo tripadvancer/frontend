@@ -1,10 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-
-import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
-import { SignIn } from '@/components/features/auth/sign-in'
-import { useDialog } from '@/providers/dialog-provider'
+import { useAddPlaceClickHandler } from '@/utils/hooks/use-add-place-click-handler'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type WidgetHeaderAddPlaceProps = {
@@ -15,22 +11,7 @@ type WidgetHeaderAddPlaceProps = {
 
 export const WidgetHeaderAddPlace = ({ activeUserId, isAuth, isEmailVerified }: WidgetHeaderAddPlaceProps) => {
     const t = useI18n()
-    const route = useRouter()
-    const dialog = useDialog()
-
-    const handleClick = async () => {
-        if (!isAuth) {
-            dialog.open(<SignIn />)
-            return
-        }
-
-        if (isAuth && activeUserId && isEmailVerified === false) {
-            dialog.open(<ClaimEmailError userId={activeUserId} />)
-            return
-        }
-
-        route.push('/add-place')
-    }
+    const handleClick = useAddPlaceClickHandler({ activeUserId, isAuth, isEmailVerified })
 
     return (
         <div
