@@ -15,7 +15,7 @@ export const HeaderButtonAddPlace = ({ activeUserId, isAuth, isEmailVerified }: 
 
     return (
         <div
-            className="flex-center hover-animated h-8 cursor-pointer rounded-full border border-blue-100 px-4 text-small text-blue-100 hover:border-blue-100 hover:text-blue-active"
+            className="flex-center hover-animated h-8 cursor-pointer rounded-full bg-white px-4 text-small text-blue-100"
             onClick={handleClick}
         >
             {t('common.link.add_place')}
