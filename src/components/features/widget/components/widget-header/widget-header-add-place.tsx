@@ -15,7 +15,7 @@ export const WidgetHeaderAddPlace = ({ activeUserId, isAuth, isEmailVerified }: 
 
     return (
         <div
-            className="flex-center h-6 cursor-pointer rounded-full border-2 border-black-100 px-2 text-small-bold"
+            className="flex-center hover-animated h-6 cursor-pointer rounded-full border-2 border-black-100 px-2 text-small-bold hover:border-blue-active hover:text-blue-active"
             onClick={handleClick}
         >
             {t('common.link.add_place')}

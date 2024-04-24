@@ -9,7 +9,10 @@ export const WidgetHeaderAboutToggler = () => {
     const widgetState = useAppSelector(getWidgetState)
 
     return (
-        <div className="cursor-pointer" onClick={() => dispatch(toggleWidgetAbout())}>
+        <div
+            className="hover-animated cursor-pointer hover:text-blue-active"
+            onClick={() => dispatch(toggleWidgetAbout())}
+        >
             {widgetState.isAboutOpened ? <CloseIcon24 /> : <MenuIcon24 />}
         </div>
     )
