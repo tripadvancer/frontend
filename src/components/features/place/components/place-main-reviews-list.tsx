@@ -8,7 +8,13 @@ import { ShowMore } from '@/components/ui/show-more'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const PlaceMainReviewsList = ({ placeId }: { placeId: number }) => {
+type PlaceMainReviewsListProps = {
+    placeId: number
+    activeUserId?: number
+    isAuth: boolean
+}
+
+export const PlaceMainReviewsList = ({ placeId, activeUserId, isAuth }: PlaceMainReviewsListProps) => {
     const t = useI18n()
     const [page, setPage] = useState(1)
 
@@ -30,7 +36,13 @@ export const PlaceMainReviewsList = ({ placeId }: { placeId: number }) => {
         return (
             <div className="flex flex-col gap-y-8">
                 {reviews.items.map((review, index) => (
-                    <Review key={index} review={review} variant="place-page" />
+                    <Review
+                        key={index}
+                        review={review}
+                        variant="place-page"
+                        activeUserId={activeUserId}
+                        isAuth={isAuth}
+                    />
                 ))}
 
                 {reviews.totalPages > page && (

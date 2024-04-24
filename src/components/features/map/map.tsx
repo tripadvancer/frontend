@@ -24,12 +24,12 @@ import { useMapEventHandlers } from './map-event-handlers'
 import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './map-layers'
 
 type MapProps = {
-    userId?: number
+    activeUserId?: number
     isAuth: boolean
     isEmailVerified?: boolean
 }
 
-export const Map = ({ userId, isAuth, isEmailVerified }: MapProps) => {
+export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
     const mapBounds = useAppSelector(getMapState).bounds
     const mapDataSource = useAppSelector(getWidgetState).dataSource
@@ -136,7 +136,7 @@ export const Map = ({ userId, isAuth, isEmailVerified }: MapProps) => {
             {handlers.placePopupInfo && <MapPopupPlace {...handlers.placePopupInfo} />}
             {handlers.locationPopupInfo && (
                 <MapPopupLocation
-                    userId={userId}
+                    activeUserId={activeUserId}
                     isAuth={isAuth}
                     isEmailVerified={isEmailVerified}
                     {...handlers.locationPopupInfo}

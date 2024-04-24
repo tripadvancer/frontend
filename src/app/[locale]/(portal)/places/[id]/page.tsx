@@ -60,5 +60,5 @@ export default async function PlacePage({ params }: { params: { id: string } }) 
         return <TryRefreshComponent />
     }
 
-    return <Place placeId={params.id} userId={session.getAccessTokenPayload().userId} isAuth={true} />
+    return <Place placeId={params.id} activeUserId={session.getAccessTokenPayload().userId} isAuth={true} />
 }

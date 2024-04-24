@@ -1,20 +1,18 @@
-'use client'
-
-import Session from 'supertokens-web-js/recipe/session'
-
 import type { IReview } from '@/utils/types/review'
 
 import { ReviewActionsPrivate } from './review-actions-private'
 import { ReviewActionsPublic } from './review-actions-public'
 
-export const ReviewActions = (review: IReview) => {
-    // const doesSessionExist = await Session.doesSessionExist()
-    // const userId = await Session.getAccessTokenPayloadSecurely().then(payload => payload.userId)
+type ReviewActionsProps = {
+    review: IReview
+    activeUserId?: number
+    isAuth: boolean
+}
 
-    // if (doesSessionExist && userId === review.user.id) {
-    //     return <ReviewActionsPrivate {...review} />
-    // }
+export const ReviewActions = ({ review, activeUserId, isAuth }: ReviewActionsProps) => {
+    if (isAuth && activeUserId === review.user.id) {
+        return <ReviewActionsPrivate {...review} />
+    }
 
-    // return <ReviewActionsPublic {...review} />
-    return null
+    return <ReviewActionsPublic {...review} />
 }

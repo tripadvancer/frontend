@@ -10,7 +10,13 @@ import { PlaceSidebarAuthor } from './components/place-sidebar-author'
 import { PlaceSidebarNearby } from './components/place-sidebar-nearby'
 import { PlaceSidebarRating } from './components/place-sidebar-rating'
 
-export const Place = async ({ placeId, userId, isAuth }: { placeId: string; userId?: number; isAuth: boolean }) => {
+type PlaceProps = {
+    placeId: string
+    activeUserId?: number
+    isAuth: boolean
+}
+
+export const Place = async ({ placeId, activeUserId, isAuth }: PlaceProps) => {
     const place = await getPlaceById(placeId)
 
     return (
@@ -22,17 +28,17 @@ export const Place = async ({ placeId, userId, isAuth }: { placeId: string; user
                         <div className="flex w-full flex-col gap-y-8 lg:w-64">
                             <div className="flex flex-col gap-y-4">
                                 <PlaceSidebarRating {...place} />
-                                <PlaceSidebarActions place={place} userId={userId} isAuth={isAuth} />
+                                <PlaceSidebarActions place={place} activeUserId={activeUserId} isAuth={isAuth} />
                             </div>
                             <PlaceSidebarAuthor {...place} />
                             <PlaceSidebarNearby {...place} />
                         </div>
 
-                        <div className="flex flex-1 flex-col gap-y-16 overflow-hidden">
+                        <div className="flex min-w-0 flex-col gap-y-16">
                             <PlaceMainAbandonedWarning {...place} />
                             <PlaceMainDescription {...place} />
                             <PlaceMainPhotos {...place} />
-                            <PlaceMainReviews place={place} isAuth={isAuth} />
+                            <PlaceMainReviews place={place} activeUserId={activeUserId} isAuth={isAuth} />
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ export const User = ({ userId, children }: { userId: string; children: React.Rea
                         <UserSidebarAbout userId={userId} />
                     </div>
 
-                    <div className="flex-1 overflow-hidden">
+                    <div className="min-w-0">
                         <UserNavigation userId={userId} />
                         {children}
                     </div>

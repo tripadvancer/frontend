@@ -20,13 +20,13 @@ import { LngLatToString } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type MapPopupLocationProps = {
-    userId?: number
+    activeUserId?: number
     isAuth: boolean
     isEmailVerified?: boolean
     coordinates: ILocationPopupInfo['coordinates']
 }
 
-export const MapPopupLocation = ({ userId, isAuth, isEmailVerified, coordinates }: MapPopupLocationProps) => {
+export const MapPopupLocation = ({ activeUserId, isAuth, isEmailVerified, coordinates }: MapPopupLocationProps) => {
     const t = useI18n()
     const dialog = useDialog()
     const router = useRouter()
@@ -40,8 +40,8 @@ export const MapPopupLocation = ({ userId, isAuth, isEmailVerified, coordinates 
             return
         }
 
-        if (isAuth && userId && isEmailVerified === false) {
-            dialog.open(<ClaimEmailError userId={userId} />)
+        if (isAuth && activeUserId && isEmailVerified === false) {
+            dialog.open(<ClaimEmailError userId={activeUserId} />)
             return
         }
 
