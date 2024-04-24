@@ -21,7 +21,6 @@ export const Header = async () => {
                         {t('header.link.map')}
                     </Link>
                     <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center gap-x-2 sm:right-8">
-                        <HeaderLanguageChanger />
                         <HeaderButtons />
                     </div>
                 </div>

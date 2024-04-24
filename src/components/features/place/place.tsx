@@ -34,7 +34,7 @@ export const Place = async ({ placeId, activeUserId, isAuth }: PlaceProps) => {
                             <PlaceSidebarNearby {...place} />
                         </div>
 
-                        <div className="flex min-w-0 flex-col gap-y-16">
+                        <div className="flex min-w-0 flex-1 flex-col gap-y-16">
                             <PlaceMainAbandonedWarning {...place} />
                             <PlaceMainDescription {...place} />
                             <PlaceMainPhotos {...place} />
