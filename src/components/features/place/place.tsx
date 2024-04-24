@@ -4,19 +4,13 @@ import { PlaceHeader } from './components/place-header'
 import { PlaceMainAbandonedWarning } from './components/place-main-abandoned-warning'
 import { PlaceMainDescription } from './components/place-main-description'
 import { PlaceMainPhotos } from './components/place-main-photos'
-import { PlaceMainReviews } from './components/place-main-reviews'
-import { PlaceSidebarActions } from './components/place-sidebar-actions'
+import { PlaceMainReviewsWithAuth } from './components/place-main-reviews-with-auth'
+import { PlaceSidebarActionsWithAuth } from './components/place-sidebar-actions-with-auth'
 import { PlaceSidebarAuthor } from './components/place-sidebar-author'
 import { PlaceSidebarNearby } from './components/place-sidebar-nearby'
 import { PlaceSidebarRating } from './components/place-sidebar-rating'
 
-type PlaceProps = {
-    placeId: string
-    activeUserId?: number
-    isAuth: boolean
-}
-
-export const Place = async ({ placeId, activeUserId, isAuth }: PlaceProps) => {
+export const Place = async ({ placeId }: { placeId: string }) => {
     const place = await getPlaceById(placeId)
 
     return (
@@ -28,7 +22,7 @@ export const Place = async ({ placeId, activeUserId, isAuth }: PlaceProps) => {
                         <div className="flex w-full flex-col gap-y-8 lg:w-64">
                             <div className="flex flex-col gap-y-4">
                                 <PlaceSidebarRating {...place} />
-                                <PlaceSidebarActions place={place} activeUserId={activeUserId} isAuth={isAuth} />
+                                <PlaceSidebarActionsWithAuth place={place} />
                             </div>
                             <PlaceSidebarAuthor {...place} />
                             <PlaceSidebarNearby {...place} />
@@ -38,7 +32,7 @@ export const Place = async ({ placeId, activeUserId, isAuth }: PlaceProps) => {
                             <PlaceMainAbandonedWarning {...place} />
                             <PlaceMainDescription {...place} />
                             <PlaceMainPhotos {...place} />
-                            <PlaceMainReviews place={place} activeUserId={activeUserId} isAuth={isAuth} />
+                            <PlaceMainReviewsWithAuth place={place} />
                         </div>
                     </div>
                 </div>
