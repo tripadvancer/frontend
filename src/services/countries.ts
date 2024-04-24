@@ -15,7 +15,9 @@ export async function getCountries(): Promise<ICountry[]> {
     return res.json()
 }
 
-export const getCountryByCode = (countryCode: Pick<ICountryDict, 'code'>['code'] | null): ICountryDict | undefined => {
+export const getCountryByCode = (
+    countryCode: Pick<ICountryDict, 'code'>['code'] | null | undefined,
+): ICountryDict | undefined => {
     return сountriesDictionary.find(country => country.code.toUpperCase() === countryCode)
 }
 

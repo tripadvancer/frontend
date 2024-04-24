@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import type { ICountryDict } from '@/utils/types/country'
 
+import { PlacesFeedSkeleton } from '@/components/features/places-feed/places-feed-skeleton'
 import { getPlacesByCountryCode } from '@/services/places'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { parseQueryString } from '@/utils/helpers/common'
@@ -13,7 +14,6 @@ import { CountryAddPlaceWithAuth } from './components/country-add-place-with-aut
 import { CountryCategories } from './components/country-categories'
 import { CountryCover } from './components/country-cover'
 import { CountryPlaces } from './components/country-places'
-import { CountryPlacesSkeleton } from './components/places-feed-skeleton'
 
 export const Country = async ({
     country,
@@ -57,7 +57,7 @@ export const Country = async ({
                 {places.length !== 0 && (
                     <div className="container flex flex-col gap-y-16 py-24">
                         <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />
-                        <Suspense fallback={<CountryPlacesSkeleton />}>
+                        <Suspense fallback={<PlacesFeedSkeleton />}>
                             <CountryPlaces places={places} />
                         </Suspense>
                     </div>

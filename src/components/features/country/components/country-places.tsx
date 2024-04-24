@@ -4,9 +4,8 @@ import { useState } from 'react'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
+import { PlacesFeed } from '@/components/features/places-feed/places-feed'
 import { ShowMore } from '@/components/ui/show-more'
-
-import { CountryPlace } from './country-place'
 
 const PAGINATION_LIMIT = 48
 
@@ -20,11 +19,7 @@ export const CountryPlaces = ({ places }: { places: IPlacePreview[] }) => {
 
     return (
         <div className="flex flex-col gap-y-8">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4 xl:gap-8">
-                {visiblePlaces.map((place, index) => (
-                    <CountryPlace key={index} {...place} />
-                ))}
-            </div>
+            <PlacesFeed places={visiblePlaces} />
             {currentPage * PAGINATION_LIMIT < places.length && <ShowMore onClick={handleLoadMore} />}
         </div>
     )

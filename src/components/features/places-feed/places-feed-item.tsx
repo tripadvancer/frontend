@@ -2,33 +2,35 @@
 
 import Link from 'next/link'
 
-import type { IPlacePreview } from '@/utils/types/place'
+import type { IPlace } from '@/utils/types/place'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { Rating } from '@/components/ui/rating'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const CountryPlace = (place: IPlacePreview) => {
+type PlacesFeedItemProps = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'>
+
+export const PlacesFeedItem = ({ id, title, cover, avgRating, reviewsCount }: PlacesFeedItemProps) => {
     const t = useI18n()
 
     return (
-        <Link href={`/places/${place.id}`} className="text-black-100">
+        <Link href={`/places/${id}`} className="text-black-100">
             <div className="flex flex-row gap-4">
                 <div className="flex-none">
                     <PlacePreviewCover
-                        cover={place.cover}
-                        title={place.title}
+                        cover={cover}
+                        title={title}
                         size={160}
                         className="aspect-square w-32 rounded-2xl xl:w-40"
                     />
                 </div>
                 <div className="flex flex-col justify-between overflow-hidden">
-                    <div className="h7 line-clamp-4 break-words">{place.title}</div>
+                    <div className="h7 line-clamp-4 break-words">{title}</div>
                     <div>
-                        <Rating value={place.avgRating ?? 0} size={16} />
+                        <Rating value={avgRating ?? 0} size={16} />
                         <div className="text-small text-black-40">
                             {t('place.reviews', {
-                                count: place.reviewsCount ?? 0,
+                                count: reviewsCount ?? 0,
                             })}
                         </div>
                     </div>
