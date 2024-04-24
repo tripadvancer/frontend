@@ -23,8 +23,8 @@ export const WidgetHeaderUser = async () => {
         return <TryRefreshComponent />
     }
 
-    const userId = session.getAccessTokenPayload().userId
-    const user = await getUserById(userId)
+    const activeUserId = session.getAccessTokenPayload().userId
+    const user = await getUserById(activeUserId)
 
     return <WidgetHeaderUserMenuToggler {...user} />
 }

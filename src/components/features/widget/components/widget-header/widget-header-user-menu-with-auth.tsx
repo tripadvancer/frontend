@@ -21,7 +21,7 @@ export const WidgetHeaderUserMenuWithAuth = async () => {
         return <TryRefreshComponent />
     }
 
-    const userId = session.getAccessTokenPayload().userId
+    const activeUserId = session.getAccessTokenPayload().userId
 
-    return <WidgetHeaderUserMenu userId={userId} />
+    return <WidgetHeaderUserMenu userId={activeUserId} />
 }

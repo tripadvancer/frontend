@@ -24,7 +24,7 @@ export const MapWithAuth = async () => {
     }
 
     const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
-    const userId = session.getAccessTokenPayload().userId
+    const activeUserId = session.getAccessTokenPayload().userId
 
-    return <Map userId={userId} isAuth={true} isEmailVerified={isEmailVerified} />
+    return <Map activeUserId={activeUserId} isAuth={true} isEmailVerified={isEmailVerified} />
 }

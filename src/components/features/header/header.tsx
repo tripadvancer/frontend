@@ -4,7 +4,6 @@ import { EmailVerification } from '@/components/features/email-verification/emai
 import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { HeaderButtons } from './components/header-buttons'
-import { HeaderLanguageChanger } from './components/header-language-changer'
 import { HeaderLogo } from './components/header-logo'
 
 export const Header = async () => {
