@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { IPlaceNearby } from '@/utils/types/place'
+import type { IPlaceNearby } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'

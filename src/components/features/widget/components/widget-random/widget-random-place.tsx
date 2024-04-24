@@ -17,7 +17,7 @@ import { ImageVariant } from '@/utils/enums'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const WidgetPlacesRandomPlace = (place: IRandomPlace) => {
+export const WidgetRandomPlace = (place: IRandomPlace) => {
     const t = useI18n()
     const dialog = useDialog()
     const dispatch = useAppDispatch()

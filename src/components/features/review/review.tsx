@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from 'classnames'
 
 import type { IReview } from '@/utils/types/review'
@@ -11,16 +13,18 @@ type ReviewProps = {
     review: IReview
     variant: 'place-page' | 'user-page'
     className?: string
+    activeUserId?: number
+    isAuth: boolean
 }
 
-export const Review = ({ review, variant, className }: ReviewProps) => {
+export const Review = ({ review, variant, className, activeUserId, isAuth }: ReviewProps) => {
     return (
         <div className={classNames('flex flex-col gap-y-5 border-b border-black-15 py-8 first:border-t', className)}>
             <div className="flex items-start justify-between gap-x-8 sm:items-center">
                 {variant === 'place-page' && <ReviewRatingAuthor {...review} />}
                 {variant === 'user-page' && <ReviewRatingPlace {...review} />}
 
-                <ReviewActions {...review} />
+                <ReviewActions review={review} activeUserId={activeUserId} isAuth={isAuth} />
             </div>
 
             <div className="break-words">{review.text}</div>

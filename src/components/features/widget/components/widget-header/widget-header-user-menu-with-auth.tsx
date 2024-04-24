@@ -1,11 +1,9 @@
-import { getUserById } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { WidgetHeaderSignInLink } from './widget-header-signin-link'
-import { WidgetHeaderUserMenuToggler } from './widget-header-user-menu-togler'
+import { WidgetHeaderUserMenu } from './widget-header-user-menu'
 
-export const WidgetHeaderUser = async () => {
+export const WidgetHeaderUserMenuWithAuth = async () => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -13,7 +11,7 @@ export const WidgetHeaderUser = async () => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return <WidgetHeaderSignInLink />
+            return null
         }
 
         /**
@@ -23,8 +21,7 @@ export const WidgetHeaderUser = async () => {
         return <TryRefreshComponent />
     }
 
-    const userId = session.getAccessTokenPayload().userId
-    const user = await getUserById(userId)
+    const activeUserId = session.getAccessTokenPayload().userId
 
-    return <WidgetHeaderUserMenuToggler {...user} />
+    return <WidgetHeaderUserMenu userId={activeUserId} />
 }

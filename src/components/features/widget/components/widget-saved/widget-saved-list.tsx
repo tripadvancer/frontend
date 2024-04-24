@@ -7,16 +7,15 @@ import { getWidgetState, resetWidgetActiveList, toggleWidgetShowOnlySavedPlaces 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
-type WidgetPlacesSavedListProps = {
+type WidgetSavedListProps = {
     children: React.ReactNode
     caption: string
+    isAuth: boolean
 }
 
-export const WidgetPlacesSavedList = ({ children, caption }: WidgetPlacesSavedListProps) => {
+export const WidgetSavedList = ({ children, caption, isAuth }: WidgetSavedListProps) => {
     const t = useI18n()
-    const supertokens = useSupertokens()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
 
@@ -42,10 +41,10 @@ export const WidgetPlacesSavedList = ({ children, caption }: WidgetPlacesSavedLi
                     {caption}
                 </div>
 
-                {supertokens.isAuth && widgetState.activeTab === WidgetTabsEnum.SAVED && widgetState.activeList && (
+                {isAuth && widgetState.activeTab === WidgetTabsEnum.SAVED && widgetState.activeList && (
                     <div className="flex items-center gap-x-2">
                         <div onClick={() => dispatch(toggleWidgetShowOnlySavedPlaces())} className="cursor-pointer">
-                            {t('widget.places.saved.show_on_the_map')}
+                            {t('widget.saved.lists.show_only_list')}
                         </div>
                         <FormSwitcher
                             checked={widgetState.isShowOnlySavedPlaces}

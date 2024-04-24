@@ -1,11 +1,11 @@
-import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
-
+import { getUserById } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { EmailVerificationNotice } from './email-verification-notice'
+import { WidgetHeaderSignInLink } from './widget-header-signin-link'
+import { WidgetHeaderUserMenuToggler } from './widget-header-user-menu-togler'
 
-export const EmailVerification = async () => {
+export const WidgetHeaderUser = async () => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -13,7 +13,7 @@ export const EmailVerification = async () => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return null
+            return <WidgetHeaderSignInLink />
         }
 
         /**
@@ -23,12 +23,8 @@ export const EmailVerification = async () => {
         return <TryRefreshComponent />
     }
 
-    const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
+    const activeUserId = session.getAccessTokenPayload().userId
+    const user = await getUserById(activeUserId)
 
-    if (isEmailVerified === false) {
-        const userId = session?.getAccessTokenPayload().userId
-        return <EmailVerificationNotice userId={userId} />
-    }
-
-    return null
+    return <WidgetHeaderUserMenuToggler {...user} />
 }

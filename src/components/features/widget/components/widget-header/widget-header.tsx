@@ -1,8 +1,9 @@
 import { WidgetHeaderAbout } from './widget-header-about'
 import { WidgetHeaderAboutToggler } from './widget-header-about-toggler'
+import { WidgetHeaderAddPlaceWithAuth } from './widget-header-add-place-with-auth'
 import { WidgetHeaderLogo } from './widget-header-logo'
 import { WidgetHeaderUser } from './widget-header-user'
-import { WidgetHeaderUserMenu } from './widget-header-user-menu'
+import { WidgetHeaderUserMenuWithAuth } from './widget-header-user-menu-with-auth'
 
 export const WidgetHeader = () => {
     return (
@@ -12,10 +13,13 @@ export const WidgetHeader = () => {
                     <WidgetHeaderAboutToggler />
                     <WidgetHeaderLogo />
                 </div>
-                <WidgetHeaderUser />
+                <div className="center flex-center gap-x-2">
+                    <WidgetHeaderAddPlaceWithAuth />
+                    <WidgetHeaderUser />
+                </div>
             </div>
             <WidgetHeaderAbout />
-            <WidgetHeaderUserMenu />
+            <WidgetHeaderUserMenuWithAuth />
         </div>
     )
 }

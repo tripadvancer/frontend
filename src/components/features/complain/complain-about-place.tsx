@@ -1,6 +1,6 @@
 'use client'
 
-import { PlaceComplaintInputs } from '@/utils/types/complaint'
+import type { PlaceComplaintInputs } from '@/utils/types/complaint'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'

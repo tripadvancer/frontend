@@ -33,9 +33,9 @@ export default async function AddPlacePage() {
         return <TryRefreshComponent />
     }
 
-    const isMailVerified = await session?.getClaimValue(EmailVerificationClaim)
+    const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
 
-    if (isMailVerified === false) {
+    if (isEmailVerified === false) {
         return notFound()
     }
 

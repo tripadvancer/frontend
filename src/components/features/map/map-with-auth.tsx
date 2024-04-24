@@ -3,9 +3,9 @@ import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverificatio
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { EmailVerificationNotice } from './email-verification-notice'
+import { Map } from './map'
 
-export const EmailVerification = async () => {
+export const MapWithAuth = async () => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -13,7 +13,7 @@ export const EmailVerification = async () => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return null
+            return <Map isAuth={false} />
         }
 
         /**
@@ -24,11 +24,7 @@ export const EmailVerification = async () => {
     }
 
     const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
+    const activeUserId = session.getAccessTokenPayload().userId
 
-    if (isEmailVerified === false) {
-        const userId = session?.getAccessTokenPayload().userId
-        return <EmailVerificationNotice userId={userId} />
-    }
-
-    return null
+    return <Map activeUserId={activeUserId} isAuth={true} isEmailVerified={isEmailVerified} />
 }

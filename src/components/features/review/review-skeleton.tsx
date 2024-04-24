@@ -1,3 +1,5 @@
+'use client'
+
 import { ActionButtonSkeleton } from '@/components/ui/action-button-skeleton'
 
 export const ReviewSkeleton = () => {

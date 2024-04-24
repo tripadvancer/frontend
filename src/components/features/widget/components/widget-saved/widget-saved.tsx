@@ -8,29 +8,27 @@ import { getWidgetState, setWidgetActiveList } from '@/redux/features/widget-sli
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetListsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
-import { WidgetMessage } from './widget-message'
-import { WidgetPlacesSavedList } from './widget-places-saved-list'
-import { WidgetPlacesSavedListFavorites } from './widget-places-saved-list-favorites'
-import { WidgetPlacesSavedListVisited } from './widget-places-saved-list-visited'
+import { WidgetMessage } from '../widget-message'
+import { WidgetSavedList } from './widget-saved-list'
+import { WidgetSavedListFavorites } from './widget-saved-list-favorites'
+import { WidgetSavedListVisited } from './widget-saved-list-visited'
 
-export const WidgetPlacesSaved = () => {
+export const WidgetSaved = ({ isAuth }: { isAuth: boolean }) => {
     const t = useI18n()
-    const supertokens = useSupertokens()
     const dialog = useDialog()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
 
     const defaultLists = [
-        { id: WidgetListsEnum.FAVORITES, caption: t('widget.places.saved.favorites.title') },
-        { id: WidgetListsEnum.VISITED, caption: t('widget.places.saved.visited.title') },
+        { id: WidgetListsEnum.FAVORITES, caption: t('widget.saved.lists.favorites.title') },
+        { id: WidgetListsEnum.VISITED, caption: t('widget.saved.lists.visited.title') },
     ]
 
-    if (!supertokens.isAuth) {
+    if (!isAuth) {
         return (
             <WidgetMessage
-                message={t('widget.places.saved.error.not_logged_in', { br: <br /> })}
+                message={t('widget.saved.not_logged_in', { br: <br /> })}
                 actionCaption={t('common.link.sign_in')}
                 onAction={() => dialog.open(<SignIn />)}
             />
@@ -39,17 +37,17 @@ export const WidgetPlacesSaved = () => {
 
     if (widgetState.activeList === WidgetListsEnum.FAVORITES) {
         return (
-            <WidgetPlacesSavedList caption={t('widget.places.saved.favorites.title')}>
-                <WidgetPlacesSavedListFavorites />
-            </WidgetPlacesSavedList>
+            <WidgetSavedList caption={t('widget.saved.lists.favorites.title')} isAuth={isAuth}>
+                <WidgetSavedListFavorites isAuth={isAuth} />
+            </WidgetSavedList>
         )
     }
 
     if (widgetState.activeList === WidgetListsEnum.VISITED) {
         return (
-            <WidgetPlacesSavedList caption={t('widget.places.saved.visited.title')}>
-                <WidgetPlacesSavedListVisited />
-            </WidgetPlacesSavedList>
+            <WidgetSavedList caption={t('widget.saved.lists.visited.title')} isAuth={isAuth}>
+                <WidgetSavedListVisited isAuth={isAuth} />
+            </WidgetSavedList>
         )
     }
 
@@ -72,7 +70,7 @@ export const WidgetPlacesSaved = () => {
                     </div>
                 ))}
             </div>
-            <p className="text-center text-small text-black-40">{t('widget.places.saved.info')}</p>
+            <p className="text-center text-small text-black-40">{t('widget.saved.lists.info')}</p>
         </div>
     )
 }

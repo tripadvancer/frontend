@@ -1,11 +1,9 @@
-import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
-
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { EmailVerificationNotice } from './email-verification-notice'
+import { WidgetPlaces } from './widget-places'
 
-export const EmailVerification = async () => {
+export const WidgetPlacesWithAuth = async () => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -13,7 +11,7 @@ export const EmailVerification = async () => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return null
+            return <WidgetPlaces isAuth={false} />
         }
 
         /**
@@ -23,12 +21,5 @@ export const EmailVerification = async () => {
         return <TryRefreshComponent />
     }
 
-    const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
-
-    if (isEmailVerified === false) {
-        const userId = session?.getAccessTokenPayload().userId
-        return <EmailVerificationNotice userId={userId} />
-    }
-
-    return null
+    return <WidgetPlaces isAuth={true} />
 }
