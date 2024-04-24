@@ -23,7 +23,13 @@ import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
 import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './map-layers'
 
-export const Map = ({ isAuth }: { isAuth: boolean }) => {
+type MapProps = {
+    userId?: number
+    isAuth: boolean
+    isEmailVerified?: boolean
+}
+
+export const Map = ({ userId, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
     const mapBounds = useAppSelector(getMapState).bounds
     const mapDataSource = useAppSelector(getWidgetState).dataSource
@@ -128,7 +134,14 @@ export const Map = ({ isAuth }: { isAuth: boolean }) => {
             )}
 
             {handlers.placePopupInfo && <MapPopupPlace {...handlers.placePopupInfo} />}
-            {handlers.locationPopupInfo && <MapPopupLocation {...handlers.locationPopupInfo} />}
+            {handlers.locationPopupInfo && (
+                <MapPopupLocation
+                    userId={userId}
+                    isAuth={isAuth}
+                    isEmailVerified={isEmailVerified}
+                    {...handlers.locationPopupInfo}
+                />
+            )}
 
             <AttributionControl compact />
         </ReactMapGl>

@@ -1,8 +1,11 @@
+import Supertokens from 'supertokens-web-js'
+
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 import type { Metadata, Viewport } from 'next/types'
 
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
+import { clientConfig } from '@/utils/supertokens/supertokens.client'
 
 import '../globals.css'
 import 'yet-another-react-lightbox/plugins/captions.css'
@@ -60,6 +63,10 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         images: '/images/og-image-1.jpg',
     },
+}
+
+if (typeof window !== 'undefined') {
+    Supertokens.init(clientConfig())
 }
 
 export default async function RootLayout({

@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation'
 
 import type { ILocationPopupInfo } from '@/utils/types/map'
 
+import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
+import { SignIn } from '@/components/features/auth/sign-in'
 import { PlacesNearbyWarning } from '@/components/features/places-nearby-warning/places-nearby-warning'
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
@@ -14,11 +16,17 @@ import { closeMapPopups } from '@/redux/features/map-slice'
 import { setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
-import { LngLatToString, arrayToLngLat } from '@/utils/helpers/maps'
-import { useSessionValidation } from '@/utils/hooks/use-session-validation'
+import { LngLatToString } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const MapPopupLocation = ({ coordinates }: ILocationPopupInfo) => {
+type MapPopupLocationProps = {
+    userId?: number
+    isAuth: boolean
+    isEmailVerified?: boolean
+    coordinates: ILocationPopupInfo['coordinates']
+}
+
+export const MapPopupLocation = ({ userId, isAuth, isEmailVerified, coordinates }: MapPopupLocationProps) => {
     const t = useI18n()
     const dialog = useDialog()
     const router = useRouter()
@@ -26,7 +34,17 @@ export const MapPopupLocation = ({ coordinates }: ILocationPopupInfo) => {
 
     const [searchPlacesAround, { isLoading }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
-    const handleAddPlaceClick = useSessionValidation(async () => {
+    const handleAddPlaceClick = async () => {
+        if (!isAuth) {
+            dialog.open(<SignIn />)
+            return
+        }
+
+        if (isAuth && userId && isEmailVerified === false) {
+            dialog.open(<ClaimEmailError userId={userId} />)
+            return
+        }
+
         const response = await searchPlacesAround({
             ...coordinates,
             radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
@@ -40,7 +58,7 @@ export const MapPopupLocation = ({ coordinates }: ILocationPopupInfo) => {
 
         dispatch(closeMapPopups())
         router.push(`/add-place?lat=${coordinates.lat}&lng=${coordinates.lng}`)
-    })
+    }
 
     const handleIAmHereClick = () => {
         dispatch(closeMapPopups())

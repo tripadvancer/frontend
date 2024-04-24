@@ -21,7 +21,13 @@ export const PlaceMainAddReviewButton = ({ placeId }: { placeId: number }) => {
         if (doesSessionExist) {
             const isVerified = await Session.getClaimValue({ claim: EmailVerificationClaim })
             const userId = await Session.getAccessTokenPayloadSecurely().then(payload => payload.userId)
-            dialog.open(isVerified ? <ReviewAdd placeId={placeId} /> : <ClaimEmailError userId={userId as number} />)
+            dialog.open(
+                isVerified ? (
+                    <ReviewAdd placeId={placeId} userId={userId} />
+                ) : (
+                    <ClaimEmailError userId={userId as number} />
+                ),
+            )
             return
         }
 

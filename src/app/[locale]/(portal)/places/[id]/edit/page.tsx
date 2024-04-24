@@ -42,9 +42,9 @@ export default async function EditPlacePage({ params }: { params: { locale: stri
         return <TryRefreshComponent />
     }
 
-    const isMailVerified = await session?.getClaimValue(EmailVerificationClaim)
+    const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
 
-    if (isMailVerified === false) {
+    if (isEmailVerified === false) {
         return notFound()
     }
 

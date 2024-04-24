@@ -31,13 +31,13 @@ export const HeaderButtons = async () => {
         return <TryRefreshComponent />
     }
 
-    const isMailVerified = await session?.getClaimValue(EmailVerificationClaim)
+    const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
     const userId = session.getAccessTokenPayload().userId
     const user = await getUserById(userId)
 
     return (
         <>
-            <HeaderButtonAddPlace userId={userId} isAuth={true} isMailVerified={isMailVerified} />
+            <HeaderButtonAddPlace userId={userId} isAuth={true} isEmailVerified={isEmailVerified} />
             <HeaderUser user={user} />
         </>
     )

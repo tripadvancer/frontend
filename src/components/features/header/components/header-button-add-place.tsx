@@ -10,10 +10,10 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 type HeaderButtonAddPlaceProps = {
     userId?: number
     isAuth: boolean
-    isMailVerified?: boolean | undefined
+    isEmailVerified?: boolean
 }
 
-export const HeaderButtonAddPlace = ({ userId, isAuth, isMailVerified }: HeaderButtonAddPlaceProps) => {
+export const HeaderButtonAddPlace = ({ userId, isAuth, isEmailVerified }: HeaderButtonAddPlaceProps) => {
     const t = useI18n()
     const route = useRouter()
     const dialog = useDialog()
@@ -24,7 +24,7 @@ export const HeaderButtonAddPlace = ({ userId, isAuth, isMailVerified }: HeaderB
             return
         }
 
-        if (isAuth && userId && isMailVerified === false) {
+        if (isAuth && userId && isEmailVerified === false) {
             dialog.open(<ClaimEmailError userId={userId} />)
             return
         }

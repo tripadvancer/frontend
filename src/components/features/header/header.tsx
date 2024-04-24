@@ -4,6 +4,7 @@ import { EmailVerification } from '@/components/features/email-verification/emai
 import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { HeaderButtons } from './components/header-buttons'
+import { HeaderLanguageChanger } from './components/header-language-changer'
 import { HeaderLogo } from './components/header-logo'
 
 export const Header = async () => {
@@ -20,6 +21,7 @@ export const Header = async () => {
                         {t('header.link.map')}
                     </Link>
                     <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center gap-x-2 sm:right-8">
+                        <HeaderLanguageChanger />
                         <HeaderButtons />
                     </div>
                 </div>
