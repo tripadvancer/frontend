@@ -45,7 +45,7 @@ export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
 
     return (
         <div className="relative" ref={ref}>
-            <div onClick={() => setVisible(!visible)}>
+            <div className="cursor-pointer" onClick={() => setVisible(!visible)}>
                 {children ? children : <ActionButton isActivated={visible} />}
             </div>
             {visible && (

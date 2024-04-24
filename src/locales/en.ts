@@ -41,7 +41,7 @@ export default {
     'header.user_menu.reviews': 'Written reviews',
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
-    'header.link.map': 'On map',
+    'header.link.map': 'Go to map',
 
     'common.error': 'An unexpected error has occurred. Please try again later.',
     'common.empty_message.reviews': 'There are no reviews here at the moment.',
@@ -52,6 +52,7 @@ export default {
 
     'common.link.sign_up': 'Sign up',
     'common.link.sign_in': 'Sign in',
+    'common.link.add_place': 'Add place',
     'common.link.terms': 'Terms and Conditions',
     'common.link.privacy': 'Privacy Policy',
 

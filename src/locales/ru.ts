@@ -41,7 +41,7 @@ export default {
     'header.user_menu.reviews': 'Мои отзывы',
     'header.user_menu.settings': 'Настройки',
     'header.user_menu.log_out': 'Выйти',
-    'header.link.map': 'Карта',
+    'header.link.map': 'Перейти на карту',
 
     'common.error': 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.',
     'common.empty_message.reviews': 'Здесь пока нет отзывов.',
@@ -52,6 +52,7 @@ export default {
 
     'common.link.sign_up': 'Зарегистрироваться',
     'common.link.sign_in': 'Войти',
+    'common.link.add_place': 'Добавить место',
     'common.link.terms': 'Terms and Conditions',
     'common.link.privacy': 'Privacy Policy',
 
