@@ -10,11 +10,9 @@ import { useToast } from '@/providers/toast-provider'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { useI18n } from '@/utils/i18n/i18n.client'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
-export const WidgetHeaderUserMenu = () => {
+export const WidgetHeaderUserMenu = ({ userId }: { userId: number }) => {
     const t = useI18n()
-    const supertokens = useSupertokens()
     const router = useRouter()
     const toast = useToast()
     const widgetState = useAppSelector(getWidgetState)
@@ -28,20 +26,20 @@ export const WidgetHeaderUserMenu = () => {
         }
     }
 
-    if (supertokens.isAuth && widgetState.isMenuOpened) {
+    if (widgetState.isMenuOpened) {
         return (
             <nav className="flex flex-col items-end gap-y-4 px-4 pb-8 pt-4 text-big-bold sm:px-8 sm:pt-0">
-                <Link href={`users/${supertokens.activeUserId}/places`} className="flex items-center gap-x-2">
+                <Link href={`users/${userId}/places`} className="flex items-center gap-x-2">
                     {t('header.user_menu.places')}
                     <PointIcon24 />
                 </Link>
 
-                <Link href={`users/${supertokens.activeUserId}/reviews`} className="flex items-center gap-x-2">
+                <Link href={`users/${userId}/reviews`} className="flex items-center gap-x-2">
                     {t('header.user_menu.reviews')}
                     <ReviewIcon24 />
                 </Link>
 
-                <Link href={`users/${supertokens.activeUserId}/settings`} className="flex items-center gap-x-2">
+                <Link href={`users/${userId}/settings`} className="flex items-center gap-x-2">
                     {t('header.user_menu.settings')}
                     <SettingsIcon24 />
                 </Link>

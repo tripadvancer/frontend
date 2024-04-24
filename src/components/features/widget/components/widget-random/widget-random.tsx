@@ -5,11 +5,11 @@ import { getWidgetState, setWidgetRandomRadius } from '@/redux/features/widget-s
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
 
-import { WidgetPlacesRandomButton } from './widget-places-random-button'
-import { WidgetPlacesRandomResults } from './widget-places-random-results'
-import { WidgetPlacesRandomSlider } from './widget-places-random-slider'
+import { WidgetRandomButton } from './widget-random-button'
+import { WidgetRandomResults } from './widget-random-results'
+import { WidgetRandomSlider } from './widget-random-slider'
 
-export const WidgetPlacesRandom = () => {
+export const WidgetRandom = () => {
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
     const userLocation = useAppSelector(getUserLocation)
@@ -27,17 +27,18 @@ export const WidgetPlacesRandom = () => {
     }
 
     return (
+        // prettier-ignore
         <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
-            <WidgetPlacesRandomSlider
+            <WidgetRandomSlider
                 value={widgetState.randomRadius}
                 onChange={value => dispatch(setWidgetRandomRadius(value))}
             />
-            <WidgetPlacesRandomButton
+            <WidgetRandomButton
                 isLoading={isFetching}
                 isUserLocated={!!userLocation}
                 onClick={handleRandomClick}
             />
-            <WidgetPlacesRandomResults
+            <WidgetRandomResults
                 place={data}
                 isSuccess={isSuccess}
                 isError={!!error}

@@ -2,16 +2,14 @@
 
 import { favoritesAPI } from '@/redux/services/favorites-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
-import { WidgetMessage } from './widget-message'
-import { WidgetPlacesFeed } from './widget-places-feed'
-import { WidgetPlacesFeedSkeleton } from './widget-places-feed-skeleton'
+import { WidgetMessage } from '../widget-message'
+import { WidgetPlacesFeed } from '../widget-places-feed/widget-places-feed'
+import { WidgetPlacesFeedSkeleton } from '../widget-places-feed/widget-places-feed-skeleton'
 
-export const WidgetPlacesSavedListFavorites = () => {
+export const WidgetSavedListFavorites = ({ isAuth }: { isAuth: boolean }) => {
     const t = useI18n()
-    const supertokens = useSupertokens()
-    const response = favoritesAPI.useGetFavoritesQuery(undefined, { skip: !supertokens.isAuth })
+    const response = favoritesAPI.useGetFavoritesQuery(undefined, { skip: !isAuth })
     const places = response.data?.features.map(({ properties }) => properties) ?? []
 
     if (response.isError) {
@@ -19,7 +17,7 @@ export const WidgetPlacesSavedListFavorites = () => {
     }
 
     if (response.isSuccess && response.data.features.length === 0) {
-        return <WidgetMessage message={t('widget.places.saved.favorites.empty_message', { br: <br /> })} />
+        return <WidgetMessage message={t('widget.saved.lists.favorites.empty_message', { br: <br /> })} />
     }
 
     if (response.isSuccess && response.data.features.length > 0) {

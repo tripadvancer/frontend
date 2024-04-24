@@ -2,7 +2,7 @@ import { WidgetHeaderAbout } from './widget-header-about'
 import { WidgetHeaderAboutToggler } from './widget-header-about-toggler'
 import { WidgetHeaderLogo } from './widget-header-logo'
 import { WidgetHeaderUser } from './widget-header-user'
-import { WidgetHeaderUserMenu } from './widget-header-user-menu'
+import { WidgetHeaderUserMenuWithAuth } from './widget-header-user-menu-with-auth'
 
 export const WidgetHeader = () => {
     return (
@@ -15,7 +15,7 @@ export const WidgetHeader = () => {
                 <WidgetHeaderUser />
             </div>
             <WidgetHeaderAbout />
-            <WidgetHeaderUserMenu />
+            <WidgetHeaderUserMenuWithAuth />
         </div>
     )
 }
