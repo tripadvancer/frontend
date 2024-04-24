@@ -2,12 +2,11 @@
 
 import type { IPlace } from '@/utils/types/place'
 
+import { ChooseNavigate } from '@/components/features/choose-navigate/choose-navigate'
 import { RouteIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
-
-import { ChooseNavigate } from '../../choose-navigate/choose-navigate'
 
 export const PlaceSidebarActionsNavigate = ({ place }: { place: IPlace }) => {
     const t = useI18n()

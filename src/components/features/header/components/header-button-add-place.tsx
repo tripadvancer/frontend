@@ -2,11 +2,10 @@
 
 import { useRouter } from 'next/navigation'
 
+import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
-
-import { ClaimEmailError } from '../../auth/claim-email-error'
 
 type HeaderButtonAddPlaceProps = {
     userId?: number

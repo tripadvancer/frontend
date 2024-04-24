@@ -14,7 +14,6 @@ import { placesAPI } from '@/redux/services/places-api'
 import { visitedAPI } from '@/redux/services/visited-api'
 import { MapDataSourcesEnum } from '@/utils/enums'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
@@ -24,8 +23,7 @@ import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
 import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './map-layers'
 
-export const Mapbox = () => {
-    const supertokens = useSupertokens()
+export const Map = ({ isAuth }: { isAuth: boolean }) => {
     const handlers = useMapEventHandlers()
     const mapBounds = useAppSelector(getMapState).bounds
     const mapDataSource = useAppSelector(getWidgetState).dataSource
@@ -42,11 +40,11 @@ export const Mapbox = () => {
     )
 
     const favoritesResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
-        skip: !supertokens.isAuth || mapDataSource !== MapDataSourcesEnum.FAVORITES_PLACES,
+        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.FAVORITES_PLACES,
     })
 
     const visitedResponse = visitedAPI.useGetVisitedQuery(undefined, {
-        skip: !supertokens.isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
+        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
     })
 
     const handleZoomIn = useCallback(() => {

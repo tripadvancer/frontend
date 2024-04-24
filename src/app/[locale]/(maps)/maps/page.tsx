@@ -1,7 +1,7 @@
 import type { Metadata } from 'next/types'
 
 import { CookieConsent } from '@/components/features/cookie-consent/cookie-consent'
-import { Mapbox } from '@/components/features/map/mapbox'
+import { MapWithAuth } from '@/components/features/map/map-with-auth'
 import { Onboarding } from '@/components/features/onboarding/onboarding'
 import { WidgetCommon } from '@/components/features/widget/widget-common'
 
@@ -39,7 +39,7 @@ export default function MapsPage() {
     return (
         <div className="h-dvh w-dvw">
             <WidgetCommon />
-            <Mapbox />
+            <MapWithAuth />
             <Onboarding />
             <CookieConsent />
         </div>
