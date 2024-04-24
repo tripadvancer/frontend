@@ -31,6 +31,7 @@ export { default as SettingsIcon24 } from '/public/images/icons/24/settings.svg'
 export { default as ShareIcon24 } from '/public/images/icons/24/share.svg'
 export { default as SignOutIcon24 } from '/public/images/icons/24/sign-out.svg'
 export { default as StarIcon24 } from '/public/images/icons/24/star.svg'
+export { default as TwitterIcon24 } from '/public/images/icons/24/twitter.svg'
 export { default as UserIcon24 } from '/public/images/icons/24/user.svg'
 
 // Icon 16x16

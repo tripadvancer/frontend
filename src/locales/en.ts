@@ -285,9 +285,6 @@ export default {
     'map.popup.location.add_place': 'Add place here',
     'map.popup.location.i_am_here': 'I am here',
 
-    'places_nearby_warning.title': 'Attention',
-    'places_nearby_warning.message': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',
-
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
 
@@ -352,10 +349,17 @@ export default {
     'pages.add_place.submit': 'Add place',
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
 
-    'select_categories.info': 'Select up to {max_count} categories',
+    'places_nearby_warning.title': 'Attention',
+    'places_nearby_warning.text': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',
+
+    'select_categories.title': 'Select up to {max_count} categories',
 
     'location_picker.title': 'Pick place location',
     'location_picker.placeholder': 'Address or coordinates',
 
     'choose_navigation_app.title': 'Choose navigation app',
+
+    'share_place.title': 'Share place',
+    'share_place.text': 'Share the place with your friends and invite them to visit it.',
+    'share_place.copy.success': 'Link copied to clipboard',
 } as const

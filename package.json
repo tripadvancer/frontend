@@ -40,6 +40,7 @@
         "react-redux": "^9.1.0",
         "react-responsive": "^10.0.0",
         "react-scroll-parallax": "^3.4.5",
+        "react-share": "^5.1.0",
         "react-slider": "^2.0.6",
         "react-textarea-autosize": "^8.5.3",
         "redux-persist": "^6.0.0",
