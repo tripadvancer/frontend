@@ -17,17 +17,6 @@ export function formattedDate(date: Date, locale: string = i18nConfig.defaultLoc
     })
 }
 
-export function navigateToLocation({ lat, lng }: LngLat, provider?: string): void {
-    switch (provider) {
-        case 'waze':
-            window.open(`https://waze.com/ul?ll=${lat},${lng}&navigate=yes`, '_blank')
-            break
-        default:
-            window.open(`https://maps.google.com/maps?q=${lat},${lng}`, '_blank')
-            break
-    }
-}
-
 export function parseQueryString(input: string | undefined, validationArray: number[]): number[] {
     if (input === undefined || input === '') {
         return []
@@ -40,10 +29,10 @@ export function parseQueryString(input: string | undefined, validationArray: num
     return numbers.filter(num => !isNaN(num) && validationArray.includes(num))
 }
 
-export function updateSelectedCategories(selectedCategories: number[], categoryId: number): number[] {
-    return selectedCategories.includes(categoryId)
-        ? selectedCategories.filter(id => id !== categoryId)
-        : [...selectedCategories, categoryId]
+export function updateSelectedCategories(selectedCategoryIds: number[], categoryId: number): number[] {
+    return selectedCategoryIds.includes(categoryId)
+        ? selectedCategoryIds.filter(id => id !== categoryId)
+        : [...selectedCategoryIds, categoryId]
 }
 
 export function getFormikErrors<Values>(errors: FormikErrors<Values>): string[] {

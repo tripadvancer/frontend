@@ -16,7 +16,7 @@ export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
 
     return (
         <figure className="group overflow-hidden rounded-2xl bg-orange-10">
-            <Link href={`/countries/${countrySlug}`}>
+            <Link href={`/countries/${countrySlug}`} className="link-black">
                 <div className="w-full overflow-hidden">
                     <ImageWithFallback
                         src={`/images/countries/preview/${countryCode.toLowerCase()}.jpg`}
@@ -28,7 +28,7 @@ export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
                 </div>
                 <figcaption className="flex flex-col justify-between p-4">
                     <h4 className="h7-m mb-4 line-clamp-2 h-12 break-words sm:h7 sm:h-[52px]">{countryName}</h4>
-                    <div className="flex flex-row items-center gap-x-2 text-blue-100">
+                    <div className="flex flex-row items-center gap-x-2 text-black-40">
                         <PinIcon16 />
                         {t('countries.places', { count: placesCount })}
                     </div>

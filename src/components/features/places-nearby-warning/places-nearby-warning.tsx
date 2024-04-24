@@ -16,7 +16,7 @@ export const PlacesNearbyWarning = ({ places }: { places: IPlaceNearby[] }) => {
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
             <h1 className="h7 text-center">{t('places_nearby_warning.title')}</h1>
             <p className="text-center">
-                {t('places_nearby_warning.message', {
+                {t('places_nearby_warning.text', {
                     radius: process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS,
                 })}
             </p>

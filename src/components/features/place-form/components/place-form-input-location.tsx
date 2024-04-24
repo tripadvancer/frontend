@@ -1,16 +1,17 @@
 'use client'
 
-import { LocationPicker } from '@/components/features/location-picker/location-picker'
 import { useDialog } from '@/providers/dialog-provider'
 import { stringCoordinatesIsValid } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PlaceFormInputCoordinatesProps = {
+import { LocationPicker } from './location-picker/location-picker'
+
+type PlaceFormInputLocationProps = {
     value: string
     onChange: (value: string) => void
 }
 
-export const PlaceFormInputCoordinates = ({ value, onChange }: PlaceFormInputCoordinatesProps) => {
+export const PlaceFormInputLocation = ({ value, onChange }: PlaceFormInputLocationProps) => {
     const t = useI18n()
     const dialog = useDialog()
     const valueIsValidStringCoordinates = stringCoordinatesIsValid(value)

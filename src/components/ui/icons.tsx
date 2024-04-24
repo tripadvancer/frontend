@@ -1,8 +1,9 @@
 // SVGR generates a React component for each SVG file
 
 // Icons 48x48
-export { default as FlagIcon48 } from '/public/images/icons/48/flag.svg'
 export { default as CameraIcon48 } from '/public/images/icons/48/camera.svg'
+export { default as FlagIcon48 } from '/public/images/icons/48/flag.svg'
+export { default as UserRankBeginnerIcon48 } from '/public/images/icons/48/user-rank-beginner.svg'
 
 // Icons 32x32
 export { default as StarIcon32 } from '/public/images/icons/32/star.svg'
@@ -22,12 +23,15 @@ export { default as GoogleIcon24 } from '/public/images/icons/24/google.svg'
 export { default as MapIcon24 } from '/public/images/icons/24/map.svg'
 export { default as MenuIcon24 } from '/public/images/icons/24/menu.svg'
 export { default as PinIcon24 } from '/public/images/icons/24/pin.svg'
+export { default as PinLocationIcon24 } from '/public/images/icons/24/pin-location.svg'
 export { default as PointIcon24 } from '/public/images/icons/24/point.svg'
 export { default as ReviewIcon24 } from '/public/images/icons/24/review.svg'
 export { default as RouteIcon24 } from '/public/images/icons/24/route.svg'
 export { default as SettingsIcon24 } from '/public/images/icons/24/settings.svg'
+export { default as ShareIcon24 } from '/public/images/icons/24/share.svg'
 export { default as SignOutIcon24 } from '/public/images/icons/24/sign-out.svg'
 export { default as StarIcon24 } from '/public/images/icons/24/star.svg'
+export { default as TwitterIcon24 } from '/public/images/icons/24/twitter.svg'
 export { default as UserIcon24 } from '/public/images/icons/24/user.svg'
 
 // Icon 16x16

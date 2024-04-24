@@ -44,7 +44,7 @@ export default {
     'header.user_menu.reviews': 'Мои отзывы',
     'header.user_menu.settings': 'Настройки',
     'header.user_menu.log_out': 'Выйти',
-    'header.link.map': 'Карта',
+    'header.link.map': 'Перейти на карту',
 
     'common.error': 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.',
     'common.empty_message.reviews': 'Здесь пока нет отзывов.',
@@ -55,6 +55,7 @@ export default {
 
     'common.link.sign_up': 'Зарегистрироваться',
     'common.link.sign_in': 'Войти',
+    'common.link.add_place': 'Добавить место',
     'common.link.terms': 'Terms and Conditions',
     'common.link.privacy': 'Privacy Policy',
 
@@ -171,12 +172,14 @@ export default {
     'countries.places#many': '{count} мест',
     'countries.places#other': '{count} мест',
 
-    'place.i_was_here': 'Я был здесь',
-    'place.navigation': 'Маршрут',
-
-    'place.user_actions.edit': 'Редактировать место',
-    'place.user_actions.delete': 'Удалить место',
-    'place.user_actions.complain': 'Пожаловаться на место',
+    'place.actions.i_was_here': 'Я был здесь',
+    'place.actions.navigate': 'Маршрут',
+    'place.actions.save': 'Сохранить',
+    'place.actions.show_on_map': 'Показать на карте',
+    'place.actions.share': 'Поделиться',
+    'place.actions.complain': 'Пожаловаться',
+    'place.actions.edit': 'Редактировать место',
+    'place.actions.delete': 'Удалить место',
 
     'place.reviews#zero': 'Нет отзывов',
     'place.reviews#one': '{count} отзыв',
@@ -292,9 +295,6 @@ export default {
     'map.popup.location.add_place': 'Добавить место',
     'map.popup.location.i_am_here': 'Я здесь',
 
-    'places_nearby_warning.title': 'Внимание',
-    'places_nearby_warning.message': 'Извините, добавление нового места в этой области невозможно, так как уже есть другие места в радиусе {radius}м. Если место, которое Вы хотели добавить, есть в списке ниже, пожалуйста, поделитесь своим отзывом. В противном случае, обратитесь в нашу службу поддержки.',
-
     'pages.not_found.title': 'Страница не найдена',
     'pages.not_found.text': 'Извините, но похоже, Вы забрели в неизведанные территории. Страница, которую Вы искали, либо была перемещена, удалена, либо никогда не существовала.',
 
@@ -323,6 +323,7 @@ export default {
     'pages.place.map.title': '{place_name} на карте',
     'pages.place.map.alt': 'Карта с местом {place_name}',
     'pages.place.place_nearby.title': 'Места рядом',
+    'pages.place.author.title': 'Автор',
 
     'pages.user.about_me': 'Обо мне',
     'pages.user.settings.forms.fields.avatar.label': 'Аватар',
@@ -353,13 +354,23 @@ export default {
 
     'pages.add_place.about.title': 'О месте',
     'pages.add_place.about.info': 'Расскажите, что вдохновило Вас — так Вы поможете остальным узнать больше об этом месте',
+    'pages.add_place.add_category': 'Добавить категорию',
     'pages.add_place.photos.title': 'Фотографии',
     'pages.add_place.photos.info': 'Вы можете загрузить до {max_count} фотографий.',
     'pages.add_place.submit': 'Добавить место',
     'pages.add_place.submit.info': 'Добавляя новый объект на карту, Вы принимаете {terms_link}, {privacy_link} и даёте согласие на их обработку.',
-    'pages.add_place.categories.add_category.button': 'Добавить категорию',
-    'pages.add_place.categories.add_category.title': 'Выберите до {max_count} категорий',
+
+    'places_nearby_warning.title': 'Внимание',
+    'places_nearby_warning.text': 'Извините, добавление нового места в этой области невозможно, так как уже есть другие места в радиусе {radius}м. Если место, которое Вы хотели добавить, есть в списке ниже, пожалуйста, поделитесь своим отзывом. В противном случае, обратитесь в нашу службу поддержки.',
+
+    'select_categories.title': 'Выберите до {max_count} категорий',
 
     'location_picker.title': 'Выберите местоположение',
-    'location_picker.placeholder': 'Начните вводить название места или адрес',
+    'location_picker.placeholder': 'Адрес или координаты',
+
+    'choose_navigation_app.title': 'Выберите приложение для навигации',
+
+    'share_place.title': 'Поделиться местом',
+    'share_place.text': 'Поделитесь этим местом с друзьями, чтобы они тоже могли его посетить.',
+    'share_place.copy.success': 'Ссылка была скопирована в буфер обмена.',
 } as const

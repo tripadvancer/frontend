@@ -44,7 +44,7 @@ export default {
     'header.user_menu.reviews': 'Written reviews',
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
-    'header.link.map': 'On map',
+    'header.link.map': 'Go to map',
 
     'common.error': 'An unexpected error has occurred. Please try again later.',
     'common.empty_message.reviews': 'There are no reviews here at the moment.',
@@ -55,6 +55,7 @@ export default {
 
     'common.link.sign_up': 'Sign up',
     'common.link.sign_in': 'Sign in',
+    'common.link.add_place': 'Add place',
     'common.link.terms': 'Terms and Conditions',
     'common.link.privacy': 'Privacy Policy',
 
@@ -169,12 +170,14 @@ export default {
     'countries.places#one': '{count} place',
     'countries.places#other': '{count} places',
     
-    'place.i_was_here': 'I was here',
-    'place.navigation': 'Navigation',
-
-    'place.user_actions.edit': 'Edit place',
-    'place.user_actions.delete': 'Delete place',
-    'place.user_actions.complain': 'Complain about place',
+    'place.actions.i_was_here': 'I was here',
+    'place.actions.navigate': 'Navigate',
+    'place.actions.save': 'Save place',
+    'place.actions.show_on_map': 'Show on map',
+    'place.actions.share': 'Share place',
+    'place.actions.complain': 'Complain about a place',
+    'place.actions.edit': 'Edit place',
+    'place.actions.delete': 'Delete place',
 
     'place.reviews#zero': 'No reviews',
     'place.reviews#one': '{count} review',
@@ -286,9 +289,6 @@ export default {
     'map.popup.location.add_place': 'Add place here',
     'map.popup.location.i_am_here': 'I am here',
 
-    'places_nearby_warning.title': 'Attention',
-    'places_nearby_warning.message': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',
-
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
 
@@ -317,6 +317,7 @@ export default {
     'pages.place.map.title': '{place_name} on map',
     'pages.place.map.alt': 'Map with location of {place_name}',
     'pages.place.place_nearby.title': 'Places nearby',
+    'pages.place.author.title': 'Author',
 
     'pages.user.about_me': 'About me',
     'pages.user.settings.forms.fields.avatar.label': 'Upload avatar',
@@ -346,13 +347,23 @@ export default {
 
     'pages.add_place.about.title': 'About this place',
     'pages.add_place.about.info': 'Tell us what inspired you so you can help others learn more about this place.',
+    'pages.add_place.add_category': 'Add category',
     'pages.add_place.photos.title': 'Photos',
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
-    'pages.add_place.categories.add_category.button': 'Add category',
-    'pages.add_place.categories.add_category.title': 'Select up to {max_count} categories',
+
+    'places_nearby_warning.title': 'Attention',
+    'places_nearby_warning.text': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',
+
+    'select_categories.title': 'Select up to {max_count} categories',
 
     'location_picker.title': 'Pick place location',
-    'location_picker.placeholder': 'Enter address or coordinates',
+    'location_picker.placeholder': 'Address or coordinates',
+
+    'choose_navigation_app.title': 'Choose navigation app',
+
+    'share_place.title': 'Share place',
+    'share_place.text': 'Share the place with your friends and invite them to visit it.',
+    'share_place.copy.success': 'Link copied to clipboard',
 } as const

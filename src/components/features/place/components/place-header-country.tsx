@@ -9,9 +9,13 @@ export const PlaceHeaderCountry = ({ countryCode }: IPlace) => {
     const locale = getCurrentLocale()
     const country = getCountryByCode(countryCode)
 
+    if (!country) {
+        return null
+    }
+
     return (
-        <Link href={`/countries/${country?.slug}`} className="font-medium text-white hover:text-white">
-            {country?.name[locale]}
+        <Link href={`/countries/${country.slug}`} className="font-medium text-white hover:text-white">
+            {country.name[locale]}
         </Link>
     )
 }

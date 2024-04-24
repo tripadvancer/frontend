@@ -1,16 +1,17 @@
 'use client'
 
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import type { IPlace } from '@/utils/types/place'
+
 import { Confirmation } from '@/components/ui/confirmation'
-import { DeleteIcon24, EditIcon24 } from '@/components/ui/icons'
+import { DeleteIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { placesAPI } from '@/redux/services/places-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const PlaceSidebarUserActionsPrivate = ({ placeId }: { placeId: number }) => {
+export const PlaceSidebarActionsDelete = ({ place }: { place: IPlace }) => {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()
@@ -18,7 +19,7 @@ export const PlaceSidebarUserActionsPrivate = ({ placeId }: { placeId: number })
 
     const [deletePlace] = placesAPI.useDeletePlaceMutation()
 
-    const handleDeleteClick = () => {
+    const handleClick = () => {
         dialog.open(
             <Confirmation
                 variant="red"
@@ -27,7 +28,7 @@ export const PlaceSidebarUserActionsPrivate = ({ placeId }: { placeId: number })
                 onConfirm={async () => {
                     dialog.close()
                     try {
-                        await deletePlace(placeId)
+                        await deletePlace(place.id)
                         toast.success(t('success.delete_place'))
                         router.push('/')
                         router.refresh()
@@ -40,19 +41,9 @@ export const PlaceSidebarUserActionsPrivate = ({ placeId }: { placeId: number })
     }
 
     return (
-        <ul className="flex flex-col gap-y-2 text-big-bold">
-            <li className="flex" onClick={handleDeleteClick}>
-                <span className="link-red inline-flex gap-x-2">
-                    <DeleteIcon24 />
-                    {t('place.user_actions.delete')}
-                </span>
-            </li>
-            <li className="flex">
-                <Link href={`/places/${placeId}/edit`} className="link inline-flex gap-x-2">
-                    <EditIcon24 />
-                    {t('place.user_actions.edit')}
-                </Link>
-            </li>
-        </ul>
+        <div className="link-red inline-flex items-center gap-x-2 align-top" onClick={handleClick}>
+            <DeleteIcon24 />
+            {t('place.actions.delete')}
+        </div>
     )
 }
