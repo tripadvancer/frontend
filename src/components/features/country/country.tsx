@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 
 import Link from 'next/link'
 
-import { ICountryDict } from '@/utils/types/country'
+import type { ICountryDict } from '@/utils/types/country'
 
 import { getPlacesByCountryCode } from '@/services/places'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'

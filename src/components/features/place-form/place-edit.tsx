@@ -51,7 +51,7 @@ export const PlaceEdit = (place: IPlace) => {
 
         try {
             await updatePlace(inputs)
-            toast.success(t('success.edit_place'))
+            toast.success(t('success.update_place'))
             router.push(`/places/${place.id}`)
         } catch {
             toast.error(t('common.error'))

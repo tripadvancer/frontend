@@ -21,7 +21,7 @@ export const ReviewAdd = ({ placeId }: { placeId: number }) => {
 
     const [createReview, { isLoading }] = reviewsAPI.useCreateReviewMutation()
 
-    const initialValues = {
+    const initialValues: CreateReviewInputs = {
         placeId,
         userId: supertokens.activeUserId as number,
         rating: 0,
