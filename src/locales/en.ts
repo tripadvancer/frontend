@@ -72,7 +72,6 @@ export default {
     'common.action.route': 'Route',
     'common.action.locate_me': 'Locate me',
     'common.action.go_to_map': 'Go to map',
-    'common.action.view_all_places': 'View all places',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -289,16 +288,20 @@ export default {
 
     'pages.landing.countries.title': 'Where are you going?',
     'pages.landing.countries.description': 'Discover the top attractions of every destination worldwide with our travel app. Explore the best places to visit in each country and uncover must-see sights, from iconic landmarks to hidden gems.',
+    'pages.landing.countries.view_all': 'View all countries',
 
-    'page.landing.random_place.title': 'Explore places near you',
-    'page.landing.random_place.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
-    
+    'pages.landing.around_places.title': 'Explore places near you',
+    'pages.landing.around_places.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
+    'pages.landing.around_places.view_all': 'View all places',
+
     'pages.landing.features.title': 'Our features',
     'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
     
     'pages.landing.map.title': 'Try our interactive map',
     'pages.landing.map.description': 'To explore a diverse selection of must-see landmarks, hidden gems, and local attractions worldwide. Your next adventure awaits with just a tap!',
     'pages.landing.map.cta': 'Explore the map',
+
+    'pages.countries.title': 'All countries',
 
     'pages.country.description': 'Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.',
     'pages.country.view_all': 'View all countries',

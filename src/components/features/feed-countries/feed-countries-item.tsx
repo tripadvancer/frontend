@@ -5,11 +5,11 @@ import type { ICountry } from '@/utils/types/country'
 import { PinIcon16 } from '@/components/ui/icons'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { getCountryByCode } from '@/services/countries'
-import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
+import { getCurrentLocale, getI18n } from '@/utils/i18n/i18n.server'
 
-export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
-    const t = useI18n()
-    const locale = useCurrentLocale()
+export const FeedCountriesItem = async ({ countryCode, placesCount }: ICountry) => {
+    const t = await getI18n()
+    const locale = getCurrentLocale()
     const country = getCountryByCode(countryCode)
     const countryName = country?.name[locale] ?? ''
     const countrySlug = country?.slug ?? ''
@@ -27,7 +27,7 @@ export const LandingCountry = ({ countryCode, placesCount }: ICountry) => {
                     />
                 </div>
                 <figcaption className="flex flex-col justify-between p-4">
-                    <h4 className="h7-m mb-4 line-clamp-2 h-12 break-words sm:h7 sm:h-[52px]">{countryName}</h4>
+                    <h4 className="h7 mb-4 line-clamp-2 h-12 break-words sm:h-[52px]">{countryName}</h4>
                     <div className="flex flex-row items-center gap-x-2 text-black-40">
                         <PinIcon16 />
                         {t('countries.places', { count: placesCount })}

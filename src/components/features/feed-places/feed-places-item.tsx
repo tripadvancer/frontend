@@ -8,9 +8,9 @@ import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { Rating } from '@/components/ui/rating'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PlacesFeedItemProps = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'>
+type FeedPlacesItemProps = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'>
 
-export const PlacesFeedItem = ({ id, title, cover, avgRating, reviewsCount }: PlacesFeedItemProps) => {
+export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount }: FeedPlacesItemProps) => {
     const t = useI18n()
 
     return (
