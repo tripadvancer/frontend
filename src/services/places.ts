@@ -32,8 +32,19 @@ export async function getPlaceById(placeId: string): Promise<IPlace> {
     return res.json()
 }
 
-export async function getPlacesNearby(placeId: string): Promise<IPlaceNearby[]> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId + '/nearby'
+export async function getPlacesAround(
+    lat: number,
+    lng: number,
+    radius: number,
+    categories: number[],
+): Promise<IPlaceNearby[]> {
+    const params = new URLSearchParams({
+        lat: lat.toString(),
+        lng: lng.toString(),
+        radius: radius.toString(),
+        categories_ids: categories.join(),
+    })
+    const url = process.env.NEXT_PUBLIC_API_URL + '/places-around?' + params.toString()
     const res = await fetch(url)
 
     if (!res.ok) {
