@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
+import type { ICountryDict } from '@/utils/types/country'
 import type { LngLat } from '@/utils/types/geo'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
@@ -21,7 +22,7 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
     const autocompleteRef = useRef<HTMLDivElement>(null)
 
     const [value, setValue] = useState<string>('')
-    const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview>[]>([])
+    const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]>([])
     const [isAutocompleteVisible, setIsAutocompleteVisible] = useState<boolean>(false)
 
     const [search, { data, isFetching, isSuccess }] = searchAPI.useLazySearchQuery()
@@ -58,7 +59,7 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
     }
 
     const handleSelect = useCallback(
-        (item: ISearchItem<IPlacePreview | ILocationPreview>) => {
+        (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => {
             onLocationSelect(item.coordinates)
             setIsAutocompleteVisible(false)
         },

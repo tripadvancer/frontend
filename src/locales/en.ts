@@ -286,6 +286,9 @@ export default {
     'pages.error.title': 'Oops! Something Went Wrong',
     'pages.error.text': 'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
 
+    'pages.landing.search.placeholder': 'Find a country or place',
+    'pages.landing.search.button': 'Search',
+
     'pages.landing.countries.title': 'Where are you going?',
     'pages.landing.countries.description': 'Discover the top attractions of every destination worldwide with our travel app. Explore the best places to visit in each country and uncover must-see sights, from iconic landmarks to hidden gems.',
     'pages.landing.countries.view_all': 'View all countries',
