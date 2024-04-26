@@ -9,7 +9,6 @@ import { getMapState } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { favoritesAPI } from '@/redux/services/favorites-api'
 import { placesAPI } from '@/redux/services/places-api'
 import { visitedAPI } from '@/redux/services/visited-api'
 import { MapDataSourcesEnum } from '@/utils/enums'
@@ -21,7 +20,7 @@ import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
-import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './map-layers'
+import { placesLayer, savedPlacesLayer, visitedPlacesLayer } from './map-layers'
 
 type MapProps = {
     activeUserId?: number
@@ -45,9 +44,9 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
         { skip: !mapBounds || mapDataSource !== MapDataSourcesEnum.ALL_PLACES },
     )
 
-    const favoritesResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
-        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.SAVED_PLACES,
-    })
+    // const savedResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
+    //     skip: !isAuth || mapDataSource !== MapDataSourcesEnum.SAVED_PLACES,
+    // })
 
     const visitedResponse = visitedAPI.useGetVisitedQuery(undefined, {
         skip: !isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
@@ -66,7 +65,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
             id="mainMap"
             ref={mapRef}
             mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
-            interactiveLayerIds={[placesLayer.id, favoritePlacesLayer.id, visitedPlacesLayer.id]}
+            interactiveLayerIds={[placesLayer.id, savedPlacesLayer.id, visitedPlacesLayer.id]}
             attributionControl={false}
             reuseMaps
             {...handlers}
@@ -85,19 +84,19 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 />
             </Source>
 
-            <Source
-                id="favorite-places-source"
+            {/* <Source
+                id="saved-places-source"
                 type="geojson"
-                data={favoritesResponse.data || { type: 'FeatureCollection', features: [] }}
+                data={savedResponse.data || { type: 'FeatureCollection', features: [] }}
             >
                 <Layer
-                    {...favoritePlacesLayer}
+                    {...savedPlacesLayer}
                     layout={{
-                        ...favoritePlacesLayer.layout,
+                        ...savedPlacesLayer.layout,
                         visibility: mapDataSource === MapDataSourcesEnum.SAVED_PLACES ? 'visible' : 'none',
                     }}
                 />
-            </Source>
+            </Source> */}
 
             <Source
                 id="visited-places-source"

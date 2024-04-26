@@ -44,24 +44,39 @@ export const listAPI = api.injectEndpoints({
                 url: `lists/${listId}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: ['Lists'],
+            invalidatesTags: (result, error, listId) => [
+                { type: 'Lists' },
+                { type: 'Lists', id: listId },
+                { type: 'Places' },
+                { type: 'PlacesMeta' },
+            ],
         }),
 
-        addListItem: build.mutation<void, { listId: number; placeId: number }>({
+        savePlace: build.mutation<void, { listId: number; placeId: number }>({
             query: ({ listId, placeId }) => ({
                 url: `lists/${listId}/places`,
                 method: 'POST',
                 body: { placeId },
             }),
-            invalidatesTags: (result, error, { listId }) => [{ type: 'Lists', id: listId }, { type: 'Lists' }],
+            invalidatesTags: (result, error, { listId, placeId }) => [
+                { type: 'Lists' },
+                { type: 'Lists', id: listId },
+                { type: 'Places' },
+                { type: 'PlacesMeta', id: placeId },
+            ],
         }),
 
-        deleteListItem: build.mutation<void, { listId: number; placeId: number }>({
+        unSavePlace: build.mutation<void, { listId: number; placeId: number }>({
             query: ({ listId, placeId }) => ({
                 url: `lists/${listId}/places/${placeId}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: (result, error, { listId }) => [{ type: 'Lists', id: listId }, { type: 'Lists' }],
+            invalidatesTags: (result, error, { listId, placeId }) => [
+                { type: 'Lists' },
+                { type: 'Lists', id: listId },
+                { type: 'Places' },
+                { type: 'PlacesMeta', id: placeId },
+            ],
         }),
     }),
     overrideExisting: false,

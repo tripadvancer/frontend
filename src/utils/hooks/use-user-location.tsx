@@ -5,12 +5,12 @@ import { setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { getFlyToViewState } from '@/utils/helpers/maps'
 
-interface UserLocationHookInterface {
+interface useUserLocationInterface {
     isLocating: boolean
     handleLocate: () => void
 }
 
-export function useUserLocation(): UserLocationHookInterface {
+export function useUserLocation(): useUserLocationInterface {
     const dispatch = useAppDispatch()
     const [isLocating, setIsLocating] = useState(false)
 

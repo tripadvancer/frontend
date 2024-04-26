@@ -7,6 +7,9 @@ export type IList = {
     index: number
     addedAt: string
     isPublic: boolean
+    listToPlace: {
+        placeId: number
+    }[]
     _count: {
         listToPlace: number
     }
