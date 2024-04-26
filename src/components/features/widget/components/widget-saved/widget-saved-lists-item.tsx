@@ -40,7 +40,6 @@ export const WidgetSavedListsItem = (list: IList) => {
                 onConfirm={async () => {
                     try {
                         await deleteList(list.id)
-                        toast.success(t('success.delete_list'))
                         dialog.close()
                     } catch {
                         toast.error(t('common.error'))

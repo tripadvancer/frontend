@@ -8,7 +8,7 @@ export const placesLayer: SymbolLayer = {
         // prettier-ignore
         'icon-image': [
             'case',
-            ['==', ['get', 'isSaved'], true], 'pin-blue', // 'pin-blue' if place is saved
+            ['==', ['get', 'isSaved'], true], 'pin-blue', // 'pin-blue' if place is favorite
             ['==', ['get', 'isVisited'],  true], 'pin-gray', // 'pin-gray' if place is visited
             'pin-orange',                                    // 'pin-orange' by default
         ],
@@ -25,8 +25,8 @@ export const visitedPlacesLayer: SymbolLayer = {
     layout: {
         'icon-image': 'pin-gray',
         'icon-size': 0.75,
-        'icon-allow-overlap': false,
-        'icon-ignore-placement': false,
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true,
     },
 }
 
@@ -37,7 +37,7 @@ export const savedPlacesLayer: SymbolLayer = {
     layout: {
         'icon-image': 'pin-blue',
         'icon-size': 0.75,
-        'icon-allow-overlap': false,
-        'icon-ignore-placement': false,
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true,
     },
 }

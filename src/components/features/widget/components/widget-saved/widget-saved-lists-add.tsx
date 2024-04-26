@@ -33,7 +33,6 @@ export const WidgetSavedListsAdd = () => {
     const handleSubmit = async (inputs: CreateListInputs) => {
         try {
             await createList(inputs)
-            toast.success(t('success.create_list'))
             setIsVisible(false)
         } catch {
             toast.error(t('common.error'))

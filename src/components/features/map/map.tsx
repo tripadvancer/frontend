@@ -9,6 +9,7 @@ import { getMapState } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
+import { listAPI } from '@/redux/services/list-api'
 import { placesAPI } from '@/redux/services/places-api'
 import { visitedAPI } from '@/redux/services/visited-api'
 import { MapDataSourcesEnum } from '@/utils/enums'
@@ -31,6 +32,7 @@ type MapProps = {
 export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
     const mapBounds = useAppSelector(getMapState).bounds
+    const listId = useAppSelector(getWidgetState).activeList?.id
     const mapDataSource = useAppSelector(getWidgetState).dataSource
     const selectedCategories = useAppSelector(getWidgetState).selectedCategories
     const userLocation = useAppSelector(getUserLocation)
@@ -39,16 +41,16 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
 
     const { handleLocate, isLocating } = useUserLocation()
 
-    const placesResponse = placesAPI.useGetPlacesQuery(
+    const { data: places } = placesAPI.useGetPlacesQuery(
         { mapBounds, selectedCategories },
         { skip: !mapBounds || mapDataSource !== MapDataSourcesEnum.ALL_PLACES },
     )
 
-    // const savedResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
-    //     skip: !isAuth || mapDataSource !== MapDataSourcesEnum.SAVED_PLACES,
-    // })
+    const { data: saved } = listAPI.useGetListPlacesQuery(listId as number, {
+        skip: !isAuth || !listId || mapDataSource !== MapDataSourcesEnum.SAVED_PLACES,
+    })
 
-    const visitedResponse = visitedAPI.useGetVisitedQuery(undefined, {
+    const { data: visited } = visitedAPI.useGetVisitedQuery(undefined, {
         skip: !isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
     })
 
@@ -62,7 +64,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
 
     return (
         <ReactMapGl
-            id="mainMap"
+            id="map"
             ref={mapRef}
             mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
             interactiveLayerIds={[placesLayer.id, savedPlacesLayer.id, visitedPlacesLayer.id]}
@@ -70,11 +72,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
             reuseMaps
             {...handlers}
         >
-            <Source
-                id="places-source"
-                type="geojson"
-                data={placesResponse.data || { type: 'FeatureCollection', features: [] }}
-            >
+            <Source id="places-source" type="geojson" data={places || { type: 'FeatureCollection', features: [] }}>
                 <Layer
                     {...placesLayer}
                     layout={{
@@ -84,11 +82,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 />
             </Source>
 
-            {/* <Source
-                id="saved-places-source"
-                type="geojson"
-                data={savedResponse.data || { type: 'FeatureCollection', features: [] }}
-            >
+            <Source id="saved-places-source" type="geojson" data={saved || { type: 'FeatureCollection', features: [] }}>
                 <Layer
                     {...savedPlacesLayer}
                     layout={{
@@ -96,12 +90,12 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                         visibility: mapDataSource === MapDataSourcesEnum.SAVED_PLACES ? 'visible' : 'none',
                     }}
                 />
-            </Source> */}
+            </Source>
 
             <Source
                 id="visited-places-source"
                 type="geojson"
-                data={visitedResponse.data || { type: 'FeatureCollection', features: [] }}
+                data={visited || { type: 'FeatureCollection', features: [] }}
             >
                 <Layer
                     {...visitedPlacesLayer}

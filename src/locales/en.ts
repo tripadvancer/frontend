@@ -137,9 +137,6 @@ export default {
     'success.request_personal_data': 'Your personal data has been sent to your email.',
     'success.request_user_deletion': 'We have sent you an email with instructions on how to complete the deletion process.',
     'success.send_verification_email': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
-    'success.create_list': 'The list has been created.',
-    'success.update_list': 'The list has been updated.',
-    'success.delete_list': 'The list has been deleted.',
 
     'categories.all': 'All categories',
 
@@ -281,7 +278,7 @@ export default {
     'widget.saved.lists.empty_message': 'Your list are empty.{br}Add places to this list to see them here.',
     'widget.saved.lists.add_button': 'Create new list',
     'widget.saved.lists.info': 'Select a list to view your saved places.',
-    'widget.saved.lists.show_only_list': 'Show only this list',
+    'widget.saved.lists.show_only_list': 'Show on map',
     'widget.toggler.map': 'Map',
     'widget.toggler.search_and_filters': 'Search and filters',
 

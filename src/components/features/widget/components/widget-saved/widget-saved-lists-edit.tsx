@@ -29,7 +29,6 @@ export const WidgetSavedListsEdit = ({ onClose, ...list }: WidgetListsEditProps)
     const handleSubmit = async (inputs: UpdateListInputs) => {
         try {
             await updateList(inputs)
-            toast.success(t('success.update_list'))
             onClose()
         } catch {
             toast.error(t('common.error'))

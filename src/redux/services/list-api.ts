@@ -49,6 +49,7 @@ export const listAPI = api.injectEndpoints({
                 { type: 'Lists', id: listId },
                 { type: 'Places' },
                 { type: 'PlacesMeta' },
+                { type: 'Visited' },
             ],
         }),
 
@@ -63,6 +64,7 @@ export const listAPI = api.injectEndpoints({
                 { type: 'Lists', id: listId },
                 { type: 'Places' },
                 { type: 'PlacesMeta', id: placeId },
+                { type: 'Visited' },
             ],
         }),
 
@@ -76,6 +78,7 @@ export const listAPI = api.injectEndpoints({
                 { type: 'Lists', id: listId },
                 { type: 'Places' },
                 { type: 'PlacesMeta', id: placeId },
+                { type: 'Visited' },
             ],
         }),
     }),
