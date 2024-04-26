@@ -46,7 +46,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     )
 
     const favoritesResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
-        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.FAVORITES_PLACES,
+        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.SAVED_PLACES,
     })
 
     const visitedResponse = visitedAPI.useGetVisitedQuery(undefined, {
@@ -94,7 +94,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                     {...favoritePlacesLayer}
                     layout={{
                         ...favoritePlacesLayer.layout,
-                        visibility: mapDataSource === MapDataSourcesEnum.FAVORITES_PLACES ? 'visible' : 'none',
+                        visibility: mapDataSource === MapDataSourcesEnum.SAVED_PLACES ? 'visible' : 'none',
                     }}
                 />
             </Source>
