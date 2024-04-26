@@ -68,10 +68,13 @@ export const WidgetSavedListsItem = (list: IList) => {
 
     return (
         <div
-            className="group hover-animated flex cursor-pointer items-center justify-between gap-x-4 border-t border-blue-20 py-2 text-big-bold last-of-type:border-b hover:text-blue-active sm:py-4"
+            className="group hover-animated flex cursor-pointer items-center justify-between gap-x-4 border-t border-blue-20 py-2 last-of-type:border-b hover:text-blue-active sm:py-4"
             onClick={handleListClick}
         >
-            <div className="flex-1 overflow-hidden text-ellipsis text-nowrap">{list.name}</div>
+            <div className="flex-1">
+                <div className="overflow-hidden text-ellipsis text-nowrap text-big-bold">{list.name}</div>
+                <div className="text-small text-black-40">Private • {list._count.listToPlace} places</div>
+            </div>
             <div className="flex flex-none items-center gap-x-2">
                 <div className="text-red-100 group-hover:block sm:hidden" onClick={handleDeleteClick}>
                     <DeleteIcon16 />

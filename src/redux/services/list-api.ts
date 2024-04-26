@@ -46,6 +46,23 @@ export const listAPI = api.injectEndpoints({
             }),
             invalidatesTags: ['Lists'],
         }),
+
+        addListItem: build.mutation<void, { listId: number; placeId: number }>({
+            query: ({ listId, placeId }) => ({
+                url: `lists/${listId}/places`,
+                method: 'POST',
+                body: { placeId },
+            }),
+            invalidatesTags: (result, error, { listId }) => [{ type: 'Lists', id: listId }, { type: 'Lists' }],
+        }),
+
+        deleteListItem: build.mutation<void, { listId: number; placeId: number }>({
+            query: ({ listId, placeId }) => ({
+                url: `lists/${listId}/places/${placeId}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: (result, error, { listId }) => [{ type: 'Lists', id: listId }, { type: 'Lists' }],
+        }),
     }),
     overrideExisting: false,
 })

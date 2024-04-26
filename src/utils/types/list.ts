@@ -7,16 +7,13 @@ export type IList = {
     index: number
     addedAt: string
     isPublic: boolean
-}
-
-export type ISavedPlace = {
-    index: number
-    place: IPlacePreview
+    _count: {
+        listToPlace: number
+    }
 }
 
 export type IListInfo = Pick<IList, 'id' | 'name' | 'description' | 'index' | 'addedAt' | 'isPublic'> & {
     userId: number
-    places: ISavedPlace[]
 }
 
 export type CreateListInputs = Pick<IList, 'name' | 'description'>

@@ -5,6 +5,7 @@ import Session from 'supertokens-web-js/recipe/session'
 import { useRouter } from 'next/navigation'
 
 import { SignIn } from '@/components/features/auth/sign-in'
+import { SavePlace } from '@/components/features/save-space/save-space'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { favoritesAPI } from '@/redux/services/favorites-api'
@@ -15,7 +16,11 @@ interface FavoriteInterface {
     toggle: () => void
 }
 
-export function useFavorite(id: number, isFavorite: boolean | undefined, callback?: () => void): FavoriteInterface {
+export function useFavorite(
+    placeId: number,
+    isFavorite: boolean | undefined,
+    callback?: () => void,
+): FavoriteInterface {
     const t = useI18n()
     const router = useRouter()
     const dialog = useDialog()
@@ -32,13 +37,15 @@ export function useFavorite(id: number, isFavorite: boolean | undefined, callbac
             return
         }
 
-        try {
-            await (isFavorite ? deletePlaceFromFavorite(id) : addPlaceToFavorite(id))
-            callback && callback()
-            router.refresh()
-        } catch {
-            toast.error(t('common.error'))
-        }
+        dialog.open(<SavePlace placeId={placeId} />)
+
+        // try {
+        //     await (isFavorite ? deletePlaceFromFavorite(id) : addPlaceToFavorite(id))
+        //     callback && callback()
+        //     router.refresh()
+        // } catch {
+        //     toast.error(t('common.error'))
+        // }
     }
 
     return { isLoading: isAdding || isDeleting, toggle }
