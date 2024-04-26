@@ -1,16 +1,16 @@
-'use client'
-
 import type { IReview } from '@/utils/types/review'
-
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import { ReviewActionsPrivate } from './review-actions-private'
 import { ReviewActionsPublic } from './review-actions-public'
 
-export const ReviewActions = (review: IReview) => {
-    const supertokens = useSupertokens()
+type ReviewActionsProps = {
+    review: IReview
+    activeUserId?: number
+    isAuth: boolean
+}
 
-    if (supertokens.isAuth && supertokens.activeUserId === review.user.id) {
+export const ReviewActions = ({ review, activeUserId, isAuth }: ReviewActionsProps) => {
+    if (isAuth && activeUserId === review.user.id) {
         return <ReviewActionsPrivate {...review} />
     }
 

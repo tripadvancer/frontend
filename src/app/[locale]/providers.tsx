@@ -1,5 +1,6 @@
 'use client'
 
+import { ReactNode } from 'react'
 import { MapProvider } from 'react-map-gl/maplibre'
 import { ParallaxProvider } from 'react-scroll-parallax'
 
@@ -7,13 +8,13 @@ import { DialogProvider } from '@/providers/dialog-provider'
 import { ToastProvider } from '@/providers/toast-provider'
 import { ReduxProvider } from '@/redux/provider'
 import { I18nProvider } from '@/utils/i18n/i18n.provider'
-import { SupertokensProvider } from '@/utils/supertokens/supertokens.provider'
+import { SuperTokensInit } from '@/utils/supertokens/supertokens.init'
 
-export function Providers({ children, locale }: { children: React.ReactNode; locale: string }) {
+export function Providers({ children, locale }: { children: ReactNode; locale: string }) {
     return (
         <ReduxProvider>
             <I18nProvider locale={locale}>
-                <SupertokensProvider>
+                <SuperTokensInit>
                     <ToastProvider>
                         <MapProvider>
                             <DialogProvider>
@@ -21,7 +22,7 @@ export function Providers({ children, locale }: { children: React.ReactNode; loc
                             </DialogProvider>
                         </MapProvider>
                     </ToastProvider>
-                </SupertokensProvider>
+                </SuperTokensInit>
             </I18nProvider>
         </ReduxProvider>
     )

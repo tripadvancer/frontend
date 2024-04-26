@@ -45,6 +45,7 @@ export default {
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
     'header.link.map': 'Go to map',
+    'header.link.company_blog': 'Company blog',
 
     'common.error': 'An unexpected error has occurred. Please try again later.',
     'common.empty_message.reviews': 'There are no reviews here at the moment.',
@@ -74,7 +75,6 @@ export default {
     'common.action.route': 'Route',
     'common.action.locate_me': 'Locate me',
     'common.action.go_to_map': 'Go to map',
-    'common.action.view_all_places': 'View all places',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -295,21 +295,29 @@ export default {
     'pages.error.title': 'Oops! Something Went Wrong',
     'pages.error.text': 'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
 
+    'pages.landing.search.placeholder': 'Find a country or place',
+    'pages.landing.search.button': 'Search',
+
     'pages.landing.countries.title': 'Where are you going?',
     'pages.landing.countries.description': 'Discover the top attractions of every destination worldwide with our travel app. Explore the best places to visit in each country and uncover must-see sights, from iconic landmarks to hidden gems.',
+    'pages.landing.countries.view_all': 'View all countries',
 
-    'page.landing.random_place.title': 'Explore places near you',
-    'page.landing.random_place.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
-    
+    'pages.landing.around_places.title': 'Explore places near you',
+    'pages.landing.around_places.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
+    'pages.landing.around_places.view_all': 'View all places',
+
     'pages.landing.features.title': 'Our features',
     'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
     
-    'pages.landing.map.title': 'Embark on a Global Journey',
-    'pages.landing.map.description': ' Try our interactive map to explore a diverse selection of must-see landmarks, hidden gems, and local attractions worldwide. Your next adventure awaits with just a tap!',
+    'pages.landing.map.title': 'Try our interactive map',
+    'pages.landing.map.description': 'To explore a diverse selection of must-see landmarks, hidden gems, and local attractions worldwide. Your next adventure awaits with just a tap!',
     'pages.landing.map.cta': 'Explore the map',
+
+    'pages.countries.title': 'All countries',
 
     'pages.country.description': 'Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.',
     'pages.country.view_all': 'View all countries',
+    'pages.country.places.empty': 'There are no places in this country yet. Be the first to add a place!',
 
     'pages.place.about.title': 'About this place',
     'pages.place.photos.title': 'Photos',

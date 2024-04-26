@@ -1,5 +1,3 @@
-'use client'
-
 import { ReactNode } from 'react'
 
 import type { IPlace } from '@/utils/types/place'
@@ -17,7 +15,13 @@ const Item = ({ children }: { children: ReactNode }) => {
     return <div className="border-t border-dashed border-black-40 py-4 text-big-bold last:border-b">{children}</div>
 }
 
-export const PlaceSidebarActions = ({ place, userId, isAuth }: { place: IPlace; userId?: number; isAuth: boolean }) => {
+type PlaceSidebarActionsProps = {
+    place: IPlace
+    activeUserId?: number
+    isAuth: boolean
+}
+
+export const PlaceSidebarActions = ({ place, activeUserId, isAuth }: PlaceSidebarActionsProps) => {
     return (
         <div>
             <Item>
@@ -35,7 +39,7 @@ export const PlaceSidebarActions = ({ place, userId, isAuth }: { place: IPlace; 
             <Item>
                 <PlaceSidebarActionsShare place={place} />
             </Item>
-            {userId === place.author.id && (
+            {activeUserId === place.author.id && (
                 <>
                     <Item>
                         <PlaceSidebarActionsEdit place={place} />
@@ -45,7 +49,7 @@ export const PlaceSidebarActions = ({ place, userId, isAuth }: { place: IPlace; 
                     </Item>
                 </>
             )}
-            {userId !== place.author.id && (
+            {activeUserId !== place.author.id && (
                 <Item>
                     <PlaceSidebarActionsComplain place={place} isAuth={isAuth} />
                 </Item>

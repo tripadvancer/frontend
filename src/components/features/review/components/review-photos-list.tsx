@@ -1,3 +1,5 @@
+'use client'
+
 import type { IPhoto } from '@/utils/types/photo'
 
 import { PhotoGallery } from '@/components/ui/photo-gallery'

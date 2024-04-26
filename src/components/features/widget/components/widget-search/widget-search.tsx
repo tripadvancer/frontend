@@ -5,8 +5,9 @@ import { createPortal } from 'react-dom'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
-import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
-import { ISearchItem } from '@/utils/types/search'
+import type { ICountryDict } from '@/utils/types/country'
+import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import type { ISearchItem } from '@/utils/types/search'
 
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
@@ -77,7 +78,7 @@ export const WidgetSearch = () => {
     }
 
     const handleSelect = useCallback(
-        (item: ISearchItem<IPlacePreview | ILocationPreview>) => {
+        (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => {
             const viewState = getFlyToViewState(item.coordinates)
             dispatch(setMapViewState(viewState))
 

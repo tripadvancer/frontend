@@ -1,3 +1,4 @@
+import type { ICountryDict } from '@/utils/types/country'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem, ISearchResult } from '@/utils/types/search'
 
@@ -15,6 +16,14 @@ export const transformSearchPlaces = (data: ISearchResult, locale: string): ISea
     return data.places.map(place => ({
         ...place,
         info: getCountryByCode(place.properties.countryCode)?.name[locale] ?? '',
+    }))
+}
+
+export const transformSearchCountries = (data: ISearchResult, locale: string): ISearchItem<ICountryDict>[] => {
+    return data.countries.map(country => ({
+        ...country,
+        title: country.properties.name[locale],
+        info: '',
     }))
 }
 

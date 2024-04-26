@@ -1,9 +1,10 @@
 'use client'
 
-import { CSSProperties, Ref, forwardRef, memo, useEffect, useState } from 'react'
+import { CSSProperties, Ref, forwardRef, useState } from 'react'
 
 import classNames from 'classnames'
 
+import type { ICountryDict } from '@/utils/types/country'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
 
@@ -13,10 +14,10 @@ import { useKeypress } from '@/utils/hooks/use-keypress'
 import { SearchAutocompleteItem } from './search-autocomplete-item'
 
 type SearchAutocompleteProps = {
-    items: ISearchItem<IPlacePreview | ILocationPreview>[]
+    items: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]
     styles?: CSSProperties
     className?: string
-    onSelect: (item: ISearchItem<IPlacePreview | ILocationPreview>) => void
+    onSelect: (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => void
 }
 
 function SearchAutocompleteComponent(
@@ -43,7 +44,7 @@ function SearchAutocompleteComponent(
         }
     })
 
-    const handleSelect = (item: ISearchItem<IPlacePreview | ILocationPreview>) => {
+    const handleSelect = (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => {
         onSelect(item)
     }
 

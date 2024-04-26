@@ -19,6 +19,9 @@ export const Header = async () => {
                     <Link href="/maps" className="text-big-bold">
                         {t('header.link.map')}
                     </Link>
+                    <Link href="/blog" className="text-big-bold">
+                        {t('header.link.company_blog')}
+                    </Link>
                     <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center gap-x-2 sm:right-8">
                         <HeaderButtons />
                     </div>

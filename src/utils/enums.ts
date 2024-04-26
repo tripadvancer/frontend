@@ -45,3 +45,13 @@ export enum MapDataSourcesEnum {
     SAVED_PLACES = 'SAVED_PLACES',
     VISITED_PLACES = 'VISITED_PLACES',
 }
+
+export enum OrderDirection {
+    ASC = 'asc',
+    DESC = 'desc',
+}
+
+export enum CountriesSortBy {
+    NAME = 'name',
+    POPULARITY = 'popularity',
+}

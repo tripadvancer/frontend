@@ -2,11 +2,10 @@
 
 import type { IPlace } from '@/utils/types/place'
 
+import { SharePlace } from '@/components/features/share-place/share-place'
 import { ShareIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
-
-import { SharePlace } from '../../share-place/share-place'
 
 export const PlaceSidebarActionsShare = ({ place }: { place: IPlace }) => {
     const t = useI18n()

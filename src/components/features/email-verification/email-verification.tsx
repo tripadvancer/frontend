@@ -8,13 +8,24 @@ import { EmailVerificationNotice } from './email-verification-notice'
 export const EmailVerification = async () => {
     const { session, hasToken } = await getSSRSessionHelper()
 
-    if (!session && hasToken) {
+    if (!session) {
+        if (!hasToken) {
+            /**
+             * This means that there is no session and no session tokens.
+             */
+            return null
+        }
+
+        /**
+         * This means that the session does not exist but we have session tokens for the user. In this case
+         * the `TryRefreshComponent` will try to refresh the session.
+         */
         return <TryRefreshComponent />
     }
 
-    const isMailVerified = await session?.getClaimValue(EmailVerificationClaim)
+    const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
 
-    if (isMailVerified === false) {
+    if (isEmailVerified === false) {
         const userId = session?.getAccessTokenPayload().userId
         return <EmailVerificationNotice userId={userId} />
     }

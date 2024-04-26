@@ -23,7 +23,7 @@ export const PlaceHeaderCover = ({ cover }: IPlace) => {
                     className="h-full w-full object-cover"
                 />
             )}
-            <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-30" />
+            <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
         </div>
     )
 }

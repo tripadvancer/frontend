@@ -9,7 +9,13 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { UserReviewsSkeleton } from './user-reviews-skeleton'
 
-export const UserReviews = ({ userId }: { userId: number }) => {
+type UserReviewsProps = {
+    userId: number
+    activeUserId?: number
+    isAuth: boolean
+}
+
+export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) => {
     const t = useI18n()
     const [page, setPage] = useState(1)
 
@@ -27,7 +33,13 @@ export const UserReviews = ({ userId }: { userId: number }) => {
         return (
             <div className="flex flex-col gap-y-8">
                 {reviews.items.map((review, index) => (
-                    <Review key={index} review={review} variant="user-page" />
+                    <Review
+                        key={index}
+                        review={review}
+                        variant="user-page"
+                        activeUserId={activeUserId}
+                        isAuth={isAuth}
+                    />
                 ))}
 
                 {reviews.totalPages > page && (

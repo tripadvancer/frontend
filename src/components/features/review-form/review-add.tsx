@@ -8,13 +8,11 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import { ReviewForm } from './review-form'
 
-export const ReviewAdd = ({ placeId }: { placeId: number }) => {
+export const ReviewAdd = ({ placeId, userId }: { placeId: number; userId: number }) => {
     const t = useI18n()
-    const supertokens = useSupertokens()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -23,7 +21,7 @@ export const ReviewAdd = ({ placeId }: { placeId: number }) => {
 
     const initialValues: CreateReviewInputs = {
         placeId,
-        userId: supertokens.activeUserId as number,
+        userId,
         rating: 0,
         text: '',
         photos: [],

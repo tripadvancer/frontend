@@ -8,7 +8,13 @@ import { placesAPI } from '@/redux/services/places-api'
 
 import { PlaceMainAddReviewButton } from './place-main-add-review-button'
 
-export const PlaceMainOwnReview = ({ place, isAuth }: { place: IPlace; isAuth: boolean }) => {
+type PlaceMainOwnReviewProps = {
+    place: IPlace
+    activeUserId?: number
+    isAuth: boolean
+}
+
+export const PlaceMainOwnReview = ({ place, activeUserId, isAuth }: PlaceMainOwnReviewProps) => {
     const { data: meta, isLoading, isSuccess } = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !isAuth })
 
     if (isLoading) {
@@ -18,7 +24,13 @@ export const PlaceMainOwnReview = ({ place, isAuth }: { place: IPlace; isAuth: b
     if (isSuccess && meta.ownReview) {
         return (
             <div className="rounded-lg bg-blue-10 p-4 sm:p-8">
-                <Review review={meta.ownReview} variant="place-page" className="border-none !p-0" />
+                <Review
+                    review={meta.ownReview}
+                    variant="place-page"
+                    className="border-none !p-0"
+                    activeUserId={activeUserId}
+                    isAuth={isAuth}
+                />
             </div>
         )
     }

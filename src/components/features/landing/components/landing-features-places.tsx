@@ -6,7 +6,7 @@ export const LandingFeaturesPlaces = async () => {
     const t = await getI18n()
 
     return (
-        <div className="grid-row-2 grid items-center gap-y-8 sm:grid-cols-2 sm:grid-rows-none sm:gap-x-16">
+        <div className="grid items-center gap-y-8 sm:grid-cols-2 sm:gap-x-16">
             <Image
                 src="/images/features-places.svg"
                 width={448}

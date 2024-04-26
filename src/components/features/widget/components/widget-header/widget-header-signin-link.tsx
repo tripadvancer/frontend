@@ -8,7 +8,7 @@ export const WidgetHeaderSignInLink = () => {
     const dialog = useDialog()
 
     return (
-        <div className="cursor-pointer" onClick={() => dialog.open(<SignIn />)}>
+        <div className="hover-animated cursor-pointer hover:text-blue-active" onClick={() => dialog.open(<SignIn />)}>
             <UserIcon24 />
         </div>
     )

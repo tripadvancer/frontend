@@ -10,12 +10,10 @@ import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { favoritesAPI } from '@/redux/services/favorites-api'
-import { listAPI } from '@/redux/services/list-api'
 import { placesAPI } from '@/redux/services/places-api'
 import { visitedAPI } from '@/redux/services/visited-api'
 import { MapDataSourcesEnum } from '@/utils/enums'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
-import { useSupertokens } from '@/utils/supertokens/supertokens.hooks'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
@@ -25,12 +23,16 @@ import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
 import { favoritePlacesLayer, placesLayer, visitedPlacesLayer } from './map-layers'
 
-export const Mapbox = () => {
-    const supertokens = useSupertokens()
+type MapProps = {
+    activeUserId?: number
+    isAuth: boolean
+    isEmailVerified?: boolean
+}
+
+export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
     const mapBounds = useAppSelector(getMapState).bounds
     const mapDataSource = useAppSelector(getWidgetState).dataSource
-    const activeList = useAppSelector(getWidgetState).activeList
     const selectedCategories = useAppSelector(getWidgetState).selectedCategories
     const userLocation = useAppSelector(getUserLocation)
 
@@ -43,12 +45,12 @@ export const Mapbox = () => {
         { skip: !mapBounds || mapDataSource !== MapDataSourcesEnum.ALL_PLACES },
     )
 
-    const savedResponse = listAPI.useGetListPlacesQuery(activeList?.id ?? 0, {
-        skip: !supertokens.isAuth || (mapDataSource !== MapDataSourcesEnum.SAVED_PLACES && !activeList),
+    const favoritesResponse = favoritesAPI.useGetFavoritesQuery(undefined, {
+        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.FAVORITES_PLACES,
     })
 
     const visitedResponse = visitedAPI.useGetVisitedQuery(undefined, {
-        skip: !supertokens.isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
+        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
     })
 
     const handleZoomIn = useCallback(() => {
@@ -86,13 +88,13 @@ export const Mapbox = () => {
             <Source
                 id="favorite-places-source"
                 type="geojson"
-                data={savedResponse.data || { type: 'FeatureCollection', features: [] }}
+                data={favoritesResponse.data || { type: 'FeatureCollection', features: [] }}
             >
                 <Layer
                     {...favoritePlacesLayer}
                     layout={{
                         ...favoritePlacesLayer.layout,
-                        visibility: mapDataSource === MapDataSourcesEnum.SAVED_PLACES ? 'visible' : 'none',
+                        visibility: mapDataSource === MapDataSourcesEnum.FAVORITES_PLACES ? 'visible' : 'none',
                     }}
                 />
             </Source>
@@ -132,7 +134,14 @@ export const Mapbox = () => {
             )}
 
             {handlers.placePopupInfo && <MapPopupPlace {...handlers.placePopupInfo} />}
-            {handlers.locationPopupInfo && <MapPopupLocation {...handlers.locationPopupInfo} />}
+            {handlers.locationPopupInfo && (
+                <MapPopupLocation
+                    activeUserId={activeUserId}
+                    isAuth={isAuth}
+                    isEmailVerified={isEmailVerified}
+                    {...handlers.locationPopupInfo}
+                />
+            )}
 
             <AttributionControl compact />
         </ReactMapGl>
