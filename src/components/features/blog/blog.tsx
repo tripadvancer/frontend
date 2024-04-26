@@ -1,18 +1,21 @@
-import Link from 'next/link'
+import { ReactNode } from 'react'
 
-export const Blog = () => {
+import { getCurrentLocale, getI18n } from '@/utils/i18n/i18n.server'
+
+import { BlogNav } from './components/blog-nav'
+
+export const Blog = async ({ children }: { children: ReactNode }) => {
+    const t = await getI18n()
+    const locale = getCurrentLocale()
+
     return (
         <section className="container py-24">
-            <article className="text-pretty">
-                <h1 className="h1 mb-4 text-center">Blog</h1>
-                <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
-                    On the pages of our blog, you will find a wealth of valuable information about our service,
-                    recommendations from experienced travelers, as well as other useful information related to the world
-                    of travel.
-                </p>
-            </article>
-
-            <Link href="/blog/discovering-warsaw-top-10-places">Discovering Warsaw: 10 Must-See Places in Poland&apos;s Capital</Link>
+            <div className="mb-16">
+                <h1 className="h1 mb-8 text-center">Company blog</h1>
+                <BlogNav />
+            </div>
+            {children}
+            {/* <FeedArticles /> */}
         </section>
     )
 }

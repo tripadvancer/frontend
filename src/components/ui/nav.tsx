@@ -10,14 +10,13 @@ type NavProps = {
         href: string
         caption: string
     }[]
-    className?: string
 }
 
-export const Nav = ({ links, className }: NavProps) => {
+export const Nav = ({ links }: NavProps) => {
     const pathname = usePathname()
 
     return (
-        <nav className={classNames('flex gap-x-4 text-big-bold', className)}>
+        <nav className="mb-8 flex gap-x-4 text-big-bold">
             {links.map(link => (
                 <Link
                     key={link.href}

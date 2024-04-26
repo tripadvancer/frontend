@@ -23,7 +23,7 @@ export const PlaceMainOwnReview = ({ place, activeUserId, isAuth }: PlaceMainOwn
 
     if (isSuccess && meta.ownReview) {
         return (
-            <div className="rounded-lg bg-blue-10 p-4 sm:p-8">
+            <div className="rounded-lg bg-orange-10 p-4">
                 <Review
                     review={meta.ownReview}
                     variant="place-page"

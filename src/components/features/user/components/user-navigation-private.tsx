@@ -12,5 +12,5 @@ export const UserNavigationPrivate = ({ userId }: { userId: string }) => {
         { href: `/users/${userId}/settings`, caption: t('user_tabs.settings') },
     ]
 
-    return <Nav links={links} className="mb-8" />
+    return <Nav links={links} />
 }

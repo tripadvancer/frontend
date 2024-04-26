@@ -35,7 +35,7 @@ export const Country = async ({
                     <CountryCover countryCode={country.code} />
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
                 </div>
-                <section className="container relative z-30 py-8 text-center">
+                <div className="container relative z-30 py-8 text-center">
                     <div className="m-auto sm:w-2/3">
                         <Link href="/countries" className="mb-4 inline-block font-medium text-white hover:text-white">
                             {t('pages.country.view_all')}
@@ -45,7 +45,7 @@ export const Country = async ({
                             {t('pages.country.description', { country: country.name[locale] })}
                         </p>
                     </div>
-                </section>
+                </div>
             </div>
             <div className="relative z-20 flex-1 rounded-t-4xl bg-white">
                 {places.length === 0 && (

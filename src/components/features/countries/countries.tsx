@@ -7,11 +7,9 @@ export const Countries = async () => {
     const countries = await getCountries()
 
     return (
-        <div className="container py-24">
-            <section>
-                <h1 className="h1 mb-16 text-center">{t('pages.countries.title')}</h1>
-                <FeedCountries countries={countries} />
-            </section>
-        </div>
+        <section className="container py-24">
+            <h1 className="h1 mb-16 text-center">{t('pages.countries.title')}</h1>
+            <FeedCountries countries={countries} />
+        </section>
     )
 }

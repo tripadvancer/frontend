@@ -294,7 +294,7 @@ export default {
     'pages.landing.countries.view_all': 'View all countries',
 
     'pages.landing.around_places.title': 'Explore places near you',
-    'pages.landing.around_places.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
+    'pages.landing.around_places.description': 'Explore top-rated destinations recommended by fellow travelers. Find local attractions, hidden gems, and must-see landmarks nearby.',
     'pages.landing.around_places.view_all': 'View all places',
 
     'pages.landing.features.title': 'Our features',

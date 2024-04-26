@@ -11,5 +11,5 @@ export const UserNavigationPublic = ({ userId }: { userId: string }) => {
         { href: `/users/${userId}/reviews`, caption: t('user_tabs.reviews') },
     ]
 
-    return <Nav links={links} className="mb-8" />
+    return <Nav links={links} />
 }
