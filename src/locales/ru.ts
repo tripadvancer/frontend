@@ -260,7 +260,7 @@ export default {
     'auth.verify_email.ok': 'Ваш email был подтверждён.',
 
     'widget.common.error': 'Произошла непредвиденная ошибка.{br}Пожалуйста, попробуйте позже.',
-    'widget.search.placeholder': 'Найти место',
+    'widget.search.placeholder': 'Найти страну, место или адрес', 
     'widget.categories.title': 'Категории',
     'widget.categories.selected#one': 'выбрана {count} категория',
     'widget.categories.selected#few': 'выбрано {count} категории',

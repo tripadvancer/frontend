@@ -14,7 +14,7 @@ export const placesLayer: SymbolLayer = {
         ],
         'icon-size': 0.75,
         'icon-allow-overlap': false,
-        'icon-ignore-placement': false,
+        'icon-ignore-placement': true,
     },
 }
 

@@ -256,7 +256,7 @@ export default {
     'auth.verify_email.ok': 'Your email has been verified.',
 
     'widget.common.error': 'An unexpected error has occurred.{br}Please try again later.',
-    'widget.search.placeholder': 'Find a place',
+    'widget.search.placeholder': 'Find a country, place or address',
     'widget.categories.title': 'Categories',
     'widget.categories.selected#one': '{count} selected',
     'widget.categories.selected#other': '{count} selected',
