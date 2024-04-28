@@ -16,7 +16,7 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 export const PlaceButtonRoute = ({ lngLat }: { lngLat: LngLat }) => {
     const t = useI18n()
     const userLocation = useAppSelector(getUserLocation)
-    const { mainMap } = useMap()
+    const { map } = useMap()
 
     const handleRoute = () => {
         if (userLocation) {
@@ -27,12 +27,12 @@ export const PlaceButtonRoute = ({ lngLat }: { lngLat: LngLat }) => {
 
                 // Zoom to the new bounding box to focus on the route,
                 // with a 50px padding around the edges. See https://maplibre.org/maplibre-gl-js/docs/API/classes/Map/#fitbounds
-                mainMap?.fitBounds([sw, ne], { padding: { top: 50, right: 562, bottom: 50, left: 50 } })
+                map?.fitBounds([sw, ne])
 
                 // For each leg of the trip...
                 response.trip.legs.forEach(leg => {
                     const geometry = polyline.toGeoJSON(leg.shape, 6)
-                    const source = mainMap?.getSource('route-source') as GeoJSONSource
+                    const source = map?.getSource('route-source') as GeoJSONSource
                     source.setData(geometry)
                 })
             })

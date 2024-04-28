@@ -27,6 +27,9 @@ export default {
     'confirm.delete_place.title': 'Delete place',
     'confirm.delete_place.message': 'Are you sure you want to delete this place and all data associated with it? This action is irreversible.',
 
+    'confirm.delete_list.title': 'Delete list',
+    'confirm.delete_list.message': 'Are you sure you want to delete this list? This action is irreversible.',
+
     'confirm.request_personal_data.title': 'Send personal data',
     'confirm.request_personal_data.message': 'Are you sure you want to send your personal data to your email?',
     
@@ -41,7 +44,8 @@ export default {
     'header.user_menu.reviews': 'Written reviews',
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
-    'header.link.map': 'On map',
+    'header.link.map': 'Go to map',
+    'header.link.company_blog': 'Company blog',
 
     'common.error': 'An unexpected error has occurred. Please try again later.',
     'common.empty_message.reviews': 'There are no reviews here at the moment.',
@@ -52,6 +56,7 @@ export default {
 
     'common.link.sign_up': 'Sign up',
     'common.link.sign_in': 'Sign in',
+    'common.link.add_place': 'Add place',
     'common.link.terms': 'Terms and Conditions',
     'common.link.privacy': 'Privacy Policy',
 
@@ -70,7 +75,6 @@ export default {
     'common.action.route': 'Route',
     'common.action.locate_me': 'Locate me',
     'common.action.go_to_map': 'Go to map',
-    'common.action.view_all_places': 'View all places',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -114,16 +118,17 @@ export default {
     'placeholder.action.new_password': 'Enter new password',
     'placeholder.action.email': 'Enter email address',
     'placeholder.action.new_email': 'Enter new email address',
+    'placeholder.action.list_name': 'Enter list name',
     'placeholder.place.title': 'Enter place title',
     'placeholder.place.coordinates': 'Pick place location',
 
     'success.send_complaint': 'Your complaint has been sent.',
     'success.copy_coordinates': 'Coordinates have been copied to the clipboard.',
     'success.create_place': 'Your place has been added.',
-    'success.edit_place': 'Your place has been updated.',
+    'success.update_place': 'Your place has been updated.',
     'success.delete_place': 'The place has been deleted.',
     'success.create_review': 'Your review has been added.',
-    'success.edit_review': 'Your review has been updated.',
+    'success.update_review': 'Your review has been updated.',
     'success.delete_review': 'The review has been deleted.',
     'success.change_user_password': 'Your password has been changed.',
     'success.change_user_email': 'We have sent you a verification email. After confirming your new email address, you will be able to sign in using it.',
@@ -162,12 +167,14 @@ export default {
     'countries.places#one': '{count} place',
     'countries.places#other': '{count} places',
     
-    'place.i_was_here': 'I was here',
-    'place.navigation': 'Navigation',
-
-    'place.user_actions.edit': 'Edit place',
-    'place.user_actions.delete': 'Delete place',
-    'place.user_actions.complain': 'Complain about place',
+    'place.actions.i_was_here': 'I was here',
+    'place.actions.navigate': 'Navigate',
+    'place.actions.save': 'Save place',
+    'place.actions.show_on_map': 'Show on map',
+    'place.actions.share': 'Share place',
+    'place.actions.complain': 'Complain about a place',
+    'place.actions.edit': 'Edit place',
+    'place.actions.delete': 'Delete place',
 
     'place.reviews#zero': 'No reviews',
     'place.reviews#one': '{count} review',
@@ -249,33 +256,29 @@ export default {
     'auth.verify_email.ok': 'Your email has been verified.',
 
     'widget.common.error': 'An unexpected error has occurred.{br}Please try again later.',
-    'widget.search.placeholder': 'Find a place',
+    'widget.search.placeholder': 'Find a country, place or address',
     'widget.categories.title': 'Categories',
     'widget.categories.selected#one': '{count} selected',
     'widget.categories.selected#other': '{count} selected',
-    
     'widget.places.title': 'Places',
-
-    'widget.places.all.title': 'All',
-    'widget.places.all.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
-
-    'widget.places.saved.title': 'Saved',
-    'widget.places.saved.info': 'Select a list to view your places.',
-    'widget.places.saved.error.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
-    'widget.places.saved.favorites.title': 'Favorites',
-    'widget.places.saved.favorites.empty_message': 'Your favorites are empty.{br}Add the place to your favorites to see it here.',
-    'widget.places.saved.visited.title': 'Visited places',
-    'widget.places.saved.visited.empty_message': 'You have not visited any places yet.{br}Add the place to your visited to see it here.',
-    'widget.places.saved.show_on_the_map': 'Show on the map',
-
-    'widget.places.random.title': 'Random',
-    'widget.places.random.intro': 'Select categories, radius around you and get a random place you might like.',
-    'widget.places.random.button': 'Find a random place',
-    'widget.places.random.button_coundown': 'Find a random place in ({countdown})',
-    'widget.places.random.error.not_location': 'To find a random place around you, you need to allow access to your location.',
-    'widget.places.random.error.not_location.info': 'Or click on any place on the map and select "I am here".',
-    'widget.places.random.error.not_found': 'No places matching your filters found. Try changing the category or radius.',
-
+    'widget.tabs.all': 'All',
+    'widget.tabs.saved': 'Saved',
+    'widget.tabs.visited': 'Visited',
+    'widget.tabs.random': 'Random',
+    'widget.all_places.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
+    'widget.visited_places.empty_message': 'You have not visited places.{br}Add the place to your visited to see it here.',
+    'widget.visited_places.not_logged_in': 'You are not logged in.{br}Sign in to see your visited places.',
+    'widget.random.empty_message': 'No places matching your filters found. Try changing the category or radius.',
+    'widget.random.info': 'Select categories, radius around you and get a random place you might like.',
+    'widget.random.button': 'Find a random place',
+    'widget.random.button_coundown': 'Find a random place in ({countdown})',
+    'widget.random.error.not_location': 'To find a random place around you, you need to allow access to your location. Click the button below or select "I am here" on the map.',
+    'widget.saved.empty_message': 'Your saved places are empty.{br}Create a new list and start adding places to it.',
+    'widget.saved.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
+    'widget.saved.lists.empty_message': 'Your list are empty.{br}Add places to this list to see them here.',
+    'widget.saved.lists.add_button': 'Create new list',
+    'widget.saved.lists.info': 'Select a list to view your saved places.',
+    'widget.saved.lists.show_only_list': 'Show on map',
     'widget.toggler.map': 'Map',
     'widget.toggler.search_and_filters': 'Search and filters',
 
@@ -283,30 +286,35 @@ export default {
     'map.popup.location.add_place': 'Add place here',
     'map.popup.location.i_am_here': 'I am here',
 
-    'places_nearby_warning.title': 'Attention',
-    'places_nearby_warning.message': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',
-
     'pages.not_found.title': 'Page not found',
     'pages.not_found.text': 'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.',
 
     'pages.error.title': 'Oops! Something Went Wrong',
     'pages.error.text': 'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
 
+    'pages.landing.search.placeholder': 'Find a country or place',
+    'pages.landing.search.button': 'Search',
+
     'pages.landing.countries.title': 'Where are you going?',
     'pages.landing.countries.description': 'Discover the top attractions of every destination worldwide with our travel app. Explore the best places to visit in each country and uncover must-see sights, from iconic landmarks to hidden gems.',
+    'pages.landing.countries.view_all': 'View all countries',
 
-    'page.landing.random_place.title': 'Explore places near you',
-    'page.landing.random_place.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
-    
+    'pages.landing.around_places.title': 'Explore places near you',
+    'pages.landing.around_places.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
+    'pages.landing.around_places.view_all': 'View all places',
+
     'pages.landing.features.title': 'Our features',
     'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
     
-    'pages.landing.map.title': 'Embark on a Global Journey',
-    'pages.landing.map.description': ' Try our interactive map to explore a diverse selection of must-see landmarks, hidden gems, and local attractions worldwide. Your next adventure awaits with just a tap!',
+    'pages.landing.map.title': 'Try our interactive map',
+    'pages.landing.map.description': 'To explore a diverse selection of must-see landmarks, hidden gems, and local attractions worldwide. Your next adventure awaits with just a tap!',
     'pages.landing.map.cta': 'Explore the map',
+
+    'pages.countries.title': 'All countries',
 
     'pages.country.description': 'Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.',
     'pages.country.view_all': 'View all countries',
+    'pages.country.places.empty': 'There are no places in this country yet. Be the first to add a place!',
 
     'pages.place.about.title': 'About this place',
     'pages.place.photos.title': 'Photos',
@@ -314,6 +322,7 @@ export default {
     'pages.place.map.title': '{place_name} on map',
     'pages.place.map.alt': 'Map with location of {place_name}',
     'pages.place.place_nearby.title': 'Places nearby',
+    'pages.place.author.title': 'Author',
 
     'pages.user.about_me': 'About me',
     'pages.user.settings.forms.fields.avatar.label': 'Upload avatar',
@@ -343,13 +352,23 @@ export default {
 
     'pages.add_place.about.title': 'About this place',
     'pages.add_place.about.info': 'Tell us what inspired you so you can help others learn more about this place.',
+    'pages.add_place.add_category': 'Add category',
     'pages.add_place.photos.title': 'Photos',
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
     'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
-    'pages.add_place.categories.add_category.button': 'Add category',
-    'pages.add_place.categories.add_category.title': 'Select up to {max_count} categories',
+
+    'places_nearby_warning.title': 'Attention',
+    'places_nearby_warning.text': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',
+
+    'select_categories.title': 'Select up to {max_count} categories',
 
     'location_picker.title': 'Pick place location',
-    'location_picker.placeholder': 'Enter address or coordinates',
+    'location_picker.placeholder': 'Address or coordinates',
+
+    'choose_navigation_app.title': 'Choose navigation app',
+
+    'share_place.title': 'Share place',
+    'share_place.text': 'Share the place with your friends and invite them to visit it.',
+    'share_place.copy.success': 'Link copied to clipboard',
 } as const

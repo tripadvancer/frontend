@@ -27,6 +27,9 @@ export default {
     'confirm.delete_place.title': 'Удалить место',
     'confirm.delete_place.message': 'Вы уверены, что хотите удалить это место и все связанные с ним данные? Это действие необратимо.',
 
+    'confirm.delete_list.title': 'Удалить список',
+    'confirm.delete_list.message': 'Вы уверены, что хотите удалить этот список? Это действие необратимо.',
+
     'confirm.request_personal_data.title': 'Запросить персональные данные',
     'confirm.request_personal_data.message': 'Вы уверены, что хотите запросить копию своих персональных данных?',
     
@@ -41,7 +44,8 @@ export default {
     'header.user_menu.reviews': 'Мои отзывы',
     'header.user_menu.settings': 'Настройки',
     'header.user_menu.log_out': 'Выйти',
-    'header.link.map': 'Карта',
+    'header.link.map': 'Перейти на карту',
+    'header.link.company_blog': 'Блог',
 
     'common.error': 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.',
     'common.empty_message.reviews': 'Здесь пока нет отзывов.',
@@ -52,6 +56,7 @@ export default {
 
     'common.link.sign_up': 'Зарегистрироваться',
     'common.link.sign_in': 'Войти',
+    'common.link.add_place': 'Добавить место',
     'common.link.terms': 'Terms and Conditions',
     'common.link.privacy': 'Privacy Policy',
 
@@ -70,7 +75,6 @@ export default {
     'common.action.route': 'Маршрут',
     'common.action.locate_me': 'Найти меня',
     'common.action.go_to_map': 'На карту',
-    'common.action.view_all_places': 'Все места',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -114,16 +118,17 @@ export default {
     'placeholder.action.new_password': 'Введите новый пароль',
     'placeholder.action.email': 'Введите email',
     'placeholder.action.new_email': 'Введите новый email',
+    'placeholder.action.list_name': 'Введите название списка',
     'placeholder.place.title': 'Ввведите название места',
     'placeholder.place.coordinates': 'Выберите местоположение',
 
     'success.send_complaint': 'Ваша жалоба была успешно отправлена.',
     'success.copy_coordinates': 'Координаты были скопированы в буфер обмена.',
     'success.create_place': 'Ваше место было успешно добавлено.',
-    'success.edit_place': 'Ваше место было успешно обновлено.',
+    'success.update_place': 'Ваше место было успешно обновлено.',
     'success.delete_place': 'Место было успешно удалено.',
     'success.create_review': 'Ваш отзыв был успешно добавлен.',
-    'success.edit_review': 'Ваш отзыв был успешно обновлён.',
+    'success.update_review': 'Ваш отзыв был успешно обновлён.',
     'success.delete_review': 'Отзыв был успешно удалён.',
     'success.change_user_password': 'Ваш пароль был успешно изменён.',
     'success.change_user_email': 'Мы отправили Вам письмо с подтверждением. После подтверждения нового адреса электронной почты Вы сможете войти в систему, используя его.',
@@ -164,12 +169,14 @@ export default {
     'countries.places#many': '{count} мест',
     'countries.places#other': '{count} мест',
 
-    'place.i_was_here': 'Я был здесь',
-    'place.navigation': 'Маршрут',
-
-    'place.user_actions.edit': 'Редактировать место',
-    'place.user_actions.delete': 'Удалить место',
-    'place.user_actions.complain': 'Пожаловаться на место',
+    'place.actions.i_was_here': 'Я был здесь',
+    'place.actions.navigate': 'Маршрут',
+    'place.actions.save': 'Сохранить',
+    'place.actions.show_on_map': 'Показать на карте',
+    'place.actions.share': 'Поделиться',
+    'place.actions.complain': 'Пожаловаться',
+    'place.actions.edit': 'Редактировать место',
+    'place.actions.delete': 'Удалить место',
 
     'place.reviews#zero': 'Нет отзывов',
     'place.reviews#one': '{count} отзыв',
@@ -253,35 +260,31 @@ export default {
     'auth.verify_email.ok': 'Ваш email был подтверждён.',
 
     'widget.common.error': 'Произошла непредвиденная ошибка.{br}Пожалуйста, попробуйте позже.',
-    'widget.search.placeholder': 'Найти место',
+    'widget.search.placeholder': 'Найти страну, место или адрес', 
     'widget.categories.title': 'Категории',
     'widget.categories.selected#one': 'выбрана {count} категория',
     'widget.categories.selected#few': 'выбрано {count} категории',
     'widget.categories.selected#many': 'выбрано {count} категорий',
     'widget.categories.selected#other': 'выбрано {count} категорий',
-    
     'widget.places.title': 'Места',
-
-    'widget.places.all.title': 'Все',
-    'widget.places.all.empty_message': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличить масштаб.',
-
-    'widget.places.saved.title': 'Сохранённые',
-    'widget.places.saved.info': 'Выберите список, чтобы увидеть сохранённые места.',
-    'widget.places.saved.error.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть свои сохранённые места.',
-    'widget.places.saved.favorites.title': 'Избранное',
-    'widget.places.saved.favorites.empty_message': 'Ваше избранное пусто.{br}Добавьте место в избранное, чтобы увидеть его здесь.',
-    'widget.places.saved.visited.title': 'Посещённые',
-    'widget.places.saved.visited.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в свой список посещённых мест, чтобы увидеть его здесь.',
-    'widget.places.saved.show_on_the_map': 'Показать на карте',
-    
-    'widget.places.random.title': 'Случайное',
-    'widget.places.random.intro': 'Выберите категории, радиус вокруг Вас и получите случайное место, которое может Вам понравиться.',
-    'widget.places.random.button': 'Найти случайное место',
-    'widget.places.random.button_coundown': 'Найти случайное место ({countdown})',
-    'widget.places.random.error.not_location': 'Чтобы найти случайное место рядом с Вами, необходимо разрешить доступ к Вашему местоположению.',
-    'widget.places.random.error.not_location.info': 'Или нажмите на любое место на карте и выберите "Я здесь".',
-    'widget.places.random.error.not_found': 'Не найдено мест, соответствующих Вашим фильтрам. Попробуйте изменить категории или радиус.',
-
+    'widget.tabs.all': 'Все',
+    'widget.tabs.saved': 'Сохранённые',
+    'widget.tabs.visited': 'Посещённые',
+    'widget.tabs.random': 'Случайное',
+    'widget.all_places.empty_message': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличить масштаб.',
+    'widget.visited_places.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в свой список посещённых мест, чтобы увидеть его здесь.',    
+    'widget.visited_places.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть список посещённых мест.',
+    'widget.random.empty_message': 'Не найдено мест, соответствующих Вашим фильтрам. Попробуйте изменить категории или радиус.',
+    'widget.random.info': 'Выберите категории, радиус вокруг Вас и получите случайное место, которое может Вам понравиться.',
+    'widget.random.button': 'Найти случайное место',
+    'widget.random.button_coundown': 'Найти случайное место ({countdown})',
+    'widget.random.error.not_location': 'Чтобы найти случайное место рядом с Вами, необходимо разрешить доступ к Вашему местоположению. Нажмите на кнопку ниже или выберите "Я здесь" на карте.',
+    'widget.saved.empty_message': 'Вы еще не сохранили ни одного места.{br}Создайте список и добавьте в него интересные места.',
+    'widget.saved.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть список сохранённых мест.',
+    'widget.saved.lists.empty_message': 'В этом списке нет мест.{br}Добавьте место в этот список, чтобы увидеть его здесь.',
+    'widget.saved.lists.add_button': 'Создать новый список',
+    'widget.saved.lists.info': 'Выберите список, чтобы увидеть сохранённые места.',
+    'widget.savedlists.show_only_list': 'Показать на карте',
     'widget.toggler.map': 'Карта',
     'widget.toggler.search_and_filters': 'Поиск и фильтры',
 
@@ -289,21 +292,23 @@ export default {
     'map.popup.location.add_place': 'Добавить место',
     'map.popup.location.i_am_here': 'Я здесь',
 
-    'places_nearby_warning.title': 'Внимание',
-    'places_nearby_warning.message': 'Извините, добавление нового места в этой области невозможно, так как уже есть другие места в радиусе {radius}м. Если место, которое Вы хотели добавить, есть в списке ниже, пожалуйста, поделитесь своим отзывом. В противном случае, обратитесь в нашу службу поддержки.',
-
     'pages.not_found.title': 'Страница не найдена',
     'pages.not_found.text': 'Извините, но похоже, Вы забрели в неизведанные территории. Страница, которую Вы искали, либо была перемещена, удалена, либо никогда не существовала.',
 
     'pages.error.title': 'Упс! Что-то пошло не так',
     'pages.error.text': 'Мы действительно сожалеем, но похоже, что в цифровой вселенной произошёл сбой. Наши серверы в настоящее время испытывают технические трудности, и мы прилагаем все усилия, чтобы всё вернулось в норму.',
 
+    'pages.landing.search.placeholder': 'Найти страну или место',
+    'pages.landing.search.button': 'Поиск',
+
     'pages.landing.countries.title': 'Выберите направление',
     'pages.landing.countries.description': 'Открывайте для себя удивительные места, которые рекомендуют путешественники. Наслаждайтесь захватывающими видами и погружайтесь в разнообразные культуры, знакомьтесь с известными достопримечательностями. Готовы начать своё приключение? Просто выберите страну и отправляйтесь в увлекательное путешествие!',
+    'pages.landing.countries.view_all': 'Все страны',
 
-    'page.landing.random_place.title': 'Места рядом с Вами',
-    'page.landing.random_place.description': 'Посмотрите, что интересного есть рядом с Вами. Эти места рекомендуют другие путешественники и Вы можете посетить их уже сегодня.',
-    
+    'page.landing.around_places.title': 'Места рядом с Вами',
+    'page.landing.around_places.description': 'Посмотрите, что интересного есть рядом с Вами. Эти места рекомендуют другие путешественники и Вы можете посетить их уже сегодня.',
+    'page.landing.around_places.view_all': 'Посмотреть все места',
+
     'pages.landing.features.title': 'Наши возможности',
     'pages.landing.features.description': 'Исследуйте функции нашего приложения и погружайтесь в уютное сообщество путешественников. Находите поистине уникальные места, рекомендованные другими туристами, и планируйте собственную поездку. Присоединяйтесь к формированию пространства, где каждый становится частью чего-то по-настоящему особенного!',
     
@@ -313,6 +318,7 @@ export default {
 
     'pages.country.description': 'Здесь собраны удивительные места, рекомендованные опытными путешественниками. Откройте для себя уникальные черты такой страны, как {country}, следуя советам тех, кто уже её посетил. Создайте свой неповторимый маршрут и погрузитесь в увлекательное путешествие всего в несколько кликов!',
     'pages.country.view_all': 'Все страны',
+    'pages.country.places.empty': 'В этой стране пока нет мест. Будьте первым, кто добавит место в эту страну!',
 
     'pages.place.about.title': 'О месте',
     'pages.place.photos.title': 'Фотографии',
@@ -320,6 +326,7 @@ export default {
     'pages.place.map.title': '{place_name} на карте',
     'pages.place.map.alt': 'Карта с местом {place_name}',
     'pages.place.place_nearby.title': 'Места рядом',
+    'pages.place.author.title': 'Автор',
 
     'pages.user.about_me': 'Обо мне',
     'pages.user.settings.forms.fields.avatar.label': 'Аватар',
@@ -350,13 +357,23 @@ export default {
 
     'pages.add_place.about.title': 'О месте',
     'pages.add_place.about.info': 'Расскажите, что вдохновило Вас — так Вы поможете остальным узнать больше об этом месте',
+    'pages.add_place.add_category': 'Добавить категорию',
     'pages.add_place.photos.title': 'Фотографии',
     'pages.add_place.photos.info': 'Вы можете загрузить до {max_count} фотографий.',
     'pages.add_place.submit': 'Добавить место',
     'pages.add_place.submit.info': 'Добавляя новый объект на карту, Вы принимаете {terms_link}, {privacy_link} и даёте согласие на их обработку.',
-    'pages.add_place.categories.add_category.button': 'Добавить категорию',
-    'pages.add_place.categories.add_category.title': 'Выберите до {max_count} категорий',
+
+    'places_nearby_warning.title': 'Внимание',
+    'places_nearby_warning.text': 'Извините, добавление нового места в этой области невозможно, так как уже есть другие места в радиусе {radius}м. Если место, которое Вы хотели добавить, есть в списке ниже, пожалуйста, поделитесь своим отзывом. В противном случае, обратитесь в нашу службу поддержки.',
+
+    'select_categories.title': 'Выберите до {max_count} категорий',
 
     'location_picker.title': 'Выберите местоположение',
-    'location_picker.placeholder': 'Начните вводить название места или адрес',
+    'location_picker.placeholder': 'Адрес или координаты',
+
+    'choose_navigation_app.title': 'Выберите приложение для навигации',
+
+    'share_place.title': 'Поделиться местом',
+    'share_place.text': 'Поделитесь этим местом с друзьями, чтобы они тоже могли его посетить.',
+    'share_place.copy.success': 'Ссылка была скопирована в буфер обмена.',
 } as const

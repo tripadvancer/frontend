@@ -1,4 +1,6 @@
-import type { ViewState } from 'react-map-gl/maplibre'
+import type { PaddingOptions, ViewState } from 'react-map-gl/maplibre'
+
+import { FlyToOptions } from 'maplibre-gl'
 
 import type { LngLat } from '@/utils/types/geo'
 
@@ -50,7 +52,7 @@ export function stringToViewState(coordinates: string): ViewState {
         zoom: parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM as string),
         pitch: 0,
         bearing: 0,
-        padding: { top: 0, bottom: 0, left: 0, right: 0 },
+        padding: getMapPadding(),
     }
 }
 
@@ -65,7 +67,7 @@ export function getDefaultViewState(): ViewState {
         zoom: parseInt(process.env.NEXT_PUBLIC_MAP_ZOOM as string),
         pitch: 0,
         bearing: 0,
-        padding: { top: 0, bottom: 0, left: 0, right: 0 },
+        padding: getMapPadding(),
     }
 }
 
@@ -76,6 +78,38 @@ export function getFlyToViewState(lngLat: LngLat): ViewState {
         zoom: parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM || '14', 10),
         pitch: 0,
         bearing: 0,
-        padding: { top: 0, bottom: 0, left: 0, right: 0 },
+        padding: getMapPadding(),
     }
+}
+
+export function getMapFlyToOptions(lngLat: LngLat): FlyToOptions {
+    return {
+        center: lngLat,
+        zoom: getMapFlyToZoom(),
+        essential: true,
+    }
+}
+
+export function getMapFlyToZoom(): number {
+    return parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM || '12', 10)
+}
+
+export function getMapPadding(): PaddingOptions {
+    return { top: 100, right: 564, bottom: 100, left: 100 }
+}
+
+export function getBoundsFromCoordinates(coordinates: number[][]): [[number, number], [number, number]] {
+    return coordinates.reduce(
+        (acc, place) => {
+            const lngLat = arrayToLngLat(place)
+            return [
+                [Math.min(acc[0][0], lngLat.lng), Math.min(acc[0][1], lngLat.lat)],
+                [Math.max(acc[1][0], lngLat.lng), Math.max(acc[1][1], lngLat.lat)],
+            ]
+        },
+        [
+            [Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY],
+            [Number.NEGATIVE_INFINITY, Number.NEGATIVE_INFINITY],
+        ],
+    ) as [[number, number], [number, number]]
 }

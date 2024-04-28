@@ -8,13 +8,13 @@ export const placesLayer: SymbolLayer = {
         // prettier-ignore
         'icon-image': [
             'case',
-            ['==', ['get', 'isFavorite'], true], 'pin-blue', // 'pin-blue' if place is favorite
+            ['==', ['get', 'isSaved'], true], 'pin-blue', // 'pin-blue' if place is favorite
             ['==', ['get', 'isVisited'],  true], 'pin-gray', // 'pin-gray' if place is visited
             'pin-orange',                                    // 'pin-orange' by default
         ],
         'icon-size': 0.75,
         'icon-allow-overlap': false,
-        'icon-ignore-placement': false,
+        'icon-ignore-placement': true,
     },
 }
 
@@ -25,20 +25,20 @@ export const visitedPlacesLayer: SymbolLayer = {
     layout: {
         'icon-image': 'pin-gray',
         'icon-size': 0.75,
-        'icon-allow-overlap': false,
-        'icon-ignore-placement': false,
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true,
     },
 }
 
-export const favoritePlacesLayer: SymbolLayer = {
-    id: 'favorite-places-layer',
+export const savedPlacesLayer: SymbolLayer = {
+    id: 'saved-places-layer',
     source: 'places-source',
     type: 'symbol',
     layout: {
         'icon-image': 'pin-blue',
         'icon-size': 0.75,
-        'icon-allow-overlap': false,
-        'icon-ignore-placement': false,
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true,
     },
 }
 
@@ -51,7 +51,7 @@ export const routeLayer: LineLayer = {
         'line-cap': 'round',
     },
     paint: {
-        'line-color': '#ff7d00',
+        'line-color': '#1373cc',
         'line-width': 4,
     },
 }

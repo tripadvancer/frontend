@@ -1,9 +1,11 @@
+import { ReactNode } from 'react'
+
 import { UserName } from './components/user-name'
 import { UserNavigation } from './components/user-navigation'
 import { UserSidebarAbout } from './components/user-sidebar-about'
 import { UserSidebarAchievement } from './components/user-sidebar-achievement'
 
-export const User = ({ userId, children }: { userId: string; children: React.ReactNode }) => {
+export const User = ({ userId, children }: { userId: string; children: ReactNode }) => {
     return (
         <div className="container py-24">
             <div className="inner-container">
@@ -15,7 +17,7 @@ export const User = ({ userId, children }: { userId: string; children: React.Rea
                         <UserSidebarAbout userId={userId} />
                     </div>
 
-                    <div className="flex-1 overflow-hidden">
+                    <div className="min-w-0 flex-1">
                         <UserNavigation userId={userId} />
                         {children}
                     </div>

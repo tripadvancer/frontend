@@ -1,7 +1,9 @@
+import { ReactNode } from 'react'
+
 import { CloseIcon24 } from '@/components/ui/icons'
 
 type DialogProps = {
-    content: React.ReactNode
+    content: ReactNode
     onClose: () => void
 }
 

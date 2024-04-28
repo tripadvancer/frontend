@@ -1,5 +1,7 @@
 'use client'
 
+import { ReactNode } from 'react'
+
 import classNames from 'classnames'
 
 import { CloseIcon16 } from '@/components/ui/icons'
@@ -35,7 +37,7 @@ export const Toast = ({ variant, message, onClose }: ToastProps) => {
     )
 }
 
-export const ToastContainer = ({ children }: { children: React.ReactNode }) => {
+export const ToastContainer = ({ children }: { children: ReactNode }) => {
     return (
         <div className="fixed left-0 right-0 top-4 z-50 px-4 sm:px-8">
             <div className="inner-container flex flex-col gap-5">{children}</div>

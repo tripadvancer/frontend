@@ -44,7 +44,7 @@ export const FormInput = ({
                     disabled={isDisabled}
                     onChange={onChange}
                     className={classNames(
-                        'hover-animated h-10 w-full rounded-lg border bg-white pl-4 pr-4 placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
+                        'hover-animated h-10 w-full rounded-lg border bg-white px-4 placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                         {
                             'border-red-100': error,
                             'border-black-15 focus:border-black-40': !error,

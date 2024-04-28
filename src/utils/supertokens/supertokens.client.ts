@@ -24,7 +24,7 @@ export const clientConfig = (): SuperTokensConfig => {
                                 const response = await oI.emailPasswordSignIn(input)
 
                                 if (response.status === 'OK') {
-                                    store.dispatch(api.util.invalidateTags(['Favorites', 'Places', 'Visited']))
+                                    store.dispatch(api.util.invalidateTags(['Visited', 'Places', 'Lists']))
                                 }
 
                                 return response

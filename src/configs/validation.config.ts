@@ -54,4 +54,14 @@ export const validationConfig = {
         minLength: 2,
         maxLength: 20,
     },
+    list: {
+        description: {
+            minLength: 1,
+            maxLength: 80,
+        },
+        name: {
+            minLength: 1,
+            maxLength: 40,
+        },
+    },
 }

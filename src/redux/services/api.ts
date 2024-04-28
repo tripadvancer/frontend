@@ -19,7 +19,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
     await mutex.waitForUnlock()
 
     let result = await baseQuery(args, api, extraOptions)
-    if (result.error) {
+    if (result.error && result.error.status === 401) {
         // Checking whether the mutex is locked
         if (!mutex.isLocked()) {
             const release = await mutex.acquire()
@@ -46,6 +46,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
 export const api = createApi({
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Favorites', 'PlaceReviews', 'Places', 'PlacesMeta', 'UserPlaces', 'UserReviews', 'Visited'],
+    tagTypes: ['Lists', 'PlaceReviews', 'Places', 'PlacesMeta', 'UserPlaces', 'UserReviews', 'Visited'],
     endpoints: () => ({}),
 })

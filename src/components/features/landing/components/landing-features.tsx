@@ -16,8 +16,8 @@ export const LandingFeatures = async () => {
 
             <div className="inner-container flex flex-col gap-y-16 sm:gap-y-8">
                 <LandingFeaturesPlaces />
-                <LandingFeaturesRandom />
                 <LandingFeaturesLists />
+                <LandingFeaturesRandom />
             </div>
         </section>
     )

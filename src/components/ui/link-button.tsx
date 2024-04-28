@@ -1,10 +1,12 @@
+import { ReactNode } from 'react'
+
 import classNames from 'classnames'
 
 import Link from 'next/link'
 
 type LinkButtonProps = {
     href: string
-    children: React.ReactNode
+    children: ReactNode
     className?: string
 }
 

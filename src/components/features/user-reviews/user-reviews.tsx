@@ -9,28 +9,41 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { UserReviewsSkeleton } from './user-reviews-skeleton'
 
-export const UserReviews = ({ userId }: { userId: number }) => {
+type UserReviewsProps = {
+    userId: number
+    activeUserId?: number
+    isAuth: boolean
+}
+
+export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) => {
     const t = useI18n()
     const [page, setPage] = useState(1)
-    const response = reviewsAPI.useGetReviewsByUserIdQuery({ userId, page })
 
-    if (response.isError) {
+    const { data: reviews, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsByUserIdQuery({ userId, page })
+
+    if (isError) {
         return <div className="text-center text-black-40">{t('common.error')}</div>
     }
 
-    if (response.isSuccess && response.data.items.length === 0) {
+    if (isSuccess && reviews.items.length === 0) {
         return <div className="text-center text-black-40">{t('common.empty_message.reviews')}</div>
     }
 
-    if (response.isSuccess && response.data.items.length > 0) {
+    if (isSuccess && reviews.items.length > 0) {
         return (
             <div className="flex flex-col gap-y-8">
-                {response.data.items.map((review, index) => (
-                    <Review key={index} review={review} variant="user-page" />
+                {reviews.items.map((review, index) => (
+                    <Review
+                        key={index}
+                        review={review}
+                        variant="user-page"
+                        activeUserId={activeUserId}
+                        isAuth={isAuth}
+                    />
                 ))}
 
-                {response.data.totalPages > page && (
-                    <ShowMore isLoading={response.isFetching} onClick={() => setPage(prev => prev + 1)} />
+                {reviews.totalPages > page && (
+                    <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />
                 )}
             </div>
         )

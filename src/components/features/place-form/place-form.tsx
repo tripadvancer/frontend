@@ -12,9 +12,9 @@ import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { PlaceFormErrorMesage } from './components/place-form-error-mesage'
 import { PlaceFormInputCategories } from './components/place-form-input-categories'
-import { PlaceFormInputCoordinates } from './components/place-form-input-coordinates'
 import { PlaceFormInputCover } from './components/place-form-input-cover'
 import { PlaceFormInputDescription } from './components/place-form-input-description'
+import { PlaceFormInputLocation } from './components/place-form-input-location'
 import { PlaceFormInputTitle } from './components/place-form-input-title'
 import { PlaceFormPhotosList } from './components/place-form-photos-list'
 import { PlaceFormSubmit } from './components/place-form-submit'
@@ -62,7 +62,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                             value={formik.values.title}
                             onChange={value => formik.setFieldValue('title', value)}
                         />
-                        <PlaceFormInputCoordinates
+                        <PlaceFormInputLocation
                             value={formik.values.location}
                             onChange={value => formik.setFieldValue('location', value)}
                         />
