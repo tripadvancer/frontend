@@ -12,13 +12,13 @@ export default {
     'about.title': 'Planing a trip but don`t know where to go?',
     'about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
 
-    'onboarding.features.places.title': 'Discover and share{br}interesting places',
+    'onboarding.features.places.title': '{placesCount} places in {countriesCount} countries{br}added by travelers',
     'onboarding.features.places.description.1': 'Find captivating places and distinctive landmarks to craft your unforgettable journey. Share your thoughts on visited locations by leaving reviews and ratings.',
     'onboarding.features.places.description.2': 'Additionally, contribute by adding new, undiscovered places to the map, helping fellow travelers explore hidden gems.',
-    'onboarding.features.random.title': 'Try Our Random{br}Destination Picker',
+    'onboarding.features.random.title': 'Random Destination Picker',
     'onboarding.features.random.description': 'Stuck on where to go in your free time? Utilize our feature for a random choice of nearby destinations! Simply pick a category and choose a comfortable distance. Let the exploration begin!',
-    'onboarding.features.lists.title': 'Create Your Personalized{br}Travel Lists',
-    'onboarding.features.lists.description': 'Craft, modify, and manage your own tailored travel experiences by curating lists of favorite places. Save, edit, and organize Points of Interest for easy access on your journeys. Your personalized adventure starts here!',
+    'onboarding.features.lists.title': 'Personalized Travel Lists',
+    'onboarding.features.lists.description': 'Craft, modify, and manage your own tailored travel experiences by curating lists of favorite places. Save, edit, and organize Points of Interest for easy access on your journeys.',
 
     'confirm_mini.title': 'Sure?',
     'confirm_mini.yes': 'Yes',
