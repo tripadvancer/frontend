@@ -1,10 +1,10 @@
 'use client'
 
 import { Dropdown } from '@/components/ui/dropdown'
-import { GlobeIcon24 } from '@/components/ui/icons'
+import { GlobeIcon16 } from '@/components/ui/icons'
 import { useChangeLocale, useCurrentLocale } from '@/utils/i18n/i18n.client'
 
-export const HeaderLanguageChanger = () => {
+export const LanguageChanger = () => {
     const changeLocale = useChangeLocale()
     const currentLocale = useCurrentLocale()
 
@@ -30,12 +30,10 @@ export const HeaderLanguageChanger = () => {
             ]}
             currentItem={currentLocale}
         >
-            <div className="link flex items-center gap-x-2 text-big-bold">
-                <span className="hidden md:block">
-                    {currentLocale === 'en' && 'English'}
-                    {currentLocale === 'ru' && 'Русский'}
-                </span>
-                <GlobeIcon24 />
+            <div className="link flex items-center gap-x-2">
+                {currentLocale === 'en' && 'English'}
+                {currentLocale === 'ru' && 'Русский'}
+                <GlobeIcon16 />
             </div>
         </Dropdown>
     )
