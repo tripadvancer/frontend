@@ -17,17 +17,8 @@ export const LandingFeaturesPlaces = async () => {
                 alt="Points of Interest"
             />
             <section>
-                <h3 className="h5 mb-4 sm:mb-8">
-                    {t('landing.features.places.title', {
-                        br: <br />,
-                        placesCount: settings.placesCount,
-                        countriesCount: settings.countriesCount,
-                    })}
-                </h3>
-                <div className="flex flex-col gap-y-4">
-                    <p>{t('landing.features.places.text.1')}</p>
-                    <p>{t('landing.features.places.text.2')}</p>
-                </div>
+                <h3 className="h5 mb-4 sm:mb-8">{t('landing.features.places.title', { br: <br /> })}</h3>
+                <p>{t('landing.features.places.text')}</p>
             </section>
         </div>
     )

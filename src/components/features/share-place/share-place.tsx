@@ -9,10 +9,13 @@ import type { IPlace } from '@/utils/types/place'
 import { FormButton } from '@/components/ui/form-button'
 import { CopyIcon24, FacebookIcon24, TwitterIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
-import { useI18n } from '@/utils/i18n/i18n.client'
+import { getCountryByCode } from '@/services/countries'
+import { categoriesDictionary } from '@/utils/dictionaries/categories'
+import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
 export const SharePlace = (place: IPlace) => {
     const t = useI18n()
+    const locale = useCurrentLocale()
     const toast = useToast()
     const url = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/places/${place.id}`
 
@@ -35,6 +38,22 @@ export const SharePlace = (place: IPlace) => {
             <div className="flex gap-x-2">
                 <TwitterShareButton
                     url={url}
+                    title="Look what place I found on Tripadvancer!"
+                    via="tripadvancer_me"
+                    hashtags={[
+                        `${place.title.replace(/\s/g, '').toLowerCase()}`,
+                        `${getCountryByCode(place.countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
+                        `visit${getCountryByCode(place.countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
+                        'tripadvancer_me',
+                        'tripadvancer',
+                        'travel',
+                        'trip',
+                        'tripplanner',
+                        'vacation',
+                        'holiday',
+                        'points_of_interest',
+                        'places_to_visit',
+                    ]}
                     className="hover-animated flex h-10 w-10 items-center justify-center rounded-lg !bg-blue-100 !text-white hover:!bg-blue-active"
                 >
                     <TwitterIcon24 />
