@@ -15,7 +15,7 @@ export const LandingFeaturesLists = async () => {
                 alt="Personalized travel lists"
             />
             <section className="sm:-order-1 sm:text-right">
-                <h3 className="h5 mb-4 sm:mb-8">{t('landing.features.lists.title')}</h3>
+                <h3 className="h5 mb-4 sm:mb-8">{t('landing.features.lists.title', { br: <br /> })}</h3>
                 <p>{t('landing.features.lists.text')}</p>
             </section>
         </div>
