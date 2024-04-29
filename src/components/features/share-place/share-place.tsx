@@ -41,8 +41,9 @@ export const SharePlace = (place: IPlace) => {
                     title="Look what place I found on Tripadvancer!"
                     via="tripadvancer_me"
                     hashtags={[
-                        `${place.title.replace(/\s/g, '')}`,
-                        `${getCountryByCode(place.countryCode)?.name[locale].replace(/\s/g, '')}`,
+                        `${place.title.replace(/\s/g, '').toLowerCase()}`,
+                        `${getCountryByCode(place.countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
+                        `visit${getCountryByCode(place.countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
                         'tripadvancer_me',
                         'tripadvancer',
                         'travel',
