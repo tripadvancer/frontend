@@ -12,7 +12,7 @@ export const Footer = async () => {
                 <div className="border-t border-black-70" />
 
                 <div className="inner-container flex flex-col items-center gap-y-4 py-8">
-                    <div className="md:absolute md:right-8 md:top-8">
+                    <div className="z-40 md:absolute md:right-8 md:top-8">
                         <LanguageChanger />
                     </div>
 
@@ -37,6 +37,19 @@ export const Footer = async () => {
                         </Link>
                         <div className="text-black-40">© Tripadvancer, 2024</div>
                     </div>
+
+                    <Link
+                        href="https://www.producthunt.com/posts/tripadvancer?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-tripadvancer"
+                        className="md:absolute md:bottom-8 md:right-8"
+                        target="_blank"
+                    >
+                        <Image
+                            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=431644&theme=light"
+                            alt="Tripadvancer - Plan&#0032;your&#0032;trip&#0032;and&#0032;find&#0032;interesting&#0032;places | Product Hunt"
+                            width="184"
+                            height="40"
+                        />
+                    </Link>
                 </div>
             </div>
         </footer>
