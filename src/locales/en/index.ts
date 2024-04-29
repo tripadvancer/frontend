@@ -1,4 +1,8 @@
+import { landing } from './landing.en'
+
 export default {
+    ...landing,
+
     'cookie_consent.title': 'Allow Cookies',
     'cookie_consent.description': 'This website uses cookies to ensure you get the best experience on our website. For more information, you can read our {cookie_policy_link}.',
     'cookie_consent.policy_link': 'Cookie Policy',
@@ -11,15 +15,7 @@ export default {
 
     'about.title': 'Planing a trip but don`t know where to go?',
     'about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
-
-    'onboarding.features.places.title': '{placesCount} places in {countriesCount} countries{br}added by travelers',
-    'onboarding.features.places.description.1': 'Find captivating places and distinctive landmarks to craft your unforgettable journey. Share your thoughts on visited locations by leaving reviews and ratings.',
-    'onboarding.features.places.description.2': 'Additionally, contribute by adding new, undiscovered places to the map, helping fellow travelers explore hidden gems.',
-    'onboarding.features.random.title': 'Random Destination Picker',
-    'onboarding.features.random.description': 'Stuck on where to go in your free time? Utilize our feature for a random choice of nearby destinations! Simply pick a category and choose a comfortable distance. Let the exploration begin!',
-    'onboarding.features.lists.title': 'Personalized Travel Lists',
-    'onboarding.features.lists.description': 'Craft, modify, and manage your own tailored travel experiences by curating lists of favorite places. Save, edit, and organize Points of Interest for easy access on your journeys.',
-
+    
     'confirm_mini.title': 'Sure?',
     'confirm_mini.yes': 'Yes',
     'confirm_mini.no': 'No',
@@ -29,7 +25,7 @@ export default {
 
     'confirm.request_personal_data.title': 'Send personal data',
     'confirm.request_personal_data.message': 'Are you sure you want to send your personal data to your email?',
-    
+
     'confirm.request_user_deletion.title': 'Delete your account',
     'confirm.request_user_deletion.message': 'Are you sure you want to delete your account?',
 
@@ -89,7 +85,7 @@ export default {
     'validation.wrong_email': 'Wrong email',
     'validation.username.already_exists': 'This username is already taken',
     'validation.password.policy_violated': 'Password must contain at least 8 characters, including a number',
-    
+
     'validation.place.title.required': 'Please enter a place title',
     'validation.place.title.min_length': 'The title must be at least {min_length} characters long',
     'validation.place.title.max_length': 'The title must be at most {max_length} characters long',
@@ -162,7 +158,7 @@ export default {
     'countries.places#zero': 'No places',
     'countries.places#one': '{count} place',
     'countries.places#other': '{count} places',
-    
+
     'place.actions.i_was_here': 'I was here',
     'place.actions.navigate': 'Navigate',
     'place.actions.save': 'Save place',
@@ -286,24 +282,6 @@ export default {
     'pages.error.title': 'Oops! Something Went Wrong',
     'pages.error.text': 'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
 
-    'pages.landing.search.placeholder': 'Find a country or place',
-    'pages.landing.search.button': 'Search',
-
-    'pages.landing.countries.title': 'Where are you going?',
-    'pages.landing.countries.description': 'Discover top-rated destinations recommended by travelers in each country. Uncover must-see sights, from iconic landmarks to hidden gems waiting to be explored.',
-    'pages.landing.countries.view_all': 'View all countries',
-
-    'pages.landing.around_places.title': 'Explore places around you',
-    'pages.landing.around_places.description': 'For a quick trip plan, discover nearby attractions and places of interest.',
-    'pages.landing.around_places.view_all': 'View all places',
-
-    'pages.landing.features.title': 'Our features',
-    'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Join us in creating a space where every traveler is a part of something special!',
-    
-    'pages.landing.map.title': 'Try our interactive map',
-    'pages.landing.map.description': 'To explore a diverse selection of must-see landmarks, hidden gems, and local attractions worldwide. Your next adventure awaits with just a tap!',
-    'pages.landing.map.cta': 'Explore the map',
-
     'pages.countries.title': 'All countries',
 
     'pages.country.description': 'Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.',
@@ -323,7 +301,7 @@ export default {
     'pages.user.settings.forms.fields.username.label': 'Username',
     'pages.user.settings.forms.fields.info.label': 'About me',
     'pages.user.settings.account.title': 'Your account',
-    
+
     'pages.user.account.verify_email.title': 'Your email is not verified',
     'pages.user.account.verify_email.text': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
     'pages.user.account.verify_email.action': 'Resend Verification Email',

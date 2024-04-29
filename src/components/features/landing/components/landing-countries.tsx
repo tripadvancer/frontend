@@ -12,14 +12,14 @@ export const LandingCountries = async () => {
 
     return (
         <section>
-            <h1 className="h1 mb-4 text-center">{t('pages.landing.countries.title')}</h1>
+            <h1 className="h1 mb-4 text-center">{t('landing.countries.title')}</h1>
             <p className="m-auto mb-8 w-full text-center text-big text-black-70 sm:w-2/3">
-                {t('pages.landing.countries.description')}
+                {t('landing.countries.text')}
             </p>
             <LandingSearch />
             <div className="flex flex-col gap-y-8">
                 <FeedCountries countries={countries.slice(0, 12)} />
-                <ShowAllLink href="/countries">{t('pages.landing.countries.view_all')}</ShowAllLink>
+                <ShowAllLink href="/countries">{t('landing.countries.button')}</ShowAllLink>
             </div>
         </section>
     )

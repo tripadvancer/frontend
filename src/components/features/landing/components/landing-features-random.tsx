@@ -15,8 +15,8 @@ export const LandingFeaturesRandom = async () => {
                 alt="Random places around me"
             />
             <section>
-                <h3 className="h5 mb-4 sm:mb-8">{t('onboarding.features.random.title', { br: <br /> })}</h3>
-                <p>{t('onboarding.features.random.description')}</p>
+                <h3 className="h5 mb-4 sm:mb-8">{t('landing.features.random.title')}</h3>
+                <p>{t('landing.features.random.text')}</p>
             </section>
         </div>
     )

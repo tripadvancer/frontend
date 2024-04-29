@@ -18,15 +18,15 @@ export const LandingFeaturesPlaces = async () => {
             />
             <section>
                 <h3 className="h5 mb-4 sm:mb-8">
-                    {t('onboarding.features.places.title', {
+                    {t('landing.features.places.title', {
                         br: <br />,
                         placesCount: settings.placesCount,
                         countriesCount: settings.countriesCount,
                     })}
                 </h3>
                 <div className="flex flex-col gap-y-4">
-                    <p>{t('onboarding.features.places.description.1')}</p>
-                    <p>{t('onboarding.features.places.description.2')}</p>
+                    <p>{t('landing.features.places.text.1')}</p>
+                    <p>{t('landing.features.places.text.2')}</p>
                 </div>
             </section>
         </div>

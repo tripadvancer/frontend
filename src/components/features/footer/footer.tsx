@@ -1,11 +1,9 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { TwitterIcon24 } from '@/components/ui/icons'
-import { getI18n } from '@/utils/i18n/i18n.server'
 
 export const Footer = async () => {
-    const t = await getI18n()
-
     return (
         <footer className="bg-white">
             <div className="container">

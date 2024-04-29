@@ -107,7 +107,7 @@ export const LandingSearch = () => {
                     />
                 )}
             </div>
-            <FormButton onClick={handleClick}>{t('pages.landing.search.button')}</FormButton>
+            <FormButton onClick={handleClick}>{t('landing.search.button')}</FormButton>
         </div>
     )
 }
