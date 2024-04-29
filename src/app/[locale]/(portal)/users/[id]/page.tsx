@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation'
+import { UserMap } from '@/components/features/user-map/user-map'
 
-export default function UserPage({ params }: { params: { id: string } }) {
-    redirect(`/users/${params.id}/places`)
+export default function UserMapPage({ params }: { params: { id: string } }) {
+    return <UserMap />
 }

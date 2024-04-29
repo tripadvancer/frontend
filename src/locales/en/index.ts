@@ -151,6 +151,7 @@ export default {
     'user_achievement.statistic.visited_places': 'Visited places',
     'user_achievement.statistic.visited_countries': 'Visited countries',
 
+    'user_tabs.map': 'My map',
     'user_tabs.places': 'Added places',
     'user_tabs.reviews': 'Written reviews',
     'user_tabs.settings': 'Settings',

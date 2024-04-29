@@ -151,6 +151,7 @@ export default {
     'user_achievement.statistic.visited_places': 'Посещено мест',
     'user_achievement.statistic.visited_countries': 'Посещено стран',
 
+    'user_tabs.map': 'Моя карта',
     'user_tabs.places': 'Мои места',
     'user_tabs.reviews': 'Мои отзывы',
     'user_tabs.settings': 'Настройки',
