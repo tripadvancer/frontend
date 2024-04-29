@@ -1,4 +1,5 @@
 import { FeedCountries } from '@/components/features/feed-countries/feed-countries'
+import { Search } from '@/components/features/search/search'
 import { getCountries } from '@/services/countries'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
@@ -9,7 +10,8 @@ export const Countries = async () => {
     return (
         <div className="container py-24">
             <section>
-                <h1 className="h1 mb-16 text-center">{t('pages.countries.title')}</h1>
+                <h1 className="h1 mb-8 text-center">{t('pages.countries.title')}</h1>
+                <Search />
                 <FeedCountries countries={countries} />
             </section>
         </div>

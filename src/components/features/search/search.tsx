@@ -13,18 +13,19 @@ import type { ISearchItem } from '@/utils/types/search'
 import { FormButton } from '@/components/ui/form-button'
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { searchAPI } from '@/redux/services/search-api'
-import { сountriesDictionary } from '@/utils/dictionaries/countries'
 import { Keys } from '@/utils/enums'
 import { transformSearchCountries, transformSearchPlaces } from '@/utils/helpers/search'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
-import { LandingSearchInput } from './landing-search-input'
+import { SearchInput } from './search-input'
 
-export const LandingSearch = () => {
+export const Search = () => {
     const t = useI18n()
     const locale = useCurrentLocale()
     const router = useRouter()
+
+    const inputRef = useRef<HTMLInputElement>(null)
     const autocompleteRef = useRef<HTMLDivElement>(null)
 
     const [value, setValue] = useState<string>('')
@@ -84,13 +85,16 @@ export const LandingSearch = () => {
     const handleClick = () => {
         if (items.length > 0) {
             setIsAutocompleteVisible(true)
+        } else {
+            inputRef.current?.focus()
         }
     }
 
     return (
         <div className="m-auto mb-16 flex gap-x-2 sm:w-2/3">
             <div className="relative flex-1">
-                <LandingSearchInput
+                <SearchInput
+                    ref={inputRef}
                     value={value}
                     isLoading={isFetching}
                     onChange={setValue}
