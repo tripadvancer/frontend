@@ -37,7 +37,7 @@ export default {
     'header.user_menu.reviews': 'Written reviews',
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
-    'header.link.map': 'Go to map',
+    'header.link.map': 'Map',
     'header.link.company_blog': 'Company blog',
 
     'common.error': 'An unexpected error has occurred. Please try again later.',

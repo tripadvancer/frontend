@@ -37,7 +37,7 @@ export default {
     'header.user_menu.reviews': 'Мои отзывы',
     'header.user_menu.settings': 'Настройки',
     'header.user_menu.log_out': 'Выйти',
-    'header.link.map': 'Перейти на карту',
+    'header.link.map': 'Карта',
     'header.link.company_blog': 'Блог',
 
     'common.error': 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.',
@@ -111,7 +111,7 @@ export default {
     'placeholder.action.new_password': 'Введите новый пароль',
     'placeholder.action.email': 'Введите email',
     'placeholder.action.new_email': 'Введите новый email',
-    'placeholder.place.title': 'Ввведите название места',
+    'placeholder.place.title': 'Введите название места',
     'placeholder.place.coordinates': 'Выберите местоположение',
 
     'success.send_complaint': 'Ваша жалоба была успешно отправлена.',

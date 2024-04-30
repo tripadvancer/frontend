@@ -4,7 +4,7 @@ export const landing = {
 
     'landing.countries.title': 'Where are you going?',
     'landing.countries.text': 'Discover top-rated destinations recommended by travelers in each country. Uncover must-see sights, from iconic landmarks to hidden gems waiting to be explored.',
-    'landing.countries.button': 'See all Countries',
+    'landing.countries.button': 'See All Countries',
 
     'landing.around_places.title': 'Explore places around you',
     'landing.around_places.text': 'Discover what interesting places are near you. These locations are recommended by other travelers, and you can visit them today.',

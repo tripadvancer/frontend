@@ -8,7 +8,7 @@ export const landing = {
 
     'landing.around_places.title': 'Места рядом с Вами',
     'landing.around_places.text': 'Узнайте, какие интересные места находятся рядом с вами. Эти локации рекомендуют другие путешественники, и вы можете посетить их уже сегодня.',
-    'landing.around_places.button': 'Посмотреть все места',
+    'landing.around_places.button': 'Все места',
 
     'landing.features.title': 'Наши возможности',
     'landing.features.text': 'Познакомьтесь с разнообразным функционалом нашего приложения и окунитесь в уютное сообщество путешественников.',

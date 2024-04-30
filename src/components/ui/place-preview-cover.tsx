@@ -16,7 +16,7 @@ type PlacePreviewCoverProps = Pick<IPlace, 'title' | 'cover'> & {
 export const PlacePreviewCover = (props: PlacePreviewCoverProps) => {
     if (!props.cover) {
         return (
-            <div className={classNames('flex-center bg-black-5', props.className)}>
+            <div className={classNames('flex-center aspect-square w-full bg-black-5', props.className)}>
                 <ImageStub className="w-1/3 text-black-15 opacity-75" />
             </div>
         )
