@@ -1,5 +1,7 @@
 'use client'
 
+import { useMap } from 'react-map-gl/maplibre'
+
 import { getMapState } from '@/redux/features/map-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
@@ -14,6 +16,8 @@ export const WidgetAllPlaces = () => {
     const t = useI18n()
     const mapBounds = useAppSelector(getMapState).bounds
     const selectedCategories = useAppSelector(getWidgetState).selectedCategories
+
+    const { map } = useMap()
 
     const { data, isError, isLoading, isSuccess, refetch } = placesAPI.useGetPlacesQuery(
         { mapBounds, selectedCategories },
