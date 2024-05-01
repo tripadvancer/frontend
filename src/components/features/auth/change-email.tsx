@@ -14,6 +14,8 @@ import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
+import { ChangeEmailCompleting } from './change-email-completing'
+
 export const ChangeEmail = () => {
     const t = useI18n()
     const router = useRouter()
@@ -43,9 +45,8 @@ export const ChangeEmail = () => {
 
             switch (response.status) {
                 case 'OK':
-                    dialog.close()
-                    router.refresh()
-                    toast.success(t('success.change_user_email'))
+                    dialog.open(<ChangeEmailCompleting />)
+                    // toast.success(t('success.change_user_email'))
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
