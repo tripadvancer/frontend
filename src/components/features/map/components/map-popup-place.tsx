@@ -26,7 +26,7 @@ export const MapPopupPlace = (place: IPlacePopupInfo) => {
                         cover={place.cover}
                         title={place.title}
                         size={80}
-                        className="aspect-square w-20 rounded-lg"
+                        className="aspect-square w-20 flex-none rounded-lg"
                     />
                     <div className="line-clamp-4 break-words font-medium">{place.title}</div>
                 </Link>

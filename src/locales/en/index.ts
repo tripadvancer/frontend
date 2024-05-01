@@ -286,7 +286,7 @@ export default {
 
     'pages.country.description': 'Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.',
     'pages.country.view_all': 'View all countries',
-    'pages.country.places.empty': 'There are no places in this country yet. Be the first to add a place!',
+    'pages.country.places.empty': 'There are no places yet. Be the first to add a place!',
 
     'pages.place.about.title': 'About this place',
     'pages.place.photos.title': 'Photos',
