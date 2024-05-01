@@ -13,6 +13,7 @@ const maxCategories = validationConfig.place.category.maxCount
 export const validationSchema = (t: any) =>
     Yup.object().shape({
         title: Yup.string()
+            .trim()
             .required(t('validation.place.title.required'))
             .min(titleMinLength, t('validation.place.title.min_length', { min_length: titleMinLength }))
             .max(titleMaxLength, t('validation.place.title.max_length', { max_length: titleMaxLength })),
