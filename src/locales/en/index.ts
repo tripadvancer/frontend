@@ -328,7 +328,7 @@ export default {
     'pages.add_place.photos.title': 'Photos',
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
-    'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
+    'pages.add_place.submit.info': 'By adding a new place to the map, you acknowledge and accept our {terms_link} and {privacy_link}.',
 
     'places_nearby_warning.title': 'Attention',
     'places_nearby_warning.text': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',

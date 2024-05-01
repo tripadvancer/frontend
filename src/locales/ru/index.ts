@@ -335,7 +335,7 @@ export default {
     'pages.add_place.photos.title': 'Фотографии',
     'pages.add_place.photos.info': 'Вы можете загрузить до {max_count} фотографий.',
     'pages.add_place.submit': 'Добавить место',
-    'pages.add_place.submit.info': 'Добавляя новый объект на карту, Вы принимаете {terms_link}, {privacy_link} и даёте согласие на их обработку.',
+    'pages.add_place.submit.info': 'Добавляя новое место на карту, Вы подтверждаете и принимаете наши {terms_link} и {privacy_link}.',
 
     'places_nearby_warning.title': 'Внимание',
     'places_nearby_warning.text': 'Извините, добавление нового места в этой области невозможно, так как уже есть другие места в радиусе {radius}м. Если место, которое Вы хотели добавить, есть в списке ниже, пожалуйста, поделитесь своим отзывом. В противном случае, обратитесь в нашу службу поддержки.',
