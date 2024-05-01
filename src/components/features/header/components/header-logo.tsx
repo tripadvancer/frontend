@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const HeaderLogo = () => {
     return (
-        <Link href="/" className="absolute left-4 top-1/2 flex -translate-y-1/2 gap-x-2 sm:left-8">
+        <Link href="/" className="flex gap-x-2">
             <Image src="/images/logo-mini.svg" width="32" height="28" alt="Tripadvancer" className="hidden md:block" />
             <Image
                 src="/images/logo.svg"
