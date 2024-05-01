@@ -1,18 +1,26 @@
 'use client'
 
-import { WorldMapSVG } from './world-map-svgs'
+import classNames from 'classnames'
 
-export const WorldMap = () => {
-    const handleMouseEnter = (event: React.MouseEvent<SVGElement>) => {
-        console.log(event.currentTarget)
-    }
+import { world } from './paths/world'
 
-    // zoom svg
-    const handleZoom = (event: React.WheelEvent<HTMLDivElement>) => {}
-
+export const WorldMap = ({ visited }: { visited: string[] }) => {
     return (
-        <div onWheel={handleZoom}>
-            <WorldMapSVG />
-        </div>
+        <svg version="1.1" viewBox="0 0 1010 653" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                {world.map(item =>
+                    item.paths.map(path => (
+                        <path
+                            key={path}
+                            d={path}
+                            className={classNames('cursor-pointer fill-black-40 stroke-black-5 hover:fill-blue-100', {
+                                'fill-blue-active': visited.includes(item.code),
+                            })}
+                            onClick={() => {}}
+                        />
+                    )),
+                )}
+            </g>
+        </svg>
     )
 }

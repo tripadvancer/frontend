@@ -5,6 +5,10 @@ export type IUser = {
     avatar: string | null
     createdAt: Date
     updatedAt: Date
+    visitedCountries: {
+        code: string
+        count: number
+    }[]
     _count: IUserStatistics
 }
 

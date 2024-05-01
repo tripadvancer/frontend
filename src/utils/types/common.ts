@@ -7,3 +7,8 @@ export type FormFieldError = {
     id: string
     error: string
 }
+
+export type SVGPath = {
+    code: string
+    paths: string[]
+}
