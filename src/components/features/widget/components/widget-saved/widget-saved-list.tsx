@@ -27,7 +27,7 @@ export const WidgetSavedList = ({ children, caption, isAuth }: WidgetSavedListPr
     }
 
     const handleShowOnlySavedPlacesChange = () => {
-        dispatch(toggleWidgetShowOnlySavedPlaces())
+        dispatch(toggleWidgetShowOnlySavedPlaces(!widgetState.isShowOnlySavedPlaces))
         dispatch(closeMapPopups())
     }
 
@@ -45,7 +45,7 @@ export const WidgetSavedList = ({ children, caption, isAuth }: WidgetSavedListPr
 
                 {isAuth && widgetState.activeTab === WidgetTabsEnum.SAVED && widgetState.activeList && (
                     <div className="flex items-center gap-x-2">
-                        <div onClick={() => dispatch(toggleWidgetShowOnlySavedPlaces())} className="cursor-pointer">
+                        <div onClick={handleShowOnlySavedPlacesChange} className="cursor-pointer">
                             {t('widget.saved.lists.show_only_list')}
                         </div>
                         <FormSwitcher
