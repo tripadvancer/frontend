@@ -16,7 +16,7 @@ export const WidgetCategories = () => {
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
     const selectedCategories = widgetState.selectedCategories
-    
+
     const info =
         selectedCategories.length > 0
             ? t('widget.categories.selected', { count: selectedCategories.length })

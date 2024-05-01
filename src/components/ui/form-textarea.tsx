@@ -32,7 +32,7 @@ export const FormTextarea = ({
     const [characterCount, setCharacterCount] = useState<number>(0)
 
     useEffect(() => {
-        setCharacterCount(value?.length)
+        setCharacterCount(value.trim().length)
     }, [value])
 
     return (

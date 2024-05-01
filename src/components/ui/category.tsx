@@ -1,9 +1,11 @@
 'use client'
 
+import { ReactNode } from 'react'
+
 import classNames from 'classnames'
 
 type CategoryProps = {
-    children: React.ReactNode
+    children: ReactNode
     variant: 'blue' | 'orange'
     isSelected?: boolean
     onClick: () => void

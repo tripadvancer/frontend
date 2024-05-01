@@ -3,9 +3,14 @@ import { notFound } from 'next/navigation'
 import type { ICountry, ICountryDict } from '@/utils/types/country'
 
 import { сountriesDictionary } from '@/utils/dictionaries/countries'
+import { CountriesSortBy, OrderDirection } from '@/utils/enums'
 
-export async function getCountries(): Promise<ICountry[]> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/countries'
+export async function getCountries(sortBy?: CountriesSortBy, orderDirection?: OrderDirection): Promise<ICountry[]> {
+    const params = new URLSearchParams({
+        sortBy: sortBy || CountriesSortBy.NAME,
+        orderDirection: orderDirection || OrderDirection.ASC,
+    })
+    const url = process.env.NEXT_PUBLIC_API_URL + '/countries?' + params.toString()
     const res = await fetch(url)
 
     if (!res.ok) {
@@ -15,7 +20,9 @@ export async function getCountries(): Promise<ICountry[]> {
     return res.json()
 }
 
-export const getCountryByCode = (countryCode: Pick<ICountryDict, 'code'>['code'] | null): ICountryDict | undefined => {
+export const getCountryByCode = (
+    countryCode: Pick<ICountryDict, 'code'>['code'] | null | undefined,
+): ICountryDict | undefined => {
     return сountriesDictionary.find(country => country.code.toUpperCase() === countryCode)
 }
 

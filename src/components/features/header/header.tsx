@@ -1,12 +1,11 @@
 import Link from 'next/link'
 
 import { EmailVerification } from '@/components/features/email-verification/email-verification'
-import { EditIcon24, MapIcon24 } from '@/components/ui/icons'
+import { MapIcon24 } from '@/components/ui/icons'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
-import { HeaderLanguageChanger } from './components/header-language-changer'
+import { HeaderButtons } from './components/header-buttons'
 import { HeaderLogo } from './components/header-logo'
-import { HeaderUser } from './components/header-user'
 
 export const Header = async () => {
     const t = await getI18n()
@@ -16,21 +15,16 @@ export const Header = async () => {
             <div className="absolute left-0 right-0 top-0 -z-10 h-[200px] bg-blue-20" />
             <header className="sticky top-0 z-40 bg-blue-20">
                 <EmailVerification />
-                <div className="container relative flex h-[56px] items-center justify-between sm:h-[76px]">
-                    <div className="flex gap-x-4 sm:gap-x-6">
+                <div className="container flex h-[56px] items-center justify-between gap-x-6 sm:h-[76px]">
+                    <HeaderLogo />
+                    <div className="flex items-center gap-x-2 sm:gap-x-8">
                         <Link href="/maps" className="flex items-center gap-x-2 text-big-bold">
                             <MapIcon24 />
                             <span className="hidden md:block">{t('header.link.map')}</span>
                         </Link>
-                        {/* <Link href="/blog" className="flex items-center gap-x-2 text-big-bold">
-                            <EditIcon24 />
-                            <span className="hidden md:block">Blog</span>
-                        </Link> */}
-                    </div>
-                    <HeaderLogo />
-                    <div className="flex gap-x-4 sm:gap-x-6">
-                        <HeaderUser />
-                        <HeaderLanguageChanger />
+                        <div className="flex items-center gap-x-2">
+                            <HeaderButtons />
+                        </div>
                     </div>
                 </div>
             </header>

@@ -8,16 +8,23 @@ import { ShowMore } from '@/components/ui/show-more'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const PlaceMainReviewsList = ({ placeId }: { placeId: number }) => {
+type PlaceMainReviewsListProps = {
+    placeId: number
+    activeUserId?: number
+    isAuth: boolean
+}
+
+export const PlaceMainReviewsList = ({ placeId, activeUserId, isAuth }: PlaceMainReviewsListProps) => {
     const t = useI18n()
     const [page, setPage] = useState(1)
-    const response = reviewsAPI.useGetReviewsByPlaceIdQuery({ placeId, page })
 
-    if (response.isError) {
+    const { data: reviews, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsByPlaceIdQuery({ placeId, page })
+
+    if (isError) {
         return <div className="border-y border-black-15 py-8 text-center text-black-40">{t('common.error')}</div>
     }
 
-    if (response.isSuccess && response.data.items.length === 0) {
+    if (isSuccess && reviews.items.length === 0) {
         return (
             <div className="border-y border-black-15 py-8 text-center text-black-40">
                 {t('common.empty_message.reviews')}
@@ -25,15 +32,21 @@ export const PlaceMainReviewsList = ({ placeId }: { placeId: number }) => {
         )
     }
 
-    if (response.isSuccess && response.data.items.length > 0) {
+    if (isSuccess && reviews.items.length > 0) {
         return (
             <div className="flex flex-col gap-y-8">
-                {response.data.items.map((review, index) => (
-                    <Review key={index} review={review} variant="place-page" />
+                {reviews.items.map((review, index) => (
+                    <Review
+                        key={index}
+                        review={review}
+                        variant="place-page"
+                        activeUserId={activeUserId}
+                        isAuth={isAuth}
+                    />
                 ))}
 
-                {response.data.totalPages > page && (
-                    <ShowMore isLoading={response.isFetching} onClick={() => setPage(prev => prev + 1)} />
+                {reviews.totalPages > page && (
+                    <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />
                 )}
             </div>
         )

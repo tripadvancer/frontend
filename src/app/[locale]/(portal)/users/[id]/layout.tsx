@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import type { Metadata } from 'next/types'
 
 import { User } from '@/components/features/user/user'
@@ -15,6 +17,6 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     }
 }
 
-export default function UserLayout({ params, children }: { params: { id: string }; children: React.ReactNode }) {
+export default function UserLayout({ params, children }: { params: { id: string }; children: ReactNode }) {
     return <User userId={params.id}>{children}</User>
 }

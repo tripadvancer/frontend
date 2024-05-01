@@ -1,40 +1,38 @@
-import { Achievement } from '@/components/ui/achievement'
+import { UserRankBeginnerIcon48 } from '@/components/ui/icons'
 import { getUserById } from '@/services/users'
 import { getI18n } from '@/utils/i18n/i18n.server'
+
+const Item = ({ label, value }: { label: string; value: number }) => {
+    return (
+        <li className="mb-2 flex justify-between gap-x-1">
+            <div className="whitespace-nowrap">{label}</div>
+            <div className="overflow-hidden">
+                ...........................................................................................................................................................................................................
+            </div>
+            <div className="font-medium">{value}</div>
+        </li>
+    )
+}
 
 export const UserSidebarAchievement = async ({ userId }: { userId: string }) => {
     const t = await getI18n()
     const user = await getUserById(userId)
 
     return (
-        <Achievement
-            title={t('user_achievement.level_1')}
-            icon={
-                // prettier-ignore
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M26 38V35.8582C29.967 35.2908 33.3975 33.0603 35.5627 29.8957C40.9908 29.1477 44 24.4457 44 18V12C44 9.79086 42.2091 8 40 8H37.4649C36.7733 6.8044 35.4806 6 34 6H14C12.5194 6 11.2267 6.8044 10.5351 8H8C5.79086 8 4 9.79086 4 12V18C4 24.4457 7.00917 29.1477 12.4373 29.8957C14.6025 33.0603 18.033 35.2908 22 35.8582V38H20C17.7909 38 16 39.7909 16 42H32C32 39.7909 30.2091 38 28 38H26ZM8 12H10V22C10 22.9155 10.0879 23.8105 10.2557 24.677C8.78055 23.3493 8 21.0625 8 18V12ZM38 12V22C38 22.9155 37.9121 23.8105 37.7443 24.677C39.2194 23.3493 40 21.0625 40 18V12H38ZM14 22V10H34V22C34 27.5228 29.5228 32 24 32C18.4772 32 14 27.5228 14 22Z" />
-                </svg>
-            }
-        >
-            <Achievement.Items>
-                <Achievement.Item label={t('user_achievement.statistic.added_places')} value={user._count.places} />
-                <Achievement.Item
-                    label={t('user_achievement.statistic.added_photos')}
-                    value={user._count.placePhotos}
-                />
-                <Achievement.Item
-                    label={t('user_achievement.statistic.added_reviews')}
-                    value={user._count.placeReviews}
-                />
-                <Achievement.Item
-                    label={t('user_achievement.statistic.visited_places')}
-                    value={user._count.visitedPlaces}
-                />
-                <Achievement.Item
-                    label={t('user_achievement.statistic.visited_countries')}
-                    value={user._count.visitedCountries}
-                />
-            </Achievement.Items>
-        </Achievement>
+        <div className="rounded-2xl bg-orange-10 p-8">
+            <div className="mb-8 items-center bg-[url('/images/laurel.svg')] bg-top bg-no-repeat pl-4 pr-4 pt-4 text-orange-100">
+                <div className="flex-center">
+                    <UserRankBeginnerIcon48 />
+                </div>
+                <div className="break-words text-center font-medium">{t('user_achievement.level_1')}</div>
+            </div>
+            <ul>
+                <Item label={t('user_achievement.statistic.added_places')} value={user._count.places} />
+                <Item label={t('user_achievement.statistic.added_photos')} value={user._count.placePhotos} />
+                <Item label={t('user_achievement.statistic.added_reviews')} value={user._count.placeReviews} />
+                <Item label={t('user_achievement.statistic.visited_places')} value={user._count.visitedPlaces} />
+                <Item label={t('user_achievement.statistic.visited_countries')} value={user._count.visitedCountries} />
+            </ul>
+        </div>
     )
 }

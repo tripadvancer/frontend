@@ -6,6 +6,8 @@ import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
+import { RequestUserDeletionCompleting } from '../../auth/request-user-deletion-completing'
+
 export const UserSettingsBlockRequestUserDeletion = () => {
     const t = useI18n()
     const dialog = useDialog()
@@ -23,7 +25,7 @@ export const UserSettingsBlockRequestUserDeletion = () => {
                     dialog.close()
                     try {
                         await requestUserDeletion()
-                        toast.success(t('success.request_user_deletion'))
+                        dialog.open(<RequestUserDeletionCompleting />)
                     } catch {
                         toast.error(t('common.error'))
                     }

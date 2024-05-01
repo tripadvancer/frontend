@@ -3,6 +3,6 @@
 import { createI18nClient } from 'next-international/client'
 
 export const { useI18n, useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = createI18nClient({
-    en: () => import('@/locales/en'),
-    ru: () => import('@/locales/ru'),
+    en: () => import('@/locales/en/index'),
+    ru: () => import('@/locales/ru/index'),
 })

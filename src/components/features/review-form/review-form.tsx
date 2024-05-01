@@ -3,7 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
+import type { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormRatingInput } from '@/components/ui/form-rating-input'
@@ -30,6 +30,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
     const validationSchema = Yup.object().shape({
         rating: Yup.number().min(1, t('validation.required')),
         text: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .min(reviewTextMinLength, t('validation.text.min_length', { min_length: reviewTextMinLength }))
             .max(reviewTextMaxLength, t('validation.text.max_length', { max_length: reviewTextMaxLength })),

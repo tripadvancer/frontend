@@ -88,8 +88,8 @@ export const widgetSlice = createSlice({
             state.isAboutOpened = false
             state.isMenuOpened = !state.isMenuOpened
         },
-        toggleWidgetShowOnlySavedPlaces(state) {
-            state.isShowOnlySavedPlaces = !state.isShowOnlySavedPlaces
+        toggleWidgetShowOnlySavedPlaces(state, action: PayloadAction<boolean>) {
+            state.isShowOnlySavedPlaces = action.payload
             setWidgetDataSource(state)
         },
         setWidgetSelectedCategories(state, action: PayloadAction<number[]>) {

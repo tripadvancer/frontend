@@ -1,3 +1,5 @@
-export default function PlaceLayout({ children }: { children: React.ReactNode }) {
+import { ReactNode } from 'react'
+
+export default function PlaceLayout({ children }: { children: ReactNode }) {
     return children
 }

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 import type { Metadata, Viewport } from 'next/types'
@@ -62,19 +64,13 @@ export const metadata: Metadata = {
     },
 }
 
-export default async function RootLayout({
-    children,
-    params,
-}: {
-    children: React.ReactNode
-    params: { locale: string }
-}) {
+export default async function RootLayout({ children, params }: { children: ReactNode; params: { locale: string } }) {
     const locale = params.locale
 
     return (
         <html lang={locale}>
             <head>
-                <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet" />
+                <link href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css" rel="stylesheet" />
             </head>
             <body className={roboto.className}>
                 <Providers locale={locale}>{children}</Providers>

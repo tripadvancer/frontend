@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { ChangeEvent, useRef } from 'react'
 
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
@@ -21,7 +21,7 @@ export const PlaceFormInputCover = ({ value, onChange }: PlaceFormInputCoverProp
 
     const [upload, { isLoading }] = placesAPI.usePlaceCoverUploadMutation()
 
-    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files?.length) {
             const file = e.target.files[0]
             const fileSize = e.target.files[0].size

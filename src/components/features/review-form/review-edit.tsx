@@ -19,7 +19,7 @@ export const ReviewEdit = (review: IReview) => {
 
     const [updateReview, { isLoading }] = reviewsAPI.useUpdateReviewMutation()
 
-    const initialValues = {
+    const initialValues: UpdateReviewInputs = {
         placeId: review.place.id,
         reviewId: review.id,
         userId: review.user.id,
@@ -33,7 +33,7 @@ export const ReviewEdit = (review: IReview) => {
             await updateReview(inputs)
             dialog.close()
             router.refresh()
-            toast.success(t('success.edit_review'))
+            toast.success(t('success.update_review'))
         } catch {
             toast.error(t('common.error'))
         }

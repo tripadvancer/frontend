@@ -9,9 +9,9 @@ export const PlaceSidebarRating = async ({ avgRating, reviewsCount }: IPlace) =>
     const t = await getI18n()
 
     return (
-        <div className="flex flex-col items-center gap-y-2">
+        <div className="flex flex-col gap-y-2.5">
             <Rating value={avgRating ?? 0} size={32} />
-            <p className="text-sm text-black-40">
+            <p className="text-small text-black-40">
                 {reviewsCount
                     ? t('place.rating', {
                           reviews: <Link href={'#reviews'}>{t('place.reviews', { count: reviewsCount })}</Link>,

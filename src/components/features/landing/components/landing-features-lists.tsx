@@ -6,7 +6,7 @@ export const LandingFeaturesLists = async () => {
     const t = await getI18n()
 
     return (
-        <div className="grid-row-2 grid items-center gap-y-8 sm:grid-cols-2 sm:grid-rows-none sm:gap-x-16">
+        <div className="grid items-center gap-y-8 sm:grid-cols-2 sm:gap-x-16">
             <Image
                 src="/images/features-lists.svg"
                 width={448}
@@ -14,9 +14,9 @@ export const LandingFeaturesLists = async () => {
                 className="m-auto block"
                 alt="Personalized travel lists"
             />
-            <section>
-                <h3 className="h5 mb-4 sm:mb-8">{t('onboarding.features.lists.title', { br: <br /> })}</h3>
-                <p>{t('onboarding.features.lists.description')}</p>
+            <section className="sm:-order-1 sm:text-right">
+                <h3 className="h5 mb-4 sm:mb-8">{t('landing.features.lists.title', { br: <br /> })}</h3>
+                <p>{t('landing.features.lists.text')}</p>
             </section>
         </div>
     )

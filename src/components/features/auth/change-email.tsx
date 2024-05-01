@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import { ChangeUserEmailInputs } from '@/utils/types/user'
+import type { ChangeUserEmailInputs } from '@/utils/types/user'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
@@ -13,6 +13,8 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
+
+import { ChangeEmailCompleting } from './change-email-completing'
 
 export const ChangeEmail = () => {
     const t = useI18n()
@@ -43,9 +45,8 @@ export const ChangeEmail = () => {
 
             switch (response.status) {
                 case 'OK':
-                    dialog.close()
-                    router.refresh()
-                    toast.success(t('success.change_user_email'))
+                    dialog.open(<ChangeEmailCompleting />)
+                    // toast.success(t('success.change_user_email'))
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
