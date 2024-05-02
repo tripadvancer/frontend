@@ -14,7 +14,12 @@ import { PlaceSidebarNearbySkeleton } from './place-sidebar-nearby-skeleton'
 export const PlaceSidebarNearby = async ({ id, location }: IPlace) => {
     const t = await getI18n()
     const lngLat = arrayToLngLat(location.coordinates)
-    const placesAround = await getPlacesAround(lngLat.lat, lngLat.lng, 30000, [])
+    const placesAround = await getPlacesAround(
+        lngLat.lat,
+        lngLat.lng,
+        parseInt(process.env.NEXT_PUBLIC_NEARBY_PLACES_RADIUS || '30000', 10),
+        [],
+    )
 
     // Filter out the current place
     const placesAroundFiltered = placesAround.filter(place => place.id !== id)

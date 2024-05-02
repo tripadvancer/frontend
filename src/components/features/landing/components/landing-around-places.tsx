@@ -13,7 +13,7 @@ export const LandingAroundPlaces = () => {
     const edgeGeo = internalApi.useGetEdgeGeoQuery()
     const lat = parseFloat(edgeGeo.data?.lat || '0')
     const lng = parseFloat(edgeGeo.data?.lng || '0')
-    const radius = parseInt(process.env.NEXT_PUBLIC_RANDOM_PLACE_RADIUS_FOR_LANDING || '10000')
+    const radius = parseInt(process.env.NEXT_PUBLIC_AROUND_ME_RADIUS || '150000')
     const userCountryCode = edgeGeo.data?.countryCode
 
     const {
