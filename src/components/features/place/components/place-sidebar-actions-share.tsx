@@ -36,7 +36,7 @@ export const PlaceSidebarActionsShare = ({ place }: { place: IPlace }) => {
     }
 
     return (
-        <div className="link inline-flex items-center gap-x-2 align-top" onClick={handleClick}>
+        <div className="link flex items-center gap-x-2 align-top" onClick={handleClick}>
             <ShareIcon24 />
             {t('place.actions.share')}
         </div>

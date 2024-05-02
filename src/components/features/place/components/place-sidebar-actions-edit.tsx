@@ -11,7 +11,7 @@ export const PlaceSidebarActionsEdit = ({ place }: { place: IPlace }) => {
     const t = useI18n()
 
     return (
-        <Link href={`/places/${place.id}/edit`} className="link inline-flex items-center gap-x-2 align-top">
+        <Link href={`/places/${place.id}/edit`} className="link flex items-center gap-x-2 align-top">
             <EditIcon24 />
             {t('place.actions.edit')}
         </Link>
