@@ -56,7 +56,7 @@ export const CountryCategories = ({ selectedCategoryIds, locale }: CountryCatego
             </Link>
             {sortedCategories.map(category => (
                 <Link
-                    key={category.id}
+                    key={`category-${category.id}`}
                     href={{ query: createQueryString(category.id) }}
                     scroll={false}
                     replace={true}

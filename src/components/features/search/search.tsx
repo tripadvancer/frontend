@@ -91,7 +91,7 @@ export const Search = () => {
     }
 
     return (
-        <div className="m-auto mb-16 flex gap-x-2 sm:w-2/3">
+        <div className="m-auto mb-16 flex flex-col gap-2 sm:w-2/3 sm:flex-row">
             <div className="relative flex-1">
                 <SearchInput
                     ref={inputRef}

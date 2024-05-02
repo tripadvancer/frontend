@@ -25,7 +25,13 @@ export const PhotoGallery = ({ photos, title, description, size }: PhotoGalleryP
     return (
         <>
             {photos.map((photo, index) => (
-                <Photo key={photo.id} url={photo.url} size={size} alt={title} onClick={() => setIndexSlide(index)} />
+                <Photo
+                    key={`photo-${index}`}
+                    url={photo.url}
+                    size={size}
+                    alt={title}
+                    onClick={() => setIndexSlide(index)}
+                />
             ))}
 
             <Lightbox

@@ -35,7 +35,7 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                         const country = getCountryByCode(place.countryCode)
 
                         return (
-                            <div key={place.id}>
+                            <div key={`user-place-${place.id}`}>
                                 <Link href={`/places/${place.id}`} className="text-black-100">
                                     <div className="mb-2">
                                         <PlacePreviewCover

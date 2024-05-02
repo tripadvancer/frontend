@@ -25,7 +25,7 @@ export const ReviewSkeleton = () => {
 
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-9">
                 {Array.from({ length: 3 }).map((_, i) => (
-                    <div key={i} className="flex-center aspect-square w-full rounded bg-black-5">
+                    <div key={`review-skeleton-${i}`} className="flex-center aspect-square w-full rounded bg-black-5">
                         <svg
                             className="w-10 text-black-15 opacity-20"
                             aria-hidden="true"

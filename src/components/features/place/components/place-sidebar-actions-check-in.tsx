@@ -36,7 +36,7 @@ export const PlaceSidebarActionsCheckIn = ({ place, isAuth }: { place: IPlace; i
 
     return (
         <div className="flex items-center justify-between">
-            <div className="flex cursor-pointer items-center gap-x-2" onClick={toggle}>
+            <div className="flex flex-1 cursor-pointer items-center gap-x-2" onClick={toggle}>
                 <PinLocationIcon24 />
                 {t('place.actions.i_was_here')}
             </div>

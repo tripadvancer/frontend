@@ -22,7 +22,7 @@ export const PlaceSidebarActionsComplain = ({ place, isAuth }: { place: IPlace; 
     }
 
     return (
-        <div className="link-red inline-flex items-center gap-x-2 align-top" onClick={handleClick}>
+        <div className="link-red flex items-center gap-x-2 align-top" onClick={handleClick}>
             <ComplainIcon24 />
             {t('place.actions.complain')}
         </div>
