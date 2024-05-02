@@ -18,11 +18,10 @@ const maxFileSize = validationConfig.common.maxFileSize
 
 type ReviewFormPhotosListProps = {
     photos: string[]
-    isDisabled?: boolean
     onChange: (urls: string[]) => void
 }
 
-export const ReviewFormPhotosList = ({ photos, isDisabled, onChange }: ReviewFormPhotosListProps) => {
+export const ReviewFormPhotosList = ({ photos, onChange }: ReviewFormPhotosListProps) => {
     const t = useI18n()
     const toast = useToast()
 

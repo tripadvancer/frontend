@@ -54,7 +54,6 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     <FormRatingInput
                         value={formik.values.rating}
                         error={formik.errors.rating}
-                        isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('rating', value)}
                     />
                 </div>
@@ -79,7 +78,6 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     </label>
                     <ReviewFormPhotosList
                         photos={formik.values.photos}
-                        isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('photos', value)}
                     />
                 </div>
