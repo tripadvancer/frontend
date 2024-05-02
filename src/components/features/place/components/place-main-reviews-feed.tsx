@@ -8,13 +8,13 @@ import { ShowMore } from '@/components/ui/show-more'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PlaceMainReviewsListProps = {
+type PlaceMainReviewsFeedProps = {
     placeId: number
     activeUserId?: number
     isAuth: boolean
 }
 
-export const PlaceMainReviewsList = ({ placeId, activeUserId, isAuth }: PlaceMainReviewsListProps) => {
+export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMainReviewsFeedProps) => {
     const t = useI18n()
     const [page, setPage] = useState(1)
 

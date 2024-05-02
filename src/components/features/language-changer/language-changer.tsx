@@ -30,7 +30,7 @@ export const LanguageChanger = () => {
             ]}
             currentItem={currentLocale}
         >
-            <div className="link flex items-center gap-x-2">
+            <div className="link flex-center gap-x-2">
                 {currentLocale === 'en' && 'English'}
                 {currentLocale === 'ru' && 'Русский'}
                 <GlobeIcon16 />
