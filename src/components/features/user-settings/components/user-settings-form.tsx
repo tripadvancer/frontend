@@ -21,16 +21,21 @@ const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 
-export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
+export const UserSettingsForm = (props: IUserInfo) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()
 
     const [updateUserInfo, { isLoading }] = userAPI.useUpdateUserInfoMutation()
 
-    const initialValues = {
-        name: name,
-        info: info || '',
+    const initialValues: UpdateUserInfoInputs = {
+        name: props.name,
+        info: props.info || '',
+        // facebookUrl: props.facebookUrl || '',
+        // instagramUrl: props.instagramUrl || '',
+        // youtubeUrl: props.youtubeUrl || '',
+        // twitterUrl: props.twitterUrl || '',
+        // websiteUrl: props.websiteUrl || '',
     }
 
     const validationSchema = Yup.object().shape({
@@ -79,7 +84,7 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
                     <label htmlFor="avatar" className="font-medium">
                         {t('pages.user.settings.forms.fields.avatar.label')}
                     </label>
-                    <UserSettingsAvatarUploader currentAvatar={avatar} />
+                    <UserSettingsAvatarUploader currentAvatar={props.avatar} />
                 </div>
 
                 <div className="flex flex-col gap-y-2">
@@ -107,6 +112,57 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
                         placeholder={t('placeholder.action.about_user')}
                         maxLength={userInfoMaxLength}
                         error={formik.errors.info}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                </div>
+
+                <div className="flex flex-col gap-y-2">
+                    <label htmlFor="name" className="font-medium">
+                        Add you contacts
+                    </label>
+                    <FormInput
+                        type="text"
+                        name={formik.values.facebookUrl}
+                        value=""
+                        placeholder="Facebook"
+                        error={formik.errors.name}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                    <FormInput
+                        type="text"
+                        name=""
+                        value=""
+                        placeholder="Instagram"
+                        error={formik.errors.name}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                    <FormInput
+                        type="text"
+                        name=""
+                        value=""
+                        placeholder="Youtube"
+                        error={formik.errors.name}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                    <FormInput
+                        type="text"
+                        name=""
+                        value=""
+                        placeholder="X"
+                        error={formik.errors.name}
+                        isDisabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                    <FormInput
+                        type="text"
+                        name=""
+                        value=""
+                        placeholder="Website"
+                        error={formik.errors.name}
                         isDisabled={isLoading}
                         onChange={formik.handleChange}
                     />

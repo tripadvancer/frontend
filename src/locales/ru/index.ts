@@ -241,6 +241,8 @@ export default {
     'pages.place.author.title': 'Автор',
 
     'pages.user.about_me': 'Обо мне',
+    'pages.user.contacts': 'Контакты',
+
     'pages.user.settings.forms.fields.avatar.label': 'Аватар',
     'pages.user.settings.forms.fields.username.label': 'Имя пользователя',
     'pages.user.settings.forms.fields.info.label': 'Расскажите о себе',

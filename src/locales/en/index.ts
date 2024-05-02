@@ -235,6 +235,7 @@ export default {
     'pages.place.author.title': 'Author',
 
     'pages.user.about_me': 'About me',
+    'pages.user.contacts': 'Contacts',
     'pages.user.settings.forms.fields.avatar.label': 'Upload avatar',
     'pages.user.settings.forms.fields.username.label': 'Username',
     'pages.user.settings.forms.fields.info.label': 'About me',

@@ -3,9 +3,18 @@ export type IUser = {
     name: string
     info: string
     avatar: string | null
+    socialLinks: IUserSocialLinks
     createdAt: Date
     updatedAt: Date
     _count: IUserStatistics
+}
+
+export type IUserSocialLinks = {
+    facebookUrl: string
+    instagramUrl: string
+    youtubeUrl: string
+    twitterUrl: string
+    websiteUrl: string
 }
 
 export type IUserStatistics = {
@@ -16,9 +25,9 @@ export type IUserStatistics = {
     visitedCountries: number
 }
 
-export type IUserInfo = Pick<IUser, 'id' | 'name' | 'info' | 'avatar'>
+export type IUserInfo = Pick<IUser, 'id' | 'name' | 'info' | 'avatar' | 'socialLinks'>
 
-export type UpdateUserInfoInputs = Pick<IUser, 'name' | 'info'>
+export type UpdateUserInfoInputs = Pick<IUser, 'name' | 'info' | 'socialLinks'>
 
 export type ChangeUserPasswordInputs = {
     oldPassword: string
