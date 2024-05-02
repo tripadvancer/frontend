@@ -25,7 +25,7 @@ export const PlaceMainReviews = async ({ place, activeUserId, isAuth, isEmailVer
                     isAuth={true}
                     isEmailVerified={isEmailVerified}
                 /> */}
-                {/* <PlaceMainReviewsFeed placeId={place.id} activeUserId={activeUserId} isAuth={isAuth} /> */}
+                <PlaceMainReviewsFeed placeId={place.id} activeUserId={activeUserId} isAuth={isAuth} />
             </div>
         </section>
     )
