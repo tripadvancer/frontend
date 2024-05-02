@@ -44,7 +44,7 @@ export const ReviewAdd = ({ placeId, userId }: { placeId: number; userId: number
             <hr className="border-black-70" />
             <ReviewForm
                 initialValues={initialValues}
-                isLoading={true}
+                isLoading={isLoading}
                 onSubmit={inputs => handleSubmit(inputs as CreateReviewInputs)}
             />
         </div>

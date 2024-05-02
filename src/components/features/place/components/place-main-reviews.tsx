@@ -22,7 +22,7 @@ export const PlaceMainReviews = async ({ place, activeUserId, isAuth, isEmailVer
                 <PlaceMainOwnReview
                     place={place}
                     activeUserId={activeUserId}
-                    isAuth={true}
+                    isAuth={isAuth}
                     isEmailVerified={isEmailVerified}
                 />
                 <PlaceMainReviewsFeed placeId={place.id} activeUserId={activeUserId} isAuth={isAuth} />

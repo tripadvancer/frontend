@@ -40,7 +40,7 @@ export const PlaceMainOwnReview = ({ place, activeUserId, isAuth, isEmailVerifie
         <PlaceMainAddReviewButton
             placeId={place.id}
             activeUserId={activeUserId}
-            isAuth={true}
+            isAuth={isAuth}
             isEmailVerified={isEmailVerified}
         />
     )
