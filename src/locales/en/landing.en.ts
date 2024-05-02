@@ -11,7 +11,7 @@ export const landing = {
     'landing.around_places.button': 'See All Places',
 
     'landing.features.title': 'Our Features',
-    'landing.features.text': 'Explore the diverse features of our app and join a welcoming community of travelers.',
+    'landing.features.text': 'Discover the exciting features of our app and connect with a welcoming community of travelers like you.{br}Join us today and start exploring!',
 
     'landing.features.places.title': 'Explore and Share{br}Interesting Places',
     'landing.features.places.text': 'Discover unique locations and plan unforgettable journeys. Share your experiences of visited places by leaving reviews and ratings.',
