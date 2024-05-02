@@ -17,9 +17,9 @@ type UserReviewsProps = {
 
 export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) => {
     const t = useI18n()
-    const [page, setPage] = useState(1)
+    const [cursor, setCursor] = useState<number>()
 
-    const { data: reviews, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsByUserIdQuery({ userId, page })
+    const { data: reviews, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsByUserIdQuery({ userId, cursor })
 
     if (isError) {
         return <div className="text-center text-black-40">{t('common.error')}</div>
@@ -42,8 +42,11 @@ export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) 
                     />
                 ))}
 
-                {reviews.totalPages > page && (
-                    <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />
+                {reviews.items.length < reviews.total && (
+                    <ShowMore
+                        isLoading={isFetching}
+                        onClick={() => setCursor(reviews.items[reviews.items.length - 1].id)}
+                    />
                 )}
             </div>
         )

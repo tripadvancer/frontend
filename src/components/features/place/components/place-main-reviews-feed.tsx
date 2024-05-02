@@ -16,9 +16,14 @@ type PlaceMainReviewsFeedProps = {
 
 export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMainReviewsFeedProps) => {
     const t = useI18n()
-    const [page, setPage] = useState(1)
+    const [cursor, setCursor] = useState<number>()
 
-    const { data: reviews, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsByPlaceIdQuery({ placeId, page })
+    const {
+        data: reviews,
+        isFetching,
+        isSuccess,
+        isError,
+    } = reviewsAPI.useGetReviewsByPlaceIdQuery({ placeId, cursor })
 
     if (isError) {
         return <div className="border-y border-black-15 py-8 text-center text-black-40">{t('common.error')}</div>
@@ -45,8 +50,11 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
                     />
                 ))}
 
-                {reviews.totalPages > page && (
-                    <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />
+                {reviews.items.length < reviews.total && (
+                    <ShowMore
+                        isLoading={isFetching}
+                        onClick={() => setCursor(reviews.items[reviews.items.length - 1].id)}
+                    />
                 )}
             </div>
         )

@@ -31,8 +31,6 @@ export const ReviewAdd = ({ placeId, userId }: { placeId: number; userId: number
         try {
             await createReview(inputs)
             dialog.close()
-            router.refresh()
-            toast.success(t('success.create_review'))
         } catch {
             toast.error(t('common.error'))
         }

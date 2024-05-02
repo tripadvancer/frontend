@@ -57,9 +57,7 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                     })}
                 </div>
 
-                {places.totalPages > page && (
-                    <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />
-                )}
+                {places.total > page && <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />}
             </div>
         )
     }
