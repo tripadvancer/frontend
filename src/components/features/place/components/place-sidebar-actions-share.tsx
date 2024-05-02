@@ -1,7 +1,5 @@
 'use client'
 
-import { isMobile } from 'react-device-detect'
-
 import type { IPlace } from '@/utils/types/place'
 
 import { SharePlace } from '@/components/features/share-place/share-place'
@@ -16,7 +14,7 @@ export const PlaceSidebarActionsShare = ({ place }: { place: IPlace }) => {
     const toast = useToast()
 
     const handleClick = async () => {
-        if (isMobile) {
+        if (navigator.share) {
             const shareData = {
                 title: place.title,
                 text: 'Look what place I found on Tripadvancer!',
