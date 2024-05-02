@@ -19,7 +19,7 @@ export const ChooseNavigateItem = ({ lngLat, provider }: ChooseNavigateItemProps
             className="link-black flex flex-1 flex-col gap-y-2"
             target="_blank"
         >
-            <div className="flex-center aspect-square rounded-2xl bg-blue-10 text-small">
+            <div className="flex-center aspect-square rounded-2xl bg-orange-10 text-small">
                 <Image
                     src={`/images/navigators/${provider}.png`}
                     width={56}
