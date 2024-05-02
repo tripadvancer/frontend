@@ -11,10 +11,16 @@ export const reviewsAPI = api.injectEndpoints({
             serializeQueryArgs: ({ endpointName }) => {
                 return endpointName
             },
-            merge: (currentCache, newResponse) => {
-                return {
-                    ...newResponse,
-                    items: [...currentCache.items, ...newResponse.items],
+            merge: (currentCache, newResponse, otherArgs) => {
+                if (otherArgs.arg.cursor === undefined) {
+                    return newResponse
+                }
+
+                if (currentCache) {
+                    return {
+                        ...newResponse,
+                        items: [...currentCache.items, ...newResponse.items],
+                    }
                 }
             },
             forceRefetch({ currentArg, previousArg }) {
@@ -28,10 +34,16 @@ export const reviewsAPI = api.injectEndpoints({
             serializeQueryArgs: ({ endpointName }) => {
                 return endpointName
             },
-            merge: (currentCache, newResponse) => {
-                return {
-                    ...newResponse,
-                    items: [...currentCache.items, ...newResponse.items],
+            merge: (currentCache, newResponse, otherArgs) => {
+                if (otherArgs.arg.cursor === undefined) {
+                    return newResponse
+                }
+
+                if (currentCache) {
+                    return {
+                        ...newResponse,
+                        items: [...currentCache.items, ...newResponse.items],
+                    }
                 }
             },
             forceRefetch({ currentArg, previousArg }) {
