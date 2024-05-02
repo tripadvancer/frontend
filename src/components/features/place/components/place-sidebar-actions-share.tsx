@@ -23,8 +23,10 @@ export const PlaceSidebarActionsShare = ({ place }: { place: IPlace }) => {
 
             try {
                 await navigator.share(shareData)
-            } catch (err) {
-                toast.error(t('common.error'))
+            } catch (err: any) {
+                if (err.name !== 'AbortError') {
+                    toast.error(t('common.error'))
+                }
             }
 
             return
