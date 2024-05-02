@@ -50,7 +50,7 @@ export const auth = {
     'auth.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
     'auth.signup.to_back': 'Have an account? {sign_in_link}',
 
-    'auth.signup_completing.title': 'Completing sign up',
+    'auth.signup_completing.title': 'Verify your email',
     'auth.signup_completing.message': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
     'auth.signup_completing.resend_verification_email': 'Resend Verification Email',
 

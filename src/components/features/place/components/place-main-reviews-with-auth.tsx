@@ -1,3 +1,5 @@
+import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
+
 import type { IPlace } from '@/utils/types/place'
 
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
@@ -23,7 +25,10 @@ export const PlaceMainReviewsWithAuth = async ({ place }: { place: IPlace }) => 
         return <TryRefreshComponent />
     }
 
+    const isEmailVerified = await session.getClaimValue(EmailVerificationClaim)
     const activeUserId = session.getAccessTokenPayload().userId
 
-    return <PlaceMainReviews place={place} activeUserId={activeUserId} isAuth={true} />
+    return (
+        <PlaceMainReviews place={place} activeUserId={activeUserId} isAuth={true} isEmailVerified={isEmailVerified} />
+    )
 }
