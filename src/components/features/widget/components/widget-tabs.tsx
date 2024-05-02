@@ -33,7 +33,7 @@ export const WidgetTabs = () => {
         <ul className="flex gap-x-4">
             {tabs.map(tab => (
                 <li
-                    key={tab.id}
+                    key={`widget-tab-${tab.id}`}
                     className={classNames(
                         'hover-animated cursor-pointer text-big-bold text-blue-100 hover:text-blue-active',
                         {

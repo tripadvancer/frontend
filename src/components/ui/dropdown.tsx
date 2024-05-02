@@ -59,7 +59,7 @@ export const Dropdown = ({ children, items, position = 'right', currentItem }: D
                 >
                     {items.map(item => (
                         <DropdownItem
-                            key={item.value}
+                            key={`dropdown-item-${item.value}`}
                             {...item}
                             isCurrent={item.value === currentItem}
                             onClick={() => handleClick(item)}

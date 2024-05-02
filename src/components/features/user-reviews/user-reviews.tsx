@@ -32,9 +32,9 @@ export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) 
     if (isSuccess && reviews.items.length > 0) {
         return (
             <div className="flex flex-col gap-y-8">
-                {reviews.items.map((review, index) => (
+                {reviews.items.map(review => (
                     <Review
-                        key={index}
+                        key={`user-review-${review.id}`}
                         review={review}
                         variant="user-page"
                         activeUserId={activeUserId}

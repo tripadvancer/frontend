@@ -6,7 +6,7 @@ export const ReviewsSkeleton = () => {
     return (
         <div>
             {Array.from({ length: REVIEWS_COUNT }).map((_, index) => (
-                <ReviewSkeleton key={index} />
+                <ReviewSkeleton key={`review-skeleton-${index}`} />
             ))}
         </div>
     )

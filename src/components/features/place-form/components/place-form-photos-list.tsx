@@ -89,7 +89,7 @@ export const PlaceFormPhotosList = ({ photos, onChange }: PlaceFormPhotosListPro
 
                         {photos.map((photo, index) => (
                             <PhotoPreview
-                                key={photo}
+                                key={`place-photo-${photo}`}
                                 url={photo}
                                 size={186}
                                 alt=""

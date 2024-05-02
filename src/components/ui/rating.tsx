@@ -11,7 +11,10 @@ export const Rating = ({ value, size }: RatingProps) => {
             {Array(5)
                 .fill(null)
                 .map((_, index) => (
-                    <div key={index} className={Math.round(value) >= index + 1 ? 'opacity-100' : 'opacity-30'}>
+                    <div
+                        key={`rating-star-${index}`}
+                        className={Math.round(value) >= index + 1 ? 'opacity-100' : 'opacity-30'}
+                    >
                         {size === 16 && <StarIcon16 />}
                         {size === 32 && <StarIcon32 />}
                     </div>
