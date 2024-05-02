@@ -15,12 +15,15 @@ export const landing = {
 
     'landing.features.places.title': 'Explore and Share{br}Interesting Places',
     'landing.features.places.text': 'Discover unique locations and plan unforgettable journeys. Share your experiences of visited places by leaving reviews and ratings.',
+    'landing.features.places.button': 'Explore Places',
 
     'landing.features.lists.title': 'Create Your Own{br}Lists of Places',
     'landing.features.lists.text': 'Create, edit, and manage your own lists of favorite places. Organize landmarks for quick access during your travels.',
+    'landing.features.lists.button': 'Create Lists',
 
     'landing.features.random.title': 'Find Random{br}Places Nearby',
     'landing.features.random.text': 'Wondering where to go in your free time? Try our random place search! Choose a category, set a convenient distance—and off you go to exciting adventures!',
+    'landing.features.random.button': 'Find Random Place',
 
     'landing.map.title': 'Travel Map',
     'landing.map.text': 'Open the map and discover interesting places anywhere in the world. Easily plan your travels and share your discoveries with fellow travelers.',
