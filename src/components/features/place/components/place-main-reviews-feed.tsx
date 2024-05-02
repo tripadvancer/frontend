@@ -35,9 +35,9 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
     if (isSuccess && reviews.items.length > 0) {
         return (
             <div className="flex flex-col gap-y-8">
-                {reviews.items.map((review, index) => (
+                {reviews.items.map(review => (
                     <Review
-                        key={index}
+                        key={`place-review-${review.id}`}
                         review={review}
                         variant="place-page"
                         activeUserId={activeUserId}
@@ -55,7 +55,7 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
     return (
         <div>
             {Array.from({ length: 3 }).map((_, index) => (
-                <ReviewSkeleton key={index} />
+                <ReviewSkeleton key={`place-review-skeleton-${index}`} />
             ))}
         </div>
     )

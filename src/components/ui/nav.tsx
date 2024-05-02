@@ -20,7 +20,7 @@ export const Nav = ({ links, className }: NavProps) => {
         <nav className={classNames('flex gap-x-4 text-big-bold', className)}>
             {links.map(link => (
                 <Link
-                    key={link.href}
+                    key={`nav-link-${link.href}`}
                     href={link.href}
                     className={classNames('whitespace-nowrap', {
                         'border-b-2 border-black-100 text-black-100 hover:text-black-100': pathname.includes(link.href),

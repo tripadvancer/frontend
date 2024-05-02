@@ -82,9 +82,25 @@ export const reviewsAPI = api.injectEndpoints({
                 url: `reviews/${inputs.reviewId}`,
                 method: 'DELETE',
             }),
+            async onQueryStarted(inputs, { dispatch, queryFulfilled }) {
+                const optimisticResult = dispatch(
+                    reviewsAPI.util.updateQueryData(
+                        'getReviewsByPlaceId',
+                        { placeId: inputs.placeId, page: 1 },
+                        draft => {
+                            draft.items = draft.items.filter(review => review.id !== inputs.reviewId)
+                        },
+                    ),
+                )
+                try {
+                    await queryFulfilled
+                } catch {
+                    optimisticResult.undo()
+                }
+            },
             invalidatesTags: (result, error, inputs) => [
-                { type: 'PlacesMeta', id: inputs.placeId },
-                { type: 'PlaceReviews', id: inputs.placeId },
+                // { type: 'PlacesMeta', id: inputs.placeId },
+                // { type: 'PlaceReviews', id: inputs.placeId },
                 { type: 'UserReviews', id: inputs.userId },
             ],
         }),

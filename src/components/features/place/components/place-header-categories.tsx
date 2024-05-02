@@ -10,7 +10,7 @@ export const PlaceHeaderCategories = ({ categories }: IPlace) => {
         <div className="flex-center flex-wrap gap-2">
             {categories.map(category => (
                 <div
-                    key={category}
+                    key={`category-${category}`}
                     className="flex h-8 items-center whitespace-nowrap rounded-full border border-white px-4 text-small text-white"
                 >
                     {categoriesDictionary.find(item => item.id === category)?.localizedName[locale]}

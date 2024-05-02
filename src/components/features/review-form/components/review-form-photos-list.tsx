@@ -72,7 +72,7 @@ export const ReviewFormPhotosList = ({ photos, onChange }: ReviewFormPhotosListP
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
                 {photos.map((photo, index) => (
                     <PhotoPreview
-                        key={photo}
+                        key={`review-photo-${photo}`}
                         url={photo}
                         alt=""
                         size={64}

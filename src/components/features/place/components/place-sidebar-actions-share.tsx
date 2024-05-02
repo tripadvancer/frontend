@@ -1,7 +1,5 @@
 'use client'
 
-import { isMobile } from 'react-device-detect'
-
 import type { IPlace } from '@/utils/types/place'
 
 import { SharePlace } from '@/components/features/share-place/share-place'
@@ -16,7 +14,7 @@ export const PlaceSidebarActionsShare = ({ place }: { place: IPlace }) => {
     const toast = useToast()
 
     const handleClick = async () => {
-        if (isMobile) {
+        if (navigator.share) {
             const shareData = {
                 title: place.title,
                 text: 'Look what place I found on Tripadvancer!',
@@ -25,8 +23,10 @@ export const PlaceSidebarActionsShare = ({ place }: { place: IPlace }) => {
 
             try {
                 await navigator.share(shareData)
-            } catch (err) {
-                toast.error(t('common.error'))
+            } catch (err: any) {
+                if (err.name !== 'AbortError') {
+                    toast.error(t('common.error'))
+                }
             }
 
             return
@@ -36,7 +36,7 @@ export const PlaceSidebarActionsShare = ({ place }: { place: IPlace }) => {
     }
 
     return (
-        <div className="link inline-flex items-center gap-x-2 align-top" onClick={handleClick}>
+        <div className="link flex items-center gap-x-2 align-top" onClick={handleClick}>
             <ShareIcon24 />
             {t('place.actions.share')}
         </div>
