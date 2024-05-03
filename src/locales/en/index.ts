@@ -1,4 +1,10 @@
+import { auth } from './auth.en'
+import { landing } from './landing.en'
+
 export default {
+    ...auth,
+    ...landing,
+
     'cookie_consent.title': 'Allow Cookies',
     'cookie_consent.description': 'This website uses cookies to ensure you get the best experience on our website. For more information, you can read our {cookie_policy_link}.',
     'cookie_consent.policy_link': 'Cookie Policy',
@@ -11,15 +17,7 @@ export default {
 
     'about.title': 'Planing a trip but don`t know where to go?',
     'about.description': 'Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip.',
-
-    'onboarding.features.places.title': 'Discover and share{br}interesting places',
-    'onboarding.features.places.description.1': 'Find captivating places and distinctive landmarks to craft your unforgettable journey. Share your thoughts on visited locations by leaving reviews and ratings.',
-    'onboarding.features.places.description.2': 'Additionally, contribute by adding new, undiscovered places to the map, helping fellow travelers explore hidden gems.',
-    'onboarding.features.random.title': 'Try Our Random{br}Destination Picker',
-    'onboarding.features.random.description': 'Stuck on where to go in your free time? Utilize our feature for a random choice of nearby destinations! Simply pick a category and choose a comfortable distance. Let the exploration begin!',
-    'onboarding.features.lists.title': 'Create Your Personalized{br}Travel Lists',
-    'onboarding.features.lists.description': 'Craft, modify, and manage your own tailored travel experiences by curating lists of favorite places. Save, edit, and organize Points of Interest for easy access on your journeys. Your personalized adventure starts here!',
-
+    
     'confirm_mini.title': 'Sure?',
     'confirm_mini.yes': 'Yes',
     'confirm_mini.no': 'No',
@@ -32,7 +30,7 @@ export default {
 
     'confirm.request_personal_data.title': 'Send personal data',
     'confirm.request_personal_data.message': 'Are you sure you want to send your personal data to your email?',
-    
+
     'confirm.request_user_deletion.title': 'Delete your account',
     'confirm.request_user_deletion.message': 'Are you sure you want to delete your account?',
 
@@ -44,7 +42,7 @@ export default {
     'header.user_menu.reviews': 'Written reviews',
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
-    'header.link.map': 'Go to map',
+    'header.link.map': 'Map',
     'header.link.company_blog': 'Company blog',
 
     'common.error': 'An unexpected error has occurred. Please try again later.',
@@ -92,7 +90,7 @@ export default {
     'validation.wrong_email': 'Wrong email',
     'validation.username.already_exists': 'This username is already taken',
     'validation.password.policy_violated': 'Password must contain at least 8 characters, including a number',
-    
+
     'validation.place.title.required': 'Please enter a place title',
     'validation.place.title.min_length': 'The title must be at least {min_length} characters long',
     'validation.place.title.max_length': 'The title must be at most {max_length} characters long',
@@ -131,12 +129,9 @@ export default {
     'success.update_review': 'Your review has been updated.',
     'success.delete_review': 'The review has been deleted.',
     'success.change_user_password': 'Your password has been changed.',
-    'success.change_user_email': 'We have sent you a verification email. After confirming your new email address, you will be able to sign in using it.',
     'success.update_user_avatar': 'Your avatar has been updated.',
     'success.update_user_info': 'Your profile has been updated.',
     'success.request_personal_data': 'Your personal data has been sent to your email.',
-    'success.request_user_deletion': 'We have sent you an email with instructions on how to complete the deletion process.',
-    'success.send_verification_email': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
 
     'categories.all': 'All categories',
 
@@ -166,7 +161,7 @@ export default {
     'countries.places#zero': 'No places',
     'countries.places#one': '{count} place',
     'countries.places#other': '{count} places',
-    
+
     'place.actions.i_was_here': 'I was here',
     'place.actions.navigate': 'Navigate',
     'place.actions.save': 'Save place',
@@ -193,67 +188,6 @@ export default {
     'review.form.fields.rating.label': 'Your rating',
     'review.form.fields.text.label': 'Review',
     'review.form.fields.photos.label': 'Photos',
-
-    'auth.change_email.title': 'Change email',
-    'auth.change_email.info': 'Enter your new email address below and we will send you a verification email:',
-
-    'auth.change_password.title': 'Change password',
-    'auth.change_password.info': 'Create a new password that is at least 8 characters long and contains a mix of letters and numbers:',
-
-    'auth.claim_email_error.title': 'Your email is not verified',
-    'auth.claim_email_error.message': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
-    'auth.claim_email_error.resend_verification_email': 'Resend Verification Email',
-    'auth.claim_email_error.go_to_settings': 'Or change your email. {settings_link}',
-    'auth.claim_email_error.settings_link': 'Settings',
-
-    'auth.confirm_user_deletion.loading': 'Starting the deletion process...',
-    'auth.confirm_user_deletion.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
-    'auth.confirm_user_deletion.ok': 'The deletion process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.',
-
-    'auth.forgot_password_completing.title': 'Completing the recovery',
-    'auth.forgot_password_completing.message': 'We sent you an email with instructions on how to reset your password.',
-
-    'auth.forgot_password.title': 'Forgot your password?',
-    'auth.forgot_password.submit': 'Restore password',
-    'auth.forgot_password.info': 'To reset your password, please enter your email address. We will send an email to the provided address with instructions on how to reset your password:',
-    'auth.forgot_password.to_back': '{sign_in_link} or {sign_up_link}',
-
-    'auth.reset_password.title': 'Enter your new password below',
-    'auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
-    'auth.reset_password.ok': 'Your password has been reset.',
-    'auth.reset_password.submit': 'Reset password',
-
-    'auth.restore_user.loading': 'Restoring your account...',
-    'auth.restore_user.token_expired': 'The restore link has expired. Please request a new restore link.',
-    'auth.restore_user.ok': 'Your account has been restored.',
-
-    'auth.signin.title': 'Sign in',
-    'auth.signin.third_party.or': 'Or',
-    'auth.signin.submit': 'Sign in',
-    'auth.signin.link.forgot_password': 'Forgot password?',
-    'auth.signin.to_back': 'Don’t have an account? {sign_up_link}',
-
-    'auth.signin_reject.title': 'Your account is pending deletion',
-    'auth.signin_reject.message': 'We have sent you the instructions to restore your account. Please note that there is a limited time window available for account restoration.',
-
-    'auth.signup.title': 'Sign up',
-    'auth.signup.third_party.title': 'Or, sign up with your email address',
-    'auth.signup.submit': 'Sign up',
-    'auth.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
-    'auth.signup.to_back': 'Have an account? {sign_in_link}',
-
-    'auth.signup_completing.title': 'Completing sign up',
-    'auth.signup_completing.message': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
-    'auth.signup_completing.resend_verification_email': 'Resend Verification Email',
-
-    'auth.third_party_callback.redirecting': 'You are being redirected...',
-    'auth.third_party_callback.checking_status': 'We are checking your status...',
-    'auth.third_party_callback.error.email_not_provided': 'No email provided by social login. Please use another form of login.',
-    'auth.third_party_callback.error.email_already_exists': 'Seems like you already have an account with another method. Please use that instead.',
-
-    'auth.verify_email.loading': 'Verifying your email...',
-    'auth.verify_email.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
-    'auth.verify_email.ok': 'Your email has been verified.',
 
     'widget.common.error': 'An unexpected error has occurred.{br}Please try again later.',
     'widget.search.placeholder': 'Find a country, place or address',
@@ -292,29 +226,11 @@ export default {
     'pages.error.title': 'Oops! Something Went Wrong',
     'pages.error.text': 'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.',
 
-    'pages.landing.search.placeholder': 'Find a country or place',
-    'pages.landing.search.button': 'Search',
-
-    'pages.landing.countries.title': 'Where are you going?',
-    'pages.landing.countries.description': 'Discover the top attractions of every destination worldwide with our travel app. Explore the best places to visit in each country and uncover must-see sights, from iconic landmarks to hidden gems.',
-    'pages.landing.countries.view_all': 'View all countries',
-
-    'pages.landing.around_places.title': 'Explore places near you',
-    'pages.landing.around_places.description': 'Discover nearby points of interest! These recommended destinations, endorsed by fellow travelers, are waiting for you to explore. Begin your adventure today!',
-    'pages.landing.around_places.view_all': 'View all places',
-
-    'pages.landing.features.title': 'Our features',
-    'pages.landing.features.description': 'Explore the features that make our app a cozy corner of the travel community. Discover hidden gems suggested by fellow travelers, and plan your journey seamlessly. Join us in creating a space where every traveler is a part of something special!',
-    
-    'pages.landing.map.title': 'Try our interactive map',
-    'pages.landing.map.description': 'To explore a diverse selection of must-see landmarks, hidden gems, and local attractions worldwide. Your next adventure awaits with just a tap!',
-    'pages.landing.map.cta': 'Explore the map',
-
     'pages.countries.title': 'All countries',
 
     'pages.country.description': 'Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.',
     'pages.country.view_all': 'View all countries',
-    'pages.country.places.empty': 'There are no places in this country yet. Be the first to add a place!',
+    'pages.country.places.empty': 'There are no places yet. Be the first to add a place!',
 
     'pages.place.about.title': 'About this place',
     'pages.place.photos.title': 'Photos',
@@ -329,7 +245,7 @@ export default {
     'pages.user.settings.forms.fields.username.label': 'Username',
     'pages.user.settings.forms.fields.info.label': 'About me',
     'pages.user.settings.account.title': 'Your account',
-    
+
     'pages.user.account.verify_email.title': 'Your email is not verified',
     'pages.user.account.verify_email.text': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
     'pages.user.account.verify_email.action': 'Resend Verification Email',
@@ -356,7 +272,7 @@ export default {
     'pages.add_place.photos.title': 'Photos',
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
-    'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
+    'pages.add_place.submit.info': 'By adding a new place to the map, you acknowledge and accept our {terms_link} and {privacy_link}.',
 
     'places_nearby_warning.title': 'Attention',
     'places_nearby_warning.text': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',

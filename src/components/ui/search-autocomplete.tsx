@@ -52,7 +52,7 @@ function SearchAutocompleteComponent(
         <div ref={ref} className={classNames('rounded-lg bg-white p-1 shadow-small', className)} style={styles}>
             {items.map((item, index) => (
                 <SearchAutocompleteItem
-                    key={`search-result-item-${index}`}
+                    key={`search-item-${index}`}
                     item={item}
                     isSelected={index === cursor}
                     onMouseEnter={() => setCursor(index)}

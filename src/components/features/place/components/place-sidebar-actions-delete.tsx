@@ -41,7 +41,7 @@ export const PlaceSidebarActionsDelete = ({ place }: { place: IPlace }) => {
     }
 
     return (
-        <div className="link-red inline-flex items-center gap-x-2 align-top" onClick={handleClick}>
+        <div className="link-red flex items-center gap-x-2 align-top" onClick={handleClick}>
             <DeleteIcon24 />
             {t('place.actions.delete')}
         </div>

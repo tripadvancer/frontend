@@ -4,7 +4,7 @@ export const WidgetPlacesFeedSkeleton = () => {
     return (
         <div role="status" className="flex flex-col gap-4">
             {Array.from({ length: 3 }).map((_, i) => (
-                <div key={`widgit-places-${i}`} className="flex gap-x-4">
+                <div key={`widgit-places-skeleton-${i}`} className="flex gap-x-4">
                     <div className="flex-center mb-2 h-20 w-20 flex-none rounded-lg bg-black-5">
                         <svg
                             className="w-10 text-black-15 opacity-30"

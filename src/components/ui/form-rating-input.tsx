@@ -8,26 +8,32 @@ type FormRatingInputProps = {
     value: number
     error?: string
     className?: string
+    isDisabled?: boolean
     onChange: (value: number) => void
 }
 
-export const FormRatingInput = ({ value, error, className, onChange }: FormRatingInputProps) => {
+export const FormRatingInput = ({ value, error, className, isDisabled, onChange }: FormRatingInputProps) => {
     const handleClick = (selectedValue: number) => {
         onChange(selectedValue !== value ? selectedValue : 0)
     }
 
     return (
         <div className={className}>
-            <div className="group flex text-orange-100">
+            <div
+                className={classNames('group inline-flex text-orange-100', {
+                    'opacity-30': isDisabled,
+                })}
+            >
                 {Array(5)
                     .fill(null)
                     .map((_, index) => (
                         <div
-                            key={index}
-                            className={classNames(
-                                'peer cursor-pointer transition-opacity duration-300 ease-in-out group-hover:opacity-100 peer-hover:opacity-30',
-                                Math.round(value) >= index + 1 ? 'opacity-100' : 'opacity-30',
-                            )}
+                            key={`rating-star-${index}`}
+                            className={classNames('peer cursor-pointer transition-opacity duration-300 ease-in-out', {
+                                'opacity-30': Math.round(value) < index + 1,
+                                'group-hover:opacity-100 peer-hover:opacity-30': !isDisabled,
+                                'pointer-events-none': isDisabled,
+                            })}
                             onClick={() => handleClick(index + 1)}
                         >
                             <StarIcon32 />

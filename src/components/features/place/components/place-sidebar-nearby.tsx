@@ -14,7 +14,12 @@ import { PlaceSidebarNearbySkeleton } from './place-sidebar-nearby-skeleton'
 export const PlaceSidebarNearby = async ({ id, location }: IPlace) => {
     const t = await getI18n()
     const lngLat = arrayToLngLat(location.coordinates)
-    const placesAround = await getPlacesAround(lngLat.lat, lngLat.lng, 30000, [])
+    const placesAround = await getPlacesAround(
+        lngLat.lat,
+        lngLat.lng,
+        parseInt(process.env.NEXT_PUBLIC_NEARBY_PLACES_RADIUS || '30000', 10),
+        [],
+    )
 
     // Filter out the current place
     const placesAroundFiltered = placesAround.filter(place => place.id !== id)
@@ -45,10 +50,10 @@ export const PlaceSidebarNearby = async ({ id, location }: IPlace) => {
                                     cover={place.cover}
                                     title={place.title}
                                     size={80}
-                                    className="aspect-square w-20 rounded-lg"
+                                    className="aspect-square w-20 flex-none rounded-lg"
                                 />
-                                <div className="flex flex-col gap-y-1">
-                                    <div className="line-clamp-3 font-medium">{place.title}</div>
+                                <div className="flex min-w-0 flex-col gap-y-1">
+                                    <div className="line-clamp-3 break-words font-medium">{place.title}</div>
                                     <div className="text-small text-black-40">{getDistance(place.distance)}</div>
                                 </div>
                             </div>

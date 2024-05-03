@@ -12,9 +12,10 @@ type PlaceMainOwnReviewProps = {
     place: IPlace
     activeUserId?: number
     isAuth: boolean
+    isEmailVerified?: boolean
 }
 
-export const PlaceMainOwnReview = ({ place, activeUserId, isAuth }: PlaceMainOwnReviewProps) => {
+export const PlaceMainOwnReview = ({ place, activeUserId, isAuth, isEmailVerified }: PlaceMainOwnReviewProps) => {
     const { data: meta, isLoading, isSuccess } = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !isAuth })
 
     if (isLoading) {
@@ -35,5 +36,12 @@ export const PlaceMainOwnReview = ({ place, activeUserId, isAuth }: PlaceMainOwn
         )
     }
 
-    return <PlaceMainAddReviewButton placeId={place.id} />
+    return (
+        <PlaceMainAddReviewButton
+            placeId={place.id}
+            activeUserId={activeUserId}
+            isAuth={isAuth}
+            isEmailVerified={isEmailVerified}
+        />
+    )
 }

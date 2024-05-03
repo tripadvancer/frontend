@@ -35,10 +35,13 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
 
     const validationSchema = Yup.object().shape({
         name: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
             .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
-        info: Yup.string().max(userInfoMaxLength, t('validation.text.max_length', { max_length: userInfoMaxLength })),
+        info: Yup.string()
+            .trim()
+            .max(userInfoMaxLength, t('validation.text.max_length', { max_length: userInfoMaxLength })),
     })
 
     const handleSubmit = async (inputs: UpdateUserInfoInputs) => {

@@ -27,6 +27,7 @@ export { default as PinLocationIcon24 } from '/public/images/icons/24/pin-locati
 export { default as PinPlusIcon24 } from '/public/images/icons/24/pin-plus.svg'
 export { default as PointIcon24 } from '/public/images/icons/24/point.svg'
 export { default as ReviewIcon24 } from '/public/images/icons/24/review.svg'
+export { default as RoundPlus24 } from '/public/images/icons/24/round-plus.svg'
 export { default as RouteIcon24 } from '/public/images/icons/24/route.svg'
 export { default as SettingsIcon24 } from '/public/images/icons/24/settings.svg'
 export { default as ShareIcon24 } from '/public/images/icons/24/share.svg'

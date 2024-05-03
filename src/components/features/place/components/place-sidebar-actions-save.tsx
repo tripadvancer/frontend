@@ -14,7 +14,7 @@ export const PlaceSidebarActionsSave = ({ place, isAuth }: { place: IPlace; isAu
     const { toggle } = useSavePlace(place.id)
 
     return (
-        <div className="link inline-flex items-center gap-x-2 align-top" onClick={toggle}>
+        <div className="link flex items-center gap-x-2 align-top" onClick={toggle}>
             {!!meta?.isSaved ? <BookmarkFillIcon24 /> : <BookmarkIcon24 />}
             {t('place.actions.save')}
         </div>

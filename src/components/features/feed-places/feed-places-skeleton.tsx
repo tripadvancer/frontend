@@ -6,7 +6,7 @@ export const FeedPlacesSkeleton = () => {
     return (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4 xl:gap-8">
             {Array.from({ length: PLACE_COUNT }).map((_, i) => (
-                <FeedPlacesItemSkeleton key={i} />
+                <FeedPlacesItemSkeleton key={`feed-place-skeleton-${i}`} />
             ))}
         </div>
     )

@@ -2,6 +2,8 @@ import Image from 'next/image'
 
 import { getI18n } from '@/utils/i18n/i18n.server'
 
+import { LandingFeaturesRandomButton } from './landing-features-random-button'
+
 export const LandingFeaturesRandom = async () => {
     const t = await getI18n()
 
@@ -14,9 +16,12 @@ export const LandingFeaturesRandom = async () => {
                 className="m-auto block"
                 alt="Random places around me"
             />
-            <section>
-                <h3 className="h5 mb-4 sm:mb-8">{t('onboarding.features.random.title', { br: <br /> })}</h3>
-                <p>{t('onboarding.features.random.description')}</p>
+            <section className="flex flex-col gap-y-4 sm:gap-y-8">
+                <h3 className="h5">{t('landing.features.random.title', { br: <br /> })}</h3>
+                <p>{t('landing.features.random.text')}</p>
+                <div className="flex-none">
+                    <LandingFeaturesRandomButton />
+                </div>
             </section>
         </div>
     )

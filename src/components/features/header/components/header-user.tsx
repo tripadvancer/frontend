@@ -1,6 +1,7 @@
 'use client'
 
 import Session from 'supertokens-web-js/recipe/session'
+import { useMediaQuery } from 'usehooks-ts'
 
 import { useRouter } from 'next/navigation'
 
@@ -16,6 +17,7 @@ export const HeaderUser = ({ user }: { user: IUser }) => {
     const t = useI18n()
     const router = useRouter()
     const toast = useToast()
+    const isMobile = useMediaQuery('(max-width: 639px)')
 
     const signOut = async () => {
         try {
@@ -57,7 +59,7 @@ export const HeaderUser = ({ user }: { user: IUser }) => {
                 },
             ]}
         >
-            <Avatar {...user} size={32} />
+            <Avatar {...user} size={isMobile ? 24 : 32} />
         </Dropdown>
     )
 }

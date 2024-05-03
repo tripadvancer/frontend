@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { EmailVerification } from '@/components/features/email-verification/email-verification'
+import { MapIcon24, MenuIcon24 } from '@/components/ui/icons'
 import { getI18n } from '@/utils/i18n/i18n.server'
 
 import { HeaderButtons } from './components/header-buttons'
@@ -14,15 +15,22 @@ export const Header = async () => {
             <div className="absolute left-0 right-0 top-0 -z-10 h-[200px] bg-blue-20" />
             <header className="sticky top-0 z-40 bg-blue-20">
                 <EmailVerification />
-                <div className="container flex-center relative h-[56px] gap-x-6 sm:h-[76px]">
-                    <HeaderLogo />
-                    <Link href="/maps" className="text-big-bold">
-                        {t('header.link.map')}
-                    </Link>
-                    <Link href="/blog" className="text-big-bold">
-                        {t('header.link.company_blog')}
-                    </Link>
-                    <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center gap-x-2 sm:right-8">
+                <div className="container flex h-[56px] items-center justify-between gap-x-6 sm:h-[76px]">
+                    <div className="flex gap-x-4">
+                        <div className="link-black block sm:hidden">
+                            <MenuIcon24 />
+                        </div>
+                        <HeaderLogo />
+                    </div>
+
+                    <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 transform sm:block">
+                        <Link href="/maps" className="flex items-center gap-x-2 text-big-bold">
+                            <MapIcon24 />
+                            {t('header.link.map')}
+                        </Link>
+                    </div>
+
+                    <div className="flex items-center gap-x-2">
                         <HeaderButtons />
                     </div>
                 </div>

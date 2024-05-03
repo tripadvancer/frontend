@@ -62,7 +62,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
             <ToastContainer>
                 {toasts.map((toast: ToastInterface) => (
                     <Toast
-                        key={toast.id}
+                        key={`toast-${toast.id}`}
                         variant={toast.variant}
                         message={toast.message}
                         onClose={() => close(toast.id)}
