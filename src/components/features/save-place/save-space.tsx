@@ -12,7 +12,7 @@ export const SavePlace = ({ placeId }: { placeId: number }) => {
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
-            <h1 className="h7 text-center">Save in your lists</h1>
+            <h1 className="h7 text-center">{t('save_place.title')}</h1>
             <SavePlaceLists placeId={placeId} />
             <FormButton type="stroke" onClick={() => dialog.close()}>
                 {t('common.action.close')}

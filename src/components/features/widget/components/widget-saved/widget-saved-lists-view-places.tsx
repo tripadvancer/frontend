@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
 import { getWidgetState } from '@/redux/features/widget-slice'
@@ -20,7 +20,7 @@ export const WidgetSavedListsViewPlaces = ({ listId }: { listId: number }) => {
     const { map } = useMap()
     const { data, isError, isLoading, isSuccess, refetch } = listAPI.useGetListPlacesQuery(listId)
 
-    const places = data?.features.map(({ properties }) => properties) ?? []
+    const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
 
     useEffect(() => {
         // Calculate bounds for the list places
