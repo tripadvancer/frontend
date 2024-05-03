@@ -2,7 +2,7 @@
 
 import classNames from 'classnames'
 
-type SelectCategoriesCategoryProps = {
+type SelectCategoriesItemProps = {
     id: number
     localizedName: string
     isSelected: boolean
@@ -10,13 +10,13 @@ type SelectCategoriesCategoryProps = {
     onClick: (categoryId: number) => void
 }
 
-export const SelectCategoriesCategory = ({
+export const SelectCategoriesItem = ({
     id,
     localizedName,
     isSelected,
     isDisabled,
     onClick,
-}: SelectCategoriesCategoryProps) => {
+}: SelectCategoriesItemProps) => {
     return (
         <div
             className={classNames(
