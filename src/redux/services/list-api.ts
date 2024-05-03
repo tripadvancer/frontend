@@ -3,6 +3,8 @@ import type { CreateListInputs, IList, IListInfo, UpdateListInputs } from '@/uti
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
+import { placesAPI } from './places-api'
+import { visitedAPI } from './visited-api'
 
 export const listAPI = api.injectEndpoints({
     endpoints: build => ({
@@ -59,13 +61,44 @@ export const listAPI = api.injectEndpoints({
                 method: 'POST',
                 body: { placeId },
             }),
-            invalidatesTags: (result, error, { listId, placeId }) => [
-                { type: 'Lists' },
-                { type: 'Lists', id: listId },
-                { type: 'Places' },
-                { type: 'PlacesMeta', id: placeId },
-                { type: 'Visited' },
-            ],
+            async onQueryStarted({ listId, placeId }, { dispatch, queryFulfilled }) {
+                // Equivalent to invalidatesTags: { type: 'Lists' }
+                const optimisticResultLists = dispatch(
+                    listAPI.util.updateQueryData('getLists', undefined, draft => {
+                        const list = draft.find(list => list.id === listId)
+                        if (list) {
+                            list._count.listToPlace += 1
+                            list.listToPlace.push({ placeId })
+                        }
+                    }),
+                )
+
+                // Equivalent to invalidatesTags: { type: 'PlacesMeta', id: placeId }
+                const optimisticResultPlaceMeta = dispatch(
+                    placesAPI.util.updateQueryData('getPlaceMetaById', placeId, draft => {
+                        draft.isSaved = true
+                    }),
+                )
+
+                // Equivalent to invalidatesTags: { type: 'Visited' }
+                const optimisticResultVisited = dispatch(
+                    visitedAPI.util.updateQueryData('getVisited', undefined, draft => {
+                        const place = draft.features.find(place => place.properties.id === placeId)
+                        if (place) {
+                            place.properties.isSaved = true
+                        }
+                    }),
+                )
+
+                try {
+                    await queryFulfilled
+                } catch {
+                    optimisticResultPlaceMeta.undo()
+                    optimisticResultLists.undo()
+                    optimisticResultVisited.undo()
+                }
+            },
+            invalidatesTags: (result, error, { listId }) => [{ type: 'Lists', id: listId }, { type: 'Places' }],
         }),
 
         unSavePlace: build.mutation<void, { listId: number; placeId: number }>({
@@ -73,13 +106,47 @@ export const listAPI = api.injectEndpoints({
                 url: `lists/${listId}/places/${placeId}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: (result, error, { listId, placeId }) => [
-                { type: 'Lists' },
-                { type: 'Lists', id: listId },
-                { type: 'Places' },
-                { type: 'PlacesMeta', id: placeId },
-                { type: 'Visited' },
-            ],
+            async onQueryStarted({ listId, placeId }, { dispatch, queryFulfilled }) {
+                // Equivalent to invalidatesTags: { type: 'Lists' }
+                const optimisticResultLists = dispatch(
+                    listAPI.util.updateQueryData('getLists', undefined, draft => {
+                        const list = draft.find(list => list.id === listId)
+                        if (list) {
+                            list._count.listToPlace -= 1
+                            list.listToPlace.splice(
+                                list.listToPlace.findIndex(item => item.placeId === placeId),
+                                1,
+                            )
+                        }
+                    }),
+                )
+
+                // Equivalent to invalidatesTags: { type: 'PlacesMeta', id: placeId }
+                const optimisticResultPlaceMeta = dispatch(
+                    placesAPI.util.updateQueryData('getPlaceMetaById', placeId, draft => {
+                        draft.isSaved = false
+                    }),
+                )
+
+                // Equivalent to invalidatesTags: { type: 'Visited' }
+                const optimisticResultVisited = dispatch(
+                    visitedAPI.util.updateQueryData('getVisited', undefined, draft => {
+                        const place = draft.features.find(place => place.properties.id === placeId)
+                        if (place) {
+                            place.properties.isSaved = false
+                        }
+                    }),
+                )
+
+                try {
+                    await queryFulfilled
+                } catch {
+                    optimisticResultPlaceMeta.undo()
+                    optimisticResultLists.undo()
+                    optimisticResultVisited.undo()
+                }
+            },
+            invalidatesTags: (result, error, { listId }) => [{ type: 'Lists', id: listId }, { type: 'Places' }],
         }),
     }),
     overrideExisting: false,
