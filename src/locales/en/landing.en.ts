@@ -27,5 +27,5 @@ export const landing = {
 
     'landing.map.title': 'Travel Map',
     'landing.map.text': 'Open the map and discover interesting places anywhere in the world. Easily plan your travels and share your discoveries with fellow travelers.',
-    'landing.map.button': 'Explore the Map',
+    'landing.map.button': 'Go to Tripadvancer Map',
 } as const
