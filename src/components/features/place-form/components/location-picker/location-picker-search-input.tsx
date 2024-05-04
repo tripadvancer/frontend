@@ -24,6 +24,7 @@ export const WidgetPickerSearchInput = (props: WidgetPickerSearchInputProps) => 
             <input
                 type="text"
                 value={props.value}
+                name="search"
                 autoFocus
                 autoComplete="off"
                 className="hover-animated h-10 w-full rounded-lg border border-black-15 bg-white px-10 placeholder:text-black-40 focus:border-black-40 focus:outline-none disabled:cursor-no-drop"

@@ -26,6 +26,7 @@ const WidgetSearchInputComponent = (props: WidgetSearchInputProps, ref: Ref<HTML
             <input
                 ref={ref}
                 type="text"
+                name="search"
                 value={props.value}
                 autoComplete="off"
                 autoFocus

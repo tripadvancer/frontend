@@ -36,7 +36,7 @@ export const SavePlaceListsItem = ({ list, placeId }: SavePlaceListsItemProps) =
         >
             <div>
                 <div className="overflow-hidden text-ellipsis text-nowrap text-big-bold">{list.name}</div>
-                <div className="text-small text-black-40">
+                <div className="flex gap-x-1 text-small text-black-40">
                     {list.isPublic ? t('save_place.public') : t('save_place.private')}
                     <span>•</span>
                     {t('save_place.places', { count: list.listToPlace.length })}
