@@ -77,6 +77,7 @@ export default {
     'common.action.route': 'Route',
     'common.action.locate_me': 'Locate me',
     'common.action.go_to_map': 'Go to map',
+    'common.action.save': 'Save',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',

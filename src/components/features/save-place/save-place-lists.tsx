@@ -20,7 +20,7 @@ export const SavePlaceLists = ({ placeId }: { placeId: number }) => {
 
     if (isSuccess && lists.length > 0) {
         return (
-            <div>
+            <div className="flex flex-col gap-y-2">
                 {lists?.map(list => <SavePlaceListsItem key={`list-${list.id}`} list={list} placeId={placeId} />)}
             </div>
         )
