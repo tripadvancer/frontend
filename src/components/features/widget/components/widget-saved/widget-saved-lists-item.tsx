@@ -70,9 +70,13 @@ export const WidgetSavedListsItem = (list: IList) => {
             className="group hover-animated flex cursor-pointer items-center justify-between gap-x-4 border-t border-blue-20 py-2 last-of-type:border-b hover:text-blue-active sm:py-4"
             onClick={handleListClick}
         >
-            <div className="flex-1">
+            <div className="flex-1 overflow-hidden">
                 <div className="overflow-hidden text-ellipsis text-nowrap text-big-bold">{list.name}</div>
-                <div className="text-small text-black-40">Private • {list._count.listToPlace} places</div>
+                <div className="flex gap-x-1 text-small text-black-40">
+                    {t('widget.saved.lists.private')}
+                    <span>•</span>
+                    {t('widget.saved.lists.places', { count: list._count.listToPlace })}
+                </div>
             </div>
             <div className="flex flex-none items-center gap-x-2">
                 <div className="text-red-100 group-hover:block sm:hidden" onClick={handleDeleteClick}>

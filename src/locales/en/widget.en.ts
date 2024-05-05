@@ -23,6 +23,10 @@ export const widget = {
     'widget.saved.lists.add_button': 'Create new list',
     'widget.saved.lists.info': 'Select a list to view your saved places.',
     'widget.saved.lists.show_only_list': 'Show on map',
+    'widget.saved.lists.places#one': '{count} place',
+    'widget.saved.lists.places#other': '{count} places',
+    'widget.saved.lists.private': 'Private',
+    'widget.saved.lists.public': 'Public',
     'widget.toggler.map': 'Map',
     'widget.toggler.search_and_filters': 'Search and filters',
 } as const

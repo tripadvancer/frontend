@@ -3,12 +3,12 @@
 import { listAPI } from '@/redux/services/list-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { SavePlaceListsItem } from './save-place-lists-item'
+import { SavePlaceListsForm } from './save-place-lists-form'
 
 export const SavePlaceLists = ({ placeId }: { placeId: number }) => {
     const t = useI18n()
 
-    const { data: lists, isError, isLoading, isSuccess, refetch } = listAPI.useGetListsQuery()
+    const { data: lists, isError, isSuccess } = listAPI.useGetListsQuery()
 
     if (isError) {
         return <div className="text-center text-black-40">{t('common.error')}</div>
@@ -19,11 +19,7 @@ export const SavePlaceLists = ({ placeId }: { placeId: number }) => {
     }
 
     if (isSuccess && lists.length > 0) {
-        return (
-            <div className="flex flex-col gap-y-2">
-                {lists?.map(list => <SavePlaceListsItem key={`list-${list.id}`} list={list} placeId={placeId} />)}
-            </div>
-        )
+        return <SavePlaceListsForm lists={lists} placeId={placeId} />
     }
 
     return <div>{t('save_place.loading')}</div>

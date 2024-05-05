@@ -25,6 +25,12 @@ export const widget = {
     'widget.saved.lists.add_button': 'Создать список',
     'widget.saved.lists.info': 'Выберите список, чтобы увидеть сохранённые места.',
     'widget.saved.lists.show_only_list': 'Показать на карте',
+    'widget.saved.lists.places#one': '{count} место',
+    'widget.saved.lists.places#few': '{count} места',
+    'widget.saved.lists.places#many': '{count} мест',
+    'widget.saved.lists.places#other': '{count} мест',
+    'widget.saved.lists.private': 'Приватный',
+    'widget.saved.lists.public': 'Публичный',
     'widget.toggler.map': 'Карта',
     'widget.toggler.search_and_filters': 'Поиск и фильтры',
 } as const
