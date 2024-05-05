@@ -2,6 +2,7 @@ import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/t
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/es/storage'
 
+import appReducer from '@/redux/features/app-slice'
 import mapReducer from '@/redux/features/map-slice'
 import userReducer from '@/redux/features/user-slice'
 import widgetReducer from '@/redux/features/widget-slice'
@@ -15,6 +16,7 @@ const persistConfig = {
 }
 
 const reducers = combineReducers({
+    app: appReducer,
     map: mapReducer,
     user: userReducer,
     widget: widgetReducer,

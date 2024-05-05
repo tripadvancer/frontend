@@ -7,7 +7,7 @@ export const HeaderLogo = () => {
             <Image src="/images/logo-mini.svg" width="32" height="28" alt="Tripadvancer" className="hidden md:block" />
             <Image
                 src="/images/logo.svg"
-                width="144"
+                width="140"
                 height="24"
                 alt="Tripadvancer"
                 className="sm:h-[28px] sm:w-[168px]"
