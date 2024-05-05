@@ -23,6 +23,7 @@ export const WidgetPickerSearchInput = (props: WidgetPickerSearchInputProps) => 
 
             <input
                 type="text"
+                name="search"
                 value={props.value}
                 autoFocus
                 autoComplete="off"

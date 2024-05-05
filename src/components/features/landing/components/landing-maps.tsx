@@ -10,7 +10,15 @@ export const LandingMaps = async () => {
         <section>
             <h2 className="h3 mb-4 text-center">{t('landing.map.title')}</h2>
             <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">{t('landing.map.text')}</p>
-            <Image src="/images/map.jpg" width={928} height={580} className="m-auto mb-8" alt="The best trip planner" />
+            <Link href="/maps">
+                <Image
+                    src="/images/map.jpg"
+                    width={928}
+                    height={580}
+                    className="m-auto mb-8"
+                    alt="The best trip planner"
+                />
+            </Link>
             <div className="text-center">
                 <Link
                     href="/maps"
