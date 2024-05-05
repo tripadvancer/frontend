@@ -24,7 +24,6 @@ export const WidgetPickerSearchInput = (props: WidgetPickerSearchInputProps) => 
             <input
                 type="text"
                 value={props.value}
-                autoFocus
                 autoComplete="off"
                 className="hover-animated h-10 w-full rounded-lg border border-black-15 bg-white px-10 placeholder:text-black-40 focus:border-black-40 focus:outline-none disabled:cursor-no-drop"
                 placeholder={t('location_picker.placeholder')}
