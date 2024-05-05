@@ -35,15 +35,17 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
     if (isSuccess && reviews.items.length > 0) {
         return (
             <div className="flex flex-col gap-y-8">
-                {reviews.items.map(review => (
-                    <Review
-                        key={`place-review-${review.id}`}
-                        review={review}
-                        variant="place-page"
-                        activeUserId={activeUserId}
-                        isAuth={isAuth}
-                    />
-                ))}
+                <div>
+                    {reviews.items.map(review => (
+                        <Review
+                            key={`place-review-${review.id}`}
+                            review={review}
+                            variant="place-page"
+                            activeUserId={activeUserId}
+                            isAuth={isAuth}
+                        />
+                    ))}
+                </div>
 
                 {reviews.totalPages > page && (
                     <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />

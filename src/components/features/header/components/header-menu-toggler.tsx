@@ -13,7 +13,7 @@ export const HeaderMenuToggler = () => {
     }
 
     return (
-        <div className="link-black block cursor-pointer sm:hidden" onClick={handleClick}>
+        <div className="block cursor-pointer sm:hidden" onClick={handleClick}>
             {isHeaderMenuOpened ? <CloseIcon24 /> : <MenuIcon24 />}
         </div>
     )
