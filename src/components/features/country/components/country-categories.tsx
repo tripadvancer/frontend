@@ -1,15 +1,13 @@
 'use client'
 
 import { useCallback } from 'react'
-import { isMobile } from 'react-device-detect'
 
-import classNames from 'classnames'
-
-import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 
 import { getSortedCategories } from '@/utils/dictionaries/categories'
 import { useI18n } from '@/utils/i18n/i18n.client'
+
+import { CountryCategoriesItem } from './country-categories-item'
 
 type CountryCategoriesProps = {
     selectedCategoryIds: number[]
@@ -40,35 +38,19 @@ export const CountryCategories = ({ selectedCategoryIds, locale }: CountryCatego
 
     return (
         <div className="mx-auto flex flex-wrap justify-center gap-1 sm:w-2/3">
-            <Link
+            <CountryCategoriesItem
                 href={pathname}
-                scroll={false}
-                replace={true}
-                className={classNames(
-                    'flex-center h-8 cursor-pointer whitespace-nowrap rounded-full bg-blue-20 px-4 text-small text-blue-100',
-                    {
-                        'bg-blue-active text-blue-20': selectedCategoryIds.length === 0,
-                        'hover-animated hover:bg-blue-active hover:text-blue-20': !isMobile,
-                    },
-                )}
-            >
-                {t('categories.all')}
-            </Link>
+                caption={t('categories.all')}
+                isSelected={selectedCategoryIds.length === 0}
+            />
+
             {sortedCategories.map(category => (
-                <Link
+                <CountryCategoriesItem
                     key={`category-${category.id}`}
                     href={{ query: createQueryString(category.id) }}
-                    scroll={false}
-                    replace={true}
-                    className={classNames(
-                        'flex-center hover-animated h-8 cursor-pointer whitespace-nowrap rounded-full bg-blue-20 px-4 text-small text-blue-100 sm:hover:bg-blue-active sm:hover:text-blue-20',
-                        {
-                            'bg-blue-active text-blue-20': selectedCategoryIds.includes(category.id),
-                        },
-                    )}
-                >
-                    {category.localizedName[locale]}
-                </Link>
+                    caption={category.localizedName[locale]}
+                    isSelected={selectedCategoryIds.includes(category.id)}
+                />
             ))}
         </div>
     )

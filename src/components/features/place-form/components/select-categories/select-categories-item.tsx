@@ -2,7 +2,7 @@
 
 import classNames from 'classnames'
 
-type SelectCategoriesCategoryProps = {
+type SelectCategoriesItemProps = {
     id: number
     localizedName: string
     isSelected: boolean
@@ -10,19 +10,19 @@ type SelectCategoriesCategoryProps = {
     onClick: (categoryId: number) => void
 }
 
-export const SelectCategoriesCategory = ({
+export const SelectCategoriesItem = ({
     id,
     localizedName,
     isSelected,
     isDisabled,
     onClick,
-}: SelectCategoriesCategoryProps) => {
+}: SelectCategoriesItemProps) => {
     return (
         <div
             className={classNames(
-                'flex-center hover-animated h-8 cursor-pointer rounded-full bg-blue-20 px-4 text-small text-blue-100 sm:hover:bg-blue-active sm:hover:text-blue-20',
+                'flex-center hover-animated h-8 cursor-pointer rounded-full border bg-blue-20 px-4 text-small text-blue-100 sm:hover:border-blue-100 sm:hover:bg-white',
                 {
-                    'bg-blue-active text-blue-20': isSelected,
+                    'border-blue-100 bg-white': isSelected,
                     'pointer-events-none opacity-30': isDisabled,
                 },
             )}
