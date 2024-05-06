@@ -44,5 +44,5 @@ export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }
         return <WidgetRandomPlace {...place} />
     }
 
-    return <div className="m-auto text-center text-black-40">{t('widget.random.info')}</div>
+    return <div className="m-auto w-2/3 text-center text-black-40">{t('widget.random.info')}</div>
 }

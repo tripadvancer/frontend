@@ -17,13 +17,13 @@ export const widget = {
     'widget.tabs.visited': 'Я посетил',
     'widget.tabs.random': 'Случайное',
 
-    'widget.all_places.empty_message': 'В этой области нет мест.{br}Попробуйте измените категории или увеличьте масштаб карты.',
+    'widget.all_places.empty_message': 'В этой области нет мест.{br}Попробуйте измените категории или увеличьте масштаб.',
 
     'widget.visited_places.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в посещенные, чтобы увидеть его здесь.',
     'widget.visited_places.not_logged_in': 'Для просмотра посещенных мест необходимо {sign_in_link}.',
     
     'widget.random.empty_message': 'Не найдено мест, соответствующих Вашим фильтрам.{br}Попробуйте изменить категории или радиус.',
-    'widget.random.info': 'Выберите категории, радиус вокруг Вас и найдите случайное место.',
+    'widget.random.info': 'Выберите категории и радиус, чтобы найти случайное место.',
     'widget.random.button': 'Найти случайное место',
     'widget.random.button_coundown': 'Найти случайное место ({countdown})',
     'widget.random.error.not_location': 'Чтобы найти случайное место — нужно разрешить доступ к вашему местоположению или выбрать “Я здесь“ на карте.',

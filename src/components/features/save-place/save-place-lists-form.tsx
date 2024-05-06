@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import type { IList, UpdateListsByPlaceIdInputs } from '@/utils/types/list'
+import type { IList, UpdatePlaceInListsInputs } from '@/utils/types/list'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormCheckbox } from '@/components/ui/form-checkbox'
@@ -34,6 +34,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     const [isCreateList, setIsCreateList] = useState<boolean>(lists.length === 0)
 
     const [createList, { isLoading: isListCreating }] = listAPI.useCreateUserListMutation()
+    const [updatePlaceInLists, { isLoading: isPlaceUpdating }] = listAPI.useUpdatePlaceInListsMutation()
 
     useEffect(() => {
         if (isCreateList) {
@@ -50,11 +51,11 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
         }),
     })
 
-    const initialValues: UpdateListsByPlaceIdInputs = {
+    const initialValues: UpdatePlaceInListsInputs & { newList: { name: string } } = {
         placeId,
         listIds: lists
             .filter(list => list.listToPlace.some(listToPlace => listToPlace.placeId === placeId))
-            .map(list => list.id.toString()),
+            .map(list => list.id),
         newList: {
             name: '',
         },
@@ -65,18 +66,24 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema,
-        onSubmit: async (inputs: UpdateListsByPlaceIdInputs) => {
+        onSubmit: async (inputs: UpdatePlaceInListsInputs & { newList: { name: string } }) => {
             if (isCreateList && inputs.newList.name) {
                 try {
                     const response = await createList(inputs.newList).unwrap()
-                    console.log([...inputs.listIds, response.id.toString()])
-                    // dialog.close()
+                    const body = { placeId, listIds: [...inputs.listIds, response.id] }
+                    await updatePlaceInLists(body).unwrap()
+                    dialog.close()
                 } catch {
                     toast.error(t('common.error'))
                 }
             } else {
-                console.log(inputs.listIds)
-                // dialog.close()
+                try {
+                    const body = { placeId, listIds: inputs.listIds }
+                    await updatePlaceInLists(body).unwrap()
+                    dialog.close()
+                } catch {
+                    toast.error(t('common.error'))
+                }
             }
         },
     })
@@ -92,8 +99,15 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                             name="listIds"
                             value={list.id.toString()}
                             caption={list.name}
-                            checked={formik.values.listIds.includes(list.id.toString())}
-                            onChange={formik.handleChange}
+                            checked={formik.values.listIds.includes(list.id)}
+                            onChange={e =>
+                                formik.setFieldValue(
+                                    'listIds',
+                                    e.target.checked
+                                        ? [...formik.values.listIds, list.id]
+                                        : formik.values.listIds.filter(id => id !== list.id),
+                                )
+                            }
                         />
                     ))}
                 </div>
@@ -111,6 +125,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     name="name"
                     value={formik.values.newList?.name || ''}
                     autoFocus={isCreateList}
+                    autoComplete="off"
                     placeholder={t('save_place.add_new_list.input.plceholder')}
                     error={formik.errors.newList?.name}
                     disabled={!isCreateList}
@@ -118,7 +133,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                 />
             </div>
             <div className="flex gap-x-2">
-                <FormButton htmlType="submit" isLoading={isListCreating} isDisabled={!formik.dirty}>
+                <FormButton htmlType="submit" isLoading={isListCreating || isPlaceUpdating} isDisabled={!formik.dirty}>
                     {t('common.action.save')}
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
