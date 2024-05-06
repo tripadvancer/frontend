@@ -63,6 +63,7 @@ export const reviewsAPI = api.injectEndpoints({
 
                 const optimisticResultPlacePage = dispatch(
                     reviewsAPI.util.updateQueryData('getReviewsByPlaceId', { placeId, cursor: undefined }, draft => {
+                        draft.total += 1
                         draft.items.unshift(data)
                     }),
                 )
@@ -137,12 +138,14 @@ export const reviewsAPI = api.injectEndpoints({
             async onQueryStarted({ reviewId, placeId, userId }, { dispatch, queryFulfilled }) {
                 const optimisticResultPlacePage = dispatch(
                     reviewsAPI.util.updateQueryData('getReviewsByPlaceId', { placeId, cursor: undefined }, draft => {
+                        draft.total -= 1
                         draft.items = draft.items.filter(review => review.id !== reviewId)
                     }),
                 )
 
                 const optimisticResultUserPage = dispatch(
                     reviewsAPI.util.updateQueryData('getReviewsByUserId', { userId, cursor: undefined }, draft => {
+                        draft.total -= 1
                         draft.items = draft.items.filter(review => review.id !== reviewId)
                     }),
                 )
