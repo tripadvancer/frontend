@@ -19,9 +19,14 @@ export const WidgetSaved = ({ isAuth }: { isAuth: boolean }) => {
     if (!isAuth) {
         return (
             <WidgetMessage
-                message={t('widget.saved.not_logged_in', { br: <br /> })}
-                actionCaption={t('common.link.sign_in')}
-                onAction={() => dialog.open(<SignIn />)}
+                message={t('widget.saved.not_logged_in', {
+                    br: <br />,
+                    sign_in_link: (
+                        <span className="link" onClick={() => dialog.open(<SignIn />)}>
+                            {t('widget.sign_in_link')}
+                        </span>
+                    ),
+                })}
             />
         )
     }

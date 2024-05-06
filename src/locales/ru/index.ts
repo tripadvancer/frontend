@@ -118,6 +118,7 @@ export default {
     'placeholder.action.new_password': 'Введите новый пароль',
     'placeholder.action.email': 'Введите email',
     'placeholder.action.new_email': 'Введите новый email',
+    'placeholder.action.list_name': 'Введите название списка',
     'placeholder.place.title': 'Введите название места',
     'placeholder.place.coordinates': 'Выберите местоположение',
 

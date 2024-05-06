@@ -35,12 +35,14 @@ export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }
     }
 
     if (isSuccess && !place) {
-        return <WidgetMessage message={t('widget.random.empty_message')} />
+        return (
+            <div className="m-auto text-center text-black-40">{t('widget.random.empty_message', { br: <br /> })}</div>
+        )
     }
 
     if (isSuccess && place) {
         return <WidgetRandomPlace {...place} />
     }
 
-    return <div className="m-auto w-2/3 text-center text-small text-black-40">{t('widget.random.info')}</div>
+    return <div className="m-auto w-2/3 text-center text-black-40">{t('widget.random.info')}</div>
 }
