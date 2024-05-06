@@ -2,6 +2,8 @@ import Image from 'next/image'
 
 import { getI18n } from '@/utils/i18n/i18n.server'
 
+import { LandingFeaturesListsButton } from './landing-features-lists-buttons'
+
 export const LandingFeaturesLists = async () => {
     const t = await getI18n()
 
@@ -14,9 +16,12 @@ export const LandingFeaturesLists = async () => {
                 className="m-auto block"
                 alt="Personalized travel lists"
             />
-            <section className="sm:-order-1 sm:text-right">
-                <h3 className="h5 mb-4 sm:mb-8">{t('onboarding.features.lists.title', { br: <br /> })}</h3>
-                <p>{t('onboarding.features.lists.description')}</p>
+            <section className="flex flex-col gap-y-4 sm:-order-1 sm:gap-y-8 sm:text-right">
+                <h3 className="h5">{t('landing.features.lists.title', { br: <br /> })}</h3>
+                <p>{t('landing.features.lists.text')}</p>
+                <div className="flex-none">
+                    <LandingFeaturesListsButton />
+                </div>
             </section>
         </div>
     )

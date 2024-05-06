@@ -11,6 +11,8 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
+import { SignUpCompleting } from './sign-up-completing'
+
 type ClaimEmailErrorProps = {
     userId: number
 }
@@ -27,8 +29,7 @@ export const ClaimEmailError = ({ userId }: ClaimEmailErrorProps) => {
         try {
             setIsLoading(true)
             await sendVerificationEmail()
-            toast.success(t('success.send_verification_email'))
-            dialog.close()
+            dialog.open(<SignUpCompleting />)
         } catch {
             toast.error(t('common.error'))
         } finally {

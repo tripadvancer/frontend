@@ -19,8 +19,14 @@ export type IListInfo = Pick<IList, 'id' | 'name' | 'description' | 'index' | 'a
     userId: number
 }
 
-export type CreateListInputs = Pick<IList, 'name' | 'description'>
+export type CreateListInputs = Pick<IList, 'name'>
 
 export type UpdateListInputs = Pick<IList, 'id' | 'name' | 'description' | 'isPublic'> & {
     placesOrder: number[]
+}
+
+export type UpdateListsByPlaceIdInputs = {
+    placeId: number
+    listIds: string[]
+    newList: CreateListInputs
 }

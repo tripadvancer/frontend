@@ -8,7 +8,7 @@ import { PlacePreviewActions } from '@/components/ui/place-preview-actions'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 
-export const WidgetPlacesItem = (place: IPlacePreview) => {
+export const WidgetPlacesFeedItem = (place: IPlacePreview) => {
     return (
         <div className="flex gap-x-4">
             <Link href={`places/${place.id}`} className="peer flex-none" target="_blank">

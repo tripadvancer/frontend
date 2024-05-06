@@ -22,11 +22,12 @@ export type DropdownItemProps = {
 
 type DropdownProps = {
     items: DropdownItemProps[]
+    position?: 'left' | 'right' | 'center'
     children?: ReactNode
     currentItem?: string
 }
 
-export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
+export const Dropdown = ({ children, items, position = 'right', currentItem }: DropdownProps) => {
     const ref = useRef<HTMLDivElement>(null)
     const [visible, setVisible] = useState<boolean>(false)
 
@@ -49,10 +50,16 @@ export const Dropdown = ({ children, items, currentItem }: DropdownProps) => {
                 {children ? children : <ActionButton isActivated={visible} />}
             </div>
             {visible && (
-                <ul className="absolute right-0 top-full w-40 rounded-lg bg-white p-1.5 shadow-medium">
+                <ul
+                    className={classNames('absolute top-full mt-1 w-40 rounded-lg bg-white p-1.5 shadow-medium', {
+                        'left-0': position === 'left',
+                        'right-0': position === 'right',
+                        'left-1/2 -translate-x-1/2': position === 'center',
+                    })}
+                >
                     {items.map(item => (
                         <DropdownItem
-                            key={item.value}
+                            key={`dropdown-item-${item.value}`}
                             {...item}
                             isCurrent={item.value === currentItem}
                             onClick={() => handleClick(item)}

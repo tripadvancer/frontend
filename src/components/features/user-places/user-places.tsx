@@ -35,14 +35,14 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                         const country = getCountryByCode(place.countryCode)
 
                         return (
-                            <div key={place.id}>
+                            <div key={`user-place-${place.id}`}>
                                 <Link href={`/places/${place.id}`} className="text-black-100">
-                                    <div className="mb-2">
+                                    <div className="mb-2 flex-none">
                                         <PlacePreviewCover
                                             cover={place.cover}
                                             title={place.title}
                                             size={192}
-                                            className="aspect-square w-48 rounded-lg"
+                                            className="aspect-square rounded-lg"
                                         />
                                     </div>
                                     <div className="line-clamp-3 break-words font-medium">{place.title}</div>

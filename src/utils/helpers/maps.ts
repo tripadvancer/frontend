@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import type { PaddingOptions, ViewState } from 'react-map-gl/maplibre'
 
 import { FlyToOptions } from 'maplibre-gl'
@@ -87,6 +88,7 @@ export function getMapFlyToOptions(lngLat: LngLat): FlyToOptions {
         center: lngLat,
         zoom: getMapFlyToZoom(),
         essential: true,
+        padding: getMapPadding(),
     }
 }
 
@@ -95,6 +97,9 @@ export function getMapFlyToZoom(): number {
 }
 
 export function getMapPadding(): PaddingOptions {
+    if (isMobile) {
+        return { top: 50, right: 50, bottom: 50, left: 50 }
+    }
     return { top: 100, right: 564, bottom: 100, left: 100 }
 }
 

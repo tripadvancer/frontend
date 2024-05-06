@@ -1,12 +1,15 @@
 'use client'
 
+import { useMediaQuery } from 'usehooks-ts'
+
 import { Dropdown } from '@/components/ui/dropdown'
-import { GlobeIcon24 } from '@/components/ui/icons'
+import { GlobeIcon16 } from '@/components/ui/icons'
 import { useChangeLocale, useCurrentLocale } from '@/utils/i18n/i18n.client'
 
-export const HeaderLanguageChanger = () => {
+export const LanguageChanger = () => {
     const changeLocale = useChangeLocale()
     const currentLocale = useCurrentLocale()
+    const isMobile = useMediaQuery('(max-width: 639px)')
 
     const handleChangeLocale = (locale: 'en' | 'ru') => {
         if (currentLocale !== locale) {
@@ -28,14 +31,15 @@ export const HeaderLanguageChanger = () => {
                     onClick: () => handleChangeLocale('ru'),
                 },
             ]}
+            position={isMobile ? 'center' : 'right'}
             currentItem={currentLocale}
         >
-            <div className="link flex items-center gap-x-2 text-big-bold">
-                <span className="hidden md:block">
-                    {currentLocale === 'en' && 'English'}
-                    {currentLocale === 'ru' && 'Русский'}
-                </span>
-                <GlobeIcon24 />
+            <div className="link flex-center gap-x-2">
+                {currentLocale === 'en' && 'English'}
+                {currentLocale === 'ru' && 'Русский'}
+                <div className="hidden sm:block">
+                    <GlobeIcon16 />
+                </div>
             </div>
         </Dropdown>
     )

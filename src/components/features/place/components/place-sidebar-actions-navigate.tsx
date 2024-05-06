@@ -18,7 +18,7 @@ export const PlaceSidebarActionsNavigate = ({ place }: { place: IPlace }) => {
     }
 
     return (
-        <div className="link inline-flex items-center gap-x-2 align-top" onClick={handleClick}>
+        <div className="link flex items-center gap-x-2 align-top" onClick={handleClick}>
             <RouteIcon24 />
             {t('place.actions.navigate')}
         </div>

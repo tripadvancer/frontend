@@ -4,14 +4,17 @@ import { useState } from 'react'
 
 import Lightbox from 'yet-another-react-lightbox'
 
+import { FormFileInput } from '@/components/ui/form-file-input'
 import { PhotoPreview } from '@/components/ui/photo-preview'
+import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { ImageVariant } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { ReviewFormInputPhoto } from './revew-form-input-photo'
+const maxFilesCount = validationConfig.review.photos.maxCount
+const maxFileSize = validationConfig.common.maxFileSize
 
 type ReviewFormPhotosListProps = {
     photos: string[]
@@ -57,8 +60,11 @@ export const ReviewFormPhotosList = ({ photos, onChange }: ReviewFormPhotosListP
 
     return (
         <div className="flex flex-col gap-y-2">
-            <ReviewFormInputPhoto
-                currentPhotosCount={photos.length}
+            <FormFileInput
+                multiple
+                maxFilesCount={maxFilesCount}
+                maxFileSize={maxFileSize}
+                currentFilesLength={photos.length}
                 isUploading={isUploading}
                 onChange={handlePhotoUpload}
             />
@@ -66,7 +72,7 @@ export const ReviewFormPhotosList = ({ photos, onChange }: ReviewFormPhotosListP
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
                 {photos.map((photo, index) => (
                     <PhotoPreview
-                        key={photo}
+                        key={`review-photo-${photo}`}
                         url={photo}
                         alt=""
                         size={64}

@@ -32,15 +32,17 @@ export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) 
     if (isSuccess && reviews.items.length > 0) {
         return (
             <div className="flex flex-col gap-y-8">
-                {reviews.items.map((review, index) => (
-                    <Review
-                        key={index}
-                        review={review}
-                        variant="user-page"
-                        activeUserId={activeUserId}
-                        isAuth={isAuth}
-                    />
-                ))}
+                <div>
+                    {reviews.items.map(review => (
+                        <Review
+                            key={`user-review-${review.id}`}
+                            review={review}
+                            variant="user-page"
+                            activeUserId={activeUserId}
+                            isAuth={isAuth}
+                        />
+                    ))}
+                </div>
 
                 {reviews.totalPages > page && (
                     <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />

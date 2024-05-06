@@ -1,10 +1,12 @@
 'use client'
 
+import { Ref, forwardRef } from 'react'
+
 import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { Spinner } from '@/components/ui/spinner'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type WidgetPickerSearchInputProps = {
+type SearchInputProps = {
     value: string
     isLoading: boolean
     onChange: (value: string) => void
@@ -12,7 +14,7 @@ type WidgetPickerSearchInputProps = {
     onClear: () => void
 }
 
-export const LandingSearchInput = (props: WidgetPickerSearchInputProps) => {
+const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement>) => {
     const t = useI18n()
 
     return (
@@ -22,12 +24,13 @@ export const LandingSearchInput = (props: WidgetPickerSearchInputProps) => {
             </div>
 
             <input
+                ref={ref}
                 type="text"
+                name="search"
                 value={props.value}
-                autoFocus
                 autoComplete="off"
                 className="hover-animated h-10 w-full rounded-lg border border-black-15 bg-white px-10 placeholder:text-black-40 focus:border-black-40 focus:outline-none disabled:cursor-no-drop"
-                placeholder={t('pages.landing.search.placeholder')}
+                placeholder={t('landing.search.placeholder')}
                 onClick={props.onClick}
                 onChange={event => props.onChange(event.target.value)}
             />
@@ -43,3 +46,5 @@ export const LandingSearchInput = (props: WidgetPickerSearchInputProps) => {
         </div>
     )
 }
+
+export const SearchInput = forwardRef(SearchInputComponent)
