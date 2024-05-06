@@ -14,13 +14,9 @@ export const SavePlaceLists = ({ placeId }: { placeId: number }) => {
         return <div className="text-center text-black-40">{t('common.error')}</div>
     }
 
-    if (isSuccess && lists.length === 0) {
-        return <div className="text-center text-black-40">{t('save_place.empty', { br: <br /> })}</div>
-    }
-
-    if (isSuccess && lists.length > 0) {
+    if (isSuccess && lists) {
         return <SavePlaceListsForm lists={lists} placeId={placeId} />
     }
 
-    return <div>{t('save_place.loading')}</div>
+    return <div>{t('save_place.lists.loading')}</div>
 }

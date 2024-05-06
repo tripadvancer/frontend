@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -29,7 +29,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     const toast = useToast()
     const dialog = useDialog()
 
-    const [isCreateList, setIsCreateList] = useState(false)
+    const [isCreateList, setIsCreateList] = useState<boolean>(lists.length === 0)
 
     const [createList, { isLoading: isListCreating }] = listAPI.useCreateUserListMutation()
 
@@ -44,7 +44,9 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
 
     const initialValues: UpdateListsByPlaceIdInputs = {
         placeId,
-        listIds: lists.map(list => list.id.toString()),
+        listIds: lists
+            .filter(list => list.listToPlace.some(listToPlace => listToPlace.placeId === placeId))
+            .map(list => list.id.toString()),
     }
 
     const formik = useFormik({
@@ -71,19 +73,23 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     return (
         <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
             <div className="flex flex-col gap-y-2">
-                <div className="flex flex-col gap-y-2">
-                    {lists.map(list => (
-                        <FormCheckbox
-                            key={`list-${list.id}`}
-                            id={`list-${list.id}`}
-                            name="listIds"
-                            value={list.id.toString()}
-                            caption={list.name}
-                            checked={formik.values.listIds.includes(list.id.toString())}
-                            onChange={formik.handleChange}
-                        />
-                    ))}
-                </div>
+                {lists.length === 0 ? (
+                    <div className="text-black-40">{t('save_place.lists.empty', { br: <br /> })}</div>
+                ) : (
+                    <div className="flex flex-col gap-y-2">
+                        {lists.map(list => (
+                            <FormCheckbox
+                                key={`list-${list.id}`}
+                                id={`list-${list.id}`}
+                                name="listIds"
+                                value={list.id.toString()}
+                                caption={list.name}
+                                checked={formik.values.listIds.includes(list.id.toString())}
+                                onChange={formik.handleChange}
+                            />
+                        ))}
+                    </div>
+                )}
                 <FormCheckbox
                     id="new-list"
                     name="new-list"
@@ -96,6 +102,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     type="text"
                     name="name"
                     value={formik.values.newList?.name || ''}
+                    autoFocus={isCreateList}
                     placeholder={t('save_place.add_new_list.input.plceholder')}
                     error={formik.errors.newList?.name}
                     isDisabled={!isCreateList}
@@ -103,7 +110,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                 />
             </div>
             <div className="flex gap-x-2">
-                <FormButton htmlType="submit" isLoading={isListCreating}>
+                <FormButton htmlType="submit" isLoading={isListCreating} isDisabled={!formik.dirty}>
                     {t('common.action.save')}
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>

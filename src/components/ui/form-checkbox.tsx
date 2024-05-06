@@ -7,7 +7,7 @@ import { CheckIcon16 } from '@/components/ui/icons'
 type FormCheckboxProps = {
     id: string
     name: string
-    value: string
+    value: string | number
     caption: string
     checked?: boolean
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
