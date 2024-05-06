@@ -39,7 +39,7 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
 
     if (isSuccess && reviews.items.length > 0) {
         return (
-            <>
+            <div className="flex flex-col gap-y-8">
                 <div>
                     {reviews.items.map(review => (
                         <Review
