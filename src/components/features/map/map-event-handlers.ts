@@ -108,16 +108,26 @@ export const useMapEventHandlers = () => {
         (event: MapLayerMouseEvent) => {
             if (event.features) {
                 const feature = event.features[0]
-                if (feature) {
-                    // @ts-ignore
-                    const coordinates = feature.geometry.coordinates.slice()
 
-                    while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
-                        coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360
+                if (feature) {
+                    if (feature.layer.id === 'places-layer') {
+                        // @ts-ignore
+                        const coordinates = feature.geometry.coordinates
+
+                        while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
+                            coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360
+                        }
+
+                        const place = { ...feature.properties, coordinates } as IPlacePreview
+                        dispatch(setMapPlacePopupInfo(place))
+                        return
                     }
 
-                    const place = { ...feature.properties, coordinates } as IPlacePreview
-                    dispatch(setMapPlacePopupInfo(place))
+                    if (feature.layer.id === 'route-layer') {
+                        console.log(feature.properties)
+
+                        return
+                    }
                 } else {
                     if (mapState.placePopupInfo || mapState.locationPopupInfo) {
                         dispatch(closeMapPopups())

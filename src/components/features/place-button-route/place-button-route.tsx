@@ -48,7 +48,7 @@ export const PlaceButtonRoute = ({ lngLat }: { lngLat: LngLat }) => {
         setIsLoading(true)
 
         if (userLocation) {
-            buildRoute(userLocation, lngLat, CostingModel.Truck, handleRouteResponse)
+            buildRoute(userLocation, lngLat, CostingModel.Auto, handleRouteResponse)
             return
         }
 
@@ -65,6 +65,7 @@ export const PlaceButtonRoute = ({ lngLat }: { lngLat: LngLat }) => {
         map?.fitBounds([sw, ne])
 
         // For each leg of the trip...
+        console.log(response.trip.summary)
         response.trip.legs.forEach(leg => {
             const geometry = polyline.toGeoJSON(leg.shape, 6)
             const source = map?.getSource('route-source') as GeoJSONSource

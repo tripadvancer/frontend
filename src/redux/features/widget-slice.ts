@@ -50,7 +50,7 @@ function setWidgetDataSource(state: WidgetState) {
                 state.dataSource = MapDataSourcesEnum.VISITED_PLACES
                 break
             case WidgetTabsEnum.RANDOM:
-                state.dataSource = MapDataSourcesEnum.ALL_PLACES
+                state.dataSource = MapDataSourcesEnum.RANDOM_PLACES
                 break
             default:
                 state.dataSource = MapDataSourcesEnum.ALL_PLACES
