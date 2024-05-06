@@ -29,9 +29,17 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     const toast = useToast()
     const dialog = useDialog()
 
+    const inputRef = useRef<HTMLInputElement>(null)
+
     const [isCreateList, setIsCreateList] = useState<boolean>(lists.length === 0)
 
     const [createList, { isLoading: isListCreating }] = listAPI.useCreateUserListMutation()
+
+    useEffect(() => {
+        if (isCreateList) {
+            inputRef.current?.focus()
+        }
+    }, [isCreateList])
 
     const validationSchema = Yup.object().shape({
         newList: Yup.object().shape({
@@ -47,6 +55,9 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
         listIds: lists
             .filter(list => list.listToPlace.some(listToPlace => listToPlace.placeId === placeId))
             .map(list => list.id.toString()),
+        newList: {
+            name: '',
+        },
     }
 
     const formik = useFormik({
@@ -55,7 +66,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
         validateOnChange: false,
         validationSchema,
         onSubmit: async (inputs: UpdateListsByPlaceIdInputs) => {
-            if (inputs.newList && inputs.newList.name) {
+            if (isCreateList && inputs.newList.name) {
                 try {
                     const response = await createList(inputs.newList).unwrap()
                     console.log([...inputs.listIds, response.id.toString()])
@@ -73,23 +84,19 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     return (
         <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
             <div className="flex flex-col gap-y-2">
-                {lists.length === 0 ? (
-                    <div className="text-black-40">{t('save_place.lists.empty', { br: <br /> })}</div>
-                ) : (
-                    <div className="flex flex-col gap-y-2">
-                        {lists.map(list => (
-                            <FormCheckbox
-                                key={`list-${list.id}`}
-                                id={`list-${list.id}`}
-                                name="listIds"
-                                value={list.id.toString()}
-                                caption={list.name}
-                                checked={formik.values.listIds.includes(list.id.toString())}
-                                onChange={formik.handleChange}
-                            />
-                        ))}
-                    </div>
-                )}
+                <div className="flex flex-col gap-y-2">
+                    {lists.map(list => (
+                        <FormCheckbox
+                            key={`list-${list.id}`}
+                            id={`list-${list.id}`}
+                            name="listIds"
+                            value={list.id.toString()}
+                            caption={list.name}
+                            checked={formik.values.listIds.includes(list.id.toString())}
+                            onChange={formik.handleChange}
+                        />
+                    ))}
+                </div>
                 <FormCheckbox
                     id="new-list"
                     name="new-list"
@@ -99,13 +106,14 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     onChange={() => setIsCreateList(!isCreateList)}
                 />
                 <FormInput
+                    ref={inputRef}
                     type="text"
                     name="name"
                     value={formik.values.newList?.name || ''}
                     autoFocus={isCreateList}
                     placeholder={t('save_place.add_new_list.input.plceholder')}
                     error={formik.errors.newList?.name}
-                    isDisabled={!isCreateList}
+                    disabled={!isCreateList}
                     onChange={e => formik.setFieldValue('newList.name', e.target.value)}
                 />
             </div>

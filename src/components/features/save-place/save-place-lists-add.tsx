@@ -26,7 +26,7 @@ export const SavePlaceListsAdd = () => {
                 value=""
                 placeholder={t('save_place.add_new_list.input.plceholder')}
                 error=""
-                isDisabled={!isChecked}
+                disabled={!isChecked}
                 onChange={() => {}}
             />
         </>

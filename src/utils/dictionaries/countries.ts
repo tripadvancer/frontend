@@ -449,7 +449,7 @@ export const сountriesDictionary: ICountryDict[] = [
     {
         code: 'FR',
         slug: 'france',
-        name: { en: 't', ru: 'Франция' },
+        name: { en: 'France', ru: 'Франция' },
         bounds: [-5.14, 41.37, 9.56, 51.12],
     },
     {
