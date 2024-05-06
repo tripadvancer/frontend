@@ -12,7 +12,7 @@ export const placesLayer: SymbolLayer = {
             ['==', ['get', 'isVisited'],  true], 'pin-gray', // 'pin-gray' if place is visited
             'pin-orange',                                    // 'pin-orange' by default
         ],
-        'icon-size': 0.85,
+        'icon-size': 0.75,
         'icon-allow-overlap': false,
         'icon-ignore-placement': true,
     },
@@ -51,7 +51,7 @@ export const routeLayer: LineLayer = {
         'line-cap': 'round',
     },
     paint: {
-        'line-color': '#d96c04',
+        'line-color': '#020e19',
         'line-width': 4,
     },
 }

@@ -6,23 +6,18 @@ import Link from 'next/link'
 
 import type { IRandomPlace } from '@/utils/types/place'
 
-import { ChooseNavigate } from '@/components/features/choose-navigate/choose-navigate'
 import { PlaceButtonRoute } from '@/components/features/place-button-route/place-button-route'
 import { FormButton } from '@/components/ui/form-button'
 import { PinIcon16 } from '@/components/ui/icons'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
-import { useDialog } from '@/providers/dialog-provider'
 import { setMapPlacePopupInfo } from '@/redux/features/map-slice'
 import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { ImageVariant } from '@/utils/enums'
 import { arrayToLngLat, getMapFlyToOptions } from '@/utils/helpers/maps'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const WidgetRandomPlace = (place: IRandomPlace) => {
-    const t = useI18n()
-    const dialog = useDialog()
     const dispatch = useAppDispatch()
     const lngLat = arrayToLngLat(place.coordinates)
 
