@@ -25,8 +25,7 @@ export type UpdateListInputs = Pick<IList, 'id' | 'name' | 'description' | 'isPu
     placesOrder: number[]
 }
 
-export type UpdateListsByPlaceIdInputs = {
+export type UpdatePlaceInListsInputs = {
     placeId: number
-    listIds: string[]
-    newList: CreateListInputs
+    listIds: number[]
 }
