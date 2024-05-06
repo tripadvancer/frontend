@@ -58,7 +58,7 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
                         onClick={() => setCursor(reviews.items[reviews.items.length - 1].id)}
                     />
                 )}
-            </>
+            </div>
         )
     }
 
