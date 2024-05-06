@@ -43,7 +43,7 @@ export const WidgetSavedListsViewPlaces = ({ listId }: { listId: number }) => {
     }
 
     if (isSuccess && places.length === 0) {
-        return <WidgetMessage message={t('widget.visited_places.empty_message', { br: <br /> })} />
+        return <WidgetMessage message={t('widget.saved.lists.empty_message', { br: <br /> })} />
     }
 
     if (isSuccess && places.length > 0) {

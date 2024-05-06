@@ -19,7 +19,7 @@ export const widget = {
     'widget.random.error.not_location': 'To find a random place around you, you need to allow access to your location. Click the button below or select "I am here" on the map.',
     'widget.saved.empty_message': 'Your saved places are empty.{br}Create a new list and start adding places to it.',
     'widget.saved.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
-    'widget.saved.lists.empty_message': 'Your list are empty.{br}Add places to this list to see them here.',
+    'widget.saved.lists.empty_message': 'This list are empty.{br}Add places to this list to see them here.',
     'widget.saved.lists.add_button': 'Create new list',
     'widget.saved.lists.info': 'Select a list to view your saved places.',
     'widget.saved.lists.show_only_list': 'Show on map',
