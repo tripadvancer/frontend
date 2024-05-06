@@ -8,7 +8,7 @@ export default {
     ...landing,
     ...savePlace,
     ...widget,
-
+    
     'cookie_consent.title': 'Согласие на использование файлов cookie',
     'cookie_consent.description': 'Этот веб-сайт использует файлы cookie, чтобы обеспечить Вам максимальное удобство. Дополнительную информацию Вы можете найти в нашей {cookie_policy_link}.',
     'cookie_consent.policy_link': 'Политике использования файлов cookie',
@@ -118,6 +118,7 @@ export default {
     'placeholder.action.new_password': 'Введите новый пароль',
     'placeholder.action.email': 'Введите email',
     'placeholder.action.new_email': 'Введите новый email',
+    'placeholder.action.list_name': 'Введите название списка',
     'placeholder.place.title': 'Введите название места',
     'placeholder.place.coordinates': 'Выберите местоположение',
 

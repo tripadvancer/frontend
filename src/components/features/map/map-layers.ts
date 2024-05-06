@@ -51,7 +51,7 @@ export const routeLayer: LineLayer = {
         'line-cap': 'round',
     },
     paint: {
-        'line-color': '#1373cc',
+        'line-color': '#d96c04',
         'line-width': 4,
     },
 }

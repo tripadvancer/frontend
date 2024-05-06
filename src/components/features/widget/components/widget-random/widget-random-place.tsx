@@ -7,6 +7,7 @@ import Link from 'next/link'
 import type { IRandomPlace } from '@/utils/types/place'
 
 import { ChooseNavigate } from '@/components/features/choose-navigate/choose-navigate'
+import { PlaceButtonRoute } from '@/components/features/place-button-route/place-button-route'
 import { FormButton } from '@/components/ui/form-button'
 import { PinIcon16 } from '@/components/ui/icons'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
@@ -57,14 +58,7 @@ export const WidgetRandomPlace = (place: IRandomPlace) => {
                         className="flex-none"
                         onClick={handleShowOnMap}
                     />
-                    <FormButton
-                        type="stroke"
-                        size="small"
-                        onClick={() => dialog.open(<ChooseNavigate lngLat={lngLat} />)}
-                        className="flex-none"
-                    >
-                        {t('common.action.route')}
-                    </FormButton>
+                    <PlaceButtonRoute lngLat={lngLat} />
                 </div>
             </div>
         </div>
