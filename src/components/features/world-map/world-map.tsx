@@ -13,8 +13,8 @@ export const WorldMap = ({ visited }: { visited: string[] }) => {
                         <path
                             key={path}
                             d={path}
-                            className={classNames('cursor-pointer fill-black-40 stroke-black-5 hover:fill-blue-100', {
-                                'fill-blue-active': visited.includes(item.code),
+                            className={classNames('cursor-pointer fill-orange-10 stroke-blue-80 hover:fill-orange-80', {
+                                '!fill-orange-80': visited.includes(item.code),
                             })}
                             onClick={() => {}}
                         />

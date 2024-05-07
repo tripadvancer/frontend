@@ -1,12 +1,14 @@
 import { auth } from './auth.en'
 import { landing } from './landing.en'
 import { savePlace } from './save-space.en'
+import { user } from './user.en'
 import { widget } from './widget.en'
 
 export default {
     ...auth,
     ...landing,
     ...savePlace,
+    ...user,
     ...widget,
 
     'cookie_consent.title': 'Allow Cookies',
@@ -158,11 +160,6 @@ export default {
     'user_achievement.statistic.added_reviews': 'Written reviews',
     'user_achievement.statistic.visited_places': 'Visited places',
     'user_achievement.statistic.visited_countries': 'Visited countries',
-
-    'user_tabs.map': 'My map',
-    'user_tabs.places': 'Added places',
-    'user_tabs.reviews': 'Written reviews',
-    'user_tabs.settings': 'Settings',
 
     'countries.places#zero': 'No places',
     'countries.places#one': '{count} place',

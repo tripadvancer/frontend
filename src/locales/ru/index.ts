@@ -1,12 +1,14 @@
 import { auth } from './auth.ru'
 import { landing } from './landing.ru'
 import { savePlace } from './save-space.ru'
+import { user } from './user.ru'
 import { widget } from './widget.ru'
 
 export default {
     ...auth,
     ...landing,
     ...savePlace,
+    ...user,
     ...widget,
 
     'cookie_consent.title': 'Согласие на использование файлов cookie',
@@ -155,11 +157,6 @@ export default {
     'user_achievement.statistic.added_reviews': 'Написано отзывов',
     'user_achievement.statistic.visited_places': 'Посещено мест',
     'user_achievement.statistic.visited_countries': 'Посещено стран',
-
-    'user_tabs.map': 'Моя карта',
-    'user_tabs.places': 'Мои места',
-    'user_tabs.reviews': 'Мои отзывы',
-    'user_tabs.settings': 'Настройки',
 
     'countries.places#zero': 'Нет мест',
     'countries.places#one': '{count} место',

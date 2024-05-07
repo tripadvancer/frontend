@@ -12,7 +12,7 @@ export const UserMap = async ({ userId }: { userId: string }) => {
     return (
         <div>
             <UserNavigation userId={userId} />
-            <div className="relative mb-8 rounded-2xl bg-blue-10 fill-black-40 p-8">
+            <div className="relative mb-8 rounded-2xl bg-blue-80 fill-black-40 p-6">
                 <WorldMap visited={user.visitedCountries.map(country => country.code)} />
             </div>
 

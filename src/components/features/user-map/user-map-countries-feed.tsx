@@ -1,6 +1,8 @@
 import { getCountryByCode } from '@/services/countries'
 import { getCurrentLocale } from '@/utils/i18n/i18n.server'
 
+import { UserMapCountriesFeedItem } from './user-map-countries-feed-item'
+
 type UserMapCountriesFeedProps = {
     countries: {
         code: string
@@ -22,13 +24,23 @@ export const UserMapCountriesFeed = ({ countries }: UserMapCountriesFeedProps) =
     }
 
     return (
-        <div className="grid grid-cols-5 gap-4">
-            {countries.map(country => (
-                <div key={`country-${country}`} className="rounded-2xl bg-orange-10 p-4">
-                    <div className="h1 text-orange-80">{country.count}</div>
-                    <div className="h7">{getCountryByCode(country.code)?.name[locale]}</div>
-                </div>
-            ))}
+        <div className="grid grid-cols-5 gap-8">
+            <UserMapCountriesFeedItem variant="blue" count="3%" name="World" />
+
+            {countries.map(item => {
+                const country = getCountryByCode(item.code)
+
+                if (country) {
+                    return (
+                        <UserMapCountriesFeedItem
+                            key={`country-${country.code}`}
+                            variant="orange"
+                            count={item.count.toString()}
+                            name={country.name[locale]}
+                        />
+                    )
+                }
+            })}
         </div>
     )
 }
