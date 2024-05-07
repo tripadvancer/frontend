@@ -1,9 +1,13 @@
 import { auth } from './auth.ru'
 import { landing } from './landing.ru'
+import { savePlace } from './save-space.ru'
+import { widget } from './widget.ru'
 
 export default {
     ...auth,
     ...landing,
+    ...savePlace,
+    ...widget,
 
     'cookie_consent.title': 'Согласие на использование файлов cookie',
     'cookie_consent.description': 'Этот веб-сайт использует файлы cookie, чтобы обеспечить Вам максимальное удобство. Дополнительную информацию Вы можете найти в нашей {cookie_policy_link}.',
@@ -70,6 +74,7 @@ export default {
     'common.action.route': 'Маршрут',
     'common.action.locate_me': 'Найти меня',
     'common.action.go_to_map': 'На карту',
+    'common.action.save': 'Сохранить',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -113,6 +118,7 @@ export default {
     'placeholder.action.new_password': 'Введите новый пароль',
     'placeholder.action.email': 'Введите email',
     'placeholder.action.new_email': 'Введите новый email',
+    'placeholder.action.list_name': 'Введите название списка',
     'placeholder.place.title': 'Введите название места',
     'placeholder.place.coordinates': 'Выберите местоположение',
 
@@ -185,33 +191,6 @@ export default {
     'review.form.fields.rating.label': 'Ваша оценка',
     'review.form.fields.text.label': 'Отзыв',
     'review.form.fields.photos.label': 'Фотографии',
-
-    'widget.common.error': 'Произошла непредвиденная ошибка.{br}Пожалуйста, попробуйте позже.',
-    'widget.search.placeholder': 'Найти место',
-    'widget.categories.title': 'Категории',
-    'widget.categories.selected#one': 'выбрана {count} категория',
-    'widget.categories.selected#few': 'выбрано {count} категории',
-    'widget.categories.selected#many': 'выбрано {count} категорий',
-    'widget.categories.selected#other': 'выбрано {count} категорий',
-    'widget.places.title': 'Места',
-    'widget.tabs.all': 'Все',
-    'widget.tabs.saved': 'Сохранённые',
-    'widget.tabs.random': 'Случайное',
-    'widget.all_places.empty_message': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличить масштаб.',
-    'widget.random.empty_message': 'Не найдено мест, соответствующих Вашим фильтрам. Попробуйте изменить категории или радиус.',
-    'widget.random.info': 'Выберите категории, радиус вокруг Вас и получите случайное место, которое может Вам понравиться.',
-    'widget.random.button': 'Найти случайное место',
-    'widget.random.button_coundown': 'Найти случайное место ({countdown})',
-    'widget.random.error.not_location': 'Чтобы найти случайное место рядом с Вами, необходимо разрешить доступ к Вашему местоположению. Нажмите на кнопку ниже или выберите "Я здесь" на карте.',
-    'widget.saved.not_logged_in': 'Вы не авторизованы.{br}Войдите, чтобы увидеть список сохранённых мест.',
-    'widget.saved.lists.favorites.title': 'Избранное',
-    'widget.saved.lists.favorites.empty_message': 'Вы еще не добавили ни одного места в избранное.',
-    'widget.saved.lists.visited.title': 'Посещённые',
-    'widget.saved.lists.visited.empty_message': 'Вы еще не посетили ни одного места.',
-    'widget.saved.lists.info': 'Выберите список, чтобы увидеть сохранённые места.',
-    'widget.saved.lists.show_only_list': 'Показать на карте',
-    'widget.toggler.map': 'Карта',
-    'widget.toggler.search_and_filters': 'Поиск и фильтры',
 
     'map.popup.location.title': 'Выбранное место',
     'map.popup.location.add_place': 'Добавить место',

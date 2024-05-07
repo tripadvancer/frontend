@@ -86,7 +86,7 @@ export const ChangeEmail = () => {
                     placeholder={t('placeholder.action.new_email')}
                     autoFocus
                     error={formik.errors.newEmail}
-                    isDisabled={isLoading}
+                    disabled={isLoading}
                     onChange={formik.handleChange}
                 />
                 <FormInput
@@ -95,7 +95,7 @@ export const ChangeEmail = () => {
                     value={formik.values.password}
                     placeholder={t('placeholder.action.password')}
                     error={formik.errors.password}
-                    isDisabled={isLoading}
+                    disabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>

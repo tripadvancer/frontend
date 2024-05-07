@@ -5,2241 +5,1495 @@ export const сountriesDictionary: ICountryDict[] = [
         code: 'AD',
         slug: 'andorra',
         name: { en: 'Andorra', ru: 'Андорра' },
-        boundingBox: {
-            northEast: { lat: 42.656, lng: 1.786 },
-            southWest: { lat: 42.428, lng: 1.413 },
-        },
+        bounds: [1.786, 42.656, 1.413, 42.428],
     },
     {
         code: 'AE',
         slug: 'united-arab-emirates',
         name: { en: 'United Arab Emirates', ru: 'Объединенные Арабские Эмираты' },
-        boundingBox: {
-            northEast: { lat: 26.084, lng: 56.381 },
-            southWest: { lat: 22.633, lng: 51.583 },
-        },
+        bounds: [51.58, 22.5, 56.4, 26.06],
     },
     {
         code: 'AF',
         slug: 'afghanistan',
         name: { en: 'Afghanistan', ru: 'Афганистан' },
-        boundingBox: {
-            northEast: { lat: 38.49, lng: 74.892 },
-            southWest: { lat: 29.377, lng: 60.496 },
-        },
+        bounds: [60.53, 29.32, 75.16, 38.49],
     },
     {
         code: 'AG',
         slug: 'antigua-and-barbuda',
         name: { en: 'Antigua and Barbuda', ru: 'Антигуа и Барбуда' },
-        boundingBox: {
-            northEast: { lat: 17.729, lng: -61.672 },
-            southWest: { lat: 16.757, lng: -62.67 },
-        },
+        bounds: [-61.8942, 16.9892, -61.6676, 17.7277],
     },
     {
         code: 'AI',
         slug: 'anguilla',
         name: { en: 'Anguilla', ru: 'Ангилья' },
-        boundingBox: {
-            northEast: { lat: 18.283, lng: -62.968 },
-            southWest: { lat: 18.166, lng: -63.168 },
-        },
+        bounds: [-63.428, 18.169, -62.972, 18.601],
     },
     {
         code: 'AL',
         slug: 'albania',
         name: { en: 'Albania', ru: 'Албания' },
-        boundingBox: {
-            northEast: { lat: 42.661, lng: 21.057 },
-            southWest: { lat: 39.644, lng: 19.263 },
-        },
+        bounds: [19.3, 39.62, 21.02, 42.69],
     },
     {
         code: 'AM',
         slug: 'armenia',
         name: { en: 'Armenia', ru: 'Армения' },
-        boundingBox: {
-            northEast: { lat: 41.3, lng: 46.637 },
-            southWest: { lat: 38.841, lng: 43.447 },
-        },
+        bounds: [43.58, 38.74, 46.51, 41.25],
     },
     {
         code: 'AO',
         slug: 'angola',
         name: { en: 'Angola', ru: 'Ангола' },
-        boundingBox: {
-            northEast: { lat: -4.388, lng: 24.082 },
-            southWest: { lat: -18.042, lng: 11.715 },
-        },
+        bounds: [11.64, -17.93, 24.08, -4.44],
     },
     {
         code: 'AQ',
         slug: 'antarctica',
         name: { en: 'Antarctica', ru: 'Антарктида' },
-        boundingBox: {
-            northEast: { lat: -60.515, lng: 179.999 },
-            southWest: { lat: -89.999, lng: -180 },
-        },
+        bounds: [-180.0, -90.0, 180.0, -63.27],
     },
     {
         code: 'AR',
         slug: 'argentina',
         name: { en: 'Argentina', ru: 'Аргентина' },
-        boundingBox: {
-            northEast: { lat: -21.781, lng: -53.639 },
-            southWest: { lat: -55.057, lng: -73.588 },
-        },
+        bounds: [-73.42, -55.25, -53.63, -21.83],
     },
     {
         code: 'AS',
         slug: 'american-samoa',
         name: { en: 'American Samoa', ru: 'Американское Самоа' },
-        boundingBox: {
-            northEast: { lat: -11.049, lng: -169.417 },
-            southWest: { lat: -14.382, lng: -171.091 },
-        },
+        bounds: [-171.0865, -14.5329, -168.1605, -11.0514],
     },
     {
         code: 'AT',
         slug: 'austria',
         name: { en: 'Austria', ru: 'Австрия' },
-        boundingBox: {
-            northEast: { lat: 49.021, lng: 17.162 },
-            southWest: { lat: 46.372, lng: 9.535 },
-        },
+        bounds: [9.48, 46.43, 16.98, 49.04],
     },
     {
         code: 'AU',
         slug: 'australia',
         name: { en: 'Australia', ru: 'Австралия' },
-        boundingBox: {
-            northEast: { lat: -9.088, lng: 159.105 },
-            southWest: { lat: -54.753, lng: 112.921 },
-        },
+        bounds: [113.34, -43.63, 153.57, -10.67],
     },
     {
         code: 'AW',
         slug: 'aruba',
         name: { en: 'Aruba', ru: 'Аруба' },
-        boundingBox: {
-            northEast: { lat: 12.623, lng: -69.865 },
-            southWest: { lat: 12.411, lng: -70.064 },
-        },
+        bounds: [-70.0624, 12.4177, -69.8768, 12.6321],
     },
     {
         code: 'AX',
         slug: 'aland-islands',
-        name: { en: 'Åland Islands', ru: 'Аландские острова' },
-        boundingBox: {
-            northEast: { lat: 60.488, lng: 21.684 },
-            southWest: { lat: 59.454, lng: 19.203 },
-        },
+        name: { en: 'Aland Islands', ru: 'Аландские острова' },
+        bounds: [19.5132, 59.9045, 21.0967, 60.4808],
     },
     {
         code: 'AZ',
         slug: 'azerbaijan',
         name: { en: 'Azerbaijan', ru: 'Азербайджан' },
-        boundingBox: {
-            northEast: { lat: 41.905, lng: 50.374 },
-            southWest: { lat: 38.392, lng: 44.777 },
-        },
+        bounds: [44.79, 38.27, 50.39, 41.86],
     },
     {
         code: 'BA',
         slug: 'bosnia-and-herzegovina',
         name: { en: 'Bosnia and Herzegovina', ru: 'Босния и Герцеговина' },
-        boundingBox: {
-            northEast: { lat: 45.276, lng: 19.642 },
-            southWest: { lat: 42.555, lng: 15.728 },
-        },
+        bounds: [15.75, 42.65, 19.6, 45.23],
     },
     {
         code: 'BB',
         slug: 'barbados',
         name: { en: 'Barbados', ru: 'Барбадос' },
-        boundingBox: {
-            northEast: { lat: 13.342, lng: -59.42 },
-            southWest: { lat: 13.039, lng: -59.648 },
-        },
+        bounds: [-59.6542, 13.0512, -59.4269, 13.3445],
     },
     {
         code: 'BD',
         slug: 'bangladesh',
         name: { en: 'Bangladesh', ru: 'Бангладеш' },
-        boundingBox: {
-            northEast: { lat: 26.631, lng: 92.673 },
-            southWest: { lat: 20.743, lng: 88.028 },
-        },
+        bounds: [88.08, 20.67, 92.67, 26.45],
     },
     {
         code: 'BE',
         slug: 'belgium',
         name: { en: 'Belgium', ru: 'Бельгия' },
-        boundingBox: {
-            northEast: { lat: 51.505, lng: 6.408 },
-            southWest: { lat: 49.496, lng: 2.54 },
-        },
+        bounds: [2.51, 49.53, 6.16, 51.48],
     },
     {
         code: 'BF',
         slug: 'burkina-faso',
         name: { en: 'Burkina Faso', ru: 'Буркина-Фасо' },
-        boundingBox: {
-            northEast: { lat: 15.082, lng: 2.405 },
-            southWest: { lat: 9.408, lng: -5.521 },
-        },
+        bounds: [-5.47, 9.61, 2.18, 15.12],
     },
     {
         code: 'BG',
         slug: 'bulgaria',
         name: { en: 'Bulgaria', ru: 'Болгария' },
-        boundingBox: {
-            northEast: { lat: 44.22, lng: 28.61 },
-            southWest: { lat: 41.235, lng: 22.357 },
-        },
+        bounds: [22.38, 41.23, 28.56, 44.23],
     },
     {
         code: 'BH',
         slug: 'bahrain',
         name: { en: 'Bahrain', ru: 'Бахрейн' },
-        boundingBox: {
-            northEast: { lat: 26.33, lng: 50.923 },
-            southWest: { lat: 25.534, lng: 50.337 },
-        },
+        bounds: [50.4489, 25.7895, 50.6457, 26.2426],
     },
     {
         code: 'BI',
         slug: 'burundi',
         name: { en: 'Burundi', ru: 'Бурунди' },
-        boundingBox: {
-            northEast: { lat: -2.309, lng: 30.847 },
-            southWest: { lat: -4.465, lng: 28.993 },
-        },
+        bounds: [29.02, -4.5, 30.75, -2.35],
     },
     {
         code: 'BJ',
         slug: 'benin',
         name: { en: 'Benin', ru: 'Бенин' },
-        boundingBox: {
-            northEast: { lat: 12.418, lng: 3.851 },
-            southWest: { lat: 6.213, lng: 0.774 },
-        },
+        bounds: [0.77, 6.14, 3.8, 12.24],
     },
     {
         code: 'BL',
         slug: 'saint-barthelemy',
-        name: { en: 'Saint Barthélemy', ru: 'Сен-Бартелеми' },
-        boundingBox: {
-            northEast: { lat: 17.967, lng: -62.788 },
-            southWest: { lat: 17.878, lng: -62.928 },
-        },
+        name: { en: 'Saint Barthelemy', ru: 'Сен-Бартелеми' },
+        bounds: [-62.8673, 17.882, -62.7917, 17.9291],
     },
     {
         code: 'BM',
         slug: 'bermuda',
         name: { en: 'Bermuda', ru: 'Бермуды' },
-        boundingBox: {
-            northEast: { lat: 32.393, lng: -64.647 },
-            southWest: { lat: 32.246, lng: -64.888 },
-        },
+        bounds: [-64.886, 32.2481, -64.6476, 32.3887],
     },
     {
         code: 'BN',
         slug: 'brunei-darussalam',
         name: { en: 'Brunei Darussalam', ru: 'Бруней-Даруссалам' },
-        boundingBox: {
-            northEast: { lat: 5.047, lng: 115.359 },
-            southWest: { lat: 4.002, lng: 114.071 },
-        },
+        bounds: [114.1, 4.01, 115.45, 5.45],
     },
     {
         code: 'BO',
         slug: 'bolivia',
         name: { en: 'Bolivia', ru: 'Боливия' },
-        boundingBox: {
-            northEast: { lat: -9.668, lng: -57.453 },
-            southWest: { lat: -22.898, lng: -69.645 },
-        },
+        bounds: [-69.59, -22.87, -57.5, -9.76],
     },
     {
         code: 'BQ',
         slug: 'bonaire',
         name: { en: 'Bonaire', ru: 'Бонайре' },
-        boundingBox: {
-            northEast: { lat: 12.304, lng: -68.192 },
-            southWest: { lat: 12.017, lng: -68.416 },
-        },
+        bounds: [-68.5833, 11.9333, -68.1267, 12.405],
     },
     {
         code: 'BR',
         slug: 'brazil',
         name: { en: 'Brazil', ru: 'Бразилия' },
-        boundingBox: {
-            northEast: { lat: 5.271, lng: -28.65 },
-            southWest: { lat: -33.751, lng: -73.982 },
-        },
+        bounds: [-74.01, -33.75, -34.81, 5.27],
     },
     {
         code: 'BS',
         slug: 'bahamas',
         name: { en: 'Bahamas', ru: 'Багамы' },
-        boundingBox: {
-            northEast: { lat: 26.928, lng: -74.423 },
-            southWest: { lat: 20.705, lng: -78.995 },
-        },
+        bounds: [-78.98, 23.71, -77.0, 27.04],
     },
     {
         code: 'BT',
         slug: 'bhutan',
         name: { en: 'Bhutan', ru: 'Бутан' },
-        boundingBox: {
-            northEast: { lat: 28.325, lng: 92.125 },
-            southWest: { lat: 26.702, lng: 88.746 },
-        },
+        bounds: [88.75, 26.71, 92.13, 28.33],
     },
     {
         code: 'BV',
         slug: 'bouvet-island',
         name: { en: 'Bouvet Island', ru: 'Остров Буве' },
-        boundingBox: {
-            northEast: { lat: -54.4, lng: 3.6 },
-            southWest: { lat: -54.6, lng: 3.2 },
-        },
+        bounds: [2.9345531, -54.654, 3.7791099, -54.187],
     },
     {
         code: 'BW',
         slug: 'botswana',
         name: { en: 'Botswana', ru: 'Ботсвана' },
-        boundingBox: {
-            northEast: { lat: -17.78, lng: 29.373 },
-            southWest: { lat: -26.907, lng: 19.998 },
-        },
+        bounds: [19.99, -26.87, 29.36, -17.79],
     },
     {
         code: 'BY',
         slug: 'belarus',
         name: { en: 'Belarus', ru: 'Беларусь' },
-        boundingBox: {
-            northEast: { lat: 56.172, lng: 32.775 },
-            southWest: { lat: 51.256, lng: 23.178 },
-        },
+        bounds: [23.18, 51.26, 32.72, 56.17],
     },
     {
         code: 'BZ',
         slug: 'belize',
         name: { en: 'Belize', ru: 'Белиз' },
-        boundingBox: {
-            northEast: { lat: 18.496, lng: -87.309 },
-            southWest: { lat: 15.889, lng: -89.229 },
-        },
+        bounds: [-89.22, 15.89, -87.78, 18.5],
     },
     {
         code: 'CA',
         slug: 'canada',
         name: { en: 'Canada', ru: 'Канада' },
-        boundingBox: {
-            northEast: { lat: 83.638, lng: -50.976 },
-            southWest: { lat: 41.676, lng: -141.002 },
-        },
+        bounds: [-141.0, 41.68, -52.62, 83.11],
     },
     {
         code: 'CC',
         slug: 'cocos-islands',
         name: { en: 'Cocos Islands', ru: 'Кокосовые острова' },
-        boundingBox: {
-            northEast: { lat: -12.021, lng: 96.929 },
-            southWest: { lat: -12.208, lng: 96.699 },
-        },
+        bounds: [96.612524, -12.4055983, 97.1357343, -11.6213132],
     },
     {
         code: 'CD',
         slug: 'democratic-republic-of-the-congo',
         name: { en: 'Democratic Republic of the Congo', ru: 'Демократическая Республика Конго' },
-        boundingBox: {
-            northEast: { lat: 5.392, lng: 31.305 },
-            southWest: { lat: -13.459, lng: 12.204 },
-        },
+        bounds: [12.18, -13.26, 31.17, 5.26],
     },
     {
         code: 'CF',
         slug: 'central-african-republic',
         name: { en: 'Central African Republic', ru: 'Центральноафриканская Республика' },
-        boundingBox: {
-            northEast: { lat: 11.019, lng: 27.458 },
-            southWest: { lat: 2.222, lng: 14.415 },
-        },
+        bounds: [14.42, 2.27, 27.46, 11.0],
     },
     {
         code: 'CG',
         slug: 'congo',
         name: { en: 'Congo', ru: 'Конго' },
-        boundingBox: {
-            northEast: { lat: 3.713, lng: 31.305 },
-            southWest: { lat: -5.027, lng: 12.204 },
-        },
+        bounds: [11.09, -5.04, 18.45, 3.73],
     },
     {
         code: 'CH',
         slug: 'switzerland',
         name: { en: 'Switzerland', ru: 'Швейцария' },
-        boundingBox: {
-            northEast: { lat: 47.808, lng: 10.492 },
-            southWest: { lat: 45.818, lng: 5.955 },
-        },
+        bounds: [5.96, 45.83, 10.49, 47.81],
     },
     {
         code: 'CI',
         slug: 'cote-d-ivoire',
         name: { en: "Côte d'Ivoire", ru: 'Кот-д’Ивуар' },
-        boundingBox: {
-            northEast: { lat: 10.736, lng: -2.493 },
-            southWest: { lat: 4.353, lng: -8.606 },
-        },
+        bounds: [-8.6, 4.36, -2.49, 10.74],
     },
     {
         code: 'CK',
         slug: 'cook-islands',
         name: { en: 'Cook Islands', ru: 'Острова Кука' },
-        boundingBox: {
-            northEast: { lat: -8.987, lng: -157.068 },
-            southWest: { lat: -21.944, lng: -172.806 },
-        },
+        bounds: [-166.0856468, -22.15807, -157.1089329, -8.7168792],
     },
     {
         code: 'CL',
         slug: 'chile',
         name: { en: 'Chile', ru: 'Чили' },
-        boundingBox: {
-            northEast: { lat: -17.507, lng: -66.028 },
-            southWest: { lat: -56.725, lng: -109.45 },
-        },
+        bounds: [-109.45, -55.91, -66.42, -17.51],
     },
     {
         code: 'CM',
         slug: 'cameroon',
         name: { en: 'Cameroon', ru: 'Камерун' },
-        boundingBox: {
-            northEast: { lat: 13.083, lng: 16.192 },
-            southWest: { lat: 1.654, lng: 8.505 },
-        },
+        bounds: [8.5, 1.65, 16.2, 13.08],
     },
     {
         code: 'CN',
         slug: 'china',
         name: { en: 'China', ru: 'Китай' },
-        boundingBox: {
-            northEast: { lat: 53.56, lng: 134.772 },
-            southWest: { lat: 15.775, lng: 73.499 },
-        },
+        bounds: [73.68, 18.16, 134.77, 53.56],
     },
     {
         code: 'CO',
         slug: 'colombia',
         name: { en: 'Colombia', ru: 'Колумбия' },
-        boundingBox: {
-            northEast: { lat: 13.524, lng: -66.851 },
-            southWest: { lat: -4.227, lng: -82.171 },
-        },
+        bounds: [-78.99, -4.23, -66.87, 12.46],
     },
     {
         code: 'CR',
         slug: 'costa-rica',
         name: { en: 'Costa Rica', ru: 'Коста-Рика' },
-        boundingBox: {
-            northEast: { lat: 11.219, lng: -82.554 },
-            southWest: { lat: 8.032, lng: -85.954 },
-        },
+        bounds: [-85.95, 8.04, -82.56, 11.22],
     },
     {
         code: 'CU',
         slug: 'cuba',
         name: { en: 'Cuba', ru: 'Куба' },
-        boundingBox: {
-            northEast: { lat: 23.226, lng: -74.131 },
-            southWest: { lat: 19.614, lng: -85.053 },
-        },
+        bounds: [-84.95, 19.85, -74.13, 23.19],
     },
     {
         code: 'CV',
         slug: 'cape-verde',
         name: { en: 'Cape Verde', ru: 'Кабо-Верде' },
-        boundingBox: {
-            northEast: { lat: 17.204, lng: -22.669 },
-            southWest: { lat: 14.808, lng: -25.358 },
-        },
+        bounds: [-25.36, 14.8, -22.67, 17.2],
     },
     {
         code: 'CW',
         slug: 'curacao',
-        name: { en: 'Curaçao', ru: 'Кюрасао' },
-        boundingBox: {
-            northEast: { lat: 12.385, lng: -68.733 },
-            southWest: { lat: 12.032, lng: -69.247 },
-        },
+        name: { en: 'Curacao', ru: 'Кюрасао' },
+        bounds: [-69.1717, 12.0413, -68.7397, 12.3915],
     },
     {
         code: 'CX',
         slug: 'christmas-island',
         name: { en: 'Christmas Island', ru: 'Остров Рождества' },
-        boundingBox: {
-            northEast: { lat: -10.412, lng: 105.712 },
-            southWest: { lat: -10.572, lng: 105.533 },
-        },
+        bounds: [105.5336422, -10.5698515, 105.7130159, -10.4123553],
     },
     {
         code: 'CY',
         slug: 'cyprus',
         name: { en: 'Cyprus', ru: 'Кипр' },
-        boundingBox: {
-            northEast: { lat: 35.701, lng: 34.597 },
-            southWest: { lat: 34.562, lng: 32.273 },
-        },
+        bounds: [32.27, 34.56, 34.59, 35.7],
     },
     {
         code: 'CZ',
         slug: 'czech-republic',
         name: { en: 'Czech Republic', ru: 'Чехия' },
-        boundingBox: {
-            northEast: { lat: 51.055, lng: 18.859 },
-            southWest: { lat: 48.551, lng: 12.089 },
-        },
+        bounds: [12.09, 48.55, 18.85, 51.05],
     },
     {
         code: 'DE',
         slug: 'germany',
         name: { en: 'Germany', ru: 'Германия' },
-        boundingBox: {
-            northEast: { lat: 55.055, lng: 15.041 },
-            southWest: { lat: 47.27, lng: 5.866 },
-        },
+        bounds: [5.87, 47.27, 15.04, 55.06],
     },
     {
         code: 'DJ',
         slug: 'djibouti',
         name: { en: 'Djibouti', ru: 'Джибути' },
-        boundingBox: {
-            northEast: { lat: 12.706, lng: 43.569 },
-            southWest: { lat: 10.909, lng: 41.771 },
-        },
+        bounds: [41.77, 10.93, 43.42, 12.71],
     },
     {
         code: 'DK',
         slug: 'denmark',
         name: { en: 'Denmark', ru: 'Дания' },
-        boundingBox: {
-            northEast: { lat: 57.748, lng: 15.207 },
-            southWest: { lat: 54.562, lng: 7.732 },
-        },
+        bounds: [8.09, 54.56, 15.15, 57.75],
     },
     {
         code: 'DM',
         slug: 'dominica',
         name: { en: 'Dominica', ru: 'Доминика' },
-        boundingBox: {
-            northEast: { lat: 15.631, lng: -61.001 },
-            southWest: { lat: 15.201, lng: -61.686 },
-        },
+        bounds: [-61.4889, 15.2018, -61.2493, 15.6339],
     },
     {
         code: 'DO',
         slug: 'dominican-republic',
         name: { en: 'Dominican Republic', ru: 'Доминиканская Республика' },
-        boundingBox: {
-            northEast: { lat: 19.932, lng: -68.32 },
-            southWest: { lat: 17.543, lng: -72.005 },
-        },
+        bounds: [-72.01, 17.61, -68.32, 19.93],
     },
     {
         code: 'DZ',
         slug: 'algeria',
         name: { en: 'Algeria', ru: 'Алжир' },
-        boundingBox: {
-            northEast: { lat: 37.093, lng: 11.986 },
-            southWest: { lat: 18.976, lng: -8.668 },
-        },
+        bounds: [-8.68, 18.98, 11.99, 37.09],
     },
     {
         code: 'EC',
         slug: 'ecuador',
         name: { en: 'Ecuador', ru: 'Эквадор' },
-        boundingBox: {
-            northEast: { lat: 1.464, lng: -75.18 },
-            southWest: { lat: -5.011, lng: -92.011 },
-        },
+        bounds: [-91.65, -5.01, -75.23, 1.67],
     },
     {
         code: 'EE',
         slug: 'estonia',
         name: { en: 'Estonia', ru: 'Эстония' },
-        boundingBox: {
-            northEast: { lat: 59.676, lng: 28.209 },
-            southWest: { lat: 57.509, lng: 21.832 },
-        },
+        bounds: [21.83, 57.52, 28.21, 59.68],
     },
     {
         code: 'EG',
         slug: 'egypt',
         name: { en: 'Egypt', ru: 'Египет' },
-        boundingBox: {
-            northEast: { lat: 31.667, lng: 36.898 },
-            southWest: { lat: 21.994, lng: 24.696 },
-        },
+        bounds: [24.7, 22.0, 36.9, 31.67],
     },
     {
         code: 'EH',
         slug: 'western-sahara',
         name: { en: 'Western Sahara', ru: 'Западная Сахара' },
-        boundingBox: {
-            northEast: { lat: 27.666, lng: -8.666 },
-            southWest: { lat: 20.666, lng: -17.066 },
-        },
+        bounds: [-17.11, 20.77, -8.67, 27.67],
     },
     {
         code: 'ER',
         slug: 'eritrea',
         name: { en: 'Eritrea', ru: 'Эритрея' },
-        boundingBox: {
-            northEast: { lat: 18.003, lng: 43.134 },
-            southWest: { lat: 12.359, lng: 36.433 },
-        },
+        bounds: [36.43, 12.36, 43.13, 18.0],
     },
     {
         code: 'ES',
         slug: 'spain',
         name: { en: 'Spain', ru: 'Испания' },
-        boundingBox: {
-            northEast: { lat: 43.791, lng: 4.591 },
-            southWest: { lat: 27.637, lng: -18.166 },
-        },
+        bounds: [-18.16, 27.64, 4.33, 43.79],
     },
     {
         code: 'ET',
         slug: 'ethiopia',
         name: { en: 'Ethiopia', ru: 'Эфиопия' },
-        boundingBox: {
-            northEast: { lat: 14.893, lng: 47.986 },
-            southWest: { lat: 3.402, lng: 32.997 },
-        },
+        bounds: [32.99, 3.41, 47.99, 14.89],
     },
     {
         code: 'FI',
         slug: 'finland',
         name: { en: 'Finland', ru: 'Финляндия' },
-        boundingBox: {
-            northEast: { lat: 70.092, lng: 31.587 },
-            southWest: { lat: 59.808, lng: 19.645 },
-        },
+        bounds: [20.65, 59.81, 31.59, 70.09],
     },
     {
+        // todo: bounds not precise
         code: 'FJ',
         slug: 'fiji',
         name: { en: 'Fiji', ru: 'Фиджи' },
-        boundingBox: {
-            northEast: { lat: -12.479, lng: -178.424 },
-            southWest: { lat: -21.711, lng: 177.976 },
-        },
+        bounds: [-180.0, -21.9434274, 180.0, -12.2613866],
     },
     {
         code: 'FK',
         slug: 'falkland-islands',
         name: { en: 'Falkland Islands', ru: 'Фолклендские острова' },
-        boundingBox: {
-            northEast: { lat: -51.25, lng: -57.75 },
-            southWest: { lat: -52.5, lng: -61.5 },
-        },
+        bounds: [-61.2, -52.3, -57.75, -51.1],
     },
     {
         code: 'FM',
         slug: 'micronesia',
         name: { en: 'Micronesia', ru: 'Микронезия' },
-        boundingBox: {
-            northEast: { lat: 10.091, lng: 163.037 },
-            southWest: { lat: 0.918, lng: 137.336 },
-        },
+        bounds: [138.0638, 0.9182, 163.0466, 9.7756],
     },
     {
         code: 'FO',
         slug: 'faroe-islands',
         name: { en: 'Faroe Islands', ru: 'Фарерские острова' },
-        boundingBox: {
-            northEast: { lat: 62.394, lng: -6.399 },
-            southWest: { lat: 61.391, lng: -7.688 },
-        },
+        bounds: [-7.6442, 61.3941, -6.2758, 62.3989],
     },
     {
         code: 'FR',
         slug: 'france',
         name: { en: 'France', ru: 'Франция' },
-        boundingBox: {
-            northEast: { lat: 51.089, lng: 9.559 },
-            southWest: { lat: 41.333, lng: -5.142 },
-        },
+        bounds: [-5.14, 41.37, 9.56, 51.12],
     },
     {
         code: 'GA',
         slug: 'gabon',
         name: { en: 'Gabon', ru: 'Габон' },
-        boundingBox: {
-            northEast: { lat: 2.322, lng: 14.559 },
-            southWest: { lat: -3.931, lng: 8.695 },
-        },
+        bounds: [8.7, -3.94, 14.5, 2.32],
     },
     {
         code: 'GB',
         slug: 'united-kingdom',
         name: { en: 'United Kingdom', ru: 'Великобритания' },
-        boundingBox: {
-            northEast: { lat: 60.854, lng: 1.763 },
-            southWest: { lat: 49.866, lng: -8.649 },
-        },
+        bounds: [-7.57, 49.96, 1.68, 58.64],
     },
     {
         code: 'GD',
         slug: 'grenada',
         name: { en: 'Grenada', ru: 'Гренада' },
-        boundingBox: {
-            northEast: { lat: 12.318, lng: -61.576 },
-            southWest: { lat: 11.986, lng: -61.802 },
-        },
+        bounds: [-61.7905, 12.0028, -61.4216, 12.5297],
     },
     {
         code: 'GE',
         slug: 'georgia',
         name: { en: 'Georgia', ru: 'Грузия' },
-        boundingBox: {
-            northEast: { lat: 43.586, lng: 46.736 },
-            southWest: { lat: 41.055, lng: 39.875 },
-        },
+        bounds: [40.01, 41.05, 46.64, 43.58],
     },
     {
         code: 'GF',
         slug: 'french-guiana',
         name: { en: 'French Guiana', ru: 'Французская Гвиана' },
-        boundingBox: {
-            northEast: { lat: 5.776, lng: -51.628 },
-            southWest: { lat: 2.111, lng: -54.605 },
-        },
+        bounds: [-54.5248, 2.0534, -51.6578, 5.7565],
     },
     {
         code: 'GG',
         slug: 'guernsey',
         name: { en: 'Guernsey', ru: 'Гернси' },
-        boundingBox: {
-            northEast: { lat: 49.731, lng: -2.157 },
-            southWest: { lat: 49.405, lng: -2.673 },
-        },
+        bounds: [-2.6735, 49.4116, -2.1703, 49.7314],
     },
     {
         code: 'GH',
         slug: 'ghana',
         name: { en: 'Ghana', ru: 'Гана' },
-        boundingBox: {
-            northEast: { lat: 11.174, lng: 1.203 },
-            southWest: { lat: 4.737, lng: -3.255 },
-        },
+        bounds: [-3.25, 4.74, 1.2, 11.17],
     },
     {
         code: 'GI',
         slug: 'gibraltar',
         name: { en: 'Gibraltar', ru: 'Гибралтар' },
-        boundingBox: {
-            northEast: { lat: 36.159, lng: -5.338 },
-            southWest: { lat: 36.109, lng: -5.375 },
-        },
+        bounds: [-5.3941295, 36.100807, -5.3141295, 36.180807],
     },
     {
         code: 'GL',
         slug: 'greenland',
         name: { en: 'Greenland', ru: 'Гренландия' },
-        boundingBox: {
-            northEast: { lat: 83.623, lng: -11.312 },
-            southWest: { lat: 59.777, lng: -73.042 },
-        },
+        bounds: [-73.04, 59.78, -12.1, 83.63],
     },
     {
         code: 'GM',
         slug: 'gambia',
         name: { en: 'Gambia', ru: 'Гамбия' },
-        boundingBox: {
-            northEast: { lat: 13.826, lng: -13.797 },
-            southWest: { lat: 13.059, lng: -16.825 },
-        },
+        bounds: [-16.82, 13.06, -13.8, 13.83],
     },
     {
         code: 'GN',
         slug: 'guinea',
         name: { en: 'Guinea', ru: 'Гвинея' },
-        boundingBox: {
-            northEast: { lat: 12.679, lng: -7.641 },
-            southWest: { lat: 7.193, lng: -14.926 },
-        },
+        bounds: [-15.13, 7.21, -7.65, 12.68],
     },
     {
         code: 'GP',
         slug: 'guadeloupe',
         name: { en: 'Guadeloupe', ru: 'Гваделупа' },
-        boundingBox: {
-            northEast: { lat: 16.514, lng: -60.971 },
-            southWest: { lat: 15.867, lng: -61.8 },
-        },
+        bounds: [-61.809764, 15.8320085, -61.0003663, 16.5144664],
     },
     {
         code: 'GQ',
         slug: 'equatorial-guinea',
         name: { en: 'Equatorial Guinea', ru: 'Экваториальная Гвинея' },
-        boundingBox: {
-            northEast: { lat: 3.772, lng: 11.359 },
-            southWest: { lat: -1.479, lng: 5.618 },
-        },
+        bounds: [9.31, 1.01, 11.29, 2.28],
     },
     {
         code: 'GR',
         slug: 'greece',
         name: { en: 'Greece', ru: 'Греция' },
-        boundingBox: {
-            northEast: { lat: 41.748, lng: 28.247 },
-            southWest: { lat: 34.802, lng: 19.626 },
-        },
+        bounds: [20.15, 34.92, 26.6, 41.83],
     },
     {
         code: 'GS',
         slug: 'south-georgia-and-the-south-sandwich-islands',
         name: { en: 'South Georgia and the South Sandwich Islands', ru: 'Южная Георгия и Южные Сандвичевы острова' },
-        boundingBox: {
-            northEast: { lat: -53.971, lng: -26.235 },
-            southWest: { lat: -59.479, lng: -38.016 },
-        },
+        bounds: [-38.087, -59.4728, -26.2393, -53.9724],
     },
     {
         code: 'GT',
         slug: 'guatemala',
         name: { en: 'Guatemala', ru: 'Гватемала' },
-        boundingBox: {
-            northEast: { lat: 17.821, lng: -88.223 },
-            southWest: { lat: 13.634, lng: -92.246 },
-        },
+        bounds: [-92.23, 13.74, -88.23, 17.82],
     },
     {
         code: 'GU',
         slug: 'guam',
         name: { en: 'Guam', ru: 'Гуам' },
-        boundingBox: {
-            northEast: { lat: 13.652, lng: 144.956 },
-            southWest: { lat: 13.234, lng: 144.618 },
-        },
+        bounds: [144.563426, 13.182335, 145.009167, 13.706179],
     },
     {
         code: 'GW',
         slug: 'guinea-bissau',
         name: { en: 'Guinea-Bissau', ru: 'Гвинея-Бисау' },
-        boundingBox: {
-            northEast: { lat: 12.681, lng: -13.636 },
-            southWest: { lat: 10.924, lng: -16.717 },
-        },
+        bounds: [-16.67, 10.93, -13.7, 12.68],
     },
     {
         code: 'GY',
         slug: 'guyana',
         name: { en: 'Guyana', ru: 'Гайана' },
-        boundingBox: {
-            northEast: { lat: 8.557, lng: -56.481 },
-            southWest: { lat: 1.175, lng: -61.411 },
-        },
+        bounds: [-61.41, 1.27, -56.54, 8.37],
     },
     {
         code: 'HK',
         slug: 'hong-kong',
         name: { en: 'Hong Kong', ru: 'Гонконг' },
-        boundingBox: {
-            northEast: { lat: 22.561, lng: 114.434 },
-            southWest: { lat: 22.134, lng: 113.825 },
-        },
+        bounds: [114.0028131, 22.1193278, 114.3228131, 22.4393278],
     },
     {
         code: 'HM',
         slug: 'heard-island-and-mcdonald-islands',
         name: { en: 'Heard Island and McDonald Islands', ru: 'Остров Херд и острова Макдональд' },
-        boundingBox: {
-            northEast: { lat: -52.951, lng: 73.859 },
-            southWest: { lat: -53.192, lng: 72.596 },
-        },
+        bounds: [72.2460938, -53.394741, 74.1988754, -52.7030677],
     },
     {
         code: 'HN',
         slug: 'honduras',
         name: { en: 'Honduras', ru: 'Гондурас' },
-        boundingBox: {
-            northEast: { lat: 17.421, lng: -83.147 },
-            southWest: { lat: 12.979, lng: -89.356 },
-        },
+        bounds: [-89.35, 12.98, -83.15, 16.51],
     },
     {
         code: 'HR',
         slug: 'croatia',
         name: { en: 'Croatia', ru: 'Хорватия' },
-        boundingBox: {
-            northEast: { lat: 46.538, lng: 19.448 },
-            southWest: { lat: 42.435, lng: 13.496 },
-        },
+        bounds: [13.5, 42.4, 19.39, 46.55],
     },
     {
         code: 'HT',
         slug: 'haiti',
         name: { en: 'Haiti', ru: 'Гаити' },
-        boundingBox: {
-            northEast: { lat: 20.093, lng: -71.613 },
-            southWest: { lat: 17.923, lng: -74.478 },
-        },
+        bounds: [-74.48, 18.02, -71.62, 20.09],
     },
     {
         code: 'HU',
         slug: 'hungary',
         name: { en: 'Hungary', ru: 'Венгрия' },
-        boundingBox: {
-            northEast: { lat: 48.585, lng: 22.897 },
-            southWest: { lat: 45.737, lng: 16.113 },
-        },
+        bounds: [16.11, 45.75, 22.89, 48.58],
     },
     {
         code: 'ID',
         slug: 'indonesia',
         name: { en: 'Indonesia', ru: 'Индонезия' },
-        boundingBox: {
-            northEast: { lat: 5.908, lng: 141.019 },
-            southWest: { lat: -11.007, lng: 94.771 },
-        },
+        bounds: [95.01, -10.36, 141.01, 5.9],
     },
     {
         code: 'IE',
         slug: 'ireland',
         name: { en: 'Ireland', ru: 'Ирландия' },
-        boundingBox: {
-            northEast: { lat: 55.387, lng: -5.997 },
-            southWest: { lat: 51.419, lng: -10.478 },
-        },
+        bounds: [-10.48, 51.45, -6.01, 55.38],
     },
     {
         code: 'IL',
         slug: 'israel',
         name: { en: 'Israel', ru: 'Израиль' },
-        boundingBox: {
-            northEast: { lat: 33.277, lng: 35.895 },
-            southWest: { lat: 29.496, lng: 34.267 },
-        },
+        bounds: [34.27, 29.49, 35.89, 33.29],
     },
     {
         code: 'IM',
         slug: 'isle-of-man',
         name: { en: 'Isle of Man', ru: 'Остров Мэн' },
-        boundingBox: {
-            northEast: { lat: 54.419, lng: -4.307 },
-            southWest: { lat: 54.055, lng: -4.798 },
-        },
+        bounds: [-4.7946845, 54.0539576, -4.3076853, 54.4178705],
     },
     {
         code: 'IN',
         slug: 'india',
         name: { en: 'India', ru: 'Индия' },
-        boundingBox: {
-            northEast: { lat: 35.508, lng: 97.395 },
-            southWest: { lat: 6.747, lng: 68.111 },
-        },
+        bounds: [68.18, 7.97, 97.4, 35.49],
     },
     {
         code: 'IO',
         slug: 'british-indian-ocean-territory',
         name: { en: 'British Indian Ocean Territory', ru: 'Британская территория в Индийском океане' },
-        boundingBox: {
-            northEast: { lat: -5.215, lng: 72.493 },
-            southWest: { lat: -7.438, lng: 71.259 },
-        },
+        bounds: [71.036504, -7.6454079, 72.7020157, -5.037066],
     },
     {
         code: 'IQ',
         slug: 'iraq',
         name: { en: 'Iraq', ru: 'Ирак' },
-        boundingBox: {
-            northEast: { lat: 37.378, lng: 48.575 },
-            southWest: { lat: 29.061, lng: 38.794 },
-        },
+        bounds: [38.8, 29.06, 48.57, 37.38],
     },
     {
         code: 'IR',
         slug: 'iran',
         name: { en: 'Iran', ru: 'Иран' },
-        boundingBox: {
-            northEast: { lat: 39.781, lng: 63.317 },
-            southWest: { lat: 24.778, lng: 44.024 },
-        },
+        bounds: [44.05, 25.08, 63.32, 39.78],
     },
     {
         code: 'IS',
         slug: 'iceland',
         name: { en: 'Iceland', ru: 'Исландия' },
-        boundingBox: {
-            northEast: { lat: 66.534, lng: -13.495 },
-            southWest: { lat: 63.296, lng: -24.546 },
-        },
+        bounds: [-24.54, 63.4, -13.5, 66.53],
     },
     {
         code: 'IT',
         slug: 'italy',
         name: { en: 'Italy', ru: 'Италия' },
-        boundingBox: {
-            northEast: { lat: 47.092, lng: 18.796 },
-            southWest: { lat: 35.288, lng: 6.626 },
-        },
+        bounds: [6.62, 36.65, 18.51, 47.1],
     },
     {
         code: 'JE',
         slug: 'jersey',
         name: { en: 'Jersey', ru: 'Джерси' },
-        boundingBox: {
-            northEast: { lat: 49.265, lng: -2.015 },
-            southWest: { lat: 49.169, lng: -2.262 },
-        },
+        bounds: [-2.254512, 49.1625179, -2.0104193, 49.2621288],
     },
     {
         code: 'JM',
         slug: 'jamaica',
         name: { en: 'Jamaica', ru: 'Ямайка' },
-        boundingBox: {
-            northEast: { lat: 18.524, lng: -76.185 },
-            southWest: { lat: 17.703, lng: -78.369 },
-        },
+        bounds: [-78.37, 17.7, -76.19, 18.53],
     },
     {
         code: 'JO',
         slug: 'jordan',
         name: { en: 'Jordan', ru: 'Иордания' },
-        boundingBox: {
-            northEast: { lat: 33.375, lng: 39.301 },
-            southWest: { lat: 29.185, lng: 34.959 },
-        },
+        bounds: [34.96, 29.19, 39.3, 33.38],
     },
     {
         code: 'JP',
         slug: 'japan',
         name: { en: 'Japan', ru: 'Япония' },
-        boundingBox: {
-            northEast: { lat: 45.523, lng: 154.002 },
-            southWest: { lat: 20.25, lng: 122.714 },
-        },
+        bounds: [129.41, 31.03, 145.54, 45.55],
     },
     {
         code: 'KE',
         slug: 'kenya',
         name: { en: 'Kenya', ru: 'Кения' },
-        boundingBox: {
-            northEast: { lat: 5.031, lng: 41.905 },
-            southWest: { lat: -4.678, lng: 33.907 },
-        },
+        bounds: [33.91, -4.68, 41.89, 5.03],
     },
     {
         code: 'KG',
         slug: 'kyrgyzstan',
         name: { en: 'Kyrgyzstan', ru: 'Киргизия' },
-        boundingBox: {
-            northEast: { lat: 43.238, lng: 80.283 },
-            southWest: { lat: 39.172, lng: 69.276 },
-        },
+        bounds: [69.28, 39.2, 80.26, 43.24],
     },
     {
         code: 'KH',
         slug: 'cambodia',
         name: { en: 'Cambodia', ru: 'Камбоджа' },
-        boundingBox: {
-            northEast: { lat: 14.691, lng: 107.627 },
-            southWest: { lat: 9.241, lng: 102.339 },
-        },
+        bounds: [102.34, 10.41, 107.63, 14.69],
     },
     {
         code: 'KI',
         slug: 'kiribati',
         name: { en: 'Kiribati', ru: 'Кирибати' },
-        boundingBox: {
-            northEast: { lat: 4.719, lng: -150.215 },
-            southWest: { lat: -11.446, lng: 174.541 },
-        },
+        bounds: [-179.1645388, -7.0516717, -164.1645388, 7.9483283],
     },
     {
         code: 'KM',
         slug: 'comoros',
         name: { en: 'Comoros', ru: 'Коморы' },
-        boundingBox: {
-            northEast: { lat: -11.365, lng: 44.538 },
-            southWest: { lat: -12.387, lng: 43.215 },
-        },
+        bounds: [43.2, -12.39, 44.54, -11.36],
     },
     {
         code: 'KN',
         slug: 'saint-kitts-and-nevis',
         name: { en: 'Saint Kitts and Nevis', ru: 'Сент-Китс и Невис' },
-        boundingBox: {
-            northEast: { lat: 17.422, lng: -62.543 },
-            southWest: { lat: 17.056, lng: -63.099 },
-        },
+        bounds: [-63.051129, 16.895, -62.3303519, 17.6158146],
     },
     {
         code: 'KP',
         slug: 'north-korea',
         name: { en: 'North Korea', ru: 'Северная Корея' },
-        boundingBox: {
-            northEast: { lat: 43.008, lng: 130.924 },
-            southWest: { lat: 37.673, lng: 124.091 },
-        },
+        bounds: [124.32, 37.68, 130.69, 43.01],
     },
     {
         code: 'KR',
         slug: 'south-korea',
         name: { en: 'South Korea', ru: 'Южная Корея' },
-        boundingBox: {
-            northEast: { lat: 38.623, lng: 131.871 },
-            southWest: { lat: 33.004, lng: 124.613 },
-        },
+        bounds: [126.12, 34.39, 129.47, 38.61],
     },
     {
         code: 'KW',
         slug: 'kuwait',
         name: { en: 'Kuwait', ru: 'Кувейт' },
-        boundingBox: {
-            northEast: { lat: 30.095, lng: 48.431 },
-            southWest: { lat: 28.524, lng: 46.552 },
-        },
+        bounds: [46.56, 28.53, 48.43, 30.1],
     },
     {
         code: 'KY',
         slug: 'cayman-islands',
         name: { en: 'Cayman Islands', ru: 'Каймановы острова' },
-        boundingBox: {
-            northEast: { lat: 19.761, lng: -79.727 },
-            southWest: { lat: 19.263, lng: -81.45 },
-        },
+        bounds: [-81.6313748, 19.0620619, -79.5110954, 19.9573759],
     },
     {
         code: 'KZ',
         slug: 'kazakhstan',
         name: { en: 'Kazakhstan', ru: 'Казахстан' },
-        boundingBox: {
-            northEast: { lat: 55.444, lng: 87.318 },
-            southWest: { lat: 40.594, lng: 46.493 },
-        },
+        bounds: [46.47, 40.66, 87.36, 55.39],
     },
     {
         code: 'LA',
-        slug: 'lao',
-        name: { en: 'Lao', ru: 'Лаос' },
-        boundingBox: {
-            northEast: { lat: 22.507, lng: 107.695 },
-            southWest: { lat: 13.909, lng: 100.083 },
-        },
+        slug: 'laos',
+        name: { en: 'Laos', ru: 'Лаос' },
+        bounds: [100.12, 13.88, 107.56, 22.46],
     },
     {
         code: 'LB',
         slug: 'lebanon',
         name: { en: 'Lebanon', ru: 'Ливан' },
-        boundingBox: {
-            northEast: { lat: 34.691, lng: 36.639 },
-            southWest: { lat: 33.053, lng: 35.104 },
-        },
+        bounds: [35.13, 33.06, 36.62, 34.65],
     },
     {
         code: 'LC',
         slug: 'saint-lucia',
         name: { en: 'Saint Lucia', ru: 'Сент-Люсия' },
-        boundingBox: {
-            northEast: { lat: 14.112, lng: -60.874 },
-            southWest: { lat: 13.704, lng: -61.081 },
-        },
+        bounds: [-61.0785, 13.7147, -60.883, 14.1119],
     },
     {
         code: 'LI',
         slug: 'liechtenstein',
         name: { en: 'Liechtenstein', ru: 'Лихтенштейн' },
-        boundingBox: {
-            northEast: { lat: 47.273, lng: 9.635 },
-            southWest: { lat: 47.048, lng: 9.471 },
-        },
+        bounds: [9.47, 47.05, 9.63, 47.27],
     },
     {
         code: 'LK',
         slug: 'sri-lanka',
         name: { en: 'Sri Lanka', ru: 'Шри-Ланка' },
-        boundingBox: {
-            northEast: { lat: 9.835, lng: 81.881 },
-            southWest: { lat: 5.917, lng: 79.652 },
-        },
+        bounds: [79.65, 5.92, 81.88, 9.83],
     },
     {
         code: 'LR',
         slug: 'liberia',
         name: { en: 'Liberia', ru: 'Либерия' },
-        boundingBox: {
-            northEast: { lat: 8.551, lng: -7.365 },
-            southWest: { lat: 4.353, lng: -11.492 },
-        },
+        bounds: [-11.48, 4.35, -7.37, 8.54],
     },
     {
         code: 'LS',
         slug: 'lesotho',
         name: { en: 'Lesotho', ru: 'Лесото' },
-        boundingBox: {
-            northEast: { lat: -28.572, lng: 29.455 },
-            southWest: { lat: -30.659, lng: 27.002 },
-        },
+        bounds: [27.0, -30.65, 29.33, -28.65],
     },
     {
         code: 'LT',
         slug: 'lithuania',
         name: { en: 'Lithuania', ru: 'Литва' },
-        boundingBox: {
-            northEast: { lat: 56.449, lng: 26.835 },
-            southWest: { lat: 53.896, lng: 20.941 },
-        },
+        bounds: [20.93, 53.89, 26.84, 56.45],
     },
     {
         code: 'LU',
         slug: 'luxembourg',
         name: { en: 'Luxembourg', ru: 'Люксембург' },
-        boundingBox: {
-            northEast: { lat: 50.182, lng: 6.528 },
-            southWest: { lat: 49.447, lng: 5.735 },
-        },
+        bounds: [5.73, 49.45, 6.53, 50.18],
     },
     {
         code: 'LV',
         slug: 'latvia',
         name: { en: 'Latvia', ru: 'Латвия' },
-        boundingBox: {
-            northEast: { lat: 58.085, lng: 28.241 },
-            southWest: { lat: 55.675, lng: 20.966 },
-        },
+        bounds: [20.97, 55.67, 28.18, 58.08],
     },
     {
         code: 'LY',
         slug: 'libya',
         name: { en: 'Libya', ru: 'Ливия' },
-        boundingBox: {
-            northEast: { lat: 33.168, lng: 25.149 },
-            southWest: { lat: 19.5, lng: 9.391 },
-        },
+        bounds: [9.31, 19.5, 25.15, 33.14],
     },
     {
         code: 'MA',
         slug: 'morocco',
         name: { en: 'Morocco', ru: 'Марокко' },
-        boundingBox: {
-            northEast: { lat: 35.922, lng: -0.998 },
-            southWest: { lat: 27.667, lng: -13.173 },
-        },
+        bounds: [-17.02, 21.42, -1.02, 35.92],
     },
     {
         code: 'MC',
         slug: 'monaco',
         name: { en: 'Monaco', ru: 'Монако' },
-        boundingBox: {
-            northEast: { lat: 43.751, lng: 7.439 },
-            southWest: { lat: 43.727, lng: 7.408 },
-        },
+        bounds: [7.39, 43.72, 7.44, 43.75],
     },
     {
         code: 'MD',
         slug: 'moldova',
         name: { en: 'Moldova', ru: 'Молдова' },
-        boundingBox: {
-            northEast: { lat: 48.492, lng: 30.163 },
-            southWest: { lat: 45.468, lng: 26.618 },
-        },
+        bounds: [26.62, 45.49, 30.02, 48.47],
     },
     {
         code: 'ME',
         slug: 'montenegro',
         name: { en: 'Montenegro', ru: 'Черногория' },
-        boundingBox: {
-            northEast: { lat: 43.569, lng: 20.358 },
-            southWest: { lat: 41.85, lng: 18.433 },
-        },
+        bounds: [18.46, 41.85, 20.35, 43.56],
     },
     {
         code: 'MF',
         slug: 'saint-martin',
         name: { en: 'Saint Martin', ru: 'Сен-Мартен' },
-        boundingBox: {
-            northEast: { lat: 18.114, lng: -63.012 },
-            southWest: { lat: 18.043, lng: -63.153 },
-        },
+        bounds: [-63.3605643, 17.8963535, -62.7644063, 18.1902778],
     },
     {
         code: 'MG',
         slug: 'madagascar',
         name: { en: 'Madagascar', ru: 'Мадагаскар' },
-        boundingBox: {
-            northEast: { lat: -11.945, lng: 50.501 },
-            southWest: { lat: -25.608, lng: 43.224 },
-        },
+        bounds: [43.2, -25.6, 50.5, -12.0],
     },
     {
         code: 'MH',
         slug: 'marshall-islands',
         name: { en: 'Marshall Islands', ru: 'Маршалловы острова' },
-        boundingBox: {
-            northEast: { lat: 14.62, lng: 172.037 },
-            southWest: { lat: 4.572, lng: 160.813 },
-        },
+        bounds: [165.2822, 4.5738, 172.0298, 14.6105],
     },
     {
         code: 'MK',
         slug: 'macedonia',
         name: { en: 'Macedonia', ru: 'Македония' },
-        boundingBox: {
-            northEast: { lat: 42.373, lng: 23.032 },
-            southWest: { lat: 40.853, lng: 20.452 },
-        },
+        bounds: [20.46, 40.85, 23.03, 42.37],
     },
     {
         code: 'ML',
         slug: 'mali',
         name: { en: 'Mali', ru: 'Мали' },
-        boundingBox: {
-            northEast: { lat: 25.001, lng: 4.267 },
-            southWest: { lat: 10.147, lng: -12.242 },
-        },
+        bounds: [-12.29, 10.15, 4.24, 25.0],
     },
     {
         code: 'MM',
         slug: 'myanmar',
         name: { en: 'Myanmar', ru: 'Мьянма' },
-        boundingBox: {
-            northEast: { lat: 28.548, lng: 101.18 },
-            southWest: { lat: 9.784, lng: 92.171 },
-        },
+        bounds: [92.19, 9.93, 101.18, 28.54],
     },
     {
         code: 'MN',
         slug: 'mongolia',
         name: { en: 'Mongolia', ru: 'Монголия' },
-        boundingBox: {
-            northEast: { lat: 52.149, lng: 119.931 },
-            southWest: { lat: 41.581, lng: 87.751 },
-        },
+        bounds: [87.75, 41.59, 119.92, 52.15],
     },
     {
         code: 'MO',
         slug: 'macao',
         name: { en: 'Macao', ru: 'Макао' },
-        boundingBox: {
-            northEast: { lat: 22.217, lng: 113.57 },
-            southWest: { lat: 22.106, lng: 113.527 },
-        },
+        bounds: [113.5199, 22.1054, 113.5875, 22.2208],
     },
     {
         code: 'MP',
         slug: 'northern-mariana-islands',
         name: { en: 'Northern Mariana Islands', ru: 'Северные Марианские острова' },
-        boundingBox: {
-            northEast: { lat: 20.553, lng: 146.064 },
-            southWest: { lat: 14.109, lng: 144.813 },
-        },
+        bounds: [144.9021, 14.1107, 145.8689, 20.5554],
     },
     {
         code: 'MQ',
         slug: 'martinique',
         name: { en: 'Martinique', ru: 'Мартиника' },
-        boundingBox: {
-            northEast: { lat: 14.878, lng: -60.809 },
-            southWest: { lat: 14.392, lng: -61.229 },
-        },
+        bounds: [-61.2290815, 14.3948596, -60.8095833, 14.8787029],
     },
     {
         code: 'MR',
         slug: 'mauritania',
         name: { en: 'Mauritania', ru: 'Мавритания' },
-        boundingBox: {
-            northEast: { lat: 27.298, lng: -4.815 },
-            southWest: { lat: 14.734, lng: -17.066 },
-        },
+        bounds: [-17.06, 14.73, -4.83, 27.29],
     },
     {
         code: 'MS',
         slug: 'montserrat',
         name: { en: 'Montserrat', ru: 'Монтсеррат' },
-        boundingBox: {
-            northEast: { lat: 16.824, lng: -62.139 },
-            southWest: { lat: 16.674, lng: -62.241 },
-        },
+        bounds: [-62.2301, 16.6754, -62.1405, 16.8193],
     },
     {
         code: 'MT',
         slug: 'malta',
         name: { en: 'Malta', ru: 'Мальта' },
-        boundingBox: {
-            northEast: { lat: 36.082, lng: 14.576 },
-            southWest: { lat: 35.6, lng: 14.183 },
-        },
+        bounds: [14.18, 35.8, 14.57, 36.08],
     },
     {
         code: 'MU',
         slug: 'mauritius',
         name: { en: 'Mauritius', ru: 'Маврикий' },
-        boundingBox: {
-            northEast: { lat: -10.138, lng: 63.502 },
-            southWest: { lat: -20.525, lng: 56.382 },
-        },
+        bounds: [56.5242, -20.5173, 63.4939, -10.3239],
     },
     {
         code: 'MV',
         slug: 'maldives',
         name: { en: 'Maldives', ru: 'Мальдивы' },
-        boundingBox: {
-            northEast: { lat: 7.107, lng: 73.637 },
-            southWest: { lat: -0.692, lng: 72.693 },
-        },
+        bounds: [72.6848, -0.6886, 73.7532, 7.1072],
     },
     {
         code: 'MW',
         slug: 'malawi',
         name: { en: 'Malawi', ru: 'Малави' },
-        boundingBox: {
-            northEast: { lat: -9.367, lng: 35.918 },
-            southWest: { lat: -17.135, lng: 32.672 },
-        },
+        bounds: [32.69, -16.8, 35.77, -9.23],
     },
     {
         code: 'MX',
         slug: 'mexico',
         name: { en: 'Mexico', ru: 'Мексика' },
-        boundingBox: {
-            northEast: { lat: 32.718, lng: -86.703 },
-            southWest: { lat: 14.532, lng: -118.404 },
-        },
+        bounds: [-118.4, 14.55, -86.7, 32.71],
     },
     {
         code: 'MY',
         slug: 'malaysia',
         name: { en: 'Malaysia', ru: 'Малайзия' },
-        boundingBox: {
-            northEast: { lat: 7.363, lng: 119.266 },
-            southWest: { lat: 0.855, lng: 99.643 },
-        },
+        bounds: [100.09, 0.77, 119.18, 6.93],
     },
     {
         code: 'MZ',
         slug: 'mozambique',
         name: { en: 'Mozambique', ru: 'Мозамбик' },
-        boundingBox: {
-            northEast: { lat: -10.471, lng: 40.846 },
-            southWest: { lat: -26.868, lng: 30.217 },
-        },
+        bounds: [30.18, -26.74, 40.78, -10.32],
     },
     {
         code: 'NA',
         slug: 'namibia',
         name: { en: 'Namibia', ru: 'Намибия' },
-        boundingBox: {
-            northEast: { lat: -16.959, lng: 25.264 },
-            southWest: { lat: -28.968, lng: 11.715 },
-        },
+        bounds: [11.73, -28.97, 25.26, -16.96],
     },
     {
         code: 'NC',
         slug: 'new-caledonia',
         name: { en: 'New Caledonia', ru: 'Новая Каледония' },
-        boundingBox: {
-            northEast: { lat: -19.549, lng: 168.129 },
-            southWest: { lat: -22.698, lng: 163.564 },
-        },
+        bounds: [164.03, -22.4, 167.12, -20.11],
     },
     {
         code: 'NE',
         slug: 'niger',
         name: { en: 'Niger', ru: 'Нигер' },
-        boundingBox: {
-            northEast: { lat: 23.517, lng: 15.996 },
-            southWest: { lat: 11.693, lng: 0.166 },
-        },
+        bounds: [0.17, 11.69, 15.99, 23.52],
     },
     {
         code: 'NF',
         slug: 'norfolk-island',
         name: { en: 'Norfolk Island', ru: 'Остров Норфолк' },
-        boundingBox: {
-            northEast: { lat: -28.998, lng: 167.997 },
-            southWest: { lat: -29.056, lng: 167.915 },
-        },
+        bounds: [167.9121, -29.08, 167.9963, -28.9975],
     },
     {
         code: 'NG',
         slug: 'nigeria',
         name: { en: 'Nigeria', ru: 'Нигерия' },
-        boundingBox: {
-            northEast: { lat: 13.892, lng: 14.677 },
-            southWest: { lat: 4.271, lng: 2.676 },
-        },
+        bounds: [2.69, 4.24, 14.58, 13.87],
     },
     {
         code: 'NI',
         slug: 'nicaragua',
         name: { en: 'Nicaragua', ru: 'Никарагуа' },
-        boundingBox: {
-            northEast: { lat: 15.033, lng: -82.567 },
-            southWest: { lat: 10.707, lng: -87.901 },
-        },
+        bounds: [-87.69, 10.71, -82.74, 15.02],
     },
     {
         code: 'NL',
         slug: 'netherlands',
         name: { en: 'Netherlands', ru: 'Нидерланды' },
-        boundingBox: {
-            northEast: { lat: 53.558, lng: 7.227 },
-            southWest: { lat: 50.753, lng: 3.359 },
-        },
+        bounds: [3.36, 50.75, 7.22, 53.51],
     },
     {
         code: 'NO',
         slug: 'norway',
         name: { en: 'Norway', ru: 'Норвегия' },
-        boundingBox: {
-            northEast: { lat: 71.384, lng: 31.078 },
-            southWest: { lat: 57.977, lng: 4.631 },
-        },
+        bounds: [4.99, 58.08, 31.29, 70.92],
     },
     {
         code: 'NP',
         slug: 'nepal',
         name: { en: 'Nepal', ru: 'Непал' },
-        boundingBox: {
-            northEast: { lat: 30.446, lng: 88.199 },
-            southWest: { lat: 26.347, lng: 80.058 },
-        },
+        bounds: [80.05, 26.35, 88.2, 30.45],
     },
     {
         code: 'NR',
         slug: 'nauru',
         name: { en: 'Nauru', ru: 'Науру' },
-        boundingBox: {
-            northEast: { lat: -0.502, lng: 166.958 },
-            southWest: { lat: -0.554, lng: 166.907 },
-        },
+        bounds: [166.907, -0.5519, 166.9583, -0.4904],
     },
     {
         code: 'NU',
         slug: 'niue',
         name: { en: 'Niue', ru: 'Ниуэ' },
-        boundingBox: {
-            northEast: { lat: -18.963, lng: -169.775 },
-            southWest: { lat: -19.152, lng: -169.953 },
-        },
+        bounds: [-169.9504, -19.1428, -169.7829, -18.964],
     },
     {
         code: 'NZ',
         slug: 'new-zealand',
         name: { en: 'New Zealand', ru: 'Новая Зеландия' },
-        boundingBox: {
-            northEast: { lat: -29.015, lng: -167.936 },
-            southWest: { lat: -52.615, lng: 178.517 },
-        },
+        bounds: [166.51, -46.64, 178.52, -34.45],
     },
     {
         code: 'OM',
         slug: 'oman',
         name: { en: 'Oman', ru: 'Оман' },
-        boundingBox: {
-            northEast: { lat: 26.387, lng: 59.837 },
-            southWest: { lat: 16.645, lng: 51.882 },
-        },
+        bounds: [52.0, 16.65, 59.81, 26.4],
     },
     {
         code: 'PA',
         slug: 'panama',
         name: { en: 'Panama', ru: 'Панама' },
-        boundingBox: {
-            northEast: { lat: 9.648, lng: -77.174 },
-            southWest: { lat: 7.197, lng: -83.051 },
-        },
+        bounds: [-83.03, 7.22, -77.17, 9.62],
     },
     {
         code: 'PE',
         slug: 'peru',
         name: { en: 'Peru', ru: 'Перу' },
-        boundingBox: {
-            northEast: { lat: -0.012, lng: -68.652 },
-            southWest: { lat: -18.349, lng: -81.326 },
-        },
+        bounds: [-81.33, -18.35, -68.67, -0.03],
     },
     {
         code: 'PF',
         slug: 'french-polynesia',
         name: { en: 'French Polynesia', ru: 'Французская Полинезия' },
-        boundingBox: {
-            northEast: { lat: -7.919, lng: -134.929 },
-            southWest: { lat: -27.653, lng: -154.641 },
-        },
+        bounds: [-154.537, -27.6412, -134.943, -7.9501],
     },
     {
         code: 'PG',
         slug: 'papua-new-guinea',
         name: { en: 'Papua New Guinea', ru: 'Папуа — Новая Гвинея' },
-        boundingBox: {
-            northEast: { lat: -1.318, lng: 155.968 },
-            southWest: { lat: -11.657, lng: 140.841 },
-        },
+        bounds: [140.85, -11.65, 159.64, -1.33],
     },
     {
         code: 'PH',
         slug: 'philippines',
         name: { en: 'Philippines', ru: 'Филиппины' },
-        boundingBox: {
-            northEast: { lat: 21.119, lng: 126.607 },
-            southWest: { lat: 4.641, lng: 114.095 },
-        },
+        bounds: [116.93, 4.65, 126.6, 21.12],
     },
     {
         code: 'PK',
         slug: 'pakistan',
         name: { en: 'Pakistan', ru: 'Пакистан' },
-        boundingBox: {
-            northEast: { lat: 37.097, lng: 77.837 },
-            southWest: { lat: 23.539, lng: 60.872 },
-        },
+        bounds: [60.87, 23.69, 77.84, 37.06],
     },
     {
         code: 'PL',
         slug: 'poland',
         name: { en: 'Poland', ru: 'Польша' },
-        boundingBox: {
-            northEast: { lat: 54.839, lng: 24.145 },
-            southWest: { lat: 49.002, lng: 14.123 },
-        },
+        bounds: [14.12, 49.0, 24.15, 54.84],
     },
     {
         code: 'PM',
         slug: 'saint-pierre-and-miquelon',
         name: { en: 'Saint Pierre and Miquelon', ru: 'Сен-Пьер и Микелон' },
-        boundingBox: {
-            northEast: { lat: 47.146, lng: -56.118 },
-            southWest: { lat: 46.782, lng: -56.406 },
-        },
+        bounds: [-56.3966, 46.7528, -56.1448, 47.1413],
     },
     {
         code: 'PN',
         slug: 'pitcairn',
         name: { en: 'Pitcairn', ru: 'Питкэрн' },
-        boundingBox: {
-            northEast: { lat: -23.906, lng: -124.771 },
-            southWest: { lat: -25.089, lng: -130.779 },
-        },
+        bounds: [-130.7531, -25.0771, -124.7781, -23.9244],
     },
     {
         code: 'PR',
         slug: 'puerto-rico',
         name: { en: 'Puerto Rico', ru: 'Пуэрто-Рико' },
-        boundingBox: {
-            northEast: { lat: 18.515, lng: -65.24 },
-            southWest: { lat: 17.926, lng: -67.271 },
-        },
+        bounds: [-67.24, 17.95, -65.59, 18.52],
     },
     {
         code: 'PS',
         slug: 'palestine',
         name: { en: 'Palestine', ru: 'Палестина' },
-        boundingBox: {
-            northEast: { lat: 32.546, lng: 35.573 },
-            southWest: { lat: 31.216, lng: 34.216 },
-        },
+        bounds: [34.22, 31.22, 35.57, 32.55],
     },
     {
         code: 'PT',
         slug: 'portugal',
         name: { en: 'Portugal', ru: 'Португалия' },
-        boundingBox: {
-            northEast: { lat: 42.154, lng: -6.19 },
-            southWest: { lat: 32.638, lng: -31.287 },
-        },
+        bounds: [-9.5, 36.95, -6.19, 42.15],
     },
     {
         code: 'PW',
         slug: 'palau',
         name: { en: 'Palau', ru: 'Палау' },
-        boundingBox: {
-            northEast: { lat: 8.098, lng: 134.726 },
-            southWest: { lat: 2.803, lng: 131.117 },
-        },
+        bounds: [131.1311, 2.949, 134.7273, 8.0966],
     },
     {
         code: 'PY',
         slug: 'paraguay',
         name: { en: 'Paraguay', ru: 'Парагвай' },
-        boundingBox: {
-            northEast: { lat: -19.294, lng: -54.259 },
-            southWest: { lat: -27.608, lng: -62.652 },
-        },
+        bounds: [-62.65, -27.59, -54.26, -19.29],
     },
     {
         code: 'QA',
         slug: 'qatar',
         name: { en: 'Qatar', ru: 'Катар' },
-        boundingBox: {
-            northEast: { lat: 26.154, lng: 51.636 },
-            southWest: { lat: 24.482, lng: 50.757 },
-        },
+        bounds: [50.75, 24.56, 51.63, 26.15],
     },
     {
         code: 'RE',
         slug: 'reunion',
-        name: { en: 'Réunion', ru: 'Реюньон' },
-        boundingBox: {
-            northEast: { lat: -20.871, lng: 55.853 },
-            southWest: { lat: -21.389, lng: 55.216 },
-        },
+        name: { en: 'Reunion', ru: 'Реюньон' },
+        bounds: [55.2164268, -21.3897308, 55.8366924, -20.8717136],
     },
     {
         code: 'RO',
         slug: 'romania',
         name: { en: 'Romania', ru: 'Румыния' },
-        boundingBox: {
-            northEast: { lat: 48.265, lng: 29.732 },
-            southWest: { lat: 43.618, lng: 20.261 },
-        },
+        bounds: [20.26, 43.66, 29.69, 48.26],
     },
     {
         code: 'RS',
         slug: 'serbia',
         name: { en: 'Serbia', ru: 'Сербия' },
-        boundingBox: {
-            northEast: { lat: 46.191, lng: 23.004 },
-            southWest: { lat: 42.232, lng: 18.817 },
-        },
+        bounds: [18.82, 42.23, 22.99, 46.18],
     },
     {
         code: 'RU',
         slug: 'russia',
         name: { en: 'Russia', ru: 'Россия' },
-        boundingBox: {
-            northEast: { lat: 81.858, lng: 180 },
-            southWest: { lat: 41.185, lng: -180 },
-        },
+        bounds: [19.6389, 41.1850968, 180, 82.0586232],
     },
     {
         code: 'RW',
         slug: 'rwanda',
         name: { en: 'Rwanda', ru: 'Руанда' },
-        boundingBox: {
-            northEast: { lat: -1.047, lng: 30.899 },
-            southWest: { lat: -2.838, lng: 28.861 },
-        },
+        bounds: [28.86, -2.84, 30.89, -1.05],
     },
     {
         code: 'SA',
         slug: 'saudi-arabia',
         name: { en: 'Saudi Arabia', ru: 'Саудовская Аравия' },
-        boundingBox: {
-            northEast: { lat: 32.154, lng: 55.666 },
-            southWest: { lat: 15.614, lng: 34.495 },
-        },
+        bounds: [34.5, 16.35, 55.64, 32.15],
     },
     {
         code: 'SB',
         slug: 'solomon-islands',
         name: { en: 'Solomon Islands', ru: 'Соломоновы острова' },
-        boundingBox: {
-            northEast: { lat: -5.282, lng: 166.991 },
-            southWest: { lat: -12.528, lng: 155.507 },
-        },
+        bounds: [156.49, -10.83, 162.4, -6.6],
     },
     {
         code: 'SC',
         slug: 'seychelles',
         name: { en: 'Seychelles', ru: 'Сейшельские острова' },
-        boundingBox: {
-            northEast: { lat: -4.283, lng: 56.297 },
-            southWest: { lat: -10.464, lng: 45.935 },
-        },
+        bounds: [46.2074, -9.7555, 56.2874, -3.7911],
     },
     {
         code: 'SD',
         slug: 'sudan',
         name: { en: 'Sudan', ru: 'Судан' },
-        boundingBox: {
-            northEast: { lat: 22.232, lng: 38.607 },
-            southWest: { lat: 8.684, lng: 21.814 },
-        },
+        bounds: [21.94, 8.62, 38.41, 22.0],
     },
     {
         code: 'SE',
         slug: 'Sweden',
         name: { en: 'Sweden', ru: 'Швеция' },
-        boundingBox: {
-            northEast: { lat: 69.059, lng: 24.177 },
-            southWest: { lat: 55.34, lng: 11.027 },
-        },
+        bounds: [11.11, 55.34, 24.17, 69.06],
     },
     {
         code: 'SG',
         slug: 'singapore',
         name: { en: 'Singapore', ru: 'Сингапур' },
-        boundingBox: {
-            northEast: { lat: 1.47, lng: 104.007 },
-            southWest: { lat: 1.16, lng: 103.559 },
-        },
+        bounds: [103.6404, 1.2643, 104.0034, 1.4486],
     },
     {
         code: 'SH',
         slug: 'saint-helena',
         name: { en: 'Saint Helena', ru: 'Остров Святой Елены' },
-        boundingBox: {
-            northEast: { lat: -7.887, lng: -5.633 },
-            southWest: { lat: -16.019, lng: -14.421 },
-        },
+        bounds: [-5.9973424, -16.23, -5.4234153, -15.704],
     },
     {
         code: 'SI',
         slug: 'slovenia',
         name: { en: 'Slovenia', ru: 'Словения' },
-        boundingBox: {
-            northEast: { lat: 46.876, lng: 16.609 },
-            southWest: { lat: 45.423, lng: 13.383 },
-        },
+        bounds: [13.38, 45.42, 16.61, 46.87],
     },
     {
         code: 'SJ',
         slug: 'svalbard-and-jan-mayen',
         name: { en: 'Svalbard and Jan Mayen', ru: 'Шпицберген и Ян-Майен' },
-        boundingBox: {
-            northEast: { lat: 80.762, lng: 33.287 },
-            southWest: { lat: 79.22, lng: 10.475 },
-        },
+        bounds: [-9.6848146, 70.6260825, 34.6891253, 81.028076],
     },
     {
         code: 'SK',
         slug: 'slovakia',
         name: { en: 'Slovakia', ru: 'Словакия' },
-        boundingBox: {
-            northEast: { lat: 49.613, lng: 22.565 },
-            southWest: { lat: 47.731, lng: 16.833 },
-        },
+        bounds: [16.84, 47.74, 22.56, 49.61],
     },
     {
         code: 'SL',
         slug: 'sierra-leone',
         name: { en: 'Sierra Leone', ru: 'Сьерра-Леоне' },
-        boundingBox: {
-            northEast: { lat: 9.997, lng: -10.283 },
-            southWest: { lat: 6.919, lng: -13.304 },
-        },
+        bounds: [-13.3, 6.93, -10.26, 9.99],
     },
     {
         code: 'SM',
         slug: 'san-marino',
         name: { en: 'San Marino', ru: 'Сан-Марино' },
-        boundingBox: {
-            northEast: { lat: 43.992, lng: 12.515 },
-            southWest: { lat: 43.893, lng: 12.403 },
-        },
+        bounds: [12.4, 43.89, 12.51, 43.99],
     },
     {
         code: 'SN',
         slug: 'senegal',
         name: { en: 'Senegal', ru: 'Сенегал' },
-        boundingBox: {
-            northEast: { lat: 16.691, lng: -11.355 },
-            southWest: { lat: 12.307, lng: -17.535 },
-        },
+        bounds: [-17.53, 12.3, -11.35, 16.69],
     },
     {
         code: 'SO',
         slug: 'somalia',
         name: { en: 'Somalia', ru: 'Сомали' },
-        boundingBox: {
-            northEast: { lat: 11.979, lng: 51.617 },
-            southWest: { lat: -1.674, lng: 40.986 },
-        },
+        bounds: [40.99, -1.68, 51.13, 11.98],
     },
     {
         code: 'SR',
         slug: 'suriname',
         name: { en: 'Suriname', ru: 'Суринам' },
-        boundingBox: {
-            northEast: { lat: 6.004, lng: -53.977 },
-            southWest: { lat: 1.833, lng: -58.075 },
-        },
+        bounds: [-58.04, 1.84, -53.98, 6.01],
     },
     {
         code: 'SS',
         slug: 'south-sudan',
         name: { en: 'South Sudan', ru: 'Южный Судан' },
-        boundingBox: {
-            northEast: { lat: 12.236, lng: 35.948 },
-            southWest: { lat: 3.493, lng: 23.447 },
-        },
+        bounds: [24.15, 3.49, 35.95, 12.22],
     },
     {
         code: 'ST',
         slug: 'sao-tome-and-principe',
         name: { en: 'Sao Tome and Principe', ru: 'Сан-Томе и Принсипи' },
-        boundingBox: {
-            northEast: { lat: 1.701, lng: 7.572 },
-            southWest: { lat: 0.018, lng: 6.462 },
-        },
+        bounds: [6.4617, 0.0241, 7.4627, 1.6998],
     },
     {
         code: 'SV',
         slug: 'el-salvador',
         name: { en: 'El Salvador', ru: 'Сальвадор' },
-        boundingBox: {
-            northEast: { lat: 14.445, lng: -87.668 },
-            southWest: { lat: 13.096, lng: -90.179 },
-        },
+        bounds: [-90.1, 13.16, -87.69, 14.45],
     },
     {
         code: 'SX',
         slug: 'sint-maarten',
         name: { en: 'Sint Maarten', ru: 'Синт-Мартен' },
-        boundingBox: {
-            northEast: { lat: 18.069, lng: -63.012 },
-            southWest: { lat: 18.011, lng: -63.144 },
-        },
+        bounds: [-63.1189, 18.0191, -63.0176, 18.0621],
     },
     {
         code: 'SY',
         slug: 'syria',
         name: { en: 'Syria', ru: 'Сирия' },
-        boundingBox: {
-            northEast: { lat: 37.318, lng: 42.385 },
-            southWest: { lat: 32.311, lng: 35.727 },
-        },
+        bounds: [35.7, 32.31, 42.38, 37.32],
     },
     {
         code: 'SZ',
         slug: 'swaziland',
         name: { en: 'Swaziland', ru: 'Свазиленд' },
-        boundingBox: {
-            northEast: { lat: -25.719, lng: 32.137 },
-            southWest: { lat: -27.317, lng: 30.794 },
-        },
+        bounds: [30.79, -27.32, 32.13, -25.74],
     },
     {
         code: 'TC',
         slug: 'turks-and-caicos-islands',
         name: { en: 'Turks and Caicos Islands', ru: 'Острова Теркс и Кайкос' },
-        boundingBox: {
-            northEast: { lat: 21.961, lng: -71.123 },
-            southWest: { lat: 21.421, lng: -72.483 },
-        },
+        bounds: [-72.4813, 21.2901, -71.1289, 21.9592],
     },
     {
         code: 'TD',
         slug: 'chad',
         name: { en: 'Chad', ru: 'Чад' },
-        boundingBox: {
-            northEast: { lat: 23.451, lng: 24.002 },
-            southWest: { lat: 7.441, lng: 13.449 },
-        },
+        bounds: [13.54, 7.42, 23.89, 23.41],
     },
     {
         code: 'TF',
         slug: 'french-southern-territories',
         name: { en: 'French Southern Territories', ru: 'Французские Южные и Антарктические территории' },
-        boundingBox: {
-            northEast: { lat: -37.795, lng: 77.569 },
-            southWest: { lat: -49.735, lng: 49.713 },
-        },
+        bounds: [68.72, -49.78, 70.56, -48.63],
     },
     {
         code: 'TG',
         slug: 'togo',
         name: { en: 'Togo', ru: 'Того' },
-        boundingBox: {
-            northEast: { lat: 11.14, lng: 1.808 },
-            southWest: { lat: 6.104, lng: -0.147 },
-        },
+        bounds: [-0.15, 6.1, 1.79, 11.14],
     },
     {
         code: 'TH',
         slug: 'thailand',
         name: { en: 'Thailand', ru: 'Таиланд' },
-        boundingBox: {
-            northEast: { lat: 20.464, lng: 105.639 },
-            southWest: { lat: 5.612, lng: 97.343 },
-        },
+        bounds: [97.34, 5.61, 105.64, 20.46],
     },
     {
         code: 'TJ',
         slug: 'tajikistan',
         name: { en: 'Tajikistan', ru: 'Таджикистан' },
-        boundingBox: {
-            northEast: { lat: 41.045, lng: 75.153 },
-            southWest: { lat: 36.671, lng: 67.356 },
-        },
+        bounds: [67.35, 36.67, 75.15, 41.05],
     },
     {
         code: 'TK',
         slug: 'tokelau',
         name: { en: 'Tokelau', ru: 'Токелау' },
-        boundingBox: {
-            northEast: { lat: -8.553, lng: -171.089 },
-            southWest: { lat: -9.381, lng: -172.5 },
-        },
+        bounds: [-172.7213673, -9.6442499, -170.9797586, -8.3328631],
     },
     {
         code: 'TL',
         slug: 'east-timor',
         name: { en: 'East Timor', ru: 'Восточный Тимор' },
-        boundingBox: {
-            northEast: { lat: -8.089, lng: 127.533 },
-            southWest: { lat: -9.504, lng: 124.041 },
-        },
+        bounds: [124.97, -9.39, 127.34, -8.27],
     },
     {
         code: 'TM',
         slug: 'turkmenistan',
         name: { en: 'Turkmenistan', ru: 'Туркменистан' },
-        boundingBox: {
-            northEast: { lat: 42.795, lng: 66.706 },
-            southWest: { lat: 35.141, lng: 52.445 },
-        },
+        bounds: [52.44, 35.14, 66.68, 42.8],
     },
     {
         code: 'TN',
         slug: 'tunisia',
         name: { en: 'Tunisia', ru: 'Тунис' },
-        boundingBox: {
-            northEast: { lat: 37.543, lng: 11.598 },
-            southWest: { lat: 30.229, lng: 7.491 },
-        },
+        bounds: [7.52, 30.23, 11.59, 37.35],
     },
     {
         code: 'TO',
         slug: 'tonga',
         name: { en: 'Tonga', ru: 'Тонга' },
-        boundingBox: {
-            northEast: { lat: -15.562, lng: -173.907 },
-            southWest: { lat: -21.455, lng: -175.682 },
-        },
+        bounds: [-176.2193, -22.3388, -173.9143, -15.5595],
     },
     {
         code: 'TR',
         slug: 'turkey',
         name: { en: 'Turkey', ru: 'Турция' },
-        boundingBox: {
-            northEast: { lat: 42.107, lng: 44.817 },
-            southWest: { lat: 35.815, lng: 25.668 },
-        },
+        bounds: [25.66, 35.81, 44.79, 42.11],
     },
     {
         code: 'TT',
         slug: 'trinidad-and-tobago',
         name: { en: 'Trinidad and Tobago', ru: 'Тринидад и Тобаго' },
-        boundingBox: {
-            northEast: { lat: 11.35, lng: -60.519 },
-            southWest: { lat: 9.759, lng: -61.908 },
-        },
+        bounds: [-61.95, 10.0, -60.9, 10.89],
     },
     {
         code: 'TV',
         slug: 'tuvalu',
         name: { en: 'Tuvalu', ru: 'Тувалу' },
-        boundingBox: {
-            northEast: { lat: -5.666, lng: 179.919 },
-            southWest: { lat: -10.801, lng: 176.064 },
-        },
+        bounds: [176.1253, -9.4207, 179.9067, -5.6775],
     },
     {
         code: 'TW',
         slug: 'taiwan',
         name: { en: 'Taiwan', ru: 'Тайвань' },
-        boundingBox: {
-            northEast: { lat: 26.454, lng: 122.003 },
-            southWest: { lat: 21.896, lng: 119.534 },
-        },
+        bounds: [120.11, 21.97, 121.95, 25.3],
     },
     {
         code: 'TZ',
         slug: 'tanzania',
         name: { en: 'Tanzania', ru: 'Танзания' },
-        boundingBox: {
-            northEast: { lat: -0.985, lng: 40.443 },
-            southWest: { lat: -11.745, lng: 29.339 },
-        },
+        bounds: [29.34, -11.72, 40.32, -0.95],
     },
     {
         code: 'UA',
         slug: 'ukraine',
         name: { en: 'Ukraine', ru: 'Украина' },
-        boundingBox: {
-            northEast: { lat: 52.379, lng: 40.227 },
-            southWest: { lat: 44.389, lng: 22.137 },
-        },
+        bounds: [22.09, 44.38, 40.18, 52.38],
     },
     {
         code: 'UG',
         slug: 'uganda',
         name: { en: 'Uganda', ru: 'Уганда' },
-        boundingBox: {
-            northEast: { lat: 4.234, lng: 35.001 },
-            southWest: { lat: -1.482, lng: 29.573 },
-        },
+        bounds: [29.57, -1.48, 35.0, 4.23],
     },
     {
         code: 'UM',
         slug: 'united-states-minor-outlying-islands',
         name: { en: 'United States Minor Outlying Islands', ru: 'Внешние малые острова США' },
-        boundingBox: {
-            northEast: { lat: 28.219, lng: -160.021 },
-            southWest: { lat: -0.389, lng: -177.396 },
-        },
+        bounds: [-162.6816297, 6.1779744, -162.1339885, 6.6514388],
     },
     {
         code: 'US',
         slug: 'united-states',
         name: { en: 'United States', ru: 'США' },
-        boundingBox: {
-            northEast: { lat: 71.538, lng: -66.885 },
-            southWest: { lat: 18.916, lng: 172.454 },
-        },
+        bounds: [-125.0, 25.0, -66.96, 49.5],
     },
     {
         code: 'UY',
         slug: 'uruguay',
         name: { en: 'Uruguay', ru: 'Уругвай' },
-        boundingBox: {
-            northEast: { lat: -30.085, lng: -53.073 },
-            southWest: { lat: -35.038, lng: -58.44 },
-        },
+        bounds: [-58.44, -34.97, -53.11, -30.1],
     },
     {
         code: 'UZ',
         slug: 'uzbekistan',
         name: { en: 'Uzbekistan', ru: 'Узбекистан' },
-        boundingBox: {
-            northEast: { lat: 45.591, lng: 73.132 },
-            southWest: { lat: 37.182, lng: 55.997 },
-        },
+        bounds: [55.99, 37.18, 73.13, 45.59],
     },
     {
         code: 'VA',
         slug: 'vatican',
         name: { en: 'Vatican', ru: 'Ватикан' },
-        boundingBox: {
-            northEast: { lat: 41.907, lng: 12.458 },
-            southWest: { lat: 41.9, lng: 12.446 },
-        },
+        bounds: [12.44, 41.9, 12.46, 41.91],
     },
     {
         code: 'VC',
         slug: 'saint-vincent-and-the-grenadines',
         name: { en: 'Saint Vincent and the Grenadines', ru: 'Сент-Винсент и Гренадины' },
-        boundingBox: {
-            northEast: { lat: 13.389, lng: -61.113 },
-            southWest: { lat: 12.583, lng: -61.459 },
-        },
+        bounds: [-61.4598, 12.5852, -61.1239, 13.3808],
     },
     {
         code: 'VE',
         slug: 'venezuela',
         name: { en: 'Venezuela', ru: 'Венесуэла' },
-        boundingBox: {
-            northEast: { lat: 12.201, lng: -59.647 },
-            southWest: { lat: 0.649, lng: -73.354 },
-        },
+        bounds: [-73.38, 0.65, -59.8, 12.2],
     },
     {
         code: 'VG',
         slug: 'british-virgin-islands',
         name: { en: 'British Virgin Islands', ru: 'Британские Виргинские острова' },
-        boundingBox: {
-            northEast: { lat: 18.757, lng: -64.268 },
-            southWest: { lat: 18.308, lng: -64.76 },
-        },
+        bounds: [-64.774, 18.3347, -64.2707, 18.7462],
     },
     {
         code: 'VI',
         slug: 'u-s-virgin-islands',
         name: { en: 'U.S. Virgin Islands', ru: 'Американские Виргинские острова' },
-        boundingBox: {
-            northEast: { lat: 18.412, lng: -64.565 },
-            southWest: { lat: 17.623, lng: -65.154 },
-        },
+        bounds: [-65.159094, 17.623468, -64.512674, 18.464984],
     },
     {
         code: 'VN',
         slug: 'vietnam',
         name: { en: 'Vietnam', ru: 'Вьетнам' },
-        boundingBox: {
-            northEast: { lat: 23.393, lng: 109.469 },
-            southWest: { lat: 8.559, lng: 102.144 },
-        },
+        bounds: [102.17, 8.6, 109.34, 23.35],
     },
     {
         code: 'VU',
         slug: 'vanuatu',
         name: { en: 'Vanuatu', ru: 'Вануату' },
-        boundingBox: {
-            northEast: { lat: -13.073, lng: 169.904 },
-            southWest: { lat: -20.248, lng: 166.524 },
-        },
+        bounds: [166.63, -16.6, 167.84, -14.63],
     },
     {
         code: 'WF',
         slug: 'wallis-and-futuna',
         name: { en: 'Wallis and Futuna', ru: 'Уоллис и Футуна' },
-        boundingBox: {
-            northEast: { lat: -13.216, lng: -176.125 },
-            southWest: { lat: -14.562, lng: -178.239 },
-        },
+        bounds: [-178.1857, -14.3194, -176.1256, -13.2089],
     },
     {
         code: 'WS',
         slug: 'samoa',
         name: { en: 'Samoa', ru: 'Самоа' },
-        boundingBox: {
-            northEast: { lat: -13.432, lng: -171.415 },
-            southWest: { lat: -14.053, lng: -172.798 },
-        },
+        bounds: [-172.7826, -14.0528, -171.4377, -13.4628],
     },
     {
         code: 'YE',
         slug: 'yemen',
         name: { en: 'Yemen', ru: 'Йемен' },
-        boundingBox: {
-            northEast: { lat: 18.999, lng: 54.535 },
-            southWest: { lat: 12.111, lng: 41.608 },
-        },
+        bounds: [42.6, 12.11, 54.47, 18.99],
     },
     {
         code: 'YT',
         slug: 'mayotte',
         name: { en: 'Mayotte', ru: 'Майотта' },
-        boundingBox: {
-            northEast: { lat: -12.648, lng: 45.299 },
-            southWest: { lat: -13.003, lng: 45.027 },
-        },
+        bounds: [45.0183298, -13.0210119, 45.2999917, -12.6365902],
     },
     {
         code: 'ZA',
         slug: 'south-africa',
         name: { en: 'South Africa', ru: 'Южная Африка' },
-        boundingBox: {
-            northEast: { lat: -22.126, lng: 38.288 },
-            southWest: { lat: -34.833, lng: 16.447 },
-        },
+        bounds: [16.28, -34.82, 32.89, -22.13],
     },
     {
         code: 'ZM',
         slug: 'zambia',
         name: { en: 'Zambia', ru: 'Замбия' },
-        boundingBox: {
-            northEast: { lat: -8.224, lng: 33.706 },
-            southWest: { lat: -18.075, lng: 21.999 },
-        },
+        bounds: [21.99, -18.07, 33.7, -8.2],
     },
     {
         code: 'ZW',
         slug: 'zimbabwe',
         name: { en: 'Zimbabwe', ru: 'Зимбабве' },
-        boundingBox: {
-            northEast: { lat: -15.609, lng: 33.074 },
-            southWest: { lat: -22.417, lng: 25.237 },
-        },
+        bounds: [25.24, -22.41, 33.06, -15.61],
     },
 ]

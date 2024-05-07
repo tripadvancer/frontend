@@ -23,16 +23,17 @@ export const transformSearchCountries = (data: ISearchResult, locale: string): I
     return data.countries.map(country => ({
         ...country,
         title: country.properties.name[locale],
-        info: '',
+        info: country.properties.code,
     }))
 }
 
 export const transformFullSearchResult = (
     data: ISearchResult,
     locale: string,
-): ISearchItem<IPlacePreview | ILocationPreview>[] => {
+): ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[] => {
     return [
         ...transformSearchCoordinates(data),
+        ...transformSearchCountries(data, locale),
         ...transformSearchPlaces(data, locale),
         ...transformSearchLocations(data),
     ]

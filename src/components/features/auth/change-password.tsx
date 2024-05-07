@@ -87,7 +87,7 @@ export const ChangePassword = () => {
                     placeholder={t('placeholder.action.password')}
                     autoFocus
                     error={formik.errors.oldPassword}
-                    isDisabled={isLoading}
+                    disabled={isLoading}
                     onChange={formik.handleChange}
                 />
                 <FormInput
@@ -96,7 +96,7 @@ export const ChangePassword = () => {
                     value={formik.values.newPassword}
                     placeholder={t('placeholder.action.new_password')}
                     error={formik.errors.newPassword}
-                    isDisabled={isLoading}
+                    disabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>
