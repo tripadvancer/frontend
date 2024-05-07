@@ -96,6 +96,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                             value={list.id.toString()}
                             caption={list.name}
                             checked={formik.values.listIds.includes(list.id)}
+                            disabled={isListCreating || isPlaceUpdating}
                             onChange={e =>
                                 formik.setFieldValue(
                                     'listIds',
@@ -113,6 +114,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     value="new-list"
                     caption={t('save_place.add_new_list')}
                     checked={isCreateList}
+                    disabled={isListCreating || isPlaceUpdating}
                     onChange={() => setIsCreateList(!isCreateList)}
                 />
                 <FormInput
@@ -124,7 +126,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     autoComplete="off"
                     placeholder={t('save_place.add_new_list.input.plceholder')}
                     error={formik.errors.name}
-                    disabled={!isCreateList}
+                    disabled={!isCreateList || isListCreating || isPlaceUpdating}
                     onChange={formik.handleChange}
                 />
             </div>
