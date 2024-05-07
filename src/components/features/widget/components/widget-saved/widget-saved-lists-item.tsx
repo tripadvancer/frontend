@@ -35,7 +35,7 @@ export const WidgetSavedListsItem = (list: IList) => {
         dialog.open(
             <Confirmation
                 variant="red"
-                title={t('confirm.delete_list.title')}
+                title={t('confirm.delete_list.title', { list_name: list.name })}
                 message={t('confirm.delete_list.message')}
                 onConfirm={async () => {
                     try {
@@ -67,7 +67,7 @@ export const WidgetSavedListsItem = (list: IList) => {
 
     return (
         <div
-            className="group hover-animated flex cursor-pointer items-center justify-between gap-x-4 border-t border-blue-20 py-2 last-of-type:border-b hover:text-blue-active sm:py-4"
+            className="group hover-animated flex cursor-pointer items-center justify-between gap-x-4 border-t border-blue-20 py-3 last-of-type:border-b hover:text-blue-active sm:py-4"
             onClick={handleListClick}
         >
             <div className="flex-1 overflow-hidden">

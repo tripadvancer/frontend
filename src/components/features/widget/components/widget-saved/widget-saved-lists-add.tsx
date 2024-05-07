@@ -45,7 +45,7 @@ export const WidgetSavedListsAdd = () => {
                 size="small"
                 shape="rounded"
                 icon={<PlusIcon16 />}
-                className="mb-4 w-full sm:mb-8"
+                className="mb-6 w-full sm:mb-8"
                 isDisabled={isVisible}
                 isLoading={isLoading}
                 onClick={() => setIsVisible(true)}

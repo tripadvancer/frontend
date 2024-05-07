@@ -34,7 +34,7 @@ export const widget = {
     'widget.saved.lists.empty_message': 'Вы еще не сохранили ни одного места.',
     'widget.saved.lists.add_button': 'Создать список',
     'widget.saved.lists.info': 'Выберите список, чтобы увидеть сохранённые места.',
-    'widget.saved.lists.show_only_list': 'Показать на карте',
+    'widget.saved.lists.show_only_list': 'На карте',
     'widget.saved.lists.places#one': '{count} место',
     'widget.saved.lists.places#few': '{count} места',
     'widget.saved.lists.places#many': '{count} мест',

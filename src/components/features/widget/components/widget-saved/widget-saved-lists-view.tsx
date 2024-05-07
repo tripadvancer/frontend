@@ -27,19 +27,21 @@ export const WidgetSavedListsView = ({ id, name }: IList) => {
     }
 
     return (
-        <div className="flex flex-col gap-y-4 sm:gap-y-8">
-            <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-y-6 sm:gap-y-8">
+            <div className="flex items-center justify-between gap-x-6">
                 <div
                     role="back"
-                    className="hover-animated flex cursor-pointer items-center gap-x-2 text-big-bold hover:text-blue-active"
+                    className="hover-animated flex cursor-pointer items-center gap-x-2 overflow-hidden hover:text-blue-active"
                     onClick={handleBackClick}
                 >
-                    <ArrowLeftIcon16 />
-                    {name}
+                    <div className="flex-none">
+                        <ArrowLeftIcon16 />
+                    </div>
+                    <div className="overflow-hidden text-ellipsis text-nowrap text-big-bold">{name}</div>
                 </div>
 
                 <div className="flex items-center gap-x-2">
-                    <div onClick={handleShowOnlySavedPlacesChange} className="cursor-pointer">
+                    <div onClick={handleShowOnlySavedPlacesChange} className="cursor-pointer text-nowrap">
                         {t('widget.saved.lists.show_only_list')}
                     </div>
                     <FormSwitcher

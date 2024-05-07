@@ -124,6 +124,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     value={formik.values.name}
                     autoFocus={isCreateList}
                     autoComplete="off"
+                    maxLength={listNameMaxLength}
                     placeholder={t('save_place.add_new_list.input.plceholder')}
                     error={formik.errors.name}
                     disabled={!isCreateList || isListCreating || isPlaceUpdating}

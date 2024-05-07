@@ -39,7 +39,7 @@ export const WidgetSavedListsForm = ({ initialValues, isLoading, onSubmit, onClo
     })
 
     return (
-        <div className="border-t border-blue-20 py-2 last-of-type:border-b sm:py-4 last-of-type:[&:not(:last-child)]:mb-4 sm:last-of-type:[&:not(:last-child)]:mb-8">
+        <div className="border-t border-blue-20 py-4 last-of-type:border-b sm:py-6 last-of-type:[&:not(:last-child)]:mb-4 sm:last-of-type:[&:not(:last-child)]:mb-8">
             <form
                 className="relative flex w-full items-center justify-between gap-x-4 text-big-bold"
                 onSubmit={formik.handleSubmit}
