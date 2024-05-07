@@ -29,6 +29,7 @@ const WidgetSearchInputComponent = (props: WidgetSearchInputProps, ref: Ref<HTML
                 name="search"
                 value={props.value}
                 autoComplete="off"
+                autoFocus
                 className="hover-animated h-10 w-full rounded-lg border border-blue-20 bg-white px-10 placeholder:text-black-40 hover:border-blue-100 focus:border-blue-100 focus:outline-none"
                 placeholder={t('widget.search.placeholder')}
                 onChange={e => props.onChange(e.target.value)}

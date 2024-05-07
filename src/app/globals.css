@@ -26,19 +26,23 @@ a {
 .maplibregl-popup-content {
     @apply rounded-lg p-4 text-base shadow-small !important;
 
-    .mapboxgl-popup-anchor-top-left & {
+    .mapboxgl-popup-anchor-top-left &,
+    .maplibregl-popup-anchor-top-left & {
         @apply rounded-tl-none !important;
     }
 
-    .mapboxgl-popup-anchor-top-right & {
+    .mapboxgl-popup-anchor-top-right &,
+    .maplibregl-popup-anchor-top-right & {
         @apply rounded-tr-none !important;
     }
 
-    .mapboxgl-popup-anchor-bottom-left & {
+    .mapboxgl-popup-anchor-bottom-left &,
+    .maplibregl-popup-anchor-bottom-left & {
         @apply rounded-bl-none !important;
     }
 
-    .mapboxgl-popup-anchor-bottom-right & {
+    .mapboxgl-popup-anchor-bottom-right &,
+    .maplibregl-popup-anchor-bottom-right & {
         @apply rounded-br-none !important;
     }
 }

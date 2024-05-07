@@ -29,11 +29,7 @@ export const visitedAPI = api.injectEndpoints({
                     optimisticResult.undo()
                 }
             },
-            invalidatesTags: (result, error, placeId) => [
-                { type: 'Visited' },
-                { type: 'Places' },
-                { type: 'PlacesMeta', id: placeId },
-            ],
+            invalidatesTags: ['Visited', 'Places'],
         }),
 
         deletePlaceFromVisited: build.mutation<void, number>({
@@ -53,11 +49,7 @@ export const visitedAPI = api.injectEndpoints({
                     optimisticResult.undo()
                 }
             },
-            invalidatesTags: (result, error, placeId) => [
-                { type: 'Visited' },
-                { type: 'Places' },
-                { type: 'PlacesMeta', id: placeId },
-            ],
+            invalidatesTags: ['Visited', 'Places'],
         }),
     }),
     overrideExisting: false,

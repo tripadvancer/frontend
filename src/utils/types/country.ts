@@ -1,3 +1,5 @@
+import { LngLatBoundsLike } from 'react-map-gl/maplibre'
+
 export type ICountry = {
     countryCode: string
     placesCount: number
@@ -9,14 +11,5 @@ export type ICountryDict = {
     name: {
         [locale: string]: string
     }
-    boundingBox: {
-        northEast: {
-            lat: number
-            lng: number
-        }
-        southWest: {
-            lat: number
-            lng: number
-        }
-    }
+    bounds: LngLatBoundsLike
 }

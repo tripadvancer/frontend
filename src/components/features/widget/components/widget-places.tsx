@@ -10,6 +10,7 @@ import { WidgetAllPlaces } from './widget-all-places'
 import { WidgetRandom } from './widget-random/widget-random'
 import { WidgetSaved } from './widget-saved/widget-saved'
 import { WidgetTabs } from './widget-tabs'
+import { WidgetVisitedPlaces } from './widget-visited-places'
 
 export const WidgetPlaces = ({ isAuth }: { isAuth: boolean }) => {
     const t = useI18n()
@@ -33,6 +34,7 @@ export const WidgetPlaces = ({ isAuth }: { isAuth: boolean }) => {
                     <WidgetTabs />
                     {widgetState.activeTab === WidgetTabsEnum.ALL && <WidgetAllPlaces />}
                     {widgetState.activeTab === WidgetTabsEnum.SAVED && <WidgetSaved isAuth={isAuth} />}
+                    {widgetState.activeTab === WidgetTabsEnum.VISITED && <WidgetVisitedPlaces isAuth={isAuth} />}
                     {widgetState.activeTab === WidgetTabsEnum.RANDOM && <WidgetRandom />}
                 </div>
             )}

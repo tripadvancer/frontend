@@ -29,9 +29,9 @@ export const FormRatingInput = ({ value, error, className, isDisabled, onChange 
                     .map((_, index) => (
                         <div
                             key={`rating-star-${index}`}
-                            className={classNames('peer cursor-pointer transition-opacity duration-300 ease-in-out', {
+                            className={classNames('peer transition-opacity duration-300 ease-in-out', {
                                 'opacity-30': Math.round(value) < index + 1,
-                                'group-hover:opacity-100 peer-hover:opacity-30': !isDisabled,
+                                'cursor-pointer group-hover:opacity-100 peer-hover:opacity-30': !isDisabled,
                                 'pointer-events-none': isDisabled,
                             })}
                             onClick={() => handleClick(index + 1)}

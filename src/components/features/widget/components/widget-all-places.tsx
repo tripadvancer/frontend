@@ -1,5 +1,7 @@
 'use client'
 
+import { useMemo } from 'react'
+
 import { getMapState } from '@/redux/features/map-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
@@ -20,7 +22,7 @@ export const WidgetAllPlaces = () => {
         { skip: !mapBounds },
     )
 
-    const places = data?.features.map(({ properties }) => properties) ?? []
+    const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
 
     if (isError) {
         return <WidgetMessage onAction={refetch} isLoading={isLoading} />
