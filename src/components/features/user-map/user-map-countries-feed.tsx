@@ -22,14 +22,11 @@ export const UserMapCountriesFeed = ({ countries }: UserMapCountriesFeedProps) =
     }
 
     return (
-        <div>
+        <div className="grid grid-cols-5 gap-4">
             {countries.map(country => (
-                <div
-                    key={`country-${country}`}
-                    className="flex justify-between border-t border-dashed border-black-40 py-4 last:border-b"
-                >
-                    <div className="text-big-bold">{getCountryByCode(country.code)?.name[locale]}</div>
-                    <div className="text-big">{country.count}</div>
+                <div key={`country-${country}`} className="rounded-2xl bg-orange-10 p-4">
+                    <div className="h1 text-orange-80">{country.count}</div>
+                    <div className="h7">{getCountryByCode(country.code)?.name[locale]}</div>
                 </div>
             ))}
         </div>

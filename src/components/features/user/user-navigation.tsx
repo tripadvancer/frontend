@@ -1,5 +1,3 @@
-import type { IUser } from '@/utils/types/user'
-
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
