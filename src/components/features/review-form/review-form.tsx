@@ -19,7 +19,7 @@ const reviewTextMaxLength = validationConfig.review.text.maxLength
 
 type ReviewFormProps = {
     initialValues: CreateReviewInputs | UpdateReviewInputs
-    isLoading: boolean
+    isLoading?: boolean
     onSubmit: (values: CreateReviewInputs | UpdateReviewInputs) => void
 }
 
@@ -54,6 +54,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     <FormRatingInput
                         value={formik.values.rating}
                         error={formik.errors.rating}
+                        isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('rating', value)}
                     />
                 </div>
@@ -68,7 +69,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         placeholder={t('placeholder.action.review')}
                         maxLength={reviewTextMaxLength}
                         error={formik.errors.text}
-                        isDisabled={isLoading}
+                        disabled={isLoading}
                         onChange={formik.handleChange}
                     />
                 </div>
@@ -78,6 +79,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     </label>
                     <ReviewFormPhotosList
                         photos={formik.values.photos}
+                        isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('photos', value)}
                     />
                 </div>
@@ -87,7 +89,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     {t('common.action.send')}
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
-                    {t('common.action.cancel')}
+                    {t('common.action.close')}
                 </FormButton>
             </div>
         </form>

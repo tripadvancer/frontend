@@ -42,6 +42,7 @@ export { default as ArrowLeftIcon16 } from '/public/images/icons/16/arrow-left.s
 export { default as ArrowRightIcon16 } from '/public/images/icons/16/arrow-right.svg'
 export { default as BookmarkFillIcon16 } from '/public/images/icons/16/bookmark-fill.svg'
 export { default as BookmarkIcon16 } from '/public/images/icons/16/bookmark.svg'
+export { default as CheckIcon16 } from '/public/images/icons/16/check.svg'
 export { default as ChevronBottomIcon16 } from '/public/images/icons/16/chevron-bottom.svg'
 export { default as ChevronTopIcon16 } from '/public/images/icons/16/chevron-top.svg'
 export { default as CloseIcon16 } from '/public/images/icons/16/close.svg'

@@ -20,17 +20,17 @@ export type IPlace = {
 
 export type IPlaceMeta = {
     ownReview: IReview | null
-    isFavorite: boolean
+    isSaved: boolean
     isVisited: boolean
 }
 
 // prettier-ignore
-export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isFavorite' | 'isVisited'> & {
+export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isVisited' | 'isSaved'> & {
     coordinates: number[]
 }
 
 // prettier-ignore
-export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isFavorite'> & {
+export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isSaved'> & {
     coordinates: number[]
 }
 

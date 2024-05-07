@@ -1,12 +1,14 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
+import type { IList } from '@/utils/types/list'
+
 import type { RootState } from '@/redux/store'
-import { MapDataSourcesEnum, WidgetListsEnum, WidgetTabsEnum } from '@/utils/enums'
+import { MapDataSourcesEnum, WidgetTabsEnum } from '@/utils/enums'
 
 interface WidgetState {
-    activeList: WidgetListsEnum | null
-    activeTab: WidgetTabsEnum
     dataSource: MapDataSourcesEnum
+    activeTab: WidgetTabsEnum
+    activeList: IList | null
     isAboutOpened: boolean
     isCategoriesOpened: boolean
     isMenuOpened: boolean
@@ -18,9 +20,9 @@ interface WidgetState {
 }
 
 export const initialState: WidgetState = {
-    activeList: null,
-    activeTab: WidgetTabsEnum.ALL,
     dataSource: MapDataSourcesEnum.ALL_PLACES,
+    activeTab: WidgetTabsEnum.ALL,
+    activeList: null,
     isAboutOpened: false,
     isCategoriesOpened: false,
     isMenuOpened: false,
@@ -38,12 +40,14 @@ function setWidgetDataSource(state: WidgetState) {
                 state.dataSource = MapDataSourcesEnum.ALL_PLACES
                 break
             case WidgetTabsEnum.SAVED:
-                if (state.activeList === WidgetListsEnum.FAVORITES) {
-                    state.dataSource = MapDataSourcesEnum.FAVORITES_PLACES
+                if (state.activeList) {
+                    state.dataSource = MapDataSourcesEnum.SAVED_PLACES
+                } else {
+                    state.dataSource = MapDataSourcesEnum.ALL_PLACES
                 }
-                if (state.activeList === WidgetListsEnum.VISITED) {
-                    state.dataSource = MapDataSourcesEnum.VISITED_PLACES
-                }
+                break
+            case WidgetTabsEnum.VISITED:
+                state.dataSource = MapDataSourcesEnum.VISITED_PLACES
                 break
             case WidgetTabsEnum.RANDOM:
                 state.dataSource = MapDataSourcesEnum.ALL_PLACES
@@ -74,6 +78,9 @@ export const widgetSlice = createSlice({
             state.isAboutOpened = false
             state.isMenuOpened = false
         },
+        openWidget(state) {
+            state.widgetIsExpanded = true
+        },
         toggleWidgetPlacesOpened(state) {
             state.isPlacesOpened = !state.isPlacesOpened
         },
@@ -99,13 +106,13 @@ export const widgetSlice = createSlice({
             state.activeTab = action.payload
             setWidgetDataSource(state)
         },
-        setWidgetActiveList(state, action: PayloadAction<WidgetListsEnum | null>) {
+        setWidgetActiveList(state, action: PayloadAction<IList | null>) {
             state.activeList = action.payload
             setWidgetDataSource(state)
         },
         resetWidgetActiveList(state) {
-            state.activeList = null
             state.dataSource = MapDataSourcesEnum.ALL_PLACES
+            state.activeList = null
         },
         setWidgetRandomRadius(state, action) {
             state.randomRadius = action.payload
@@ -119,6 +126,7 @@ export const {
     resetWidgetState,
     toggleWidget,
     closeWidget,
+    openWidget,
     toggleWidgetPlacesOpened,
     toggleWidgetCategoriesOpened,
     toggleWidgetAbout,

@@ -1,7 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-
 import type { IReview, UpdateReviewInputs } from '@/utils/types/review'
 
 import { useDialog } from '@/providers/dialog-provider'
@@ -13,11 +11,10 @@ import { ReviewForm } from './review-form'
 
 export const ReviewEdit = (review: IReview) => {
     const t = useI18n()
-    const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
 
-    const [updateReview, { isLoading }] = reviewsAPI.useUpdateReviewMutation()
+    const [updateReview] = reviewsAPI.useUpdateReviewMutation()
 
     const initialValues: UpdateReviewInputs = {
         placeId: review.place.id,
@@ -28,26 +25,16 @@ export const ReviewEdit = (review: IReview) => {
         photos: review.photos.map(photo => photo.url),
     }
 
-    const handleSubmit = async (inputs: UpdateReviewInputs) => {
-        try {
-            await updateReview(inputs)
-            dialog.close()
-            router.refresh()
-            toast.success(t('success.update_review'))
-        } catch {
-            toast.error(t('common.error'))
-        }
+    const handleSubmit = (inputs: UpdateReviewInputs) => {
+        updateReview(inputs)
+        dialog.close()
     }
 
     return (
         <div className="flex w-full flex-col gap-y-4 sm:w-104">
             <h1 className="h7">{t('review.form.edit.title')}</h1>
             <hr className="border-black-70" />
-            <ReviewForm
-                initialValues={initialValues}
-                isLoading={isLoading}
-                onSubmit={inputs => handleSubmit(inputs as UpdateReviewInputs)}
-            />
+            <ReviewForm initialValues={initialValues} onSubmit={inputs => handleSubmit(inputs as UpdateReviewInputs)} />
         </div>
     )
 }

@@ -9,7 +9,7 @@ import { getSortedCategories } from '@/utils/dictionaries/categories'
 import { updateSelectedCategories } from '@/utils/helpers/common'
 import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
-import { SelectCategoriesCategory } from './select-categories-category'
+import { SelectCategoriesItem } from './select-categories-item'
 
 type SelectCategoriesProps = {
     value: number[]
@@ -41,7 +41,7 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
             <h1 className="h7 text-center">{t('select_categories.title', { max_count: maxCategoriesCount })}</h1>
             <div className="flex flex-wrap justify-center gap-1">
                 {sortedCategories.map(category => (
-                    <SelectCategoriesCategory
+                    <SelectCategoriesItem
                         key={`category-${category.id}`}
                         id={category.id}
                         localizedName={category.localizedName[currentLocale]}

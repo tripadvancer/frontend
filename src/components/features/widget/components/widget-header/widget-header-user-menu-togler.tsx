@@ -12,10 +12,7 @@ export const WidgetHeaderUserMenuToggler = (user: IUser) => {
     const widgetState = useAppSelector(getWidgetState)
 
     return (
-        <div
-            className="hover-animated cursor-pointer hover:text-blue-active"
-            onClick={() => dispatch(toggleWidgetMenu())}
-        >
+        <div className="link hover-animated cursor-pointer" onClick={() => dispatch(toggleWidgetMenu())}>
             {widgetState.isMenuOpened ? <CloseIcon24 /> : <Avatar size={24} {...user} />}
         </div>
     )

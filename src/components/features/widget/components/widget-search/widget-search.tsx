@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { useMap } from 'react-map-gl/maplibre'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
@@ -15,7 +16,7 @@ import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { searchAPI } from '@/redux/services/search-api'
 import { Keys } from '@/utils/enums'
-import { getFlyToViewState } from '@/utils/helpers/maps'
+import { getFlyToViewState, getMapFlyToOptions } from '@/utils/helpers/maps'
 import { transformFullSearchResult } from '@/utils/helpers/search'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useCurrentLocale } from '@/utils/i18n/i18n.client'
@@ -29,8 +30,10 @@ export const WidgetSearch = () => {
     const inputRef = useRef<HTMLInputElement>(null)
     const autocompleteRef = useRef<HTMLDivElement>(null)
 
+    const { map } = useMap()
+
     const [value, setValue] = useState<string>('')
-    const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview>[]>([])
+    const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]>([])
     const [isAutocompleteVisible, setIsAutocompleteVisible] = useState<boolean>(false)
     const [autocompleteStyles, setAutocompleteStyles] = useState<{ top: number; left: number; width?: number }>({
         top: 0,
@@ -57,7 +60,8 @@ export const WidgetSearch = () => {
     }, [debouncedSearch, value])
 
     useEffect(() => {
-        setItems(isSuccess && data && value.length >= 2 ? transformFullSearchResult(data, locale) : [])
+        const isSearchSuccess = isSuccess && data && value.length >= 2
+        setItems(isSearchSuccess ? transformFullSearchResult(data, locale) : [])
     }, [data, isSuccess, locale, value])
 
     useEffect(() => {
@@ -77,24 +81,26 @@ export const WidgetSearch = () => {
         setItems([])
     }
 
-    const handleSelect = useCallback(
-        (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => {
-            const viewState = getFlyToViewState(item.coordinates)
-            dispatch(setMapViewState(viewState))
+    const handleSelect = (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => {
+        if (item.type === 'location') {
+            map?.flyTo(getMapFlyToOptions(item.coordinates))
+            dispatch(setMapLocationPopupInfo(item.properties as ILocationPreview))
+        }
 
-            if (item.type === 'location') {
-                dispatch(setMapLocationPopupInfo(item.properties as ILocationPreview))
-            }
+        if (item.type === 'place') {
+            map?.flyTo(getMapFlyToOptions(item.coordinates))
+            dispatch(setMapPlacePopupInfo(item.properties as IPlacePreview))
+        }
 
-            if (item.type === 'place') {
-                dispatch(setMapPlacePopupInfo(item.properties as IPlacePreview))
-            }
+        if (item.type === 'country') {
+            const bounds = (item.properties as ICountryDict).bounds
+            console.log(bounds)
+            map?.fitBounds(bounds)
+        }
 
-            dispatch(closeWidget())
-            setIsAutocompleteVisible(false)
-        },
-        [dispatch],
-    )
+        dispatch(closeWidget())
+        setIsAutocompleteVisible(false)
+    }
 
     const handleInputClick = () => {
         if (items.length > 0) {
