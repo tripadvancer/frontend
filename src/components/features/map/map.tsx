@@ -106,7 +106,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 />
             </Source>
 
-            <div className="absolute bottom-2 right-2 z-10 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2">
+            <div className="absolute right-2 top-20 z-40 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2">
                 <MapControl desktopOnly onClick={handleZoomIn}>
                     <PlusIcon16 />
                 </MapControl>
