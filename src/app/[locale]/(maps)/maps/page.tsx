@@ -2,7 +2,7 @@ import type { Metadata } from 'next/types'
 
 import { CookieConsent } from '@/components/features/cookie-consent/cookie-consent'
 import { MapWithAuth } from '@/components/features/map/map-with-auth'
-import { WidgetCommon } from '@/components/features/widget/widget-common'
+import { Widget } from '@/components/features/widget/widget'
 
 export const metadata: Metadata = {
     title: 'Maps',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 export default function MapsPage() {
     return (
         <div className="h-dvh w-dvw">
-            <WidgetCommon />
+            <Widget />
             <MapWithAuth />
             <CookieConsent />
         </div>

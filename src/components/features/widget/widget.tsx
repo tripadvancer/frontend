@@ -4,10 +4,11 @@ import { WidgetHeader } from './components/widget-header/widget-header'
 import { WidgetPlacesWithAuth } from './components/widget-places-with-auth'
 import { WidgetSearch } from './components/widget-search/widget-search'
 import { WidgetToggler } from './components/widget-toggler'
+import { WidgetScroll } from './widget-scroll'
 
-export const WidgetCommon = () => {
+export const Widget = () => {
     return (
-        <div className="scrollbar-hide fixed right-0 top-0 z-40 max-h-full w-full overflow-y-auto pb-8 sm:w-[496px] sm:pb-8 sm:pl-8 sm:pr-4 sm:pt-4">
+        <WidgetScroll>
             <div className="rounded-b-2xl bg-white shadow-large sm:rounded-2xl">
                 <WidgetHeader />
                 <WidgetBody>
@@ -23,6 +24,6 @@ export const WidgetCommon = () => {
                 </WidgetBody>
             </div>
             <WidgetToggler />
-        </div>
+        </WidgetScroll>
     )
 }

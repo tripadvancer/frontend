@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 import { animated, useTransition } from '@react-spring/web'
+import { useScrollLock } from 'usehooks-ts'
 
 import { CloseIcon24 } from '@/components/ui/icons'
 
@@ -10,6 +11,8 @@ type DialogProps = {
 }
 
 export const Dialog = ({ content, onClose }: DialogProps) => {
+    useScrollLock()
+
     const scale = useTransition(!!content, {
         from: { opacity: 0, transform: 'scale(0.9)' },
         enter: { opacity: 1, transform: 'scale(1)' },
@@ -21,10 +24,6 @@ export const Dialog = ({ content, onClose }: DialogProps) => {
         enter: { opacity: 0.5 },
         config: { duration: 50 },
     })
-
-    if (!content) {
-        return null
-    }
 
     return (
         <div className="fixed bottom-0 left-0 right-0 top-0 z-50 overflow-y-auto p-4 sm:p-16">
