@@ -7,9 +7,9 @@ export const UserNavigationPublic = ({ userId }: { userId: string }) => {
     const t = useI18n()
 
     const links = [
-        { href: `/users/${userId}`, caption: t('user_tabs.map') },
-        { href: `/users/${userId}/places`, caption: t('user_tabs.places') },
-        { href: `/users/${userId}/reviews`, caption: t('user_tabs.reviews') },
+        { href: `/users/${userId}`, caption: t('user.tabs.profile') },
+        { href: `/users/${userId}/places`, caption: t('user.tabs.places') },
+        { href: `/users/${userId}/reviews`, caption: t('user.tabs.reviews') },
     ]
 
     return <Nav links={links} className="mb-8" />
