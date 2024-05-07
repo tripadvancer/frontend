@@ -106,12 +106,12 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 />
             </Source>
 
-            <div className="absolute right-2 top-24 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2">
-                <MapControl desktopOnly onClick={handleZoomIn}>
+            <div className="absolute right-2 top-1/2 z-30 flex -translate-y-1/2 flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2">
+                <MapControl onClick={handleZoomIn}>
                     <PlusIcon16 />
                 </MapControl>
 
-                <MapControl desktopOnly onClick={handleZoomOut}>
+                <MapControl onClick={handleZoomOut}>
                     <MinusIcon16 />
                 </MapControl>
 
