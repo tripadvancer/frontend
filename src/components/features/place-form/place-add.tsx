@@ -7,11 +7,9 @@ import type { CreatePlaceInputs } from '@/utils/types/place'
 import { PlacesNearbyWarning } from '@/components/features/places-nearby-warning/places-nearby-warning'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
-import { LngLatToArray, getFlyToViewState, stringToLngLat, stringToViewState } from '@/utils/helpers/maps'
+import { stringToLngLat } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { PlaceForm } from './place-form'
@@ -22,7 +20,6 @@ export const PlaceAdd = () => {
     const router = useRouter()
     const toast = useToast()
     const searchParams = useSearchParams()
-    const dispatch = useAppDispatch()
 
     const [createPlace, { isLoading }] = placesAPI.useCreatePlaceMutation()
     const [searchPlacesAround, { isLoading: isSearchingPlacesAround }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
@@ -56,21 +53,8 @@ export const PlaceAdd = () => {
 
         try {
             const response = await createPlace(inputs).unwrap()
-            const viewState = getFlyToViewState(lngLat)
-            dispatch(setMapViewState(viewState))
-            dispatch(
-                setMapPlacePopupInfo({
-                    id: response.id,
-                    title: inputs.title,
-                    cover: inputs.cover,
-                    isSaved: false,
-                    avgRating: 0,
-                    reviewsCount: 0,
-                    coordinates: LngLatToArray(lngLat),
-                }),
-            )
             toast.success(t('success.create_place'))
-            router.push('/maps')
+            router.push(`/places/${response.id}`)
         } catch {
             toast.error(t('common.error'))
         }
