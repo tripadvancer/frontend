@@ -63,7 +63,7 @@ export const PlaceAdd = () => {
                     id: response.id,
                     title: inputs.title,
                     cover: inputs.cover,
-                    isFavorite: false,
+                    isSaved: false,
                     avgRating: 0,
                     reviewsCount: 0,
                     coordinates: LngLatToArray(lngLat),

@@ -30,7 +30,7 @@ export const PlaceSidebarActionsShowOnMap = ({ place, isAuth }: { place: IPlace;
             setMapPlacePopupInfo({
                 ...place,
                 coordinates: place.location.coordinates,
-                isFavorite: meta?.isFavorite || false,
+                isSaved: meta?.isSaved || false,
             }),
         )
 

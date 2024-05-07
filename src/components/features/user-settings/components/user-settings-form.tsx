@@ -97,7 +97,7 @@ export const UserSettingsForm = (props: IUserInfo) => {
                         value={formik.values.name}
                         placeholder={t('placeholder.action.username')}
                         error={formik.errors.name}
-                        isDisabled={isLoading}
+                        disabled={isLoading}
                         onChange={formik.handleChange}
                     />
                 </div>
@@ -112,7 +112,7 @@ export const UserSettingsForm = (props: IUserInfo) => {
                         placeholder={t('placeholder.action.about_user')}
                         maxLength={userInfoMaxLength}
                         error={formik.errors.info}
-                        isDisabled={isLoading}
+                        disabled={isLoading}
                         onChange={formik.handleChange}
                     />
                 </div>

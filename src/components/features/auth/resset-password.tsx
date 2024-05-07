@@ -81,7 +81,7 @@ export const RessetPassword = () => {
                         placeholder={t('placeholder.action.new_password')}
                         autoFocus
                         error={formik.errors.password}
-                        isDisabled={isLoading}
+                        disabled={isLoading}
                         onChange={formik.handleChange}
                     />
                 </div>

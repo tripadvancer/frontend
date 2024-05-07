@@ -46,7 +46,7 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
                 <div className="flex flex-col gap-y-2">
                     {reasons.map(reason => (
                         <FormRadio
-                            key={`complaint-reason-${reason}`}
+                            key={reason}
                             id={reason}
                             name="reason"
                             value={reason}

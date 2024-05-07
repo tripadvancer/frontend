@@ -11,7 +11,9 @@ export const LandingFeatures = async () => {
         <section>
             <h2 className="h3 mb-4 text-center">{t('landing.features.title')}</h2>
             <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
-                {t('landing.features.text')}
+                {t('landing.features.text', {
+                    br: <br />,
+                })}
             </p>
 
             <div className="inner-container flex flex-col gap-y-16 sm:gap-y-8">
