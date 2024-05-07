@@ -31,6 +31,9 @@ export default {
     'confirm.delete_place.title': 'Удалить место',
     'confirm.delete_place.message': 'Вы уверены, что хотите удалить это место и все связанные с ним данные? Это действие необратимо.',
 
+    'confirm.delete_list.title': 'Удалить список',
+    'confirm.delete_list.message': 'Вы уверены, что хотите удалить этот список? Это действие необратимо.',
+
     'confirm.request_personal_data.title': 'Запросить персональные данные',
     'confirm.request_personal_data.message': 'Вы уверены, что хотите запросить копию своих персональных данных?',
 
@@ -129,9 +132,6 @@ export default {
     'success.create_place': 'Ваше место было успешно добавлено.',
     'success.update_place': 'Ваше место было успешно обновлено.',
     'success.delete_place': 'Место было успешно удалено.',
-    'success.create_review': 'Ваш отзыв был успешно добавлен.',
-    'success.update_review': 'Ваш отзыв был успешно обновлён.',
-    'success.delete_review': 'Отзыв был успешно удалён.',
     'success.change_user_password': 'Ваш пароль был успешно изменён.',
     'success.update_user_avatar': 'Ваш аватар был успешно обновлён.',
     'success.update_user_info': 'Ваш профиль был успешно обновлён.',

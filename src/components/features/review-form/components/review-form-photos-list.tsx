@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import classNames from 'classnames'
 import Lightbox from 'yet-another-react-lightbox'
 
 import { FormFileInput } from '@/components/ui/form-file-input'
@@ -18,10 +19,11 @@ const maxFileSize = validationConfig.common.maxFileSize
 
 type ReviewFormPhotosListProps = {
     photos: string[]
+    isDisabled?: boolean
     onChange: (urls: string[]) => void
 }
 
-export const ReviewFormPhotosList = ({ photos, onChange }: ReviewFormPhotosListProps) => {
+export const ReviewFormPhotosList = ({ photos, isDisabled, onChange }: ReviewFormPhotosListProps) => {
     const t = useI18n()
     const toast = useToast()
 
@@ -59,7 +61,11 @@ export const ReviewFormPhotosList = ({ photos, onChange }: ReviewFormPhotosListP
     }
 
     return (
-        <div className="flex flex-col gap-y-2">
+        <div
+            className={classNames('flex flex-col gap-y-2', {
+                'pointer-events-none opacity-30': isDisabled,
+            })}
+        >
             <FormFileInput
                 multiple
                 maxFilesCount={maxFilesCount}
