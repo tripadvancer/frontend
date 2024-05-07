@@ -3,6 +3,8 @@
 import { useCallback, useRef } from 'react'
 import { AttributionControl, Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl/maplibre'
 
+import classNames from 'classnames'
+
 import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
 import { getMapState } from '@/redux/features/map-slice'
@@ -32,9 +34,10 @@ type MapProps = {
 export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
     const mapBounds = useAppSelector(getMapState).bounds
-    const listId = useAppSelector(getWidgetState).activeList?.id
-    const mapDataSource = useAppSelector(getWidgetState).dataSource
-    const selectedCategories = useAppSelector(getWidgetState).selectedCategories
+    const widgetState = useAppSelector(getWidgetState)
+    const listId = widgetState.activeList?.id
+    const mapDataSource = widgetState.dataSource
+    const selectedCategories = widgetState.selectedCategories
     const userLocation = useAppSelector(getUserLocation)
 
     const mapRef = useRef<MapRef>(null)
@@ -106,7 +109,15 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 />
             </Source>
 
-            <div className="absolute right-2 top-1/2 z-30 flex -translate-y-1/2 flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2">
+            <div
+                className={classNames(
+                    'absolute right-2 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2',
+                    {
+                        'top-1/2 mt-6 -translate-y-1/2 sm:translate-y-0': widgetState.widgetIsExpanded,
+                        'top-24': !widgetState.widgetIsExpanded,
+                    },
+                )}
+            >
                 <MapControl onClick={handleZoomIn}>
                     <PlusIcon16 />
                 </MapControl>
