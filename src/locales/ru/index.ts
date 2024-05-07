@@ -29,6 +29,9 @@ export default {
     'confirm.delete_place.title': 'Удалить место',
     'confirm.delete_place.message': 'Вы уверены, что хотите удалить это место и все связанные с ним данные? Это действие необратимо.',
 
+    'confirm.delete_list.title': 'Удалить список',
+    'confirm.delete_list.message': 'Вы уверены, что хотите удалить этот список? Это действие необратимо.',
+
     'confirm.request_personal_data.title': 'Запросить персональные данные',
     'confirm.request_personal_data.message': 'Вы уверены, что хотите запросить копию своих персональных данных?',
 

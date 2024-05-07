@@ -10,7 +10,7 @@ import { api } from '@/redux/services/api'
 import { internalApi } from '@/redux/services/api-internal'
 
 const persistConfig = {
-    key: 'tripadvancer:store:v3',
+    key: 'tripadvancer:store:v4',
     storage,
     whitelist: ['map', 'user', 'widget'],
 }
