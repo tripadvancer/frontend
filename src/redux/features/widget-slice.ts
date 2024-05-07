@@ -27,7 +27,7 @@ export const initialState: WidgetState = {
     isCategoriesOpened: false,
     isMenuOpened: false,
     isPlacesOpened: true,
-    isShowOnlySavedPlaces: true,
+    isShowOnlySavedPlaces: false,
     randomRadius: 50,
     selectedCategories: [],
     widgetIsExpanded: false,
