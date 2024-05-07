@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import type { IList, UpdatePlaceInListsInputs } from '@/utils/types/list'
+import type { CreateListInputs, IList, UpdatePlaceInListsInputs } from '@/utils/types/list'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormCheckbox } from '@/components/ui/form-checkbox'
@@ -43,22 +43,18 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     }, [isCreateList])
 
     const validationSchema = Yup.object().shape({
-        newList: Yup.object().shape({
-            name: Yup.string()
-                .trim()
-                .min(listNameMinLength, t('validation.text.min_length', { min_length: listNameMinLength }))
-                .max(listNameMaxLength, t('validation.text.max_length', { max_length: listNameMaxLength })),
-        }),
+        name: Yup.string()
+            .trim()
+            .min(listNameMinLength, t('validation.text.min_length', { min_length: listNameMinLength }))
+            .max(listNameMaxLength, t('validation.text.max_length', { max_length: listNameMaxLength })),
     })
 
-    const initialValues: UpdatePlaceInListsInputs & { newList: { name: string } } = {
+    const initialValues: UpdatePlaceInListsInputs & CreateListInputs = {
         placeId,
         listIds: lists
             .filter(list => list.listToPlace.some(listToPlace => listToPlace.placeId === placeId))
             .map(list => list.id),
-        newList: {
-            name: '',
-        },
+        name: '',
     }
 
     const formik = useFormik({
@@ -66,24 +62,24 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema,
-        onSubmit: async (inputs: UpdatePlaceInListsInputs & { newList: { name: string } }) => {
-            if (isCreateList && inputs.newList.name) {
+        onSubmit: async (inputs: UpdatePlaceInListsInputs & CreateListInputs) => {
+            if (inputs.name) {
                 try {
-                    const response = await createList(inputs.newList).unwrap()
-                    const body = { placeId, listIds: [...inputs.listIds, response.id] }
-                    await updatePlaceInLists(body).unwrap()
+                    const response = await createList({ name: inputs.name }).unwrap()
+                    await updatePlaceInLists({ placeId, listIds: [...inputs.listIds, response.id] }).unwrap()
                     dialog.close()
                 } catch {
                     toast.error(t('common.error'))
                 }
-            } else {
-                try {
-                    const body = { placeId, listIds: inputs.listIds }
-                    await updatePlaceInLists(body).unwrap()
-                    dialog.close()
-                } catch {
-                    toast.error(t('common.error'))
-                }
+
+                return
+            }
+
+            try {
+                await updatePlaceInLists({ placeId, listIds: inputs.listIds }).unwrap()
+                dialog.close()
+            } catch {
+                toast.error(t('common.error'))
             }
         },
     })
@@ -123,13 +119,13 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     ref={inputRef}
                     type="text"
                     name="name"
-                    value={formik.values.newList?.name || ''}
+                    value={formik.values.name}
                     autoFocus={isCreateList}
                     autoComplete="off"
                     placeholder={t('save_place.add_new_list.input.plceholder')}
-                    error={formik.errors.newList?.name}
+                    error={formik.errors.name}
                     disabled={!isCreateList}
-                    onChange={e => formik.setFieldValue('newList.name', e.target.value)}
+                    onChange={formik.handleChange}
                 />
             </div>
             <div className="flex gap-x-2">
