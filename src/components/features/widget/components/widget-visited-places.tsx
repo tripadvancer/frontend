@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
 import { useDialog } from '@/providers/dialog-provider'
@@ -20,7 +20,7 @@ export const WidgetVisitedPlaces = ({ isAuth }: { isAuth: boolean }) => {
     const { map } = useMap()
     const { data, isError, isLoading, isSuccess, refetch } = visitedAPI.useGetVisitedQuery(undefined, { skip: !isAuth })
 
-    const places = data?.features.map(({ properties }) => properties) ?? []
+    const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
 
     useEffect(() => {
         // Calculate bounds for the list places
@@ -39,9 +39,14 @@ export const WidgetVisitedPlaces = ({ isAuth }: { isAuth: boolean }) => {
     if (!isAuth) {
         return (
             <WidgetMessage
-                message={t('widget.visited_places.not_logged_in', { br: <br /> })}
-                actionCaption={t('common.link.sign_in')}
-                onAction={() => dialog.open(<SignIn />)}
+                message={t('widget.visited_places.not_logged_in', {
+                    br: <br />,
+                    sign_in_link: (
+                        <span className="link" onClick={() => dialog.open(<SignIn />)}>
+                            {t('widget.sign_in_link')}
+                        </span>
+                    ),
+                })}
             />
         )
     }

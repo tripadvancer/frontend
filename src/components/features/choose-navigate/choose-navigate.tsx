@@ -15,7 +15,7 @@ export const ChooseNavigate = ({ lngLat }: { lngLat: LngLat }) => {
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
             <h1 className="h7 text-center">{t('choose_navigation_app.title')}</h1>
-            <div className="flex flex-wrap justify-between gap-2">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <ChooseNavigateItem provider="google" lngLat={lngLat} />
                 <ChooseNavigateItem provider="waze" lngLat={lngLat} />
                 <ChooseNavigateItem provider="apple" lngLat={lngLat} />

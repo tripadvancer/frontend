@@ -111,7 +111,9 @@ export const Search = () => {
                     />
                 )}
             </div>
-            <FormButton onClick={handleClick}>{t('landing.search.button')}</FormButton>
+            <FormButton className="hidden sm:block" onClick={handleClick}>
+                {t('landing.search.button')}
+            </FormButton>
         </div>
     )
 }

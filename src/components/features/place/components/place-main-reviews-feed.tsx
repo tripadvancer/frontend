@@ -8,13 +8,13 @@ import { ShowMore } from '@/components/ui/show-more'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type PlaceMainReviewsListProps = {
+type PlaceMainReviewsFeedProps = {
     placeId: number
     activeUserId?: number
     isAuth: boolean
 }
 
-export const PlaceMainReviewsList = ({ placeId, activeUserId, isAuth }: PlaceMainReviewsListProps) => {
+export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMainReviewsFeedProps) => {
     const t = useI18n()
     const [page, setPage] = useState(1)
 
@@ -35,15 +35,17 @@ export const PlaceMainReviewsList = ({ placeId, activeUserId, isAuth }: PlaceMai
     if (isSuccess && reviews.items.length > 0) {
         return (
             <div className="flex flex-col gap-y-8">
-                {reviews.items.map((review, index) => (
-                    <Review
-                        key={index}
-                        review={review}
-                        variant="place-page"
-                        activeUserId={activeUserId}
-                        isAuth={isAuth}
-                    />
-                ))}
+                <div>
+                    {reviews.items.map(review => (
+                        <Review
+                            key={`place-review-${review.id}`}
+                            review={review}
+                            variant="place-page"
+                            activeUserId={activeUserId}
+                            isAuth={isAuth}
+                        />
+                    ))}
+                </div>
 
                 {reviews.totalPages > page && (
                     <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />
@@ -55,7 +57,7 @@ export const PlaceMainReviewsList = ({ placeId, activeUserId, isAuth }: PlaceMai
     return (
         <div>
             {Array.from({ length: 3 }).map((_, index) => (
-                <ReviewSkeleton key={index} />
+                <ReviewSkeleton key={`place-review-skeleton-${index}`} />
             ))}
         </div>
     )

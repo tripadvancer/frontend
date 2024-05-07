@@ -1,7 +1,13 @@
+import { auth } from './auth.en'
 import { landing } from './landing.en'
+import { savePlace } from './save-space.en'
+import { widget } from './widget.en'
 
 export default {
+    ...auth,
     ...landing,
+    ...savePlace,
+    ...widget,
 
     'cookie_consent.title': 'Allow Cookies',
     'cookie_consent.description': 'This website uses cookies to ensure you get the best experience on our website. For more information, you can read our {cookie_policy_link}.',
@@ -40,7 +46,7 @@ export default {
     'header.user_menu.reviews': 'Written reviews',
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
-    'header.link.map': 'Go to map',
+    'header.link.map': 'Map',
     'header.link.company_blog': 'Company blog',
 
     'common.error': 'An unexpected error has occurred. Please try again later.',
@@ -71,6 +77,7 @@ export default {
     'common.action.route': 'Route',
     'common.action.locate_me': 'Locate me',
     'common.action.go_to_map': 'Go to map',
+    'common.action.save': 'Save',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
@@ -127,12 +134,9 @@ export default {
     'success.update_review': 'Your review has been updated.',
     'success.delete_review': 'The review has been deleted.',
     'success.change_user_password': 'Your password has been changed.',
-    'success.change_user_email': 'We have sent you a verification email. After confirming your new email address, you will be able to sign in using it.',
     'success.update_user_avatar': 'Your avatar has been updated.',
     'success.update_user_info': 'Your profile has been updated.',
     'success.request_personal_data': 'Your personal data has been sent to your email.',
-    'success.request_user_deletion': 'We have sent you an email with instructions on how to complete the deletion process.',
-    'success.send_verification_email': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
 
     'categories.all': 'All categories',
 
@@ -191,94 +195,6 @@ export default {
     'review.form.fields.text.label': 'Review',
     'review.form.fields.photos.label': 'Photos',
 
-    'auth.change_email.title': 'Change email',
-    'auth.change_email.info': 'Enter your new email address below and we will send you a verification email:',
-
-    'auth.change_password.title': 'Change password',
-    'auth.change_password.info': 'Create a new password that is at least 8 characters long and contains a mix of letters and numbers:',
-
-    'auth.claim_email_error.title': 'Your email is not verified',
-    'auth.claim_email_error.message': 'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.',
-    'auth.claim_email_error.resend_verification_email': 'Resend Verification Email',
-    'auth.claim_email_error.go_to_settings': 'Or change your email. {settings_link}',
-    'auth.claim_email_error.settings_link': 'Settings',
-
-    'auth.confirm_user_deletion.loading': 'Starting the deletion process...',
-    'auth.confirm_user_deletion.token_expired': 'The confirmation link has expired. Please request a new confirmation link.',
-    'auth.confirm_user_deletion.ok': 'The deletion process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.',
-
-    'auth.forgot_password_completing.title': 'Completing the recovery',
-    'auth.forgot_password_completing.message': 'We sent you an email with instructions on how to reset your password.',
-
-    'auth.forgot_password.title': 'Forgot your password?',
-    'auth.forgot_password.submit': 'Restore password',
-    'auth.forgot_password.info': 'To reset your password, please enter your email address. We will send an email to the provided address with instructions on how to reset your password:',
-    'auth.forgot_password.to_back': '{sign_in_link} or {sign_up_link}',
-
-    'auth.reset_password.title': 'Enter your new password below',
-    'auth.reset_password.token_expired': 'The password reset link has expired. Please request a new password reset link.',
-    'auth.reset_password.ok': 'Your password has been reset.',
-    'auth.reset_password.submit': 'Reset password',
-
-    'auth.restore_user.loading': 'Restoring your account...',
-    'auth.restore_user.token_expired': 'The restore link has expired. Please request a new restore link.',
-    'auth.restore_user.ok': 'Your account has been restored.',
-
-    'auth.signin.title': 'Sign in',
-    'auth.signin.third_party.or': 'Or',
-    'auth.signin.submit': 'Sign in',
-    'auth.signin.link.forgot_password': 'Forgot password?',
-    'auth.signin.to_back': 'Don’t have an account? {sign_up_link}',
-
-    'auth.signin_reject.title': 'Your account is pending deletion',
-    'auth.signin_reject.message': 'We have sent you the instructions to restore your account. Please note that there is a limited time window available for account restoration.',
-
-    'auth.signup.title': 'Sign up',
-    'auth.signup.third_party.title': 'Or, sign up with your email address',
-    'auth.signup.submit': 'Sign up',
-    'auth.signup.info': 'By completing the registration process, you acknowledge and accept our {terms_link} and {privacy_link}.',
-    'auth.signup.to_back': 'Have an account? {sign_in_link}',
-
-    'auth.signup_completing.title': 'Completing sign up',
-    'auth.signup_completing.message': 'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.',
-    'auth.signup_completing.resend_verification_email': 'Resend Verification Email',
-
-    'auth.third_party_callback.redirecting': 'You are being redirected...',
-    'auth.third_party_callback.checking_status': 'We are checking your status...',
-    'auth.third_party_callback.error.email_not_provided': 'No email provided by social login. Please use another form of login.',
-    'auth.third_party_callback.error.email_already_exists': 'Seems like you already have an account with another method. Please use that instead.',
-
-    'auth.verify_email.loading': 'Verifying your email...',
-    'auth.verify_email.token_expired': 'The email verification link has expired. Please sign in again so we can send you a new verification link.',
-    'auth.verify_email.ok': 'Your email has been verified.',
-
-    'widget.common.error': 'An unexpected error has occurred.{br}Please try again later.',
-    'widget.search.placeholder': 'Find a country, place or address',
-    'widget.categories.title': 'Categories',
-    'widget.categories.selected#one': '{count} selected',
-    'widget.categories.selected#other': '{count} selected',
-    'widget.places.title': 'Places',
-    'widget.tabs.all': 'All',
-    'widget.tabs.saved': 'Saved',
-    'widget.tabs.visited': 'Visited',
-    'widget.tabs.random': 'Random',
-    'widget.all_places.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
-    'widget.visited_places.empty_message': 'You have not visited places.{br}Add the place to your visited to see it here.',
-    'widget.visited_places.not_logged_in': 'You are not logged in.{br}Sign in to see your visited places.',
-    'widget.random.empty_message': 'No places matching your filters found. Try changing the category or radius.',
-    'widget.random.info': 'Select categories, radius around you and get a random place you might like.',
-    'widget.random.button': 'Find a random place',
-    'widget.random.button_coundown': 'Find a random place in ({countdown})',
-    'widget.random.error.not_location': 'To find a random place around you, you need to allow access to your location. Click the button below or select "I am here" on the map.',
-    'widget.saved.empty_message': 'Your saved places are empty.{br}Create a new list and start adding places to it.',
-    'widget.saved.not_logged_in': 'You are not logged in.{br}Sign in to see your saved places.',
-    'widget.saved.lists.empty_message': 'Your list are empty.{br}Add places to this list to see them here.',
-    'widget.saved.lists.add_button': 'Create new list',
-    'widget.saved.lists.info': 'Select a list to view your saved places.',
-    'widget.saved.lists.show_only_list': 'Show on map',
-    'widget.toggler.map': 'Map',
-    'widget.toggler.search_and_filters': 'Search and filters',
-
     'map.popup.location.title': 'Selected location',
     'map.popup.location.add_place': 'Add place here',
     'map.popup.location.i_am_here': 'I am here',
@@ -293,7 +209,7 @@ export default {
 
     'pages.country.description': 'Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.',
     'pages.country.view_all': 'View all countries',
-    'pages.country.places.empty': 'There are no places in this country yet. Be the first to add a place!',
+    'pages.country.places.empty': 'There are no places yet. Be the first to add a place!',
 
     'pages.place.about.title': 'About this place',
     'pages.place.photos.title': 'Photos',
@@ -335,7 +251,7 @@ export default {
     'pages.add_place.photos.title': 'Photos',
     'pages.add_place.photos.info': 'You can upload up to {max_count} photos of the place.',
     'pages.add_place.submit': 'Add place',
-    'pages.add_place.submit.info': 'By adding a new object to the map, you accept the {terms_link}, {privacy_link} and consent to their processing.',
+    'pages.add_place.submit.info': 'By adding a new place to the map, you acknowledge and accept our {terms_link} and {privacy_link}.',
 
     'places_nearby_warning.title': 'Attention',
     'places_nearby_warning.text': 'Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.',

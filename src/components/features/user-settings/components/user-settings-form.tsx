@@ -35,10 +35,13 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
 
     const validationSchema = Yup.object().shape({
         name: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
             .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
-        info: Yup.string().max(userInfoMaxLength, t('validation.text.max_length', { max_length: userInfoMaxLength })),
+        info: Yup.string()
+            .trim()
+            .max(userInfoMaxLength, t('validation.text.max_length', { max_length: userInfoMaxLength })),
     })
 
     const handleSubmit = async (inputs: UpdateUserInfoInputs) => {
@@ -89,7 +92,7 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
                         value={formik.values.name}
                         placeholder={t('placeholder.action.username')}
                         error={formik.errors.name}
-                        isDisabled={isLoading}
+                        disabled={isLoading}
                         onChange={formik.handleChange}
                     />
                 </div>
@@ -104,7 +107,7 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
                         placeholder={t('placeholder.action.about_user')}
                         maxLength={userInfoMaxLength}
                         error={formik.errors.info}
-                        isDisabled={isLoading}
+                        disabled={isLoading}
                         onChange={formik.handleChange}
                     />
                 </div>

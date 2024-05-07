@@ -1,6 +1,6 @@
 'use client'
 
-import { useMap } from 'react-map-gl/maplibre'
+import { useMemo } from 'react'
 
 import { getMapState } from '@/redux/features/map-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
@@ -17,14 +17,12 @@ export const WidgetAllPlaces = () => {
     const mapBounds = useAppSelector(getMapState).bounds
     const selectedCategories = useAppSelector(getWidgetState).selectedCategories
 
-    const { map } = useMap()
-
     const { data, isError, isLoading, isSuccess, refetch } = placesAPI.useGetPlacesQuery(
         { mapBounds, selectedCategories },
         { skip: !mapBounds },
     )
 
-    const places = data?.features.map(({ properties }) => properties) ?? []
+    const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
 
     if (isError) {
         return <WidgetMessage onAction={refetch} isLoading={isLoading} />

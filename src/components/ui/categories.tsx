@@ -35,7 +35,7 @@ export const Categories = ({ variant, selectedCategories, onClick }: CategoryPro
 
             {sortedCategories.map(category => (
                 <Category
-                    key={category.id}
+                    key={`category-${category.id}`}
                     variant={variant}
                     isSelected={selectedCategories.includes(category.id)}
                     onClick={() => handleSelectCategory(category.id)}

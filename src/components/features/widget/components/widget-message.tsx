@@ -16,10 +16,8 @@ export const WidgetMessage = ({ message, actionCaption, isLoading, onAction }: W
     const t = useI18n()
 
     return (
-        <section className="mx-auto flex w-3/4 flex-col items-center justify-center gap-y-4">
-            <p className="text-center text-small text-black-40">
-                {message ? message : t('widget.common.error', { br: <br /> })}
-            </p>
+        <section className="mx-auto flex flex-col items-center justify-center gap-y-4">
+            <p className="text-center text-black-40">{message ? message : t('widget.error', { br: <br /> })}</p>
             {onAction && (
                 <FormButton type="stroke" size="small" shape="rounded" isLoading={isLoading} onClick={onAction}>
                     {actionCaption ? actionCaption : t('common.action.try_again')}

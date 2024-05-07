@@ -24,7 +24,8 @@ export const WidgetSavedListsForm = ({ initialValues, isLoading, onSubmit, onClo
 
     const validationSchema = Yup.object().shape({
         name: Yup.string()
-            .required('Name is required')
+            .trim()
+            .required(t('validation.required'))
             .min(listNameMinLength, t('validation.text.min_length', { min_length: listNameMinLength }))
             .max(listNameMaxLength, t('validation.text.max_length', { max_length: listNameMaxLength })),
     })
@@ -48,12 +49,14 @@ export const WidgetSavedListsForm = ({ initialValues, isLoading, onSubmit, onClo
                     name="name"
                     value={formik.values.name}
                     autoFocus
+                    autoComplete="off"
                     maxLength={listNameMaxLength}
                     className="peer w-full bg-white focus:outline-none disabled:opacity-50"
                     placeholder={t('placeholder.action.list_name')}
                     disabled={isLoading}
                     onChange={formik.handleChange}
                 />
+
                 <div
                     className="hover-animated cursor-pointer text-black-15 hover:text-blue-active peer-disabled:pointer-events-none"
                     onClick={onClose}

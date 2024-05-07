@@ -1,5 +1,5 @@
 import type { GeoJsonCollection } from '@/utils/types/geo'
-import type { CreateListInputs, IList, IListInfo, UpdateListInputs } from '@/utils/types/list'
+import type { CreateListInputs, IList, IListInfo, UpdateListInputs, UpdatePlaceInListsInputs } from '@/utils/types/list'
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
@@ -53,31 +53,17 @@ export const listAPI = api.injectEndpoints({
             ],
         }),
 
-        savePlace: build.mutation<void, { listId: number; placeId: number }>({
-            query: ({ listId, placeId }) => ({
-                url: `lists/${listId}/places`,
-                method: 'POST',
-                body: { placeId },
+        updatePlaceInLists: build.mutation<void, UpdatePlaceInListsInputs>({
+            query: inputs => ({
+                url: 'lists/',
+                method: 'PATCH',
+                body: inputs,
             }),
-            invalidatesTags: (result, error, { listId, placeId }) => [
+            invalidatesTags: (result, error, inputs) => [
                 { type: 'Lists' },
-                { type: 'Lists', id: listId },
+                { type: 'Lists', id: inputs.placeId },
                 { type: 'Places' },
-                { type: 'PlacesMeta', id: placeId },
-                { type: 'Visited' },
-            ],
-        }),
-
-        unSavePlace: build.mutation<void, { listId: number; placeId: number }>({
-            query: ({ listId, placeId }) => ({
-                url: `lists/${listId}/places/${placeId}`,
-                method: 'DELETE',
-            }),
-            invalidatesTags: (result, error, { listId, placeId }) => [
-                { type: 'Lists' },
-                { type: 'Lists', id: listId },
-                { type: 'Places' },
-                { type: 'PlacesMeta', id: placeId },
+                { type: 'PlacesMeta' },
                 { type: 'Visited' },
             ],
         }),

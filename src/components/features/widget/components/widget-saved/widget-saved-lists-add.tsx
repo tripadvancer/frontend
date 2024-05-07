@@ -23,7 +23,6 @@ export const WidgetSavedListsAdd = () => {
 
     const initialValues: CreateListInputs = {
         name: '',
-        description: 'test description',
     }
 
     useKeypress(Keys.ESCAPE, () => {

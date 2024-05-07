@@ -7,7 +7,7 @@ import type { IPlacePreview } from '@/utils/types/place'
 import { FormButton } from '@/components/ui/form-button'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-import { WidgetPlacePreview } from './widget-place-preview'
+import { WidgetPlacesFeedItem } from './widget-places-feed-item'
 
 const PAGINATION_LIMIT = 10
 
@@ -18,7 +18,7 @@ export const WidgetPlacesFeed = ({ places }: { places: IPlacePreview[] }) => {
     return (
         <div className="flex flex-col gap-4">
             {places.slice(0, currentPage * PAGINATION_LIMIT).map(place => (
-                <WidgetPlacePreview key={`widget-place-${place.id}`} {...place} />
+                <WidgetPlacesFeedItem key={`widget-place-${place.id}`} {...place} />
             ))}
 
             {places.length > currentPage * PAGINATION_LIMIT && (
