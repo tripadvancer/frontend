@@ -14,8 +14,8 @@ export default {
     'cookie_consent.policy_link': 'Политике использования файлов cookie',
     'cookie_consent.got_it': 'Понял!',
 
-    'email_verification_notice.text': 'Ваш адрес электронной почты не был подтверждён. Подтвердите Ваш email, перейдя по ссылке в отправленном при регистрации письме. {learn_more_link}',
-    'email_verification_notice.learn_more_link': 'Узнать больше',
+    'email_verification_notice.text': 'Ваш email не {learn_more_link}. Пожалуйста, подтвердите Ваш email, чтобы получить доступ ко всем функциям Tripadvancer.',
+    'email_verification_notice.learn_more_link': 'подтверждён',
 
     'abandoned_warning': 'Места в категории "Заброшки" могут быть опасны, будьте осторожны.',
 
@@ -29,7 +29,7 @@ export default {
     'confirm.delete_place.title': 'Удалить место',
     'confirm.delete_place.message': 'Вы уверены, что хотите удалить это место и все связанные с ним данные? Это действие необратимо.',
 
-    'confirm.delete_list.title': 'Удалить список',
+    'confirm.delete_list.title': 'Удалить список "{list_name}"',
     'confirm.delete_list.message': 'Вы уверены, что хотите удалить этот список? Это действие необратимо.',
 
     'confirm.request_personal_data.title': 'Запросить персональные данные',
@@ -42,8 +42,8 @@ export default {
     'confirm.no': 'Отмена',
 
     'header.user_menu.my_profile': 'Профиль',
-    'header.user_menu.places': 'Мои места',
-    'header.user_menu.reviews': 'Мои отзывы',
+    'header.user_menu.places': 'Места',
+    'header.user_menu.reviews': 'Отзывы',
     'header.user_menu.settings': 'Настройки',
     'header.user_menu.log_out': 'Выйти',
     'header.link.map': 'Карта',
@@ -156,8 +156,8 @@ export default {
     'user_achievement.statistic.visited_places': 'Посещено мест',
     'user_achievement.statistic.visited_countries': 'Посещено стран',
 
-    'user_tabs.places': 'Мои места',
-    'user_tabs.reviews': 'Мои отзывы',
+    'user_tabs.places': 'Места',
+    'user_tabs.reviews': 'Отзывы',
     'user_tabs.settings': 'Настройки',
 
     'countries.places#zero': 'Нет мест',

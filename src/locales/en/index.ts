@@ -14,8 +14,8 @@ export default {
     'cookie_consent.policy_link': 'Cookie Policy',
     'cookie_consent.got_it': 'Got it!',
 
-    'email_verification_notice.text': 'Your email has not been verified. Please confirm it by clicking the link in the email we sent you during the registration. {learn_more_link}',
-    'email_verification_notice.learn_more_link': 'Learn more',
+    'email_verification_notice.text': 'Your email is not {learn_more_link}. Please confirm you email to get access to all features Tripadvancer.',
+    'email_verification_notice.learn_more_link': 'verified',
 
     'abandoned_warning': 'Places in the "Abandoned" category might be dangerous, be careful.',
 
@@ -29,7 +29,7 @@ export default {
     'confirm.delete_place.title': 'Delete place',
     'confirm.delete_place.message': 'Are you sure you want to delete this place and all data associated with it? This action is irreversible.',
 
-    'confirm.delete_list.title': 'Delete list',
+    'confirm.delete_list.title': 'Delete list "{list_name}"',
     'confirm.delete_list.message': 'Are you sure you want to delete this list? This action is irreversible.',
 
     'confirm.request_personal_data.title': 'Send personal data',
@@ -42,8 +42,8 @@ export default {
     'confirm.no': 'Cancel',
 
     'header.user_menu.my_profile': 'Profile',
-    'header.user_menu.places': 'Added places',
-    'header.user_menu.reviews': 'Written reviews',
+    'header.user_menu.places': 'Places',
+    'header.user_menu.reviews': 'Reviews',
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
     'header.link.map': 'Map',
@@ -135,7 +135,7 @@ export default {
     'success.update_user_info': 'Your profile has been updated.',
     'success.request_personal_data': 'Your personal data has been sent to your email.',
 
-    'categories.all': 'All categories',
+    'categories.all': 'All',
 
     'complaint.reasons.abuse': 'Misuse, mistreatment or intentional harm',
     'complaint.reasons.copyright': 'Copyright or intellectual property rights violation',
@@ -156,8 +156,8 @@ export default {
     'user_achievement.statistic.visited_places': 'Visited places',
     'user_achievement.statistic.visited_countries': 'Visited countries',
 
-    'user_tabs.places': 'Added places',
-    'user_tabs.reviews': 'Written reviews',
+    'user_tabs.places': 'Places',
+    'user_tabs.reviews': 'Reviews',
     'user_tabs.settings': 'Settings',
 
     'countries.places#zero': 'No places',

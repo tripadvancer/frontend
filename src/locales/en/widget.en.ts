@@ -32,7 +32,7 @@ export const widget = {
     'widget.saved.lists.empty_message': 'This list are empty.{br}Add place to this list to see it here.',
     'widget.saved.lists.add_button': 'Create new list',
     'widget.saved.lists.info': 'Select a list to view saved places.',
-    'widget.saved.lists.show_only_list': 'Show on map',
+    'widget.saved.lists.show_only_list': 'On map',
     'widget.saved.lists.places#one': '{count} place',
     'widget.saved.lists.places#other': '{count} places',
     'widget.saved.lists.private': 'Private',

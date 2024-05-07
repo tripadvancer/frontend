@@ -19,7 +19,7 @@ export const categoriesDictionary: CategoryDict[] = [
         id: 2,
         name: 'ADVENTURE_ACTIVITIES',
         localizedName: {
-            en: 'Adventure activities',
+            en: 'Adventure',
             ru: 'Приключения',
         },
     },
@@ -35,7 +35,7 @@ export const categoriesDictionary: CategoryDict[] = [
         id: 4,
         name: 'CAMPING_SITES',
         localizedName: {
-            en: 'Camping sites',
+            en: 'Camping',
             ru: 'Кемпинги',
         },
     },
@@ -59,7 +59,7 @@ export const categoriesDictionary: CategoryDict[] = [
         id: 7,
         name: 'NATURAL_ATTRACTIONS',
         localizedName: {
-            en: 'Natural attractions',
+            en: 'Natural',
             ru: 'Природа',
         },
     },
@@ -75,7 +75,7 @@ export const categoriesDictionary: CategoryDict[] = [
         id: 9,
         name: 'RECREATIONAL_AREAS',
         localizedName: {
-            en: 'Recreational areas',
+            en: 'Recreation',
             ru: 'Места отдыха',
         },
     },
@@ -83,7 +83,7 @@ export const categoriesDictionary: CategoryDict[] = [
         id: 10,
         name: 'SCENIC_VIEWS',
         localizedName: {
-            en: 'Scenic views',
+            en: 'Scenic',
             ru: 'Красивые виды',
         },
     },
@@ -99,7 +99,7 @@ export const categoriesDictionary: CategoryDict[] = [
         id: 12,
         name: 'HIKING',
         localizedName: {
-            en: 'Hiking trails',
+            en: 'Hiking',
             ru: 'Пешие тропы',
         },
     },

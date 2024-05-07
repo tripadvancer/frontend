@@ -24,7 +24,7 @@ export const Confirmation = ({ title, message, variant = 'blue', onConfirm }: Co
     return (
         <div className="w-full sm:w-104">
             <div className="mb-8 flex flex-col gap-y-4">
-                <h1 className="h7">{title}</h1>
+                <h1 className="h7 break-words">{title}</h1>
                 <hr className="border-black-70" />
                 <p>{message}</p>
             </div>

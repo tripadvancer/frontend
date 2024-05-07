@@ -30,7 +30,7 @@ export const WidgetPlaces = ({ isAuth }: { isAuth: boolean }) => {
             </div>
 
             {widgetState.isPlacesOpened && (
-                <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
+                <div className="flex flex-1 flex-col gap-y-6 sm:gap-y-8">
                     <WidgetTabs />
                     {widgetState.activeTab === WidgetTabsEnum.ALL && <WidgetAllPlaces />}
                     {widgetState.activeTab === WidgetTabsEnum.SAVED && <WidgetSaved isAuth={isAuth} />}

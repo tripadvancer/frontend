@@ -34,30 +34,26 @@ export const initialState: WidgetState = {
 }
 
 function setWidgetDataSource(state: WidgetState) {
-    if (state.isShowOnlySavedPlaces) {
-        switch (state.activeTab) {
-            case WidgetTabsEnum.ALL:
+    switch (state.activeTab) {
+        case WidgetTabsEnum.ALL:
+            state.dataSource = MapDataSourcesEnum.ALL_PLACES
+            break
+        case WidgetTabsEnum.SAVED:
+            if (state.isShowOnlySavedPlaces && state.activeList) {
+                state.dataSource = MapDataSourcesEnum.SAVED_PLACES
+            } else {
                 state.dataSource = MapDataSourcesEnum.ALL_PLACES
-                break
-            case WidgetTabsEnum.SAVED:
-                if (state.activeList) {
-                    state.dataSource = MapDataSourcesEnum.SAVED_PLACES
-                } else {
-                    state.dataSource = MapDataSourcesEnum.ALL_PLACES
-                }
-                break
-            case WidgetTabsEnum.VISITED:
-                state.dataSource = MapDataSourcesEnum.VISITED_PLACES
-                break
-            case WidgetTabsEnum.RANDOM:
-                state.dataSource = MapDataSourcesEnum.ALL_PLACES
-                break
-            default:
-                state.dataSource = MapDataSourcesEnum.ALL_PLACES
-                break
-        }
-    } else {
-        state.dataSource = MapDataSourcesEnum.ALL_PLACES
+            }
+            break
+        case WidgetTabsEnum.VISITED:
+            state.dataSource = MapDataSourcesEnum.VISITED_PLACES
+            break
+        case WidgetTabsEnum.RANDOM:
+            state.dataSource = MapDataSourcesEnum.ALL_PLACES
+            break
+        default:
+            state.dataSource = MapDataSourcesEnum.ALL_PLACES
+            break
     }
 }
 
