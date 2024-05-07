@@ -13,14 +13,14 @@ export const widget = {
     'widget.places.title': 'Места',
 
     'widget.tabs.all': 'Все',
-    'widget.tabs.saved': 'Сохраненные',
+    'widget.tabs.saved': 'Сохранённые',
     'widget.tabs.visited': 'Я посетил',
     'widget.tabs.random': 'Случайное',
 
-    'widget.all_places.empty_message': 'В этой области нет мест.{br}Попробуйте измените категории или увеличьте масштаб.',
+    'widget.all_places.empty_message': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличьте масштаб.',
 
-    'widget.visited_places.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в посещенные, чтобы увидеть его здесь.',
-    'widget.visited_places.not_logged_in': 'Для просмотра посещенных мест необходимо {sign_in_link}.',
+    'widget.visited_places.empty_message': 'Вы еще не посетили ни одного места.{br}Добавьте место в посещённые, чтобы увидеть его здесь.',
+    'widget.visited_places.not_logged_in': 'Для просмотра посещённых мест необходимо {sign_in_link}.',
     
     'widget.random.empty_message': 'Не найдено мест, соответствующих Вашим фильтрам.{br}Попробуйте изменить категории или радиус.',
     'widget.random.info': 'Выберите категории и радиус, чтобы найти случайное место.',
@@ -29,7 +29,7 @@ export const widget = {
     'widget.random.error.not_location': 'Чтобы найти случайное место — нужно разрешить доступ к вашему местоположению или выбрать “Я здесь“ на карте.',
     
     'widget.saved.empty_message': 'У Вас нет списков.{br}Создайте список, чтобы cохранять в него места.',
-    'widget.saved.not_logged_in': 'Для просмотра сохраненных мест необходимо {sign_in_link}.',
+    'widget.saved.not_logged_in': 'Для просмотра сохранённых мест необходимо {sign_in_link}.',
     
     'widget.saved.lists.empty_message': 'Вы еще не сохранили ни одного места.',
     'widget.saved.lists.add_button': 'Создать список',
