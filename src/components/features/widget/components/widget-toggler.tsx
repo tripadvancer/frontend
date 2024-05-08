@@ -13,7 +13,7 @@ export const WidgetToggler = () => {
 
     return (
         <FormButton
-            className="!fixed bottom-11 left-1/2 z-40 -translate-x-1/2 transform sm:hidden"
+            className="!fixed bottom-10 left-1/2 z-40 -translate-x-1/2 transform sm:hidden"
             shape="rounded"
             icon={widgetState.widgetIsExpanded ? <MapIcon16 /> : <PinIcon16 />}
             onClick={() => dispatch(toggleWidget())}

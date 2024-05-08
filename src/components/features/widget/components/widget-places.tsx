@@ -1,5 +1,7 @@
 'use client'
 
+import { isMobile } from 'react-device-detect'
+
 import { ChevronBottomIcon16, ChevronTopIcon16 } from '@/components/ui/icons'
 import { getWidgetState, toggleWidgetPlacesOpened } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
@@ -20,11 +22,11 @@ export const WidgetPlaces = ({ isAuth }: { isAuth: boolean }) => {
     return (
         <div className="flex flex-col gap-y-4">
             <div
-                className="flex cursor-pointer items-center justify-between"
-                onClick={() => dispatch(toggleWidgetPlacesOpened())}
+                className="flex items-center justify-between sm:cursor-pointer"
+                onClick={isMobile ? undefined : () => dispatch(toggleWidgetPlacesOpened())}
             >
                 <div className="text-caps uppercase">{t('widget.places.title')}</div>
-                <div className="flex items-center justify-center gap-2">
+                <div className="hidden items-center justify-center gap-2 sm:flex">
                     {widgetState.isPlacesOpened ? <ChevronTopIcon16 /> : <ChevronBottomIcon16 />}
                 </div>
             </div>

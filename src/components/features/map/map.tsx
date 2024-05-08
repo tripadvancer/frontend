@@ -109,15 +109,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 />
             </Source>
 
-            <div
-                className={classNames(
-                    'absolute right-2 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2',
-                    {
-                        'top-1/2 mt-6 -translate-y-1/2 sm:translate-y-0': widgetState.widgetIsExpanded,
-                        'top-24': !widgetState.widgetIsExpanded,
-                    },
-                )}
-            >
+            <div className="absolute right-2 top-[88px] z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
                 <MapControl onClick={handleZoomIn}>
                     <PlusIcon16 />
                 </MapControl>
