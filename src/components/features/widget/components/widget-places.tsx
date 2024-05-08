@@ -1,6 +1,6 @@
 'use client'
 
-import { isMobile } from 'react-device-detect'
+import { useMediaQuery } from 'usehooks-ts'
 
 import { ChevronBottomIcon16, ChevronTopIcon16 } from '@/components/ui/icons'
 import { getWidgetState, toggleWidgetPlacesOpened } from '@/redux/features/widget-slice'
@@ -18,6 +18,7 @@ export const WidgetPlaces = ({ isAuth }: { isAuth: boolean }) => {
     const t = useI18n()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
+    const isMobile = useMediaQuery('(max-width: 639px)')
 
     return (
         <div className="flex flex-col gap-y-4">
