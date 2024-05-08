@@ -1,9 +1,13 @@
 'use client'
 
+import { useEffect } from 'react'
+import { useMap } from 'react-map-gl/maplibre'
+
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState, setWidgetRandomRadius } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { getMapFlyToOptions } from '@/utils/helpers/maps'
 
 import { WidgetRandomButton } from './widget-random-button'
 import { WidgetRandomResults } from './widget-random-results'
@@ -14,7 +18,15 @@ export const WidgetRandom = () => {
     const widgetState = useAppSelector(getWidgetState)
     const userLocation = useAppSelector(getUserLocation)
 
+    const { map } = useMap()
+
     const [searchRandomPlace, { data, error, isFetching, isSuccess }] = placesAroundAPI.useLazyGetRandomPlaceQuery()
+
+    useEffect(() => {
+        if (userLocation) {
+            map?.flyTo(getMapFlyToOptions(userLocation))
+        }
+    }, [map, userLocation])
 
     const handleRandomClick = () => {
         if (userLocation) {

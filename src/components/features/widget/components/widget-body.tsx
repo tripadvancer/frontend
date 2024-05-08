@@ -15,5 +15,5 @@ export const WidgetBody = ({ children }: { children: ReactNode }) => {
         return null
     }
 
-    return <div className="pb-24 sm:pb-0">{children}</div>
+    return <div className="pb-20 sm:pb-0">{children}</div>
 }
