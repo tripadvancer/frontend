@@ -17,7 +17,7 @@ export const WidgetContainer = ({ children }: { children: ReactNode }) => {
             className={classNames(
                 'scrollbar-hide fixed right-0 top-0 z-40 w-full overflow-y-auto pb-8 sm:max-h-full sm:w-[496px] sm:pb-8 sm:pl-8 sm:pr-4 sm:pt-4',
                 {
-                    'h-full pb-0 sm:h-auto': widgetState.widgetIsExpanded,
+                    'h-full !pb-0 sm:h-auto': widgetState.widgetIsExpanded,
                 },
             )}
         >
