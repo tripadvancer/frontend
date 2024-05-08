@@ -13,7 +13,6 @@ interface WidgetState {
     isMenuOpened: boolean
     isPlacesOpened: boolean
     selectedCategories: number[]
-    widgetIsExpanded: boolean // only for mobile
 }
 
 export const initialState: WidgetState = {
@@ -24,7 +23,6 @@ export const initialState: WidgetState = {
     isMenuOpened: false,
     isPlacesOpened: true,
     selectedCategories: [],
-    widgetIsExpanded: false,
 }
 
 export const widgetSlice = createSlice({
@@ -34,18 +32,9 @@ export const widgetSlice = createSlice({
         resetWidgetState() {
             return initialState
         },
-        toggleWidget(state) {
-            state.widgetIsExpanded = !state.widgetIsExpanded
-            state.isAboutOpened = false
-            state.isMenuOpened = false
-        },
         closeWidget(state) {
-            state.widgetIsExpanded = false
             state.isAboutOpened = false
             state.isMenuOpened = false
-        },
-        openWidget(state) {
-            state.widgetIsExpanded = true
         },
         toggleWidgetPlacesOpened(state) {
             state.isPlacesOpened = !state.isPlacesOpened
@@ -80,9 +69,7 @@ export const getWidgetState = (state: RootState) => state.widget
 
 export const {
     resetWidgetState,
-    toggleWidget,
     closeWidget,
-    openWidget,
     toggleWidgetPlacesOpened,
     toggleWidgetCategoriesOpened,
     toggleWidgetAbout,

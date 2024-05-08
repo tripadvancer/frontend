@@ -3,6 +3,8 @@
 import { useCallback, useRef } from 'react'
 import { AttributionControl, Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl/maplibre'
 
+import { useMediaQuery } from 'usehooks-ts'
+
 import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
 import { getMapState } from '@/redux/features/map-slice'
@@ -33,6 +35,8 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const selectedCategories = widgetState.selectedCategories
     const userLocation = useAppSelector(getUserLocation)
 
+    const isMobile = useMediaQuery('(max-width: 639px)')
+
     const mapRef = useRef<MapRef>(null)
 
     const { handleLocate, isLocating } = useUserLocation()
@@ -61,7 +65,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 <Layer {...placesLayer} />
             </Source>
 
-            <div className="absolute right-2 top-[88px] z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
+            <div className="absolute right-2 top-16 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
                 <MapControl onClick={handleZoomIn}>
                     <PlusIcon16 />
                 </MapControl>
@@ -92,7 +96,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 />
             )}
 
-            <AttributionControl compact />
+            {!isMobile && <AttributionControl compact={true} />}
         </ReactMapGl>
     )
 }

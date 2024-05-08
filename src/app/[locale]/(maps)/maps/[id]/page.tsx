@@ -1,7 +1,6 @@
 import type { Metadata } from 'next/types'
 
 import { CookieConsent } from '@/components/features/cookie-consent/cookie-consent'
-import { WidgetUser } from '@/components/features/widget/widget-user'
 
 export const metadata: Metadata = {
     title: 'Maps',
@@ -33,7 +32,6 @@ export const metadata: Metadata = {
 export default function UserMapsPage() {
     return (
         <div className="h-dvh w-dvw">
-            <WidgetUser />
             <CookieConsent />
         </div>
     )
