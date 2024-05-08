@@ -1,40 +1,76 @@
 'use client'
 
-import { useEffect } from 'react'
-import { useMap } from 'react-map-gl/maplibre'
+import { useEffect, useState } from 'react'
+import { GeoJSONSource, useMap } from 'react-map-gl/maplibre'
 
+import { circle } from '@turf/turf'
+
+import { useToast } from '@/providers/toast-provider'
 import { getUserLocation } from '@/redux/features/user-slice'
-import { getWidgetState, setWidgetRandomRadius } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { getWidgetState } from '@/redux/features/widget-slice'
+import { useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
-import { getMapFlyToOptions } from '@/utils/helpers/maps'
+import { LngLatToArray, getBoundsFromCoordinates, getMapFlyToOptions } from '@/utils/helpers/maps'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetRandomButton } from './widget-random-button'
 import { WidgetRandomResults } from './widget-random-results'
 import { WidgetRandomSlider } from './widget-random-slider'
 
 export const WidgetRandom = () => {
-    const dispatch = useAppDispatch()
+    const t = useI18n()
+    const toast = useToast()
     const widgetState = useAppSelector(getWidgetState)
     const userLocation = useAppSelector(getUserLocation)
 
     const { map } = useMap()
 
+    const [radius, setRadius] = useState<number>(15)
     const [searchRandomPlace, { data, error, isFetching, isSuccess }] = placesAroundAPI.useLazyGetRandomPlaceQuery()
 
     useEffect(() => {
         if (userLocation) {
-            map?.flyTo(getMapFlyToOptions(userLocation))
-        }
-    }, [map, userLocation])
-
-    const handleRandomClick = () => {
-        if (userLocation) {
-            searchRandomPlace({
-                ...userLocation,
-                radius: widgetState.randomRadius * 1000, // km to m
-                categories: widgetState.selectedCategories,
+            const geoJson = circle(LngLatToArray(userLocation), radius, {
+                steps: 50,
+                units: 'kilometers',
             })
+
+            const bounds = getBoundsFromCoordinates(geoJson.geometry.coordinates[0])
+            map?.fitBounds(bounds)
+
+            const source = map?.getSource('circle-source') as GeoJSONSource
+            source?.setData(geoJson)
+        }
+    }, [map, userLocation, radius])
+
+    const handleRandomClick = async () => {
+        if (userLocation) {
+            try {
+                const randomPlace = await searchRandomPlace({
+                    ...userLocation,
+                    radius: radius * 1000, // km to m
+                    categories: widgetState.selectedCategories,
+                }).unwrap()
+
+                if (randomPlace) {
+                    const source = map?.getSource('random-places-source') as GeoJSONSource
+                    source.setData({
+                        type: 'FeatureCollection',
+                        features: [
+                            {
+                                type: 'Feature',
+                                geometry: {
+                                    type: 'Point',
+                                    coordinates: randomPlace.coordinates,
+                                },
+                                properties: randomPlace,
+                            },
+                        ],
+                    })
+                }
+            } catch {
+                toast.error(t('common.error'))
+            }
         }
     }
 
@@ -42,8 +78,8 @@ export const WidgetRandom = () => {
         // prettier-ignore
         <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
             <WidgetRandomSlider
-                value={widgetState.randomRadius}
-                onChange={value => dispatch(setWidgetRandomRadius(value))}
+                value={radius}
+                onChange={setRadius}
             />
             <WidgetRandomButton
                 isLoading={isFetching}

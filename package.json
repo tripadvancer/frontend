@@ -18,6 +18,8 @@
         "@react-spring/web": "^9.7.3",
         "@reduxjs/toolkit": "^2.2.3",
         "@stadiamaps/api": "^3.0.0",
+        "@turf/circle": "^7.0.0-alpha.116",
+        "@turf/turf": "^7.0.0-alpha.116",
         "@types/mdx": "^2.0.12",
         "@types/node": "^20.12.4",
         "@types/react": "^18.3.1",

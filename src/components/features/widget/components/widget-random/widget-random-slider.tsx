@@ -10,8 +10,9 @@ type WidgetRandomSliderProps = {
 export const WidgetRandomSlider = ({ value, onChange }: WidgetRandomSliderProps) => {
     return (
         <ReactSlider
-            min={10}
-            max={1000}
+            min={1}
+            max={150}
+            step={1}
             value={value}
             className="my-3 h-2"
             renderTrack={WidgetRandomSliderTrack}

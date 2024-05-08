@@ -1,9 +1,17 @@
 'use client'
 
-import { useCallback, useRef } from 'react'
-import { AttributionControl, Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl/maplibre'
+import { useCallback, useEffect, useRef } from 'react'
+import {
+    AttributionControl,
+    GeoJSONSource,
+    Layer,
+    MapRef,
+    Marker,
+    Map as ReactMapGl,
+    Source,
+} from 'react-map-gl/maplibre'
 
-import classNames from 'classnames'
+import circle from '@turf/circle'
 
 import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
@@ -15,6 +23,7 @@ import { listAPI } from '@/redux/services/list-api'
 import { placesAPI } from '@/redux/services/places-api'
 import { visitedAPI } from '@/redux/services/visited-api'
 import { MapDataSourcesEnum } from '@/utils/enums'
+import { LngLatToArray } from '@/utils/helpers/maps'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -23,7 +32,7 @@ import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
-import { placesLayer, savedPlacesLayer, visitedPlacesLayer } from './map-layers'
+import { circleLayer, placesLayer, randomPlacesLayer, savedPlacesLayer, visitedPlacesLayer } from './map-layers'
 
 type MapProps = {
     activeUserId?: number
@@ -70,11 +79,21 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
             id="map"
             ref={mapRef}
             mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
-            interactiveLayerIds={[placesLayer.id, savedPlacesLayer.id, visitedPlacesLayer.id]}
+            interactiveLayerIds={[placesLayer.id, savedPlacesLayer.id, visitedPlacesLayer.id, randomPlacesLayer.id]}
             attributionControl={false}
             reuseMaps
             {...handlers}
         >
+            <Source id="circle-source" type="geojson" data={{ type: 'FeatureCollection', features: [] }}>
+                <Layer
+                    {...circleLayer}
+                    layout={{
+                        ...circleLayer.layout,
+                        visibility: mapDataSource === MapDataSourcesEnum.RANDOM_PLACES ? 'visible' : 'none',
+                    }}
+                />
+            </Source>
+
             <Source id="places-source" type="geojson" data={places || { type: 'FeatureCollection', features: [] }}>
                 <Layer
                     {...placesLayer}
@@ -105,6 +124,16 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                     layout={{
                         ...visitedPlacesLayer.layout,
                         visibility: mapDataSource === MapDataSourcesEnum.VISITED_PLACES ? 'visible' : 'none',
+                    }}
+                />
+            </Source>
+
+            <Source id="random-places-source" type="geojson" data={{ type: 'FeatureCollection', features: [] }}>
+                <Layer
+                    {...randomPlacesLayer}
+                    layout={{
+                        ...randomPlacesLayer.layout,
+                        visibility: mapDataSource === MapDataSourcesEnum.RANDOM_PLACES ? 'visible' : 'none',
                     }}
                 />
             </Source>

@@ -14,7 +14,6 @@ interface WidgetState {
     isMenuOpened: boolean
     isPlacesOpened: boolean
     isShowOnlySavedPlaces: boolean
-    randomRadius: number
     selectedCategories: number[]
     widgetIsExpanded: boolean // only for mobile
 }
@@ -28,7 +27,6 @@ export const initialState: WidgetState = {
     isMenuOpened: false,
     isPlacesOpened: true,
     isShowOnlySavedPlaces: false,
-    randomRadius: 50,
     selectedCategories: [],
     widgetIsExpanded: false,
 }
@@ -49,7 +47,7 @@ function setWidgetDataSource(state: WidgetState) {
             state.dataSource = MapDataSourcesEnum.VISITED_PLACES
             break
         case WidgetTabsEnum.RANDOM:
-            state.dataSource = MapDataSourcesEnum.ALL_PLACES
+            state.dataSource = MapDataSourcesEnum.RANDOM_PLACES
             break
         default:
             state.dataSource = MapDataSourcesEnum.ALL_PLACES
@@ -110,9 +108,6 @@ export const widgetSlice = createSlice({
             state.dataSource = MapDataSourcesEnum.ALL_PLACES
             state.activeList = null
         },
-        setWidgetRandomRadius(state, action) {
-            state.randomRadius = action.payload
-        },
     },
 })
 
@@ -132,7 +127,6 @@ export const {
     setWidgetActiveTab,
     setWidgetActiveList,
     resetWidgetActiveList,
-    setWidgetRandomRadius,
 } = widgetSlice.actions
 
 export default widgetSlice.reducer

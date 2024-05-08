@@ -44,6 +44,7 @@ export enum MapDataSourcesEnum {
     ALL_PLACES = 'ALL_PLACES',
     SAVED_PLACES = 'SAVED_PLACES',
     VISITED_PLACES = 'VISITED_PLACES',
+    RANDOM_PLACES = 'RANDOM_PLACES',
 }
 
 export enum OrderDirection {

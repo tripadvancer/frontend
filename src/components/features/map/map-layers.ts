@@ -1,4 +1,4 @@
-import { SymbolLayer } from 'react-map-gl/maplibre'
+import { FillLayer, SymbolLayer } from 'react-map-gl/maplibre'
 
 export const placesLayer: SymbolLayer = {
     id: 'places-layer',
@@ -20,7 +20,7 @@ export const placesLayer: SymbolLayer = {
 
 export const visitedPlacesLayer: SymbolLayer = {
     id: 'visited-places-layer',
-    source: 'places-source',
+    source: 'visited-places-source',
     type: 'symbol',
     layout: {
         'icon-image': 'pin-gray',
@@ -32,12 +32,34 @@ export const visitedPlacesLayer: SymbolLayer = {
 
 export const savedPlacesLayer: SymbolLayer = {
     id: 'saved-places-layer',
-    source: 'places-source',
+    source: 'saved-places-source',
     type: 'symbol',
     layout: {
         'icon-image': 'pin-blue',
         'icon-size': 0.75,
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
+    },
+}
+
+export const randomPlacesLayer: SymbolLayer = {
+    id: 'random-places-layer',
+    source: 'random-places-source',
+    type: 'symbol',
+    layout: {
+        'icon-image': 'pin-orange',
+        'icon-size': 0.75,
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true,
+    },
+}
+
+export const circleLayer: FillLayer = {
+    id: 'circle',
+    type: 'fill',
+    source: 'circle-source',
+    paint: {
+        'fill-color': '#ff7d00',
+        'fill-opacity': 0.25,
     },
 }
