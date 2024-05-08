@@ -6,7 +6,7 @@ import type { IPlace } from '@/utils/types/place'
 
 import { PinIcon24 } from '@/components/ui/icons'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { closeWidget, toggleWidgetShowOnlySavedPlaces } from '@/redux/features/widget-slice'
+import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
@@ -25,7 +25,6 @@ export const PlaceSidebarActionsShowOnMap = ({ place, isAuth }: { place: IPlace;
 
         dispatch(closeWidget())
         dispatch(setMapViewState(viewState))
-        dispatch(toggleWidgetShowOnlySavedPlaces(false))
         dispatch(
             setMapPlacePopupInfo({
                 ...place,

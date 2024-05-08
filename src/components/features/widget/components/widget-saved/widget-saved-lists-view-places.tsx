@@ -3,8 +3,6 @@
 import { useEffect, useMemo } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
-import { getWidgetState } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list-api'
 import { arrayToLngLat, getBoundsFromCoordinates, getMapFlyToOptions } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -15,7 +13,6 @@ import { WidgetPlacesFeedSkeleton } from '../widget-places-feed/widget-places-fe
 
 export const WidgetSavedListsViewPlaces = ({ listId }: { listId: number }) => {
     const t = useI18n()
-    const widgetState = useAppSelector(getWidgetState)
 
     const { map } = useMap()
     const { data, isError, isLoading, isSuccess, refetch } = listAPI.useGetListPlacesQuery(listId)
@@ -23,20 +20,17 @@ export const WidgetSavedListsViewPlaces = ({ listId }: { listId: number }) => {
     const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
 
     useEffect(() => {
-        // Calculate bounds for the list places
         if (isSuccess && places.length > 0) {
-            if (widgetState.isShowOnlySavedPlaces) {
-                if (places.length === 1) {
-                    const lngLat = arrayToLngLat(places[0].coordinates)
-                    map?.flyTo(getMapFlyToOptions(lngLat))
-                    return
-                }
-
-                const bounds = getBoundsFromCoordinates(places.map(place => place.coordinates))
-                map?.fitBounds(bounds)
+            if (places.length === 1) {
+                const lngLat = arrayToLngLat(places[0].coordinates)
+                map?.flyTo(getMapFlyToOptions(lngLat))
+                return
             }
+
+            const bounds = getBoundsFromCoordinates(places.map(place => place.coordinates))
+            map?.fitBounds(bounds)
         }
-    }, [isSuccess, places, map, widgetState.isShowOnlySavedPlaces])
+    }, [isSuccess, places, map])
 
     if (isError) {
         return <WidgetMessage onAction={refetch} isLoading={isLoading} />

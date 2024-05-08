@@ -21,8 +21,6 @@ export const WidgetTabs = () => {
     const tabs: TabType[] = [
         { id: WidgetTabsEnum.ALL, caption: t('widget.tabs.all') },
         { id: WidgetTabsEnum.SAVED, caption: t('widget.tabs.saved') },
-        { id: WidgetTabsEnum.VISITED, caption: t('widget.tabs.visited') },
-        { id: WidgetTabsEnum.RANDOM, caption: t('widget.tabs.random') },
     ]
 
     const handleTabClick = (tab: TabType) => {

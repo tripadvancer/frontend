@@ -36,14 +36,6 @@ export enum Keys {
 export enum WidgetTabsEnum {
     ALL = 'ALL',
     SAVED = 'SAVED',
-    VISITED = 'VISITED',
-    RANDOM = 'RANDOM',
-}
-
-export enum MapDataSourcesEnum {
-    ALL_PLACES = 'ALL_PLACES',
-    SAVED_PLACES = 'SAVED_PLACES',
-    VISITED_PLACES = 'VISITED_PLACES',
 }
 
 export enum OrderDirection {
