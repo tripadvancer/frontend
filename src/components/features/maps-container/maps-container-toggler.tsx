@@ -13,10 +13,8 @@ export const MapsContainerToggler = ({ isToggle, onClick }: MapsContainerToggler
     const t = useI18n()
 
     return (
-        <div className="!fixed bottom-12 left-1/2 z-40 -translate-x-1/2 transform">
-            <FormButton shape="rounded" icon={isToggle ? <MapIcon16 /> : <PinIcon16 />} onClick={onClick}>
-                {isToggle ? t('widget.toggler.map') : t('widget.toggler.search_and_filters')}
-            </FormButton>
-        </div>
+        <FormButton shape="rounded" icon={isToggle ? <MapIcon16 /> : <PinIcon16 />} onClick={onClick}>
+            {isToggle ? t('widget.toggler.map') : t('widget.toggler.search_and_filters')}
+        </FormButton>
     )
 }
