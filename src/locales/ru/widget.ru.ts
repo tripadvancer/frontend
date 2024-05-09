@@ -32,7 +32,8 @@ export const widget = {
     'widget.saved.lists.public': 'Публичный',
 
     'widget.random.empty_message': 'Не найдено мест, соответствующих Вашим фильтрам.{br}Попробуйте изменить категории или радиус.',
-    'widget.random.info': 'Выберите категории и радиус, чтобы найти случайное место.',
+    'widget.random.distance_cation': 'Расстояние от Вас',
+    'widget.random.info': 'Выберите категории, радиус вокруг вас или указанной точки, и мы подберем для Вас интересное место.',
     'widget.random.button': 'Найти случайное место',
     'widget.random.button_coundown': 'Найти случайное место ({countdown})',
     'widget.random.error.not_location': 'Чтобы найти случайное место — нужно разрешить доступ к вашему местоположению или выбрать “Я здесь“ на карте.',

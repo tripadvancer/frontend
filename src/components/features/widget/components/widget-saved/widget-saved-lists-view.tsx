@@ -6,7 +6,6 @@ import { ArrowLeftIcon16 } from '@/components/ui/icons'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { resetWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetSavedListsViewPlaces } from './widget-saved-lists-view-places'
 

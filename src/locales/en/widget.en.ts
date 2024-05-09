@@ -28,7 +28,8 @@ export const widget = {
     'widget.saved.lists.public': 'Public',
 
     'widget.random.empty_message': 'No places matcing your filter found.{br}Try changing categories or radius.',
-    'widget.random.info': 'Select categories, radius around you and get a random place.',
+    'widget.random.distance_cation': 'Distance from you',
+    'widget.random.info': 'Select categories, radius around you or a specified point and we will select interesting place for you.',
     'widget.random.button': 'Find a random place',
     'widget.random.button_coundown': 'Find a random place in ({countdown})',
     'widget.random.error.not_location': 'To find a random place around you — allow access to your location or select “I am here” on the map.',

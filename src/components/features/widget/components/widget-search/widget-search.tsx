@@ -20,6 +20,7 @@ import { transformFullSearchResult } from '@/utils/helpers/search'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useCurrentLocale } from '@/utils/i18n/i18n.client'
 
+import { WidgetTogler } from '../widget-togler'
 import { WidgetSearchInput } from './widget-search-input'
 
 export const WidgetSearch = () => {
@@ -107,15 +108,18 @@ export const WidgetSearch = () => {
     }
 
     return (
-        <div className="relative">
-            <WidgetSearchInput
-                ref={inputRef}
-                value={value}
-                isLoading={isFetching}
-                onChange={setValue}
-                onClick={handleInputClick}
-                onClear={handleClear}
-            />
+        <div className="relative flex gap-x-4">
+            <div ref={inputRef} className="flex-1">
+                <WidgetSearchInput
+                    value={value}
+                    isLoading={isFetching}
+                    onChange={setValue}
+                    onClick={handleInputClick}
+                    onClear={handleClear}
+                />
+            </div>
+
+            <WidgetTogler />
 
             {isAutocompleteVisible &&
                 createPortal(
