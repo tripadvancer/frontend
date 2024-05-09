@@ -12,7 +12,6 @@ import type { ISearchItem } from '@/utils/types/search'
 
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { searchAPI } from '@/redux/services/search-api'
 import { Keys } from '@/utils/enums'
@@ -98,7 +97,6 @@ export const WidgetSearch = () => {
             map?.fitBounds(bounds)
         }
 
-        dispatch(closeWidget())
         setIsAutocompleteVisible(false)
     }
 

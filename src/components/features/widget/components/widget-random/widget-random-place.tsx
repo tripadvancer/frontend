@@ -13,7 +13,6 @@ import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { useDialog } from '@/providers/dialog-provider'
 import { setMapPlacePopupInfo } from '@/redux/features/map-slice'
-import { closeWidget } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { ImageVariant } from '@/utils/enums'
 import { arrayToLngLat, getMapFlyToOptions } from '@/utils/helpers/maps'
@@ -30,7 +29,6 @@ export const WidgetRandomPlace = (place: IRandomPlace) => {
     const handleShowOnMap = () => {
         map?.flyTo(getMapFlyToOptions(lngLat))
         dispatch(setMapPlacePopupInfo(place))
-        dispatch(closeWidget())
     }
 
     return (
