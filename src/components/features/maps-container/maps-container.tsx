@@ -1,7 +1,6 @@
 'use client'
 
-import { ReactNode, useEffect, useState } from 'react'
-import { useScrollDirection } from 'react-use-scroll-direction'
+import { ReactNode, useState } from 'react'
 
 import { useMediaQuery } from 'usehooks-ts'
 
@@ -10,20 +9,7 @@ import { MapsContainerToggler } from './maps-container-toggler'
 export const MapsContainer = ({ map, header, widget }: { map: ReactNode; header: ReactNode; widget: ReactNode }) => {
     const isMobile = useMediaQuery('(max-width: 639px)')
 
-    const { isScrollingUp, isScrollingDown } = useScrollDirection()
-
-    const [isToggleButtonVisible, setIsToggleButtonVisible] = useState<boolean>(true)
     const [isToggle, setIsToggle] = useState<boolean>(false)
-
-    useEffect(() => {
-        if (isMobile) {
-            if (isScrollingUp) {
-                setIsToggleButtonVisible(true)
-            } else if (isScrollingDown) {
-                setIsToggleButtonVisible(false)
-            }
-        }
-    }, [isScrollingUp, isScrollingDown, isMobile])
 
     if (isMobile) {
         return (
@@ -37,11 +23,7 @@ export const MapsContainer = ({ map, header, widget }: { map: ReactNode; header:
                     </>
                 )}
 
-                <MapsContainerToggler
-                    isToggle={isToggle}
-                    isVisible={isToggleButtonVisible}
-                    onClick={() => setIsToggle(!isToggle)}
-                />
+                <MapsContainerToggler isToggle={isToggle} onClick={() => setIsToggle(!isToggle)} />
             </div>
         )
     }
