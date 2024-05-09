@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 
 import type { CreateListInputs, UpdateListInputs } from '@/utils/types/list'
 
-import { CloseIcon16 } from '@/components/ui/icons'
+import { CheckIcon16, CloseIcon16 } from '@/components/ui/icons'
 import { validationConfig } from '@/configs/validation.config'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -58,10 +58,16 @@ export const WidgetSavedListsForm = ({ initialValues, isLoading, onSubmit, onClo
                 />
 
                 <div
-                    className="hover-animated cursor-pointer text-black-15 hover:text-blue-active peer-disabled:pointer-events-none"
+                    className="hover-animated cursor-pointer text-red-100 hover:text-red-active peer-disabled:pointer-events-none"
                     onClick={onClose}
                 >
                     <CloseIcon16 />
+                </div>
+                <div
+                    className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active peer-disabled:pointer-events-none"
+                    onClick={() => formik.handleSubmit()}
+                >
+                    <CheckIcon16 />
                 </div>
             </form>
         </div>
