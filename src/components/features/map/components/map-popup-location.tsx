@@ -1,6 +1,9 @@
 'use client'
 
+import { useRef } from 'react'
 import { Marker, Popup } from 'react-map-gl/maplibre'
+
+import { useOnClickOutside } from 'usehooks-ts'
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -32,7 +35,13 @@ export const MapPopupLocation = ({ activeUserId, isAuth, isEmailVerified, coordi
     const router = useRouter()
     const dispatch = useAppDispatch()
 
+    const ref = useRef<HTMLDivElement>(null)
+
     const [searchPlacesAround, { isLoading }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
+
+    useOnClickOutside(ref, () => {
+        dispatch(closeMapPopups())
+    })
 
     const handleAddPlaceClick = async () => {
         if (!isAuth) {
@@ -74,15 +83,17 @@ export const MapPopupLocation = ({ activeUserId, isAuth, isEmailVerified, coordi
                 closeOnClick={false}
                 closeButton={false}
             >
-                <div>{t('map.popup.location.title')}</div>
-                <div className="mb-4 text-small text-black-40">{LngLatToString(coordinates)}</div>
-                <div className="flex flex-col gap-y-1">
-                    <FormButton type="stroke" size="small" onClick={handleIAmHereClick}>
-                        {t('map.popup.location.i_am_here')}
-                    </FormButton>
-                    <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
-                        {t('map.popup.location.add_place')}
-                    </FormButton>
+                <div ref={ref}>
+                    <div>{t('map.popup.location.title')}</div>
+                    <div className="mb-4 text-small text-black-40">{LngLatToString(coordinates)}</div>
+                    <div className="flex flex-col gap-y-1">
+                        <FormButton type="stroke" size="small" onClick={handleIAmHereClick}>
+                            {t('map.popup.location.i_am_here')}
+                        </FormButton>
+                        <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
+                            {t('map.popup.location.add_place')}
+                        </FormButton>
+                    </div>
                 </div>
             </Popup>
             <Marker latitude={coordinates.lat} longitude={coordinates.lng}>

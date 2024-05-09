@@ -8,7 +8,6 @@ import { Confirmation } from '@/components/ui/confirmation'
 import { ArrowRightIcon16, DeleteIcon16, EditIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { closeMapPopups } from '@/redux/features/map-slice'
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list-api'
@@ -58,7 +57,6 @@ export const WidgetSavedListsItem = (list: IList) => {
 
     const handleListClick = () => {
         dispatch(setWidgetActiveList(list))
-        dispatch(closeMapPopups())
     }
 
     if (formIsVisible) {

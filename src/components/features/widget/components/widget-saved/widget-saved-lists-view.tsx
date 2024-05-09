@@ -3,7 +3,6 @@
 import type { IList } from '@/utils/types/list'
 
 import { ArrowLeftIcon16 } from '@/components/ui/icons'
-import { closeMapPopups } from '@/redux/features/map-slice'
 import { resetWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 
@@ -14,7 +13,6 @@ export const WidgetSavedListsView = ({ id, name }: IList) => {
 
     const handleBackClick = () => {
         dispatch(resetWidgetActiveList())
-        dispatch(closeMapPopups())
     }
 
     return (

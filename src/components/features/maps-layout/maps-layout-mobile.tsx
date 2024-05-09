@@ -2,7 +2,12 @@
 
 import { ReactNode } from 'react'
 
-import { useSearchParams } from 'next/navigation'
+import classNames from 'classnames'
+
+import { getMobileMapLayout } from '@/redux/features/app-slice'
+import { getWidgetActiveSide } from '@/redux/features/widget-slice'
+import { useAppSelector } from '@/redux/hooks'
+import { MobileMapLayoutEnum, WidgetSideEnum } from '@/utils/enums'
 
 import { MapsLayoutMobileMap } from './maps-layout-mobile-map'
 import { MapsLayoutMobileWidget } from './maps-layout-mobile-widget'
@@ -15,15 +20,26 @@ type MapsLayoutMobileProps = {
 }
 
 export const MapsLayoutMobile = ({ header, map, widget, widgetRandom }: MapsLayoutMobileProps) => {
-    const searchParams = useSearchParams()
+    const widgetActiveSide = useAppSelector(getWidgetActiveSide)
+    const mobileMapLayout = useAppSelector(getMobileMapLayout)
 
-    if (searchParams.get('view') === 'places') {
-        if (searchParams.get('random') === 'true') {
-            return <MapsLayoutMobileWidget widget={widgetRandom} />
-        }
+    return (
+        <>
+            <div
+                className={classNames('block size-full', {
+                    hidden: mobileMapLayout === MobileMapLayoutEnum.MAP,
+                })}
+            >
+                <MapsLayoutMobileWidget widget={widgetActiveSide === WidgetSideEnum.RANDOM ? widgetRandom : widget} />
+            </div>
 
-        return <MapsLayoutMobileWidget widget={widget} />
-    }
-
-    return <MapsLayoutMobileMap header={header} map={map} />
+            <div
+                className={classNames('block size-full', {
+                    hidden: mobileMapLayout === MobileMapLayoutEnum.WIDGET,
+                })}
+            >
+                <MapsLayoutMobileMap header={header} map={map} />
+            </div>
+        </>
+    )
 }

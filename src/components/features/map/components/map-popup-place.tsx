@@ -1,4 +1,7 @@
+import { useRef } from 'react'
 import { Popup } from 'react-map-gl/maplibre'
+
+import { useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
 
@@ -7,10 +10,19 @@ import type { IPlacePopupInfo } from '@/utils/types/map'
 import { PlacePreviewActions } from '@/components/ui/place-preview-actions'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
+import { closeMapPopups } from '@/redux/features/map-slice'
+import { useAppDispatch } from '@/redux/hooks'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 
 export const MapPopupPlace = (place: IPlacePopupInfo) => {
+    const dispatch = useAppDispatch()
     const lngLat = arrayToLngLat(place.coordinates)
+
+    const ref = useRef<HTMLDivElement>(null)
+
+    useOnClickOutside(ref, () => {
+        dispatch(closeMapPopups())
+    })
 
     return (
         <Popup
@@ -20,7 +32,7 @@ export const MapPopupPlace = (place: IPlacePopupInfo) => {
             closeOnClick={false}
             closeButton={false}
         >
-            <div className="flex w-56 flex-col gap-y-4">
+            <div ref={ref} className="flex w-56 flex-col gap-y-4">
                 <Link href={`/places/${place.id}`} target="_blank" className="link-black flex gap-x-4">
                     <PlacePreviewCover
                         cover={place.cover}

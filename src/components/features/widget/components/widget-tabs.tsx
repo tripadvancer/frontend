@@ -2,7 +2,6 @@
 
 import classNames from 'classnames'
 
-import { closeMapPopups } from '@/redux/features/map-slice'
 import { getWidgetState, setWidgetActiveTab } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabsEnum } from '@/utils/enums'
@@ -25,7 +24,6 @@ export const WidgetTabs = () => {
 
     const handleTabClick = (tab: TabType) => {
         dispatch(setWidgetActiveTab(tab.id))
-        dispatch(closeMapPopups())
     }
 
     return (

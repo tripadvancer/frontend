@@ -3,7 +3,7 @@ import { WidgetHeader } from './components/widget-header/widget-header'
 import { WidgetPlacesWithAuth } from './components/widget-places-with-auth'
 import { WidgetSearch } from './components/widget-search/widget-search'
 
-export const Widget = () => {
+export const WidgetPlaces = () => {
     return (
         <div className="bg-white">
             <WidgetHeader />

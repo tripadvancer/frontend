@@ -1,35 +1,22 @@
 'use client'
 
-import { useCallback } from 'react'
-
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-
 import { FormButton } from '@/components/ui/form-button'
 import { RandomIcon24, SearchIcon24 } from '@/components/ui/icons'
+import { getWidgetActiveSide, setWidgetActiveSide } from '@/redux/features/widget-slice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { WidgetSideEnum } from '@/utils/enums'
 
 export const WidgetTogler = () => {
-    const router = useRouter()
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
-    const isRandom = searchParams.get('random') === 'true'
-
-    const createQueryString = useCallback(
-        (name: string, value: string) => {
-            const params = new URLSearchParams(searchParams.toString())
-
-            if (value === searchParams.get(name)) {
-                params.delete(name)
-                return params.toString()
-            }
-
-            params.set(name, value)
-            return params.toString()
-        },
-        [searchParams],
-    )
+    const dispatch = useAppDispatch()
+    const widgetActiveSide = useAppSelector(getWidgetActiveSide)
+    const isRandom = widgetActiveSide === WidgetSideEnum.RANDOM
 
     const handleClick = () => {
-        router.push(pathname + '?' + createQueryString('random', 'true'))
+        dispatch(
+            setWidgetActiveSide(
+                widgetActiveSide === WidgetSideEnum.PLACES ? WidgetSideEnum.RANDOM : WidgetSideEnum.PLACES,
+            ),
+        )
     }
 
     return (

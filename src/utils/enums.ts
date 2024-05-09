@@ -33,6 +33,16 @@ export enum Keys {
     DOWN = 'ArrowDown',
 }
 
+export enum MobileMapLayoutEnum {
+    MAP = 'MAP',
+    WIDGET = 'WIDGET',
+}
+
+export enum WidgetSideEnum {
+    PLACES = 'PLACES',
+    RANDOM = 'RANDOM',
+}
+
 export enum WidgetTabsEnum {
     ALL = 'ALL',
     SAVED = 'SAVED',

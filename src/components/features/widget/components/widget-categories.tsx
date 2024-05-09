@@ -6,7 +6,6 @@ import classNames from 'classnames'
 
 import { Categories } from '@/components/ui/categories'
 import { ChevronBottomIcon16, ChevronTopIcon16 } from '@/components/ui/icons'
-import { closeMapPopups } from '@/redux/features/map-slice'
 import { getWidgetSelectedCategories, setWidgetSelectedCategories } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -34,7 +33,6 @@ export const WidgetCategories = ({ variant }: WidgetCategoriesProps) => {
 
     const handleCategoriesClick = (selectedCategories: number[]) => {
         dispatch(setWidgetSelectedCategories(selectedCategories))
-        dispatch(closeMapPopups())
     }
 
     return (

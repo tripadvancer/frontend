@@ -5,7 +5,7 @@ import { useMap } from 'react-map-gl/maplibre'
 
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -16,6 +16,7 @@ import { WidgetRandomSlider } from './widget-random-slider'
 
 export const WidgetRandom = () => {
     const t = useI18n()
+    const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
     const userLocation = useAppSelector(getUserLocation)
 
