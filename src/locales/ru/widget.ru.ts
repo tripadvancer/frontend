@@ -12,7 +12,7 @@ export const widget = {
 
     'widget.places.title': 'Места',
 
-    'widget.tabs.all': 'Все',
+    'widget.tabs.all': 'Все места',
     'widget.tabs.saved': 'Сохранённые',
 
     'widget.all_places.empty_message': 'В этой области нет мест.{br}Попробуйте изменить категории или увеличьте масштаб.',
