@@ -1,7 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
-import { Marker, Popup } from 'react-map-gl/maplibre'
+import { RefObject, useRef } from 'react'
+import { MapRef, Marker, Popup } from 'react-map-gl/maplibre'
 
 import { useOnClickOutside } from 'usehooks-ts'
 
@@ -23,13 +23,20 @@ import { LngLatToString } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type MapPopupLocationProps = {
+    mapRef: RefObject<HTMLDivElement>
     activeUserId?: number
     isAuth: boolean
     isEmailVerified?: boolean
     coordinates: ILocationPopupInfo['coordinates']
 }
 
-export const MapPopupLocation = ({ activeUserId, isAuth, isEmailVerified, coordinates }: MapPopupLocationProps) => {
+export const MapPopupLocation = ({
+    mapRef,
+    activeUserId,
+    isAuth,
+    isEmailVerified,
+    coordinates,
+}: MapPopupLocationProps) => {
     const t = useI18n()
     const dialog = useDialog()
     const router = useRouter()
@@ -39,7 +46,7 @@ export const MapPopupLocation = ({ activeUserId, isAuth, isEmailVerified, coordi
 
     const [searchPlacesAround, { isLoading }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
-    useOnClickOutside(ref, () => {
+    useOnClickOutside([ref, mapRef], () => {
         dispatch(closeMapPopups())
     })
 

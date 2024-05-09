@@ -38,6 +38,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const isMobile = useMediaQuery('(max-width: 639px)')
 
     const mapRef = useRef<MapRef>(null)
+    const mapContainerRef = useRef<HTMLDivElement>(null)
 
     const { handleLocate, isLocating } = useUserLocation()
 
@@ -52,51 +53,54 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     }, [])
 
     return (
-        <ReactMapGl
-            id="map"
-            ref={mapRef}
-            mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
-            interactiveLayerIds={[placesLayer.id]}
-            attributionControl={false}
-            reuseMaps
-            {...handlers}
-        >
-            <Source id="places-source" type="geojson" data={places || { type: 'FeatureCollection', features: [] }}>
-                <Layer {...placesLayer} />
-            </Source>
+        <div ref={mapContainerRef} className="size-full">
+            <ReactMapGl
+                id="map"
+                ref={mapRef}
+                mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
+                interactiveLayerIds={[placesLayer.id]}
+                attributionControl={false}
+                reuseMaps
+                {...handlers}
+            >
+                <Source id="places-source" type="geojson" data={places || { type: 'FeatureCollection', features: [] }}>
+                    <Layer {...placesLayer} />
+                </Source>
 
-            <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
-                <MapControl onClick={handleZoomIn}>
-                    <PlusIcon16 />
-                </MapControl>
+                <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
+                    <MapControl onClick={handleZoomIn}>
+                        <PlusIcon16 />
+                    </MapControl>
 
-                <MapControl onClick={handleZoomOut}>
-                    <MinusIcon16 />
-                </MapControl>
+                    <MapControl onClick={handleZoomOut}>
+                        <MinusIcon16 />
+                    </MapControl>
 
-                <MapControl isLoading={isLocating} onClick={handleLocate}>
-                    <LocationIcon16 />
-                </MapControl>
-            </div>
+                    <MapControl isLoading={isLocating} onClick={handleLocate}>
+                        <LocationIcon16 />
+                    </MapControl>
+                </div>
 
-            {userLocation && (
-                <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="bottom">
-                    <MapPinUser />
-                </Marker>
-            )}
+                {userLocation && (
+                    <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="bottom">
+                        <MapPinUser />
+                    </Marker>
+                )}
 
-            {handlers.placePopupInfo && <MapPopupPlace {...handlers.placePopupInfo} />}
+                {handlers.placePopupInfo && <MapPopupPlace mapRef={mapContainerRef} place={handlers.placePopupInfo} />}
 
-            {handlers.locationPopupInfo && (
-                <MapPopupLocation
-                    activeUserId={activeUserId}
-                    isAuth={isAuth}
-                    isEmailVerified={isEmailVerified}
-                    {...handlers.locationPopupInfo}
-                />
-            )}
+                {handlers.locationPopupInfo && (
+                    <MapPopupLocation
+                        mapRef={mapContainerRef}
+                        activeUserId={activeUserId}
+                        isAuth={isAuth}
+                        isEmailVerified={isEmailVerified}
+                        {...handlers.locationPopupInfo}
+                    />
+                )}
 
-            {!isMobile && <AttributionControl compact={true} />}
-        </ReactMapGl>
+                {!isMobile && <AttributionControl compact={true} />}
+            </ReactMapGl>
+        </div>
     )
 }

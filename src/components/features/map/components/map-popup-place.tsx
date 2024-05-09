@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { RefObject, useRef } from 'react'
 import { Popup } from 'react-map-gl/maplibre'
 
 import { useOnClickOutside } from 'usehooks-ts'
@@ -14,13 +14,18 @@ import { closeMapPopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 
-export const MapPopupPlace = (place: IPlacePopupInfo) => {
+type MapPopupPlaceProps = {
+    mapRef: RefObject<HTMLDivElement>
+    place: IPlacePopupInfo
+}
+
+export const MapPopupPlace = ({ mapRef, place }: MapPopupPlaceProps) => {
     const dispatch = useAppDispatch()
     const lngLat = arrayToLngLat(place.coordinates)
 
     const ref = useRef<HTMLDivElement>(null)
 
-    useOnClickOutside(ref, () => {
+    useOnClickOutside([ref, mapRef], () => {
         dispatch(closeMapPopups())
     })
 
