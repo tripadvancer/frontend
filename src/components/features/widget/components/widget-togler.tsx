@@ -16,18 +16,27 @@ export const WidgetTogler = () => {
     const createQueryString = useCallback(
         (name: string, value: string) => {
             const params = new URLSearchParams(searchParams.toString())
-            params.set(name, value)
 
+            if (value === searchParams.get(name)) {
+                params.delete(name)
+                return params.toString()
+            }
+
+            params.set(name, value)
             return params.toString()
         },
         [searchParams],
     )
 
+    const handleClick = () => {
+        router.push(pathname + '?' + createQueryString('random', 'true'))
+    }
+
     return (
         <FormButton
             variant={isRandom ? 'blue' : 'orange'}
             icon={isRandom ? <SearchIcon24 /> : <RandomIcon24 />}
-            onClick={() => router.push(pathname + '?' + createQueryString('random', isRandom ? 'false' : 'true'))}
+            onClick={handleClick}
         />
     )
 }

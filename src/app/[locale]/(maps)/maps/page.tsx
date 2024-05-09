@@ -2,7 +2,7 @@ import type { Metadata } from 'next/types'
 
 import { CookieConsent } from '@/components/features/cookie-consent/cookie-consent'
 import { MapWithAuth } from '@/components/features/map/map-with-auth'
-import { MapsContainer } from '@/components/features/maps-container/maps-container'
+import { MapsLayout } from '@/components/features/maps-layout/maps-layout'
 import { WidgetHeader } from '@/components/features/widget/components/widget-header/widget-header'
 import { Widget } from '@/components/features/widget/widget'
 import { WidgetRandomPlace } from '@/components/features/widget/widget-random-place'
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 export default function MapsPage() {
     return (
         <div className="h-dvh w-dvw">
-            <MapsContainer
+            <MapsLayout
                 map={<MapWithAuth />}
                 header={<WidgetHeader />}
                 widget={<Widget />}

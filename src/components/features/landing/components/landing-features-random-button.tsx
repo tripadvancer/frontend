@@ -10,7 +10,7 @@ export const LandingFeaturesRandomButton = () => {
     const router = useRouter()
 
     const handleClick = () => {
-        router.push('/maps?random=true')
+        router.push('/maps?view=places&random=true')
     }
 
     return (

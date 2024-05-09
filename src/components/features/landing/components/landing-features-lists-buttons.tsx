@@ -10,7 +10,7 @@ export const LandingFeaturesListsButton = () => {
     const router = useRouter()
 
     const handleClick = () => {
-        router.push('/maps')
+        router.push('/maps?view=places')
     }
 
     return (
