@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { useMap } from 'react-map-gl/maplibre'
+import { LngLatBoundsLike, useMap } from 'react-map-gl/maplibre'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
 import type { ICountryDict } from '@/utils/types/country'
+import type { LngLat } from '@/utils/types/geo'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
 
@@ -44,6 +45,8 @@ export const WidgetSearch = () => {
     const [search, { data, isFetching, isSuccess }] = searchAPI.useLazySearchQuery()
 
     const debouncedSearch = useDebounceCallback(search, 500)
+    const debouncedFlyTo = useDebounceCallback((lngLat: LngLat) => map?.flyTo(getMapFlyToOptions(lngLat)), 250)
+    const debouncedFitBounds = useDebounceCallback((bounds: LngLatBoundsLike) => map?.fitBounds(bounds), 250)
 
     useEffect(() => {
         const inputRect = inputRef.current?.getBoundingClientRect()
@@ -86,18 +89,18 @@ export const WidgetSearch = () => {
         dispatch(setMobileMapLayout(MobileMapLayoutEnum.MAP))
 
         if (item.type === 'location') {
-            map?.flyTo(getMapFlyToOptions(item.coordinates))
+            debouncedFlyTo(item.coordinates)
             dispatch(setMapLocationPopupInfo(item.properties as ILocationPreview))
         }
 
         if (item.type === 'place') {
-            map?.flyTo(getMapFlyToOptions(item.coordinates))
+            debouncedFlyTo(item.coordinates)
             dispatch(setMapPlacePopupInfo(item.properties as IPlacePreview))
         }
 
         if (item.type === 'country') {
             const bounds = (item.properties as ICountryDict).bounds
-            map?.fitBounds(bounds)
+            debouncedFitBounds(bounds)
         }
 
         setIsAutocompleteVisible(false)

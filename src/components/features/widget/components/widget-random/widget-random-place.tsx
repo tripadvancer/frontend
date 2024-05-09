@@ -2,6 +2,8 @@
 
 import { useMap } from 'react-map-gl/maplibre'
 
+import { useDebounceCallback } from 'usehooks-ts'
+
 import Link from 'next/link'
 
 import type { IRandomPlace } from '@/utils/types/place'
@@ -27,10 +29,12 @@ export const WidgetRandomPlace = (place: IRandomPlace) => {
 
     const { map } = useMap()
 
-    const handleShowOnMap = () => {
+    const debouncedFlyTo = useDebounceCallback(() => map?.flyTo(getMapFlyToOptions(lngLat)), 250)
+
+    const handleShowOnMap = async () => {
         dispatch(setMobileMapLayout(MobileMapLayoutEnum.MAP))
         dispatch(setMapPlacePopupInfo(place))
-        map?.flyTo(getMapFlyToOptions(lngLat))
+        debouncedFlyTo()
     }
 
     return (

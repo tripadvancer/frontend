@@ -24,11 +24,15 @@ import { placesLayer } from './map-layers'
 
 type MapProps = {
     activeUserId?: number
+    size?: {
+        width: number
+        height: number
+    }
     isAuth: boolean
     isEmailVerified?: boolean
 }
 
-export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
+export const Map = ({ activeUserId, size, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
     const mapBounds = useAppSelector(getMapState).bounds
     const widgetState = useAppSelector(getWidgetState)

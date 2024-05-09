@@ -38,7 +38,11 @@ export const MapPopupPlace = ({ mapRef, place }: MapPopupPlaceProps) => {
             closeButton={false}
         >
             <div ref={ref} className="flex w-56 flex-col gap-y-4">
-                <Link href={`/places/${place.id}`} target="_blank" className="link-black flex gap-x-4">
+                <Link
+                    href={`/places/${place.id}`}
+                    target="_blank"
+                    className="link-black flex gap-x-4 focus:outline-none"
+                >
                     <PlacePreviewCover
                         cover={place.cover}
                         title={place.title}

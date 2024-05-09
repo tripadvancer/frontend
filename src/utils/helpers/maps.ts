@@ -98,7 +98,7 @@ export function getMapFlyToZoom(): number {
 
 export function getMapPadding(): PaddingOptions {
     if (isMobile) {
-        return { top: 50, right: 50, bottom: 50, left: 50 }
+        return { top: 106, right: 50, bottom: 50, left: 50 }
     }
     return { top: 100, right: 564, bottom: 100, left: 100 }
 }

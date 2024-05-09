@@ -3,11 +3,14 @@
 import { useEffect, useState } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
+import { useMediaQuery } from 'usehooks-ts'
+
+import { setMapViewState } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
-import { getMapFlyToOptions } from '@/utils/helpers/maps'
+import { getFlyToViewState, getMapFlyToOptions } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetRandomButton } from './widget-random-button'
@@ -19,6 +22,7 @@ export const WidgetRandom = () => {
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
     const userLocation = useAppSelector(getUserLocation)
+    const isMobile = useMediaQuery('(max-width: 639px)')
 
     const { map } = useMap()
 
@@ -27,6 +31,12 @@ export const WidgetRandom = () => {
 
     useEffect(() => {
         if (userLocation) {
+            if (isMobile) {
+                const viewState = getFlyToViewState(userLocation)
+                dispatch(setMapViewState(viewState))
+                return
+            }
+
             map?.flyTo(getMapFlyToOptions(userLocation))
         }
     }, [map, userLocation])
