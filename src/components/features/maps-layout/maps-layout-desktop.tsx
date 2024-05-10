@@ -16,10 +16,10 @@ export const MapsLayoutDesktop = ({ map, widget, widgetRandom }: MapsLayoutDeskt
     const widgetActiveSide = useAppSelector(getWidgetActiveSide)
 
     return (
-        <div className="size-full">
+        <div className="size-full border">
             {map}
-            <div className="scrollbar-hide fixed right-0 top-0 z-40 max-h-full w-[496px] overflow-y-auto overscroll-y-none pb-8 pl-8 pr-4 pt-4">
-                <div className="overflow-hidden rounded-2xl shadow-large">
+            <div className="scrollbar-hide pointer-events-none fixed bottom-0 right-0 top-0 z-40 max-h-full w-[496px] overflow-y-auto pb-8 pl-8 pr-4 pt-4">
+                <div className="pointer-events-auto rounded-2xl shadow-large">
                     {widgetActiveSide === WidgetSideEnum.RANDOM ? widgetRandom : widget}
                 </div>
             </div>

@@ -12,7 +12,7 @@ export const WidgetPlaces = ({ isAuth }: { isAuth: boolean }) => {
     const widgetState = useAppSelector(getWidgetState)
 
     return (
-        <div className="flex flex-1 flex-col gap-y-6 sm:gap-y-8">
+        <div className="flex flex-1 flex-col gap-y-6">
             <WidgetTabs />
             {widgetState.activeTab === WidgetTabsEnum.ALL && <WidgetAllPlaces />}
             {widgetState.activeTab === WidgetTabsEnum.SAVED && <WidgetSaved isAuth={isAuth} />}
