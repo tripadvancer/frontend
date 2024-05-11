@@ -5,6 +5,8 @@ import { useMap } from 'react-map-gl/maplibre'
 
 import { useMediaQuery } from 'usehooks-ts'
 
+import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
+import { useAppSelector } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list-api'
 import { arrayToLngLat, getBoundsFromCoordinates, getMapFlyToOptions } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -15,10 +17,14 @@ import { WidgetPlacesFeedSkeleton } from '../widget-places-feed/widget-places-fe
 
 export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) => {
     const t = useI18n()
+    const selectedCategories = useAppSelector(getWidgetSelectedCategories)
     const isMobile = useMediaQuery('(max-width: 639px)')
 
     const { map } = useMap()
-    const { data, isError, isLoading, isSuccess, refetch } = listAPI.useGetListPlacesQuery(listId)
+    const { data, isError, isLoading, isSuccess, refetch } = listAPI.useGetListPlacesQuery({
+        listId,
+        selectedCategories,
+    })
 
     const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
 

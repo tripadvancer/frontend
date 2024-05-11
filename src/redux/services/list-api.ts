@@ -11,9 +11,14 @@ export const listAPI = api.injectEndpoints({
             providesTags: ['Lists'],
         }),
 
-        getListPlaces: build.query<GeoJsonCollection<IPlacePreview>, number>({
-            query: listId => `lists/${listId}/places`,
-            providesTags: (result, error, listId) => [{ type: 'Lists', id: listId }],
+        getListPlaces: build.query<GeoJsonCollection<IPlacePreview>, { listId: number; selectedCategories: number[] }>({
+            query: ({ listId, selectedCategories }) => ({
+                url: `lists/${listId}/places`,
+                params: {
+                    categories_ids: selectedCategories.join(),
+                },
+            }),
+            providesTags: (result, error, { listId }) => [{ type: 'Lists', id: listId }],
         }),
 
         createList: build.mutation<{ id: number }, CreateListInputs>({

@@ -20,7 +20,7 @@ export const widget = {
     'widget.saved.empty_message': 'У Вас нет списков.{br}Создайте список, чтобы cохранять в него места.',
     'widget.saved.not_logged_in': 'Для просмотра сохранённых мест необходимо {sign_in_link}.',
     
-    'widget.saved.lists.empty_message': 'Вы еще не сохранили ни одного места.',
+    'widget.saved.lists.empty_message': 'Этот список пуст.{br}Добавьте место в список или измените категории.',
     'widget.saved.lists.add_button': 'Создать список',
     'widget.saved.lists.info': 'Выберите список, чтобы увидеть сохранённые места.',
     'widget.saved.lists.show_only_list': 'На карте',
