@@ -18,7 +18,6 @@ export const MapsLayoutMobileWidget = ({ widget }: MapsLayoutMobileWidgetProps) 
             const scrollPosition = window.innerHeight + window.scrollY
             const scrollContainerHeight = scrollContainerRef.current?.clientHeight || 0
             setIsToglerVisible(scrollPosition < scrollContainerHeight)
-            console.log(scrollPosition, scrollContainerHeight)
         }
 
         window.addEventListener('scroll', handleScroll)

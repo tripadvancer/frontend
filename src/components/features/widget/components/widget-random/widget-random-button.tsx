@@ -34,13 +34,7 @@ export const WidgetRandomButton = ({ isLoading, isUserLocated, onClick }: Widget
     }, [countdown])
 
     return (
-        <FormButton
-            size="small"
-            variant="orange"
-            isLoading={isLoading}
-            isDisabled={!isUserLocated || isDisabled}
-            onClick={onClick}
-        >
+        <FormButton variant="orange" isLoading={isLoading} isDisabled={!isUserLocated || isDisabled} onClick={onClick}>
             {isDisabled && countdown !== null && countdown > 0
                 ? t('widget.random.button_coundown', { countdown })
                 : t('widget.random.button')}

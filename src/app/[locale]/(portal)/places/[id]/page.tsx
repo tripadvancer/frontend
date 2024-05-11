@@ -3,7 +3,7 @@ import type { Metadata } from 'next/types'
 import { Place } from '@/components/features/place/place'
 import { getCountryByCode } from '@/services/countries'
 import { getPlaceById } from '@/services/places'
-import { ImageVariant } from '@/utils/enums'
+import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
             description: `Discover ${place.title} in ${countryName} with Tripadvancer. Plan your unforgettable journey now with our comprehensive travel guides and insider tips. Start your adventure today!`,
             images: [
                 {
-                    url: makeImageUrl(place.cover, ImageVariant.PUBLIC),
+                    url: makeImageUrl(place.cover, ImageVariants.PUBLIC),
                     width: 1920,
                     height: 1280,
                     type: 'image/jpeg',
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
         twitter: {
             title: `${place.title} | ${countryName}`,
             description: `Discover ${place.title} in ${countryName} with Tripadvancer. Plan your unforgettable journey now with our comprehensive travel guides and insider tips. Start your adventure today!`,
-            images: makeImageUrl(place.cover, ImageVariant.PUBLIC),
+            images: makeImageUrl(place.cover, ImageVariants.PUBLIC),
         },
     }
 }
