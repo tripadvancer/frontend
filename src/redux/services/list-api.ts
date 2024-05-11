@@ -2,9 +2,6 @@ import type { GeoJsonCollection } from '@/utils/types/geo'
 import type { CreateListInputs, IList, UpdateListInputs, UpdatePlaceInListsInputs } from '@/utils/types/list'
 import type { IPlacePreview } from '@/utils/types/place'
 
-import { store } from '@/redux/store'
-
-import { setWidgetActiveList } from '../features/widget-slice'
 import { api } from './api'
 
 export const listAPI = api.injectEndpoints({
@@ -28,29 +25,12 @@ export const listAPI = api.injectEndpoints({
             invalidatesTags: ['Lists'],
         }),
 
-        updateList: build.mutation<void, UpdateListInputs>({
+        updateList: build.mutation<IList, UpdateListInputs>({
             query: inputs => ({
                 url: `lists/${inputs.id}`,
                 method: 'PATCH',
                 body: inputs,
             }),
-            // async onQueryStarted(inputs, { dispatch, queryFulfilled }) {
-            //     const optimisticResult = dispatch(
-            //         listAPI.util.updateQueryData('getLists', undefined, draft => {
-            //             const list = draft.find(list => list.id === inputs.id)
-            //             if (list) {
-            //                 Object.assign(list, inputs)
-            //                 // const activeList = store.getState().widget.activeList
-            //                 store.dispatch(setWidgetActiveList({ ...inputs }))
-            //             }
-            //         }),
-            //     )
-            //     try {
-            //         await queryFulfilled
-            //     } catch {
-            //         optimisticResult.undo()
-            //     }
-            // },
             invalidatesTags: (result, error, inputs) => [{ type: 'Lists' }, { type: 'Lists', id: inputs.id }],
         }),
 

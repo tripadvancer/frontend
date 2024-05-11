@@ -3,6 +3,7 @@
 import type { IList, UpdateListInputs } from '@/utils/types/list'
 
 import { useDialog } from '@/providers/dialog-provider'
+import { useToast } from '@/providers/toast-provider'
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list-api'
@@ -13,9 +14,10 @@ import { WidgetSavedListsForm } from './widget-saved-lists-form'
 export const WidgetSavedListsEdit = (list: IList) => {
     const t = useI18n()
     const dialog = useDialog()
+    const toast = useToast()
     const dispatch = useAppDispatch()
 
-    const [updateList] = listAPI.useUpdateListMutation()
+    const [updateList, { isLoading }] = listAPI.useUpdateListMutation()
 
     const initialValues: UpdateListInputs = {
         id: list.id,
@@ -24,9 +26,15 @@ export const WidgetSavedListsEdit = (list: IList) => {
         isPublic: list.isPublic,
     }
 
-    const handleSubmit = (inputs: UpdateListInputs) => {
-        updateList(inputs)
-        dialog.close()
+    const handleSubmit = async (inputs: UpdateListInputs) => {
+        try {
+            const updatedList = await updateList(inputs).unwrap()
+            console.log(updatedList)
+            dispatch(setWidgetActiveList(updatedList))
+            dialog.close()
+        } catch {
+            toast.error(t('common.error'))
+        }
     }
 
     return (
