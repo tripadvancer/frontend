@@ -25,15 +25,6 @@ export const Dialog = ({ content, onClose }: DialogProps) => {
                     </div>
                     {content}
                 </div>
-                <div className="relative z-50 w-full rounded-2xl bg-white px-8 py-16 shadow-lg sm:w-auto sm:p-16">
-                    <div
-                        className="hover-animated absolute right-4 top-4 cursor-pointer text-black-15 hover:text-blue-active"
-                        onClick={onClose}
-                    >
-                        <CloseIcon24 />
-                    </div>
-                    {content}
-                </div>
             </div>
         </div>
     )
