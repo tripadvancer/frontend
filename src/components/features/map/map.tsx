@@ -1,17 +1,16 @@
 'use client'
 
 import { useCallback, useRef } from 'react'
-import { AttributionControl, Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl/maplibre'
+import { AttributionControl, MapRef, Marker, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
 import { useMediaQuery } from 'usehooks-ts'
 
 import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
-import { getMapState } from '@/redux/features/map-slice'
+import { getMapMode } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
-import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { placesAPI } from '@/redux/services/places-api'
+import { MapModes } from '@/utils/enums'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -21,32 +20,25 @@ import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
 import { placesLayer } from './map-layers'
+import { MapSourcePlaces } from './map-source-places'
+import { MapSourceSavedPlaces } from './map-source-saved-places'
 
 type MapProps = {
     activeUserId?: number
-    size?: {
-        width: number
-        height: number
-    }
     isAuth: boolean
     isEmailVerified?: boolean
 }
 
-export const Map = ({ activeUserId, size, isAuth, isEmailVerified }: MapProps) => {
-    const handlers = useMapEventHandlers()
-    const mapBounds = useAppSelector(getMapState).bounds
-    const widgetState = useAppSelector(getWidgetState)
-    const selectedCategories = widgetState.selectedCategories
-    const userLocation = useAppSelector(getUserLocation)
-
+export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const isMobile = useMediaQuery('(max-width: 639px)')
+    const handlers = useMapEventHandlers()
+    const mapMode = useAppSelector(getMapMode)
+    const userLocation = useAppSelector(getUserLocation)
 
     const mapRef = useRef<MapRef>(null)
     const mapContainerRef = useRef<HTMLDivElement>(null)
 
     const { handleLocate, isLocating } = useUserLocation()
-
-    const { data: places } = placesAPI.useGetPlacesQuery({ mapBounds, selectedCategories }, { skip: !mapBounds })
 
     const handleZoomIn = useCallback(() => {
         mapRef.current?.zoomIn({ duration: 500 })
@@ -67,9 +59,8 @@ export const Map = ({ activeUserId, size, isAuth, isEmailVerified }: MapProps) =
                 reuseMaps
                 {...handlers}
             >
-                <Source id="places-source" type="geojson" data={places || { type: 'FeatureCollection', features: [] }}>
-                    <Layer {...placesLayer} />
-                </Source>
+                {mapMode === MapModes.DEFAULT && <MapSourcePlaces />}
+                {mapMode === MapModes.SAVED && <MapSourceSavedPlaces isAuth={isAuth} />}
 
                 <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
                     <MapControl onClick={handleZoomIn}>

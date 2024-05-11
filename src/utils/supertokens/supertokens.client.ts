@@ -4,6 +4,7 @@ import EmailVerification from 'supertokens-web-js/recipe/emailverification'
 import Session from 'supertokens-web-js/recipe/session'
 import ThirdPartyEmailPassword from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 
+import { setWidgetActiveList } from '@/redux/features/widget-slice'
 import { api } from '@/redux/services/api'
 import { store } from '@/redux/store'
 
@@ -41,6 +42,7 @@ export const clientConfig = (): SuperTokensConfig => {
                             signOut: async function (input) {
                                 await oI.signOut(input)
                                 store.dispatch(api.util.resetApiState())
+                                store.dispatch(setWidgetActiveList(null))
                             },
                         }
                     },

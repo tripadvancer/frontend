@@ -5,9 +5,11 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import type { ILocationPopupInfo, IPlacePopupInfo } from '@/utils/types/map'
 
 import type { RootState } from '@/redux/store'
+import { MapModes } from '@/utils/enums'
 import { getDefaultViewState } from '@/utils/helpers/maps'
 
 interface MapState {
+    mapMode: MapModes
     viewState: ViewState
     bounds: LngLatBounds | undefined
     placePopupInfo: IPlacePopupInfo | null
@@ -15,6 +17,7 @@ interface MapState {
 }
 
 export const initialState: MapState = {
+    mapMode: MapModes.DEFAULT,
     viewState: getDefaultViewState(),
     bounds: undefined,
     placePopupInfo: null,
@@ -25,6 +28,9 @@ export const mapSlice = createSlice({
     name: 'map',
     initialState,
     reducers: {
+        setMapMode(state, action: PayloadAction<MapModes>) {
+            state.mapMode = action.payload
+        },
         setMapViewState(state, action: PayloadAction<ViewState>) {
             state.viewState = action.payload
         },
@@ -47,8 +53,16 @@ export const mapSlice = createSlice({
 })
 
 export const getMapState = (state: RootState) => state.map
+export const getMapBounds = (state: RootState) => state.map.bounds
+export const getMapMode = (state: RootState) => state.map.mapMode
 
-export const { setMapViewState, setMapBounds, setMapPlacePopupInfo, setMapLocationPopupInfo, closeMapPopups } =
-    mapSlice.actions
+export const {
+    setMapMode,
+    setMapViewState,
+    setMapBounds,
+    setMapPlacePopupInfo,
+    setMapLocationPopupInfo,
+    closeMapPopups,
+} = mapSlice.actions
 
 export default mapSlice.reducer

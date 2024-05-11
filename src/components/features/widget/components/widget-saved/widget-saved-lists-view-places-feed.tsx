@@ -28,18 +28,18 @@ export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) =
 
     const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
 
-    useEffect(() => {
-        if (isSuccess && places.length > 0 && !isMobile) {
-            if (places.length === 1) {
-                const lngLat = arrayToLngLat(places[0].coordinates)
-                map?.flyTo(getMapFlyToOptions(lngLat))
-                return
-            }
+    // useEffect(() => {
+    //     if (isSuccess && places.length > 0 && !isMobile) {
+    //         if (places.length === 1) {
+    //             const lngLat = arrayToLngLat(places[0].coordinates)
+    //             map?.flyTo(getMapFlyToOptions(lngLat))
+    //             return
+    //         }
 
-            const bounds = getBoundsFromCoordinates(places.map(place => place.coordinates))
-            map?.fitBounds(bounds)
-        }
-    }, [isSuccess, places, map, isMobile])
+    //         const bounds = getBoundsFromCoordinates(places.map(place => place.coordinates))
+    //         map?.fitBounds(bounds)
+    //     }
+    // }, [isSuccess, places, map, isMobile])
 
     if (isError) {
         return <WidgetMessage onAction={refetch} isLoading={isLoading} />
