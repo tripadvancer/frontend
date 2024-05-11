@@ -17,7 +17,7 @@ import { useDialog } from '@/providers/dialog-provider'
 import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { AppModes, ImageVariant } from '@/utils/enums'
+import { AppModes, ImageVariants } from '@/utils/enums'
 import { arrayToLngLat, getMapFlyToOptions } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -44,7 +44,7 @@ export const WidgetRandomPlace = (place: IRandomPlace) => {
                     <PlacePreviewCover
                         cover={place.cover}
                         title={place.title}
-                        imageVariant={ImageVariant.PUBLIC}
+                        imageVariant={ImageVariants.PUBLIC}
                         size={80}
                         className="aspect-video w-full rounded-lg"
                     />

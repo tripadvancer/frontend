@@ -2,10 +2,10 @@ import { FormikErrors } from 'formik'
 
 import type { LngLat } from '@/utils/types/geo'
 
-import { ImageVariant } from '@/utils/enums'
+import { ImageVariants } from '@/utils/enums'
 import { i18nConfig } from '@/utils/i18n/i18n.config'
 
-export function makeImageUrl(url: string | null, imageVariant: ImageVariant) {
+export function makeImageUrl(url: string | null, imageVariant: ImageVariants) {
     return `${url}/${imageVariant}`
 }
 

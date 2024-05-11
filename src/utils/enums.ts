@@ -20,7 +20,7 @@ export enum ComplaintReasonsI18nKeys {
     OTHER = 'other',
 }
 
-export enum ImageVariant {
+export enum ImageVariants {
     PUBLIC = 'public',
     PREVIEW = 'preview',
     AVATAR = 'avatar',

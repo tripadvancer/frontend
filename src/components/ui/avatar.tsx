@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import type { IUserInfo } from '@/utils/types/user'
 
-import { ImageVariant } from '@/utils/enums'
+import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
 type AvatarProps = IUserInfo & {
@@ -13,7 +13,7 @@ export const Avatar = ({ avatar, name, size }: AvatarProps) => {
     if (avatar) {
         return (
             <Image
-                src={makeImageUrl(avatar, ImageVariant.AVATAR)}
+                src={makeImageUrl(avatar, ImageVariants.AVATAR)}
                 width={size}
                 height={size}
                 className="rounded-full"
