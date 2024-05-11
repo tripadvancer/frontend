@@ -3,6 +3,8 @@
 import type { IList, UpdateListInputs } from '@/utils/types/list'
 
 import { useDialog } from '@/providers/dialog-provider'
+import { setWidgetActiveList } from '@/redux/features/widget-slice'
+import { useAppDispatch } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -11,6 +13,7 @@ import { WidgetSavedListsForm } from './widget-saved-lists-form'
 export const WidgetSavedListsEdit = (list: IList) => {
     const t = useI18n()
     const dialog = useDialog()
+    const dispatch = useAppDispatch()
 
     const [updateList] = listAPI.useUpdateListMutation()
 
