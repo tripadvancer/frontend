@@ -1,7 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-
 import type { CreateReviewInputs } from '@/utils/types/review'
 
 import { useDialog } from '@/providers/dialog-provider'

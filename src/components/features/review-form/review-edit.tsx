@@ -3,7 +3,6 @@
 import type { IReview, UpdateReviewInputs } from '@/utils/types/review'
 
 import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
 import { reviewsAPI } from '@/redux/services/reviews-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
