@@ -2,21 +2,17 @@
 
 import type { IList, UpdateListInputs } from '@/utils/types/list'
 
-import { useToast } from '@/providers/toast-provider'
+import { useDialog } from '@/providers/dialog-provider'
 import { listAPI } from '@/redux/services/list-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetSavedListsForm } from './widget-saved-lists-form'
 
-type WidgetListsEditProps = IList & {
-    onClose: () => void
-}
-
-export const WidgetSavedListsEdit = ({ onClose, ...list }: WidgetListsEditProps) => {
+export const WidgetSavedListsEdit = (list: IList) => {
     const t = useI18n()
-    const toast = useToast()
+    const dialog = useDialog()
 
-    const [updateList, { isLoading }] = listAPI.useUpdateListMutation()
+    const [updateList] = listAPI.useUpdateListMutation()
 
     const initialValues: UpdateListInputs = {
         id: list.id,
@@ -25,21 +21,19 @@ export const WidgetSavedListsEdit = ({ onClose, ...list }: WidgetListsEditProps)
         isPublic: list.isPublic,
     }
 
-    const handleSubmit = async (inputs: UpdateListInputs) => {
-        try {
-            await updateList(inputs)
-            onClose()
-        } catch {
-            toast.error(t('common.error'))
-        }
+    const handleSubmit = (inputs: UpdateListInputs) => {
+        updateList(inputs)
+        dialog.close()
     }
 
     return (
-        <WidgetSavedListsForm
-            initialValues={initialValues}
-            isLoading={isLoading}
-            onSubmit={inputs => handleSubmit(inputs as UpdateListInputs)}
-            onClose={onClose}
-        />
+        <div className="flex w-full flex-col gap-y-4 sm:w-104">
+            <h1 className="h7">{t('saved_list_form.edit.title')}</h1>
+            <hr className="border-black-70" />
+            <WidgetSavedListsForm
+                initialValues={initialValues}
+                onSubmit={inputs => handleSubmit(inputs as UpdateListInputs)}
+            />
+        </div>
     )
 }

@@ -1,34 +1,22 @@
 import type { GeoJsonCollection } from '@/utils/types/geo'
-import type {
-    CreateListInputs,
-    IList,
-    IListInfo,
-    IListPreview,
-    UpdateListInputs,
-    UpdatePlaceInListsInputs,
-} from '@/utils/types/list'
+import type { CreateListInputs, IList, UpdateListInputs, UpdatePlaceInListsInputs } from '@/utils/types/list'
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
 
 export const listAPI = api.injectEndpoints({
     endpoints: build => ({
-        getLists: build.query<IListPreview[], void>({
+        getLists: build.query<IList[], void>({
             query: () => 'lists',
             providesTags: ['Lists'],
         }),
 
-        getListInfo: build.query<IListInfo, number>({
-            query: listId => `lists/${listId}`,
-            providesTags: (result, error, listId) => [{ type: 'Lists', id: listId }],
-        }),
-
         getListPlaces: build.query<GeoJsonCollection<IPlacePreview>, number>({
             query: listId => `lists/${listId}/places`,
-            providesTags: (result, error, listId) => [{ type: 'Lists', id: listId }],
+            providesTags: (result, error, listId) => [{ type: 'ListPlaces', id: listId }],
         }),
 
-        createUserList: build.mutation<{ id: number }, CreateListInputs>({
+        createList: build.mutation<{ id: number }, CreateListInputs>({
             query: inputs => ({
                 url: 'lists',
                 method: 'POST',

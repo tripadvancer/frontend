@@ -1,12 +1,14 @@
 import { auth } from './auth.en'
 import { landing } from './landing.en'
 import { savePlace } from './save-space.en'
+import { savedListForm } from './saved-list-form.en'
 import { widget } from './widget.en'
 
 export default {
     ...auth,
     ...landing,
     ...savePlace,
+    ...savedListForm,
     ...widget,
 
     'cookie_consent.title': 'Allow Cookies',
@@ -29,7 +31,7 @@ export default {
     'confirm.delete_place.title': 'Delete place',
     'confirm.delete_place.message': 'Are you sure you want to delete this place and all data associated with it? This action is irreversible.',
 
-    'confirm.delete_list.title': 'Delete list "{list_name}"',
+    'confirm.delete_list.title': 'Delete list',
     'confirm.delete_list.message': 'Are you sure you want to delete this list? This action is irreversible.',
 
     'confirm.request_personal_data.title': 'Send personal data',

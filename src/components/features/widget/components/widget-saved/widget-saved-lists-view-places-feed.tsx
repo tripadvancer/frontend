@@ -13,7 +13,7 @@ import { WidgetMessage } from '../widget-message'
 import { WidgetPlacesFeed } from '../widget-places-feed/widget-places-feed'
 import { WidgetPlacesFeedSkeleton } from '../widget-places-feed/widget-places-feed-skeleton'
 
-export const WidgetSavedListsViewPlaces = ({ listId }: { listId: number }) => {
+export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) => {
     const t = useI18n()
     const isMobile = useMediaQuery('(max-width: 639px)')
 

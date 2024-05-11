@@ -1,12 +1,14 @@
 import { auth } from './auth.ru'
 import { landing } from './landing.ru'
 import { savePlace } from './save-space.ru'
+import { savedListForm } from './saved-list-form.ru'
 import { widget } from './widget.ru'
 
 export default {
     ...auth,
     ...landing,
     ...savePlace,
+    ...savedListForm,
     ...widget,
 
     'cookie_consent.title': 'Согласие на использование файлов cookie',
@@ -29,7 +31,7 @@ export default {
     'confirm.delete_place.title': 'Удалить место',
     'confirm.delete_place.message': 'Вы уверены, что хотите удалить это место и все связанные с ним данные? Это действие необратимо.',
 
-    'confirm.delete_list.title': 'Удалить список "{list_name}"',
+    'confirm.delete_list.title': 'Удалить список',
     'confirm.delete_list.message': 'Вы уверены, что хотите удалить этот список? Это действие необратимо.',
 
     'confirm.request_personal_data.title': 'Запросить персональные данные',

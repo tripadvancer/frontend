@@ -1,12 +1,14 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
+import type { IList } from '@/utils/types/list'
+
 import type { RootState } from '@/redux/store'
 import { WidgetModes, WidgetTabsEnum } from '@/utils/enums'
 
 interface WidgetState {
     mode: WidgetModes
     activeTab: WidgetTabsEnum
-    activeList: number | null
+    activeList: IList | null
     isAboutOpened: boolean
     isMenuOpened: boolean
     selectedCategories: number[]
@@ -42,17 +44,16 @@ export const widgetSlice = createSlice({
         setWidgetActiveTab(state, action: PayloadAction<WidgetTabsEnum>) {
             state.activeTab = action.payload
         },
-        setWidgetActiveList(state, action: PayloadAction<number>) {
+        setWidgetActiveList(state, action: PayloadAction<IList | null>) {
             state.activeList = action.payload
-        },
-        resetWidgetActiveList(state) {
-            state.activeList = null
         },
     },
 })
 
 export const getWidgetState = (state: RootState) => state.widget
 export const getWidgetMode = (state: RootState) => state.widget.mode
+export const getWidgetActiveTab = (state: RootState) => state.widget.activeTab
+export const getWidgetActiveList = (state: RootState) => state.widget.activeList
 export const getWidgetSelectedCategories = (state: RootState) => state.widget.selectedCategories
 
 export const {
@@ -62,7 +63,6 @@ export const {
     setWidgetSelectedCategories,
     setWidgetActiveTab,
     setWidgetActiveList,
-    resetWidgetActiveList,
 } = widgetSlice.actions
 
 export default widgetSlice.reducer
