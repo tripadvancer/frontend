@@ -4,13 +4,13 @@ import { RoundPlus24 } from '@/components/ui/icons'
 import { useAddPlaceClickHandler } from '@/utils/hooks/use-add-place-click-handler'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type HeaderButtonAddPlaceProps = {
+type HeaderAddPlaceProps = {
     activeUserId?: number
     isAuth: boolean
     isEmailVerified?: boolean
 }
 
-export const HeaderButtonAddPlace = ({ activeUserId, isAuth, isEmailVerified }: HeaderButtonAddPlaceProps) => {
+export const HeaderAddPlace = ({ activeUserId, isAuth, isEmailVerified }: HeaderAddPlaceProps) => {
     const t = useI18n()
     const handleClick = useAddPlaceClickHandler({ activeUserId, isAuth, isEmailVerified })
 

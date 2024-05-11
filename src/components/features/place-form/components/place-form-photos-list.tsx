@@ -8,7 +8,7 @@ import { PhotoPreview } from '@/components/ui/photo-preview'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { placesAPI } from '@/redux/services/places-api'
-import { ImageVariant } from '@/utils/enums'
+import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -103,7 +103,7 @@ export const PlaceFormPhotosList = ({ photos, onChange }: PlaceFormPhotosListPro
                             close={() => setIndexSlide(-1)}
                             index={indexSlide}
                             slides={photos.map(photo => ({
-                                src: makeImageUrl(photo, ImageVariant.PUBLIC),
+                                src: makeImageUrl(photo, ImageVariants.PUBLIC),
                             }))}
                         />
                     </div>

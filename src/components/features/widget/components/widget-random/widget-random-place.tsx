@@ -14,10 +14,10 @@ import { PinIcon16 } from '@/components/ui/icons'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { useDialog } from '@/providers/dialog-provider'
-import { setMobileMapLayout } from '@/redux/features/app-slice'
+import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { ImageVariant, MobileMapLayoutEnum } from '@/utils/enums'
+import { AppModes, ImageVariants } from '@/utils/enums'
 import { arrayToLngLat, getMapFlyToOptions } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -32,7 +32,7 @@ export const WidgetRandomPlace = (place: IRandomPlace) => {
     const debouncedFlyTo = useDebounceCallback(() => map?.flyTo(getMapFlyToOptions(lngLat)), 250)
 
     const handleShowOnMap = async () => {
-        dispatch(setMobileMapLayout(MobileMapLayoutEnum.MAP))
+        dispatch(setAppMode(AppModes.MAP))
         dispatch(setMapPlacePopupInfo(place))
         debouncedFlyTo()
     }
@@ -44,7 +44,7 @@ export const WidgetRandomPlace = (place: IRandomPlace) => {
                     <PlacePreviewCover
                         cover={place.cover}
                         title={place.title}
-                        imageVariant={ImageVariant.PUBLIC}
+                        imageVariant={ImageVariants.PUBLIC}
                         size={80}
                         className="aspect-video w-full rounded-lg"
                     />

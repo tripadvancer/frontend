@@ -20,7 +20,7 @@ export enum ComplaintReasonsI18nKeys {
     OTHER = 'other',
 }
 
-export enum ImageVariant {
+export enum ImageVariants {
     PUBLIC = 'public',
     PREVIEW = 'preview',
     AVATAR = 'avatar',
@@ -33,12 +33,12 @@ export enum Keys {
     DOWN = 'ArrowDown',
 }
 
-export enum MobileMapLayoutEnum {
+export enum AppModes {
     MAP = 'MAP',
     WIDGET = 'WIDGET',
 }
 
-export enum WidgetSideEnum {
+export enum WidgetModes {
     PLACES = 'PLACES',
     RANDOM = 'RANDOM',
 }

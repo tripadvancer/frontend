@@ -10,7 +10,7 @@ import { PhotoPreview } from '@/components/ui/photo-preview'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { reviewsAPI } from '@/redux/services/reviews-api'
-import { ImageVariant } from '@/utils/enums'
+import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -92,7 +92,7 @@ export const ReviewFormPhotosList = ({ photos, isDisabled, onChange }: ReviewFor
                     close={() => setIndexSlide(-1)}
                     index={indexSlide}
                     slides={photos.map(photo => ({
-                        src: makeImageUrl(photo, ImageVariant.PUBLIC),
+                        src: makeImageUrl(photo, ImageVariants.PUBLIC),
                     }))}
                 />
             </div>
