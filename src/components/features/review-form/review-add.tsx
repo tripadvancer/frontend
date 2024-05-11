@@ -1,7 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-
 import type { CreateReviewInputs } from '@/utils/types/review'
 
 import { useDialog } from '@/providers/dialog-provider'
@@ -13,7 +11,6 @@ import { ReviewForm } from './review-form'
 
 export const ReviewAdd = ({ placeId, userId }: { placeId: number; userId: number }) => {
     const t = useI18n()
-    const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
 

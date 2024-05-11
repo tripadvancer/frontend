@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import { LngLatBoundsLike, useMap } from 'react-map-gl/maplibre'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
@@ -37,25 +36,12 @@ export const WidgetSearch = () => {
     const [value, setValue] = useState<string>('')
     const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]>([])
     const [isAutocompleteVisible, setIsAutocompleteVisible] = useState<boolean>(false)
-    const [autocompleteStyles, setAutocompleteStyles] = useState<{ top: number; left: number; width?: number }>({
-        top: 0,
-        left: 0,
-    })
 
     const [search, { data, isFetching, isSuccess }] = searchAPI.useLazySearchQuery()
 
     const debouncedSearch = useDebounceCallback(search, 500)
     const debouncedFlyTo = useDebounceCallback((lngLat: LngLat) => map?.flyTo(getMapFlyToOptions(lngLat)), 250)
     const debouncedFitBounds = useDebounceCallback((bounds: LngLatBoundsLike) => map?.fitBounds(bounds), 250)
-
-    useEffect(() => {
-        const inputRect = inputRef.current?.getBoundingClientRect()
-        setAutocompleteStyles({
-            top: inputRect?.bottom || 0,
-            left: inputRect?.left || 0,
-            width: inputRect?.width,
-        })
-    }, [])
 
     useEffect(() => {
         if (value.length >= 2) {
@@ -114,7 +100,7 @@ export const WidgetSearch = () => {
 
     return (
         <div className="relative flex gap-x-4">
-            <div ref={inputRef} className="flex-1">
+            <div ref={inputRef} className="relative flex-1">
                 <WidgetSearchInput
                     value={value}
                     isLoading={isFetching}
@@ -122,21 +108,13 @@ export const WidgetSearch = () => {
                     onClick={handleInputClick}
                     onClear={handleClear}
                 />
+
+                {isAutocompleteVisible && (
+                    <SearchAutocomplete ref={autocompleteRef} items={items} onSelect={handleSelect} />
+                )}
             </div>
 
             <WidgetTogler />
-
-            {isAutocompleteVisible &&
-                createPortal(
-                    <SearchAutocomplete
-                        ref={autocompleteRef}
-                        items={items}
-                        className="fixed z-40"
-                        styles={autocompleteStyles}
-                        onSelect={handleSelect}
-                    />,
-                    document.body,
-                )}
         </div>
     )
 }

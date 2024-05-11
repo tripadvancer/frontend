@@ -189,7 +189,7 @@ export default {
     'review.user_actions.complain': 'Пожаловаться',
     'review.user_actions.add': 'Добавить отзыв',
 
-    'review.form.edit.title': 'Изменить Ваш отзыв',
+    'review.form.edit.title': 'Изменить отзыв',
     'review.form.add.title': 'Добавить отзыв',
     'review.form.fields.rating.label': 'Ваша оценка',
     'review.form.fields.text.label': 'Отзыв',

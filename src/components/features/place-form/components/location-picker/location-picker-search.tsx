@@ -83,12 +83,7 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
             />
 
             {isAutocompleteVisible && (
-                <SearchAutocomplete
-                    ref={autocompleteRef}
-                    items={items}
-                    className="absolute left-0 right-0 top-full z-40"
-                    onSelect={handleSelect}
-                />
+                <SearchAutocomplete ref={autocompleteRef} items={items} onSelect={handleSelect} />
             )}
         </div>
     )

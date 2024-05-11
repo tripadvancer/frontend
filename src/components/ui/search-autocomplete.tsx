@@ -2,8 +2,6 @@
 
 import { CSSProperties, Ref, forwardRef, useState } from 'react'
 
-import classNames from 'classnames'
-
 import type { ICountryDict } from '@/utils/types/country'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
@@ -15,15 +13,10 @@ import { SearchAutocompleteItem } from './search-autocomplete-item'
 
 type SearchAutocompleteProps = {
     items: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]
-    styles?: CSSProperties
-    className?: string
     onSelect: (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => void
 }
 
-function SearchAutocompleteComponent(
-    { items, styles, className, onSelect }: SearchAutocompleteProps,
-    ref: Ref<HTMLDivElement>,
-) {
+function SearchAutocompleteComponent({ items, onSelect }: SearchAutocompleteProps, ref: Ref<HTMLDivElement>) {
     const [cursor, setCursor] = useState<number>(0)
 
     useKeypress(Keys.ENTER, () => {
@@ -49,7 +42,7 @@ function SearchAutocompleteComponent(
     }
 
     return (
-        <div ref={ref} className={classNames('rounded-lg bg-white p-1 shadow-small', className)} style={styles}>
+        <div ref={ref} className="absolute left-0 right-0 top-full z-40 rounded-lg bg-white p-1 shadow-small">
             {items.map((item, index) => (
                 <SearchAutocompleteItem
                     key={`search-item-${index}`}

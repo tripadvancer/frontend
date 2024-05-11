@@ -21,9 +21,7 @@ export type IListInfo = Pick<IList, 'id' | 'name' | 'description' | 'index' | 'a
 
 export type CreateListInputs = Pick<IList, 'name'>
 
-export type UpdateListInputs = Pick<IList, 'id' | 'name' | 'description' | 'isPublic'> & {
-    placesOrder: number[]
-}
+export type UpdateListInputs = Pick<IList, 'id' | 'name' | 'description' | 'isPublic'>
 
 export type UpdatePlaceInListsInputs = {
     placeId: number

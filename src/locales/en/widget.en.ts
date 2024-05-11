@@ -18,7 +18,7 @@ export const widget = {
     'widget.saved.empty_message': 'You have not saved places.{br}Create a new list and start adding places to it.',
     'widget.saved.not_logged_in': 'You are not logged in.{br}{sign_in_link} to see saved places.',
     
-    'widget.saved.lists.empty_message': 'This list are empty.{br}Add place to this list to see it here.',
+    'widget.saved.lists.empty_message': 'This list is empty.{br}Add place to this list to see it here.',
     'widget.saved.lists.add_button': 'Create new list',
     'widget.saved.lists.info': 'Select a list to view saved places.',
     'widget.saved.lists.show_only_list': 'On map',

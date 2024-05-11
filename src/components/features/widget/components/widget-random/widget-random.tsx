@@ -53,7 +53,7 @@ export const WidgetRandom = () => {
 
     return (
         <div>
-            <div className="mb-4 text-caps uppercase">{t('widget.random.distance_cation')}</div>
+            <div className="mb-6 text-caps uppercase">{t('widget.random.distance_cation')}</div>
             {/* prettier-ignore */}
             <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
                 <WidgetRandomSlider
