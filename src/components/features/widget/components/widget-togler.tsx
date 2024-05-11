@@ -2,28 +2,33 @@
 
 import { FormButton } from '@/components/ui/form-button'
 import { RandomIcon24, SearchIcon24 } from '@/components/ui/icons'
-import { getWidgetActiveSide, setWidgetActiveSide } from '@/redux/features/widget-slice'
+import { getWidgetMode, setWidgetMode } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { WidgetSideEnum } from '@/utils/enums'
+import { WidgetMode } from '@/utils/enums'
 
 export const WidgetTogler = () => {
     const dispatch = useAppDispatch()
-    const widgetActiveSide = useAppSelector(getWidgetActiveSide)
-    const isRandom = widgetActiveSide === WidgetSideEnum.RANDOM
+    const widgetMode = useAppSelector(getWidgetMode)
 
-    const handleClick = () => {
-        dispatch(
-            setWidgetActiveSide(
-                widgetActiveSide === WidgetSideEnum.PLACES ? WidgetSideEnum.RANDOM : WidgetSideEnum.PLACES,
-            ),
+    if (widgetMode === WidgetMode.PLACES) {
+        return (
+            <FormButton
+                variant="orange"
+                icon={<RandomIcon24 />}
+                onClick={() => {
+                    dispatch(setWidgetMode(WidgetMode.RANDOM))
+                }}
+            />
         )
     }
 
     return (
         <FormButton
-            variant={isRandom ? 'blue' : 'orange'}
-            icon={isRandom ? <SearchIcon24 /> : <RandomIcon24 />}
-            onClick={handleClick}
+            variant="blue"
+            icon={<SearchIcon24 />}
+            onClick={() => {
+                dispatch(setWidgetMode(WidgetMode.PLACES))
+            }}
         />
     )
 }

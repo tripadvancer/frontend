@@ -11,11 +11,11 @@ import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
 
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
-import { setMobileMapLayout } from '@/redux/features/app-slice'
+import { setAppMode } from '@/redux/features/app-slice'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { searchAPI } from '@/redux/services/search-api'
-import { Keys, MobileMapLayoutEnum } from '@/utils/enums'
+import { AppMode, Keys } from '@/utils/enums'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { transformFullSearchResult } from '@/utils/helpers/search'
 import { useKeypress } from '@/utils/hooks/use-keypress'
@@ -72,7 +72,7 @@ export const WidgetSearch = () => {
     }
 
     const handleSelect = (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => {
-        dispatch(setMobileMapLayout(MobileMapLayoutEnum.MAP))
+        dispatch(setAppMode(AppMode.MAP))
 
         if (item.type === 'location') {
             debouncedFlyTo(item.coordinates)

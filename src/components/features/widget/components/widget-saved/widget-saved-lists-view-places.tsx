@@ -33,7 +33,7 @@ export const WidgetSavedListsViewPlaces = ({ listId }: { listId: number }) => {
             const bounds = getBoundsFromCoordinates(places.map(place => place.coordinates))
             map?.fitBounds(bounds)
         }
-    }, [isSuccess, places, map])
+    }, [isSuccess, places, map, isMobile])
 
     if (isError) {
         return <WidgetMessage onAction={refetch} isLoading={isLoading} />

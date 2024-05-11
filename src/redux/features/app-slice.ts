@@ -1,28 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import type { RootState } from '@/redux/store'
-import { MobileMapLayoutEnum } from '@/utils/enums'
+import { AppMode } from '@/utils/enums'
 
 interface AppState {
-    mobileMapLayout: MobileMapLayoutEnum
+    appMode: AppMode
 }
 
 export const initialState: AppState = {
-    mobileMapLayout: MobileMapLayoutEnum.MAP,
+    appMode: AppMode.MAP,
 }
 
 export const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        setMobileMapLayout(state, action) {
-            state.mobileMapLayout = action.payload
+        setAppMode(state, action) {
+            state.appMode = action.payload
         },
     },
 })
 
-export const getMobileMapLayout = (state: RootState) => state.app.mobileMapLayout
+export const getAppMode = (state: RootState) => state.app.appMode
 
-export const { setMobileMapLayout } = appSlice.actions
+export const { setAppMode } = appSlice.actions
 
 export default appSlice.reducer

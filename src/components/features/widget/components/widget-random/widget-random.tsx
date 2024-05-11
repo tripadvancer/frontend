@@ -39,7 +39,7 @@ export const WidgetRandom = () => {
 
             map?.flyTo(getMapFlyToOptions(userLocation))
         }
-    }, [map, userLocation])
+    }, [userLocation, map, dispatch, isMobile])
 
     const handleRandomClick = () => {
         if (userLocation) {

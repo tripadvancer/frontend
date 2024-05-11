@@ -3,10 +3,10 @@
 import { useRouter } from 'next/navigation'
 
 import { FormButton } from '@/components/ui/form-button'
-import { setMobileMapLayout } from '@/redux/features/app-slice'
-import { setWidgetActiveSide, setWidgetActiveTab } from '@/redux/features/widget-slice'
+import { setAppMode } from '@/redux/features/app-slice'
+import { setWidgetActiveTab, setWidgetMode } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { MobileMapLayoutEnum, WidgetSideEnum, WidgetTabsEnum } from '@/utils/enums'
+import { AppMode, WidgetMode, WidgetTabsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const LandingFeaturesPlacesButton = () => {
@@ -15,8 +15,8 @@ export const LandingFeaturesPlacesButton = () => {
     const dispatch = useAppDispatch()
 
     const handleClick = () => {
-        dispatch(setMobileMapLayout(MobileMapLayoutEnum.MAP))
-        dispatch(setWidgetActiveSide(WidgetSideEnum.PLACES))
+        dispatch(setAppMode(AppMode.WIDGET))
+        dispatch(setWidgetMode(WidgetMode.PLACES))
         dispatch(setWidgetActiveTab(WidgetTabsEnum.ALL))
         router.push('/maps')
     }
