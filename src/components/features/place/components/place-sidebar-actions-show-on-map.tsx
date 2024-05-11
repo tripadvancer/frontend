@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation'
 import type { IPlace } from '@/utils/types/place'
 
 import { PinIcon24 } from '@/components/ui/icons'
-import { setMobileMapLayout } from '@/redux/features/app-slice'
+import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { setWidgetActiveSide, setWidgetActiveTab } from '@/redux/features/widget-slice'
+import { setWidgetActiveTab, setWidgetMode } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
-import { MobileMapLayoutEnum, WidgetSideEnum, WidgetTabsEnum } from '@/utils/enums'
+import { AppModes, WidgetModes, WidgetTabsEnum } from '@/utils/enums'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -25,8 +25,8 @@ export const PlaceSidebarActionsShowOnMap = ({ place, isAuth }: { place: IPlace;
     const handleClick = () => {
         const viewState = getFlyToViewState(lngLat)
 
-        dispatch(setMobileMapLayout(MobileMapLayoutEnum.MAP))
-        dispatch(setWidgetActiveSide(WidgetSideEnum.PLACES))
+        dispatch(setAppMode(AppModes.MAP))
+        dispatch(setWidgetMode(WidgetModes.PLACES))
         dispatch(setWidgetActiveTab(WidgetTabsEnum.ALL))
         dispatch(setMapViewState(viewState))
         dispatch(

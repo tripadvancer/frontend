@@ -1,34 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import type { RootState } from '@/redux/store'
-import { MobileMapLayoutEnum } from '@/utils/enums'
+import { AppModes } from '@/utils/enums'
 
 interface AppState {
-    mobileMapLayout: MobileMapLayoutEnum
-    isHeaderMenuOpened: boolean
+    appMode: AppModes
 }
 
 export const initialState: AppState = {
-    mobileMapLayout: MobileMapLayoutEnum.MAP,
-    isHeaderMenuOpened: false,
+    appMode: AppModes.MAP,
 }
 
 export const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        setMobileMapLayout(state, action) {
-            state.mobileMapLayout = action.payload
-        },
-        toggleHeaderMenu(state) {
-            state.isHeaderMenuOpened = !state.isHeaderMenuOpened
+        setAppMode(state, action) {
+            state.appMode = action.payload
         },
     },
 })
 
-export const getMobileMapLayout = (state: RootState) => state.app.mobileMapLayout
-export const getIsHeaderMenuOpened = (state: RootState) => state.app.isHeaderMenuOpened
+export const getAppMode = (state: RootState) => state.app.appMode
 
-export const { setMobileMapLayout, toggleHeaderMenu } = appSlice.actions
+export const { setAppMode } = appSlice.actions
 
 export default appSlice.reducer

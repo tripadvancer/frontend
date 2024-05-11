@@ -1,14 +1,11 @@
-import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
-
 import { getUserById } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { HeaderButtonAddPlace } from './header-button-add-place'
-import { HeaderButtonSignIn } from './header-button-signin'
+import { HeaderSignIn } from './header-signin'
 import { HeaderUser } from './header-user'
 
-export const HeaderButtons = async () => {
+export const HeaderUserWithAuth = async () => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -16,12 +13,7 @@ export const HeaderButtons = async () => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return (
-                <>
-                    <HeaderButtonAddPlace isAuth={false} />
-                    <HeaderButtonSignIn />
-                </>
-            )
+            return <HeaderSignIn />
         }
 
         /**
@@ -31,14 +23,8 @@ export const HeaderButtons = async () => {
         return <TryRefreshComponent />
     }
 
-    const isEmailVerified = await session.getClaimValue(EmailVerificationClaim)
     const activeUserId = session.getAccessTokenPayload().userId
     const user = await getUserById(activeUserId)
 
-    return (
-        <>
-            <HeaderButtonAddPlace activeUserId={activeUserId} isAuth={true} isEmailVerified={isEmailVerified} />
-            <HeaderUser user={user} />
-        </>
-    )
+    return <HeaderUser user={user} />
 }

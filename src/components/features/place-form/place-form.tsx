@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 import type { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/types/place'
 
-import { ImageVariant } from '@/utils/enums'
+import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -43,7 +43,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
                     {formik.values.cover && (
                         <Image
-                            src={makeImageUrl(formik.values.cover, ImageVariant.PUBLIC)}
+                            src={makeImageUrl(formik.values.cover, ImageVariants.PUBLIC)}
                             alt=""
                             fill
                             priority

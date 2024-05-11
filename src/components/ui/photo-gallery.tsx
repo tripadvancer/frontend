@@ -9,7 +9,7 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import type { IPhoto } from '@/utils/types/photo'
 
 import { Photo } from '@/components/ui/photo'
-import { ImageVariant } from '@/utils/enums'
+import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
 type PhotoGalleryProps = {
@@ -42,7 +42,7 @@ export const PhotoGallery = ({ photos, title, description, size }: PhotoGalleryP
                 slides={photos.map(photo => ({
                     title,
                     description,
-                    src: makeImageUrl(photo.url, ImageVariant.PUBLIC),
+                    src: makeImageUrl(photo.url, ImageVariants.PUBLIC),
                 }))}
             />
         </>
