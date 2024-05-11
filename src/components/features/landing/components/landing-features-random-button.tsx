@@ -16,7 +16,7 @@ export const LandingFeaturesRandomButton = () => {
 
     const handleClick = () => {
         dispatch(setAppMode(AppModes.WIDGET))
-        dispatch(setWidgetMode(WidgetMode.RANDOM))
+        dispatch(setWidgetMode(WidgetModes.RANDOM))
         dispatch(setWidgetActiveTab(WidgetTabsEnum.ALL))
         router.push('/maps')
     }

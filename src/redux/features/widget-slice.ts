@@ -3,10 +3,10 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import type { IList } from '@/utils/types/list'
 
 import type { RootState } from '@/redux/store'
-import { WidgetMode, WidgetTabsEnum } from '@/utils/enums'
+import { WidgetModes, WidgetTabsEnum } from '@/utils/enums'
 
 interface WidgetState {
-    mode: WidgetMode
+    mode: WidgetModes
     activeTab: WidgetTabsEnum
     activeList: IList | null
     isAboutOpened: boolean
@@ -15,7 +15,7 @@ interface WidgetState {
 }
 
 export const initialState: WidgetState = {
-    mode: WidgetMode.PLACES,
+    mode: WidgetModes.PLACES,
     activeTab: WidgetTabsEnum.ALL,
     activeList: null,
     isAboutOpened: false,
@@ -27,7 +27,7 @@ export const widgetSlice = createSlice({
     name: 'widget',
     initialState,
     reducers: {
-        setWidgetMode(state, action: PayloadAction<WidgetMode>) {
+        setWidgetMode(state, action: PayloadAction<WidgetModes>) {
             state.mode = action.payload
         },
         toggleWidgetAbout(state) {

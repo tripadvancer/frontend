@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 
 import { getWidgetMode } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { WidgetMode } from '@/utils/enums'
+import { WidgetModes } from '@/utils/enums'
 
 type MapsLayoutDesktopProps = {
     map: ReactNode
@@ -20,8 +20,8 @@ export const MapsLayoutDesktop = ({ map, widget, widgetRandom }: MapsLayoutDeskt
             {map}
             <div className="scrollbar-hide pointer-events-none fixed bottom-0 right-0 top-0 z-40 max-h-full w-[496px] overflow-y-auto pb-8 pl-8 pr-4 pt-4">
                 <div className="pointer-events-auto rounded-2xl shadow-large">
-                    {widgetMode === WidgetMode.PLACES && widget}
-                    {widgetMode === WidgetMode.RANDOM && widgetRandom}
+                    {widgetMode === WidgetModes.PLACES && widget}
+                    {widgetMode === WidgetModes.RANDOM && widgetRandom}
                 </div>
             </div>
         </div>
