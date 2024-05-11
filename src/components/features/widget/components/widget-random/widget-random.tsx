@@ -52,26 +52,26 @@ export const WidgetRandom = () => {
     }
 
     return (
-        <div>
-            <div className="mb-6 text-caps uppercase">{t('widget.random.distance_cation')}</div>
+        <div className="flex flex-col gap-y-6 sm:gap-y-8">
+            <div className="text-caps uppercase">{t('widget.random.distance_cation')}</div>
             {/* prettier-ignore */}
-            <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
-                <WidgetRandomSlider
-                    value={radius}
-                    onChange={setRadius}
-                />
-                <WidgetRandomButton
-                    isLoading={isFetching}
-                    isUserLocated={!!userLocation}
-                    onClick={handleRandomClick}
-                />
-                <WidgetRandomResults
-                    place={data}
-                    isSuccess={isSuccess}
-                    isError={!!error}
-                    isUserLocated={!!userLocation}
-                />
-            </div>
+            <WidgetRandomSlider
+                value={radius}
+                onChange={setRadius}
+            />
+            {/* prettier-ignore */}
+            <WidgetRandomButton
+                isLoading={isFetching}
+                isUserLocated={!!userLocation}
+                onClick={handleRandomClick}
+            />
+            {/* prettier-ignore */}
+            <WidgetRandomResults
+                place={data}
+                isSuccess={isSuccess}
+                isError={!!error}
+                isUserLocated={!!userLocation}
+            />
         </div>
     )
 }
