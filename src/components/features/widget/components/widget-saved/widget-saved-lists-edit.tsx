@@ -23,7 +23,6 @@ export const WidgetSavedListsEdit = ({ onClose, ...list }: WidgetListsEditProps)
         name: list.name,
         description: list.description,
         isPublic: list.isPublic,
-        placesOrder: [],
     }
 
     const handleSubmit = async (inputs: UpdateListInputs) => {

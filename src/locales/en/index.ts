@@ -185,7 +185,7 @@ export default {
     'review.user_actions.complain': 'Complain',
     'review.user_actions.add': 'Add review',
 
-    'review.form.edit.title': 'Edit your review',
+    'review.form.edit.title': 'Edit review',
     'review.form.add.title': 'Leave feedback',
     'review.form.fields.rating.label': 'Your rating',
     'review.form.fields.text.label': 'Review',
