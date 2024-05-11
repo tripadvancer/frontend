@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import type { RootState } from '@/redux/store'
-import { AppMode } from '@/utils/enums'
+import { AppModes } from '@/utils/enums'
 
 interface AppState {
-    appMode: AppMode
+    appMode: AppModes
 }
 
 export const initialState: AppState = {
-    appMode: AppMode.MAP,
+    appMode: AppModes.MAP,
 }
 
 export const appSlice = createSlice({

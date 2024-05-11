@@ -17,7 +17,7 @@ import { useDialog } from '@/providers/dialog-provider'
 import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { AppMode, ImageVariant } from '@/utils/enums'
+import { AppModes, ImageVariant } from '@/utils/enums'
 import { arrayToLngLat, getMapFlyToOptions } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -32,7 +32,7 @@ export const WidgetRandomPlace = (place: IRandomPlace) => {
     const debouncedFlyTo = useDebounceCallback(() => map?.flyTo(getMapFlyToOptions(lngLat)), 250)
 
     const handleShowOnMap = async () => {
-        dispatch(setAppMode(AppMode.MAP))
+        dispatch(setAppMode(AppModes.MAP))
         dispatch(setMapPlacePopupInfo(place))
         debouncedFlyTo()
     }

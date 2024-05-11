@@ -6,7 +6,7 @@ import { FormButton } from '@/components/ui/form-button'
 import { MapIcon16, PinIcon16 } from '@/components/ui/icons'
 import { getAppMode, setAppMode } from '@/redux/features/app-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { AppMode } from '@/utils/enums'
+import { AppModes } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type MapLayoutMobileTogglerProps = {
@@ -25,15 +25,15 @@ export const MapLayoutMobileToggler = ({ isVisible }: MapLayoutMobileTogglerProp
     })
 
     const buttonProps = {
-        [AppMode.MAP]: {
+        [AppModes.MAP]: {
             icon: <PinIcon16 />,
             caption: t('widget.toggler.search_and_filters'),
-            onClick: () => dispatch(setAppMode(AppMode.WIDGET)),
+            onClick: () => dispatch(setAppMode(AppModes.WIDGET)),
         },
-        [AppMode.WIDGET]: {
+        [AppModes.WIDGET]: {
             icon: <MapIcon16 />,
             caption: t('widget.toggler.map'),
-            onClick: () => dispatch(setAppMode(AppMode.MAP)),
+            onClick: () => dispatch(setAppMode(AppModes.MAP)),
         },
     }
 

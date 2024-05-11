@@ -6,7 +6,7 @@ import { FormButton } from '@/components/ui/form-button'
 import { setAppMode } from '@/redux/features/app-slice'
 import { setWidgetActiveTab, setWidgetMode } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { AppMode, WidgetMode, WidgetTabsEnum } from '@/utils/enums'
+import { AppModes, WidgetModes, WidgetTabsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 export const LandingFeaturesPlacesButton = () => {
@@ -15,8 +15,8 @@ export const LandingFeaturesPlacesButton = () => {
     const dispatch = useAppDispatch()
 
     const handleClick = () => {
-        dispatch(setAppMode(AppMode.WIDGET))
-        dispatch(setWidgetMode(WidgetMode.PLACES))
+        dispatch(setAppMode(AppModes.WIDGET))
+        dispatch(setWidgetMode(WidgetModes.PLACES))
         dispatch(setWidgetActiveTab(WidgetTabsEnum.ALL))
         router.push('/maps')
     }

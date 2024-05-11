@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import { getAppMode } from '@/redux/features/app-slice'
 import { getWidgetMode } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { AppMode, WidgetMode } from '@/utils/enums'
+import { AppModes, WidgetModes } from '@/utils/enums'
 
 import { MapsLayoutMobileMap } from './maps-layout-mobile-map'
 import { MapsLayoutMobileWidget } from './maps-layout-mobile-widget'
@@ -25,12 +25,12 @@ export const MapsLayoutMobile = ({ header, map, widget, widgetRandom }: MapsLayo
 
     return (
         <>
-            <div className={classNames('block size-full', { hidden: appMode === AppMode.MAP })}>
-                {widgetMode === WidgetMode.PLACES && <MapsLayoutMobileWidget widget={widget} />}
-                {widgetMode === WidgetMode.RANDOM && <MapsLayoutMobileWidget widget={widgetRandom} />}
+            <div className={classNames('block size-full', { hidden: appMode === AppModes.MAP })}>
+                {widgetMode === WidgetModes.PLACES && <MapsLayoutMobileWidget widget={widget} />}
+                {widgetMode === WidgetModes.RANDOM && <MapsLayoutMobileWidget widget={widgetRandom} />}
             </div>
 
-            <div className={classNames('block size-full', { hidden: appMode === AppMode.WIDGET })}>
+            <div className={classNames('block size-full', { hidden: appMode === AppModes.WIDGET })}>
                 <MapsLayoutMobileMap header={header} map={map} />
             </div>
         </>

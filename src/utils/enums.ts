@@ -33,12 +33,12 @@ export enum Keys {
     DOWN = 'ArrowDown',
 }
 
-export enum AppMode {
+export enum AppModes {
     MAP = 'MAP',
     WIDGET = 'WIDGET',
 }
 
-export enum WidgetMode {
+export enum WidgetModes {
     PLACES = 'PLACES',
     RANDOM = 'RANDOM',
 }
