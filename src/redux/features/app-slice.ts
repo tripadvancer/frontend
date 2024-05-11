@@ -5,12 +5,10 @@ import { MobileMapLayoutEnum } from '@/utils/enums'
 
 interface AppState {
     mobileMapLayout: MobileMapLayoutEnum
-    isHeaderMenuOpened: boolean
 }
 
 export const initialState: AppState = {
     mobileMapLayout: MobileMapLayoutEnum.MAP,
-    isHeaderMenuOpened: false,
 }
 
 export const appSlice = createSlice({
@@ -20,15 +18,11 @@ export const appSlice = createSlice({
         setMobileMapLayout(state, action) {
             state.mobileMapLayout = action.payload
         },
-        toggleHeaderMenu(state) {
-            state.isHeaderMenuOpened = !state.isHeaderMenuOpened
-        },
     },
 })
 
 export const getMobileMapLayout = (state: RootState) => state.app.mobileMapLayout
-export const getIsHeaderMenuOpened = (state: RootState) => state.app.isHeaderMenuOpened
 
-export const { setMobileMapLayout, toggleHeaderMenu } = appSlice.actions
+export const { setMobileMapLayout } = appSlice.actions
 
 export default appSlice.reducer
