@@ -16,7 +16,6 @@ type WidgetSavedListsFormProps = {
     onClose: () => void
 }
 
-const listNameMinLength = validationConfig.list.name.minLength
 const listNameMaxLength = validationConfig.list.name.maxLength
 
 export const WidgetSavedListsForm = ({ initialValues, isLoading, onSubmit, onClose }: WidgetSavedListsFormProps) => {
@@ -26,7 +25,6 @@ export const WidgetSavedListsForm = ({ initialValues, isLoading, onSubmit, onClo
         name: Yup.string()
             .trim()
             .required(t('validation.required'))
-            .min(listNameMinLength, t('validation.text.min_length', { min_length: listNameMinLength }))
             .max(listNameMaxLength, t('validation.text.max_length', { max_length: listNameMaxLength })),
     })
 

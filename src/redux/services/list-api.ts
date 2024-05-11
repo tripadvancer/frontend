@@ -1,12 +1,19 @@
 import type { GeoJsonCollection } from '@/utils/types/geo'
-import type { CreateListInputs, IList, IListInfo, UpdateListInputs, UpdatePlaceInListsInputs } from '@/utils/types/list'
+import type {
+    CreateListInputs,
+    IList,
+    IListInfo,
+    IListPreview,
+    UpdateListInputs,
+    UpdatePlaceInListsInputs,
+} from '@/utils/types/list'
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
 
 export const listAPI = api.injectEndpoints({
     endpoints: build => ({
-        getLists: build.query<IList[], void>({
+        getLists: build.query<IListPreview[], void>({
             query: () => 'lists',
             providesTags: ['Lists'],
         }),
@@ -36,7 +43,7 @@ export const listAPI = api.injectEndpoints({
                 method: 'PATCH',
                 body: inputs,
             }),
-            invalidatesTags: ['Lists'],
+            invalidatesTags: (result, error, inputs) => [{ type: 'Lists' }, { type: 'Lists', id: inputs.id }],
         }),
 
         deleteList: build.mutation<void, number>({

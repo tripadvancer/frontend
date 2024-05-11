@@ -1,22 +1,21 @@
 'use client'
 
-import { MouseEvent } from 'react'
-
 import type { IList } from '@/utils/types/list'
 
 import { Confirmation } from '@/components/ui/confirmation'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { ArrowLeftIcon16, DeleteIcon16, ShareIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
+import { ArrowLeftIcon16, DeleteIcon16, EditIcon16, ShareIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { resetWidgetActiveList, setWidgetActiveList } from '@/redux/features/widget-slice'
+import { resetWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
+import { WidgetSavedListsEdit } from './widget-saved-lists-edit-dialog'
 import { WidgetSavedListsViewPlaces } from './widget-saved-lists-view-places'
 
-export const WidgetSavedListsView = ({ id, name }: IList) => {
+export const WidgetSavedListsView = (list: IList) => {
     const t = useI18n()
     const dialog = useDialog()
     const toast = useToast()
@@ -32,12 +31,12 @@ export const WidgetSavedListsView = ({ id, name }: IList) => {
         dialog.open(
             <Confirmation
                 variant="red"
-                title={t('confirm.delete_list.title', { list_name: name })}
+                title={t('confirm.delete_list.title', { list_name: list.name })}
                 message={t('confirm.delete_list.message')}
                 onConfirm={async () => {
                     try {
-                        await deleteList(id)
-                        dispatch(setWidgetActiveList(null))
+                        await deleteList(list.id)
+                        dispatch(resetWidgetActiveList())
                         dialog.close()
                     } catch {
                         toast.error(t('common.error'))
@@ -55,10 +54,10 @@ export const WidgetSavedListsView = ({ id, name }: IList) => {
             onClick: () => {},
         },
         {
-            caption: 'Share',
+            caption: 'Edit',
             value: 'edit',
-            icon: <ShareIcon16 />,
-            onClick: () => {},
+            icon: <EditIcon16 />,
+            onClick: () => dialog.open(<WidgetSavedListsEdit {...list} />),
         },
         {
             caption: 'Delete',
@@ -80,11 +79,12 @@ export const WidgetSavedListsView = ({ id, name }: IList) => {
                     <div className="flex-none">
                         <ArrowLeftIcon16 />
                     </div>
-                    <div className="overflow-hidden text-ellipsis text-nowrap text-big-bold">{name}</div>
+                    <div className="overflow-hidden text-ellipsis text-nowrap text-big-bold">{list.name}</div>
                 </div>
                 <Dropdown items={items} />
             </div>
-            <WidgetSavedListsViewPlaces listId={id} />
+            {list.description && <div>{list.description}</div>}
+            <WidgetSavedListsViewPlaces listId={list.id} />
         </div>
     )
 }

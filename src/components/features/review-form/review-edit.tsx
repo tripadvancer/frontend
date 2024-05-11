@@ -12,7 +12,6 @@ import { ReviewForm } from './review-form'
 export const ReviewEdit = (review: IReview) => {
     const t = useI18n()
     const dialog = useDialog()
-    const toast = useToast()
 
     const [updateReview] = reviewsAPI.useUpdateReviewMutation()
 
