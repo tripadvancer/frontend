@@ -26,6 +26,8 @@ export const widget = {
     'widget.saved.lists.places#other': '{count} places',
     'widget.saved.lists.private': 'Private',
     'widget.saved.lists.public': 'Public',
+    'widget.saved.lists.enable_map_filter': 'Filter map by list',
+    'widget.saved.lists.disable_map_filter': 'Disable map filter',
 
     'widget.random.empty_message': 'No places matcing your filter found.{br}Try changing categories or radius.',
     'widget.random.distance_cation': 'Distance from you',

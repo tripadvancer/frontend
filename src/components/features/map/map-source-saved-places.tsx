@@ -10,10 +10,14 @@ import { placesLayer } from './map-layers'
 
 export const MapSourceSavedPlaces = ({ listId }: { listId: number }) => {
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
-    const { data: places } = listAPI.useGetListPlacesQuery({ listId, selectedCategories })
+    const { data: places, isSuccess } = listAPI.useGetListPlacesQuery({ listId, selectedCategories })
 
     return (
-        <Source id="places-source" type="geojson" data={places}>
+        <Source
+            id="places-source"
+            type="geojson"
+            data={isSuccess ? places : { type: 'FeatureCollection', features: [] }}
+        >
             <Layer {...placesLayer} />
         </Source>
     )
