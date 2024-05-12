@@ -16,11 +16,10 @@ export const MapSourceSavedPlaces = ({ listId }: { listId: number }) => {
     const isMobile = useMediaQuery('(max-width: 639px)')
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
 
+    const { map } = useMap()
     const { data, isSuccess } = listAPI.useGetListPlacesQuery({ listId, selectedCategories })
 
     const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
-
-    const { map } = useMap()
 
     useEffect(() => {
         if (!isMobile && isSuccess && places.length > 0) {
