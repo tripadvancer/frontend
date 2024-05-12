@@ -30,8 +30,8 @@ export const widget = {
     'widget.saved.lists.places#other': '{count} мест',
     'widget.saved.lists.private': 'Приватный',
     'widget.saved.lists.public': 'Публичный',
-    'widget.saved.lists.enable_map_filter': 'Включить режим предпросмотра',
-    'widget.saved.lists.disable_map_filter': 'Отключить режим предпросмотра',
+    'widget.saved.lists.enable_map_filter': 'Фильтровать карту',
+    'widget.saved.lists.disable_map_filter': 'Убрать фильтр',
 
     'widget.random.empty_message': 'Не найдено мест, соответствующих Вашим фильтрам.{br}Попробуйте изменить категории или радиус.',
     'widget.random.distance_cation': 'Расстояние от Вас',
