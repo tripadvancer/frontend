@@ -21,7 +21,7 @@ export const WidgetSavedListsItem = (list: IList) => {
             onClick={handleListClick}
         >
             <div className="flex-1 overflow-hidden">
-                <div className="overflow-hidden text-ellipsis text-nowrap text-big-bold">{list.name}</div>
+                <div className="overflow-hidden text-ellipsis text-big-bold">{list.name}</div>
                 <div className="flex gap-x-1 text-small text-black-40">
                     {t('widget.saved.lists.private')}
                     <span>•</span>

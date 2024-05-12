@@ -77,13 +77,13 @@ export const WidgetSavedListsView = (list: IList) => {
             <div className="flex-center justify-between gap-x-8">
                 <div
                     role="back"
-                    className="hover-animated flex cursor-pointer items-center gap-x-2 overflow-hidden hover:text-blue-active"
+                    className="hover-animated relative cursor-pointer overflow-hidden pl-6 hover:text-blue-active"
                     onClick={handleBackClick}
                 >
-                    <div className="flex-none">
+                    <div className="absolute left-0 top-1">
                         <ArrowLeftIcon16 />
                     </div>
-                    <div className="overflow-hidden text-ellipsis text-nowrap text-big-bold">{list.name}</div>
+                    <div className="overflow-hidden text-ellipsis text-big-bold">{list.name}</div>
                 </div>
                 <Dropdown items={items} />
             </div>
