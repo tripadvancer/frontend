@@ -20,7 +20,7 @@ const FormCheckboxComponent = (props: FormCheckboxProps, ref: Ref<HTMLInputEleme
                     <CheckIcon16 />
                 </div>
             </div>
-            {props.caption}
+            <div className="min-w-0 break-words">{props.caption}</div>
         </label>
     )
 }

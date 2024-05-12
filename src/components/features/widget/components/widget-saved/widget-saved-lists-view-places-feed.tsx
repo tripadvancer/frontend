@@ -5,6 +5,7 @@ import { useMap } from 'react-map-gl/maplibre'
 
 import { useMediaQuery } from 'usehooks-ts'
 
+import { getIsFilterMapBySavedLists } from '@/redux/features/map-slice'
 import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list-api'
@@ -19,6 +20,7 @@ export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) =
     const t = useI18n()
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
     const isMobile = useMediaQuery('(max-width: 639px)')
+    const isMapFilterByList = useAppSelector(getIsFilterMapBySavedLists)
 
     const { map } = useMap()
     const { data, isError, isLoading, isSuccess, refetch } = listAPI.useGetListPlacesQuery({
@@ -28,18 +30,18 @@ export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) =
 
     const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
 
-    // useEffect(() => {
-    //     if (isSuccess && places.length > 0 && !isMobile) {
-    //         if (places.length === 1) {
-    //             const lngLat = arrayToLngLat(places[0].coordinates)
-    //             map?.flyTo(getMapFlyToOptions(lngLat))
-    //             return
-    //         }
+    useEffect(() => {
+        if (!isMobile && isMapFilterByList && isSuccess && places.length > 0) {
+            if (places.length === 1) {
+                const lngLat = arrayToLngLat(places[0].coordinates)
+                map?.flyTo(getMapFlyToOptions(lngLat))
+                return
+            }
 
-    //         const bounds = getBoundsFromCoordinates(places.map(place => place.coordinates))
-    //         map?.fitBounds(bounds)
-    //     }
-    // }, [isSuccess, places, map, isMobile])
+            const bounds = getBoundsFromCoordinates(places.map(place => place.coordinates))
+            map?.fitBounds(bounds)
+        }
+    }, [isMobile, isMapFilterByList, isSuccess, places, map])
 
     if (isError) {
         return <WidgetMessage onAction={refetch} isLoading={isLoading} />
