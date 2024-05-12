@@ -18,7 +18,7 @@ export const widget = {
     'widget.saved.empty_message': 'You have not saved places.{br}Create a new list and start adding places to it.',
     'widget.saved.not_logged_in': 'You are not logged in.{br}{sign_in_link} to see saved places.',
     
-    'widget.saved.lists.empty_message': 'This list is empty.{br}Add place to this list to see it here.',
+    'widget.saved.lists.empty_message': 'This list is empty.{br}Add place to this list or try changing categories.',
     'widget.saved.lists.add_button': 'Create new list',
     'widget.saved.lists.info': 'Select a list to view saved places.',
     'widget.saved.lists.show_only_list': 'On map',
@@ -26,6 +26,8 @@ export const widget = {
     'widget.saved.lists.places#other': '{count} places',
     'widget.saved.lists.private': 'Private',
     'widget.saved.lists.public': 'Public',
+    'widget.saved.lists.enable_map_filter': 'Filter map by list',
+    'widget.saved.lists.disable_map_filter': 'Disable map filter',
 
     'widget.random.empty_message': 'No places matcing your filter found.{br}Try changing categories or radius.',
     'widget.random.distance_cation': 'Distance from you',

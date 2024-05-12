@@ -12,22 +12,16 @@ export const WidgetTogler = () => {
 
     const buttonProps = {
         [WidgetModes.PLACES]: {
-            variant: 'orange',
+            variant: 'orange' as 'blue' | 'orange',
             icon: <RandomIcon24 />,
             onClick: () => dispatch(setWidgetMode(WidgetModes.RANDOM)),
         },
         [WidgetModes.RANDOM]: {
-            variant: 'blue',
+            variant: 'blue' as 'blue' | 'orange',
             icon: <SearchIcon24 />,
             onClick: () => dispatch(setWidgetMode(WidgetModes.PLACES)),
         },
     }
 
-    return (
-        <FormButton
-            variant={buttonProps[widgetMode].variant as 'blue' | 'orange'}
-            icon={buttonProps[widgetMode].icon}
-            onClick={buttonProps[widgetMode].onClick}
-        />
-    )
+    return <FormButton {...buttonProps[widgetMode]} />
 }

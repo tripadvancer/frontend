@@ -1,5 +1,5 @@
 import type { GeoJsonCollection } from '@/utils/types/geo'
-import type { CreateListInputs, IList, IListInfo, UpdateListInputs, UpdatePlaceInListsInputs } from '@/utils/types/list'
+import type { CreateListInputs, IList, UpdateListInputs, UpdatePlaceInListsInputs } from '@/utils/types/list'
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
@@ -11,17 +11,17 @@ export const listAPI = api.injectEndpoints({
             providesTags: ['Lists'],
         }),
 
-        getListInfo: build.query<IListInfo, number>({
-            query: listId => `lists/${listId}`,
-            providesTags: (result, error, listId) => [{ type: 'Lists', id: listId }],
+        getListPlaces: build.query<GeoJsonCollection<IPlacePreview>, { listId: number; selectedCategories: number[] }>({
+            query: ({ listId, selectedCategories }) => ({
+                url: `lists/${listId}/places`,
+                params: {
+                    categories_ids: selectedCategories.join(),
+                },
+            }),
+            providesTags: (result, error, { listId }) => [{ type: 'Lists', id: listId }],
         }),
 
-        getListPlaces: build.query<GeoJsonCollection<IPlacePreview>, number>({
-            query: listId => `lists/${listId}/places`,
-            providesTags: (result, error, listId) => [{ type: 'Lists', id: listId }],
-        }),
-
-        createUserList: build.mutation<{ id: number }, CreateListInputs>({
+        createList: build.mutation<{ id: number }, CreateListInputs>({
             query: inputs => ({
                 url: 'lists',
                 method: 'POST',
@@ -30,13 +30,13 @@ export const listAPI = api.injectEndpoints({
             invalidatesTags: ['Lists'],
         }),
 
-        updateList: build.mutation<void, UpdateListInputs>({
+        updateList: build.mutation<IList, UpdateListInputs>({
             query: inputs => ({
                 url: `lists/${inputs.id}`,
                 method: 'PATCH',
                 body: inputs,
             }),
-            invalidatesTags: ['Lists'],
+            invalidatesTags: (result, error, inputs) => [{ type: 'Lists' }, { type: 'Lists', id: inputs.id }],
         }),
 
         deleteList: build.mutation<void, number>({

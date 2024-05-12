@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { getWidgetState, setWidgetActiveTab } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { WidgetTabsEnum } from '@/utils/enums'
+import { WidgetTabs as WidgetTabsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type TabType = {

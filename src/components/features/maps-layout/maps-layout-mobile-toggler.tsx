@@ -27,12 +27,12 @@ export const MapLayoutMobileToggler = ({ isVisible }: MapLayoutMobileTogglerProp
     const buttonProps = {
         [AppModes.MAP]: {
             icon: <PinIcon16 />,
-            caption: t('widget.toggler.search_and_filters'),
+            children: t('widget.toggler.search_and_filters'),
             onClick: () => dispatch(setAppMode(AppModes.WIDGET)),
         },
         [AppModes.WIDGET]: {
             icon: <MapIcon16 />,
-            caption: t('widget.toggler.map'),
+            children: t('widget.toggler.map'),
             onClick: () => dispatch(setAppMode(AppModes.MAP)),
         },
     }
@@ -41,9 +41,7 @@ export const MapLayoutMobileToggler = ({ isVisible }: MapLayoutMobileTogglerProp
         (style, item) =>
             item && (
                 <animated.div style={style} className="fixed bottom-0 left-1/2 z-40 transform">
-                    <FormButton shape="rounded" icon={buttonProps[appMode].icon} onClick={buttonProps[appMode].onClick}>
-                        {buttonProps[appMode].caption}
-                    </FormButton>
+                    <FormButton shape="rounded" {...buttonProps[appMode]} />
                 </animated.div>
             ),
     )

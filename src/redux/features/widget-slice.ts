@@ -3,11 +3,11 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import type { IList } from '@/utils/types/list'
 
 import type { RootState } from '@/redux/store'
-import { WidgetModes, WidgetTabsEnum } from '@/utils/enums'
+import { WidgetModes, WidgetTabs } from '@/utils/enums'
 
 interface WidgetState {
     mode: WidgetModes
-    activeTab: WidgetTabsEnum
+    activeTab: WidgetTabs
     activeList: IList | null
     isAboutOpened: boolean
     isMenuOpened: boolean
@@ -16,7 +16,7 @@ interface WidgetState {
 
 export const initialState: WidgetState = {
     mode: WidgetModes.PLACES,
-    activeTab: WidgetTabsEnum.ALL,
+    activeTab: WidgetTabs.ALL,
     activeList: null,
     isAboutOpened: false,
     isMenuOpened: false,
@@ -41,20 +41,19 @@ export const widgetSlice = createSlice({
         setWidgetSelectedCategories(state, action: PayloadAction<number[]>) {
             state.selectedCategories = action.payload
         },
-        setWidgetActiveTab(state, action: PayloadAction<WidgetTabsEnum>) {
+        setWidgetActiveTab(state, action: PayloadAction<WidgetTabs>) {
             state.activeTab = action.payload
         },
         setWidgetActiveList(state, action: PayloadAction<IList | null>) {
             state.activeList = action.payload
-        },
-        resetWidgetActiveList(state) {
-            state.activeList = null
         },
     },
 })
 
 export const getWidgetState = (state: RootState) => state.widget
 export const getWidgetMode = (state: RootState) => state.widget.mode
+export const getWidgetActiveTab = (state: RootState) => state.widget.activeTab
+export const getWidgetActiveList = (state: RootState) => state.widget.activeList
 export const getWidgetSelectedCategories = (state: RootState) => state.widget.selectedCategories
 
 export const {
@@ -64,7 +63,6 @@ export const {
     setWidgetSelectedCategories,
     setWidgetActiveTab,
     setWidgetActiveList,
-    resetWidgetActiveList,
 } = widgetSlice.actions
 
 export default widgetSlice.reducer

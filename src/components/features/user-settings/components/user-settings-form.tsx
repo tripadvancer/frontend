@@ -106,6 +106,7 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
                         value={formik.values.info}
                         placeholder={t('placeholder.action.about_user')}
                         maxLength={userInfoMaxLength}
+                        style={{ height: '120px' }}
                         error={formik.errors.info}
                         disabled={isLoading}
                         onChange={formik.handleChange}

@@ -31,7 +31,7 @@ const FormTextareaComponent = (props: FormTextareaProps, ref: Ref<HTMLTextAreaEl
                     {...props}
                     ref={ref}
                     className={classNames(
-                        'hover-animated h-[120px] w-full resize-none rounded-lg border bg-white p-2.5 align-top placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
+                        'hover-animated w-full resize-none rounded-lg border bg-white p-2.5 align-top placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                         {
                             'border-red-100': props.error,
                             'border-black-15 focus:border-black-40': !props.error,
