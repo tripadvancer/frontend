@@ -29,17 +29,17 @@ export const WidgetRandom = () => {
     const [radius, setRadius] = useState(15)
     const [searchRandomPlace, { data, error, isFetching, isSuccess }] = placesAroundAPI.useLazyGetRandomPlaceQuery()
 
-    useEffect(() => {
-        if (userLocation) {
-            if (isMobile) {
-                const viewState = getFlyToViewState(userLocation)
-                dispatch(setMapViewState(viewState))
-                return
-            }
+    // useEffect(() => {
+    //     if (userLocation) {
+    //         if (isMobile) {
+    //             const viewState = getFlyToViewState(userLocation)
+    //             dispatch(setMapViewState(viewState))
+    //             return
+    //         }
 
-            map?.flyTo(getMapFlyToOptions(userLocation))
-        }
-    }, [userLocation, map, dispatch, isMobile])
+    //         map?.flyTo(getMapFlyToOptions(userLocation))
+    //     }
+    // }, [userLocation, map, dispatch, isMobile])
 
     const handleRandomClick = () => {
         if (userLocation) {

@@ -2,7 +2,7 @@
 
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { WidgetTabsEnum } from '@/utils/enums'
+import { WidgetTabs as WidgetTabsEnum } from '@/utils/enums'
 
 import { WidgetAllPlaces } from './widget-all-places'
 import { WidgetSaved } from './widget-saved/widget-saved'

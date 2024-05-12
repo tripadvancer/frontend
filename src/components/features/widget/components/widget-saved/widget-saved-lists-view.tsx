@@ -7,11 +7,10 @@ import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { ArrowLeftIcon16, DeleteIcon16, EditIcon16, VisibilityIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { getMapMode, setMapMode } from '@/redux/features/map-slice'
+import { setIsFilterMapBySavedLists } from '@/redux/features/map-slice'
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useAppDispatch } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list-api'
-import { MapModes } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetSavedListsEdit } from './widget-saved-lists-edit'
@@ -21,7 +20,6 @@ export const WidgetSavedListsView = (list: IList) => {
     const t = useI18n()
     const dialog = useDialog()
     const toast = useToast()
-    const mapMode = useAppSelector(getMapMode)
     const dispatch = useAppDispatch()
 
     const [deleteList] = listAPI.useDeleteListMutation()
@@ -49,23 +47,19 @@ export const WidgetSavedListsView = (list: IList) => {
         )
     }
 
-    const previewItems = {
-        [MapModes.DEFAULT]: {
+    const items: DropdownItemProps[] = [
+        {
             caption: 'Enable preview mode',
             value: 'preview',
             icon: <VisibilityIcon16 />,
-            onClick: () => dispatch(setMapMode(MapModes.SAVED)),
+            onClick: () => dispatch(setIsFilterMapBySavedLists(true)),
         },
-        [MapModes.SAVED]: {
+        {
             caption: 'Disable preview mode',
             value: 'disable',
             icon: <VisibilityOffIcon16 />,
-            onClick: () => dispatch(setMapMode(MapModes.DEFAULT)),
+            onClick: () => dispatch(setIsFilterMapBySavedLists(false)),
         },
-    }
-
-    const items: DropdownItemProps[] = [
-        previewItems[mapMode],
         {
             caption: 'Edit',
             value: 'edit',

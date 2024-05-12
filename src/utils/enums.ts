@@ -38,17 +38,12 @@ export enum AppModes {
     WIDGET = 'WIDGET',
 }
 
-export enum MapModes {
-    DEFAULT = 'DEFAULT',
-    SAVED = 'SAVED',
-}
-
 export enum WidgetModes {
     PLACES = 'PLACES',
     RANDOM = 'RANDOM',
 }
 
-export enum WidgetTabsEnum {
+export enum WidgetTabs {
     ALL = 'ALL',
     SAVED = 'SAVED',
 }
