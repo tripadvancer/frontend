@@ -43,7 +43,7 @@ export enum WidgetModes {
     RANDOM = 'RANDOM',
 }
 
-export enum WidgetTabsEnum {
+export enum WidgetTabs {
     ALL = 'ALL',
     SAVED = 'SAVED',
 }

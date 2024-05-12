@@ -8,6 +8,7 @@ import type { RootState } from '@/redux/store'
 import { getDefaultViewState } from '@/utils/helpers/maps'
 
 interface MapState {
+    isFilterMapBySavedLists: boolean
     viewState: ViewState
     bounds: LngLatBounds | undefined
     placePopupInfo: IPlacePopupInfo | null
@@ -15,6 +16,7 @@ interface MapState {
 }
 
 export const initialState: MapState = {
+    isFilterMapBySavedLists: false,
     viewState: getDefaultViewState(),
     bounds: undefined,
     placePopupInfo: null,
@@ -25,6 +27,9 @@ export const mapSlice = createSlice({
     name: 'map',
     initialState,
     reducers: {
+        setIsFilterMapBySavedLists(state, action: PayloadAction<boolean>) {
+            state.isFilterMapBySavedLists = action.payload
+        },
         setMapViewState(state, action: PayloadAction<ViewState>) {
             state.viewState = action.payload
         },
@@ -47,8 +52,16 @@ export const mapSlice = createSlice({
 })
 
 export const getMapState = (state: RootState) => state.map
+export const getMapBounds = (state: RootState) => state.map.bounds
+export const getIsFilterMapBySavedLists = (state: RootState) => state.map.isFilterMapBySavedLists
 
-export const { setMapViewState, setMapBounds, setMapPlacePopupInfo, setMapLocationPopupInfo, closeMapPopups } =
-    mapSlice.actions
+export const {
+    setIsFilterMapBySavedLists,
+    setMapViewState,
+    setMapBounds,
+    setMapPlacePopupInfo,
+    setMapLocationPopupInfo,
+    closeMapPopups,
+} = mapSlice.actions
 
 export default mapSlice.reducer

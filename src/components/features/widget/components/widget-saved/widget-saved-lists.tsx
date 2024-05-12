@@ -30,5 +30,5 @@ export const WidgetSavedLists = () => {
         )
     }
 
-    return Array.from({ length: 3 }).map((_, i) => <WidgetSavedListsItemSkeleton key={`widget-list-skeleton-${i}`} />)
+    return <WidgetSavedListsItemSkeleton />
 }

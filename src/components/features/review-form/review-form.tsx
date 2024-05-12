@@ -68,6 +68,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         value={formik.values.text}
                         placeholder={t('placeholder.action.review')}
                         maxLength={reviewTextMaxLength}
+                        style={{ height: '120px' }}
                         error={formik.errors.text}
                         disabled={isLoading}
                         onChange={formik.handleChange}
