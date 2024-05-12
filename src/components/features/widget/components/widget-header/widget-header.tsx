@@ -12,7 +12,7 @@ export const WidgetHeader = () => {
             className="sticky left-0 right-0 top-0 z-40 bg-white sm:relative sm:left-auto sm:right-auto sm:top-auto sm:rounded-t-2xl"
         >
             <div className="flex items-center justify-between p-4 sm:p-8">
-                <div className="flex-center gap-x-2">
+                <div className="flex-center gap-x-4">
                     <WidgetHeaderAboutToggler />
                     <WidgetHeaderLogo />
                 </div>
