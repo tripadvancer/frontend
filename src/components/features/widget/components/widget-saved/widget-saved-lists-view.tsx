@@ -87,7 +87,7 @@ export const WidgetSavedListsView = (list: IList) => {
                 </div>
                 <Dropdown items={items} />
             </div>
-            {list.description && <div className="text-black-70">{list.description}</div>}
+            {list.description && <div className="break-words text-black-70">{list.description}</div>}
             <WidgetSavedListsViewPlacesFeed listId={list.id} />
         </div>
     )
