@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback } from 'react'
+import { isMobile } from 'react-device-detect'
 import { LngLat, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
 import type { IPlacePreview } from '@/utils/types/place'
@@ -124,7 +125,9 @@ export const useMapEventHandlers = () => {
                         return
                     }
 
-                    showLocationPopup(event.lngLat.wrap())
+                    if (isMobile) {
+                        showLocationPopup(event.lngLat.wrap())
+                    }
                 }
             }
 

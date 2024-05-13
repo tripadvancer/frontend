@@ -9,7 +9,7 @@ import type { IUser } from '@/utils/types/user'
 
 import { Avatar } from '@/components/ui/avatar'
 import { Dropdown } from '@/components/ui/dropdown'
-import { PointIcon16, ReviewIcon16, SettingsIcon16, SignOutIcon16 } from '@/components/ui/icons'
+import { MapIcon16, PointIcon16, ReviewIcon16, SettingsIcon16, SignOutIcon16 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -32,6 +32,12 @@ export const HeaderUser = ({ user }: { user: IUser }) => {
     return (
         <Dropdown
             items={[
+                {
+                    caption: t('header.user_menu.map'),
+                    value: 'places',
+                    icon: <MapIcon16 />,
+                    onClick: () => router.push(`/users/${user.id}`),
+                },
                 {
                     caption: t('header.user_menu.places'),
                     value: 'places',

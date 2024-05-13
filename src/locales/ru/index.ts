@@ -43,7 +43,7 @@ export default {
     'confirm.yes': 'Подтвердить',
     'confirm.no': 'Отмена',
 
-    'header.user_menu.my_profile': 'Профиль',
+    'header.user_menu.map': 'Моя карта',
     'header.user_menu.places': 'Мои места',
     'header.user_menu.reviews': 'Мои отзывы',
     'header.user_menu.settings': 'Настройки',

@@ -1,4 +1,5 @@
 import { getCountryByCode } from '@/services/countries'
+import { сountriesDictionary } from '@/utils/dictionaries/countries'
 import { getCurrentLocale } from '@/utils/i18n/i18n.server'
 
 import { UserMapCountriesFeedItem } from './user-map-countries-feed-item'
@@ -12,6 +13,7 @@ type UserMapCountriesFeedProps = {
 
 export const UserMapCountriesFeed = ({ countries }: UserMapCountriesFeedProps) => {
     const locale = getCurrentLocale()
+    const worldCoverageInPercent = Math.round((countries.length / сountriesDictionary.length) * 100)
 
     if (countries.length === 0) {
         return (
@@ -24,8 +26,8 @@ export const UserMapCountriesFeed = ({ countries }: UserMapCountriesFeedProps) =
     }
 
     return (
-        <div className="grid grid-cols-5 gap-8">
-            <UserMapCountriesFeedItem variant="blue" count="3%" name="World" />
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-5 sm:gap-8">
+            <UserMapCountriesFeedItem variant="blue" count={`${worldCoverageInPercent}%`} name="World" />
 
             {countries.map(item => {
                 const country = getCountryByCode(item.code)

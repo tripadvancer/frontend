@@ -43,7 +43,7 @@ export default {
     'confirm.yes': 'Confirm',
     'confirm.no': 'Cancel',
 
-    'header.user_menu.my_profile': 'Profile',
+    'header.user_menu.map': 'My map',
     'header.user_menu.places': 'Added places',
     'header.user_menu.reviews': 'Written reviews',
     'header.user_menu.settings': 'Settings',

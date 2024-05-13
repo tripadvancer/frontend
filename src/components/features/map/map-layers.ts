@@ -8,7 +8,7 @@ export const placesLayer: SymbolLayer = {
         // prettier-ignore
         'icon-image': [
             'case',
-            ['==', ['get', 'isSaved'], true], 'pin-blue', // 'pin-blue' if place is favorite
+            ['==', ['get', 'isSaved'], true], 'pin-blue',    // 'pin-blue' if place is saved
             ['==', ['get', 'isVisited'],  true], 'pin-gray', // 'pin-gray' if place is visited
             'pin-orange',                                    // 'pin-orange' by default
         ],
