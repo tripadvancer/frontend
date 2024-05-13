@@ -9,7 +9,7 @@ export const Header = () => {
     return (
         <>
             <div className="absolute left-0 right-0 top-0 -z-10 h-[200px] bg-blue-20" />
-            <header className="sticky top-0 z-40 bg-blue-20">
+            <header className="sticky top-0 z-50 bg-blue-20">
                 <EmailVerification />
                 <div className="container relative flex h-[56px] items-center justify-between gap-x-6 sm:h-[76px]">
                     <HeaderLogo />
