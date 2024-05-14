@@ -56,7 +56,7 @@ export function stringToViewState(coordinates: string): Partial<ViewState> {
     }
 }
 
-export const viewStateToString = (viewState: ViewState): string => {
+export const viewStateToString = (viewState: Partial<ViewState>): string => {
     return `${viewState.latitude?.toFixed(6)}, ${viewState.longitude?.toFixed(6)}`
 }
 

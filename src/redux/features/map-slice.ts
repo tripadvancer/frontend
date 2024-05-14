@@ -30,7 +30,7 @@ export const mapSlice = createSlice({
         setIsFilterMapBySavedLists(state, action: PayloadAction<boolean>) {
             state.isFilterMapBySavedLists = action.payload
         },
-        setMapViewState(state, action: PayloadAction<ViewState>) {
+        setMapViewState(state, action: PayloadAction<Partial<ViewState>>) {
             state.viewState = action.payload
         },
         setMapBounds(state, action: PayloadAction<LngLatBounds>) {
