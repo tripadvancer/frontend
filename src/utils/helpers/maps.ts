@@ -44,7 +44,7 @@ export const stringToArray = (coordinates: string): number[] => {
     return [lngLat.lng, lngLat.lat]
 }
 
-export function stringToViewState(coordinates: string): ViewState {
+export function stringToViewState(coordinates: string): Partial<ViewState> {
     const lngLat = stringToLngLat(coordinates)
 
     return {
@@ -53,33 +53,30 @@ export function stringToViewState(coordinates: string): ViewState {
         zoom: parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM as string),
         pitch: 0,
         bearing: 0,
-        padding: getMapPadding(),
     }
 }
 
-export const viewStateToString = (viewState: ViewState): string => {
+export const viewStateToString = (viewState: Partial<ViewState>): string => {
     return `${viewState.latitude?.toFixed(6)}, ${viewState.longitude?.toFixed(6)}`
 }
 
-export function getDefaultViewState(): ViewState {
+export function getDefaultViewState(): Partial<ViewState> {
     return {
         longitude: parseFloat(process.env.NEXT_PUBLIC_MAP_CENTER_LNG as string),
         latitude: parseFloat(process.env.NEXT_PUBLIC_MAP_CENTER_LAT as string),
         zoom: parseInt(process.env.NEXT_PUBLIC_MAP_ZOOM as string),
         pitch: 0,
         bearing: 0,
-        padding: getMapPadding(),
     }
 }
 
-export function getFlyToViewState(lngLat: LngLat): ViewState {
+export function getFlyToViewState(lngLat: LngLat): Partial<ViewState> {
     return {
         longitude: lngLat.lng,
         latitude: lngLat.lat,
         zoom: parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM || '14', 10),
         pitch: 0,
         bearing: 0,
-        padding: getMapPadding(),
     }
 }
 
@@ -88,19 +85,11 @@ export function getMapFlyToOptions(lngLat: LngLat): FlyToOptions {
         center: lngLat,
         zoom: getMapFlyToZoom(),
         essential: true,
-        padding: getMapPadding(),
     }
 }
 
 export function getMapFlyToZoom(): number {
     return parseInt(process.env.NEXT_PUBLIC_MAP_FLY_TO_ZOOM || '12', 10)
-}
-
-export function getMapPadding(): PaddingOptions {
-    if (isMobile) {
-        return { top: 106, right: 50, bottom: 50, left: 50 }
-    }
-    return { top: 100, right: 564, bottom: 100, left: 100 }
 }
 
 export function getBoundsFromCoordinates(coordinates: number[][]): [[number, number], [number, number]] {

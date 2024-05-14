@@ -14,7 +14,7 @@ export const ReviewRatingPlace = ({ place, rating, createdAt }: IReview) => {
     const country = getCountryByCode(place.countryCode)
 
     return (
-        <div className="overflow-hidden">
+        <div className="flex flex-col gap-y-1 overflow-hidden">
             <Rating value={rating} size={16} />
             <div className="flex flex-col flex-wrap gap-x-2 sm:flex-row">
                 <Link href={`/places/${place.id}`} className="break-words text-small-bold text-black-70">

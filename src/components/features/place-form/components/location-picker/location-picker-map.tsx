@@ -10,8 +10,8 @@ import { MapControl } from '@/components/ui/map-control'
 import { getFlyToViewState } from '@/utils/helpers/maps'
 
 type LocationPickerMapProps = {
-    viewState: ViewState
-    onMove: (viewState: ViewState) => void
+    viewState: Partial<ViewState>
+    onMove: (viewState: Partial<ViewState>) => void
 }
 
 export const LocationPickerMap = ({ viewState, onMove }: LocationPickerMapProps) => {

@@ -9,7 +9,7 @@ import { getDefaultViewState } from '@/utils/helpers/maps'
 
 interface MapState {
     isFilterMapBySavedLists: boolean
-    viewState: ViewState
+    viewState: Partial<ViewState>
     bounds: LngLatBounds | undefined
     placePopupInfo: IPlacePopupInfo | null
     locationPopupInfo: ILocationPopupInfo | null
@@ -30,7 +30,7 @@ export const mapSlice = createSlice({
         setIsFilterMapBySavedLists(state, action: PayloadAction<boolean>) {
             state.isFilterMapBySavedLists = action.payload
         },
-        setMapViewState(state, action: PayloadAction<ViewState>) {
+        setMapViewState(state, action: PayloadAction<Partial<ViewState>>) {
             state.viewState = action.payload
         },
         setMapBounds(state, action: PayloadAction<LngLatBounds>) {
@@ -52,6 +52,7 @@ export const mapSlice = createSlice({
 })
 
 export const getMapState = (state: RootState) => state.map
+export const getMapViewState = (state: RootState) => state.map.viewState
 export const getMapBounds = (state: RootState) => state.map.bounds
 export const getIsFilterMapBySavedLists = (state: RootState) => state.map.isFilterMapBySavedLists
 
