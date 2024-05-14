@@ -146,7 +146,6 @@ export const useMapEventHandlers = () => {
     )
 
     return {
-        ...mapState.viewState,
         placePopupInfo: mapState.placePopupInfo,
         locationPopupInfo: mapState.locationPopupInfo,
         onLoad: handleLoad,

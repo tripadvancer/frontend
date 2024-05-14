@@ -7,6 +7,7 @@ import { useMediaQuery } from 'usehooks-ts'
 
 import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
+import { getMapViewState } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
@@ -29,7 +30,9 @@ type MapProps = {
 export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
     const userLocation = useAppSelector(getUserLocation)
+    const mapViewState = useAppSelector(getMapViewState)
     const isMobile = useMediaQuery('(max-width: 639px)')
+    const isTablet = useMediaQuery('(max-width: 1023px)')
 
     const mapRef = useRef<MapRef>(null)
     const mapContainerRef = useRef<HTMLDivElement>(null)
@@ -53,6 +56,13 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 interactiveLayerIds={[placesLayer.id]}
                 attributionControl={false}
                 reuseMaps
+                initialViewState={{
+                    ...mapViewState,
+                    padding:
+                        isMobile || isTablet
+                            ? { top: 50, right: 50, bottom: 50, left: 50 }
+                            : { top: 100, right: 564, bottom: 100, left: 100 },
+                }}
                 {...handlers}
             >
                 <MapSources isAuth={isAuth} />
