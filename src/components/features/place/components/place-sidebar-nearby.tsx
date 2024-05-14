@@ -21,6 +21,8 @@ export const PlaceSidebarNearby = async ({ id, location }: IPlace) => {
         [],
     )
 
+    console.log(placesAround)
+
     // Filter out the current place
     const placesAroundFiltered = placesAround.filter(place => place.id !== id)
 
