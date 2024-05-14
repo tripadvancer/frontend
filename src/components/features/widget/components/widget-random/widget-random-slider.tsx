@@ -11,7 +11,7 @@ export const WidgetRandomSlider = ({ value, onChange }: WidgetRandomSliderProps)
     return (
         <ReactSlider
             min={1}
-            max={150}
+            max={100}
             step={1}
             value={value}
             className="my-3 h-2"

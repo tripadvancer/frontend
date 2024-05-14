@@ -9,7 +9,7 @@ import { useMediaQuery } from 'usehooks-ts'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetRandomRadius } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { LngLatToArray, getBoundsFromCoordinates, getMapFlyToOptions } from '@/utils/helpers/maps'
+import { LngLatToArray, getBoundsFromCoordinates } from '@/utils/helpers/maps'
 
 import { circleLayer, placesLayer } from './map-layers'
 
@@ -23,7 +23,9 @@ export const MapSourceRandom = () => {
     useEffect(() => {
         if (userLocation && map) {
             const bounds = getBoundsFromCoordinates(geoJson.geometry.coordinates[0])
-            map.fitBounds(bounds)
+            map.fitBounds(bounds, {
+                animate: false,
+            })
         }
     }, [userLocation, isMobile, map, radius])
 
