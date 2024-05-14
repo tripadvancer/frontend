@@ -18,8 +18,8 @@ import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
-import { placesLayer } from './map-layers'
-import { MapSources } from './map-sources'
+import { placesLayer } from './sources/map-layers'
+import { MapSources } from './sources/map-sources'
 
 type MapProps = {
     activeUserId?: number
