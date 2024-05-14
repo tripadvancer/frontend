@@ -60,7 +60,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                     ...mapViewState,
                     padding:
                         isMobile || isTablet
-                            ? { top: 50, right: 50, bottom: 50, left: 50 }
+                            ? { top: 106, right: 50, bottom: 50, left: 50 }
                             : { top: 100, right: 564, bottom: 100, left: 100 },
                 }}
                 {...handlers}
