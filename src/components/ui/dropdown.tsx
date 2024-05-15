@@ -87,15 +87,15 @@ export const Dropdown = ({ children, items, position = 'right', currentItem }: D
     }
 
     return (
-        <div className="relative z-40" ref={ref}>
-            <div className="cursor-pointer" onClick={() => setVisible(!visible)}>
+        <div className="relative" ref={ref}>
+            <div className="relative z-10 cursor-pointer" onClick={() => setVisible(!visible)}>
                 {children ? children : <ActionButton isActivated={visible} />}
             </div>
 
             {visible && (
                 <ul
                     className={classNames(
-                        'absolute top-full z-40 mt-1 min-w-40 rounded-lg bg-white p-1.5 shadow-medium',
+                        'absolute top-full z-20 mt-1 min-w-40 rounded-lg bg-white p-1.5 shadow-medium',
                         {
                             'left-0': position === 'left',
                             'right-0': position === 'right',
