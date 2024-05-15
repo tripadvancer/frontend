@@ -1,6 +1,6 @@
 import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/es/storage'
+import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 import appReducer from '@/redux/features/app-slice'
 import mapReducer from '@/redux/features/map-slice'
@@ -8,6 +8,22 @@ import userReducer from '@/redux/features/user-slice'
 import widgetReducer from '@/redux/features/widget-slice'
 import { api } from '@/redux/services/api'
 import { internalApi } from '@/redux/services/api-internal'
+
+const createNoopStorage = () => {
+    return {
+        getItem(_key: string) {
+            return Promise.resolve(null)
+        },
+        setItem(_key: string, value: string) {
+            return Promise.resolve(value)
+        },
+        removeItem(_key: string) {
+            return Promise.resolve()
+        },
+    }
+}
+
+const storage = typeof window === 'undefined' ? createNoopStorage() : createWebStorage('local')
 
 const persistConfig = {
     key: 'tripadvancer:store:v5.2',
