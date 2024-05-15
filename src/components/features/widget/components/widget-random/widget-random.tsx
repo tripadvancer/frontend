@@ -4,11 +4,7 @@ import { GeoJSONSource, useMap } from 'react-map-gl/maplibre'
 
 import { useToast } from '@/providers/toast-provider'
 import { getUserLocation } from '@/redux/features/user-slice'
-import {
-    getWidgetRandomRadius,
-    getWidgetSelectedCategories,
-    setWidgetRandomRadius,
-} from '@/redux/features/widget-slice'
+import { getWidgetRandomRadius, getWidgetSelectedCategories } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
@@ -20,7 +16,6 @@ import { WidgetRandomSlider } from './widget-random-slider'
 export const WidgetRandom = () => {
     const t = useI18n()
     const toast = useToast()
-    const dispatch = useAppDispatch()
     const userLocation = useAppSelector(getUserLocation)
     const categories = useAppSelector(getWidgetSelectedCategories)
     const radius = useAppSelector(getWidgetRandomRadius)
@@ -63,11 +58,7 @@ export const WidgetRandom = () => {
     return (
         <div className="flex flex-col gap-y-6 sm:gap-y-8">
             <div className="text-caps uppercase">{t('widget.random.distance_cation')}</div>
-            {/* prettier-ignore */}
-            <WidgetRandomSlider
-                value={radius}
-                onChange={(value) => dispatch(setWidgetRandomRadius(value))}
-            />
+            <WidgetRandomSlider />
             {/* prettier-ignore */}
             <WidgetRandomButton
                 isLoading={isFetching}
