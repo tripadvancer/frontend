@@ -11,10 +11,10 @@ export const PlaceSidebarActionsSave = ({ place, isAuth }: { place: IPlace; isAu
     const t = useI18n()
 
     const { data: meta } = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !isAuth })
-    const { toggle } = useSavePlace(place.id)
+    const { onSave } = useSavePlace(place.id)
 
     return (
-        <div className="link flex items-center gap-x-2 align-top" onClick={toggle}>
+        <div className="link flex items-center gap-x-2 align-top" onClick={onSave}>
             {!!meta?.isSaved ? <BookmarkFillIcon24 /> : <BookmarkIcon24 />}
             {t('place.actions.save')}
         </div>

@@ -29,11 +29,6 @@ export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' 
     coordinates: number[]
 }
 
-// prettier-ignore
-export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isSaved'> & {
-    coordinates: number[]
-}
-
 export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & { distance: number }
 
 export type ILocationPreview = {

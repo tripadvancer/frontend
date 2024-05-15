@@ -5,7 +5,7 @@ import { useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
 
-import type { IPlacePopupInfo } from '@/utils/types/map'
+import { IPlacePreview } from '@/utils/types/place'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
@@ -17,7 +17,7 @@ import { MapPopupPlaceActions } from './map-popup-place-actions'
 
 type MapPopupPlaceProps = {
     mapRef: RefObject<HTMLDivElement>
-    place: IPlacePopupInfo
+    place: IPlacePreview
 }
 
 export const MapPopupPlace = ({ mapRef, place }: MapPopupPlaceProps) => {

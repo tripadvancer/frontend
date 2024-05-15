@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Layer, Source, useMap } from 'react-map-gl/maplibre'
 
 import { circle } from '@turf/turf'
+import { Feature, GeoJsonProperties, Polygon } from 'geojson'
 import { useMediaQuery } from 'usehooks-ts'
 
 import { getUserLocation } from '@/redux/features/user-slice'
@@ -20,8 +21,24 @@ export const MapSourceRandom = () => {
 
     const { map } = useMap()
 
+    const [geoJson, setGeoJson] = useState<Feature<Polygon, GeoJsonProperties>>({
+        type: 'Feature',
+        geometry: {
+            type: 'Polygon',
+            coordinates: [],
+        },
+        properties: {},
+    })
+
     useEffect(() => {
         if (userLocation && map) {
+            const geoJson = circle(LngLatToArray(userLocation), radius, {
+                steps: 50,
+                units: 'kilometers',
+            })
+
+            setGeoJson(geoJson)
+
             const bounds = getBoundsFromCoordinates(geoJson.geometry.coordinates[0])
             map.fitBounds(bounds, {
                 animate: false,
@@ -32,11 +49,6 @@ export const MapSourceRandom = () => {
     if (!userLocation) {
         return null
     }
-
-    const geoJson = circle(LngLatToArray(userLocation), radius, {
-        steps: 50,
-        units: 'kilometers',
-    })
 
     return (
         <>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 
-import type { IRandomPlace } from '@/utils/types/place'
+import type { IPlacePreview } from '@/utils/types/place'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
@@ -10,7 +10,7 @@ import { ImageVariants } from '@/utils/enums'
 
 import { WidgetRandomPlaceActions } from './widget-random-place-actions'
 
-export const WidgetRandomPlace = (place: IRandomPlace) => {
+export const WidgetRandomPlace = (place: IPlacePreview) => {
     return (
         <div className="flex flex-col gap-y-2">
             <Link href={`places/${place.id}`} className="link-black flex flex-col gap-y-2" target="_blank">

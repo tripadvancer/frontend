@@ -1,12 +1,12 @@
 'use client'
 
-import { IPlacePreview, IRandomPlace } from '@/utils/types/place'
+import { IPlacePreview } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
 import { BookmarkFillIcon16, BookmarkIcon16 } from '@/components/ui/icons'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
 
-export const PlaceButtonSave = (place: IPlacePreview | IRandomPlace) => {
+export const PlaceButtonSave = (place: IPlacePreview) => {
     const { onSave } = useSavePlace(place.id)
 
     return (

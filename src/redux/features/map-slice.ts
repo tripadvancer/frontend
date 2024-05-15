@@ -2,7 +2,7 @@ import type { LngLatBounds, ViewState } from 'react-map-gl/maplibre'
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import type { ILocationPopupInfo, IPlacePopupInfo } from '@/utils/types/map'
+import type { ILocationPopupInfo } from '@/utils/types/map'
 import { IPlacePreview } from '@/utils/types/place'
 
 import type { RootState } from '@/redux/store'

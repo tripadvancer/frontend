@@ -34,6 +34,7 @@ export const PlaceSidebarActionsShowOnMap = ({ place, isAuth }: { place: IPlace;
                 ...place,
                 coordinates: place.location.coordinates,
                 isSaved: meta?.isSaved || false,
+                isVisited: meta?.isVisited || false,
             }),
         )
 

@@ -7,8 +7,7 @@ import { GeoJSONSource, LngLatLike, useMap } from 'react-map-gl/maplibre'
 import polyline from '@mapbox/polyline'
 import { CostingModel, RouteResponse } from '@stadiamaps/api'
 
-import type { LngLat } from '@/utils/types/geo'
-import { IPlacePreview, IRandomPlace } from '@/utils/types/place'
+import { IPlacePreview } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
 import { useToast } from '@/providers/toast-provider'
@@ -19,7 +18,7 @@ import { arrayToLngLat } from '@/utils/helpers/maps'
 import { buildRoute } from '@/utils/helpers/route'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-export const PlaceButtonRoute = (place: IPlacePreview | IRandomPlace) => {
+export const PlaceButtonRoute = (place: IPlacePreview) => {
     const t = useI18n()
     const toast = useToast()
     const dispatch = useAppDispatch()
