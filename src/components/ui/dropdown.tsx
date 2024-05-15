@@ -83,8 +83,6 @@ export const Dropdown = ({ variant = 'default', children, items, position = 'rig
         const listHeight = (listRef.current?.clientHeight || 0) + (toggleRef.current?.clientHeight || 0) + GAP
         const toggleTop = toggleRef.current?.getBoundingClientRect().top || 0
 
-        console.log(window.innerHeight, toggleTop, listHeight)
-
         if (window.innerHeight - toggleTop < listHeight) {
             setStyle({ bottom: `calc(100% + ${GAP}px)` })
         } else {
