@@ -23,7 +23,7 @@ export const WidgetPlacesFeedItem = (place: IPlacePreview) => {
             <div className="flex min-w-0 flex-1 flex-col justify-between text-black-100 peer-hover:text-blue-active">
                 <Link
                     href={`places/${place.id}`}
-                    className="line-clamp-2 break-words font-medium text-inherit"
+                    className="line-clamp-2 flex-none break-words font-medium text-inherit"
                     target="_blank"
                 >
                     {place.title}

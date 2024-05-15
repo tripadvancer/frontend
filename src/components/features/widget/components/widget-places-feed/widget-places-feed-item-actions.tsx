@@ -25,13 +25,13 @@ export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
             <Dropdown
                 items={[
                     {
-                        caption: 'Show on map',
+                        caption: t('place.actions.show_on_map'),
                         value: 'show_on_map',
                         icon: <PinIcon16 />,
                         onClick: showOnMap,
                     },
                     {
-                        caption: 'Save',
+                        caption: t('place.actions.save'),
                         value: 'save',
                         icon: place.isSaved ? <BookmarkFillIcon16 /> : <BookmarkIcon16 />,
                         onClick: toggle,
