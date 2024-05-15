@@ -19,6 +19,7 @@ import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
 import { placesLayer } from './sources/map-layers'
+import { MapSourceRoute } from './sources/map-source-route'
 import { MapSources } from './sources/map-sources'
 
 type MapProps = {
@@ -65,6 +66,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 }}
                 {...handlers}
             >
+                <MapSourceRoute />
                 <MapSources isAuth={isAuth} />
 
                 <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">

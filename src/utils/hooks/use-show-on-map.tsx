@@ -17,7 +17,7 @@ import { AppModes } from '../enums'
 import { arrayToLngLat, getMapFlyToOptions } from '../helpers/maps'
 
 interface useShowOnMapInterface {
-    showOnMap: () => void
+    onShowOnMap: () => void
 }
 
 export function useShowOnMap(place: IPlacePreview | IRandomPlace): useShowOnMapInterface {
@@ -26,11 +26,11 @@ export function useShowOnMap(place: IPlacePreview | IRandomPlace): useShowOnMapI
 
     const { map } = useMap()
 
-    const showOnMap = async (): Promise<void> => {
+    const onShowOnMap = async (): Promise<void> => {
         dispatch(setAppMode(AppModes.MAP))
         dispatch(setMapPlacePopupInfo(place))
         map?.flyTo(getMapFlyToOptions(lngLat))
     }
 
-    return { showOnMap }
+    return { onShowOnMap }
 }

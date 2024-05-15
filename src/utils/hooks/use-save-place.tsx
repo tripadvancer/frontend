@@ -7,13 +7,13 @@ import { SavePlace } from '@/components/features/save-place/save-space'
 import { useDialog } from '@/providers/dialog-provider'
 
 interface useSavePlaceInterface {
-    toggle: () => void
+    onSave: () => void
 }
 
 export function useSavePlace(placeId: number): useSavePlaceInterface {
     const dialog = useDialog()
 
-    const toggle = async (): Promise<void> => {
+    const onSave = async (): Promise<void> => {
         const doesSessionExist = await Session.doesSessionExist()
 
         if (!doesSessionExist) {
@@ -24,5 +24,5 @@ export function useSavePlace(placeId: number): useSavePlaceInterface {
         dialog.open(<SavePlace placeId={placeId} />)
     }
 
-    return { toggle }
+    return { onSave }
 }

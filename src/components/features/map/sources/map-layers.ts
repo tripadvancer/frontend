@@ -1,4 +1,4 @@
-import { FillLayer, SymbolLayer } from 'react-map-gl/maplibre'
+import { FillLayer, LineLayer, SymbolLayer } from 'react-map-gl/maplibre'
 
 export const placesLayer: SymbolLayer = {
     id: 'places-layer',
@@ -25,5 +25,20 @@ export const circleLayer: FillLayer = {
     paint: {
         'fill-color': '#ff7d00',
         'fill-opacity': 0.25,
+    },
+}
+
+export const routeLayer: LineLayer = {
+    id: 'route-layer',
+    source: 'route-source',
+    type: 'line',
+    layout: {
+        'line-join': 'round',
+        'line-cap': 'round',
+    },
+    paint: {
+        'line-color': '#020e19',
+        'line-width': 4,
+        'line-dasharray': [2, 2],
     },
 }
