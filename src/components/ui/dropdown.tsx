@@ -62,13 +62,14 @@ const DropdownItem = (props: DropdownItemProps) => {
 }
 
 type DropdownProps = {
+    variant?: 'default' | 'white'
     items: DropdownItemProps[]
     position?: 'left' | 'right' | 'center'
     children?: ReactNode
     currentItem?: string
 }
 
-export const Dropdown = ({ children, items, position = 'right', currentItem }: DropdownProps) => {
+export const Dropdown = ({ variant = 'default', children, items, position = 'right', currentItem }: DropdownProps) => {
     const GAP = 4
 
     const containerRef = useRef<HTMLDivElement>(null)

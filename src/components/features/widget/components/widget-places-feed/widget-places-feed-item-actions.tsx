@@ -3,9 +3,8 @@
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { ChooseNavigate } from '@/components/features/choose-navigate/choose-navigate'
-import { Dropdown } from '@/components/ui/dropdown'
 import { FormButton } from '@/components/ui/form-button'
-import { BookmarkFillIcon16, BookmarkIcon16, MoreIcon16, PinIcon16 } from '@/components/ui/icons'
+import { BookmarkFillIcon16, BookmarkIcon16, PinIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
@@ -22,24 +21,14 @@ export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
 
     return (
         <div className="flex gap-x-1">
-            <Dropdown
-                items={[
-                    {
-                        caption: t('place.actions.show_on_map'),
-                        value: 'show_on_map',
-                        icon: <PinIcon16 />,
-                        onClick: showOnMap,
-                    },
-                    {
-                        caption: t('place.actions.save'),
-                        value: 'save',
-                        icon: place.isSaved ? <BookmarkFillIcon16 /> : <BookmarkIcon16 />,
-                        onClick: toggle,
-                    },
-                ]}
-            >
-                <FormButton type="stroke" size="small" icon={<MoreIcon16 />} className="flex-none" />
-            </Dropdown>
+            <FormButton type="stroke" size="small" icon={<PinIcon16 />} className="flex-none" onClick={showOnMap} />
+            <FormButton
+                type="stroke"
+                size="small"
+                icon={place.isSaved ? <BookmarkFillIcon16 /> : <BookmarkIcon16 />}
+                className="flex-none"
+                onClick={toggle}
+            />
             <FormButton type="stroke" size="small" onClick={() => dialog.open(<ChooseNavigate lngLat={lngLat} />)}>
                 {t('common.action.route')}
             </FormButton>
