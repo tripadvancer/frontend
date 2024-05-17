@@ -37,6 +37,7 @@ export { default as SignOutIcon24 } from '/public/images/icons/24/sign-out.svg'
 export { default as StarIcon24 } from '/public/images/icons/24/star.svg'
 export { default as TwitterIcon24 } from '/public/images/icons/24/twitter.svg'
 export { default as UserIcon24 } from '/public/images/icons/24/user.svg'
+export { default as YoutubeIcon24 } from '/public/images/icons/24/youtube.svg'
 
 // Icon 16x16
 export { default as AlertIcon16 } from '/public/images/icons/16/alert.svg'
