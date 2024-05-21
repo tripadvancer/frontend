@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 
 import classNames from 'classnames'
 import { useOnClickOutside } from 'usehooks-ts'
@@ -62,57 +62,79 @@ const DropdownItem = (props: DropdownItemProps) => {
 }
 
 type DropdownProps = {
+    variant?: 'default' | 'white'
     items: DropdownItemProps[]
     position?: 'left' | 'right' | 'center'
     children?: ReactNode
     currentItem?: string
 }
 
-export const Dropdown = ({ children, items, position = 'right', currentItem }: DropdownProps) => {
-    const ref = useRef<HTMLDivElement>(null)
+export const Dropdown = ({ variant = 'default', children, items, position = 'right', currentItem }: DropdownProps) => {
+    const GAP = 4
 
-    const [visible, setVisible] = useState<boolean>(false)
+    const containerRef = useRef<HTMLDivElement>(null)
+    const toggleRef = useRef<HTMLDivElement>(null)
+    const listRef = useRef<HTMLUListElement>(null)
 
-    useOnClickOutside(ref, () => {
-        setVisible(false)
+    const [style, setStyle] = useState<React.CSSProperties>({})
+    const [isVisible, setIsVisible] = useState<boolean>(false)
+
+    const determinatePosition = () => {
+        const listHeight = (listRef.current?.clientHeight || 0) + (toggleRef.current?.clientHeight || 0) + GAP
+        const toggleTop = toggleRef.current?.getBoundingClientRect().top || 0
+
+        if (window.innerHeight - toggleTop < listHeight) {
+            setStyle({ bottom: `calc(100% + ${GAP}px)` })
+        } else {
+            setStyle({ top: `calc(100% + ${GAP}px)` })
+        }
+    }
+
+    useEffect(() => {
+        if (isVisible) {
+            determinatePosition()
+        }
+    }, [isVisible])
+
+    useOnClickOutside(containerRef, () => {
+        setIsVisible(false)
     })
 
     useKeypress(Keys.ESCAPE, () => {
-        setVisible(false)
+        setIsVisible(false)
     })
 
-    const handleClick = (item: DropdownItemProps) => {
-        setVisible(false)
+    const handleItemClick = (item: DropdownItemProps) => {
+        setIsVisible(false)
         item.onClick()
     }
 
     return (
-        <div className="relative z-40" ref={ref}>
-            <div className="cursor-pointer" onClick={() => setVisible(!visible)}>
-                {children ? children : <ActionButton isActivated={visible} />}
+        <div ref={containerRef} className="relative">
+            <div ref={toggleRef} className="relative z-10 cursor-pointer" onClick={() => setIsVisible(!isVisible)}>
+                {children ? children : <ActionButton isActivated={isVisible} />}
             </div>
 
-            {visible && (
-                <ul
-                    className={classNames(
-                        'absolute top-full z-40 mt-1 min-w-40 rounded-lg bg-white p-1.5 shadow-medium',
-                        {
-                            'left-0': position === 'left',
-                            'right-0': position === 'right',
-                            'left-1/2 -translate-x-1/2': position === 'center',
-                        },
-                    )}
-                >
-                    {items.map(item => (
-                        <DropdownItem
-                            key={`dropdown-item-${item.value}`}
-                            {...item}
-                            isCurrent={item.value === currentItem}
-                            onClick={() => handleClick(item)}
-                        />
-                    ))}
-                </ul>
-            )}
+            <ul
+                ref={listRef}
+                className={classNames('absolute z-20 min-w-40 rounded-lg bg-white p-1.5 shadow-medium', {
+                    block: isVisible,
+                    hidden: !isVisible,
+                    'left-0': position === 'left',
+                    'right-0': position === 'right',
+                    'left-1/2 -translate-x-1/2': position === 'center',
+                })}
+                style={style}
+            >
+                {items.map(item => (
+                    <DropdownItem
+                        key={`dropdown-item-${item.value}`}
+                        {...item}
+                        isCurrent={item.value === currentItem}
+                        onClick={() => handleItemClick(item)}
+                    />
+                ))}
+            </ul>
         </div>
     )
 }

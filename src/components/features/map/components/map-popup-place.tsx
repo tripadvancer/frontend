@@ -7,12 +7,13 @@ import Link from 'next/link'
 
 import type { IPlacePopupInfo } from '@/utils/types/map'
 
-import { PlacePreviewActions } from '@/components/ui/place-preview-actions'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { arrayToLngLat } from '@/utils/helpers/maps'
+
+import { MapPopupPlaceActions } from './map-popup-place-actions'
 
 type MapPopupPlaceProps = {
     mapRef: RefObject<HTMLDivElement>
@@ -53,7 +54,7 @@ export const MapPopupPlace = ({ mapRef, place }: MapPopupPlaceProps) => {
                 </Link>
                 <div className="flex items-center justify-between">
                     <PlacePreviewRating {...place} />
-                    <PlacePreviewActions {...place} />
+                    <MapPopupPlaceActions {...place} />
                 </div>
             </div>
         </Popup>

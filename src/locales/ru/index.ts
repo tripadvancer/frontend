@@ -79,7 +79,7 @@ export default {
     'common.action.route': 'Маршрут',
     'common.action.locate_me': 'Найти меня',
     'common.action.go_to_map': 'На карту',
-    'common.action.save': 'Сохранить',
+    'common.action.save_place': 'Сохранить',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',

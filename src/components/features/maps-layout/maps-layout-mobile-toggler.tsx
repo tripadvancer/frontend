@@ -41,6 +41,8 @@ export const MapLayoutMobileToggler = ({ isVisible }: MapLayoutMobileTogglerProp
         (style, item) =>
             item && (
                 <animated.div style={style} className="fixed bottom-0 left-1/2 z-40 transform">
+                    {/* todo: maybe add a shadow if filter is applied */}
+                    {/* <div className="shadow-red absolute bottom-0 left-0 right-0 top-0 animate-pulse rounded-full" /> */}
                     <FormButton shape="rounded" {...buttonProps[appMode]} />
                 </animated.div>
             ),

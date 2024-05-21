@@ -35,6 +35,7 @@ export const widget = {
     'widget.random.button': 'Find a random place',
     'widget.random.button_coundown': 'Find a random place in ({countdown})',
     'widget.random.error.not_location': 'To find a random place around you — allow access to your location or select “I am here” on the map.',
+    'widget.random.distance': '{distance} km',
     
     'widget.toggler.map': 'Map',
     'widget.toggler.search_and_filters': 'Search and filters',

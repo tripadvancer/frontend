@@ -9,6 +9,7 @@ interface WidgetState {
     mode: WidgetModes
     activeTab: WidgetTabs
     activeList: IList | null
+    randomRadius: number
     isAboutOpened: boolean
     isMenuOpened: boolean
     selectedCategories: number[]
@@ -18,6 +19,7 @@ export const initialState: WidgetState = {
     mode: WidgetModes.PLACES,
     activeTab: WidgetTabs.ALL,
     activeList: null,
+    randomRadius: 15,
     isAboutOpened: false,
     isMenuOpened: false,
     selectedCategories: [],
@@ -30,6 +32,15 @@ export const widgetSlice = createSlice({
         setWidgetMode(state, action: PayloadAction<WidgetModes>) {
             state.mode = action.payload
         },
+        setWidgetActiveTab(state, action: PayloadAction<WidgetTabs>) {
+            state.activeTab = action.payload
+        },
+        setWidgetActiveList(state, action: PayloadAction<IList | null>) {
+            state.activeList = action.payload
+        },
+        setWidgetRandomRadius(state, action: PayloadAction<number>) {
+            state.randomRadius = action.payload
+        },
         toggleWidgetAbout(state) {
             state.isMenuOpened = false
             state.isAboutOpened = !state.isAboutOpened
@@ -41,12 +52,6 @@ export const widgetSlice = createSlice({
         setWidgetSelectedCategories(state, action: PayloadAction<number[]>) {
             state.selectedCategories = action.payload
         },
-        setWidgetActiveTab(state, action: PayloadAction<WidgetTabs>) {
-            state.activeTab = action.payload
-        },
-        setWidgetActiveList(state, action: PayloadAction<IList | null>) {
-            state.activeList = action.payload
-        },
     },
 })
 
@@ -54,15 +59,17 @@ export const getWidgetState = (state: RootState) => state.widget
 export const getWidgetMode = (state: RootState) => state.widget.mode
 export const getWidgetActiveTab = (state: RootState) => state.widget.activeTab
 export const getWidgetActiveList = (state: RootState) => state.widget.activeList
+export const getWidgetRandomRadius = (state: RootState) => state.widget.randomRadius
 export const getWidgetSelectedCategories = (state: RootState) => state.widget.selectedCategories
 
 export const {
     setWidgetMode,
+    setWidgetActiveTab,
+    setWidgetActiveList,
+    setWidgetRandomRadius,
     toggleWidgetAbout,
     toggleWidgetMenu,
     setWidgetSelectedCategories,
-    setWidgetActiveTab,
-    setWidgetActiveList,
 } = widgetSlice.actions
 
 export default widgetSlice.reducer

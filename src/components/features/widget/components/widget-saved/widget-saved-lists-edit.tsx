@@ -29,7 +29,6 @@ export const WidgetSavedListsEdit = (list: IList) => {
     const handleSubmit = async (inputs: UpdateListInputs) => {
         try {
             const updatedList = await updateList(inputs).unwrap()
-            console.log(updatedList)
             dispatch(setWidgetActiveList(updatedList))
             dialog.close()
         } catch {
