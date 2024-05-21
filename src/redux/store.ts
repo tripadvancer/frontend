@@ -26,7 +26,7 @@ const createNoopStorage = () => {
 const storage = typeof window === 'undefined' ? createNoopStorage() : createWebStorage('local')
 
 const persistConfig = {
-    key: 'tripadvancer:store:v5.2',
+    key: 'tripadvancer:store:v5.3',
     storage,
     whitelist: ['map', 'user', 'widget'],
 }
