@@ -4,9 +4,10 @@ import Link from 'next/link'
 
 import type { IPlacePreview } from '@/utils/types/place'
 
-import { PlacePreviewActions } from '@/components/ui/place-preview-actions'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
+
+import { WidgetPlacesFeedItemActions } from './widget-places-feed-item-actions'
 
 export const WidgetPlacesFeedItem = (place: IPlacePreview) => {
     return (
@@ -19,17 +20,17 @@ export const WidgetPlacesFeedItem = (place: IPlacePreview) => {
                     className="aspect-square w-20 rounded-lg"
                 />
             </Link>
-            <div className="flex flex-1 flex-col justify-between overflow-hidden text-black-100 peer-hover:text-blue-active">
+            <div className="flex min-w-0 flex-1 flex-col justify-between text-black-100 peer-hover:text-blue-active">
                 <Link
                     href={`places/${place.id}`}
-                    className="line-clamp-2 break-words font-medium text-inherit"
+                    className="line-clamp-2 flex-none break-words font-medium text-inherit"
                     target="_blank"
                 >
                     {place.title}
                 </Link>
                 <div className="flex items-center justify-between">
                     <PlacePreviewRating {...place} />
-                    <PlacePreviewActions {...place} />
+                    <WidgetPlacesFeedItemActions {...place} />
                 </div>
             </div>
         </div>

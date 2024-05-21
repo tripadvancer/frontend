@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { LngLatBoundsLike, useMap } from 'react-map-gl/maplibre'
+import { useMap } from 'react-map-gl/maplibre'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
@@ -40,8 +40,6 @@ export const WidgetSearch = () => {
     const [search, { data, isFetching, isSuccess }] = searchAPI.useLazySearchQuery()
 
     const debouncedSearch = useDebounceCallback(search, 500)
-    const debouncedFlyTo = useDebounceCallback((lngLat: LngLat) => map?.flyTo(getMapFlyToOptions(lngLat)), 250)
-    const debouncedFitBounds = useDebounceCallback((bounds: LngLatBoundsLike) => map?.fitBounds(bounds), 250)
 
     useEffect(() => {
         if (value.length >= 2) {
@@ -75,18 +73,18 @@ export const WidgetSearch = () => {
         dispatch(setAppMode(AppModes.MAP))
 
         if (item.type === 'location') {
-            debouncedFlyTo(item.coordinates)
+            map?.flyTo(getMapFlyToOptions(item.coordinates))
             dispatch(setMapLocationPopupInfo(item.properties as ILocationPreview))
         }
 
         if (item.type === 'place') {
-            debouncedFlyTo(item.coordinates)
+            map?.flyTo(getMapFlyToOptions(item.coordinates))
             dispatch(setMapPlacePopupInfo(item.properties as IPlacePreview))
         }
 
         if (item.type === 'country') {
             const bounds = (item.properties as ICountryDict).bounds
-            debouncedFitBounds(bounds)
+            map?.fitBounds(bounds)
         }
 
         setIsAutocompleteVisible(false)

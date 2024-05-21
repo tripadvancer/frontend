@@ -39,6 +39,7 @@ export const widget = {
     'widget.random.button': 'Найти случайное место',
     'widget.random.button_coundown': 'Найти случайное место ({countdown})',
     'widget.random.error.not_location': 'Чтобы найти случайное место — нужно разрешить доступ к вашему местоположению или выбрать “Я здесь“ на карте.',
+    'widget.random.distance': '{distance} км',
     
     'widget.toggler.map': 'Карта',
     'widget.toggler.search_and_filters': 'Поиск и фильтры',

@@ -1,3 +1,5 @@
+import { ErrorBoundary } from 'react-error-boundary'
+
 import { getPlaceById } from '@/services/places'
 
 import { PlaceHeader } from './components/place-header'
@@ -7,7 +9,7 @@ import { PlaceMainPhotos } from './components/place-main-photos'
 import { PlaceMainReviewsWithAuth } from './components/place-main-reviews-with-auth'
 import { PlaceSidebarActionsWithAuth } from './components/place-sidebar-actions-with-auth'
 import { PlaceSidebarAuthor } from './components/place-sidebar-author'
-// import { PlaceSidebarNearby } from './components/place-sidebar-nearby'
+import { PlaceSidebarNearby } from './components/place-sidebar-nearby'
 import { PlaceSidebarRating } from './components/place-sidebar-rating'
 
 export const Place = async ({ placeId }: { placeId: string }) => {
@@ -25,7 +27,9 @@ export const Place = async ({ placeId }: { placeId: string }) => {
                                 <PlaceSidebarActionsWithAuth place={place} />
                             </div>
                             <PlaceSidebarAuthor {...place} />
-                            {/* <PlaceSidebarNearby {...place} /> */}
+                            <ErrorBoundary fallback={null}>
+                                <PlaceSidebarNearby {...place} />
+                            </ErrorBoundary>
                         </div>
 
                         <div className="flex min-w-0 flex-1 flex-col gap-y-16">

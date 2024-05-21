@@ -1,16 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useMap } from 'react-map-gl/maplibre'
+import { GeoJSONSource, useMap } from 'react-map-gl/maplibre'
 
-import { useMediaQuery } from 'usehooks-ts'
-
-import { setMapViewState } from '@/redux/features/map-slice'
+import { useToast } from '@/providers/toast-provider'
 import { getUserLocation } from '@/redux/features/user-slice'
-import { getWidgetState } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { getWidgetRandomRadius, getWidgetSelectedCategories } from '@/redux/features/widget-slice'
+import { useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
-import { getFlyToViewState, getMapFlyToOptions } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetRandomButton } from './widget-random-button'
@@ -19,46 +15,50 @@ import { WidgetRandomSlider } from './widget-random-slider'
 
 export const WidgetRandom = () => {
     const t = useI18n()
-    const dispatch = useAppDispatch()
-    const widgetState = useAppSelector(getWidgetState)
+    const toast = useToast()
     const userLocation = useAppSelector(getUserLocation)
-    const isMobile = useMediaQuery('(max-width: 639px)')
+    const categories = useAppSelector(getWidgetSelectedCategories)
+    const radius = useAppSelector(getWidgetRandomRadius)
 
     const { map } = useMap()
 
-    const [radius, setRadius] = useState(15)
     const [searchRandomPlace, { data, error, isFetching, isSuccess }] = placesAroundAPI.useLazyGetRandomPlaceQuery()
 
-    useEffect(() => {
+    const handleRandomClick = async () => {
         if (userLocation) {
-            if (isMobile) {
-                const viewState = getFlyToViewState(userLocation)
-                dispatch(setMapViewState(viewState))
-                return
+            try {
+                const randomPlace = await searchRandomPlace({
+                    ...userLocation,
+                    radius: radius * 1000, // convert to meters
+                    categories,
+                }).unwrap()
+
+                if (randomPlace) {
+                    const source = map?.getSource('random-place-source') as GeoJSONSource
+                    source.setData({
+                        type: 'FeatureCollection',
+                        features: [
+                            {
+                                type: 'Feature',
+                                geometry: {
+                                    type: 'Point',
+                                    coordinates: randomPlace.coordinates,
+                                },
+                                properties: randomPlace,
+                            },
+                        ],
+                    })
+                }
+            } catch (error) {
+                toast.error(t('common.error'))
             }
-
-            map?.flyTo(getMapFlyToOptions(userLocation))
-        }
-    }, [userLocation, map, dispatch, isMobile])
-
-    const handleRandomClick = () => {
-        if (userLocation) {
-            searchRandomPlace({
-                ...userLocation,
-                radius: radius * 1000, // km to m
-                categories: widgetState.selectedCategories,
-            })
         }
     }
 
     return (
         <div className="flex flex-col gap-y-6 sm:gap-y-8">
             <div className="text-caps uppercase">{t('widget.random.distance_cation')}</div>
-            {/* prettier-ignore */}
-            <WidgetRandomSlider
-                value={radius}
-                onChange={setRadius}
-            />
+            <WidgetRandomSlider />
             {/* prettier-ignore */}
             <WidgetRandomButton
                 isLoading={isFetching}

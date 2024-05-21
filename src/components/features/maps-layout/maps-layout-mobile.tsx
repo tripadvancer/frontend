@@ -25,12 +25,20 @@ export const MapsLayoutMobile = ({ header, map, widget, widgetRandom }: MapsLayo
 
     return (
         <>
-            <div className={classNames('block size-full', { hidden: appMode === AppModes.MAP })}>
+            <div
+                className={classNames('visible size-full', {
+                    'invisible fixed -top-full': appMode === AppModes.MAP,
+                })}
+            >
                 {widgetMode === WidgetModes.PLACES && <MapsLayoutMobileWidget widget={widget} />}
                 {widgetMode === WidgetModes.RANDOM && <MapsLayoutMobileWidget widget={widgetRandom} />}
             </div>
 
-            <div className={classNames('block size-full', { hidden: appMode === AppModes.WIDGET })}>
+            <div
+                className={classNames('visible size-full', {
+                    'invisible fixed -top-full': appMode === AppModes.WIDGET,
+                })}
+            >
                 <MapsLayoutMobileMap header={header} map={map} />
             </div>
         </>
