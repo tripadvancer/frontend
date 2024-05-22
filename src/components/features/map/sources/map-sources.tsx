@@ -6,7 +6,7 @@ import { useAppSelector } from '@/redux/hooks'
 import { WidgetModes, WidgetTabs } from '@/utils/enums'
 
 import { MapSourceDefault } from './map-source-default'
-import { MapSourceRandom } from './map-source-random'
+import { MapSourceRandomContainer } from './map-source-random'
 import { MapSourceSavedPlaces } from './map-source-saved-places'
 
 export const MapSources = ({ isAuth }: { isAuth: boolean }) => {
@@ -26,7 +26,7 @@ export const MapSources = ({ isAuth }: { isAuth: boolean }) => {
     }
 
     if (widgetMode === WidgetModes.RANDOM) {
-        return <MapSourceRandom />
+        return <MapSourceRandomContainer />
     }
 
     return <MapSourceDefault />
