@@ -1,6 +1,7 @@
 import { auth } from './auth.en'
 import { landing } from './landing.en'
 import { savePlace } from './save-space.en'
+import { savedListForm } from './saved-list-form.en'
 import { user } from './user.en'
 import { widget } from './widget.en'
 
@@ -8,6 +9,7 @@ export default {
     ...auth,
     ...landing,
     ...savePlace,
+    ...savedListForm,
     ...user,
     ...widget,
 
@@ -16,8 +18,8 @@ export default {
     'cookie_consent.policy_link': 'Cookie Policy',
     'cookie_consent.got_it': 'Got it!',
 
-    'email_verification_notice.text': 'Your email has not been verified. Please confirm it by clicking the link in the email we sent you during the registration. {learn_more_link}',
-    'email_verification_notice.learn_more_link': 'Learn more',
+    'email_verification_notice.text': 'Your email is not {learn_more_link}. Please confirm you email to get access to all features Tripadvancer.',
+    'email_verification_notice.learn_more_link': 'verified',
 
     'abandoned_warning': 'Places in the "Abandoned" category might be dangerous, be careful.',
 
@@ -44,8 +46,8 @@ export default {
     'confirm.no': 'Cancel',
 
     'header.user_menu.map': 'My map',
-    'header.user_menu.places': 'Added places',
-    'header.user_menu.reviews': 'Written reviews',
+    'header.user_menu.places': 'Places',
+    'header.user_menu.reviews': 'Reviews',
     'header.user_menu.settings': 'Settings',
     'header.user_menu.log_out': 'Log out',
     'header.link.map': 'Map',
@@ -137,7 +139,7 @@ export default {
     'success.update_user_info': 'Your profile has been updated.',
     'success.request_personal_data': 'Your personal data has been sent to your email.',
 
-    'categories.all': 'All categories',
+    'categories.all': 'All',
 
     'complaint.reasons.abuse': 'Misuse, mistreatment or intentional harm',
     'complaint.reasons.copyright': 'Copyright or intellectual property rights violation',
@@ -157,6 +159,10 @@ export default {
     'user_achievement.statistic.added_reviews': 'Written reviews',
     'user_achievement.statistic.visited_places': 'Visited places',
     'user_achievement.statistic.visited_countries': 'Visited countries',
+
+    'user_tabs.places': 'Places',
+    'user_tabs.reviews': 'Reviews',
+    'user_tabs.settings': 'Settings',
 
     'countries.places#zero': 'No places',
     'countries.places#one': '{count} place',
@@ -183,7 +189,7 @@ export default {
     'review.user_actions.complain': 'Complain',
     'review.user_actions.add': 'Add review',
 
-    'review.form.edit.title': 'Edit your review',
+    'review.form.edit.title': 'Edit review',
     'review.form.add.title': 'Leave feedback',
     'review.form.fields.rating.label': 'Your rating',
     'review.form.fields.text.label': 'Review',

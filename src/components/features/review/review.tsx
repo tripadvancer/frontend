@@ -20,7 +20,7 @@ type ReviewProps = {
 export const Review = ({ review, variant, className, activeUserId, isAuth }: ReviewProps) => {
     return (
         <div className={classNames('flex flex-col gap-y-5 border-b border-black-15 py-8 first:border-t', className)}>
-            <div className="flex items-start justify-between gap-x-8 sm:items-center">
+            <div className="flex justify-between gap-x-8">
                 {variant === 'place-page' && <ReviewRatingAuthor {...review} />}
                 {variant === 'user-page' && <ReviewRatingPlace {...review} />}
 

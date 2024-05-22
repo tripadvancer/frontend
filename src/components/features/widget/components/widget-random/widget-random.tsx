@@ -1,43 +1,71 @@
 'use client'
 
+import { GeoJSONSource, useMap } from 'react-map-gl/maplibre'
+
+import { useToast } from '@/providers/toast-provider'
 import { getUserLocation } from '@/redux/features/user-slice'
-import { getWidgetState, setWidgetRandomRadius } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { getWidgetRandomRadius, getWidgetSelectedCategories } from '@/redux/features/widget-slice'
+import { useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { WidgetRandomButton } from './widget-random-button'
 import { WidgetRandomResults } from './widget-random-results'
 import { WidgetRandomSlider } from './widget-random-slider'
 
 export const WidgetRandom = () => {
-    const dispatch = useAppDispatch()
-    const widgetState = useAppSelector(getWidgetState)
+    const t = useI18n()
+    const toast = useToast()
     const userLocation = useAppSelector(getUserLocation)
+    const categories = useAppSelector(getWidgetSelectedCategories)
+    const radius = useAppSelector(getWidgetRandomRadius)
+
+    const { map } = useMap()
 
     const [searchRandomPlace, { data, error, isFetching, isSuccess }] = placesAroundAPI.useLazyGetRandomPlaceQuery()
 
-    const handleRandomClick = () => {
+    const handleRandomClick = async () => {
         if (userLocation) {
-            searchRandomPlace({
-                ...userLocation,
-                radius: widgetState.randomRadius * 1000, // km to m
-                categories: widgetState.selectedCategories,
-            })
+            try {
+                const randomPlace = await searchRandomPlace({
+                    ...userLocation,
+                    radius: radius * 1000, // convert to meters
+                    categories,
+                }).unwrap()
+
+                if (randomPlace) {
+                    const source = map?.getSource('random-place-source') as GeoJSONSource
+                    source.setData({
+                        type: 'FeatureCollection',
+                        features: [
+                            {
+                                type: 'Feature',
+                                geometry: {
+                                    type: 'Point',
+                                    coordinates: randomPlace.coordinates,
+                                },
+                                properties: randomPlace,
+                            },
+                        ],
+                    })
+                }
+            } catch (error) {
+                toast.error(t('common.error'))
+            }
         }
     }
 
     return (
-        // prettier-ignore
-        <div className="flex flex-1 flex-col gap-y-4 sm:gap-y-8">
-            <WidgetRandomSlider
-                value={widgetState.randomRadius}
-                onChange={value => dispatch(setWidgetRandomRadius(value))}
-            />
+        <div className="flex flex-col gap-y-6 sm:gap-y-8">
+            <div className="text-caps uppercase">{t('widget.random.distance_cation')}</div>
+            <WidgetRandomSlider />
+            {/* prettier-ignore */}
             <WidgetRandomButton
                 isLoading={isFetching}
                 isUserLocated={!!userLocation}
                 onClick={handleRandomClick}
             />
+            {/* prettier-ignore */}
             <WidgetRandomResults
                 place={data}
                 isSuccess={isSuccess}

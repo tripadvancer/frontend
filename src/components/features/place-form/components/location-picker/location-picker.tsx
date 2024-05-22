@@ -31,7 +31,7 @@ export const LocationPicker = ({ location, onConfirm }: LocationPickerProps) => 
     const dialog = useDialog()
     const locationIsValidStringCoordinates = stringCoordinatesIsValid(location)
 
-    const [viewState, setViewState] = useState<ViewState>(
+    const [viewState, setViewState] = useState<Partial<ViewState>>(
         locationIsValidStringCoordinates ? stringToViewState(location) : getDefaultViewState(),
     )
 

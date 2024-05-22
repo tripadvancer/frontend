@@ -2,10 +2,9 @@
 
 import classNames from 'classnames'
 
-import { closeMapPopups } from '@/redux/features/map-slice'
 import { getWidgetState, setWidgetActiveTab } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { WidgetTabsEnum } from '@/utils/enums'
+import { WidgetTabs as WidgetTabsEnum } from '@/utils/enums'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
 type TabType = {
@@ -21,13 +20,10 @@ export const WidgetTabs = () => {
     const tabs: TabType[] = [
         { id: WidgetTabsEnum.ALL, caption: t('widget.tabs.all') },
         { id: WidgetTabsEnum.SAVED, caption: t('widget.tabs.saved') },
-        { id: WidgetTabsEnum.VISITED, caption: t('widget.tabs.visited') },
-        { id: WidgetTabsEnum.RANDOM, caption: t('widget.tabs.random') },
     ]
 
     const handleTabClick = (tab: TabType) => {
         dispatch(setWidgetActiveTab(tab.id))
-        dispatch(closeMapPopups())
     }
 
     return (

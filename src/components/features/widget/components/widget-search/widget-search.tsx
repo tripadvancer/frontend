@@ -1,26 +1,27 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import { useMap } from 'react-map-gl/maplibre'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
 import type { ICountryDict } from '@/utils/types/country'
+import type { LngLat } from '@/utils/types/geo'
 import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import type { ISearchItem } from '@/utils/types/search'
 
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
-import { setMapLocationPopupInfo, setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { closeWidget } from '@/redux/features/widget-slice'
+import { setAppMode } from '@/redux/features/app-slice'
+import { setMapLocationPopupInfo, setMapPlacePopupInfo } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { searchAPI } from '@/redux/services/search-api'
-import { Keys } from '@/utils/enums'
+import { AppModes, Keys } from '@/utils/enums'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { transformFullSearchResult } from '@/utils/helpers/search'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useCurrentLocale } from '@/utils/i18n/i18n.client'
 
+import { WidgetTogler } from '../widget-togler'
 import { WidgetSearchInput } from './widget-search-input'
 
 export const WidgetSearch = () => {
@@ -35,23 +36,10 @@ export const WidgetSearch = () => {
     const [value, setValue] = useState<string>('')
     const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]>([])
     const [isAutocompleteVisible, setIsAutocompleteVisible] = useState<boolean>(false)
-    const [autocompleteStyles, setAutocompleteStyles] = useState<{ top: number; left: number; width?: number }>({
-        top: 0,
-        left: 0,
-    })
 
     const [search, { data, isFetching, isSuccess }] = searchAPI.useLazySearchQuery()
 
     const debouncedSearch = useDebounceCallback(search, 500)
-
-    useEffect(() => {
-        const inputRect = inputRef.current?.getBoundingClientRect()
-        setAutocompleteStyles({
-            top: inputRect?.bottom || 0,
-            left: inputRect?.left || 0,
-            width: inputRect?.width,
-        })
-    }, [])
 
     useEffect(() => {
         if (value.length >= 2) {
@@ -82,6 +70,8 @@ export const WidgetSearch = () => {
     }
 
     const handleSelect = (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => {
+        dispatch(setAppMode(AppModes.MAP))
+
         if (item.type === 'location') {
             map?.flyTo(getMapFlyToOptions(item.coordinates))
             dispatch(setMapLocationPopupInfo(item.properties as ILocationPreview))
@@ -94,11 +84,9 @@ export const WidgetSearch = () => {
 
         if (item.type === 'country') {
             const bounds = (item.properties as ICountryDict).bounds
-            console.log(bounds)
             map?.fitBounds(bounds)
         }
 
-        dispatch(closeWidget())
         setIsAutocompleteVisible(false)
     }
 
@@ -109,27 +97,22 @@ export const WidgetSearch = () => {
     }
 
     return (
-        <div className="relative">
-            <WidgetSearchInput
-                ref={inputRef}
-                value={value}
-                isLoading={isFetching}
-                onChange={setValue}
-                onClick={handleInputClick}
-                onClear={handleClear}
-            />
+        <div className="relative flex gap-x-4">
+            <div ref={inputRef} className="relative flex-1">
+                <WidgetSearchInput
+                    value={value}
+                    isLoading={isFetching}
+                    onChange={setValue}
+                    onClick={handleInputClick}
+                    onClear={handleClear}
+                />
 
-            {isAutocompleteVisible &&
-                createPortal(
-                    <SearchAutocomplete
-                        ref={autocompleteRef}
-                        items={items}
-                        className="fixed z-40"
-                        styles={autocompleteStyles}
-                        onSelect={handleSelect}
-                    />,
-                    document.body,
+                {isAutocompleteVisible && (
+                    <SearchAutocomplete ref={autocompleteRef} items={items} onSelect={handleSelect} />
                 )}
+            </div>
+
+            <WidgetTogler />
         </div>
     )
 }

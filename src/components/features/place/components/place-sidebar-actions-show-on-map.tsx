@@ -5,10 +5,12 @@ import { useRouter } from 'next/navigation'
 import type { IPlace } from '@/utils/types/place'
 
 import { PinIcon24 } from '@/components/ui/icons'
+import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { closeWidget, toggleWidgetShowOnlySavedPlaces } from '@/redux/features/widget-slice'
+import { setWidgetActiveTab, setWidgetMode } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
+import { AppModes, WidgetModes, WidgetTabs } from '@/utils/enums'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
@@ -23,9 +25,10 @@ export const PlaceSidebarActionsShowOnMap = ({ place, isAuth }: { place: IPlace;
     const handleClick = () => {
         const viewState = getFlyToViewState(lngLat)
 
-        dispatch(closeWidget())
+        dispatch(setAppMode(AppModes.MAP))
+        dispatch(setWidgetMode(WidgetModes.PLACES))
+        dispatch(setWidgetActiveTab(WidgetTabs.ALL))
         dispatch(setMapViewState(viewState))
-        dispatch(toggleWidgetShowOnlySavedPlaces(false))
         dispatch(
             setMapPlacePopupInfo({
                 ...place,

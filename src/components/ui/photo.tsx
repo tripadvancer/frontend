@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { ImageVariant } from '@/utils/enums'
+import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
 type PhotoProps = {
@@ -13,7 +13,7 @@ type PhotoProps = {
 export const Photo = ({ url, size, alt, onClick }: PhotoProps) => {
     return (
         <Image
-            src={makeImageUrl(url, ImageVariant.PREVIEW)}
+            src={makeImageUrl(url, ImageVariants.PREVIEW)}
             className="w-full cursor-pointer rounded-lg align-top"
             width={size}
             height={size}

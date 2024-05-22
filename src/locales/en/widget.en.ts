@@ -10,33 +10,32 @@ export const widget = {
     
     'widget.places.title': 'Places',
     
-    'widget.tabs.all': 'All',
+    'widget.tabs.all': 'All places',
     'widget.tabs.saved': 'Saved',
-    'widget.tabs.visited': 'Visited',
-    'widget.tabs.random': 'Random',
     
     'widget.all_places.empty_message': 'No places found.{br}Try changing categories or zooming out the map.',
-    
-    'widget.visited_places.empty_message': 'You have not visited places.{br}Add the place to visited to see it here.',
-    'widget.visited_places.not_logged_in': 'You are not logged in.{br}{sign_in_link} to see visited places.',
-    
-    'widget.random.empty_message': 'No places matcing your filter found.{br}Try changing categories or radius.',
-    'widget.random.info': 'Select categories, radius around you and get a random place.',
-    'widget.random.button': 'Find a random place',
-    'widget.random.button_coundown': 'Find a random place in ({countdown})',
-    'widget.random.error.not_location': 'To find a random place around you — allow access to your location or select “I am here” on the map.',
     
     'widget.saved.empty_message': 'You have not saved places.{br}Create a new list and start adding places to it.',
     'widget.saved.not_logged_in': 'You are not logged in.{br}{sign_in_link} to see saved places.',
     
-    'widget.saved.lists.empty_message': 'This list are empty.{br}Add place to this list to see it here.',
+    'widget.saved.lists.empty_message': 'This list is empty.{br}Add place to this list or try changing categories.',
     'widget.saved.lists.add_button': 'Create new list',
     'widget.saved.lists.info': 'Select a list to view saved places.',
-    'widget.saved.lists.show_only_list': 'Show on map',
+    'widget.saved.lists.show_only_list': 'On map',
     'widget.saved.lists.places#one': '{count} place',
     'widget.saved.lists.places#other': '{count} places',
     'widget.saved.lists.private': 'Private',
     'widget.saved.lists.public': 'Public',
+    'widget.saved.lists.enable_map_filter': 'Filter map by list',
+    'widget.saved.lists.disable_map_filter': 'Disable map filter',
+
+    'widget.random.empty_message': 'No places matcing your filter found.{br}Try changing categories or radius.',
+    'widget.random.distance_cation': 'Distance from you',
+    'widget.random.info': 'Select categories, radius around you or a specified point and we will select interesting place for you.',
+    'widget.random.button': 'Find a random place',
+    'widget.random.button_coundown': 'Find a random place in ({countdown})',
+    'widget.random.error.not_location': 'To find a random place around you — allow access to your location or select “I am here” on the map.',
+    'widget.random.distance': '{distance} km',
     
     'widget.toggler.map': 'Map',
     'widget.toggler.search_and_filters': 'Search and filters',

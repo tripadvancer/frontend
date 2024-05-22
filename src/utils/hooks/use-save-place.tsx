@@ -10,7 +10,7 @@ interface useSavePlaceInterface {
     toggle: () => void
 }
 
-export function useSavePlace(placeId: number, callback?: () => void): useSavePlaceInterface {
+export function useSavePlace(placeId: number): useSavePlaceInterface {
     const dialog = useDialog()
 
     const toggle = async (): Promise<void> => {
@@ -22,7 +22,6 @@ export function useSavePlace(placeId: number, callback?: () => void): useSavePla
         }
 
         dialog.open(<SavePlace placeId={placeId} />)
-        callback?.()
     }
 
     return { toggle }

@@ -1,3 +1,5 @@
+import { ErrorBoundary } from 'react-error-boundary'
+
 import { getPlaceById } from '@/services/places'
 
 import { PlaceHeader } from './components/place-header'
@@ -25,7 +27,9 @@ export const Place = async ({ placeId }: { placeId: string }) => {
                                 <PlaceSidebarActionsWithAuth place={place} />
                             </div>
                             <PlaceSidebarAuthor {...place} />
-                            <PlaceSidebarNearby {...place} />
+                            <ErrorBoundary fallback={null}>
+                                <PlaceSidebarNearby {...place} />
+                            </ErrorBoundary>
                         </div>
 
                         <div className="flex min-w-0 flex-1 flex-col gap-y-16">

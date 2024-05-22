@@ -1,18 +1,15 @@
 'use client'
 
 import { useCallback, useRef } from 'react'
-import { AttributionControl, Layer, MapRef, Marker, Map as ReactMapGl, Source } from 'react-map-gl/maplibre'
+import { AttributionControl, MapRef, Marker, Map as ReactMapGl } from 'react-map-gl/maplibre'
+
+import { useMediaQuery } from 'usehooks-ts'
 
 import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
-import { getMapState } from '@/redux/features/map-slice'
+import { getMapViewState } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
-import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { listAPI } from '@/redux/services/list-api'
-import { placesAPI } from '@/redux/services/places-api'
-import { visitedAPI } from '@/redux/services/visited-api'
-import { MapDataSourcesEnum } from '@/utils/enums'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -21,7 +18,8 @@ import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
 import { useMapEventHandlers } from './map-event-handlers'
-import { placesLayer, savedPlacesLayer, visitedPlacesLayer } from './map-layers'
+import { placesLayer } from './sources/map-layers'
+import { MapSources } from './sources/map-sources'
 
 type MapProps = {
     activeUserId?: number
@@ -31,28 +29,15 @@ type MapProps = {
 
 export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
-    const mapBounds = useAppSelector(getMapState).bounds
-    const listId = useAppSelector(getWidgetState).activeList?.id
-    const mapDataSource = useAppSelector(getWidgetState).dataSource
-    const selectedCategories = useAppSelector(getWidgetState).selectedCategories
     const userLocation = useAppSelector(getUserLocation)
+    const mapViewState = useAppSelector(getMapViewState)
+    const isMobile = useMediaQuery('(max-width: 639px)')
+    const isTablet = useMediaQuery('(max-width: 1023px)')
 
     const mapRef = useRef<MapRef>(null)
+    const mapContainerRef = useRef<HTMLDivElement>(null)
 
     const { handleLocate, isLocating } = useUserLocation()
-
-    const { data: places } = placesAPI.useGetPlacesQuery(
-        { mapBounds, selectedCategories },
-        { skip: !mapBounds || mapDataSource !== MapDataSourcesEnum.ALL_PLACES },
-    )
-
-    const { data: saved } = listAPI.useGetListPlacesQuery(listId as number, {
-        skip: !isAuth || !listId || mapDataSource !== MapDataSourcesEnum.SAVED_PLACES,
-    })
-
-    const { data: visited } = visitedAPI.useGetVisitedQuery(undefined, {
-        skip: !isAuth || mapDataSource !== MapDataSourcesEnum.VISITED_PLACES,
-    })
 
     const handleZoomIn = useCallback(() => {
         mapRef.current?.zoomIn({ duration: 500 })
@@ -63,80 +48,59 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     }, [])
 
     return (
-        <ReactMapGl
-            id="map"
-            ref={mapRef}
-            mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
-            interactiveLayerIds={[placesLayer.id, savedPlacesLayer.id, visitedPlacesLayer.id]}
-            attributionControl={false}
-            reuseMaps
-            {...handlers}
-        >
-            <Source id="places-source" type="geojson" data={places || { type: 'FeatureCollection', features: [] }}>
-                <Layer
-                    {...placesLayer}
-                    layout={{
-                        ...placesLayer.layout,
-                        visibility: mapDataSource === MapDataSourcesEnum.ALL_PLACES ? 'visible' : 'none',
-                    }}
-                />
-            </Source>
-
-            <Source id="saved-places-source" type="geojson" data={saved || { type: 'FeatureCollection', features: [] }}>
-                <Layer
-                    {...savedPlacesLayer}
-                    layout={{
-                        ...savedPlacesLayer.layout,
-                        visibility: mapDataSource === MapDataSourcesEnum.SAVED_PLACES ? 'visible' : 'none',
-                    }}
-                />
-            </Source>
-
-            <Source
-                id="visited-places-source"
-                type="geojson"
-                data={visited || { type: 'FeatureCollection', features: [] }}
+        <div ref={mapContainerRef} className="size-full">
+            <ReactMapGl
+                id="map"
+                ref={mapRef}
+                mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
+                interactiveLayerIds={[placesLayer.id]}
+                attributionControl={false}
+                reuseMaps
+                initialViewState={{
+                    ...mapViewState,
+                    padding:
+                        isMobile || isTablet
+                            ? { top: 106, right: 50, bottom: 50, left: 50 }
+                            : { top: 100, right: 564, bottom: 100, left: 100 },
+                }}
+                {...handlers}
             >
-                <Layer
-                    {...visitedPlacesLayer}
-                    layout={{
-                        ...visitedPlacesLayer.layout,
-                        visibility: mapDataSource === MapDataSourcesEnum.VISITED_PLACES ? 'visible' : 'none',
-                    }}
-                />
-            </Source>
+                <MapSources isAuth={isAuth} />
 
-            <div className="absolute bottom-2 right-2 z-10 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2">
-                <MapControl desktopOnly onClick={handleZoomIn}>
-                    <PlusIcon16 />
-                </MapControl>
+                <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
+                    <MapControl onClick={handleZoomIn}>
+                        <PlusIcon16 />
+                    </MapControl>
 
-                <MapControl desktopOnly onClick={handleZoomOut}>
-                    <MinusIcon16 />
-                </MapControl>
+                    <MapControl onClick={handleZoomOut}>
+                        <MinusIcon16 />
+                    </MapControl>
 
-                <MapControl isLoading={isLocating} onClick={handleLocate}>
-                    <LocationIcon16 />
-                </MapControl>
-            </div>
+                    <MapControl isLoading={isLocating} onClick={handleLocate}>
+                        <LocationIcon16 />
+                    </MapControl>
+                </div>
 
-            {userLocation && (
-                <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="bottom">
-                    <MapPinUser />
-                </Marker>
-            )}
+                {userLocation && (
+                    <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="bottom">
+                        <MapPinUser />
+                    </Marker>
+                )}
 
-            {handlers.placePopupInfo && <MapPopupPlace {...handlers.placePopupInfo} />}
-            {handlers.locationPopupInfo && (
-                <MapPopupLocation
-                    activeUserId={activeUserId}
-                    isAuth={isAuth}
-                    isEmailVerified={isEmailVerified}
-                    {...handlers.locationPopupInfo}
-                />
-            )}
+                {handlers.placePopupInfo && <MapPopupPlace mapRef={mapContainerRef} place={handlers.placePopupInfo} />}
 
-            <AttributionControl compact />
-        </ReactMapGl>
+                {handlers.locationPopupInfo && (
+                    <MapPopupLocation
+                        mapRef={mapContainerRef}
+                        activeUserId={activeUserId}
+                        isAuth={isAuth}
+                        isEmailVerified={isEmailVerified}
+                        {...handlers.locationPopupInfo}
+                    />
+                )}
+
+                {!isMobile && <AttributionControl compact={true} />}
+            </ReactMapGl>
+        </div>
     )
 }

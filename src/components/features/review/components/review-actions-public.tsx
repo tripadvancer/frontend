@@ -30,5 +30,9 @@ export const ReviewActionsPublic = ({ id }: IReview) => {
         },
     ]
 
-    return <Dropdown items={items} />
+    return (
+        <div>
+            <Dropdown items={items} />
+        </div>
+    )
 }

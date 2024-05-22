@@ -1,6 +1,7 @@
 import { auth } from './auth.ru'
 import { landing } from './landing.ru'
 import { savePlace } from './save-space.ru'
+import { savedListForm } from './saved-list-form.ru'
 import { user } from './user.ru'
 import { widget } from './widget.ru'
 
@@ -8,6 +9,7 @@ export default {
     ...auth,
     ...landing,
     ...savePlace,
+    ...savedListForm,
     ...user,
     ...widget,
 
@@ -16,8 +18,8 @@ export default {
     'cookie_consent.policy_link': 'Политике использования файлов cookie',
     'cookie_consent.got_it': 'Понял!',
 
-    'email_verification_notice.text': 'Ваш адрес электронной почты не был подтверждён. Подтвердите Ваш email, перейдя по ссылке в отправленном при регистрации письме. {learn_more_link}',
-    'email_verification_notice.learn_more_link': 'Узнать больше',
+    'email_verification_notice.text': 'Ваш email не {learn_more_link}. Пожалуйста, подтвердите Ваш email, чтобы получить доступ ко всем функциям Tripadvancer.',
+    'email_verification_notice.learn_more_link': 'подтверждён',
 
     'abandoned_warning': 'Места в категории "Заброшки" могут быть опасны, будьте осторожны.',
 
@@ -43,9 +45,9 @@ export default {
     'confirm.yes': 'Подтвердить',
     'confirm.no': 'Отмена',
 
-    'header.user_menu.map': 'Моя карта',
-    'header.user_menu.places': 'Мои места',
-    'header.user_menu.reviews': 'Мои отзывы',
+    'header.user_menu.map': 'Карта',
+    'header.user_menu.places': 'Места',
+    'header.user_menu.reviews': 'Отзывы',
     'header.user_menu.settings': 'Настройки',
     'header.user_menu.log_out': 'Выйти',
     'header.link.map': 'Карта',
@@ -79,7 +81,7 @@ export default {
     'common.action.route': 'Маршрут',
     'common.action.locate_me': 'Найти меня',
     'common.action.go_to_map': 'На карту',
-    'common.action.save': 'Сохранить',
+    'common.action.save_place': 'Сохранить',
 
     'paginator.prev': 'Назад',
     'paginator.next': 'Вперёд',
@@ -158,6 +160,10 @@ export default {
     'user_achievement.statistic.visited_places': 'Посещено мест',
     'user_achievement.statistic.visited_countries': 'Посещено стран',
 
+    'user_tabs.places': 'Места',
+    'user_tabs.reviews': 'Отзывы',
+    'user_tabs.settings': 'Настройки',
+
     'countries.places#zero': 'Нет мест',
     'countries.places#one': '{count} место',
     'countries.places#few': '{count} места',
@@ -187,7 +193,7 @@ export default {
     'review.user_actions.complain': 'Пожаловаться',
     'review.user_actions.add': 'Добавить отзыв',
 
-    'review.form.edit.title': 'Изменить Ваш отзыв',
+    'review.form.edit.title': 'Изменить отзыв',
     'review.form.add.title': 'Добавить отзыв',
     'review.form.fields.rating.label': 'Ваша оценка',
     'review.form.fields.text.label': 'Отзыв',

@@ -1,0 +1,19 @@
+import { WidgetCategories } from './components/widget-categories'
+import { WidgetHeader } from './components/widget-header/widget-header'
+import { WidgetPlacesWithAuth } from './components/widget-places-with-auth'
+import { WidgetSearch } from './components/widget-search/widget-search'
+
+export const WidgetPlaces = () => {
+    return (
+        <div className="rounded-2xl bg-white">
+            <WidgetHeader />
+            <div className="flex flex-col gap-y-6 rounded-2xl bg-blue-10 px-4 py-6 sm:relative sm:gap-y-8 sm:p-8">
+                <WidgetSearch />
+                <WidgetCategories variant="blue" />
+            </div>
+            <div className="px-4 py-6 sm:p-8">
+                <WidgetPlacesWithAuth />
+            </div>
+        </div>
+    )
+}

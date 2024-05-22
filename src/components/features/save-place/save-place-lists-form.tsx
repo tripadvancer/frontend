@@ -21,7 +21,6 @@ type SavePlaceFormProps = {
     placeId: number
 }
 
-const listNameMinLength = validationConfig.list.name.minLength
 const listNameMaxLength = validationConfig.list.name.maxLength
 
 export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
@@ -33,7 +32,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
 
     const [isCreateList, setIsCreateList] = useState<boolean>(lists.length === 0)
 
-    const [createList, { isLoading: isListCreating }] = listAPI.useCreateUserListMutation()
+    const [createList, { isLoading: isListCreating }] = listAPI.useCreateListMutation()
     const [updatePlaceInLists, { isLoading: isPlaceUpdating }] = listAPI.useUpdatePlaceInListsMutation()
 
     useEffect(() => {
@@ -45,7 +44,6 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .trim()
-            .min(listNameMinLength, t('validation.text.min_length', { min_length: listNameMinLength }))
             .max(listNameMaxLength, t('validation.text.max_length', { max_length: listNameMaxLength })),
     })
 
@@ -55,6 +53,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
             .filter(list => list.listToPlace.some(listToPlace => listToPlace.placeId === placeId))
             .map(list => list.id),
         name: '',
+        description: '',
     }
 
     const formik = useFormik({
@@ -65,7 +64,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
         onSubmit: async (inputs: UpdatePlaceInListsInputs & CreateListInputs) => {
             if (inputs.name) {
                 try {
-                    const response = await createList({ name: inputs.name }).unwrap()
+                    const response = await createList({ name: inputs.name, description: inputs.description }).unwrap()
                     await updatePlaceInLists({ placeId, listIds: [...inputs.listIds, response.id] }).unwrap()
                     dialog.close()
                 } catch {
@@ -124,6 +123,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     value={formik.values.name}
                     autoFocus={isCreateList}
                     autoComplete="off"
+                    maxLength={listNameMaxLength}
                     placeholder={t('save_place.add_new_list.input.plceholder')}
                     error={formik.errors.name}
                     disabled={!isCreateList || isListCreating || isPlaceUpdating}

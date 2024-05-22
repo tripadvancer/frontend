@@ -34,5 +34,9 @@ export const ReviewActionsPrivate = (review: IReview) => {
         },
     ]
 
-    return <Dropdown items={items} />
+    return (
+        <div>
+            <Dropdown items={items} />
+        </div>
+    )
 }

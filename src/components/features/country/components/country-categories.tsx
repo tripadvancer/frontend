@@ -37,7 +37,7 @@ export const CountryCategories = ({ selectedCategoryIds, locale }: CountryCatego
     )
 
     return (
-        <div className="mx-auto flex flex-wrap justify-center gap-1 sm:w-2/3">
+        <div className="mx-auto flex flex-wrap justify-center gap-1 md:w-3/4 lg:w-2/3">
             <CountryCategoriesItem
                 href={pathname}
                 caption={t('categories.all')}

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { TwitterIcon24 } from '@/components/ui/icons'
+import { TwitterIcon24, YoutubeIcon24 } from '@/components/ui/icons'
 
 import { LanguageChanger } from '../language-changer/language-changer'
 
@@ -26,9 +26,14 @@ export const Footer = async () => {
                         <Link href="/legal/cookie-policy">Cookie Policy</Link>
                     </nav>
 
-                    <Link href="https://twitter.com/tripadvancer_me" className="link-black" target="_blank">
-                        <TwitterIcon24 />
-                    </Link>
+                    <div className="flex gap-x-4">
+                        <Link href="https://twitter.com/tripadvancer_me" className="link-black" target="_blank">
+                            <TwitterIcon24 />
+                        </Link>
+                        <Link href="https://www.youtube.com/@tripadvancer" className="link-black" target="_blank">
+                            <YoutubeIcon24 />
+                        </Link>
+                    </div>
 
                     <div className="text-center">
                         Powered by{' '}
