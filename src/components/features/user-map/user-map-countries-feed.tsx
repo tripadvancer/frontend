@@ -26,7 +26,7 @@ export const UserMapCountriesFeed = ({ countries }: UserMapCountriesFeedProps) =
     }
 
     return (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-5 sm:gap-8">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-8">
             <UserMapCountriesFeedItem variant="blue" count={`${worldCoverageInPercent}%`} name="World" />
 
             {countries.map(item => {

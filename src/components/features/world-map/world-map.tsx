@@ -1,53 +1,52 @@
 'use client'
 
-import { useState } from 'react'
-
-import classNames from 'classnames'
-
-import type { SVGPath } from '@/utils/types/common'
-
-import { CloseIcon24 } from '@/components/ui/icons'
-
-import { world } from './paths/world'
+import { useCallback } from 'react'
+import { MapEvent, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
 export const WorldMap = ({ visited }: { visited: string[] }) => {
-    const [source, setSource] = useState<SVGPath[]>(world)
+    const handleLoad = useCallback(
+        (event: MapEvent) => {
+            const map = event.target
 
-    const handleClick = async (code: string) => {
-        // const paths = (await import(`./paths/${code.toLowerCase()}.ts`)).default
-        alert(code)
-        // setSource(paths)
-    }
+            // Add MapTiler Countries dataset
+            map.addSource('statesData', {
+                type: 'vector',
+                url: 'https://api.maptiler.com/tiles/countries/tiles.json?key=tuD8Imv3CRrCnq99JOJo',
+            })
 
-    const handleBack = () => {
-        setSource(world)
-    }
+            // Styling for countries layer with linear interpolation of data
+            map.addLayer({
+                id: 'countries',
+                source: 'statesData',
+                'source-layer': 'administrative',
+                type: 'fill',
+                paint: {
+                    'fill-color': ['match', ['get', 'iso_a2'], visited, '#ff9733', '#fff2e6'],
+                    'fill-opacity': 1,
+                    'fill-outline-color': '#000',
+                },
+            })
+        },
+        [visited],
+    )
 
     return (
-        <div className="relative rounded-2xl bg-blue-80 fill-black-40 p-4 sm:p-6">
-            {/* <div
-                className="flex-center hover-animated absolute left-4 top-4 size-10 cursor-pointer rounded-lg bg-white hover:text-blue-active"
-                onClick={handleBack}
-            >
-                <CloseIcon24 />
-            </div> */}
-
-            <svg version="1.1" viewBox="0 0 1000 585" xmlns="http://www.w3.org/2000/svg">
-                <g>
-                    {source.map(item =>
-                        item.paths.map(path => (
-                            <path
-                                key={path}
-                                d={path}
-                                className={classNames('fill-orange-10 stroke-blue-80', {
-                                    '!fill-orange-80': visited.includes(item.code.toUpperCase()),
-                                })}
-                                onClick={() => handleClick(item.code)}
-                            />
-                        )),
-                    )}
-                </g>
-            </svg>
+        <div className="relative h-[500px] rounded-2xl bg-blue-80 fill-black-40 p-4">
+            <ReactMapGl
+                id="map"
+                attributionControl={false}
+                style={{ width: '100%', height: '100%', borderRadius: '1rem' }}
+                maxZoom={1.9}
+                minZoom={0}
+                renderWorldCopies={false}
+                reuseMaps
+                initialViewState={{
+                    longitude: 0,
+                    latitude: 0,
+                    zoom: 0.01,
+                }}
+                onLoad={handleLoad}
+            />
         </div>
     )
 }

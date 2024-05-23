@@ -10,12 +10,9 @@ export const UserMap = async ({ userId }: { userId: string }) => {
     const user = await getUserById(userId)
 
     return (
-        <div>
-            <UserNavigation userId={userId} />
-            <div className="flex flex-col gap-y-8">
-                <WorldMap visited={user.visitedCountries.map(country => country.code)} />
-                <UserMapCountriesFeed countries={user.visitedCountries} />
-            </div>
+        <div className="flex flex-col gap-y-8">
+            <WorldMap visited={user.visitedCountries.map(country => country.code)} />
+            <UserMapCountriesFeed countries={user.visitedCountries} />
         </div>
     )
 }
