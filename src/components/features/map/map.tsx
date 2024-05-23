@@ -52,8 +52,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
             <ReactMapGl
                 id="map"
                 ref={mapRef}
-                // mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
-                mapStyle="https://api.maptiler.com/maps/1c764477-8ff7-47b8-94e1-8d3e86e68539/style.json?key=tuD8Imv3CRrCnq99JOJo"
+                mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
                 interactiveLayerIds={[placesLayer.id]}
                 attributionControl={false}
                 reuseMaps
