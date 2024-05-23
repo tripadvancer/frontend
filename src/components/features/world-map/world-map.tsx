@@ -3,8 +3,6 @@
 import { useCallback } from 'react'
 import { MapEvent, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
-import tails from '@/utils/data/tiles.json'
-
 export const WorldMap = ({ visited }: { visited: string[] }) => {
     const handleLoad = useCallback(
         (event: MapEvent) => {
@@ -27,15 +25,13 @@ export const WorldMap = ({ visited }: { visited: string[] }) => {
                     'fill-opacity': 1,
                     'fill-outline-color': '#000',
                 },
-                // remove antarctica
-                filter: ['!=', ['get', 'iso_a2'], 'AQ'],
             })
         },
         [visited],
     )
 
     return (
-        <div className="relative h-[500px] rounded-2xl bg-blue-80 fill-black-40 p-4">
+        <div className="relative h-[480px] rounded-2xl bg-blue-80 fill-black-40 p-4">
             <ReactMapGl
                 id="map"
                 attributionControl={false}
@@ -45,8 +41,8 @@ export const WorldMap = ({ visited }: { visited: string[] }) => {
                 renderWorldCopies={false}
                 reuseMaps
                 initialViewState={{
-                    longitude: 0,
-                    latitude: 0,
+                    longitude: 10,
+                    latitude: 50,
                     zoom: 0.01,
                 }}
                 onLoad={handleLoad}
