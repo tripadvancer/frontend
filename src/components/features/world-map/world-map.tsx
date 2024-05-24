@@ -1,9 +1,14 @@
 'use client'
 
-import { useCallback } from 'react'
-import { MapEvent, Map as ReactMapGl } from 'react-map-gl/maplibre'
+import { useCallback, useRef } from 'react'
+import { MapEvent, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
+
+import { MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
+import { MapControl } from '@/components/ui/map-control'
 
 export const WorldMap = ({ visited }: { visited: string[] }) => {
+    const mapRef = useRef<MapRef>(null)
+
     const handleLoad = useCallback(
         (event: MapEvent) => {
             const map = event.target
@@ -30,10 +35,19 @@ export const WorldMap = ({ visited }: { visited: string[] }) => {
         [visited],
     )
 
+    const handleZoomIn = useCallback(() => {
+        mapRef.current?.zoomIn({ duration: 500 })
+    }, [])
+
+    const handleZoomOut = useCallback(() => {
+        mapRef.current?.zoomOut({ duration: 500 })
+    }, [])
+
     return (
         <div className="relative h-[480px] rounded-2xl bg-blue-80 fill-black-40 p-4">
             <ReactMapGl
                 id="user-map"
+                ref={mapRef}
                 style={{ width: '100%', height: '100%', borderRadius: '1rem' }}
                 maxZoom={1.9}
                 minZoom={0}
@@ -45,7 +59,17 @@ export const WorldMap = ({ visited }: { visited: string[] }) => {
                 attributionControl={false}
                 renderWorldCopies={false}
                 onLoad={handleLoad}
-            />
+            >
+                <div className="absolute right-2 top-2 z-30 flex flex-col gap-y-1">
+                    <MapControl onClick={handleZoomIn}>
+                        <PlusIcon16 />
+                    </MapControl>
+
+                    <MapControl onClick={handleZoomOut}>
+                        <MinusIcon16 />
+                    </MapControl>
+                </div>
+            </ReactMapGl>
         </div>
     )
 }
