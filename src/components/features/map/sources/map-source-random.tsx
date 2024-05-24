@@ -4,7 +4,6 @@ import { useEffect, useMemo } from 'react'
 import { Layer, Source, useMap } from 'react-map-gl/maplibre'
 
 import { circle } from '@turf/turf'
-import { useMediaQuery } from 'usehooks-ts'
 
 import type { LngLat } from '@/utils/types/geo'
 
@@ -27,7 +26,6 @@ export const MapSourceRandomContainer = () => {
 
 export const MapSourceRandom = ({ userLocation }: { userLocation: LngLat }) => {
     const radius = useAppSelector(getWidgetRandomRadius)
-    const isMobile = useMediaQuery('(max-width: 639px)')
 
     const { map } = useMap()
 

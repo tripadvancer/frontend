@@ -33,18 +33,17 @@ export const WorldMap = ({ visited }: { visited: string[] }) => {
     return (
         <div className="relative h-[480px] rounded-2xl bg-blue-80 fill-black-40 p-4">
             <ReactMapGl
-                id="map"
-                attributionControl={false}
+                id="user-map"
                 style={{ width: '100%', height: '100%', borderRadius: '1rem' }}
                 maxZoom={1.9}
                 minZoom={0}
-                renderWorldCopies={false}
-                reuseMaps
                 initialViewState={{
                     longitude: 10,
                     latitude: 50,
                     zoom: 0.01,
                 }}
+                attributionControl={false}
+                renderWorldCopies={false}
                 onLoad={handleLoad}
             />
         </div>

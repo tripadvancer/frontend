@@ -7,7 +7,7 @@ export const UserNavigationPrivate = ({ userId }: { userId: string }) => {
     const t = useI18n()
 
     const links = [
-        { href: `/users/${userId}`, caption: t('user.tabs.map') },
+        { href: `/users/${userId}`, caption: t('user.tabs.visited_map') },
         { href: `/users/${userId}/places`, caption: t('user.tabs.places') },
         { href: `/users/${userId}/reviews`, caption: t('user.tabs.reviews') },
         { href: `/users/${userId}/settings`, caption: t('user.tabs.settings') },
