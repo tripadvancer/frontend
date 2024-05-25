@@ -5,7 +5,7 @@ import { GeoJSONSource, useMap } from 'react-map-gl/maplibre'
 import { useToast } from '@/providers/toast-provider'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetRandomRadius, getWidgetSelectedCategories } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
 import { useI18n } from '@/utils/i18n/i18n.client'
 

@@ -20,7 +20,7 @@ export const WidgetRandomPlace = (place: IPlacePreview) => {
                         title={place.title}
                         imageVariant={ImageVariants.PUBLIC}
                         size={80}
-                        className="aspect-video w-full rounded-lg"
+                        className="aspect-video w-full rounded-lg object-cover"
                     />
                 </div>
                 <div className="break-words font-medium">{place.title}</div>
