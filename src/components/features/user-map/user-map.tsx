@@ -12,6 +12,10 @@ export const UserMap = async ({ userId }: { userId: string }) => {
     return (
         <div className="flex flex-col gap-y-8">
             <WorldMap visited={user.visitedCountries.map(country => country.code)} />
+            <p className="text-black-70">
+                Your map is visible to everyone. To hide it, go to your{' '}
+                <a href={`/${locale}/users/${userId}/settings`}>settings</a>.
+            </p>
             <UserMapCountriesFeed countries={user.visitedCountries} />
         </div>
     )
