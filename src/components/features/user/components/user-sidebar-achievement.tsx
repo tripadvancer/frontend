@@ -28,8 +28,8 @@ export const UserSidebarAchievement = async ({ userId }: { userId: string }) => 
             </div>
             <ul>
                 <Item label={t('user_achievement.statistic.added_places')} value={user._count.places} />
-                <Item label={t('user_achievement.statistic.added_photos')} value={user._count.placePhotos} />
                 <Item label={t('user_achievement.statistic.added_reviews')} value={user._count.placeReviews} />
+                <Item label={t('user_achievement.statistic.added_photos')} value={user._count.placePhotos} />
                 <Item label={t('user_achievement.statistic.visited_places')} value={user._count.visitedPlaces} />
                 <Item label={t('user_achievement.statistic.visited_countries')} value={user._count.visitedCountries} />
             </ul>
