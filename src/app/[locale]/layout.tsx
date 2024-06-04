@@ -37,13 +37,7 @@ export const metadata: Metadata = {
         'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     appleWebApp: {
         title: 'Tripadvancer',
-
         startupImage: [
-            '/apple-web-app/apple-touch-startup-image-768x1004.png',
-            // {
-            //     url: '/apple-web-app/apple-touch-startup-image-1536x2008.png',
-            //     media: '(device-width: 768px) and (device-height: 1024px)',
-            // },
             {
                 url: '/apple-web-app/iphone5_splash.png',
                 media: '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)',
