@@ -37,11 +37,52 @@ export const metadata: Metadata = {
         'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     appleWebApp: {
         title: 'Tripadvancer',
+
         startupImage: [
             '/apple-web-app/apple-touch-startup-image-768x1004.png',
+            // {
+            //     url: '/apple-web-app/apple-touch-startup-image-1536x2008.png',
+            //     media: '(device-width: 768px) and (device-height: 1024px)',
+            // },
             {
-                url: '/apple-web-app/apple-touch-startup-image-1536x2008.png',
-                media: '(device-width: 768px) and (device-height: 1024px)',
+                url: '/apple-web-app/iphone5_splash.png',
+                media: '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)',
+            },
+            {
+                url: '/apple-web-app/iphone6_splash.png',
+                media: '(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)',
+            },
+            {
+                url: '/apple-web-app/iphoneplus_splash.png',
+                media: '(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)',
+            },
+            {
+                url: '/apple-web-app/iphonex_splash.png',
+                media: '(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)',
+            },
+            {
+                url: '/apple-web-app/iphonexr_splash.png',
+                media: '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)',
+            },
+            {
+                url: '/apple-web-app/iphonexsmax_splash.png',
+                media: '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)',
+            },
+            {
+                url: '/apple-web-app/ipad_splash.png',
+                media: '(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)',
+            },
+            {
+                url: '/apple-web-app/ipadpro1_splash.png',
+                media: '(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)',
+            },
+            {
+                url: '/apple-web-app/ipadpro3_splash.png',
+                media: '(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)',
+            },
+            {
+                url: '/apple-web-app/ipadpro2_splash.png',
+                media: '(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)',
             },
         ],
     },
