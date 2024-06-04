@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
     appleWebApp: {
         title: 'Tripadvancer',
-        statusBarStyle: 'black-translucent',
+        statusBarStyle: 'default',
         startupImage: [
             '/assets/startup/apple-touch-startup-image-768x1004.png',
             {
