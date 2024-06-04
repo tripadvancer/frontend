@@ -39,9 +39,9 @@ export const metadata: Metadata = {
         title: 'Tripadvancer',
         statusBarStyle: 'default',
         startupImage: [
-            '/assets/startup/apple-touch-startup-image-768x1004.png',
+            '/apple-web-app/apple-touch-startup-image-768x1004.png',
             {
-                url: '/assets/startup/apple-touch-startup-image-1536x2008.png',
+                url: '/apple-web-app/apple-touch-startup-image-1536x2008.png',
                 media: '(device-width: 768px) and (device-height: 1024px)',
             },
         ],
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         siteName: 'Tripadvancer',
         images: [
             {
-                url: '/images/og-image-1.jpg',
+                url: '/open-graph/image-1.jpg',
                 width: 1200,
                 height: 628,
                 type: 'image/jpeg',
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
             default: 'Welcome to Tripadvancer',
         },
         card: 'summary_large_image',
-        images: '/images/og-image-1.jpg',
+        images: '/open-graph/image-1.jpg',
     },
 }
 
