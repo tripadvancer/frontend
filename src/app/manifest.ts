@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
         name: 'Tripadvancer',
         short_name: 'Tripadvancer',
         description: 'Plan your trip and find interesting places',
-        start_url: '/',
+        start_url: '.',
         display: 'standalone',
         background_color: '#fff',
         theme_color: '#fff',
