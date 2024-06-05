@@ -86,7 +86,7 @@ export const MapPopupLocation = ({
             <Popup
                 latitude={coordinates.lat}
                 longitude={coordinates.lng}
-                offset={[0, -5] as [number, number]}
+                offset={[0, -15] as [number, number]}
                 closeOnClick={false}
                 closeButton={false}
             >
@@ -103,7 +103,7 @@ export const MapPopupLocation = ({
                     </div>
                 </div>
             </Popup>
-            <Marker latitude={coordinates.lat} longitude={coordinates.lng}>
+            <Marker latitude={coordinates.lat} longitude={coordinates.lng} offset={[0, -9] as [number, number]}>
                 <Image src="/images/pin-blue-active.svg" alt="Location marker" width={20} height={20} />
             </Marker>
         </>
