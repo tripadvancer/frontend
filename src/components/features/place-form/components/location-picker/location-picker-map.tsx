@@ -12,9 +12,11 @@ import { getFlyToViewState } from '@/utils/helpers/maps'
 type LocationPickerMapProps = {
     viewState: Partial<ViewState>
     onMove: (viewState: Partial<ViewState>) => void
+    onMoveStart: () => void
+    onMoveEnd: () => void
 }
 
-export const LocationPickerMap = ({ viewState, onMove }: LocationPickerMapProps) => {
+export const LocationPickerMap = ({ viewState, onMove, onMoveStart, onMoveEnd }: LocationPickerMapProps) => {
     const mapRef = useRef<MapRef>(null)
     const [isUserLocating, setIsUserLocating] = useState<boolean>(false)
 
@@ -50,8 +52,9 @@ export const LocationPickerMap = ({ viewState, onMove }: LocationPickerMapProps)
             ref={mapRef}
             mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
             attributionControl={false}
-            reuseMaps
             onMove={handleMapMove}
+            onMoveStart={onMoveStart}
+            onMoveEnd={onMoveEnd}
         >
             <div className="absolute bottom-2 right-2 flex flex-col gap-y-1">
                 <MapControl desktopOnly onClick={handleZoomIn}>

@@ -15,6 +15,7 @@ export const placesLayer: SymbolLayer = {
         'icon-size': 0.75,
         'icon-allow-overlap': false,
         'icon-ignore-placement': true,
+        'icon-offset': [0, -15],
     },
 }
 

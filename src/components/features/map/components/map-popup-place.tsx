@@ -34,7 +34,7 @@ export const MapPopupPlace = ({ mapRef, place }: MapPopupPlaceProps) => {
         <Popup
             latitude={lngLat.lat}
             longitude={lngLat.lng}
-            offset={[0, -5] as [number, number]}
+            offset={[0, -15] as [number, number]}
             closeOnClick={false}
             closeButton={false}
         >
