@@ -49,6 +49,10 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
 
     return (
         <div ref={mapContainerRef} className="size-full">
+            {/* todo: for debug, remove later */}
+            {/* <div className="fixed left-0 right-0 top-1/2 z-50 h-[1px] bg-red-100"></div> */}
+            {/* <div className="fixed bottom-0 left-1/2 top-0 z-50 w-[1px] bg-red-100"></div> */}
+
             <ReactMapGl
                 id="map"
                 ref={mapRef}
