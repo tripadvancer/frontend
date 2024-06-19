@@ -17,7 +17,7 @@ export const landing = {
     'landing.features.title': 'Our features',
     'landing.features.text': 'Explore our app’s exciting features and connect with a community of like-minded travelers.{br}Join us today and start your adventure!',
 
-    'landing.features.places.title': 'Share your favorite{br}places',
+    'landing.features.places.title': 'Add your favorite{br}places',
     'landing.features.places.text': 'You can add any place to the map yourself. Just a few clicks and your favorite place will be available to all travelers around the world.',
     'landing.features.places.button': 'Add place',
 
