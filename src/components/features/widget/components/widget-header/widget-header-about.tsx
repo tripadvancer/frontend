@@ -22,6 +22,11 @@ export const WidgetHeaderAbout = () => {
                         <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>Contact Us</Link>
                     </li>
                     <li>
+                        <Link href="https://help.tripadvancer.com" target="_blank">
+                            Help center
+                        </Link>
+                    </li>
+                    <li>
                         <Link href="/legal/terms-and-conditions" target="_blank">
                             Terms and Conditions
                         </Link>

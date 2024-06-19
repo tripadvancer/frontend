@@ -16,15 +16,23 @@ export const Footer = async () => {
                         <LanguageChanger />
                     </div>
 
-                    <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
-                        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>Contact Us</Link>
-                        <span className="hidden sm:block">•</span>
-                        <Link href="/legal/terms-and-conditions">Terms and Conditions</Link>
-                        <span className="hidden sm:block">•</span>
-                        <Link href="/legal/privacy-policy">Privacy Policy</Link>
-                        <span className="hidden sm:block">•</span>
-                        <Link href="/legal/cookie-policy">Cookie Policy</Link>
-                    </nav>
+                    <div className="flex flex-col gap-y-1">
+                        <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
+                            <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>Contact Us</Link>
+                            <span className="hidden sm:block">•</span>
+                            <Link href="https://help.tripadvancer.com" target="__blank">
+                                Help center
+                            </Link>
+                        </nav>
+
+                        <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
+                            <Link href="/legal/terms-and-conditions">Terms and Conditions</Link>
+                            <span className="hidden sm:block">•</span>
+                            <Link href="/legal/privacy-policy">Privacy Policy</Link>
+                            <span className="hidden sm:block">•</span>
+                            <Link href="/legal/cookie-policy">Cookie Policy</Link>
+                        </nav>
+                    </div>
 
                     <div className="flex gap-x-4">
                         <Link href="https://twitter.com/tripadvancer_me" className="link-black" target="_blank">

@@ -1,6 +1,6 @@
 export const widget = {
     'widget.error': 'An unexpected error has occurred.{br}Please try again later.',
-    'widget.sign_in_link': 'sign in',
+    'widget.sign_in_link': 'Sign in',
     
     'widget.search.placeholder': 'Find a country, place or address',
     

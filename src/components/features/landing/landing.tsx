@@ -8,8 +8,8 @@ export const Landing = () => {
         <div className="container flex flex-col gap-y-24 py-24">
             <LandingCountries />
             <LandingAroundPlaces />
-            <LandingFeatures />
             <LandingMaps />
+            <LandingFeatures />
         </div>
     )
 }

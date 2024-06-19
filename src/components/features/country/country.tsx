@@ -5,6 +5,7 @@ import Link from 'next/link'
 import type { ICountryDict } from '@/utils/types/country'
 
 import { FeedPlacesSkeleton } from '@/components/features/feed-places/feed-places-skeleton'
+import { MapIcon16 } from '@/components/ui/icons'
 import { getPlacesByCountryCode } from '@/services/places'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { parseQueryString } from '@/utils/helpers/common'
@@ -41,9 +42,13 @@ export const Country = async ({
                             {t('pages.country.view_all')}
                         </Link>
                         <h1 className="h1 mb-4 text-white">{country.name[locale]}</h1>
-                        <p className="text-big text-white">
+                        <p className="mb-4 text-big text-white">
                             {t('pages.country.description', { country: country.name[locale] })}
                         </p>
+                        <div className="flex-center cursor-pointer gap-x-2 text-white">
+                            <MapIcon16 />
+                            Show on map
+                        </div>
                     </div>
                 </section>
             </div>

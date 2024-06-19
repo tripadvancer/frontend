@@ -3,29 +3,29 @@ export const landing = {
     'landing.search.button': 'Search',
 
     'landing.countries.title': 'Where are you going?',
-    'landing.countries.text': 'Discover top-rated destinations recommended by travelers in each country. Uncover must-see sights, from iconic landmarks to hidden gems waiting to be explored.',
-    'landing.countries.button': 'See All Countries',
+    'landing.countries.text': 'Explore top-rated destinations recommended by fellow travelers. Discover must-see sights, from iconic landmarks to hidden gems waiting to be explored.',
+    'landing.countries.button': 'See all countries',
 
-    'landing.around_places.title': 'Explore places around you',
-    'landing.around_places.text': 'Discover what interesting places are near you. These locations are recommended by other travelers, and you can visit them today.',
-    'landing.around_places.button': 'See All Places',
+    'landing.around_places.title': 'Places around you',
+    'landing.around_places.text': 'Find fascinating places nearby, these locations are recommended by other travelers, and you can visit them today.',
+    'landing.around_places.button': 'See all places',
 
-    'landing.features.title': 'Our Features',
-    'landing.features.text': 'Discover the exciting features of our app and connect with a welcoming community of travelers like you.{br}Join us today and start exploring!',
+    'landing.map.title': 'Not enough? Use our map',
+    'landing.map.text': 'If you’re looking for even more options, use our map with attractions to discover interesting places worldwide. Easily plan your travels and share your discoveries with fellow adventurers.',
+    'landing.map.button': 'Go to Tripadvancer map',
 
-    'landing.features.places.title': 'Explore and Share{br}Interesting Places',
-    'landing.features.places.text': 'Discover unique locations and plan unforgettable journeys. Share your experiences of visited places by leaving reviews and ratings.',
-    'landing.features.places.button': 'Explore Places',
+    'landing.features.title': 'Our features',
+    'landing.features.text': 'Explore our app’s exciting features and connect with a community of like-minded travelers.{br}Join us today and start your adventure!',
 
-    'landing.features.lists.title': 'Create Your Own{br}Lists of Places',
-    'landing.features.lists.text': 'Create, edit, and manage your own lists of favorite places. Organize landmarks for quick access during your travels.',
-    'landing.features.lists.button': 'Create Lists',
+    'landing.features.places.title': 'Share your favorite{br}places',
+    'landing.features.places.text': 'You can add any place to the map yourself. Just a few clicks and your favorite place will be available to all travelers around the world.',
+    'landing.features.places.button': 'Add place',
 
-    'landing.features.random.title': 'Find Random{br}Places Nearby',
-    'landing.features.random.text': 'Wondering where to go in your free time? Try our random place search! Choose a category, set a convenient distance—and off you go to exciting adventures!',
-    'landing.features.random.button': 'Find Random Place',
+    'landing.features.lists.title': 'Create your own{br}lists of places',
+    'landing.features.lists.text': 'Create, edit, and manage lists of your favorite places. Organize landmarks for easy access during your travels.',
+    'landing.features.lists.button': 'Create lists',
 
-    'landing.map.title': 'Travel Map',
-    'landing.map.text': 'Open the map and discover interesting places anywhere in the world. Easily plan your travels and share your discoveries with fellow travelers.',
-    'landing.map.button': 'Go to Tripadvancer Map',
+    'landing.features.random.title': 'Find random{br}places nearby',
+    'landing.features.random.text': 'Can’t decide where to go? Try our random place search! Pick a category, set a distance, and embark on new adventures.',
+    'landing.features.random.button': 'Find random place',
 } as const
