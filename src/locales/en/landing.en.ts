@@ -7,7 +7,7 @@ export const landing = {
     'landing.countries.button': 'See all countries',
 
     'landing.around_places.title': 'Places around you',
-    'landing.around_places.text': 'Find fascinating places nearby, these locations are recommended by other travelers, and you can visit them today.',
+    'landing.around_places.text': 'Find fascinating places nearby. Explore and visit these locations today.',
     'landing.around_places.button': 'See all places',
 
     'landing.map.title': 'Not enough? Use our map',
