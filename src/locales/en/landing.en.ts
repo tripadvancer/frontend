@@ -3,7 +3,7 @@ export const landing = {
     'landing.search.button': 'Search',
 
     'landing.countries.title': 'Where are you going?',
-    'landing.countries.text': 'Explore top-rated destinations recommended by fellow travelers. Discover must-see sights, from iconic landmarks to hidden gems waiting to be explored.',
+    'landing.countries.text': 'Visit top-rated destinations recommended by fellow travelers. Discover must-see sights, from iconic landmarks to hidden gems waiting to be explored.',
     'landing.countries.button': 'See all countries',
 
     'landing.around_places.title': 'Places around you',
@@ -15,7 +15,7 @@ export const landing = {
     'landing.map.button': 'Go to Tripadvancer map',
 
     'landing.features.title': 'Our features',
-    'landing.features.text': 'Explore our app’s exciting features and connect with a community of like-minded travelers.{br}Join us today and start your adventure!',
+    'landing.features.text': 'Check out our app’s exciting features and connect with a community of like-minded travelers.{br}Join us today and start your adventure!',
 
     'landing.features.places.title': 'Add your favorite{br}places',
     'landing.features.places.text': 'You can add any place to the map yourself. Just a few clicks and your favorite place will be available to all travelers around the world.',
