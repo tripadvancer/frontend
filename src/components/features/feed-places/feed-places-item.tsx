@@ -4,13 +4,16 @@ import Link from 'next/link'
 
 import type { IPlace } from '@/utils/types/place'
 
+import { Distance } from '@/components/ui/distance'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { Rating } from '@/components/ui/rating'
 import { useI18n } from '@/utils/i18n/i18n.client'
 
-type FeedPlacesItemProps = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'>
+type FeedPlacesItemProps = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & {
+    distance?: number
+}
 
-export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount }: FeedPlacesItemProps) => {
+export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount, distance }: FeedPlacesItemProps) => {
     const t = useI18n()
 
     return (
@@ -27,6 +30,7 @@ export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount }: Fe
                 <div className="flex flex-col justify-between overflow-hidden">
                     <div className="h7 line-clamp-4 break-words">{title}</div>
                     <div>
+                        {/* {distance && <Distance distance={distance} className="text-small text-black-40" />} */}
                         <Rating value={avgRating ?? 0} size={16} />
                         <div className="text-small text-black-40">
                             {t('place.reviews', {

@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import type { IPlace } from '@/utils/types/place'
 
+import { Distance } from '@/components/ui/distance'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { getPlacesAround } from '@/services/places'
 import { arrayToLngLat } from '@/utils/helpers/maps'
@@ -28,12 +29,6 @@ export const PlaceSidebarNearby = async ({ id, location }: IPlace) => {
         return null
     }
 
-    const getDistance = (distance: number) => {
-        return distance < 1000
-            ? t('common.distance.m', { distance })
-            : t('common.distance.km', { distance: (distance / 1000).toFixed(1) })
-    }
-
     return (
         <section>
             <h3 className="mb-4 text-caps uppercase">{t('pages.place.place_nearby.title')}</h3>
@@ -54,7 +49,7 @@ export const PlaceSidebarNearby = async ({ id, location }: IPlace) => {
                                 />
                                 <div className="flex min-w-0 flex-col gap-y-1">
                                     <div className="line-clamp-3 break-words font-medium">{place.title}</div>
-                                    <div className="text-small text-black-40">{getDistance(place.distance)}</div>
+                                    <Distance distance={place.distance} className="text-small text-black-40" />
                                 </div>
                             </div>
                         </Link>

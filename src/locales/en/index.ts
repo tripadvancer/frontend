@@ -80,6 +80,7 @@ export default {
     'common.action.locate_me': 'Locate me',
     'common.action.go_to_map': 'Go to map',
     'common.action.save': 'Save',
+    'common.action.unsave': 'Unsave',
 
     'paginator.prev': 'Prev',
     'paginator.next': 'Next',
