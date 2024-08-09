@@ -64,10 +64,7 @@ const nextConfig = {
 }
 
 // Plugins
-const createNextIntlPlugin = require('next-intl/plugin')
 const withMDX = require('@next/mdx')()
 
-const withNextIntl = createNextIntlPlugin()
-
 // Export the combined configuration
-module.exports = withNextIntl(withMDX(nextConfig))
+module.exports = withMDX(nextConfig)
