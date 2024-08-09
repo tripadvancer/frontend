@@ -1,8 +1,5 @@
 import { ReactNode } from 'react'
 
-import { NextIntlClientProvider } from 'next-intl'
-import { getLocale, getMessages } from 'next-intl/server'
-
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 import type { Metadata, Viewport } from 'next/types'
@@ -113,10 +110,7 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({ children, params }: { children: ReactNode; params: { locale: string } }) {
-    const locale = await getLocale()
-
-    // Providing all messages to the client side
-    const messages = await getMessages()
+    const locale = params.locale
 
     return (
         <html lang={locale}>
@@ -124,11 +118,9 @@ export default async function RootLayout({ children, params }: { children: React
                 <link href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css" rel="stylesheet" />
             </head>
             <body className={roboto.className}>
-                <NextIntlClientProvider messages={messages}>
-                    <Providers locale={locale}>{children}</Providers>
-                    <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MENSUREMENT_ID as string} />
-                    <TailwindIndicator />
-                </NextIntlClientProvider>
+                <Providers locale={locale}>{children}</Providers>
+                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MENSUREMENT_ID as string} />
+                <TailwindIndicator />
             </body>
         </html>
     )
