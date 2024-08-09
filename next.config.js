@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // Custom page extensions supported by the project
     pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 
     webpack(config) {
-        // Grab the existing rule that handles SVG imports
+        // Find the existing rule that handles SVG imports
         const fileLoaderRule = config.module.rules.find(rule => rule.test?.test?.('.svg'))
 
+        // Update the rules to handle SVG imports correctly
         config.module.rules.push(
             // Reapply the existing rule, but only for svg imports ending in ?url
             {
@@ -28,9 +30,10 @@ const nextConfig = {
         return config
     },
 
+    // Image optimization settings
     images: {
-        unoptimized: true,
-        formats: ['image/avif', 'image/webp'],
+        unoptimized: true, // Disable Next.js's built-in image optimization
+        formats: ['image/avif', 'image/webp'], // Supported image formats
         remotePatterns: [
             {
                 protocol: 'https',
@@ -60,5 +63,11 @@ const nextConfig = {
     },
 }
 
+// Plugins
+const createNextIntlPlugin = require('next-intl/plugin')
 const withMDX = require('@next/mdx')()
-module.exports = withMDX(nextConfig)
+
+const withNextIntl = createNextIntlPlugin()
+
+// Export the combined configuration
+module.exports = withNextIntl(withMDX(nextConfig))
