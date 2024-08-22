@@ -50,11 +50,11 @@ export const SignUp = () => {
             ),
         username: Yup.string()
             .required(t('validation.required'))
-            .min(userNameMinLength, t('validation.text.minLength', { min_length: userNameMinLength }))
-            .max(userNameMaxLength, t('validation.text.maxLength', { max_length: userNameMaxLength })),
+            .min(userNameMinLength, t('validation.text.minLength', { minLength: userNameMinLength }))
+            .max(userNameMaxLength, t('validation.text.maxLength', { maxLength: userNameMaxLength })),
         password: Yup.string()
             .required(t('validation.required'))
-            .min(userPasswordMinLength, t('validation.text.minLength', { min_length: userPasswordMinLength }))
+            .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
             .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
     })
 

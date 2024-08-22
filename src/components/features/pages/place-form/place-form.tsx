@@ -2,6 +2,7 @@
 
 import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
+import * as Yup from 'yup'
 
 import Image from 'next/image'
 

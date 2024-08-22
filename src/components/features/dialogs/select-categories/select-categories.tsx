@@ -39,7 +39,7 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
-            <h1 className="h7 text-center">{t('dialog.selectCategories.title', { max_count: maxCategoriesCount })}</h1>
+            <h1 className="h7 text-center">{t('dialog.selectCategories.title', { maxCount: maxCategoriesCount })}</h1>
             <div className="flex flex-wrap justify-center gap-1">
                 {sortedCategories.map(category => (
                     <SelectCategoriesItem

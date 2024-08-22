@@ -32,8 +32,8 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
         text: Yup.string()
             .trim()
             .required(t('validation.required'))
-            .min(reviewTextMinLength, t('validation.text.minLength', { min_length: reviewTextMinLength }))
-            .max(reviewTextMaxLength, t('validation.text.maxLength', { max_length: reviewTextMaxLength })),
+            .min(reviewTextMinLength, t('validation.text.minLength', { minLength: reviewTextMinLength }))
+            .max(reviewTextMaxLength, t('validation.text.maxLength', { maxLength: reviewTextMaxLength })),
     })
 
     const formik = useFormik({

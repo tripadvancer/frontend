@@ -98,7 +98,7 @@ export const MapPopupLocation = ({
                             {t('map.popup.location.iAmHere')}
                         </FormButton>
                         <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
-                            {t('map.popup.location.add_place')}
+                            {t('map.popup.location.addPlace')}
                         </FormButton>
                     </div>
                 </div>

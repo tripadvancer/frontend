@@ -44,7 +44,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .trim()
-            .max(listNameMaxLength, t('validation.text.maxLength', { max_length: listNameMaxLength })),
+            .max(listNameMaxLength, t('validation.text.maxLength', { maxLength: listNameMaxLength })),
     })
 
     const initialValues: UpdatePlaceInListsInputs & CreateListInputs = {

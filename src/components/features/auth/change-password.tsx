@@ -35,7 +35,7 @@ export const ChangePassword = () => {
         oldPassword: Yup.string().required(t('validation.required')),
         newPassword: Yup.string()
             .required(t('validation.required'))
-            .min(userPasswordMinLength, t('validation.text.minLength', { min_length: userPasswordMinLength }))
+            .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
             .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
     })
 

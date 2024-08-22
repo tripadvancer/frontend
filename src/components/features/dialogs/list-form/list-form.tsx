@@ -29,10 +29,10 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
         name: Yup.string()
             .trim()
             .required(t('validation.required'))
-            .max(listNameMaxLength, t('validation.text.maxLength', { max_length: listNameMaxLength })),
+            .max(listNameMaxLength, t('validation.text.maxLength', { maxLength: listNameMaxLength })),
         description: Yup.string()
             .trim()
-            .max(listDescriptionMaxLength, t('validation.text.maxLength', { max_length: listDescriptionMaxLength })),
+            .max(listDescriptionMaxLength, t('validation.text.maxLength', { maxLength: listDescriptionMaxLength })),
     })
 
     const formik = useFormik({

@@ -63,7 +63,7 @@ export const PlaceFormPhotosList = ({ photos, onChange }: PlaceFormPhotosListPro
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
                 <div className="w-full text-black-40 lg:w-64">
                     <div className="lg:hidden">
-                        {t.rich('page.placeForm.field.photos.text', { maxCount: maxPhotosCount })}
+                        {t('page.placeForm.field.photos.text', { maxCount: maxPhotosCount })}
                     </div>
                 </div>
                 <div className="flex-1">
@@ -78,7 +78,7 @@ export const PlaceFormPhotosList = ({ photos, onChange }: PlaceFormPhotosListPro
 
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
                 <div className="hidden w-full text-black-40 lg:block lg:w-64">
-                    {t.rich('page.placeForm.field.photos.text', { maxCount: maxPhotosCount })}
+                    {t('page.placeForm.field.photos.text', { maxCount: maxPhotosCount })}
                 </div>
                 <div className="flex-1">
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">

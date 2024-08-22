@@ -23,8 +23,8 @@
             "maxCount": "You can upload up to {count} files"
         },
         "text": {
-            "minLength": "This field must be at least {min_length} characters long",
-            "maxLength": "This field must be at most {max_length} characters long"
+            "minLength": "This field must be at least {minLength} characters long",
+            "maxLength": "This field must be at most {maxLength} characters long"
         },
         "email": {
             "invalid": "Please enter a valid email address"
@@ -40,20 +40,20 @@
         "place": {
             "title": {
                 "required": "Please enter a place title",
-                "minLength": "The title must be at least {min_length} characters long",
-                "maxLength": "The title must be at most {max_length} characters long"
+                "minLength": "The title must be at least {minLength} characters long",
+                "maxLength": "The title must be at most {maxLength} characters long"
             },
             "description": {
                 "required": "Please enter a place description",
-                "minLength": "The description must be at least {min_length} characters long",
-                "maxLength": "The description must be at most {max_length} characters long"
+                "minLength": "The description must be at least {minLength} characters long",
+                "maxLength": "The description must be at most {maxLength} characters long"
             },
             "location": {
                 "invalid": "Coordinates must be in format: 'lat, lng', e.g. '50.4501, 30.5234'"
             },
             "categories": {
                 "required": "Please select at least one category",
-                "maxCount": "You can select up to {max_count} categories"
+                "maxCount": "You can select up to {maxCount} categories"
             }
         }
     },
@@ -274,7 +274,7 @@
             }
         },
         "selectCategories": {
-            "title": "Select up to {max_count} categories"
+            "title": "Select up to {maxCount} categories"
         },
         "sharePlace": {
             "title": "Share place",
@@ -512,7 +512,7 @@
             "addReview": "Add review",
             "placeNearby": "Places nearby",
             "author": "Author",
-            "abandoned_warning": "Places in the \"Abandoned\" category might be dangerous, be careful.",
+            "abandonedWarning": "Places in the \"Abandoned\" category might be dangerous, be careful.",
             "rating": {
                 "average": "<reviewsLink>{reviewsCount, plural, =0 {No reviews} =1 {# review} other {# reviews}}</reviewsLink> with an average rating of {avgRating}",
                 "empty": "This place does not have a rating yet"
@@ -523,7 +523,7 @@
         "popup": {
             "location": {
                 "title": "Selected location",
-                "add_place": "Add place here",
+                "addPlace": "Add place here",
                 "iAmHere": "I am here"
             }
         },
@@ -571,7 +571,7 @@
                 "info": "Select categories, radius around you or a specified point and we will select interesting place for you.",
                 "button": {
                     "caption": "Find a random place",
-                    "caption_coundown": "Find a random place in ({countdown})"
+                    "captionCoundown": "Find a random place in ({countdown})"
                 }
             },
             "toggler": {

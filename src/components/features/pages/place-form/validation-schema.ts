@@ -15,8 +15,8 @@ export const validationSchema = (t: any) =>
         title: Yup.string()
             .trim()
             .required(t('validation.place.title.required'))
-            .min(titleMinLength, t('validation.place.title.min_length', { min_length: titleMinLength }))
-            .max(titleMaxLength, t('validation.place.title.max_length', { max_length: titleMaxLength })),
+            .min(titleMinLength, t('validation.place.title.minLength', { minLength: titleMinLength }))
+            .max(titleMaxLength, t('validation.place.title.maxLength', { maxLength: titleMaxLength })),
 
         description: Yup.mixed()
             .test(
@@ -26,12 +26,12 @@ export const validationSchema = (t: any) =>
             )
             .test(
                 'description',
-                t('validation.place.description.min_length', { min_length: descriptionMinLength }),
+                t('validation.place.description.minLength', { minLength: descriptionMinLength }),
                 value => getDescriptionLength(value as string) >= descriptionMinLength,
             )
             .test(
                 'description',
-                t('validation.place.description.max_length', { max_length: descriptionMaxLength }),
+                t('validation.place.description.maxLength', { maxLength: descriptionMaxLength }),
                 value => getDescriptionLength(value as string) <= descriptionMaxLength,
             ),
 
@@ -41,7 +41,7 @@ export const validationSchema = (t: any) =>
 
         categories: Yup.array()
             .min(1, t('validation.place.categories.required'))
-            .max(maxCategories, t('validation.place.categories.max_count', { max_count: maxCategories })),
+            .max(maxCategories, t('validation.place.categories.maxCount', { maxCount: maxCategories })),
     })
 
 function getDescriptionLength(value: string | undefined): number {

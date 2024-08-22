@@ -14,7 +14,7 @@ export const PlaceMainAbandonedWarning = async ({ categories }: IPlace) => {
                 <div className="text-red-100">
                     <AlertIcon24 />
                 </div>
-                {t('page.place.abandoned_warning')}
+                {t('page.place.abandonedWarning')}
             </div>
         )
     }

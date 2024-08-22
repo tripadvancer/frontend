@@ -37,7 +37,7 @@ export const WidgetRandomButton = ({ isLoading, isUserLocated, onClick }: Widget
     return (
         <FormButton variant="orange" isLoading={isLoading} isDisabled={!isUserLocated || isDisabled} onClick={onClick}>
             {isDisabled && countdown !== null && countdown > 0
-                ? t('map.widget.random.button.caption_coundown', { countdown })
+                ? t('map.widget.random.button.captionCoundown', { countdown })
                 : t('map.widget.random.button.caption')}
         </FormButton>
     )
