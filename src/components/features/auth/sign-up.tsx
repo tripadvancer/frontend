@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
+import { useTranslations } from 'next-intl'
 import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverification'
 import { emailPasswordSignUp } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 import * as Yup from 'yup'
@@ -17,7 +18,6 @@ import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { SignIn } from './sign-in'
 import { SignUpCompleting } from './sign-up-completing'
@@ -28,7 +28,7 @@ const userNameMaxLength = validationConfig.user.name.maxLength
 const userPasswordMinLength = validationConfig.user.password.minLength
 
 export const SignUp = () => {
-    const t = useI18n()
+    const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -50,12 +50,12 @@ export const SignUp = () => {
             ),
         username: Yup.string()
             .required(t('validation.required'))
-            .min(userNameMinLength, t('validation.text.min_length', { min_length: userNameMinLength }))
-            .max(userNameMaxLength, t('validation.text.max_length', { max_length: userNameMaxLength })),
+            .min(userNameMinLength, t('validation.text.minLength', { min_length: userNameMinLength }))
+            .max(userNameMaxLength, t('validation.text.maxLength', { max_length: userNameMaxLength })),
         password: Yup.string()
             .required(t('validation.required'))
-            .min(userPasswordMinLength, t('validation.text.min_length', { min_length: userPasswordMinLength }))
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.password.policy_violated')),
+            .min(userPasswordMinLength, t('validation.text.minLength', { min_length: userPasswordMinLength }))
+            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
     })
 
     const handleSubmit = async (values: SignUpInputs) => {
@@ -83,7 +83,7 @@ export const SignUp = () => {
                     if (emailError) {
                         // todo: try to find a better way to handle this
                         if (emailError.error === 'This email already exists. Please sign in instead.') {
-                            formik.setErrors({ email: t('validation.email.already_exists') })
+                            formik.setErrors({ email: t('validation.wrong.emailTaken') })
                         } else {
                             formik.setErrors({ email: emailError.error })
                         }
@@ -95,7 +95,7 @@ export const SignUp = () => {
 
                     if (usernameError) {
                         if (usernameError.error === 'USERNAME_ALREADY_EXISTS_ERROR') {
-                            formik.setErrors({ username: t('validation.username.already_exists') })
+                            formik.setErrors({ username: t('validation.wrong.usernameTaken') })
                         }
                     }
                     break
@@ -125,13 +125,13 @@ export const SignUp = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{t('auth.signup.title')}</h1>
+            <h1 className="h7 text-center">{t('auth.signUp.title')}</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading} />
                     {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
                 </div>
-                <Devider>{t('auth.signin.third_party.or')}</Devider>
+                <Devider>{t('auth.or')}</Devider>
                 <div className="flex flex-col gap-y-2">
                     <FormInput
                         type="text"
@@ -165,11 +165,11 @@ export const SignUp = () => {
             </div>
             <div className="flex flex-col gap-y-4">
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {t('auth.signup.submit')}
+                    {t('auth.signUp.submit')}
                 </FormButton>
                 <div className="text-center text-small text-black-40">
-                    {t('auth.signup.info', {
-                        terms_link: (
+                    {t.rich('auth.signUp.info', {
+                        termsLink: termsLink => (
                             <span
                                 className="link"
                                 onClick={() => {
@@ -177,10 +177,10 @@ export const SignUp = () => {
                                     router.push('/legal/terms-and-conditions')
                                 }}
                             >
-                                {t('common.link.terms')}
+                                {termsLink}
                             </span>
                         ),
-                        privacy_link: (
+                        privacyLink: privacyLink => (
                             <span
                                 className="link"
                                 onClick={() => {
@@ -188,17 +188,17 @@ export const SignUp = () => {
                                     router.push('/legal/privacy-policy')
                                 }}
                             >
-                                {t('common.link.privacy')}
+                                {privacyLink}
                             </span>
                         ),
                     })}
                 </div>
             </div>
             <div className="text-center">
-                {t('auth.signup.to_back', {
-                    sign_in_link: (
+                {t.rich('auth.signUp.toBack', {
+                    signInLink: signInLink => (
                         <span className="link" onClick={handleSignInClick}>
-                            {t('common.link.sign_in')}
+                            {signInLink}
                         </span>
                     ),
                 })}

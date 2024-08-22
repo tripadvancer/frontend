@@ -1,6 +1,6 @@
 'use client'
 
-import { useI18n } from '@/utils/i18n/i18n.client'
+import { useTranslations } from 'next-intl'
 
 type ConfirmationMiniProps = {
     onConfirm: () => void
@@ -8,17 +8,17 @@ type ConfirmationMiniProps = {
 }
 
 export const ConfirmationMini = ({ onConfirm, onCancel }: ConfirmationMiniProps) => {
-    const t = useI18n()
+    const t = useTranslations()
 
     return (
         <div className="flex gap-x-1">
-            <span>{t('confirm_mini.title')}</span>
+            <span>{t('component.confirmMini.title')}</span>
             <span className="link-red" onClick={onConfirm}>
-                {t('confirm_mini.yes')}
+                {t('component.confirmMini.yes')}
             </span>
             <span>/</span>
             <span className="link-red" onClick={onCancel}>
-                {t('confirm_mini.no')}
+                {t('component.confirmMini.no')}
             </span>
         </div>
     )

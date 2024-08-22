@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
 import { getAuthorisationURLWithQueryParamsAndSetState } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 
 import { useRouter } from 'next/navigation'
@@ -9,7 +10,6 @@ import { useRouter } from 'next/navigation'
 import { FormButton } from '@/components/ui/form-button'
 import { FacebookIcon24, GoogleIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 type ThirdPartyButtonProps = {
     provider: 'google' | 'facebook'
@@ -17,7 +17,7 @@ type ThirdPartyButtonProps = {
 }
 
 export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps) => {
-    const t = useI18n()
+    const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
     const [isLoading, setIsLoading] = useState<boolean>(false)

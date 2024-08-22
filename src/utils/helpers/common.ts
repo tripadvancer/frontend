@@ -1,15 +1,12 @@
 import { FormikErrors } from 'formik'
 
-import type { LngLat } from '@/utils/types/geo'
-
 import { ImageVariants } from '@/utils/enums'
-import { i18nConfig } from '@/utils/i18n/i18n.config'
 
 export function makeImageUrl(url: string | null, imageVariant: ImageVariants) {
     return `${url}/${imageVariant}`
 }
 
-export function formattedDate(date: Date, locale: string = i18nConfig.defaultLocale) {
+export function formattedDate(date: Date, locale: string = 'en') {
     return new Date(date).toLocaleDateString(locale, {
         year: 'numeric',
         month: 'long',

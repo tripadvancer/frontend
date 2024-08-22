@@ -2,13 +2,8 @@
 
 import { useMap } from 'react-map-gl/maplibre'
 
-import Session from 'supertokens-web-js/recipe/session'
+import type { IPlacePreview, IRandomPlace } from '@/utils/types/place'
 
-import type { IPlace, IPlacePreview, IRandomPlace } from '@/utils/types/place'
-
-import { SignIn } from '@/components/features/auth/sign-in'
-import { SavePlace } from '@/components/features/save-place/save-space'
-import { useDialog } from '@/providers/dialog-provider'
 import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'

@@ -1,7 +1,8 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { FormButton } from '@/components/ui/form-button'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 type ShowMoreProps = {
     isLoading?: boolean
@@ -9,11 +10,11 @@ type ShowMoreProps = {
 }
 
 export const ShowMore = ({ isLoading, onClick }: ShowMoreProps) => {
-    const t = useI18n()
+    const t = useTranslations()
 
     return (
         <FormButton type="stroke" shape="rounded" className="w-full" isLoading={isLoading} onClick={onClick}>
-            {t('common.action.load_more')}
+            {t('common.action.loadMore')}
         </FormButton>
     )
 }

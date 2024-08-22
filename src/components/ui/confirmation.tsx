@@ -1,10 +1,11 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 type ConfirmationProps = {
     title: string
@@ -14,7 +15,7 @@ type ConfirmationProps = {
 }
 
 export const Confirmation = ({ title, message, variant = 'blue', onConfirm }: ConfirmationProps) => {
-    const t = useI18n()
+    const t = useTranslations()
     const dialog = useDialog()
 
     useKeypress(Keys.ENTER, () => {
@@ -30,10 +31,10 @@ export const Confirmation = ({ title, message, variant = 'blue', onConfirm }: Co
             </div>
             <div className="flex gap-x-2">
                 <FormButton variant={variant} onClick={onConfirm}>
-                    {t('confirm.yes')}
+                    {t('common.action.confirm')}
                 </FormButton>
                 <FormButton type="stroke" variant={variant} onClick={() => dialog.close()}>
-                    {t('confirm.no')}
+                    {t('common.action.cancel')}
                 </FormButton>
             </div>
         </div>

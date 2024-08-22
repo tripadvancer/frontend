@@ -1,8 +1,9 @@
 'use client'
 
+import { useLocale, useTranslations } from 'next-intl'
+
 import { Category } from '@/components/ui/category'
 import { getSortedCategories } from '@/utils/dictionaries/categories'
-import { useCurrentLocale, useI18n } from '@/utils/i18n/i18n.client'
 
 type CategoryProps = {
     variant: 'blue' | 'orange'
@@ -11,9 +12,9 @@ type CategoryProps = {
 }
 
 export const Categories = ({ variant, selectedCategories, onClick }: CategoryProps) => {
-    const t = useI18n()
-    const currentLocale = useCurrentLocale()
-    const sortedCategories = getSortedCategories(currentLocale)
+    const t = useTranslations()
+    const locale = useLocale()
+    const sortedCategories = getSortedCategories(locale)
 
     const handleSelectCategory = (categoryId: number) => {
         const updatedSelectedCategories = selectedCategories.includes(categoryId)
@@ -30,7 +31,7 @@ export const Categories = ({ variant, selectedCategories, onClick }: CategoryPro
     return (
         <div className="flex flex-wrap gap-2">
             <Category variant={variant} isSelected={selectedCategories.length === 0} onClick={handleResetCategories}>
-                {t('categories.all')}
+                {t('component.categories.all')}
             </Category>
 
             {sortedCategories.map(category => (
@@ -40,7 +41,7 @@ export const Categories = ({ variant, selectedCategories, onClick }: CategoryPro
                     isSelected={selectedCategories.includes(category.id)}
                     onClick={() => handleSelectCategory(category.id)}
                 >
-                    {category.localizedName[currentLocale]}
+                    {category.localizedName[locale]}
                 </Category>
             ))}
         </div>

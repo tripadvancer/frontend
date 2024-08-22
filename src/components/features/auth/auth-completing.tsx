@@ -1,22 +1,23 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 type AuthCompletingProps = {
     title: string
-    message: string
+    text: string
 }
 
-export const AuthCompleting = ({ title, message }: AuthCompletingProps) => {
-    const t = useI18n()
+export const AuthCompleting = ({ title, text }: AuthCompletingProps) => {
+    const t = useTranslations()
     const dialog = useDialog()
 
     return (
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
             <h1 className="h7">{title}</h1>
-            <p className="text-center">{message}</p>
+            <p className="text-center">{text}</p>
             <FormButton type="stroke" htmlType="button" className="w-full" onClick={dialog.close}>
                 {t('common.action.ok')}
             </FormButton>
