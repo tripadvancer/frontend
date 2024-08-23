@@ -13,10 +13,11 @@ import { Dropdown } from '@/components/ui/dropdown'
 import { PointIcon16, ReviewIcon16, SettingsIcon16, SignOutIcon16 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 
-export const HeaderUser = ({ user }: { user: IUser }) => {
+export const UserMenu = ({ user, avatarSize }: { user: IUser; avatarSize?: number }) => {
     const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
+
     const isMobile = useMediaQuery('(max-width: 639px)')
 
     const signOut = async () => {
@@ -59,7 +60,7 @@ export const HeaderUser = ({ user }: { user: IUser }) => {
                 },
             ]}
         >
-            <Avatar {...user} size={isMobile ? 24 : 32} />
+            <Avatar {...user} size={avatarSize ? avatarSize : isMobile ? 24 : 32} />
         </Dropdown>
     )
 }

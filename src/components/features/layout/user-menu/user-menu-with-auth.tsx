@@ -1,11 +1,18 @@
+import { ReactNode } from 'react'
+
 import { getUserById } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { HeaderSignIn } from './header-signin'
-import { HeaderUser } from './header-user'
+import { UserMenu } from './user-menu'
 
-export const HeaderUserWithAuth = async () => {
+export const UserMenuWithAuth = async ({
+    avatarSize,
+    signInComponent,
+}: {
+    avatarSize?: number
+    signInComponent: ReactNode
+}) => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -13,7 +20,7 @@ export const HeaderUserWithAuth = async () => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return <HeaderSignIn />
+            return <>{signInComponent}</>
         }
 
         /**
@@ -26,5 +33,5 @@ export const HeaderUserWithAuth = async () => {
     const activeUserId = session.getAccessTokenPayload().userId
     const user = await getUserById(activeUserId)
 
-    return <HeaderUser user={user} />
+    return <UserMenu user={user} avatarSize={avatarSize} />
 }
