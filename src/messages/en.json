@@ -139,7 +139,7 @@
     "layout": {
         "header": {
             "signIn": "Sign In",
-            "addPlace": "Add Place",
+            "addPlace": "Add place",
             "links": {
                 "map": "Map"
             }
