@@ -6,10 +6,11 @@ import type { IPlacePreview } from '@/utils/types/place'
 
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { BookmarkFillIcon16, BookmarkIcon16, PinIcon16, VisibilityIcon16 } from '@/components/ui/icons'
+import { BookmarkFillIcon16, BookmarkIcon16, PinIcon16, RouteIcon16, ShareIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
+import { useSharePlace } from '@/utils/hooks/use-share-place'
 import { useShowOnMap } from '@/utils/hooks/use-show-on-map'
 
 export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
@@ -19,6 +20,7 @@ export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
 
     const { savePlace } = useSavePlace(place.id)
     const { showOnMap } = useShowOnMap(place)
+    const { sharePlace } = useSharePlace(place)
 
     const items: DropdownItemProps[] = [
         {
@@ -30,7 +32,7 @@ export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
         {
             caption: t('common.action.place.navigate'),
             value: 'navigate',
-            icon: '',
+            icon: <RouteIcon16 />,
             onClick: () => dialog.open(<ChooseNavigationApp lngLat={lngLat} />),
         },
         {
@@ -42,8 +44,8 @@ export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
         {
             caption: t('common.action.place.share'),
             value: 'share',
-            icon: '',
-            onClick: showOnMap,
+            icon: <ShareIcon16 />,
+            onClick: sharePlace,
         },
     ]
 
