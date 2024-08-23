@@ -1,9 +1,10 @@
 import { EmailVerificationWithAuth } from '@/components/features/banners/email-verification/email-verification-with-auth'
+import { UserMenuWithAuth } from '@/components/features/layout/user-menu/user-menu-with-auth'
 
 import { HeaderAddPlaceWithAuth } from './components/header-add-place-with-auth'
 import { HeaderLogo } from './components/header-logo'
 import { HeaderMap } from './components/header-map'
-import { HeaderUserWithAuth } from './components/header-user-with-auth'
+import { HeaderSignIn } from './components/header-signin'
 
 export const Header = () => {
     return (
@@ -23,7 +24,7 @@ export const Header = () => {
                             <HeaderMap />
                         </div>
                         <HeaderAddPlaceWithAuth />
-                        <HeaderUserWithAuth />
+                        <UserMenuWithAuth signInComponent={<HeaderSignIn />} />
                     </div>
                 </div>
             </header>
