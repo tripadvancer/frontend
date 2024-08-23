@@ -1,9 +1,10 @@
+import { UserMenuWithAuth } from '@/components/features/layout/user-menu/user-menu-with-auth'
+
 import { WidgetHeaderAbout } from './widget-header-about'
 import { WidgetHeaderAboutToggler } from './widget-header-about-toggler'
 import { WidgetHeaderAddPlaceWithAuth } from './widget-header-add-place-with-auth'
 import { WidgetHeaderLogo } from './widget-header-logo'
-import { WidgetHeaderUser } from './widget-header-user'
-import { WidgetHeaderUserMenuWithAuth } from './widget-header-user-menu-with-auth'
+import { WidgetHeaderSignInLink } from './widget-header-signin-link'
 
 export const WidgetHeader = () => {
     return (
@@ -18,11 +19,10 @@ export const WidgetHeader = () => {
                 </div>
                 <div className="center flex-center gap-x-2">
                     <WidgetHeaderAddPlaceWithAuth />
-                    <WidgetHeaderUser />
+                    <UserMenuWithAuth avatarSize={24} signInComponent={<WidgetHeaderSignInLink />} />
                 </div>
             </div>
             <WidgetHeaderAbout />
-            <WidgetHeaderUserMenuWithAuth />
         </div>
     )
 }

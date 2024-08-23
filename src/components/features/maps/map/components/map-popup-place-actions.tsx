@@ -21,7 +21,7 @@ export const MapPopupPlaceActions = (place: MapPopupPlaceActionsProps) => {
     const dialog = useDialog()
     const lngLat = arrayToLngLat(place.coordinates)
 
-    const { toggle } = useSavePlace(place.id)
+    const { savePlace } = useSavePlace(place.id)
 
     return (
         <div className="flex gap-x-1">
@@ -30,7 +30,7 @@ export const MapPopupPlaceActions = (place: MapPopupPlaceActionsProps) => {
                 size="small"
                 icon={place.isSaved ? <BookmarkFillIcon16 /> : <BookmarkIcon16 />}
                 className="flex-none"
-                onClick={toggle}
+                onClick={savePlace}
             />
             <FormButton type="stroke" size="small" onClick={() => dialog.open(<ChooseNavigationApp lngLat={lngLat} />)}>
                 {t('common.action.route')}

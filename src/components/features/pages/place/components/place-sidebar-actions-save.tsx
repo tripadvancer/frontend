@@ -12,12 +12,12 @@ export const PlaceSidebarActionsSave = ({ place, isAuth }: { place: IPlace; isAu
     const t = useTranslations()
 
     const { data: meta } = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !isAuth })
-    const { toggle } = useSavePlace(place.id)
+    const { savePlace } = useSavePlace(place.id)
 
     return (
-        <div className="link flex items-center gap-x-2 align-top" onClick={toggle}>
+        <div className="link flex items-center gap-x-2 align-top" onClick={savePlace}>
             {!!meta?.isSaved ? <BookmarkFillIcon24 /> : <BookmarkIcon24 />}
-            {t('common.action.place.save')}
+            {!!meta?.isSaved ? t('common.action.place.saved') : t('common.action.place.save')}
         </div>
     )
 }
