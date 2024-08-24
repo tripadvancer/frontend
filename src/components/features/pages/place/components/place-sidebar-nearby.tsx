@@ -1,0 +1,62 @@
+import { Suspense } from 'react'
+
+import { getTranslations } from 'next-intl/server'
+
+import Link from 'next/link'
+
+import type { IPlace } from '@/utils/types/place'
+
+import { Distance } from '@/components/ui/distance'
+import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
+import { getPlacesAround } from '@/services/places'
+import { arrayToLngLat } from '@/utils/helpers/maps'
+
+import { PlaceSidebarNearbySkeleton } from './place-sidebar-nearby-skeleton'
+
+export const PlaceSidebarNearby = async ({ id, location }: IPlace) => {
+    const t = await getTranslations()
+    const lngLat = arrayToLngLat(location.coordinates)
+    const placesAround = await getPlacesAround(
+        lngLat.lat,
+        lngLat.lng,
+        parseInt(process.env.NEXT_PUBLIC_NEARBY_PLACES_RADIUS || '30000', 10),
+        [],
+    )
+
+    // Filter out the current place
+    const placesAroundFiltered = placesAround.filter(place => place.id !== id)
+
+    if (placesAroundFiltered.length === 0) {
+        return null
+    }
+
+    return (
+        <section>
+            <h3 className="mb-4 text-caps uppercase">{t('page.place.placeNearby')}</h3>
+            <Suspense fallback={<PlaceSidebarNearbySkeleton />}>
+                <div className="flex flex-col gap-4">
+                    {placesAroundFiltered.map(place => (
+                        <Link
+                            key={`place-nearby-${place.id}`}
+                            href={`/places/${place.id}`}
+                            className="flex-none text-black-100"
+                        >
+                            <div className="flex flex-row gap-4">
+                                <PlacePreviewCover
+                                    cover={place.cover}
+                                    title={place.title}
+                                    size={80}
+                                    className="aspect-square w-20 flex-none rounded-lg"
+                                />
+                                <div className="flex min-w-0 flex-col gap-y-1">
+                                    <div className="line-clamp-3 break-words font-medium">{place.title}</div>
+                                    <Distance distance={place.distance} className="text-small text-black-40" />
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </Suspense>
+        </section>
+    )
+}

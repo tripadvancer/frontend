@@ -11,7 +11,6 @@ interface WidgetState {
     activeList: IList | null
     randomRadius: number
     isAboutOpened: boolean
-    isMenuOpened: boolean
     selectedCategories: number[]
 }
 
@@ -21,7 +20,6 @@ export const initialState: WidgetState = {
     activeList: null,
     randomRadius: 15,
     isAboutOpened: false,
-    isMenuOpened: false,
     selectedCategories: [],
 }
 
@@ -42,12 +40,7 @@ export const widgetSlice = createSlice({
             state.randomRadius = action.payload
         },
         toggleWidgetAbout(state) {
-            state.isMenuOpened = false
             state.isAboutOpened = !state.isAboutOpened
-        },
-        toggleWidgetMenu(state) {
-            state.isAboutOpened = false
-            state.isMenuOpened = !state.isMenuOpened
         },
         setWidgetSelectedCategories(state, action: PayloadAction<number[]>) {
             state.selectedCategories = action.payload
@@ -68,7 +61,6 @@ export const {
     setWidgetActiveList,
     setWidgetRandomRadius,
     toggleWidgetAbout,
-    toggleWidgetMenu,
     setWidgetSelectedCategories,
 } = widgetSlice.actions
 

@@ -1,0 +1,583 @@
+{
+    "about": {
+        "title": "Planing a trip but don`t know where to go?",
+        "description": "Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip."
+    },
+    "placeholder": {
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "action": {
+            "enterEmail": "Enter email address",
+            "enterNewEmail": "Enter new email address",
+            "enterPassword": "Enter your password",
+            "enterNewPassword": "Enter new password",
+            "selectFile": "Select file ..."
+        }
+    },
+    "validation": {
+        "required": "This field is required",
+        "file": {
+            "types": "Only {types} files are allowed",
+            "maxSize": "The file size must not exceed {size} MB",
+            "maxCount": "You can upload up to {count} files"
+        },
+        "text": {
+            "minLength": "This field must be at least {minLength} characters long",
+            "maxLength": "This field must be at most {maxLength} characters long"
+        },
+        "email": {
+            "invalid": "Please enter a valid email address"
+        },
+        "wrong": {
+            "credentials": "Wrong email or password",
+            "password": "Wrong password",
+            "email": "Wrong email",
+            "emailTaken": "This email is already taken",
+            "usernameTaken": "This username is already taken",
+            "passwordPolicy": "Password must contain at least 8 characters, including a number"
+        },
+        "place": {
+            "title": {
+                "required": "Please enter a place title",
+                "minLength": "The title must be at least {minLength} characters long",
+                "maxLength": "The title must be at most {maxLength} characters long"
+            },
+            "description": {
+                "required": "Please enter a place description",
+                "minLength": "The description must be at least {minLength} characters long",
+                "maxLength": "The description must be at most {maxLength} characters long"
+            },
+            "location": {
+                "invalid": "Coordinates must be in format: 'lat, lng', e.g. '50.4501, 30.5234'"
+            },
+            "categories": {
+                "required": "Please select at least one category",
+                "maxCount": "You can select up to {maxCount} categories"
+            }
+        }
+    },
+    "success": {
+        "changeUserPassword": "Your password has been changed.",
+        "copyCoordinates": "Coordinates have been copied to the clipboard.",
+        "copyLink": "Link copied to clipboard",
+        "createPlace": "Your place has been added.",
+        "deletePlace": "The place has been deleted.",
+        "requestPersonalData": "Your personal data has been sent to your email.",
+        "sendComplaint": "Your complaint has been sent.",
+        "updatePlace": "Your place has been updated.",
+        "updateUserAvatar": "Your avatar has been updated.",
+        "updateUserInfo": "Your profile has been updated."
+    },
+    "confirmation": {
+        "deletePlace": {
+            "title": "Delete place",
+            "text": "Are you sure you want to delete this place and all data associated with it? This action is irreversible."
+        },
+        "deleteList": {
+            "title": "Delete list",
+            "text": "Are you sure you want to delete this list? This action is irreversible."
+        },
+        "requestPersonalData": {
+            "title": "Send personal data",
+            "text": "Are you sure you want to send your personal data to your email?"
+        },
+        "requestUserDeletion": {
+            "title": "Delete your account",
+            "text": "Are you sure you want to delete your account?"
+        }
+    },
+    "common": {
+        "error": "An unexpected error has occurred. Please try again later.",
+        "loading": "Loading ...",
+        "emptyMessage": {
+            "reviews": "There are no reviews here at the moment.",
+            "places": "There are no places here at the moment."
+        },
+        "distance": {
+            "km": "{distance} km",
+            "m": "{distance} m"
+        },
+        "placesCounter": "{count, plural, =0 {No places} =1 {# place} other {# places}}",
+        "reviewsCounter": "{count, plural, =0 {No reviews} =1 {# review} other {# reviews}}",
+        "action": {
+            "cancel": "Cancel",
+            "close": "Close",
+            "confirm": "Confirm",
+            "delete": "Delete",
+            "goHome": "Go to Home",
+            "goToMap": "Go to map",
+            "loadMore": "Load more ...",
+            "locateMe": "Locate me",
+            "ok": "Ok",
+            "returnHome": "Return Home",
+            "route": "Route",
+            "save": "Save",
+            "saveChanges": "Save changes",
+            "send": "Send",
+            "showMore": "Show more",
+            "tryAgain": "Try again",
+            "place": {
+                "iWasHere": "I was here",
+                "navigate": "Navigate",
+                "save": "Save place",
+                "saved": "Saved",
+                "showOnMap": "Show on map",
+                "share": "Share place",
+                "complain": "Complain about a place",
+                "edit": "Edit place",
+                "delete": "Delete place"
+            },
+            "review": {
+                "edit": "Edit",
+                "delete": "Delete",
+                "complain": "Complain",
+                "add": "Add review"
+            }
+        }
+    },
+    "layout": {
+        "header": {
+            "signIn": "Sign In",
+            "addPlace": "Add place",
+            "links": {
+                "map": "Map"
+            }
+        },
+        "userMenu": {
+            "profile": "Profile",
+            "places": "Places",
+            "reviews": "Reviews",
+            "settings": "Settings",
+            "logOut": "Log out"
+        },
+        "footer": {
+            "helpCenter": "Help Center",
+            "contactUs": "Contact Us",
+            "termsAndConditions": "Terms and Conditions",
+            "privacyPolicy": "Privacy Policy",
+            "cookiePolicy": "Cookie Policy",
+            "poweredByStadiaMaps": "Powered by <stadiaMapsLink>Stadia Maps</stadiaMapsLink>",
+            "copyright": "© Tripadvancer, 2024"
+        }
+    },
+    "component": {
+        "confirmMini": {
+            "title": "Sure?",
+            "yes": "Yes",
+            "no": "No"
+        },
+        "userAchievement": {
+            "level": {
+                "beginner": "Beginner"
+            },
+            "statistic": {
+                "addedPlaces": "Added places",
+                "addedPhotos": "Added photos",
+                "addedReviews": "Written reviews",
+                "visitedPlaces": "Visited places",
+                "visitedCountries": "Visited countries"
+            }
+        },
+        "search": {
+            "placeholder": "Find a country or place",
+            "button": "Search"
+        },
+        "categories": {
+            "all": "All"
+        }
+    },
+    "banner": {
+        "cookieConsent": {
+            "title": "Allow Cookies",
+            "text": "This website uses cookies to ensure you get the best experience on our website. For more information, you can read our <cookiePolicyLink>Cookie Policy</cookiePolicyLink>.",
+            "gotIt": "Got it!"
+        },
+        "emailVerificationNotice": {
+            "text": "Your email is not <verifiedLink>verified</verifiedLink>. Please confirm you email to get access to all features Tripadvancer."
+        }
+    },
+    "dialog": {
+        "chooseNavigationApp": {
+            "title": "Choose navigation app"
+        },
+        "complaintForm": {
+            "title": {
+                "review": "Complain about a review",
+                "place": "Complain about a place"
+            },
+            "reasons": {
+                "abuse": "Misuse, mistreatment or intentional harm",
+                "copyright": "Copyright or intellectual property rights violation",
+                "duplicate": "Duplicate, no additional value",
+                "false": "Incorrect or misleading information",
+                "fraud": "Fraudulent, deceptive activities",
+                "inappropriate": "Inappropriate or explicit content",
+                "spam": "Irrelevant or unsolicited content",
+                "other": "Other reason"
+            },
+            "field": {
+                "comment": {
+                    "placeholder": "Add your comment here"
+                }
+            }
+        },
+        "listForm": {
+            "title": {
+                "add": "Create list",
+                "edit": "Edit list"
+            },
+            "field": {
+                "name": {
+                    "label": "Name",
+                    "placeholder": "Enter list name"
+                },
+                "description": {
+                    "label": "Description",
+                    "placeholder": "Enter list description"
+                }
+            }
+        },
+        "locationPicker": {
+            "title": "Pick place location",
+            "placeholder": "Address or coordinates"
+        },
+        "placesNearbyWarning": {
+            "title": "Attention",
+            "text": "Sorry, we cannot add a new place here because there are already others nearby, within {radius} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help."
+        },
+        "reviewForm": {
+            "title": {
+                "edit": "Edit review",
+                "add": "Leave feedback"
+            },
+            "field": {
+                "rating": {
+                    "label": "Your rating"
+                },
+                "text": {
+                    "label": "Review",
+                    "placeholder": "Share your impressions in detail — this way you will help others learn more about this place"
+                },
+                "photos": {
+                    "label": "Photos"
+                }
+            }
+        },
+        "savePlace": {
+            "title": "Save place to list",
+            "field": {
+                "list": {
+                    "label": "Add new list",
+                    "placeholder": "List name ..."
+                }
+            }
+        },
+        "selectCategories": {
+            "title": "Select up to {maxCount} categories"
+        },
+        "sharePlace": {
+            "title": "Share place",
+            "text": "Share the place with your friends and invite them to visit it."
+        }
+    },
+    "auth": {
+        "or": "Or",
+        "signIn": {
+            "title": "Sign In",
+            "submit": "Sign in",
+            "forgotPassword": "Forgot password?",
+            "toBack": "Don’t have an account? <signUpLink>Sign up</signUpLink>"
+        },
+        "signInReject": {
+            "title": "Your account is pending deletion",
+            "text": "We have sent you the instructions to restore your account. Please note that there is a limited time window available for account restoration."
+        },
+        "signUp": {
+            "title": "Sign Up",
+            "thirdPartyTitle": "Or, sign up with your email address",
+            "submit": "Sign up",
+            "info": "By completing the registration process, you acknowledge and accept our <termsLink>Terms and Conditions</termsLink> and <privacyLink>Privacy Policy</privacyLink>.",
+            "toBack": "Have an account? <signInLink>Sign in</signInLink>"
+        },
+        "signupCompleting": {
+            "title": "Verify your email",
+            "text": "We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process."
+        },
+        "forgotPassword": {
+            "title": "Forgot your password?",
+            "submit": "Restore password",
+            "info": "To reset your password, please enter your email address. We will send an email to the provided address with instructions on how to reset your password:",
+            "toBack": "<signInLink>Sign in</signInLink> or <signUpLink>Sign up</signUpLink>"
+        },
+        "forgotPasswordCompleting": {
+            "title": "Completing the recovery",
+            "text": "We sent you an email with instructions on how to reset your password."
+        },
+        "changeEmail": {
+            "title": "Change email",
+            "text": "Enter your new email address below and we will send you a verification email:"
+        },
+        "changeEmailCompleting": {
+            "title": "Confirm your new email",
+            "text": "We have sent you a verification email. After confirming your new email address, you will be able to sign in using it."
+        },
+        "changePassword": {
+            "title": "Change password",
+            "text": "Create a new password that is at least 8 characters long and contains a mix of letters and numbers:"
+        },
+        "resetPassword": {
+            "title": "Enter your new password below",
+            "status": {
+                "expired": "The password reset link has expired. Please request a new password reset link.",
+                "ok": "Your password has been reset."
+            },
+            "submit": "Reset password"
+        },
+        "claimEmailError": {
+            "title": "Your email is not verified",
+            "text": "Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.",
+            "resendVerificationEmail": "Resend verification email",
+            "goToSettings": "Or change your email. <settingsLink>Settings</settingsLink>"
+        },
+        "verifyEmail": {
+            "loading": "Verifying your email...",
+            "status": {
+                "expired": "The email verification link has expired. Please sign in again so we can send you a new verification link.",
+                "ok": "Your email has been verified."
+            }
+        },
+        "confirmUserDeletion": {
+            "loading": "Starting the deletion process...",
+            "status": {
+                "expired": "The confirmation link has expired. Please request a new confirmation link.",
+                "ok": "The deletion process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished."
+            }
+        },
+        "requestUserDeletionCompleting": {
+            "title": "Request account deletion",
+            "text": "We have sent you an email with instructions on how to confirm the deletion of your account."
+        },
+        "restoreUser": {
+            "loading": "Restoring your account...",
+            "status": {
+                "expired": "The restore link has expired. Please request a new restore link.",
+                "ok": "Your account has been restored."
+            }
+        },
+        "thirdPartyCallback": {
+            "redirecting": "You are being redirected...",
+            "checking": "We are checking your status...",
+            "error": {
+                "emailNotProvided": "No email provided by social login. Please use another form of login.",
+                "emailAlreadyExists": "Seems like you already have an account with another method. Please use that instead."
+            }
+        }
+    },
+    "page": {
+        "error": {
+            "title": "Oops! Something Went Wrong",
+            "text": "We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track."
+        },
+        "notFound": {
+            "title": "Page not found",
+            "text": "We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place."
+        },
+        "landing": {
+            "countries": {
+                "title": "Where are you going?",
+                "text": "Visit top-rated destinations recommended by fellow travelers. Discover must-see sights, from iconic landmarks to hidden gems waiting to be explored.",
+                "button": "See all countries"
+            },
+            "aroundPlaces": {
+                "title": "Explore places around you",
+                "text": "Discover what interesting places are near you. These locations are recommended by other travelers, and you can visit them today.",
+                "button": "See All Places"
+            },
+            "map": {
+                "title": "Not enough? Use our map",
+                "text": "If you’re looking for even more options, use our map with attractions to discover interesting places worldwide. Easily plan your travels and share your discoveries with fellow adventurers.",
+                "button": "Go to Tripadvancer Map"
+            },
+            "features": {
+                "title": "Our Features",
+                "text": "Check out our app’s exciting features and connect with a community of like-minded travelers.<br></br>Join us today and start your adventure!",
+                "featurePlaces": {
+                    "title": "Add your favorite<br></br>places",
+                    "text": "You can add any place to the map yourself. Just a few clicks and your favorite place will be available to all travelers around the world.",
+                    "button": "Add place"
+                },
+                "featureLists": {
+                    "title": "Create your own<br></br>lists of places",
+                    "text": "Create, edit, and manage lists of your favorite places. Organize landmarks for easy access during your travels.",
+                    "button": "Create Lists"
+                },
+                "featureRandom": {
+                    "title": "Find random<br></br>places nearby",
+                    "text": "Can’t decide where to go? Try our random place search! Pick a category, set a distance, and embark on new adventures.",
+                    "button": "Find Random Place"
+                }
+            }
+        },
+        "placeForm": {
+            "field": {
+                "cover": {
+                    "placeholder": "Upload the cover (jpg, png up to 10 MB)"
+                },
+                "title": {
+                    "placeholder": "Enter place title"
+                },
+                "location": {
+                    "placeholder": "Pick place location"
+                },
+                "categories": {
+                    "label": "Add category"
+                },
+                "about": {
+                    "label": "About this place",
+                    "placeholder": "Enter a description",
+                    "text": "Tell us what inspired you so you can help others learn more about this place."
+                },
+                "photos": {
+                    "label": "Photos",
+                    "text": "You can upload up to {maxCount} photos of the place."
+                }
+            },
+            "terms": "By adding a new place to the map, you acknowledge and accept our <termsLink>Terms and Conditions</termsLink> and <privacyLink>Privacy Policy</privacyLink>."
+        },
+        "user": {
+            "tabs": {
+                "places": "Places",
+                "reviews": "Reviews",
+                "settings": "Settings"
+            },
+            "aboutMe": "About me",
+            "settingsForm": {
+                "field": {
+                    "avatar": {
+                        "label": "Upload avatar"
+                    },
+                    "username": {
+                        "label": "Username",
+                        "placeholder": "Enter your username"
+                    },
+                    "aboutMe": {
+                        "label": "About me",
+                        "placeholder": "Enter information about yourself..."
+                    }
+                }
+            },
+            "account": {
+                "title": "Your account",
+                "verifyEmail": {
+                    "title": "Your email is not verified",
+                    "text": "Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.",
+                    "action": "Resend Verification Email"
+                },
+                "changeEmail": {
+                    "title": "Email",
+                    "text": "Your email will be used for signing in, receiving notifications and resetting your password.",
+                    "action": "Change email"
+                },
+                "changePassword": {
+                    "title": "Password",
+                    "text": "We recommend that you use a password that is different from your other online accounts and change it from time to time.",
+                    "action": "Change password"
+                },
+                "requestPersonalData": {
+                    "title": "Personal Information",
+                    "text": "You may request a copy of the personal data we hold about you. This includes any information you provided to us when you registered, such as your username, email address and other additional information.",
+                    "action": "Get a copy of data"
+                },
+                "requestUserDeletion": {
+                    "title": "Account",
+                    "text": "You may request deletion of your account and all data associated with it. You will be able to restore your account using the link sent to your email before the deletion process is completed.",
+                    "action": "Delete account"
+                }
+            }
+        },
+        "countries": {
+            "title": "All countries"
+        },
+        "country": {
+            "description": "Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.",
+            "viewAll": "View all countries",
+            "emptyPlaces": "There are no places yet. Be the first to add a place!",
+            "addPlace": "Add place"
+        },
+        "place": {
+            "about": "About this place",
+            "photos": "Photos",
+            "reviews": "Visitor reviews",
+            "addReview": "Add review",
+            "placeNearby": "Places nearby",
+            "author": "Author",
+            "abandonedWarning": "Places in the \"Abandoned\" category might be dangerous, be careful.",
+            "rating": {
+                "average": "<reviewsLink>{reviewsCount, plural, =0 {No reviews} =1 {# review} other {# reviews}}</reviewsLink> with an average rating of {avgRating}",
+                "empty": "This place does not have a rating yet"
+            }
+        }
+    },
+    "map": {
+        "popup": {
+            "location": {
+                "title": "Selected location",
+                "addPlace": "Add place here",
+                "iAmHere": "I am here"
+            }
+        },
+        "widget": {
+            "error": "An unexpected error has occurred.<br></br>Please try again later.",
+            "search": {
+                "placeholder": "Find a country, place or address"
+            },
+            "categories": {
+                "title": "Categories",
+                "selected": "{count, plural, =1 {# selected} other {# selected}}"
+            },
+            "tabs": {
+                "allPlaces": {
+                    "title": "All places",
+                    "emptyMessage": "No places found.<br></br>Try changing categories or zooming out the map."
+                },
+                "savedPlaces": {
+                    "title": "Saved",
+                    "emptyMessage": "You have not saved places.<br></br>Create a new list and start adding places to it.",
+                    "notLoggedIn": "You are not logged in.<br></br><signInLink>Sign in</signInLink> to see saved places.",
+                    "lists": {
+                        "emptyMessage": "This list is empty.<br></br>Add place to this list or try changing categories.",
+                        "addButton": "Create new list",
+                        "info": "Select a list to view saved places.",
+                        "showOnlyList": "On map",
+                        "private": "Private",
+                        "public": "Public",
+                        "action": {
+                            "enableMapFilter": "Filter map by list",
+                            "disableMapFilter": "Disable map filter",
+                            "edit": "Edit",
+                            "delete": "Delete"
+                        }
+                    }
+                }
+            },
+            "random": {
+                "emptyMessage": "No places matcing your filter found.<br></br>Try changing categories or radius.",
+                "notLocation": "To find a random place around you — allow access to your location or select “I am here” on the map.",
+                "distance": {
+                    "title": "Distance from you",
+                    "km": "{distance} km"
+                },
+                "info": "Select categories, radius around you or a specified point and we will select interesting place for you.",
+                "button": {
+                    "caption": "Find a random place",
+                    "captionCoundown": "Find a random place in ({countdown})"
+                }
+            },
+            "toggler": {
+                "map": "Map",
+                "searchAndFilters": "Search and filters"
+            }
+        }
+    }
+}

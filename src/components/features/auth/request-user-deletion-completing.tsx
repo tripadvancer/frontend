@@ -1,16 +1,16 @@
 'use client'
 
-import { useI18n } from '@/utils/i18n/i18n.client'
+import { useTranslations } from 'next-intl'
 
 import { AuthCompleting } from './auth-completing'
 
 export const RequestUserDeletionCompleting = () => {
-    const t = useI18n()
+    const t = useTranslations()
 
     return (
         <AuthCompleting
-            title={t('auth.request_user_deletion_completing.title')}
-            message={t('auth.request_user_deletion_completing.message')}
+            title={t('auth.requestUserDeletionCompleting.title')}
+            text={t('auth.requestUserDeletionCompleting.text')}
         />
     )
 }

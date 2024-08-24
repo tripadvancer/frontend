@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
+import { useTranslations } from 'next-intl'
 import { emailPasswordSignIn } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 import * as Yup from 'yup'
 
@@ -15,7 +16,6 @@ import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPassword } from './forgot-password'
 import { SignInReject } from './sign-in-reject'
@@ -23,7 +23,7 @@ import { SignUp } from './sign-up'
 import { ThirdPartyButton } from './third-party-button'
 
 export const SignIn = () => {
-    const t = useI18n()
+    const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -60,7 +60,7 @@ export const SignIn = () => {
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
-                    formik.setErrors({ password: t('validation.wrong_credentials') })
+                    formik.setErrors({ password: t('validation.wrong.credentials') })
                     break
 
                 case 'FIELD_ERROR':
@@ -103,13 +103,13 @@ export const SignIn = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{t('auth.signin.title')}</h1>
+            <h1 className="h7 text-center">{t('auth.signIn.title')}</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading} />
                     {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
                 </div>
-                <Devider>{t('auth.signin.third_party.or')}</Devider>
+                <Devider>{t('auth.or')}</Devider>
                 <div className="flex flex-col gap-y-2">
                     <FormInput
                         type="text"
@@ -134,19 +134,19 @@ export const SignIn = () => {
             </div>
             <div className="flex flex-col gap-y-4">
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {t('auth.signin.submit')}
+                    {t('auth.signIn.submit')}
                 </FormButton>
                 <div className="text-center text-small">
                     <span className="link text-small" onClick={handleForgotPasswordClick}>
-                        {t('auth.signin.link.forgot_password')}
+                        {t('auth.signIn.forgotPassword')}
                     </span>
                 </div>
             </div>
             <div className="text-center">
-                {t('auth.signin.to_back', {
-                    sign_up_link: (
+                {t.rich('auth.signIn.toBack', {
+                    signUpLink: signUpLink => (
                         <span className="link" onClick={handleSignUpClick}>
-                            {t('common.link.sign_up')}
+                            {signUpLink}
                         </span>
                     ),
                 })}

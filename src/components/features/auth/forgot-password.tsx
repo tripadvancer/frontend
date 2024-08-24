@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
+import { useTranslations } from 'next-intl'
 import { sendPasswordResetEmail } from 'supertokens-web-js/recipe/emailpassword'
 import * as Yup from 'yup'
 
@@ -12,14 +13,13 @@ import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ForgotPasswordCompleting } from './forgot-password-completing'
 import { SignIn } from './sign-in'
 import { SignUp } from './sign-up'
 
 export const ForgotPassword = () => {
-    const t = useI18n()
+    const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -85,14 +85,14 @@ export const ForgotPassword = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{t('auth.forgot_password.title')}</h1>
+            <h1 className="h7 text-center">{t('auth.forgotPassword.title')}</h1>
             <div className="flex flex-col gap-y-2">
-                <p className="text-center">{t('auth.forgot_password.info')}</p>
+                <p className="text-center">{t('auth.forgotPassword.info')}</p>
                 <FormInput
                     type="text"
                     name="email"
                     value={formik.values.email}
-                    placeholder={t('placeholder.action.email')}
+                    placeholder={t('placeholder.action.enterEmail')}
                     autoFocus
                     error={formik.errors.email}
                     disabled={isLoading}
@@ -101,18 +101,18 @@ export const ForgotPassword = () => {
             </div>
             <div className="flex flex-col gap-y-4">
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {t('auth.forgot_password.submit')}
+                    {t('auth.forgotPassword.submit')}
                 </FormButton>
                 <div className="text-center">
-                    {t('auth.forgot_password.to_back', {
-                        sign_in_link: (
+                    {t.rich('auth.forgotPassword.toBack', {
+                        signInLink: signInLink => (
                             <span className="link" onClick={handleSignInClcik}>
-                                {t('common.link.sign_in')}
+                                {signInLink}
                             </span>
                         ),
-                        sign_up_link: (
+                        signUpLink: signUpLink => (
                             <span className="link" onClick={handleSignUpClick}>
-                                {t('common.link.sign_up')}
+                                {signUpLink}
                             </span>
                         ),
                     })}

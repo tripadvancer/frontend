@@ -1,0 +1,47 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
+import type { IList, UpdateListInputs } from '@/utils/types/list'
+
+import { useDialog } from '@/providers/dialog-provider'
+import { useToast } from '@/providers/toast-provider'
+import { setWidgetActiveList } from '@/redux/features/widget-slice'
+import { useAppDispatch } from '@/redux/hooks'
+import { listAPI } from '@/redux/services/list-api'
+
+import { ListForm } from './list-form'
+
+export const ListEdit = (list: IList) => {
+    const t = useTranslations()
+    const dialog = useDialog()
+    const toast = useToast()
+    const dispatch = useAppDispatch()
+
+    const [updateList, { isLoading }] = listAPI.useUpdateListMutation()
+
+    const initialValues: UpdateListInputs = {
+        id: list.id,
+        name: list.name,
+        description: list.description,
+        isPublic: list.isPublic,
+    }
+
+    const handleSubmit = async (inputs: UpdateListInputs) => {
+        try {
+            const updatedList = await updateList(inputs).unwrap()
+            dispatch(setWidgetActiveList(updatedList))
+            dialog.close()
+        } catch {
+            toast.error(t('common.error'))
+        }
+    }
+
+    return (
+        <div className="flex w-full flex-col gap-y-4 sm:w-104">
+            <h1 className="h7">{t('dialog.listForm.title.edit')}</h1>
+            <hr className="border-black-70" />
+            <ListForm initialValues={initialValues} onSubmit={inputs => handleSubmit(inputs as UpdateListInputs)} />
+        </div>
+    )
+}

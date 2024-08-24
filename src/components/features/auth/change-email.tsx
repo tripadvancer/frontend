@@ -1,6 +1,7 @@
 'use client'
 
 import { useFormik } from 'formik'
+import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
@@ -12,12 +13,11 @@ import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 import { ChangeEmailCompleting } from './change-email-completing'
 
 export const ChangeEmail = () => {
-    const t = useI18n()
+    const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -50,11 +50,11 @@ export const ChangeEmail = () => {
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
-                    formik.setErrors({ password: t('validation.wrong_password') })
+                    formik.setErrors({ password: t('validation.wrong.password') })
                     break
 
                 case 'EMAIL_ALREADY_EXISTS_ERROR':
-                    formik.setErrors({ newEmail: t('validation.email.already_exists') })
+                    formik.setErrors({ newEmail: t('validation.wrong.emailTaken') })
                     break
 
                 default:
@@ -76,14 +76,14 @@ export const ChangeEmail = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{t('auth.change_email.title')}</h1>
+            <h1 className="h7 text-center">{t('auth.changeEmail.title')}</h1>
             <div className="flex flex-col gap-y-2">
-                <p className="text-center">{t('auth.change_email.info')}</p>
+                <p className="text-center">{t('auth.changeEmail.text')}</p>
                 <FormInput
                     type="text"
                     name="newEmail"
                     value={formik.values.newEmail}
-                    placeholder={t('placeholder.action.new_email')}
+                    placeholder={t('placeholder.action.enterNewEmail')}
                     autoFocus
                     error={formik.errors.newEmail}
                     disabled={isLoading}
@@ -93,14 +93,14 @@ export const ChangeEmail = () => {
                     type="password"
                     name="password"
                     value={formik.values.password}
-                    placeholder={t('placeholder.action.password')}
+                    placeholder={t('placeholder.action.enterPassword')}
                     error={formik.errors.password}
                     disabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>
             <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                {t('common.action.save_changes')}
+                {t('common.action.saveChanges')}
             </FormButton>
         </form>
     )
