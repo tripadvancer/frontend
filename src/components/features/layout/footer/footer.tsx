@@ -25,7 +25,7 @@ export const Footer = async () => {
                         <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
                             <Link href="/legal/terms-and-conditions">{t('layout.footer.termsAndConditions')}</Link>
                             <span className="hidden sm:block">•</span>
-                            <Link href="/legal/privacy-policy">{t('layout.footer.termsAndConditions')}</Link>
+                            <Link href="/legal/privacy-policy">{t('layout.footer.privacyPolicy')}</Link>
                             <span className="hidden sm:block">•</span>
                             <Link href="/legal/cookie-policy">{t('layout.footer.cookiePolicy')}</Link>
                         </nav>
