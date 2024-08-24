@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
+import { useTranslations } from 'next-intl'
 import { submitNewPassword } from 'supertokens-web-js/recipe/emailpassword'
 import * as Yup from 'yup'
 
@@ -14,12 +15,11 @@ import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 const userPasswordMinLength = validationConfig.user.password.minLength
 
 export const RessetPassword = () => {
-    const t = useI18n()
+    const t = useTranslations()
     const toast = useToast()
 
     const [status, setStatus] = useState<string>()
@@ -32,8 +32,8 @@ export const RessetPassword = () => {
     const validationSchema = Yup.object().shape({
         password: Yup.string()
             .required(t('validation.required'))
-            .min(userPasswordMinLength, t('validation.text.min_length', { min_length: userPasswordMinLength }))
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.password.policy_violated')),
+            .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
+            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
     })
 
     const handleSubmit = async (values: ResetPasswordInputs) => {
@@ -73,12 +73,12 @@ export const RessetPassword = () => {
         return (
             <form className="flex w-full flex-col gap-y-8" onSubmit={formik.handleSubmit}>
                 <div className="flex flex-col gap-y-2">
-                    <p className="text-center">{t('auth.reset_password.title')}</p>
+                    <p className="text-center">{t('auth.resetPassword.title')}</p>
                     <FormInput
                         type="password"
                         name="password"
                         value={formik.values.password}
-                        placeholder={t('placeholder.action.new_password')}
+                        placeholder={t('placeholder.action.enterNewPassword')}
                         autoFocus
                         error={formik.errors.password}
                         disabled={isLoading}
@@ -86,7 +86,7 @@ export const RessetPassword = () => {
                     />
                 </div>
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {t('auth.reset_password.submit')}
+                    {t('auth.resetPassword.submit')}
                 </FormButton>
             </form>
         )
@@ -95,14 +95,14 @@ export const RessetPassword = () => {
     return (
         <>
             <p className="text-center">
-                {status === 'RESET_PASSWORD_INVALID_TOKEN_ERROR' && t('auth.reset_password.token_expired')}
-                {status === 'OK' && t('auth.reset_password.ok')}
+                {status === 'RESET_PASSWORD_INVALID_TOKEN_ERROR' && t('auth.resetPassword.status.expired')}
+                {status === 'OK' && t('auth.resetPassword.status.ok')}
             </p>
             <Link
                 href="/"
                 className="hover-animated inline-flex h-10 w-full items-center justify-center rounded-lg bg-blue-100 px-6 text-white hover:bg-blue-active hover:text-white focus:outline-none"
             >
-                {t('common.action.go_home')}
+                {t('common.action.goHome')}
             </Link>
         </>
     )

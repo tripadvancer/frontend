@@ -1,10 +1,10 @@
 import { ChangeEvent, useRef, useState } from 'react'
 
 import classNames from 'classnames'
+import { useTranslations } from 'next-intl'
 
 import { FolderIcon16 } from '@/components/ui/icons'
 import { Spinner } from '@/components/ui/spinner'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 type FormFileInputProps = {
     fileName?: string
@@ -27,7 +27,7 @@ export const FormFileInput = ({
     isUploading,
     onChange,
 }: FormFileInputProps) => {
-    const t = useI18n()
+    const t = useTranslations()
 
     const [error, setError] = useState<string>('')
 
@@ -51,12 +51,12 @@ export const FormFileInput = ({
         setError('')
 
         if (files.length + currentFilesLength > maxFilesCount) {
-            setError(t('validation.file.max_count', { count: maxFilesCount }))
+            setError(t('validation.file.maxCount', { count: maxFilesCount }))
             return
         }
 
         if (fileSize > maxFileSize) {
-            setError(t('validation.file.max_size', { size: maxFileSize / 1000000 }))
+            setError(t('validation.file.maxSize', { size: maxFileSize / 1000000 }))
             return
         }
 
@@ -88,7 +88,7 @@ export const FormFileInput = ({
                     >
                         {isUploading && (
                             <>
-                                <div className="text-black-40">{t('placeholder.file.loading')}</div>
+                                <div className="text-black-40">{t('common.loading')}</div>
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
                                     <Spinner size={16} />
                                 </div>
@@ -97,7 +97,11 @@ export const FormFileInput = ({
 
                         {!isUploading && (
                             <>
-                                {fileName ? fileName : <div className="text-black-40">{t('placeholder.file')}</div>}
+                                {fileName ? (
+                                    fileName
+                                ) : (
+                                    <div className="text-black-40">{t('placeholder.action.selectFile')}</div>
+                                )}
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
                                     <FolderIcon16 />
                                 </div>

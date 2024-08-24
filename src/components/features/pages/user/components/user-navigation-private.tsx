@@ -1,0 +1,17 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
+import { Nav } from '@/components/ui/nav'
+
+export const UserNavigationPrivate = ({ userId }: { userId: string }) => {
+    const t = useTranslations()
+
+    const links = [
+        { href: `/users/${userId}/places`, caption: t('page.user.tabs.places') },
+        { href: `/users/${userId}/reviews`, caption: t('page.user.tabs.reviews') },
+        { href: `/users/${userId}/settings`, caption: t('page.user.tabs.settings') },
+    ]
+
+    return <Nav links={links} className="mb-8" />
+}

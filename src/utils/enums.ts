@@ -9,17 +9,6 @@ export enum ComplaintReasonsEnum {
     OTHER = 'OTHER',
 }
 
-export enum ComplaintReasonsI18nKeys {
-    ABUSE = 'abuse',
-    COPYRIGHT = 'copyright',
-    DUPLICATE = 'duplicate',
-    FALSE = 'false',
-    FRAUD = 'fraud',
-    INAPPROPRIATE = 'inappropriate',
-    SPAM = 'spam',
-    OTHER = 'other',
-}
-
 export enum ImageVariants {
     PUBLIC = 'public',
     PREVIEW = 'preview',

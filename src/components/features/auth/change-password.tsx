@@ -1,6 +1,7 @@
 'use client'
 
 import { useFormik } from 'formik'
+import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 import * as Yup from 'yup'
 
@@ -14,12 +15,11 @@ import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 const userPasswordMinLength = validationConfig.user.password.minLength
 
 export const ChangePassword = () => {
-    const t = useI18n()
+    const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -35,8 +35,8 @@ export const ChangePassword = () => {
         oldPassword: Yup.string().required(t('validation.required')),
         newPassword: Yup.string()
             .required(t('validation.required'))
-            .min(userPasswordMinLength, t('validation.text.min_length', { min_length: userPasswordMinLength }))
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.password.policy_violated')),
+            .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
+            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
     })
 
     const handleSubmit = async (inputs: ChangeUserPasswordInputs) => {
@@ -51,11 +51,11 @@ export const ChangePassword = () => {
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
-                    formik.setErrors({ oldPassword: t('validation.wrong_password') })
+                    formik.setErrors({ oldPassword: t('validation.wrong.password') })
                     break
 
                 case 'PASSWORD_POLICY_VIOLATED_ERROR':
-                    formik.setErrors({ newPassword: t('validation.password.policy_violated') })
+                    formik.setErrors({ newPassword: t('validation.wrong.passwordPolicy') })
                     break
 
                 default:
@@ -77,14 +77,14 @@ export const ChangePassword = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{t('auth.change_password.title')}</h1>
+            <h1 className="h7 text-center">{t('auth.changePassword.title')}</h1>
             <div className="flex flex-col gap-y-2">
-                <p className="text-center">{t('auth.change_password.info')}</p>
+                <p className="text-center">{t('auth.changePassword.text')}</p>
                 <FormInput
                     type="password"
                     name="oldPassword"
                     value={formik.values.oldPassword}
-                    placeholder={t('placeholder.action.password')}
+                    placeholder={t('placeholder.action.enterPassword')}
                     autoFocus
                     error={formik.errors.oldPassword}
                     disabled={isLoading}
@@ -94,14 +94,14 @@ export const ChangePassword = () => {
                     type="password"
                     name="newPassword"
                     value={formik.values.newPassword}
-                    placeholder={t('placeholder.action.new_password')}
+                    placeholder={t('placeholder.action.enterNewPassword')}
                     error={formik.errors.newPassword}
                     disabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>
             <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                {t('common.action.save_changes')}
+                {t('common.action.saveChanges')}
             </FormButton>
         </form>
     )

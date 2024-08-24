@@ -2,18 +2,19 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { LinkButton } from '@/components/ui/link-button'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 type RestoreUserProps = {
     token: string
 }
 
 export const RestoreUser = ({ token }: RestoreUserProps) => {
-    const t = useI18n()
+    const t = useTranslations()
     const toast = useToast()
 
     const [status, setStatus] = useState<string>()
@@ -32,17 +33,17 @@ export const RestoreUser = ({ token }: RestoreUserProps) => {
     })
 
     if (!status) {
-        return <p className="text-center">{t('auth.restore_user.loading')}</p>
+        return <p className="text-center">{t('auth.restoreUser.loading')}</p>
     }
 
     return (
         <>
             <p className="text-center">
-                {status === 'OK' && t('auth.restore_user.ok')}
-                {status === 'INVALID_TOKEN_ERROR' && t('auth.restore_user.token_expired')}
+                {status === 'OK' && t('auth.restoreUser.status.ok')}
+                {status === 'INVALID_TOKEN_ERROR' && t('auth.restoreUser.status.expired')}
             </p>
             <LinkButton href="/" className="w-full">
-                {t('common.action.go_home')}
+                {t('common.action.goHome')}
             </LinkButton>
         </>
     )

@@ -1,11 +1,9 @@
-'use client'
-
-import { useI18n } from '@/utils/i18n/i18n.client'
+import { useTranslations } from 'next-intl'
 
 import { AuthCompleting } from './auth-completing'
 
 export const SignUpCompleting = () => {
-    const t = useI18n()
+    const t = useTranslations()
 
-    return <AuthCompleting title={t('auth.signup_completing.title')} message={t('auth.signup_completing.message')} />
+    return <AuthCompleting title={t('auth.signupCompleting.title')} text={t('auth.signupCompleting.text')} />
 }

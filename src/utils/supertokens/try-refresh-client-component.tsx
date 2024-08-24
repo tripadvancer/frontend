@@ -2,20 +2,20 @@
 
 import { ReactNode, useEffect } from 'react'
 
+import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
 
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { useToast } from '@/providers/toast-provider'
-import { useI18n } from '@/utils/i18n/i18n.client'
 
 type TryRefreshComponentProps = {
     fallback?: ReactNode
 }
 
 export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {
-    const t = useI18n()
+    const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
 
