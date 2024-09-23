@@ -1,6 +1,6 @@
 export const validationConfig = {
     common: {
-        maxFileSize: 10e6, // 10Mb
+        maxFileSize: 20e6, // 20 MB
     },
     user: {
         name: {
