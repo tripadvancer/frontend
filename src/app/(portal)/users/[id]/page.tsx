@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default function UserPage({ params }: { params: { id: string } }) {
-    redirect(`/users/${params.id}/places`)
+    redirect(`/users/${params.id}/map`)
 }

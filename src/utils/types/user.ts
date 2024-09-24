@@ -6,6 +6,7 @@ export type IUser = {
     createdAt: Date
     updatedAt: Date
     _count: IUserStatistics
+    visitedCountries: IUserVisitedCountry[]
 }
 
 export type IUserStatistics = {
@@ -14,6 +15,11 @@ export type IUserStatistics = {
     placeReviews: number
     visitedPlaces: number
     visitedCountries: number
+}
+
+export type IUserVisitedCountry = {
+    code: string
+    count: number
 }
 
 export type IUserInfo = Pick<IUser, 'id' | 'name' | 'info' | 'avatar'>

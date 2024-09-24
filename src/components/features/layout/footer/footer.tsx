@@ -13,7 +13,7 @@ export const Footer = async () => {
                 <div className="border-t border-black-70" />
 
                 <div className="inner-container flex flex-col items-center gap-y-4 py-8">
-                    <div className="flex flex-col gap-y-1">
+                    <div className="flex flex-col sm:gap-y-1">
                         <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
                             <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{t('layout.footer.contactUs')}</Link>
                             <span className="hidden sm:block">•</span>

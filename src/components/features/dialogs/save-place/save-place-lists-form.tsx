@@ -93,7 +93,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                             id={`list-${list.id}`}
                             name="listIds"
                             value={list.id.toString()}
-                            caption={list.name}
+                            label={list.name}
                             checked={formik.values.listIds.includes(list.id)}
                             disabled={isListCreating || isPlaceUpdating}
                             onChange={e =>
@@ -111,7 +111,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     id="new-list"
                     name="new-list"
                     value="new-list"
-                    caption={t('dialog.savePlace.field.list.label')}
+                    label={t('dialog.savePlace.field.list.label')}
                     checked={isCreateList}
                     disabled={isListCreating || isPlaceUpdating}
                     onChange={() => setIsCreateList(!isCreateList)}

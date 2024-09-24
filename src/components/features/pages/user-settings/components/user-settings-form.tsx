@@ -16,6 +16,7 @@ import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
+import { UserSettingsPrivacy } from './user-settings-privacy'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
@@ -111,6 +112,11 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
                         disabled={isLoading}
                         onChange={formik.handleChange}
                     />
+                </div>
+
+                <div className="flex flex-col gap-y-2">
+                    <div className="font-medium">{t('page.user.settingsForm.privacy.title')}</div>
+                    <UserSettingsPrivacy />
                 </div>
             </div>
 

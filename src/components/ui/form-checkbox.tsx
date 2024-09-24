@@ -5,7 +5,7 @@ import { InputHTMLAttributes, Ref, forwardRef } from 'react'
 import { CheckIcon16 } from '@/components/ui/icons'
 
 type FormCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
-    caption: string
+    label: string
 }
 
 const FormCheckboxComponent = (props: FormCheckboxProps, ref: Ref<HTMLInputElement>) => {
@@ -20,7 +20,7 @@ const FormCheckboxComponent = (props: FormCheckboxProps, ref: Ref<HTMLInputEleme
                     <CheckIcon16 />
                 </div>
             </div>
-            <div className="min-w-0 break-words">{props.caption}</div>
+            <div className="min-w-0 break-words">{props.label}</div>
         </label>
     )
 }

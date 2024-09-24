@@ -447,11 +447,18 @@
         },
         "user": {
             "tabs": {
+                "map": "Map",
                 "places": "Places",
                 "reviews": "Reviews",
                 "settings": "Settings"
             },
             "aboutMe": "About me",
+            "userMap": {
+                "privacy": {
+                    "mapIsVisible": "Your visited countries map is visible to everyone. To hide it, go to your <settingsLink>settings</settingsLink>.",
+                    "mapIsHidden": "Your visited countries map is hidden to everyone. To show it, go to your <settingsLink>settings</settingsLink>."
+                }
+            },
             "settingsForm": {
                 "field": {
                     "avatar": {
@@ -464,6 +471,14 @@
                     "aboutMe": {
                         "label": "About me",
                         "placeholder": "Enter information about yourself..."
+                    }
+                },
+                "privacy": {
+                    "title": "Privacy",
+                    "field": {
+                        "showVisitedMap": {
+                            "label": "Show my visited countries map to everyone"
+                        }
                     }
                 }
             },

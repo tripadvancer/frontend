@@ -8,6 +8,7 @@ export const UserNavigationPrivate = ({ userId }: { userId: string }) => {
     const t = useTranslations()
 
     const links = [
+        { href: `/users/${userId}/map`, caption: t('page.user.tabs.map') },
         { href: `/users/${userId}/places`, caption: t('page.user.tabs.places') },
         { href: `/users/${userId}/reviews`, caption: t('page.user.tabs.reviews') },
         { href: `/users/${userId}/settings`, caption: t('page.user.tabs.settings') },
