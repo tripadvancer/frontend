@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import { TwitterIcon24, YoutubeIcon24 } from '@/components/ui/icons'
+import { XIcon24, YoutubeIcon24 } from '@/components/ui/icons'
 
 export const Footer = async () => {
     const t = await getTranslations()
@@ -33,7 +33,7 @@ export const Footer = async () => {
 
                     <div className="flex gap-x-4">
                         <Link href="https://twitter.com/tripadvancer_me" className="link-black" target="_blank">
-                            <TwitterIcon24 />
+                            <XIcon24 />
                         </Link>
                         <Link href="https://www.youtube.com/@tripadvancer" className="link-black" target="_blank">
                             <YoutubeIcon24 />

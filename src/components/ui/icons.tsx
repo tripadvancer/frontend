@@ -9,6 +9,9 @@ export { default as UserRankBeginnerIcon48 } from '/public/images/icons/48/user-
 export { default as StarIcon32 } from '/public/images/icons/32/star.svg'
 
 // Icons 24x24
+export { default as InstagramIcon24 } from '/public/images/icons/24/instagram.svg'
+export { default as TelegramIcon24 } from '/public/images/icons/24/telegram.svg'
+export { default as TiktokIcon24 } from '/public/images/icons/24/tiktok.svg'
 export { default as AlertIcon24 } from '/public/images/icons/24/alert.svg'
 export { default as BookmarkFillIcon24 } from '/public/images/icons/24/bookmark-fill.svg'
 export { default as BookmarkIcon24 } from '/public/images/icons/24/bookmark.svg'
@@ -35,11 +38,12 @@ export { default as SettingsIcon24 } from '/public/images/icons/24/settings.svg'
 export { default as ShareIcon24 } from '/public/images/icons/24/share.svg'
 export { default as SignOutIcon24 } from '/public/images/icons/24/sign-out.svg'
 export { default as StarIcon24 } from '/public/images/icons/24/star.svg'
-export { default as TwitterIcon24 } from '/public/images/icons/24/twitter.svg'
+export { default as XIcon24 } from '/public/images/icons/24/x.svg'
 export { default as UserIcon24 } from '/public/images/icons/24/user.svg'
 export { default as YoutubeIcon24 } from '/public/images/icons/24/youtube.svg'
 
 // Icon 16x16
+// Icons instagram, telegram, tiktok
 export { default as AlertIcon16 } from '/public/images/icons/16/alert.svg'
 export { default as ArrowLeftIcon16 } from '/public/images/icons/16/arrow-left.svg'
 export { default as ArrowRightIcon16 } from '/public/images/icons/16/arrow-right.svg'

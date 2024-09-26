@@ -8,7 +8,7 @@ import { useCopyToClipboard } from 'usehooks-ts'
 import type { IPlace, IPlacePreview } from '@/utils/types/place'
 
 import { FormButton } from '@/components/ui/form-button'
-import { CopyIcon24, FacebookIcon24, TwitterIcon24 } from '@/components/ui/icons'
+import { CopyIcon24, FacebookIcon24, XIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { getCountryByCode } from '@/services/countries'
 
@@ -55,7 +55,7 @@ export const SharePlace = (place: IPlace | IPlacePreview) => {
                     ]}
                     className="hover-animated flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white hover:!bg-blue-active"
                 >
-                    <TwitterIcon24 />
+                    <XIcon24 />
                 </TwitterShareButton>
 
                 <FacebookShareButton

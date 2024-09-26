@@ -452,10 +452,11 @@
                 "settings": "Settings"
             },
             "aboutMe": "About me",
+            "contacts": "Contacts",
             "settingsForm": {
                 "field": {
                     "avatar": {
-                        "label": "Upload avatar"
+                        "label": "Avatar"
                     },
                     "username": {
                         "label": "Username",
@@ -464,6 +465,9 @@
                     "aboutMe": {
                         "label": "About me",
                         "placeholder": "Enter information about yourself..."
+                    },
+                    "contacts": {
+                        "label": "Contacts"
                     }
                 }
             },

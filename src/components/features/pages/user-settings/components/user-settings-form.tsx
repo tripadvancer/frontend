@@ -6,7 +6,7 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import type { IUserInfo, UpdateUserInfoInputs } from '@/utils/types/user'
+import type { IUser, UpdateUserInfoInputs } from '@/utils/types/user'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
@@ -14,14 +14,16 @@ import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
+import { SocialApps } from '@/utils/enums'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
+import { UserSettingsFormSocialLinks } from './user-settings-form-social-links'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 
-export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
+export const UserSettingsForm = ({ name, info, avatar, settings, social }: IUser) => {
     const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
@@ -31,6 +33,8 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
     const initialValues = {
         name: name,
         info: info || '',
+        settings: settings,
+        social: social,
     }
 
     const validationSchema = Yup.object().shape({
@@ -38,7 +42,7 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
             .trim()
             .required(t('validation.required'))
             .min(userNameMinLength, t('validation.text.minLength', { minLength: userNameMinLength }))
-            .max(userNameMaxLength, t('validation.text.maxLength', { maxlength: userNameMaxLength })),
+            .max(userNameMaxLength, t('validation.text.maxLength', { maxLength: userNameMaxLength })),
         info: Yup.string()
             .trim()
             .max(userInfoMaxLength, t('validation.text.maxLength', { maxLength: userInfoMaxLength })),
@@ -110,6 +114,16 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
                         error={formik.errors.info}
                         disabled={isLoading}
                         onChange={formik.handleChange}
+                    />
+                </div>
+
+                <div className="flex flex-col gap-y-2">
+                    <label htmlFor="info" className="font-medium">
+                        {t('page.user.settingsForm.field.contacts.label')}
+                    </label>
+                    <UserSettingsFormSocialLinks
+                        initialValue={initialValues.social}
+                        onChange={value => formik.setFieldValue('social', value)}
                     />
                 </div>
             </div>
