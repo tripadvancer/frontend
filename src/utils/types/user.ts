@@ -10,7 +10,7 @@ export type IUser = {
     createdAt: Date
     updatedAt: Date
     _count: IUserStatistics
-    visitedCountries: IUserVisitedCountry
+    visitedCountries: IUserVisitedCountry[]
 }
 
 export type IUserSettings = {
