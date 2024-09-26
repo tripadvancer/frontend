@@ -43,7 +43,6 @@ export { default as UserIcon24 } from '/public/images/icons/24/user.svg'
 export { default as YoutubeIcon24 } from '/public/images/icons/24/youtube.svg'
 
 // Icon 16x16
-// Icons instagram, telegram, tiktok
 export { default as AlertIcon16 } from '/public/images/icons/16/alert.svg'
 export { default as ArrowLeftIcon16 } from '/public/images/icons/16/arrow-left.svg'
 export { default as ArrowRightIcon16 } from '/public/images/icons/16/arrow-right.svg'
@@ -74,5 +73,6 @@ export { default as SettingsIcon16 } from '/public/images/icons/16/settings.svg'
 export { default as ShareIcon16 } from '/public/images/icons/16/share.svg'
 export { default as SignOutIcon16 } from '/public/images/icons/16/sign-out.svg'
 export { default as StarIcon16 } from '/public/images/icons/16/star.svg'
+export { default as UserIcon16 } from '/public/images/icons/16/user.svg'
 export { default as VisibilityIcon16 } from '/public/images/icons/16/visibility.svg'
 export { default as VisibilityOffIcon16 } from '/public/images/icons/16/visibility-off.svg'

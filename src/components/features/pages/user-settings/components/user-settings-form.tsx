@@ -32,8 +32,6 @@ export const UserSettingsForm = ({ name, info, avatar, settings, social }: IUser
 
     const [updateUserInfo, { isLoading }] = userAPI.useUpdateUserInfoMutation()
 
-    console.log(settings)
-
     const initialValues = {
         name: name,
         info: info || '',
@@ -132,7 +130,7 @@ export const UserSettingsForm = ({ name, info, avatar, settings, social }: IUser
                     <FormCheckbox
                         name="show_my_map"
                         checked={formik.values.settings.privacy.show_my_map}
-                        caption={t('page.user.settingsForm.field.settings.privacy.options.show_my_map')}
+                        label={t('page.user.settingsForm.field.settings.privacy.options.show_my_map')}
                         disabled={isLoading}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => {
                             formik.setFieldValue('settings', { privacy: { show_my_map: e.target.checked } })

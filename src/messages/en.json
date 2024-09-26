@@ -447,6 +447,7 @@
         },
         "user": {
             "tabs": {
+                "profile": "Profile",
                 "places": "Places",
                 "reviews": "Reviews",
                 "settings": "Settings"

@@ -1,5 +1,15 @@
-import { redirect } from 'next/navigation'
+import type { Metadata } from 'next/types'
 
-export default function UserPage({ params }: { params: { id: string } }) {
-    redirect(`/users/${params.id}/places`)
+import { UserProfile } from '@/components/features/pages/user-profile/user-profile'
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+    return {
+        alternates: {
+            canonical: `/users/${params.id}`,
+        },
+    }
+}
+
+export default function UserProfilePage({ params }: { params: { id: string } }) {
+    return <UserProfile userId={params.id} />
 }

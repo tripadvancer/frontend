@@ -10,7 +10,7 @@ import type { IUser } from '@/utils/types/user'
 
 import { Avatar } from '@/components/ui/avatar'
 import { Dropdown } from '@/components/ui/dropdown'
-import { PointIcon16, ReviewIcon16, SettingsIcon16, SignOutIcon16 } from '@/components/ui/icons'
+import { PointIcon16, ReviewIcon16, SettingsIcon16, SignOutIcon16, UserIcon16 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 
 export const UserMenu = ({ user, avatarSize }: { user: IUser; avatarSize?: number }) => {
@@ -33,6 +33,12 @@ export const UserMenu = ({ user, avatarSize }: { user: IUser; avatarSize?: numbe
     return (
         <Dropdown
             items={[
+                {
+                    caption: t('layout.userMenu.profile'),
+                    value: 'profile',
+                    icon: <UserIcon16 />,
+                    onClick: () => router.push(`/users/${user.id}`),
+                },
                 {
                     caption: t('layout.userMenu.places'),
                     value: 'places',
