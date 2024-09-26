@@ -5,10 +5,15 @@ import { SocialApps } from '@/utils/enums'
 
 type UserSettingsFormSocialLinksProps = {
     initialValue: Record<SocialApps, string>
+    isDisabled?: boolean
     onChange: (value: { [key: string]: string }) => void
 }
 
-export const UserSettingsFormSocialLinks = ({ initialValue, onChange }: UserSettingsFormSocialLinksProps) => {
+export const UserSettingsFormSocialLinks = ({
+    initialValue,
+    isDisabled,
+    onChange,
+}: UserSettingsFormSocialLinksProps) => {
     const [value, setValue] = useState(initialValue)
 
     const socialInputs = {
@@ -55,7 +60,7 @@ export const UserSettingsFormSocialLinks = ({ initialValue, onChange }: UserSett
             name={socialInputs[app].name}
             value={value[app]}
             placeholder={socialInputs[app].placeholder}
-            disabled={false}
+            disabled={isDisabled}
             onChange={handleChange}
         />
     ))

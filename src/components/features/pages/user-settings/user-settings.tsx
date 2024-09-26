@@ -12,6 +12,8 @@ export const UserSettings = async ({ userId }: { userId: string }) => {
     const t = await getTranslations()
     const user = await getUserById(userId)
 
+    console.log(user)
+
     return (
         <div className="flex flex-col gap-y-8">
             <div className="flex flex-col gap-y-16">

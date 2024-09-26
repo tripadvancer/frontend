@@ -466,6 +466,14 @@
                         "label": "About me",
                         "placeholder": "Enter information about yourself..."
                     },
+                    "settings": {
+                        "privacy": {
+                            "label": "Privacy",
+                            "options": {
+                                "show_my_map": "Show my visited map to evryone"
+                            }
+                        }
+                    },
                     "contacts": {
                         "label": "Contacts"
                     }

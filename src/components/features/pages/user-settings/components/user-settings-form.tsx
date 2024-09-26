@@ -1,5 +1,7 @@
 'use client'
 
+import { ChangeEvent } from 'react'
+
 import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
@@ -9,12 +11,12 @@ import { useRouter } from 'next/navigation'
 import type { IUser, UpdateUserInfoInputs } from '@/utils/types/user'
 
 import { FormButton } from '@/components/ui/form-button'
+import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { FormInput } from '@/components/ui/form-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
-import { SocialApps } from '@/utils/enums'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
 import { UserSettingsFormSocialLinks } from './user-settings-form-social-links'
@@ -30,11 +32,17 @@ export const UserSettingsForm = ({ name, info, avatar, settings, social }: IUser
 
     const [updateUserInfo, { isLoading }] = userAPI.useUpdateUserInfoMutation()
 
+    console.log(settings)
+
     const initialValues = {
         name: name,
         info: info || '',
-        settings: settings,
-        social: social,
+        settings: {
+            privacy: {
+                show_my_map: settings?.privacy.show_my_map || false,
+            },
+        },
+        social,
     }
 
     const validationSchema = Yup.object().shape({
@@ -119,10 +127,26 @@ export const UserSettingsForm = ({ name, info, avatar, settings, social }: IUser
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="info" className="font-medium">
+                        {t('page.user.settingsForm.field.settings.privacy.label')}
+                    </label>
+                    <FormCheckbox
+                        name="show_my_map"
+                        checked={formik.values.settings.privacy.show_my_map}
+                        caption={t('page.user.settingsForm.field.settings.privacy.options.show_my_map')}
+                        disabled={isLoading}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                            formik.setFieldValue('settings', { privacy: { show_my_map: e.target.checked } })
+                        }}
+                    />
+                </div>
+
+                <div className="flex flex-col gap-y-2">
+                    <label htmlFor="info" className="font-medium">
                         {t('page.user.settingsForm.field.contacts.label')}
                     </label>
                     <UserSettingsFormSocialLinks
                         initialValue={initialValues.social}
+                        isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('social', value)}
                     />
                 </div>
