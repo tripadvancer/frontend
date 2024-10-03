@@ -5,16 +5,10 @@ export type IUser = {
     name: string
     info: string
     avatar: string | null
-    settings: IUserSettings
     social: IUserSocial
     createdAt: Date
     updatedAt: Date
     _count: IUserStatistics
-    visitedCountries: IUserVisitedCountry[]
-}
-
-export type IUserSettings = {
-    [SettingsCategories.PRIVACY]: Record<UserPrivacySettings, boolean>
 }
 
 export type IUserSocial = Record<SocialApps, string>
@@ -27,14 +21,29 @@ export type IUserStatistics = {
     visitedCountries: number
 }
 
+export type IUserVisitedCountries = {
+    visitedCountries: IUserVisitedCountry[]
+}
+
 export type IUserVisitedCountry = {
     code: string
     count: number
 }
 
+export type IUserSettings = {
+    id: number
+    settings: IUserPrivacySettings | null
+}
+
+export type IUserPrivacySettings = {
+    [SettingsCategories.PRIVACY]: Partial<Record<UserPrivacySettings, boolean>>
+}
+
 export type IUserInfo = Pick<IUser, 'id' | 'name' | 'info' | 'avatar'>
 
-export type UpdateUserInfoInputs = Pick<IUser, 'name' | 'info' | 'settings' | 'social'>
+export type UpdateUserInfoInputs = Pick<IUser, 'name' | 'info' | 'social'> & {
+    settings: IUserPrivacySettings
+}
 
 export type ChangeUserPasswordInputs = {
     oldPassword: string

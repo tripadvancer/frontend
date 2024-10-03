@@ -1,6 +1,7 @@
 import type { Metadata } from 'next/types'
 
-import { UserProfile } from '@/components/features/pages/user-profile/user-profile'
+import { UserProfilePrivate } from '@/components/features/pages/user-profile/user-profile-private'
+import { UserProfilePublic } from '@/components/features/pages/user-profile/user-profile-public'
 import { getUserById } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
@@ -22,7 +23,7 @@ export default async function UserProfilePage({ params }: { params: { id: string
             /**
              * This means that there is no session and no session tokens.
              */
-            return <UserProfile userId={params.id} type="public" />
+            return <UserProfilePublic userId={params.id} />
         }
 
         /**
@@ -33,8 +34,8 @@ export default async function UserProfilePage({ params }: { params: { id: string
     }
 
     if (session.getAccessTokenPayload().userId !== user.id) {
-        return <UserProfile userId={params.id} type="public" />
+        return <UserProfilePublic userId={params.id} />
     }
 
-    return <UserProfile userId={params.id} type="private" />
+    return <UserProfilePrivate userId={params.id} />
 }

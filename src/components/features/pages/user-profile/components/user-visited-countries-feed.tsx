@@ -1,28 +1,19 @@
 import { getLocale, getTranslations } from 'next-intl/server'
 
+import type { IUserVisitedCountries } from '@/utils/types/user'
+
 import { getCountryByCode } from '@/services/countries'
 import { сountriesDictionary } from '@/utils/dictionaries/countries'
 
 import { UserVisitedCountriesFeedItem } from './user-visited-countries-feed-item'
 
-type UserMapCountriesFeedProps = {
-    countries: {
-        code: string
-        count: number
-    }[]
-}
-
-export const UserVisitedCountriesFeed = async ({ countries }: UserMapCountriesFeedProps) => {
+export const UserVisitedCountriesFeed = async ({ visitedCountries }: IUserVisitedCountries) => {
     const t = await getTranslations()
     const locale = await getLocale()
-    const worldCoverageInPercent = Math.round((countries.length / сountriesDictionary.length) * 100)
+    const worldCoverageInPercent = Math.round((visitedCountries.length / сountriesDictionary.length) * 100)
 
-    if (countries.length === 0) {
-        return (
-            <div className="text-center text-black-40">
-                {t.rich('page.user.profile.visitedCountries.emptyMessage', { br: () => <br /> })}
-            </div>
-        )
+    if (visitedCountries.length === 0) {
+        return null
     }
 
     return (
@@ -33,7 +24,7 @@ export const UserVisitedCountriesFeed = async ({ countries }: UserMapCountriesFe
                 name={t('page.user.profile.visitedCountries.allcountries')}
             />
 
-            {countries.map(item => {
+            {visitedCountries.map(item => {
                 const country = getCountryByCode(item.code)
 
                 if (country) {

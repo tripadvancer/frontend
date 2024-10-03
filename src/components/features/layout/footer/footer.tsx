@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
+import { ExternalLink } from '@/components/ui/external-link'
 import { XIcon24, YoutubeIcon24 } from '@/components/ui/icons'
 
 export const Footer = async () => {
@@ -43,9 +44,7 @@ export const Footer = async () => {
                     <div className="text-center">
                         {t.rich('layout.footer.poweredByStadiaMaps', {
                             stadiaMapsLink: stadiaMapsLink => (
-                                <Link href="https://stadiamaps.com/" target="_blank">
-                                    {stadiaMapsLink}
-                                </Link>
+                                <ExternalLink href="https://stadiamaps.com/">{stadiaMapsLink}</ExternalLink>
                             ),
                         })}
                         <div className="text-black-40">{t('layout.footer.copyright')}</div>

@@ -1,17 +1,14 @@
 'use client'
 
-import { ChangeEvent } from 'react'
-
 import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import type { IUser, UpdateUserInfoInputs } from '@/utils/types/user'
+import type { IUser, IUserSettings, UpdateUserInfoInputs } from '@/utils/types/user'
 
 import { FormButton } from '@/components/ui/form-button'
-import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { FormInput } from '@/components/ui/form-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
@@ -19,13 +16,14 @@ import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
+import { UserSettingsFormPrivacy } from './user-settings-form-privacy'
 import { UserSettingsFormSocialLinks } from './user-settings-form-social-links'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 
-export const UserSettingsForm = ({ name, info, avatar, settings, social }: IUser) => {
+export const UserSettingsForm = ({ name, info, avatar, social, settings }: IUser & IUserSettings) => {
     const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
@@ -125,27 +123,23 @@ export const UserSettingsForm = ({ name, info, avatar, settings, social }: IUser
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="info" className="font-medium">
-                        {t('page.user.settingsForm.field.settings.privacy.label')}
-                    </label>
-                    <FormCheckbox
-                        name="show_my_map"
-                        checked={formik.values.settings.privacy.show_my_map}
-                        label={t('page.user.settingsForm.field.settings.privacy.options.show_my_map')}
-                        disabled={isLoading}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                            formik.setFieldValue('settings', { privacy: { show_my_map: e.target.checked } })
-                        }}
-                    />
-                </div>
-
-                <div className="flex flex-col gap-y-2">
-                    <label htmlFor="info" className="font-medium">
                         {t('page.user.settingsForm.field.contacts.label')}
                     </label>
                     <UserSettingsFormSocialLinks
                         initialValue={initialValues.social}
                         isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('social', value)}
+                    />
+                </div>
+
+                <div className="flex flex-col gap-y-2">
+                    <label htmlFor="info" className="font-medium">
+                        {t('page.user.settingsForm.field.settings.privacy.label')}
+                    </label>
+                    <UserSettingsFormPrivacy
+                        value={formik.values.settings}
+                        isDisabled={isLoading}
+                        onChange={value => formik.setFieldValue('settings', value)}
                     />
                 </div>
             </div>

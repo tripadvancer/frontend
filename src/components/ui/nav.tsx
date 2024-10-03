@@ -16,8 +16,6 @@ type NavProps = {
 export const Nav = ({ links, className }: NavProps) => {
     const pathname = usePathname()
 
-    console.log(pathname, links)
-
     return (
         <nav className={classNames('flex gap-x-4 text-big-bold', className)}>
             {links.map(link => (

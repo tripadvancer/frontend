@@ -453,10 +453,10 @@
                 "settings": "Settings"
             },
             "aboutMe": "About me",
-            "contacts": "Contacts",
+            "contacts": "Social accounts",
             "profile": {
                 "visitedCountries": {
-                    "emptyMessage": "You have not visited any countries yet.<br></br>To view your visited countries, add a place you have been to.",
+                    "emptyMessage": "You have not visited any countries yet.<br></br>To view your visited countries, add a place you have been to.<br></br><learnMoreLink>Learn more</learnMoreLink>",
                     "allcountries": "All countries",
                     "privacy": {
                         "mapIsVisible": "Your visited countries map is visible to everyone. To hide it, go to your <settingsLink>settings</settingsLink>.",
@@ -486,7 +486,7 @@
                         }
                     },
                     "contacts": {
-                        "label": "Contacts"
+                        "label": "Social accounts"
                     }
                 }
             },
