@@ -30,7 +30,7 @@ export const UserProfilePrivate = async ({ userId }: { userId: string }) => {
                 )}
             </p>
 
-            <UserVisitedMap visitedCountries={visitedCountries.visitedCountries} />
+            <UserVisitedMap visited={visitedCountries.visitedCountries.map(item => item.code)} />
 
             {!visitedCountries.visitedCountries?.length && (
                 <div className="text-center text-black-40">
