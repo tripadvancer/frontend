@@ -3,12 +3,19 @@
 import { useCallback, useRef } from 'react'
 import { MapEvent, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
-import { IUserVisitedCountries } from '@/utils/types/user'
+import type { IUserVisitedCountries } from '@/utils/types/user'
 
 import { MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
 
-export const UserVisitedMap = ({ visited }: { visited: string[] }) => {
+type UserVisitedMapProps = {
+    visitedCountries: IUserVisitedCountries
+}
+
+export const UserVisitedMap = ({ visitedCountries }: UserVisitedMapProps) => {
+    const visitedLength = visitedCountries.length
+    const visited = visitedLength === 0 ? [''] : visitedCountries.map(item => item.code)
+
     const mapRef = useRef<MapRef>(null)
 
     const handleLoad = useCallback(

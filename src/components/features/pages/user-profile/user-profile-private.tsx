@@ -21,7 +21,7 @@ export const UserProfilePrivate = async ({ userId }: { userId: string }) => {
         <div className="flex flex-col gap-y-8">
             <p className="text-black-70">
                 {t.rich(
-                    settings.settings?.privacy.show_my_map
+                    settings.privacy?.show_my_map
                         ? 'page.user.profile.visitedCountries.privacy.mapIsVisible'
                         : 'page.user.profile.visitedCountries.privacy.mapIsHidden',
                     {
@@ -30,9 +30,9 @@ export const UserProfilePrivate = async ({ userId }: { userId: string }) => {
                 )}
             </p>
 
-            <UserVisitedMap visited={visitedCountries.visitedCountries.map(item => item.code)} />
+            <UserVisitedMap visitedCountries={visitedCountries} />
 
-            {!visitedCountries.visitedCountries?.length && (
+            {!visitedCountries.length && (
                 <div className="text-center text-black-40">
                     {t.rich('page.user.profile.visitedCountries.emptyMessage', {
                         br: () => <br />,
@@ -43,7 +43,7 @@ export const UserProfilePrivate = async ({ userId }: { userId: string }) => {
                 </div>
             )}
 
-            <UserVisitedCountriesFeed visitedCountries={visitedCountries.visitedCountries} />
+            <UserVisitedCountriesFeed visitedCountries={visitedCountries} />
         </div>
     )
 }

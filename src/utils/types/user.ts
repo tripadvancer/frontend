@@ -22,21 +22,14 @@ export type IUserStatistics = {
 }
 
 export type IUserVisitedCountries = {
-    visitedCountries: IUserVisitedCountry[]
-}
-
-export type IUserVisitedCountry = {
     code: string
     count: number
-}
+}[]
 
-export type IUserSettings = {
-    id: number
-    settings: IUserPrivacySettings | null
-}
+export type IUserSettings = IUserPrivacySettings
 
 export type IUserPrivacySettings = {
-    [SettingsCategories.PRIVACY]: Partial<Record<UserPrivacySettings, boolean>>
+    [SettingsCategories.PRIVACY]?: Partial<Record<UserPrivacySettings, boolean>>
 }
 
 export type IUserInfo = Pick<IUser, 'id' | 'name' | 'info' | 'avatar'>

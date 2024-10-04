@@ -14,6 +14,7 @@ import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
+import { SettingsCategories, UserPrivacySettings } from '@/utils/enums'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
 import { UserSettingsFormPrivacy } from './user-settings-form-privacy'
@@ -23,7 +24,7 @@ const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 
-export const UserSettingsForm = ({ name, info, avatar, social, settings }: IUser & IUserSettings) => {
+export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser & IUserSettings) => {
     const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
@@ -34,8 +35,8 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: IUser
         name: name,
         info: info || '',
         settings: {
-            privacy: {
-                show_my_map: settings?.privacy.show_my_map || false,
+            [SettingsCategories.PRIVACY]: {
+                [UserPrivacySettings.SHOW_MY_MAP]: privacy?.show_my_map || false,
             },
         },
         social,

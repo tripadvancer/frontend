@@ -7,7 +7,11 @@ import { сountriesDictionary } from '@/utils/dictionaries/countries'
 
 import { UserVisitedCountriesFeedItem } from './user-visited-countries-feed-item'
 
-export const UserVisitedCountriesFeed = async ({ visitedCountries }: IUserVisitedCountries) => {
+type UserVisitedCountriesFeedProps = {
+    visitedCountries: IUserVisitedCountries
+}
+
+export const UserVisitedCountriesFeed = async ({ visitedCountries }: UserVisitedCountriesFeedProps) => {
     const t = await getTranslations()
     const locale = await getLocale()
     const worldCoverageInPercent = Math.round((visitedCountries.length / сountriesDictionary.length) * 100)
