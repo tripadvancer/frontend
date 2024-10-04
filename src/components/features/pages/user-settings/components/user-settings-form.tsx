@@ -127,7 +127,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
                         {t('page.user.settingsForm.field.contacts.label')}
                     </label>
                     <UserSettingsFormSocialLinks
-                        initialValue={initialValues.social}
+                        value={formik.values.social}
                         isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('social', value)}
                     />

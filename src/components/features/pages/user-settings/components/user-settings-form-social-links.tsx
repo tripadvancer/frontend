@@ -1,59 +1,61 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent } from 'react'
 
+import { IUserSocial } from '@/utils/types/user'
+
+import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { SocialApps } from '@/utils/enums'
+import { UserSocialApps } from '@/utils/enums'
 
 type UserSettingsFormSocialLinksProps = {
-    initialValue: Record<SocialApps, string>
+    value: IUserSocial
     isDisabled?: boolean
-    onChange: (value: { [key: string]: string }) => void
+    onChange: (value: IUserSocial) => void
 }
 
-export const UserSettingsFormSocialLinks = ({
-    initialValue,
-    isDisabled,
-    onChange,
-}: UserSettingsFormSocialLinksProps) => {
-    const [value, setValue] = useState(initialValue)
-
+export const UserSettingsFormSocialLinks = ({ value, isDisabled, onChange }: UserSettingsFormSocialLinksProps) => {
     const socialInputs = {
-        [SocialApps.FACEBOOK]: {
-            placeholder: 'Facebook',
+        [UserSocialApps.FACEBOOK]: {
             name: 'facebook',
+            placeholder: 'Facebook',
+            // mask: 'https://facebook.com/***************',
         },
-        [SocialApps.INSTAGRAM]: {
+        [UserSocialApps.INSTAGRAM]: {
             placeholder: 'Instagram',
             name: 'instagram',
+            // mask: SocialAppUrls.FACEBOOK + '*********************',
         },
-        [SocialApps.TELEGRAM]: {
+        [UserSocialApps.TELEGRAM]: {
             placeholder: 'Telegram',
             name: 'telegram',
+            // mask: SocialAppUrls.FACEBOOK + '*********************',
         },
-        [SocialApps.TIKTOK]: {
+        [UserSocialApps.TIKTOK]: {
             placeholder: 'Tiktok',
             name: 'tiktok',
+            // mask: SocialAppUrls.FACEBOOK + '*********************',
         },
-        [SocialApps.X]: {
+        [UserSocialApps.X]: {
             placeholder: 'X',
             name: 'x',
+            // mask: SocialAppUrls.FACEBOOK + '*********************',
         },
-        [SocialApps.YOUTUBE]: {
+        [UserSocialApps.YOUTUBE]: {
             placeholder: 'Youtube',
             name: 'youtube',
+            // mask: SocialAppUrls.FACEBOOK + '*********************',
         },
     }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const updatedValue = {
+        const updatedValue: IUserSocial = {
             ...value,
             [e.target.name]: e.target.value,
         }
-        setValue(updatedValue)
+
         onChange(updatedValue)
     }
 
-    return Object.values(SocialApps).map(app => (
-        // todo: add FE validation
+    return Object.values(UserSocialApps).map(app => (
         <FormInput
             key={`social-input-${app}`}
             type="text"

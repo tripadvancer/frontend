@@ -1,4 +1,4 @@
-import { SettingsCategories, SocialApps, UserPrivacySettings } from '@/utils/enums'
+import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
 
 export type IUser = {
     id: number
@@ -11,7 +11,7 @@ export type IUser = {
     _count: IUserStatistics
 }
 
-export type IUserSocial = Record<SocialApps, string>
+export type IUserSocial = Record<UserSocialApps, string>
 
 export type IUserStatistics = {
     places: number
