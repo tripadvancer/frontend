@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/icons'
 import { SocialAppUrls, UserSocialApps } from '@/utils/enums'
 
-export const UserSidebarSocialLink = ({ app, url }: { app: UserSocialApps; url: string }) => {
+export const UserSidebarSocialLink = ({ app, appUsername }: { app: UserSocialApps; appUsername?: string }) => {
     const socialLinks = {
         [UserSocialApps.FACEBOOK]: {
             icon: <FacebookIcon24 />,
@@ -46,7 +46,7 @@ export const UserSidebarSocialLink = ({ app, url }: { app: UserSocialApps; url: 
 
     return (
         <Link
-            href={socialLinks[app].url + url}
+            href={socialLinks[app].url + appUsername}
             className="link inline-flex items-center gap-x-2 text-big-bold"
             target="_blank"
         >

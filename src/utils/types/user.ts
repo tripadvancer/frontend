@@ -11,7 +11,7 @@ export type IUser = {
     _count: IUserStatistics
 }
 
-export type IUserSocial = Record<UserSocialApps, string>
+export type IUserSocial = Partial<Record<UserSocialApps, string>>
 
 export type IUserStatistics = {
     places: number

@@ -78,7 +78,7 @@ export const FormFileInput = ({
                             'hover-animated flex h-10 w-full items-center rounded-lg border bg-white pl-4 pr-9',
                             {
                                 'border-red-100': error,
-                                'border-black-15 focus:border-black-40': !error,
+                                'border-black-15 text-black-15 hover:border-black-40 hover:text-black-40': !error,
                                 'cursor-pointer': !isUploading && currentFilesLength < maxFilesCount,
                                 'cursor-wait': isUploading,
                                 'cursor-default opacity-30': multiple && currentFilesLength >= maxFilesCount,
@@ -98,11 +98,11 @@ export const FormFileInput = ({
                         {!isUploading && (
                             <>
                                 {fileName ? (
-                                    fileName
+                                    <div className="text-black-100">{fileName}</div>
                                 ) : (
                                     <div className="text-black-40">{t('placeholder.action.selectFile')}</div>
                                 )}
-                                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2">
                                     <FolderIcon16 />
                                 </div>
                             </>

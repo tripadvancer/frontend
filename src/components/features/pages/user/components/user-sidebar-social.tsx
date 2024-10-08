@@ -23,7 +23,7 @@ export const UserSidebarSocial = async ({ userId }: { userId: string }) => {
                         <UserSidebarSocialLink
                             key={`social-link-${key}`}
                             app={key as UserSocialApps}
-                            url={user.social[key as UserSocialApps]}
+                            appUsername={user.social[key as UserSocialApps]}
                         />
                     ))}
             </div>

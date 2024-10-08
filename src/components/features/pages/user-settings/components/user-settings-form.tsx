@@ -14,7 +14,7 @@ import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
-import { SettingsCategories, UserPrivacySettings } from '@/utils/enums'
+import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
 import { UserSettingsFormPrivacy } from './user-settings-form-privacy'
@@ -39,7 +39,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
                 [UserPrivacySettings.SHOW_MY_MAP]: privacy?.show_my_map || false,
             },
         },
-        social,
+        social: social || {},
     }
 
     const validationSchema = Yup.object().shape({
@@ -128,6 +128,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
                     </label>
                     <UserSettingsFormSocialLinks
                         value={formik.values.social}
+                        error={formik.errors.social}
                         isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('social', value)}
                     />

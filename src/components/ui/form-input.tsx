@@ -10,6 +10,7 @@ import { VisibilityIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
 type FormInputProps = InputHTMLAttributes<HTMLInputElement> & {
     error?: string
     className?: string
+    deletable?: boolean
 }
 
 const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) => {
@@ -25,9 +26,9 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                     className={classNames(
                         'hover-animated h-10 w-full rounded-lg border bg-white px-4 placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                         {
-                            'border-black-15 focus:border-black-40': !props.error,
+                            'border-black-15 hover:border-black-40 focus:border-black-40': !props.error,
                             'border-red-100': props.error,
-                            'pr-9': props.type === 'password',
+                            'pr-9': props.type === 'password' || props.deletable,
                         },
                     )}
                 />
