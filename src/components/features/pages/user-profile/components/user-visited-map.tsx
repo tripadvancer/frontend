@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useRef } from 'react'
+import { useCallback, useMemo, useRef } from 'react'
 import { MapEvent, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
 import type { IUserVisitedCountries } from '@/utils/types/user'
@@ -14,7 +14,10 @@ type UserVisitedMapProps = {
 
 export const UserVisitedMap = ({ visitedCountries }: UserVisitedMapProps) => {
     const visitedLength = visitedCountries.length
-    const visited = visitedLength === 0 ? [''] : visitedCountries.map(item => item.code)
+
+    const visited = useMemo(() => {
+        return visitedLength === 0 ? [''] : visitedCountries.map(item => item.code)
+    }, [visitedCountries, visitedLength])
 
     const mapRef = useRef<MapRef>(null)
 

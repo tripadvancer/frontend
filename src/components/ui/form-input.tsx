@@ -19,7 +19,7 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
     const { onDelete, error, className, ...inputProps } = props
 
     return (
-        <div className={props.className}>
+        <div className={className}>
             <div className="relative">
                 <input
                     {...inputProps}
@@ -28,9 +28,9 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                     className={classNames(
                         'hover-animated h-10 w-full rounded-lg border bg-white px-4 placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                         {
-                            'border-black-15 hover:border-black-40 focus:border-black-40': !props.error,
-                            'border-red-100': props.error,
-                            'pr-9': props.type === 'password' || props.onDelete,
+                            'border-black-15 hover:border-black-40 focus:border-black-40': !error,
+                            'border-red-100': error,
+                            'pr-9': props.type === 'password' || onDelete,
                         },
                     )}
                 />
@@ -44,19 +44,19 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                     </div>
                 )}
 
-                {props.onDelete && (
+                {onDelete && (
                     <div
                         className={classNames('absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-red-100', {
                             'cursor-no-drop opacity-30': props.disabled,
                         })}
-                        onClick={() => (props.disabled ? null : props.onDelete)}
+                        onClick={() => (props.disabled ? null : onDelete)}
                     >
                         <DeleteIcon16 />
                     </div>
                 )}
             </div>
 
-            {props.error && <div className="mt-1 text-small text-red-100">{props.error}</div>}
+            {error && <div className="mt-1 text-small text-red-100">{error}</div>}
         </div>
     )
 }
