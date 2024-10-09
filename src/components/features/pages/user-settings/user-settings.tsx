@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 
+import { getUserSettings } from '@/services/user'
 import { getUserById } from '@/services/users'
 
 import { UserSettingsBlockChangePassword } from './components/user-settings-block-change-password'
@@ -10,13 +11,13 @@ import { UserSettingsForm } from './components/user-settings-form'
 
 export const UserSettings = async ({ userId }: { userId: string }) => {
     const t = await getTranslations()
-    const user = await getUserById(userId)
+    const [user, settings] = await Promise.all([getUserById(userId), getUserSettings()])
 
     return (
         <div className="flex flex-col gap-y-8">
             <div className="flex flex-col gap-y-16">
                 <section>
-                    <UserSettingsForm {...user} />
+                    <UserSettingsForm {...user} {...settings} />
                 </section>
                 <section>
                     <h2 className="h5 mb-8">{t('page.user.account.title')}</h2>

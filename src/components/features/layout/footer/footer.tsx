@@ -2,7 +2,8 @@ import { getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import { TwitterIcon24, YoutubeIcon24 } from '@/components/ui/icons'
+import { ExternalLink } from '@/components/ui/external-link'
+import { XIcon24, YoutubeIcon24 } from '@/components/ui/icons'
 
 export const Footer = async () => {
     const t = await getTranslations()
@@ -13,7 +14,7 @@ export const Footer = async () => {
                 <div className="border-t border-black-70" />
 
                 <div className="inner-container flex flex-col items-center gap-y-4 py-8">
-                    <div className="flex flex-col gap-y-1">
+                    <div className="flex flex-col sm:gap-y-1">
                         <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
                             <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{t('layout.footer.contactUs')}</Link>
                             <span className="hidden sm:block">•</span>
@@ -33,7 +34,7 @@ export const Footer = async () => {
 
                     <div className="flex gap-x-4">
                         <Link href="https://twitter.com/tripadvancer_me" className="link-black" target="_blank">
-                            <TwitterIcon24 />
+                            <XIcon24 />
                         </Link>
                         <Link href="https://www.youtube.com/@tripadvancer" className="link-black" target="_blank">
                             <YoutubeIcon24 />
@@ -43,9 +44,7 @@ export const Footer = async () => {
                     <div className="text-center">
                         {t.rich('layout.footer.poweredByStadiaMaps', {
                             stadiaMapsLink: stadiaMapsLink => (
-                                <Link href="https://stadiamaps.com/" target="_blank">
-                                    {stadiaMapsLink}
-                                </Link>
+                                <ExternalLink href="https://stadiamaps.com/">{stadiaMapsLink}</ExternalLink>
                             ),
                         })}
                         <div className="text-black-40">{t('layout.footer.copyright')}</div>

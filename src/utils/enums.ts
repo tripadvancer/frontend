@@ -46,3 +46,29 @@ export enum CountriesSortBy {
     NAME = 'name',
     POPULARITY = 'popularity',
 }
+
+export enum SettingsCategories {
+    PRIVACY = 'privacy',
+}
+
+export enum UserPrivacySettings {
+    SHOW_MY_MAP = 'show_my_map',
+}
+
+export enum UserSocialApps {
+    FACEBOOK = 'facebook',
+    INSTAGRAM = 'instagram',
+    TELEGRAM = 'telegram',
+    TIKTOK = 'tiktok',
+    X = 'x',
+    YOUTUBE = 'youtube',
+}
+
+export enum SocialAppUrls {
+    FACEBOOK = 'https://facebook.com/',
+    INSTAGRAM = 'https://instagram.com/',
+    TELEGRAM = 'https://t.me/',
+    TIKTOK = 'https://tiktok.com/@',
+    X = 'https://x.com/',
+    YOUTUBE = 'https://youtube.com/@',
+}

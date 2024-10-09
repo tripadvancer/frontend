@@ -13,6 +13,9 @@ export const validationConfig = {
         password: {
             minLength: 8,
         },
+        social: {
+            maxLength: 50,
+        },
     },
     place: {
         title: {

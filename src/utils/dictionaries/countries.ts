@@ -2,6 +2,12 @@ import type { ICountryDict } from '@/utils/types/country'
 
 export const сountriesDictionary: ICountryDict[] = [
     {
+        code: 'XK',
+        slug: 'kosovo',
+        name: { en: 'The Republic of Kosovo', ru: 'Косово' },
+        bounds: [20.02, 41.85, 21.77, 43.27],
+    },
+    {
         code: 'AD',
         slug: 'andorra',
         name: { en: 'Andorra', ru: 'Андорра' },
