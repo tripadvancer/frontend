@@ -3,6 +3,8 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 
 import { ExternalLink } from '@/components/ui/external-link'
+import { AlertIcon24 } from '@/components/ui/icons'
+import { Notice } from '@/components/ui/notice'
 import { getUserSettings } from '@/services/user'
 import { getUserById, getUserVisitedCountries } from '@/services/users'
 
@@ -19,8 +21,8 @@ export const UserProfilePrivate = async ({ userId }: { userId: string }) => {
 
     return (
         <div className="flex flex-col gap-y-8">
-            <p className="text-black-70">
-                {t.rich(
+            <Notice
+                message={t.rich(
                     settings.privacy?.show_my_map
                         ? 'page.user.profile.visitedCountries.privacy.mapIsVisible'
                         : 'page.user.profile.visitedCountries.privacy.mapIsHidden',
@@ -28,7 +30,9 @@ export const UserProfilePrivate = async ({ userId }: { userId: string }) => {
                         settingsLink: settingsLink => <Link href={`/users/${user.id}/settings`}>{settingsLink}</Link>,
                     },
                 )}
-            </p>
+                icon={<AlertIcon24 />}
+                variant="red"
+            />
 
             <UserVisitedMap visitedCountries={visitedCountries} />
 
