@@ -49,7 +49,7 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                         className={classNames('absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-red-100', {
                             'cursor-no-drop opacity-30': props.disabled,
                         })}
-                        onClick={() => (props.disabled ? null : onDelete)}
+                        onClick={props.disabled ? undefined : onDelete}
                     >
                         <DeleteIcon16 />
                     </div>
