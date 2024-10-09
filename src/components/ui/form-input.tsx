@@ -5,34 +5,37 @@ import { Ref, forwardRef } from 'react'
 
 import classNames from 'classnames'
 
-import { DeleteIcon16, VisibilityIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
+import { VisibilityIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
 
 type FormInputProps = InputHTMLAttributes<HTMLInputElement> & {
     error?: string
     className?: string
-    onDelete?: () => void
 }
 
 const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
 
-    const { onDelete, error, className, ...inputProps } = props
+    const { error, className, ...inputProps } = props
 
     return (
-        <div className={className}>
-            <div className="relative">
+        <div>
+            <div
+                className={classNames(
+                    'hover-animated relative h-10 w-full rounded-lg border bg-white px-4',
+                    className,
+                    {
+                        'border-red-100': error,
+                        'hover:border-black-40 has-[:focus]:border-black-40': !error,
+                        'cursor-no-drop opacity-30': props.disabled,
+                        'pr-9': props.type === 'password',
+                    },
+                )}
+            >
                 <input
                     {...inputProps}
                     ref={ref}
                     type={isShowPassword ? 'text' : props.type}
-                    className={classNames(
-                        'hover-animated h-10 w-full rounded-lg border bg-white px-4 placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
-                        {
-                            'border-black-15 hover:border-black-40 focus:border-black-40': !error,
-                            'border-red-100': error,
-                            'pr-9': props.type === 'password' || onDelete,
-                        },
-                    )}
+                    className="h-full w-full bg-transparent placeholder:text-black-40 focus:outline-none"
                 />
 
                 {props.type === 'password' && (
@@ -41,17 +44,6 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                         onClick={() => setIsShowPassword(!isShowPassword)}
                     >
                         {isShowPassword ? <VisibilityIcon16 /> : <VisibilityOffIcon16 />}
-                    </div>
-                )}
-
-                {onDelete && (
-                    <div
-                        className={classNames('absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-red-100', {
-                            'cursor-no-drop opacity-30': props.disabled,
-                        })}
-                        onClick={props.disabled ? undefined : onDelete}
-                    >
-                        <DeleteIcon16 />
                     </div>
                 )}
             </div>
