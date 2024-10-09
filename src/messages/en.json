@@ -486,7 +486,8 @@
                         }
                     },
                     "contacts": {
-                        "label": "Social accounts"
+                        "label": "Social accounts",
+                        "addSocialLink": "Add social link"
                     }
                 }
             },

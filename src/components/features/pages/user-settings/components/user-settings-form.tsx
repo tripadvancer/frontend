@@ -23,6 +23,7 @@ import { UserSettingsFormSocialLinks } from './user-settings-form-social-links'
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
+const userSocialMaxLength = validationConfig.user.social.maxLength
 
 export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser & IUserSettings) => {
     const t = useTranslations()
@@ -51,6 +52,24 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
         info: Yup.string()
             .trim()
             .max(userInfoMaxLength, t('validation.text.maxLength', { maxLength: userInfoMaxLength })),
+        social: Yup.lazy(value =>
+            Yup.object().shape(
+                Object.keys(value).reduce(
+                    (acc: Record<string, any>, key: string) => {
+                        acc[key] = Yup.string()
+                            .trim()
+                            .default('')
+                            .required(t('validation.required'))
+                            .max(
+                                userSocialMaxLength,
+                                t('validation.text.maxLength', { maxLength: userSocialMaxLength }),
+                            )
+                        return acc
+                    },
+                    {} as Record<string, Yup.StringSchema<string | undefined>>,
+                ),
+            ),
+        ),
     })
 
     const handleSubmit = async (inputs: UpdateUserInfoInputs) => {
@@ -127,7 +146,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
                         {t('page.user.settingsForm.field.contacts.label')}
                     </label>
                     <UserSettingsFormSocialLinks
-                        value={formik.values.social}
+                        initialValue={formik.values.social}
                         error={formik.errors.social}
                         isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('social', value)}
@@ -139,7 +158,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
                         {t('page.user.settingsForm.field.settings.privacy.label')}
                     </label>
                     <UserSettingsFormPrivacy
-                        value={formik.values.settings}
+                        initialValue={formik.values.settings}
                         isDisabled={isLoading}
                         onChange={value => formik.setFieldValue('settings', value)}
                     />

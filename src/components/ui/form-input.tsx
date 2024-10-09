@@ -5,22 +5,24 @@ import { Ref, forwardRef } from 'react'
 
 import classNames from 'classnames'
 
-import { VisibilityIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
+import { DeleteIcon16, VisibilityIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
 
 type FormInputProps = InputHTMLAttributes<HTMLInputElement> & {
     error?: string
     className?: string
-    deletable?: boolean
+    onDelete?: () => void
 }
 
 const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
 
+    const { onDelete, error, className, ...inputProps } = props
+
     return (
         <div className={props.className}>
             <div className="relative">
                 <input
-                    {...props}
+                    {...inputProps}
                     ref={ref}
                     type={isShowPassword ? 'text' : props.type}
                     className={classNames(
@@ -28,7 +30,7 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                         {
                             'border-black-15 hover:border-black-40 focus:border-black-40': !props.error,
                             'border-red-100': props.error,
-                            'pr-9': props.type === 'password' || props.deletable,
+                            'pr-9': props.type === 'password' || props.onDelete,
                         },
                     )}
                 />
@@ -39,6 +41,17 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                         onClick={() => setIsShowPassword(!isShowPassword)}
                     >
                         {isShowPassword ? <VisibilityIcon16 /> : <VisibilityOffIcon16 />}
+                    </div>
+                )}
+
+                {props.onDelete && (
+                    <div
+                        className={classNames('absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-red-100', {
+                            'cursor-no-drop opacity-30': props.disabled,
+                        })}
+                        onClick={() => (props.disabled ? null : props.onDelete)}
+                    >
+                        <DeleteIcon16 />
                     </div>
                 )}
             </div>
