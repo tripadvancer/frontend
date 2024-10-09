@@ -108,13 +108,18 @@ export const UserSettingsFormSocialLinks = ({
                     }))}
                 disabled={isDisabled}
                 onChange={field => {
-                    onChange({ ...initialValue, [field]: '' })
+                    if (!initialValue[field as UserSocialApps]) {
+                        onChange({
+                            ...initialValue,
+                            [field as UserSocialApps]: '',
+                        })
+                    }
                 }}
             />
 
             {Object.entries(initialValue).map(([app, link]) => (
                 <div key={`social-input-${app}`} className="relative">
-                    <div className="absolute left-3 top-5 z-10 flex -translate-y-1/2 items-center gap-x-1">
+                    <div className="absolute left-3 top-2 z-10 flex items-center gap-x-1">
                         <div className="text-blue-100">{socialInputs[app as UserSocialApps].icon24}</div>
                         <div className="text-black-100">@</div>
                     </div>
@@ -129,7 +134,7 @@ export const UserSettingsFormSocialLinks = ({
                         onChange={handleChange}
                     />
                     <div
-                        className={classNames('absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-red-100', {
+                        className={classNames('absolute right-3 top-3 cursor-pointer text-red-100', {
                             'cursor-no-drop opacity-30': isDisabled,
                         })}
                         onClick={isDisabled ? undefined : () => handleDelete(app as UserSocialApps)}
