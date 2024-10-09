@@ -15,21 +15,27 @@ type FormInputProps = InputHTMLAttributes<HTMLInputElement> & {
 const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
 
+    const { error, className, ...inputProps } = props
+
     return (
-        <div className={props.className}>
-            <div className="relative">
+        <div>
+            <div
+                className={classNames(
+                    'hover-animated relative h-10 w-full rounded-lg border bg-white px-4',
+                    className,
+                    {
+                        'border-red-100': error,
+                        'hover:border-black-40 has-[:focus]:border-black-40': !error,
+                        'cursor-no-drop opacity-30': props.disabled,
+                        'pr-9': props.type === 'password',
+                    },
+                )}
+            >
                 <input
-                    {...props}
+                    {...inputProps}
                     ref={ref}
                     type={isShowPassword ? 'text' : props.type}
-                    className={classNames(
-                        'hover-animated h-10 w-full rounded-lg border bg-white px-4 placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
-                        {
-                            'border-black-15 focus:border-black-40': !props.error,
-                            'border-red-100': props.error,
-                            'pr-9': props.type === 'password',
-                        },
-                    )}
+                    className="h-full w-full bg-transparent placeholder:text-black-40 focus:outline-none"
                 />
 
                 {props.type === 'password' && (
@@ -42,7 +48,7 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                 )}
             </div>
 
-            {props.error && <div className="mt-1 text-small text-red-100">{props.error}</div>}
+            {error && <div className="mt-1 text-small text-red-100">{error}</div>}
         </div>
     )
 }

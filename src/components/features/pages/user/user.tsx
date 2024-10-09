@@ -4,6 +4,7 @@ import { UserName } from './components/user-name'
 import { UserNavigation } from './components/user-navigation'
 import { UserSidebarAbout } from './components/user-sidebar-about'
 import { UserSidebarAchievement } from './components/user-sidebar-achievement'
+import { UserSidebarSocial } from './components/user-sidebar-social'
 
 export const User = ({ userId, children }: { userId: string; children: ReactNode }) => {
     return (
@@ -15,6 +16,7 @@ export const User = ({ userId, children }: { userId: string; children: ReactNode
                     <div className="flex w-full flex-col gap-8 lg:w-64">
                         <UserSidebarAchievement userId={userId} />
                         <UserSidebarAbout userId={userId} />
+                        <UserSidebarSocial userId={userId} />
                     </div>
 
                     <div className="min-w-0 flex-1">

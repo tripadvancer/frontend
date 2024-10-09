@@ -6,7 +6,7 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import type { IUserInfo, UpdateUserInfoInputs } from '@/utils/types/user'
+import type { IUser, IUserSettings, UpdateUserInfoInputs } from '@/utils/types/user'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
@@ -14,14 +14,18 @@ import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
+import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
+import { UserSettingsFormPrivacy } from './user-settings-form-privacy'
+import { UserSettingsFormSocialLinks } from './user-settings-form-social-links'
 
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
+const userSocialMaxLength = validationConfig.user.social.maxLength
 
-export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
+export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser & IUserSettings) => {
     const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
@@ -31,6 +35,12 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
     const initialValues = {
         name: name,
         info: info || '',
+        settings: {
+            [SettingsCategories.PRIVACY]: {
+                [UserPrivacySettings.SHOW_MY_MAP]: privacy?.show_my_map || false,
+            },
+        },
+        social: social || {},
     }
 
     const validationSchema = Yup.object().shape({
@@ -38,10 +48,28 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
             .trim()
             .required(t('validation.required'))
             .min(userNameMinLength, t('validation.text.minLength', { minLength: userNameMinLength }))
-            .max(userNameMaxLength, t('validation.text.maxLength', { maxlength: userNameMaxLength })),
+            .max(userNameMaxLength, t('validation.text.maxLength', { maxLength: userNameMaxLength })),
         info: Yup.string()
             .trim()
             .max(userInfoMaxLength, t('validation.text.maxLength', { maxLength: userInfoMaxLength })),
+        social: Yup.lazy(value =>
+            Yup.object().shape(
+                Object.keys(value).reduce(
+                    (acc: Record<string, any>, key: string) => {
+                        acc[key] = Yup.string()
+                            .trim()
+                            .default('')
+                            .required(t('validation.required'))
+                            .max(
+                                userSocialMaxLength,
+                                t('validation.text.maxLength', { maxLength: userSocialMaxLength }),
+                            )
+                        return acc
+                    },
+                    {} as Record<string, Yup.StringSchema<string | undefined>>,
+                ),
+            ),
+        ),
     })
 
     const handleSubmit = async (inputs: UpdateUserInfoInputs) => {
@@ -110,6 +138,29 @@ export const UserSettingsForm = ({ name, info, avatar }: IUserInfo) => {
                         error={formik.errors.info}
                         disabled={isLoading}
                         onChange={formik.handleChange}
+                    />
+                </div>
+
+                <div className="flex flex-col gap-y-2">
+                    <label htmlFor="info" className="font-medium">
+                        {t('page.user.settingsForm.field.contacts.label')}
+                    </label>
+                    <UserSettingsFormSocialLinks
+                        initialValue={formik.values.social}
+                        error={formik.errors.social}
+                        isDisabled={isLoading}
+                        onChange={value => formik.setFieldValue('social', value)}
+                    />
+                </div>
+
+                <div className="flex flex-col gap-y-2">
+                    <label htmlFor="info" className="font-medium">
+                        {t('page.user.settingsForm.field.settings.privacy.label')}
+                    </label>
+                    <UserSettingsFormPrivacy
+                        initialValue={formik.values.settings}
+                        isDisabled={isLoading}
+                        onChange={value => formik.setFieldValue('settings', value)}
                     />
                 </div>
             </div>

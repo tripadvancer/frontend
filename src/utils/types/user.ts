@@ -1,12 +1,17 @@
+import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
+
 export type IUser = {
     id: number
     name: string
     info: string
     avatar: string | null
+    social: IUserSocial
     createdAt: Date
     updatedAt: Date
     _count: IUserStatistics
 }
+
+export type IUserSocial = Partial<Record<UserSocialApps, string>>
 
 export type IUserStatistics = {
     places: number
@@ -16,9 +21,22 @@ export type IUserStatistics = {
     visitedCountries: number
 }
 
+export type IUserVisitedCountries = {
+    code: string
+    count: number
+}[]
+
+export type IUserSettings = IUserPrivacySettings
+
+export type IUserPrivacySettings = {
+    [SettingsCategories.PRIVACY]?: Partial<Record<UserPrivacySettings, boolean>>
+}
+
 export type IUserInfo = Pick<IUser, 'id' | 'name' | 'info' | 'avatar'>
 
-export type UpdateUserInfoInputs = Pick<IUser, 'name' | 'info'>
+export type UpdateUserInfoInputs = Pick<IUser, 'name' | 'info' | 'social'> & {
+    settings: IUserPrivacySettings
+}
 
 export type ChangeUserPasswordInputs = {
     oldPassword: string

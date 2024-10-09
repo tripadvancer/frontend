@@ -447,15 +447,27 @@
         },
         "user": {
             "tabs": {
+                "profile": "Profile",
                 "places": "Places",
                 "reviews": "Reviews",
                 "settings": "Settings"
             },
             "aboutMe": "About me",
+            "contacts": "Social accounts",
+            "profile": {
+                "visitedCountries": {
+                    "emptyMessage": "You have not visited any countries yet.<br></br>To view your visited countries, add a place you have been to.<br></br><learnMoreLink>Learn more</learnMoreLink>",
+                    "allcountries": "All countries",
+                    "privacy": {
+                        "mapIsVisible": "Your visited countries map is visible to everyone. To hide it, go to your <settingsLink>settings</settingsLink>.",
+                        "mapIsHidden": "Your visited countries map is hidden to everyone. To show it, go to your <settingsLink>settings</settingsLink>."
+                    }
+                }
+            },
             "settingsForm": {
                 "field": {
                     "avatar": {
-                        "label": "Upload avatar"
+                        "label": "Avatar"
                     },
                     "username": {
                         "label": "Username",
@@ -464,6 +476,18 @@
                     "aboutMe": {
                         "label": "About me",
                         "placeholder": "Enter information about yourself..."
+                    },
+                    "settings": {
+                        "privacy": {
+                            "label": "Privacy",
+                            "options": {
+                                "show_my_map": "Show my visited map to everyone"
+                            }
+                        }
+                    },
+                    "contacts": {
+                        "label": "Social accounts",
+                        "addSocialLink": "Add social link"
                     }
                 }
             },
