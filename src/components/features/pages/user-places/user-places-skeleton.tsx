@@ -1,8 +1,11 @@
 export const UserPlacesSkeleton = () => {
     return (
-        <div className="grid grid-cols-2 gap-4 last:mb-0 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-3">
+        <div
+            role="status"
+            className="grid animate-pulse grid-cols-2 gap-4 last:mb-0 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-3"
+        >
             {Array.from({ length: 6 }).map((_, i) => (
-                <div role="status" key={`user-place-skeleton-${i}`} className="animate-pulse">
+                <div key={`user-place-skeleton-${i}`}>
                     <div className="flex-center mb-2 aspect-square w-full rounded-lg bg-black-5">
                         <svg
                             className="w-10 text-black-15 opacity-30"

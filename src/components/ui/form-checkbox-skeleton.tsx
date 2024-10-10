@@ -1,12 +1,11 @@
-type FormInputSkeletonProps = {
+type FormCheckboxSkeletonProps = {
     labeled?: boolean
 }
-
-export const FormInputSkeleton = ({ labeled }: FormInputSkeletonProps) => {
+export const FormCheckboxSkeleton = ({ labeled }: FormCheckboxSkeletonProps) => {
     return (
         <div className="flex w-full flex-col gap-y-2">
             {labeled && <div className="h-5 w-1/4 rounded-full bg-black-5" />}
-            <div className="h-10 w-full rounded-lg bg-black-5" />
+            <div className="h-5 w-full rounded-lg bg-black-5" />
         </div>
     )
 }

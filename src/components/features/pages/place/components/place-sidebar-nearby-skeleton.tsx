@@ -2,9 +2,9 @@ const PLACES_COUNT = 2
 
 export const PlaceSidebarNearbySkeleton = () => {
     return (
-        <div className="flex flex-col gap-4">
+        <div role="status" className="flex animate-pulse flex-col gap-4">
             {Array.from({ length: PLACES_COUNT }).map((_, index) => (
-                <div role="status" key={`nearby-skeleton-${index}`} className="flex-none animate-pulse">
+                <div key={`nearby-skeleton-${index}`} className="flex-none">
                     <div className="flex flex-row gap-4">
                         <div className="flex-center h-20 w-20 rounded-lg bg-black-5">
                             <svg
