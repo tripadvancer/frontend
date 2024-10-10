@@ -2,7 +2,7 @@
 
 export const WidgetPlacesFeedSkeleton = () => {
     return (
-        <div role="status" className="flex flex-col gap-4">
+        <div role="status" className="flex animate-pulse flex-col gap-4">
             {Array.from({ length: 1 }).map((_, i) => (
                 <div key={`widgit-places-skeleton-${i}`} className="flex gap-x-4">
                     <div className="flex-center mb-2 h-20 w-20 flex-none rounded-lg bg-black-5">

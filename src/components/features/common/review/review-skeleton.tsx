@@ -5,22 +5,20 @@ import { ActionButtonSkeleton } from '@/components/ui/action-button-skeleton'
 export const ReviewSkeleton = () => {
     return (
         <div role="status" className="flex animate-pulse flex-col gap-y-5 border-b border-black-15 py-8 first:border-t">
-            <div className="flex items-start justify-between sm:items-center">
+            <div className="flex justify-between gap-x-8">
                 <div className="flex flex-col gap-1">
-                    <div className="h-3.5 w-20 rounded-full bg-black-5" />
+                    <div className="h-4 w-20 rounded-full bg-black-5" />
                     <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2">
-                        <div className="h-3.5 w-40 rounded-full bg-black-5" />
-                        <div className="h-3.5 w-40 rounded-full bg-black-5" />
+                        <div className="h-4 w-40 rounded-full bg-black-5" />
+                        <div className="h-4 w-40 rounded-full bg-black-5" />
                     </div>
                 </div>
                 <ActionButtonSkeleton />
             </div>
 
             <div className="flex flex-col gap-y-2">
-                <div className="h-3.5 w-full rounded-full bg-black-5" />
-                <div className="h-3.5 w-full rounded-full bg-black-5" />
-                <div className="h-3.5 w-full rounded-full bg-black-5" />
-                <div className="h-3.5 max-w-[360px] rounded-full bg-black-5" />
+                <div className="h-4 w-full rounded-full bg-black-5" />
+                <div className="h-4 max-w-[360px] rounded-full bg-black-5" />
             </div>
 
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-9">
