@@ -119,7 +119,11 @@ export const UserSettingsFormSocialLinks = ({
 
             {Object.entries(initialValue).map(([app, link]) => (
                 <div key={`social-input-${app}`} className="relative">
-                    <div className="absolute left-3 top-2 z-10 flex items-center gap-x-1">
+                    <div
+                        className={classNames('absolute left-3 top-2 z-10 flex items-center gap-x-1', {
+                            'cursor-no-drop opacity-30': isDisabled,
+                        })}
+                    >
                         <div className="text-blue-100">{socialInputs[app as UserSocialApps].icon24}</div>
                         <div className="text-black-100">@</div>
                     </div>
@@ -130,7 +134,7 @@ export const UserSettingsFormSocialLinks = ({
                         placeholder={socialInputs[app as UserSocialApps].placeholder}
                         disabled={isDisabled}
                         error={error?.[app]}
-                        className="pl-[54px]"
+                        className="[&>input]:pl-[54px] [&>input]:pr-9"
                         onChange={handleChange}
                     />
                     <div
