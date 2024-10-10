@@ -20,22 +20,22 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
     return (
         <div>
             <div
-                className={classNames(
-                    'hover-animated relative h-10 w-full rounded-lg border bg-white px-4',
-                    className,
-                    {
-                        'border-red-100': error,
-                        'hover:border-black-40 has-[:focus]:border-black-40': !error,
-                        'cursor-no-drop opacity-30': props.disabled,
-                        'pr-9': props.type === 'password',
-                    },
-                )}
+                className={classNames('hover-animated relative h-10 w-full rounded-lg border bg-white', className, {
+                    'border-red-100': error,
+                    'hover:border-black-40 has-[:focus]:border-black-40': !error,
+                    'cursor-no-drop opacity-30': props.disabled,
+                })}
             >
                 <input
                     {...inputProps}
                     ref={ref}
                     type={isShowPassword ? 'text' : props.type}
-                    className="h-full w-full bg-transparent placeholder:text-black-40 focus:outline-none"
+                    className={classNames(
+                        'h-full w-full rounded-lg bg-transparent px-4 placeholder:text-black-40 focus:outline-none',
+                        {
+                            'pr-9': props.type === 'password',
+                        },
+                    )}
                 />
 
                 {props.type === 'password' && (
