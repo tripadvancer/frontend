@@ -113,13 +113,13 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="name" className="font-medium">
-                        {t('page.user.settingsForm.field.name.label')}
+                        {t('page.user.settingsForm.field.username.label')}
                     </label>
                     <FormInput
                         type="text"
                         name="name"
                         value={formik.values.name}
-                        placeholder={t('page.user.settingsForm.field.name.placeholder')}
+                        placeholder={t('page.user.settingsForm.field.username.placeholder')}
                         error={formik.errors.name}
                         disabled={isLoading}
                         onChange={formik.handleChange}
