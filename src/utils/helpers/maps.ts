@@ -1,5 +1,4 @@
-import { isMobile } from 'react-device-detect'
-import type { PaddingOptions, ViewState } from 'react-map-gl/maplibre'
+import type { ViewState } from 'react-map-gl/maplibre'
 
 import { FlyToOptions } from 'maplibre-gl'
 

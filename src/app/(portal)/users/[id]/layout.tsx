@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
             template: `%s | ${user.name} | Tripadvancer`,
             default: user.name,
         },
-        robots: 'noindex, nofollow',
+        // robots: 'noindex, nofollow',
     }
 }
 
