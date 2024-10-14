@@ -14,7 +14,7 @@ import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 import { userAPI } from '@/redux/services/user-api'
-import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
+import { SettingsCategories, UserPrivacySettings } from '@/utils/enums'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
 import { UserSettingsFormPrivacy } from './user-settings-form-privacy'
@@ -113,13 +113,13 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="name" className="font-medium">
-                        {t('page.user.settingsForm.field.username.label')}
+                        {t('page.user.settingsForm.field.name.label')}
                     </label>
                     <FormInput
                         type="text"
                         name="name"
                         value={formik.values.name}
-                        placeholder={t('page.user.settingsForm.field.username.placeholder')}
+                        placeholder={t('page.user.settingsForm.field.name.placeholder')}
                         error={formik.errors.name}
                         disabled={isLoading}
                         onChange={formik.handleChange}
