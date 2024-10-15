@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { getUserById } from '@/services/users'
+import { getUserInfo } from '@/services/user'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
@@ -30,8 +30,7 @@ export const UserMenuWithAuth = async ({
         return <TryRefreshComponent />
     }
 
-    const activeUserId = session.getAccessTokenPayload().userId
-    const user = await getUserById(activeUserId)
+    const userInfo = await getUserInfo()
 
-    return <UserMenu user={user} avatarSize={avatarSize} />
+    return <UserMenu userInfo={userInfo} avatarSize={avatarSize} />
 }

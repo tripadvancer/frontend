@@ -1,19 +1,16 @@
 import { getTranslations } from 'next-intl/server'
 
-import { getUserById } from '@/services/users'
-
-export const UserSidebarAbout = async ({ userId }: { userId: string }) => {
+export const UserSidebarAbout = async ({ info }: { info: string | null }) => {
     const t = await getTranslations()
-    const user = await getUserById(userId)
 
-    if (!user.info) {
+    if (!info) {
         return null
     }
 
     return (
         <section>
             <h3 className="mb-4 text-caps uppercase">{t('page.user.aboutMe')}</h3>
-            <p className="break-words">{user.info}</p>
+            <p className="break-words">{info}</p>
         </section>
     )
 }

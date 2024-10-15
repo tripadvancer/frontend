@@ -1,15 +1,15 @@
 import { getTranslations } from 'next-intl/server'
 
-import { getUserById } from '@/services/users'
+import type { IUserSocial } from '@/utils/types/user'
+
 import { UserSocialApps } from '@/utils/enums'
 
 import { UserSidebarSocialLink } from './user-sidebar-social-link'
 
-export const UserSidebarSocial = async ({ userId }: { userId: string }) => {
+export const UserSidebarSocial = async ({ social }: { social: IUserSocial }) => {
     const t = await getTranslations()
-    const user = await getUserById(userId)
 
-    if (!Object.keys(user.social).length) {
+    if (!Object.keys(social).length) {
         return null
     }
 
@@ -17,13 +17,13 @@ export const UserSidebarSocial = async ({ userId }: { userId: string }) => {
         <section>
             <h3 className="mb-4 text-caps uppercase">{t('page.user.contacts')}</h3>
             <div className="flex flex-col gap-y-4">
-                {Object.keys(user.social)
+                {Object.keys(social)
                     .sort()
                     .map(key => (
                         <UserSidebarSocialLink
                             key={`social-link-${key}`}
                             app={key as UserSocialApps}
-                            appUsername={user.social[key as UserSocialApps]}
+                            appUsername={social[key as UserSocialApps]}
                         />
                     ))}
             </div>

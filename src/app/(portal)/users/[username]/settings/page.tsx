@@ -1,21 +1,22 @@
+import { notFound } from 'next/navigation'
 import type { Metadata } from 'next/types'
 
-import { UserProfilePrivate } from '@/components/features/pages/user-profile/user-profile-private'
-import { UserProfilePublic } from '@/components/features/pages/user-profile/user-profile-public'
-import { getUserById } from '@/services/users'
+import { UserSettings } from '@/components/features/pages/user-settings/user-settings'
+import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata> {
     return {
+        title: 'Settings',
         alternates: {
-            canonical: `/users/${params.id}`,
+            canonical: `/users/${params.username}/settings`,
         },
     }
 }
 
-export default async function UserProfilePage({ params }: { params: { id: string } }) {
-    const user = await getUserById(params.id)
+export default async function UserSettingsPage({ params }: { params: { username: string } }) {
+    const user = await getUserByUsername(params.username)
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -23,7 +24,7 @@ export default async function UserProfilePage({ params }: { params: { id: string
             /**
              * This means that there is no session and no session tokens.
              */
-            return <UserProfilePublic userId={params.id} />
+            return notFound()
         }
 
         /**
@@ -34,8 +35,8 @@ export default async function UserProfilePage({ params }: { params: { id: string
     }
 
     if (session.getAccessTokenPayload().userId !== user.id) {
-        return <UserProfilePublic userId={params.id} />
+        return notFound()
     }
 
-    return <UserProfilePrivate userId={params.id} />
+    return <UserSettings user={user} />
 }

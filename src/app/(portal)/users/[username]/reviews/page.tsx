@@ -1,22 +1,21 @@
-import { notFound } from 'next/navigation'
 import type { Metadata } from 'next/types'
 
-import { UserSettings } from '@/components/features/pages/user-settings/user-settings'
-import { getUserById } from '@/services/users'
+import { UserReviews } from '@/components/features/pages/user-reviews/user-reviews'
+import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata> {
     return {
-        title: 'Settings',
+        title: 'Written Reviews',
         alternates: {
-            canonical: `/users/${params.id}/settings`,
+            canonical: `/users/${params.username}/reviews`,
         },
     }
 }
 
-export default async function UserSettingsPage({ params }: { params: { id: string } }) {
-    const user = await getUserById(params.id)
+export default async function UserReviewsPage({ params }: { params: { username: string } }) {
+    const user = await getUserByUsername(params.username)
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -24,7 +23,7 @@ export default async function UserSettingsPage({ params }: { params: { id: strin
             /**
              * This means that there is no session and no session tokens.
              */
-            return notFound()
+            return <UserReviews userId={user.id} isAuth={false} />
         }
 
         /**
@@ -34,9 +33,6 @@ export default async function UserSettingsPage({ params }: { params: { id: strin
         return <TryRefreshComponent />
     }
 
-    if (session.getAccessTokenPayload().userId !== user.id) {
-        return notFound()
-    }
-
-    return <UserSettings userId={params.id} />
+    const activeUserId = session.getAccessTokenPayload().userId
+    return <UserReviews userId={user.id} activeUserId={activeUserId} isAuth={true} />
 }

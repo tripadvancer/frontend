@@ -2,22 +2,20 @@ import { getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
+import type { IUser } from '@/utils/types/user'
+
 import { ExternalLink } from '@/components/ui/external-link'
 import { AlertIcon24 } from '@/components/ui/icons'
 import { Notice } from '@/components/ui/notice'
 import { getUserSettings } from '@/services/user'
-import { getUserById, getUserVisitedCountries } from '@/services/users'
+import { getUserVisitedCountries } from '@/services/users'
 
 import { UserVisitedCountriesFeed } from './components/user-visited-countries-feed'
 import { UserVisitedMap } from './components/user-visited-map'
 
-export const UserProfilePrivate = async ({ userId }: { userId: string }) => {
+export const UserProfilePrivate = async ({ user }: { user: IUser }) => {
     const t = await getTranslations()
-    const [user, settings, visitedCountries] = await Promise.all([
-        getUserById(userId),
-        getUserSettings(),
-        getUserVisitedCountries(userId),
-    ])
+    const [settings, visitedCountries] = await Promise.all([getUserSettings(), getUserVisitedCountries(user.id)])
 
     return (
         <div className="flex flex-col gap-y-8">
@@ -27,7 +25,7 @@ export const UserProfilePrivate = async ({ userId }: { userId: string }) => {
                         ? 'page.user.profile.visitedCountries.privacy.mapIsVisible'
                         : 'page.user.profile.visitedCountries.privacy.mapIsHidden',
                     {
-                        settingsLink: settingsLink => <Link href={`/users/${user.id}/settings`}>{settingsLink}</Link>,
+                        settingsLink: settingsLink => <Link href={`/users/${user.name}/settings`}>{settingsLink}</Link>,
                     },
                 )}
                 icon={<AlertIcon24 />}
