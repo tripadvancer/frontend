@@ -8,26 +8,24 @@ import polyline from '@mapbox/polyline'
 import { CostingModel, RouteResponse } from '@stadiamaps/api'
 import { useTranslations } from 'next-intl'
 
-import { IPlacePreview } from '@/utils/types/place'
+import { LngLat } from '@/utils/types/geo'
 
 import { FormButton } from '@/components/ui/form-button'
 import { useToast } from '@/providers/toast-provider'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { getUserLocation, setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { arrayToLngLat } from '@/utils/helpers/maps'
 import { buildRoute } from '@/utils/helpers/route'
 
 type PlaceButtonRouteProps = {
-    place: IPlacePreview
+    lngLat: LngLat
 }
 
-export const PlaceButtonRoute = ({ place }: PlaceButtonRouteProps) => {
+export const PlaceButtonRoute = ({ lngLat }: PlaceButtonRouteProps) => {
     const t = useTranslations()
     const toast = useToast()
     const dispatch = useAppDispatch()
     const userLocation = useAppSelector(getUserLocation)
-    const lngLat = arrayToLngLat(place.coordinates)
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 

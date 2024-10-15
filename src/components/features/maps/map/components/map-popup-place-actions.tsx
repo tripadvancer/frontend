@@ -1,13 +1,10 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import type { IPlace, IPlaceMeta } from '@/utils/types/place'
 
-import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
+import { PlaceButtonRoute } from '@/components/features/maps/place-route-button/place-route-button'
 import { FormButton } from '@/components/ui/form-button'
-import { BookmarkFillIcon16, BookmarkIcon16, MoreIcon16, PinIcon16 } from '@/components/ui/icons'
-import { useDialog } from '@/providers/dialog-provider'
+import { BookmarkFillIcon16, BookmarkIcon16 } from '@/components/ui/icons'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
 
@@ -17,10 +14,6 @@ type MapPopupPlaceActionsProps = Pick<IPlace, 'id'> & Pick<IPlaceMeta, 'isSaved'
 }
 
 export const MapPopupPlaceActions = (place: MapPopupPlaceActionsProps) => {
-    const t = useTranslations()
-    const dialog = useDialog()
-    const lngLat = arrayToLngLat(place.coordinates)
-
     const { savePlace } = useSavePlace(place.id)
 
     return (
@@ -32,9 +25,7 @@ export const MapPopupPlaceActions = (place: MapPopupPlaceActionsProps) => {
                 className="flex-none"
                 onClick={savePlace}
             />
-            <FormButton type="stroke" size="small" onClick={() => dialog.open(<ChooseNavigationApp lngLat={lngLat} />)}>
-                {t('common.action.route')}
-            </FormButton>
+            <PlaceButtonRoute lngLat={arrayToLngLat(place.coordinates)} />
         </div>
     )
 }

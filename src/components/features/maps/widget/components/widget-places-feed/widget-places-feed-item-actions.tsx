@@ -52,7 +52,7 @@ export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
 
     return (
         <div className="flex gap-x-1">
-            <PlaceButtonRoute place={place} />
+            <PlaceButtonRoute lngLat={arrayToLngLat(place.coordinates)} />
             <Dropdown items={items} />
         </div>
     )
