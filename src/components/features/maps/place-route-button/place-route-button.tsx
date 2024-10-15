@@ -33,6 +33,7 @@ export const PlaceButtonRoute = ({ lngLat }: PlaceButtonRouteProps) => {
 
     const { getPosition } = useGeolocated({
         suppressLocationOnMount: true,
+        watchPosition: false,
         positionOptions: {
             enableHighAccuracy: false,
         },

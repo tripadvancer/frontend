@@ -1,15 +1,18 @@
 'use client'
 
 import { useCallback, useRef } from 'react'
+import { useGeolocated } from 'react-geolocated'
 import { AttributionControl, MapRef, Marker, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
+import { useTranslations } from 'next-intl'
 import { useMediaQuery } from 'usehooks-ts'
 
 import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
+import { useToast } from '@/providers/toast-provider'
 import { getMapViewState } from '@/redux/features/map-slice'
-import { getUserLocation } from '@/redux/features/user-slice'
-import { useAppSelector } from '@/redux/hooks'
+import { getUserLocation, setUserLocation } from '@/redux/features/user-slice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -29,16 +32,38 @@ type MapProps = {
 }
 
 export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
+    const t = useTranslations()
+    const dispatch = useAppDispatch()
+    const toast = useToast()
     const handlers = useMapEventHandlers()
     const userLocation = useAppSelector(getUserLocation)
     const mapViewState = useAppSelector(getMapViewState)
     const isMobile = useMediaQuery('(max-width: 639px)')
     const isTablet = useMediaQuery('(max-width: 1023px)')
 
+    const { handleLocate, isLocating } = useUserLocation()
+
     const mapRef = useRef<MapRef>(null)
     const mapContainerRef = useRef<HTMLDivElement>(null)
 
-    const { handleLocate, isLocating } = useUserLocation()
+    useGeolocated({
+        // The location is obtained when the hook mounts by default.
+        // If you want to prevent this and get the location later,
+        // set the suppressLocationOnMount to true
+        // and use the getPosition function returned by the hook to trigger the geolocation query manually.
+        suppressLocationOnMount: false,
+        watchPosition: true,
+        positionOptions: {
+            enableHighAccuracy: false,
+        },
+        onSuccess: (position: GeolocationPosition) => {
+            const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
+            dispatch(setUserLocation(userLngLat))
+        },
+        onError: () => {
+            toast.error(t('common.error'))
+        },
+    })
 
     const handleZoomIn = useCallback(() => {
         mapRef.current?.zoomIn({ duration: 500 })
