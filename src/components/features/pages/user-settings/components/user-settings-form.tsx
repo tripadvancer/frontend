@@ -6,7 +6,7 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import type { IUser, IUserSettings, UpdateUserInfoInputs } from '@/utils/types/user'
+import type { IUser, IUserSettings, UpdateUserDataInputs } from '@/utils/types/user'
 
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
@@ -30,7 +30,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
     const router = useRouter()
     const toast = useToast()
 
-    const [updateUserInfo, { isLoading }] = userAPI.useUpdateUserInfoMutation()
+    const [updateUserData, { isLoading }] = userAPI.useUpdateUserDataMutation()
 
     const initialValues = {
         name: name,
@@ -73,12 +73,12 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
         ),
     })
 
-    const handleSubmit = async (inputs: UpdateUserInfoInputs) => {
+    const handleSubmit = async (inputs: UpdateUserDataInputs) => {
         try {
-            const response = await updateUserInfo(inputs).unwrap()
+            const response = await updateUserData(inputs).unwrap()
             switch (response.status) {
                 case 'OK':
-                    router.refresh()
+                    router.replace(`/users/${inputs.name}/settings`)
                     toast.success(t('success.updateUserInfo'))
                     break
                 case 'USERNAME_ALREADY_EXISTS_ERROR':

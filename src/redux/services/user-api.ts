@@ -5,15 +5,15 @@ import type {
     ChangeUserPasswordResponse,
     ConfirmUserDeletionResponse,
     RestoreUserResponse,
-    UpdateUserInfoInputs,
-    UpdateUserInfoResponse,
+    UpdateUserDataInputs,
+    UpdateUserDataResponse,
 } from '@/utils/types/user'
 
 import { api } from './api'
 
 export const userAPI = api.injectEndpoints({
     endpoints: build => ({
-        updateUserInfo: build.mutation<UpdateUserInfoResponse, UpdateUserInfoInputs>({
+        updateUserData: build.mutation<UpdateUserDataResponse, UpdateUserDataInputs>({
             query: inputs => ({
                 url: 'user',
                 method: 'PATCH',

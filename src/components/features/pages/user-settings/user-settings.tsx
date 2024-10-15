@@ -1,7 +1,8 @@
 import { getTranslations } from 'next-intl/server'
 
+import type { IUser } from '@/utils/types/user'
+
 import { getUserSettings } from '@/services/user'
-import { getUserById } from '@/services/users'
 
 import { UserSettingsBlockChangePassword } from './components/user-settings-block-change-password'
 import { UserSettingsBlockRequestPersonalData } from './components/user-settings-block-request-personal-data'
@@ -9,9 +10,9 @@ import { UserSettingsBlockRequestUserDeletion } from './components/user-settings
 import { UserSettingsBlockChangeEmail } from './components/user-settings-block-сhange-email'
 import { UserSettingsForm } from './components/user-settings-form'
 
-export const UserSettings = async ({ userId }: { userId: string }) => {
+export const UserSettings = async ({ user }: { user: IUser }) => {
     const t = await getTranslations()
-    const [user, settings] = await Promise.all([getUserById(userId), getUserSettings()])
+    const settings = await getUserSettings()
 
     return (
         <div className="flex flex-col gap-y-8">

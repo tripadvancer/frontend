@@ -32,9 +32,9 @@ export type IUserPrivacySettings = {
     [SettingsCategories.PRIVACY]?: Partial<Record<UserPrivacySettings, boolean>>
 }
 
-export type IUserInfo = Pick<IUser, 'id' | 'name' | 'info' | 'avatar'>
+export type IUserInfo = Pick<IUser, 'id' | 'name' | 'avatar'>
 
-export type UpdateUserInfoInputs = Pick<IUser, 'name' | 'info' | 'social'> & {
+export type UpdateUserDataInputs = Pick<IUser, 'name' | 'info' | 'social'> & {
     settings: IUserPrivacySettings
 }
 
@@ -48,7 +48,7 @@ export type ChangeUserEmailInputs = {
     password: string
 }
 
-export type UpdateUserInfoResponse = {
+export type UpdateUserDataResponse = {
     status: 'OK' | 'USERNAME_ALREADY_EXISTS_ERROR'
 }
 

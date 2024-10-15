@@ -1,19 +1,21 @@
 import type { Metadata } from 'next/types'
 
-import { UserReviews } from '@/components/features/pages/user-reviews/user-reviews'
+import { UserProfilePrivate } from '@/components/features/pages/user-profile/user-profile-private'
+import { UserProfilePublic } from '@/components/features/pages/user-profile/user-profile-public'
+import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     return {
-        title: 'Written Reviews',
         alternates: {
-            canonical: `/users/${params.id}/reviews`,
+            canonical: `/users/${params.id}`,
         },
     }
 }
 
-export default async function UserReviewsPage({ params }: { params: { id: string } }) {
+export default async function UserProfilePage({ params }: { params: { username: string } }) {
+    const user = await getUserByUsername(params.username)
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -21,7 +23,7 @@ export default async function UserReviewsPage({ params }: { params: { id: string
             /**
              * This means that there is no session and no session tokens.
              */
-            return <UserReviews userId={parseInt(params.id)} isAuth={false} />
+            return <UserProfilePublic user={user} />
         }
 
         /**
@@ -31,7 +33,9 @@ export default async function UserReviewsPage({ params }: { params: { id: string
         return <TryRefreshComponent />
     }
 
-    const activeUserId = session.getAccessTokenPayload().userId
+    if (session.getAccessTokenPayload().userId !== user.id) {
+        return <UserProfilePublic user={user} />
+    }
 
-    return <UserReviews userId={parseInt(params.id)} activeUserId={activeUserId} isAuth={true} />
+    return <UserProfilePrivate user={user} />
 }

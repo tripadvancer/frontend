@@ -21,7 +21,7 @@ export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {
             <div className="grow-1 overflow-hidden">
                 <Rating value={rating} size={16} />
                 <div className="flex flex-col gap-x-2 sm:flex-row">
-                    <Link href={`/users/${user.id}`} className="break-words text-small-bold text-black-70">
+                    <Link href={`/users/${user.name}`} className="break-words text-small-bold text-black-70">
                         {user.name}
                     </Link>
                     <div className="text-small text-black-40">{formattedDate(createdAt, locale)}</div>
