@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import type { IPlacePreview } from '@/utils/types/place'
 
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
+import { PlaceButtonRoute } from '@/components/features/maps/place-route-button/place-route-button'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { BookmarkFillIcon16, BookmarkIcon16, PinIcon16, RouteIcon16, ShareIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
@@ -51,6 +52,7 @@ export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
 
     return (
         <div className="flex gap-x-1">
+            <PlaceButtonRoute place={place} />
             <Dropdown items={items} />
         </div>
     )
