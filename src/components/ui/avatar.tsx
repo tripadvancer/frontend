@@ -5,7 +5,9 @@ import type { IUserInfo } from '@/utils/types/user'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
-type AvatarProps = IUserInfo & {
+type AvatarProps = {
+    avatar: IUserInfo['avatar']
+    name: IUserInfo['name']
     size: number
 }
 

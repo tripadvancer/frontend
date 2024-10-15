@@ -1,7 +1,8 @@
 import { getTranslations } from 'next-intl/server'
 
+import type { IUserStatistics } from '@/utils/types/user'
+
 import { UserRankBeginnerIcon48 } from '@/components/ui/icons'
-import { getUserById } from '@/services/users'
 
 const Item = ({ label, value }: { label: string; value: number }) => {
     return (
@@ -15,9 +16,22 @@ const Item = ({ label, value }: { label: string; value: number }) => {
     )
 }
 
-export const UserSidebarAchievement = async ({ userId }: { userId: string }) => {
+type UserSidebarAchievementProps = {
+    places: IUserStatistics['places']
+    placeReviews: IUserStatistics['placeReviews']
+    placePhotos: IUserStatistics['placePhotos']
+    visitedPlaces: IUserStatistics['visitedPlaces']
+    visitedCountries: IUserStatistics['visitedCountries']
+}
+
+export const UserSidebarAchievement = async ({
+    places,
+    placeReviews,
+    placePhotos,
+    visitedPlaces,
+    visitedCountries,
+}: UserSidebarAchievementProps) => {
     const t = await getTranslations()
-    const user = await getUserById(userId)
 
     return (
         <div className="rounded-2xl bg-orange-10 p-8">
@@ -30,17 +44,11 @@ export const UserSidebarAchievement = async ({ userId }: { userId: string }) => 
                 </div>
             </div>
             <ul>
-                <Item label={t('component.userAchievement.statistic.addedPlaces')} value={user._count.places} />
-                <Item label={t('component.userAchievement.statistic.addedReviews')} value={user._count.placeReviews} />
-                <Item label={t('component.userAchievement.statistic.addedPhotos')} value={user._count.placePhotos} />
-                <Item
-                    label={t('component.userAchievement.statistic.visitedPlaces')}
-                    value={user._count.visitedPlaces}
-                />
-                <Item
-                    label={t('component.userAchievement.statistic.visitedCountries')}
-                    value={user._count.visitedCountries}
-                />
+                <Item label={t('component.userAchievement.statistic.addedPlaces')} value={places} />
+                <Item label={t('component.userAchievement.statistic.addedReviews')} value={placeReviews} />
+                <Item label={t('component.userAchievement.statistic.addedPhotos')} value={placePhotos} />
+                <Item label={t('component.userAchievement.statistic.visitedPlaces')} value={visitedPlaces} />
+                <Item label={t('component.userAchievement.statistic.visitedCountries')} value={visitedCountries} />
             </ul>
         </div>
     )

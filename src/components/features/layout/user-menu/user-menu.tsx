@@ -6,14 +6,14 @@ import { useMediaQuery } from 'usehooks-ts'
 
 import { useRouter } from 'next/navigation'
 
-import type { IUser } from '@/utils/types/user'
+import type { IUserInfo } from '@/utils/types/user'
 
 import { Avatar } from '@/components/ui/avatar'
 import { Dropdown } from '@/components/ui/dropdown'
 import { PointIcon16, ReviewIcon16, SettingsIcon16, SignOutIcon16, UserIcon16 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 
-export const UserMenu = ({ user, avatarSize }: { user: IUser; avatarSize?: number }) => {
+export const UserMenu = ({ userInfo, avatarSize }: { userInfo: IUserInfo; avatarSize?: number }) => {
     const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
@@ -37,25 +37,25 @@ export const UserMenu = ({ user, avatarSize }: { user: IUser; avatarSize?: numbe
                     caption: t('layout.userMenu.profile'),
                     value: 'profile',
                     icon: <UserIcon16 />,
-                    onClick: () => router.push(`/users/${user.id}`),
+                    onClick: () => router.push(`/users/${userInfo.name}`),
                 },
                 {
                     caption: t('layout.userMenu.places'),
                     value: 'places',
                     icon: <PointIcon16 />,
-                    onClick: () => router.push(`/users/${user.id}/places`),
+                    onClick: () => router.push(`/users/${userInfo.name}/places`),
                 },
                 {
                     caption: t('layout.userMenu.reviews'),
                     value: 'reviews',
                     icon: <ReviewIcon16 />,
-                    onClick: () => router.push(`/users/${user.id}/reviews`),
+                    onClick: () => router.push(`/users/${userInfo.name}/reviews`),
                 },
                 {
                     caption: t('layout.userMenu.settings'),
                     value: 'settings',
                     icon: <SettingsIcon16 />,
-                    onClick: () => router.push(`/users/${user.id}/settings`),
+                    onClick: () => router.push(`/users/${userInfo.name}/settings`),
                 },
                 {
                     caption: t('layout.userMenu.logOut'),
@@ -66,7 +66,7 @@ export const UserMenu = ({ user, avatarSize }: { user: IUser; avatarSize?: numbe
                 },
             ]}
         >
-            <Avatar {...user} size={avatarSize ? avatarSize : isMobile ? 24 : 32} />
+            <Avatar {...userInfo} size={avatarSize ? avatarSize : isMobile ? 24 : 32} />
         </Dropdown>
     )
 }

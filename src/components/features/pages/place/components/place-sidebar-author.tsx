@@ -14,7 +14,7 @@ export const PlaceSidebarAuthor = async ({ author, createdAt }: IPlace) => {
     return (
         <section>
             <h3 className="mb-4 text-caps uppercase">{t('page.place.author')}</h3>
-            <Link href={`/users/${author.id}`} className="flex items-center gap-2 text-black-70">
+            <Link href={`/users/${author.name}`} className="flex items-center gap-2 text-black-70">
                 <div className="grow-0">
                     <Avatar {...author} size={32} />
                 </div>

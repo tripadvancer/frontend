@@ -55,6 +55,9 @@
                 "required": "Please select at least one category",
                 "maxCount": "You can select up to {maxCount} categories"
             }
+        },
+        "username": {
+            "invalid": "Username can only contain letters, numbers, underscores, hyphens and dots"
         }
     },
     "success": {

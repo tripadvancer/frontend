@@ -1,12 +1,10 @@
-import type { IUser } from '@/utils/types/user'
-
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 import { UserNavigationPrivate } from './user-navigation-private'
 import { UserNavigationPublic } from './user-navigation-public'
 
-export const UserNavigation = async ({ userId }: { userId: string }) => {
+export const UserNavigation = async ({ userId, username }: { userId: number; username: string }) => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -14,7 +12,7 @@ export const UserNavigation = async ({ userId }: { userId: string }) => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return <UserNavigationPublic userId={userId} />
+            return <UserNavigationPublic username={username} />
         }
 
         /**
@@ -24,9 +22,9 @@ export const UserNavigation = async ({ userId }: { userId: string }) => {
         return <TryRefreshComponent />
     }
 
-    if (session.getAccessTokenPayload().userId === Number(userId)) {
-        return <UserNavigationPrivate userId={userId} />
+    if (session.getAccessTokenPayload().userId === userId) {
+        return <UserNavigationPrivate username={username} />
     }
 
-    return <UserNavigationPublic userId={userId} />
+    return <UserNavigationPublic username={username} />
 }
