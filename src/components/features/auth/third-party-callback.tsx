@@ -20,18 +20,15 @@ export const ThirdPartyCallback = () => {
         async function handleGoogleCallback() {
             try {
                 const response = await thirdPartySignInAndUp()
-                setStatus(response.status)
+
+                setStatus(response.status === 'SIGN_IN_UP_NOT_ALLOWED' ? response.reason : response.status)
 
                 if (response.status === 'OK') {
                     router.replace('/')
                     router.refresh()
                 }
             } catch (err: any) {
-                if (err.message === 'EMAIL_ALREADY_EXISTS_ERROR') {
-                    setStatus('EMAIL_ALREADY_EXISTS_ERROR')
-                } else {
-                    setStatus('GENERAL_ERROR')
-                }
+                setStatus('GENERAL_ERROR')
             }
         }
 
@@ -43,7 +40,6 @@ export const ThirdPartyCallback = () => {
             <p className="text-center">
                 {status === 'NO_EMAIL_GIVEN_BY_PROVIDER' && t('auth.thirdPartyCallback.error.emailNotProvided')}
                 {status === 'EMAIL_ALREADY_EXISTS_ERROR' && t('auth.thirdPartyCallback.error.emailAlreadyExists')}
-                {status === 'SIGN_IN_UP_NOT_ALLOWED' && t('common.error')}
                 {status === 'GENERAL_ERROR' && t('common.error')}
                 {status === 'OK' && t('auth.thirdPartyCallback.redirecting')}
 
