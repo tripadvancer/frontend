@@ -24,6 +24,7 @@ export const ThirdPartyCallback = () => {
 
                 if (response.status === 'OK') {
                     router.replace('/')
+                    router.refresh()
                 }
             } catch (err: any) {
                 if (err.message === 'EMAIL_ALREADY_EXISTS_ERROR') {
