@@ -79,6 +79,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
             switch (response.status) {
                 case 'OK':
                     router.replace(`/users/${inputs.name}/settings`)
+                    router.refresh()
                     toast.success(t('success.updateUserInfo'))
                     break
                 case 'USERNAME_ALREADY_EXISTS_ERROR':
