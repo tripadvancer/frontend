@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
+import { ExternalLink } from '@/components/ui/external-link'
+
 export const metadata: Metadata = {
     title: 'Cookie Policy',
     alternates: {
@@ -82,10 +84,8 @@ export default function LegalCookiePolicyPage() {
                     You can manage your cookie preferences by&nbsp;adjusting the settings in&nbsp;your web browser. Each
                     browser has different methods for managing cookies, so&nbsp;please refer to&nbsp;the instructions
                     provided by&nbsp;your browser&rsquo;s manufacturer. You can also visit{' '}
-                    <Link href="https://www.allaboutcookies.org" target="_blank">
-                        www.allaboutcookies.org
-                    </Link>{' '}
-                    for more information on&nbsp;how to&nbsp;manage and delete cookies.
+                    <ExternalLink href="https://www.allaboutcookies.org">www.allaboutcookies.org</ExternalLink> for more
+                    information on&nbsp;how to&nbsp;manage and delete cookies.
                 </p>
             </article>
 

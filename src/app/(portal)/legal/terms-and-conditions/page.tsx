@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import type { Metadata } from 'next/types'
 
+import { ExternalLink } from '@/components/ui/external-link'
+
 export const metadata: Metadata = {
     title: 'Terms and Conditions',
     alternates: {
@@ -200,18 +202,9 @@ export default function LegalTermsAndConditionsPage() {
                     <li className="mb-3">
                         the licenses applicable to&nbsp;the external images used on&nbsp;the platform include, but are
                         not limited&nbsp;to, the following:{' '}
-                        <Link href="https://creativecommons.org/publicdomain/zero/1.0" target="_blank">
-                            CC0 1.0
-                        </Link>
-                        ,{' '}
-                        <Link href="https://unsplash.com/license" target="_blank">
-                            Unsplash free license
-                        </Link>
-                        ,{' '}
-                        <Link href="https://www.pexels.com/license/" target="_blank">
-                            Pexels free license
-                        </Link>
-                        ;
+                        <ExternalLink href="https://creativecommons.org/publicdomain/zero/1.0">CC0 1.0</ExternalLink>,{' '}
+                        <ExternalLink href="https://unsplash.com/license">Unsplash free license</ExternalLink>,{' '}
+                        <ExternalLink href="https://www.pexels.com/license/">Pexels free license</ExternalLink>;
                     </li>
                     <li>
                         license Compliance: Users accessing or&nbsp;using the external images must comply with the terms
@@ -376,7 +369,7 @@ export default function LegalTermsAndConditionsPage() {
                 </p>
             </article>
 
-            <p className="text-center  text-black-70">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
+            <p className="text-center text-black-70">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
         </article>
     )
 }
