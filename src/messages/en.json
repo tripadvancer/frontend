@@ -513,7 +513,7 @@
                 },
                 "requestPersonalData": {
                     "title": "Personal Information",
-                    "text": "You may request a copy of the personal data we hold about you. This includes any information you provided to us when you registered, such as your username, email address and other additional information.",
+                    "text": "You may request a copy of the personal data we hold about you. This includes any information you provided to us when you registered, such as your username, email address, and other additional details. For more information, please refer to our <privacyLink>Privacy Policy</privacyLink>.",
                     "action": "Get a copy of data"
                 },
                 "requestUserDeletion": {
