@@ -39,7 +39,9 @@ export const UserProfilePrivate = async ({ user }: { user: IUser }) => {
                     {t.rich('page.user.profile.visitedCountries.emptyMessage', {
                         br: () => <br />,
                         learnMoreLink: learnMoreLink => (
-                            <ExternalLink href="https://help.tripadvancer.com/">{learnMoreLink}</ExternalLink>
+                            <ExternalLink href="https://help.tripadvancer.com/profile/user-map">
+                                {learnMoreLink}
+                            </ExternalLink>
                         ),
                     })}
                 </div>
