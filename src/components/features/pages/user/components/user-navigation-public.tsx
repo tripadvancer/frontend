@@ -10,7 +10,7 @@ export const UserNavigationPublic = async ({ user }: { user: IUser }) => {
     const links: { href: string; caption: string }[] = []
 
     if (user.publicSettings.show_my_map) {
-        links.push({ href: `/users/${user.name}/visited`, caption: t('page.user.tabs.visited') })
+        links.push({ href: `/users/${user.name}`, caption: t('page.user.tabs.visited') })
     }
 
     links.push(
