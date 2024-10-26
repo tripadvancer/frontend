@@ -149,6 +149,7 @@
         },
         "userMenu": {
             "profile": "Profile",
+            "visited": "Visited",
             "places": "Places",
             "reviews": "Reviews",
             "settings": "Settings",
@@ -450,7 +451,7 @@
         },
         "user": {
             "tabs": {
-                "profile": "Profile",
+                "visited": "Visited",
                 "places": "Places",
                 "reviews": "Reviews",
                 "settings": "Settings"
