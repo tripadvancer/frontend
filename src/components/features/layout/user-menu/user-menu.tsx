@@ -66,26 +66,6 @@ export const UserMenu = ({ userInfo, avatarSize }: { userInfo: IUserInfo; avatar
                     </li>
                     <li>
                         <Link
-                            href={`/users/${userInfo.name}/places`}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
-                        >
-                            <PointIcon16 />
-                            {t('layout.userMenu.places')}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={`/users/${userInfo.name}/reviews`}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
-                        >
-                            <ReviewIcon16 />
-                            {t('layout.userMenu.reviews')}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
                             href={`/users/${userInfo.name}/settings`}
                             onClick={() => setIsMenuOpen(false)}
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
