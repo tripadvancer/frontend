@@ -13,7 +13,7 @@ import { getUserVisitedCountries } from '@/services/users'
 import { UserVisitedCountriesFeed } from './components/user-visited-countries-feed'
 import { UserVisitedMap } from './components/user-visited-map'
 
-export const UserProfilePrivate = async ({ user }: { user: IUser }) => {
+export const UserVisitedPrivate = async ({ user }: { user: IUser }) => {
     const t = await getTranslations()
     const [settings, visitedCountries] = await Promise.all([getUserSettings(), getUserVisitedCountries(user.id)])
 

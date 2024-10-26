@@ -9,6 +9,7 @@ export type IUser = {
     createdAt: Date
     updatedAt: Date
     _count: IUserStatistics
+    publicSettings: IUserPublicSettings
 }
 
 export type IUserSocial = Partial<Record<UserSocialApps, string>>
@@ -31,6 +32,8 @@ export type IUserSettings = IUserPrivacySettings
 export type IUserPrivacySettings = {
     [SettingsCategories.PRIVACY]?: Partial<Record<UserPrivacySettings, boolean>>
 }
+
+export type IUserPublicSettings = Partial<Record<UserPrivacySettings, boolean>>
 
 export type IUserInfo = Pick<IUser, 'id' | 'name' | 'avatar'>
 
