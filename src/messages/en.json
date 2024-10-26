@@ -152,7 +152,6 @@
             "visited": "Visited",
             "places": "Places",
             "reviews": "Reviews",
-            "countries": "Countries",
             "settings": "Settings",
             "logOut": "Log out"
         },
@@ -455,7 +454,6 @@
                 "visited": "Visited",
                 "places": "Places",
                 "reviews": "Reviews",
-                "countries": "Countries",
                 "settings": "Settings"
             },
             "aboutMe": "About me",
