@@ -22,7 +22,7 @@ export const User = ({ user, children }: { user: IUser; children: ReactNode }) =
                     </div>
 
                     <div className="min-w-0 flex-1">
-                        <UserNavigation userId={user.id} username={user.name} />
+                        <UserNavigation user={user} />
                         {children}
                     </div>
                 </div>
