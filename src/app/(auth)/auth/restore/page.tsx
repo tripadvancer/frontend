@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     },
 }
 
-export default async function RestoreUserPage({ searchParams }: { searchParams: { token: string } }) {
+type SearchParams = Promise<{ token: string }>
+
+export default async function RestoreUserPage(props: { searchParams: SearchParams }) {
+    const searchParams = await props.searchParams
     return <RestoreUser token={searchParams.token} />
 }
