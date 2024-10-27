@@ -73,7 +73,7 @@ export const MapPopupLocation = ({
         }
 
         dispatch(closeMapPopups())
-        router.push(`/add-place?lat=${coordinates.lat}&lng=${coordinates.lng}`)
+        router.push(`/places/add?lat=${coordinates.lat}&lng=${coordinates.lng}`)
     }
 
     const handleIAmHereClick = () => {

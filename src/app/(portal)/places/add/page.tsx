@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Add Place',
     robots: 'noindex, nofollow',
     alternates: {
-        canonical: '/add-place',
+        canonical: '/places/add',
     },
 }
 

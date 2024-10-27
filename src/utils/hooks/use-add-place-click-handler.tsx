@@ -25,7 +25,7 @@ export const useAddPlaceClickHandler = ({ activeUserId, isAuth, isEmailVerified 
             return
         }
 
-        router.push('/add-place')
+        router.push('/places/add')
     }
 
     return handleClick
