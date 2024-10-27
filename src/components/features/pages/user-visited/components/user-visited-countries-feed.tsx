@@ -4,9 +4,9 @@ import type { IUserVisitedCountries } from '@/utils/types/user'
 
 import { getCountryByCode } from '@/services/countries'
 import { сountriesDictionary } from '@/utils/dictionaries/countries'
+import { calculateWorldCoverage } from '@/utils/helpers/world-coverage'
 
 import { UserVisitedCountriesFeedItem } from './user-visited-countries-feed-item'
-import { calculateWorldCoverage } from '@/utils/helpers/world-coverage'
 
 type UserVisitedCountriesFeedProps = {
     visitedCountries: IUserVisitedCountries

@@ -12,7 +12,9 @@ export const Blog = () => {
                 </p>
             </article>
 
-            <Link href="/blog/discovering-warsaw-top-10-places">Discovering Warsaw: 10 Must-See Places in Poland&apos;s Capital</Link>
+            <Link href="/blog/discovering-warsaw-top-10-places">
+                Discovering Warsaw: 10 Must-See Places in Poland&apos;s Capital
+            </Link>
         </section>
     )
 }
