@@ -19,8 +19,9 @@ export async function getUserByUsername(username: string): Promise<IUser> {
 }
 
 export async function getUserVisitedCountries(userId: number): Promise<IUserVisitedCountries> {
+    const cookieStore = await cookies()
+    const accessToken = cookieStore.get('sAccessToken')?.value
     const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + userId + '/visited-countries'
-    const accessToken = cookies().get('sAccessToken')?.value
 
     // todo: handle refresh token
     const res = await fetch(url, {
