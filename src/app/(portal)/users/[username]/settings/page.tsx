@@ -6,7 +6,11 @@ import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata> {
+type Params = Promise<{ username: string }>
+
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
+
     return {
         title: 'Settings',
         alternates: {
@@ -15,8 +19,10 @@ export async function generateMetadata({ params }: { params: { username: string 
     }
 }
 
-export default async function UserSettingsPage({ params }: { params: { username: string } }) {
+export default async function UserSettingsPage(props: { params: Params }) {
+    const params = await props.params
     const user = await getUserByUsername(params.username)
+
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
