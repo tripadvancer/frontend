@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { ShowMore } from '@/components/ui/show-more'
-import { usersAPI } from '@/redux/services/users-api'
+import { usersAPI } from '@/redux/services/users.api'
 import { getCountryByCode } from '@/services/countries'
 
 import { UserPlacesSkeleton } from './user-places-skeleton'

@@ -1,9 +1,8 @@
 import { LngLatBounds } from 'react-map-gl/maplibre'
 
+import { api } from '@/redux/services/api'
 import { GeoJsonCollection } from '@/utils/types/geo'
 import { CreatePlaceInputs, IPlaceMeta, IPlacePreview, UpdatePlaceInputs } from '@/utils/types/place'
-
-import { api } from './api'
 
 interface GetPlacesParams {
     mapBounds: LngLatBounds | undefined
