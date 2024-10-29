@@ -43,15 +43,6 @@ export type IRandomPlace = {
     coordinates: number[]
 }
 
-export type IPlaceNearby = {
-    id: number
-    title: string
-    cover: string | null
-    avgRating: number | null
-    reviewsCount: number
-    distance: number
-}
-
 export type ILocationPreview = {
     coordinates: LngLat
 }

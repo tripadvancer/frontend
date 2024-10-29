@@ -17,7 +17,7 @@ import { useDialog } from '@/providers/dialog-provider'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { placesAroundAPI } from '@/redux/services/places-around.api'
 import { LngLatToString } from '@/utils/helpers/maps'
 import { ILocationPopupInfo } from '@/utils/types/map'
 
