@@ -4,12 +4,17 @@ import { useTranslations } from 'next-intl'
 
 import Link from 'next/link'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { Rating } from '@/components/ui/rating'
+import { IPlace } from '@/utils/types/place'
 
-type FeedPlacesItemProps = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'>
+type FeedPlacesItemProps = {
+    id: IPlace['id']
+    title: IPlace['title']
+    cover: IPlace['cover']
+    avgRating: IPlace['avgRating']
+    reviewsCount: IPlace['reviewsCount']
+}
 
 export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount }: FeedPlacesItemProps) => {
     const t = useTranslations()

@@ -1,8 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { DraftToHtml } from '@/components/ui/draft-to-html'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceMainDescription = async ({ description }: IPlace) => {
     const t = await getTranslations()

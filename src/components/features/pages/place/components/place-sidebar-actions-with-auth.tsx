@@ -1,7 +1,6 @@
-import type { IPlace } from '@/utils/types/place'
-
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import { IPlace } from '@/utils/types/place'
 
 import { PlaceSidebarActions } from './place-sidebar-actions'
 

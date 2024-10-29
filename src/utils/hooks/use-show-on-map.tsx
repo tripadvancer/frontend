@@ -2,11 +2,10 @@
 
 import { useMap } from 'react-map-gl/maplibre'
 
-import type { IPlacePreview, IRandomPlace } from '@/utils/types/place'
-
 import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
+import { IPlacePreview, IRandomPlace } from '@/utils/types/place'
 
 import { AppModes } from '../enums'
 import { arrayToLngLat, getMapFlyToOptions } from '../helpers/maps'

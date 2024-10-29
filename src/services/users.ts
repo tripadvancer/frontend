@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import type { IUser, IUserVisitedCountries } from '@/utils/types/user'
+import { IUser, IUserVisitedCountries } from '@/utils/types/user'
 
 export async function getUserByUsername(username: string): Promise<IUser> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + username

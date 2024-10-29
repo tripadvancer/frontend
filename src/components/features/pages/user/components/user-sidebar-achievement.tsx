@@ -1,8 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 
-import type { IUserStatistics } from '@/utils/types/user'
-
 import { UserRankBeginnerIcon48 } from '@/components/ui/icons'
+import { IUserStatistics } from '@/utils/types/user'
 
 const Item = ({ label, value }: { label: string; value: number }) => {
     return (

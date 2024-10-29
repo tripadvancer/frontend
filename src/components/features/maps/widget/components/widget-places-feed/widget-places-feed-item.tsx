@@ -2,10 +2,9 @@
 
 import Link from 'next/link'
 
-import type { IPlacePreview } from '@/utils/types/place'
-
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
+import { IPlacePreview } from '@/utils/types/place'
 
 import { WidgetPlacesFeedItemActions } from './widget-places-feed-item-actions'
 

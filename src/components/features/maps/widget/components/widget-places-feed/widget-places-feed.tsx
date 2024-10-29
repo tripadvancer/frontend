@@ -4,9 +4,8 @@ import { useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlacePreview } from '@/utils/types/place'
-
 import { FormButton } from '@/components/ui/form-button'
+import { IPlacePreview } from '@/utils/types/place'
 
 import { WidgetPlacesFeedItem } from './widget-places-feed-item'
 

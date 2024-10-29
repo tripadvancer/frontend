@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 
-import type { IPlace } from '@/utils/types/place'
+import { IPlace } from '@/utils/types/place'
 
 import { PlaceMainOwnReview } from './place-main-own-review'
 import { PlaceMainReviewsFeed } from './place-main-reviews-feed'

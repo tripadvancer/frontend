@@ -2,8 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlacePreview } from '@/utils/types/place'
-
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { BookmarkFillIcon16, BookmarkIcon16, PinIcon16, RouteIcon16, ShareIcon16 } from '@/components/ui/icons'
@@ -12,6 +10,7 @@ import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
 import { useSharePlace } from '@/utils/hooks/use-share-place'
 import { useShowOnMap } from '@/utils/hooks/use-show-on-map'
+import { IPlacePreview } from '@/utils/types/place'
 
 export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
     const t = useTranslations()

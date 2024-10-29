@@ -1,4 +1,4 @@
-import type { LngLat } from '@/utils/types/geo'
+import { LngLat } from '@/utils/types/geo'
 
 type NavigationProvider = {
     [key: string]: (lngLat: LngLat) => string

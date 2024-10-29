@@ -5,7 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
-import type { Metadata, Viewport } from 'next/types'
+import { Metadata, Viewport } from 'next/types'
 
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 

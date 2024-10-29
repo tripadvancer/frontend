@@ -1,4 +1,4 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { RessetPassword } from '@/components/features/auth/resset-password'
 

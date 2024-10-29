@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { LinkButton } from '@/components/ui/link-button'
 import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user-api'
+import { userAPI } from '@/redux/services/user.api'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 
 type RestoreUserProps = {

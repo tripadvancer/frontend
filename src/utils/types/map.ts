@@ -1,7 +1,12 @@
-import type { ILocationPreview, IPlace, IPlaceMeta } from '@/utils/types/place'
+import { ILocationPreview } from '@/utils/types/place'
 
-// prettier-ignore
-export type IPlacePopupInfo = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & Pick<IPlaceMeta, 'isSaved'> & {
+export type IPlacePopupInfo = {
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    isSaved: boolean
     coordinates: number[]
 }
 

@@ -1,10 +1,9 @@
 'use client'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { Review } from '@/components/features/common/review/review'
 import { ReviewSkeleton } from '@/components/features/common/review/review-skeleton'
-import { placesAPI } from '@/redux/services/places-api'
+import { placesAPI } from '@/redux/services/places.api'
+import { IPlace } from '@/utils/types/place'
 
 import { PlaceMainAddReviewButton } from './place-main-add-review-button'
 

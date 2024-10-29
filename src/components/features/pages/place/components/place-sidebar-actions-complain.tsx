@@ -2,12 +2,11 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { SignIn } from '@/components/features/auth/sign-in'
 import { ComplainFormPlace } from '@/components/features/dialogs/complain-form/complain-form-place'
 import { ComplainIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceSidebarActionsComplain = ({ place, isAuth }: { place: IPlace; isAuth: boolean }) => {
     const t = useTranslations()

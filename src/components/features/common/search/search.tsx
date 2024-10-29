@@ -7,16 +7,15 @@ import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
 import { useRouter } from 'next/navigation'
 
-import type { ICountryDict } from '@/utils/types/country'
-import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
-import type { ISearchItem } from '@/utils/types/search'
-
 import { FormButton } from '@/components/ui/form-button'
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { searchAPI } from '@/redux/services/search-api'
 import { Keys } from '@/utils/enums'
 import { transformSearchCountries, transformSearchPlaces } from '@/utils/helpers/search'
 import { useKeypress } from '@/utils/hooks/use-keypress'
+import { ICountryDict } from '@/utils/types/country'
+import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { ISearchItem } from '@/utils/types/search'
 
 import { SearchInput } from './search-input'
 

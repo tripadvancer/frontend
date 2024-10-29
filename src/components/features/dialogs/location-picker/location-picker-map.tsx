@@ -3,11 +3,10 @@
 import { useCallback, useRef, useState } from 'react'
 import { MapRef, Map as ReactMapGl, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
-import type { LngLat } from '@/utils/types/geo'
-
 import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
 import { getFlyToViewState } from '@/utils/helpers/maps'
+import { LngLat } from '@/utils/types/geo'
 
 type LocationPickerMapProps = {
     viewState: Partial<ViewState>

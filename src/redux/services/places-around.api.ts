@@ -1,17 +1,13 @@
-import type { IPlaceNearby, IRandomPlace } from '@/utils/types/place'
-
-import { api } from './api'
-
-interface GetPlacesAroundParams {
-    lat: number
-    lng: number
-    radius: number
-    categories: number[]
-}
+import { api } from '@/redux/services/api'
+import {
+    GetPlacesAroundParams,
+    GetPlacesAroundResponse,
+    GetRandomPlaceResponse,
+} from '@/redux/services/places-around.types'
 
 export const placesAroundAPI = api.injectEndpoints({
     endpoints: build => ({
-        getRandomPlace: build.query<IRandomPlace, GetPlacesAroundParams>({
+        getRandomPlace: build.query<GetRandomPlaceResponse, GetPlacesAroundParams>({
             query: params => ({
                 url: 'places-around/random',
                 params: {
@@ -22,7 +18,8 @@ export const placesAroundAPI = api.injectEndpoints({
                 },
             }),
         }),
-        getPlacesAround: build.query<IPlaceNearby[], GetPlacesAroundParams>({
+
+        getPlacesAround: build.query<GetPlacesAroundResponse, GetPlacesAroundParams>({
             query: params => ({
                 url: 'places-around',
                 params: {

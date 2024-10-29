@@ -4,14 +4,13 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
-import type { ICountryDict } from '@/utils/types/country'
-import type { LngLat } from '@/utils/types/geo'
-import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
-import type { ISearchItem } from '@/utils/types/search'
-
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { searchAPI } from '@/redux/services/search-api'
 import { transformSearchCoordinates, transformSearchLocations } from '@/utils/helpers/search'
+import { ICountryDict } from '@/utils/types/country'
+import { LngLat } from '@/utils/types/geo'
+import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { ISearchItem } from '@/utils/types/search'
 
 import { WidgetPickerSearchInput } from './location-picker-search-input'
 

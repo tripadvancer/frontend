@@ -2,7 +2,12 @@ import { ReactNode } from 'react'
 
 import Link from 'next/link'
 
-export const ShowAllLink = ({ href, children }: { href: string; children: ReactNode }) => {
+type ShowAllLinkProps = {
+    href: string
+    children: ReactNode
+}
+
+export const ShowAllLink = ({ href, children }: ShowAllLinkProps) => {
     return (
         <Link
             href={href}

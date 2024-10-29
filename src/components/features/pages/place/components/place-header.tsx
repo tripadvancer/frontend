@@ -1,4 +1,4 @@
-import type { IPlace } from '@/utils/types/place'
+import { IPlace } from '@/utils/types/place'
 
 import { PlaceHeaderCategories } from './place-header-categories'
 import { PlaceHeaderCoordinates } from './place-header-coordinates'

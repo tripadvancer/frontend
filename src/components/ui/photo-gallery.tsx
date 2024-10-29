@@ -6,14 +6,15 @@ import Lightbox from 'yet-another-react-lightbox'
 import Captions from 'yet-another-react-lightbox/plugins/captions'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 
-import type { IPhoto } from '@/utils/types/photo'
-
 import { Photo } from '@/components/ui/photo'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
 type PhotoGalleryProps = {
-    photos: IPhoto[]
+    photos: {
+        id: number
+        url: string
+    }[]
     title: string
     description: string
     size: number

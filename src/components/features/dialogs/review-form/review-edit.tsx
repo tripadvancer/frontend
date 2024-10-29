@@ -2,10 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IReview, UpdateReviewInputs } from '@/utils/types/review'
-
 import { useDialog } from '@/providers/dialog-provider'
-import { reviewsAPI } from '@/redux/services/reviews-api'
+import { reviewsAPI } from '@/redux/services/reviews.api'
+import { UpdateReviewInputs } from '@/redux/services/reviews.types'
+import { IReview } from '@/utils/types/common'
 
 import { ReviewForm } from './review-form'
 

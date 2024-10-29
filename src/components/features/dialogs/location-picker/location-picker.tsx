@@ -7,8 +7,6 @@ import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
 
-import type { LngLat } from '@/utils/types/geo'
-
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 import {
@@ -18,6 +16,7 @@ import {
     stringToViewState,
     viewStateToString,
 } from '@/utils/helpers/maps'
+import { LngLat } from '@/utils/types/geo'
 
 import { LocationPickerMap } from './location-picker-map'
 import { LocationPickerSearch } from './location-picker-search'

@@ -1,13 +1,14 @@
 'use client'
 
-import type { IPhoto } from '@/utils/types/photo'
-
 import { PhotoGallery } from '@/components/ui/photo-gallery'
 
 type ReviewPhotosListProps = {
     title: string
     description: string
-    photos: IPhoto[]
+    photos: {
+        id: number
+        url: string
+    }[]
 }
 
 export const ReviewPhotosList = ({ title, description, photos }: ReviewPhotosListProps) => {

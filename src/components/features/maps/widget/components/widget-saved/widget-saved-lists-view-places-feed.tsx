@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { listAPI } from '@/redux/services/list-api'
+import { listAPI } from '@/redux/services/list.api'
 
 import { WidgetMessage } from '../widget-message'
 import { WidgetPlacesFeed } from '../widget-places-feed/widget-places-feed'

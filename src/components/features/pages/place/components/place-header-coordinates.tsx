@@ -2,11 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { CopyIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { arrayToString } from '@/utils/helpers/maps'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceHeaderCoordinates = ({ location }: IPlace) => {
     const t = useTranslations()

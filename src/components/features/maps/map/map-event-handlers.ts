@@ -3,8 +3,6 @@
 import { useCallback } from 'react'
 import { LngLat, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
-import type { IPlacePreview } from '@/utils/types/place'
-
 import {
     closeMapPopups,
     getMapState,
@@ -14,6 +12,7 @@ import {
     setMapViewState,
 } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { IPlacePreview } from '@/utils/types/place'
 
 export const useMapEventHandlers = () => {
     const dispatch = useAppDispatch()

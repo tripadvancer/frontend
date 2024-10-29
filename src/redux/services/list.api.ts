@@ -1,17 +1,21 @@
-import type { GeoJsonCollection } from '@/utils/types/geo'
-import type { CreateListInputs, IList, UpdateListInputs, UpdatePlaceInListsInputs } from '@/utils/types/list'
-import type { IPlacePreview } from '@/utils/types/place'
-
-import { api } from './api'
+import { api } from '@/redux/services/api'
+import {
+    CreateListInputs,
+    GetListPlaces,
+    GetListsResponse,
+    UpdateListInputs,
+    UpdateListResponse,
+    UpdatePlaceInListsInputs,
+} from '@/redux/services/list.types'
 
 export const listAPI = api.injectEndpoints({
     endpoints: build => ({
-        getLists: build.query<IList[], void>({
+        getLists: build.query<GetListsResponse, void>({
             query: () => 'lists',
             providesTags: ['Lists'],
         }),
 
-        getListPlaces: build.query<GeoJsonCollection<IPlacePreview>, { listId: number; selectedCategories: number[] }>({
+        getListPlaces: build.query<GetListPlaces, { listId: number; selectedCategories: number[] }>({
             query: ({ listId, selectedCategories }) => ({
                 url: `lists/${listId}/places`,
                 params: {
@@ -30,7 +34,7 @@ export const listAPI = api.injectEndpoints({
             invalidatesTags: ['Lists'],
         }),
 
-        updateList: build.mutation<IList, UpdateListInputs>({
+        updateList: build.mutation<UpdateListResponse, UpdateListInputs>({
             query: inputs => ({
                 url: `lists/${inputs.id}`,
                 method: 'PATCH',

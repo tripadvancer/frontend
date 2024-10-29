@@ -2,14 +2,22 @@ import { useTranslations } from 'next-intl'
 
 import Link from 'next/link'
 
-import type { IPlaceNearby } from '@/utils/types/place'
-
 import { FormButton } from '@/components/ui/form-button'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { useDialog } from '@/providers/dialog-provider'
 
-export const PlacesNearbyWarning = ({ places }: { places: IPlaceNearby[] }) => {
+type PlacesNearbyWarningProps = {
+    places: {
+        id: number
+        title: string
+        cover: string | null
+        avgRating: number | null
+        reviewsCount: number
+    }[]
+}
+
+export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
     const t = useTranslations()
     const dialog = useDialog()
 

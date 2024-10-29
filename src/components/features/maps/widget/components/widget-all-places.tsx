@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 import { getMapState } from '@/redux/features/map-slice'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { placesAPI } from '@/redux/services/places-api'
+import { placesAPI } from '@/redux/services/places.api'
 
 import { WidgetMessage } from './widget-message'
 import { WidgetPlacesFeed } from './widget-places-feed/widget-places-feed'

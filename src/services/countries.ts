@@ -1,9 +1,8 @@
 import { notFound } from 'next/navigation'
 
-import type { ICountry, ICountryDict } from '@/utils/types/country'
-
 import { сountriesDictionary } from '@/utils/dictionaries/countries'
 import { CountriesSortBy, OrderDirection } from '@/utils/enums'
+import { ICountry, ICountryDict } from '@/utils/types/country'
 
 export async function getCountries(sortBy?: CountriesSortBy, orderDirection?: OrderDirection): Promise<ICountry[]> {
     const params = new URLSearchParams({
@@ -20,13 +19,11 @@ export async function getCountries(sortBy?: CountriesSortBy, orderDirection?: Or
     return res.json()
 }
 
-export const getCountryByCode = (
-    countryCode: Pick<ICountryDict, 'code'>['code'] | null | undefined,
-): ICountryDict | undefined => {
+export const getCountryByCode = (countryCode: ICountryDict['code'] | null | undefined): ICountryDict | undefined => {
     return сountriesDictionary.find(country => country.code.toUpperCase() === countryCode)
 }
 
-export const getCountryBySlug = (countrySlug: Pick<ICountryDict, 'slug'>['slug']): ICountryDict => {
+export const getCountryBySlug = (countrySlug: ICountryDict['slug']): ICountryDict => {
     const country = сountriesDictionary.find(country => country.slug === countrySlug)
 
     if (!country) {

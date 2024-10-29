@@ -2,13 +2,12 @@ import { getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import type { IUser } from '@/utils/types/user'
-
 import { ExternalLink } from '@/components/ui/external-link'
 import { AlertIcon24 } from '@/components/ui/icons'
 import { Notice } from '@/components/ui/notice'
 import { getUserSettings } from '@/services/user'
 import { getUserVisitedCountries } from '@/services/users'
+import { IUser } from '@/utils/types/user'
 
 import { UserVisitedCountriesFeed } from './components/user-visited-countries-feed'
 import { UserVisitedMap } from './components/user-visited-map'

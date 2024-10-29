@@ -1,6 +1,6 @@
-import type { ICountryDict } from '@/utils/types/country'
-import type { LngLat } from '@/utils/types/geo'
-import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { ICountryDict } from '@/utils/types/country'
+import { LngLat } from '@/utils/types/geo'
+import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 
 export type ISearchItem<T> = {
     title: string

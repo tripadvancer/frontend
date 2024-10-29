@@ -2,9 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IRandomPlace } from '@/utils/types/place'
-
 import { useUserLocation } from '@/utils/hooks/use-user-location'
+import { IRandomPlace } from '@/utils/types/place'
 
 import { WidgetMessage } from '../widget-message'
 import { WidgetRandomPlace } from './widget-random-place'

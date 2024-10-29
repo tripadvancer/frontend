@@ -1,4 +1,4 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { ConfirmUserDeletion } from '@/components/features/auth/confirm-user-deletion'
 

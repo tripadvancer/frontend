@@ -4,13 +4,12 @@ import { useTranslations } from 'next-intl'
 
 import { useRouter } from 'next/navigation'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { Confirmation } from '@/components/ui/confirmation'
 import { DeleteIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places-api'
+import { placesAPI } from '@/redux/services/places.api'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceSidebarActionsDelete = ({ place }: { place: IPlace }) => {
     const t = useTranslations()

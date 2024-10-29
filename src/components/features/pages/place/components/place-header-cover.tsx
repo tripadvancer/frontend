@@ -2,10 +2,9 @@
 
 import { ParallaxBanner } from 'react-scroll-parallax'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceHeaderCover = ({ cover }: IPlace) => {
     const src = makeImageUrl(cover, ImageVariants.PUBLIC)

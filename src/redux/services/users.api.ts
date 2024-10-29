@@ -1,11 +1,9 @@
-import type { PaginatedResponse } from '@/utils/types/common'
-import type { IPlacePreview } from '@/utils/types/place'
-
-import { api } from './api'
+import { api } from '@/redux/services/api'
+import { GetPlacesByUserIdParams, GetPlacesByUserIdResponse } from '@/redux/services/users.types'
 
 export const usersAPI = api.injectEndpoints({
     endpoints: build => ({
-        getPlacesByUserId: build.query<PaginatedResponse<IPlacePreview>, { userId: number; page: number }>({
+        getPlacesByUserId: build.query<GetPlacesByUserIdResponse, GetPlacesByUserIdParams>({
             query: ({ userId, page }) => `users/${userId}/places?page=${page}`,
             serializeQueryArgs: ({ endpointName }) => {
                 return endpointName

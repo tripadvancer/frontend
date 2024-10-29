@@ -4,13 +4,12 @@ import { useTranslations } from 'next-intl'
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import type { CreatePlaceInputs } from '@/utils/types/place'
-
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places-api'
-import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { placesAroundAPI } from '@/redux/services/places-around.api'
+import { placesAPI } from '@/redux/services/places.api'
+import { CreatePlaceInputs } from '@/redux/services/places.types'
 import { stringToLngLat } from '@/utils/helpers/maps'
 
 import { PlaceForm } from './place-form'

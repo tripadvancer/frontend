@@ -1,4 +1,4 @@
-import type { ICountry } from '@/utils/types/country'
+import { ICountry } from '@/utils/types/country'
 
 import { FeedCountriesItem } from './feed-countries-item'
 

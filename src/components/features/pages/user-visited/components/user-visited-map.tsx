@@ -3,10 +3,9 @@
 import { useCallback, useMemo, useRef } from 'react'
 import { MapEvent, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
-import type { IUserVisitedCountries } from '@/utils/types/user'
-
 import { MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
+import { IUserVisitedCountries } from '@/utils/types/user'
 
 type UserVisitedMapProps = {
     visitedCountries: IUserVisitedCountries

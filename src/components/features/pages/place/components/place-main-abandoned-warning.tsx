@@ -1,9 +1,8 @@
 import { getTranslations } from 'next-intl/server'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { AlertIcon24 } from '@/components/ui/icons'
 import { Notice } from '@/components/ui/notice'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceMainAbandonedWarning = async ({ categories }: IPlace) => {
     const t = await getTranslations()
