@@ -4,7 +4,21 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import { RootState } from '@/redux/store'
 import { getDefaultViewState } from '@/utils/helpers/maps'
-import { ILocationPopupInfo, IPlacePopupInfo } from '@/utils/types/map'
+import { LngLat } from '@/utils/types/geo'
+
+type IPlacePopupInfo = {
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    isSaved: boolean
+    coordinates: number[]
+}
+
+type ILocationPopupInfo = {
+    coordinates: LngLat
+}
 
 interface MapState {
     isFilterMapBySavedLists: boolean

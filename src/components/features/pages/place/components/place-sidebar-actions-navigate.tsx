@@ -6,12 +6,16 @@ import { ChooseNavigationApp } from '@/components/features/dialogs/choose-naviga
 import { RouteIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
-import { IPlace } from '@/utils/types/place'
+import { GeoJsonPoint } from '@/utils/types/geo'
 
-export const PlaceSidebarActionsNavigate = ({ place }: { place: IPlace }) => {
+type PlaceSidebarActionsNavigateProps = {
+    location: GeoJsonPoint
+}
+
+export const PlaceSidebarActionsNavigate = ({ location }: PlaceSidebarActionsNavigateProps) => {
     const t = useTranslations()
     const dialog = useDialog()
-    const lngLat = arrayToLngLat(place.location.coordinates)
+    const lngLat = arrayToLngLat(location.coordinates)
 
     const handleClick = () => {
         dialog.open(<ChooseNavigationApp lngLat={lngLat} />)

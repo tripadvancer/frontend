@@ -12,15 +12,25 @@ import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places.api'
 import { AppModes, WidgetModes, WidgetTabs } from '@/utils/enums'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
-import { IPlace } from '@/utils/types/place'
+import { GeoJsonPoint } from '@/utils/types/geo'
 
-export const PlaceSidebarActionsShowOnMap = ({ place, isAuth }: { place: IPlace; isAuth: boolean }) => {
+type PlaceSidebarActionsShowOnMap = {
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    location: GeoJsonPoint
+    isAuth: boolean
+}
+
+export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap) => {
     const t = useTranslations()
     const router = useRouter()
     const dispatch = useAppDispatch()
-    const lngLat = arrayToLngLat(place.location.coordinates)
+    const lngLat = arrayToLngLat(props.location.coordinates)
 
-    const { data: meta } = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !isAuth })
+    const { data: meta } = placesAPI.useGetPlaceMetaByIdQuery(props.id, { skip: !props.isAuth })
 
     const handleClick = () => {
         const viewState = getFlyToViewState(lngLat)
@@ -31,8 +41,12 @@ export const PlaceSidebarActionsShowOnMap = ({ place, isAuth }: { place: IPlace;
         dispatch(setMapViewState(viewState))
         dispatch(
             setMapPlacePopupInfo({
-                ...place,
-                coordinates: place.location.coordinates,
+                id: props.id,
+                title: props.title,
+                cover: props.cover,
+                avgRating: props.avgRating,
+                reviewsCount: props.reviewsCount,
+                coordinates: props.location.coordinates,
                 isSaved: meta?.isSaved || false,
             }),
         )

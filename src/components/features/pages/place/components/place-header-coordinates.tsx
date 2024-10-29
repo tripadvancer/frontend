@@ -5,9 +5,13 @@ import { useTranslations } from 'next-intl'
 import { CopyIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { arrayToString } from '@/utils/helpers/maps'
-import { IPlace } from '@/utils/types/place'
+import { GeoJsonPoint } from '@/utils/types/geo'
 
-export const PlaceHeaderCoordinates = ({ location }: IPlace) => {
+type PlaceHeaderCoordinatesProps = {
+    location: GeoJsonPoint
+}
+
+export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps) => {
     const t = useTranslations()
     const toast = useToast()
     const coordinatesString = arrayToString(location.coordinates)

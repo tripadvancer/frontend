@@ -9,9 +9,12 @@ import { DeleteIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { placesAPI } from '@/redux/services/places.api'
-import { IPlace } from '@/utils/types/place'
 
-export const PlaceSidebarActionsDelete = ({ place }: { place: IPlace }) => {
+type PlaceSidebarActionsDeleteProps = {
+    id: number
+}
+
+export const PlaceSidebarActionsDelete = ({ id }: PlaceSidebarActionsDeleteProps) => {
     const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
@@ -28,7 +31,7 @@ export const PlaceSidebarActionsDelete = ({ place }: { place: IPlace }) => {
                 onConfirm={async () => {
                     dialog.close()
                     try {
-                        await deletePlace(place.id)
+                        await deletePlace(id)
                         toast.success(t('success.deletePlace'))
                         router.push('/')
                         router.refresh()

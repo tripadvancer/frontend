@@ -12,7 +12,6 @@ import {
     setMapViewState,
 } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { IPlacePreview } from '@/utils/types/place'
 
 export const useMapEventHandlers = () => {
     const dispatch = useAppDispatch()
@@ -115,7 +114,15 @@ export const useMapEventHandlers = () => {
                         coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360
                     }
 
-                    const place = { ...feature.properties, coordinates } as IPlacePreview
+                    const place = { ...feature.properties, coordinates } as {
+                        id: number
+                        title: string
+                        cover: string | null
+                        avgRating: number | null
+                        reviewsCount: number
+                        isSaved: boolean
+                        coordinates: number[]
+                    }
                     dispatch(setMapPlacePopupInfo(place))
                 } else {
                     if (mapState.placePopupInfo || mapState.locationPopupInfo) {

@@ -24,7 +24,7 @@ export const Place = async ({ placeId }: { placeId: string }) => {
                         <div className="flex w-full flex-col gap-y-8 lg:w-64">
                             <div className="flex flex-col gap-y-4">
                                 <PlaceSidebarRating {...place} />
-                                <PlaceSidebarActionsWithAuth place={place} />
+                                <PlaceSidebarActionsWithAuth {...place} />
                             </div>
                             <PlaceSidebarAuthor {...place} />
                             <ErrorBoundary fallback={null}>
@@ -36,7 +36,7 @@ export const Place = async ({ placeId }: { placeId: string }) => {
                             <PlaceMainAbandonedWarning {...place} />
                             <PlaceMainDescription {...place} />
                             <PlaceMainPhotos {...place} />
-                            <PlaceMainReviewsWithAuth place={place} />
+                            <PlaceMainReviewsWithAuth {...place} />
                         </div>
                     </div>
                 </div>

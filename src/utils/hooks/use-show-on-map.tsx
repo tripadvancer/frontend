@@ -5,7 +5,6 @@ import { useMap } from 'react-map-gl/maplibre'
 import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { IPlacePreview, IRandomPlace } from '@/utils/types/place'
 
 import { AppModes } from '../enums'
 import { arrayToLngLat, getMapFlyToOptions } from '../helpers/maps'
@@ -14,15 +13,25 @@ interface useShowOnMapInterface {
     showOnMap: () => void
 }
 
-export function useShowOnMap(place: IPlacePreview | IRandomPlace): useShowOnMapInterface {
+type useShowOnMapProps = {
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    isSaved: boolean
+    coordinates: number[]
+}
+
+export function useShowOnMap(props: useShowOnMapProps): useShowOnMapInterface {
     const dispatch = useAppDispatch()
-    const lngLat = arrayToLngLat(place.coordinates)
+    const lngLat = arrayToLngLat(props.coordinates)
 
     const { map } = useMap()
 
     const showOnMap = async (): Promise<void> => {
         dispatch(setAppMode(AppModes.MAP))
-        dispatch(setMapPlacePopupInfo(place))
+        dispatch(setMapPlacePopupInfo(props))
         map?.flyTo(getMapFlyToOptions(lngLat))
     }
 

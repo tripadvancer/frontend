@@ -1,9 +1,19 @@
 import { getTranslations } from 'next-intl/server'
 
 import { PhotoGallery } from '@/components/ui/photo-gallery'
-import { IPlace } from '@/utils/types/place'
 
-export const PlaceMainPhotos = async ({ title, author, photos, cover }: IPlace) => {
+type PlaceMainPhotosProps = {
+    title: string
+    cover: string | null
+    photos: { id: number; url: string }[]
+    author: {
+        id: number
+        name: string
+        avatar: string | null
+    }
+}
+
+export const PlaceMainPhotos = async ({ title, author, photos, cover }: PlaceMainPhotosProps) => {
     const t = await getTranslations()
     const photosWithCover = cover ? [{ id: 0, url: cover }, ...photos] : photos
 

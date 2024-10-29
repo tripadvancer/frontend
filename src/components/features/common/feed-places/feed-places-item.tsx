@@ -6,14 +6,13 @@ import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { Rating } from '@/components/ui/rating'
-import { IPlace } from '@/utils/types/place'
 
 type FeedPlacesItemProps = {
-    id: IPlace['id']
-    title: IPlace['title']
-    cover: IPlace['cover']
-    avgRating: IPlace['avgRating']
-    reviewsCount: IPlace['reviewsCount']
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
 }
 
 export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount }: FeedPlacesItemProps) => {

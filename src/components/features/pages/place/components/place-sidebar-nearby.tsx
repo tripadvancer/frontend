@@ -8,11 +8,16 @@ import { Distance } from '@/components/ui/distance'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { getPlacesAround } from '@/services/places'
 import { arrayToLngLat } from '@/utils/helpers/maps'
-import { IPlace } from '@/utils/types/place'
+import { GeoJsonPoint } from '@/utils/types/geo'
 
 import { PlaceSidebarNearbySkeleton } from './place-sidebar-nearby-skeleton'
 
-export const PlaceSidebarNearby = async ({ id, location }: IPlace) => {
+type PlaceSidebarNearbyProps = {
+    id: number
+    location: GeoJsonPoint
+}
+
+export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyProps) => {
     const t = await getTranslations()
     const lngLat = arrayToLngLat(location.coordinates)
     const placesAround = await getPlacesAround({

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { IPlace } from '@/utils/types/place'
+import { GeoJsonPoint } from '@/utils/types/geo'
 
 import { PlaceSidebarActionsCheckIn } from './place-sidebar-actions-check-in'
 import { PlaceSidebarActionsComplain } from './place-sidebar-actions-complain'
@@ -16,42 +16,53 @@ const Item = ({ children }: { children: ReactNode }) => {
 }
 
 type PlaceSidebarActionsProps = {
-    place: IPlace
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    countryCode: string | null
+    reviewsCount: number
+    author: {
+        id: number
+        name: string
+        avatar: string | null
+    }
+    location: GeoJsonPoint
     activeUserId?: number
     isAuth: boolean
 }
 
-export const PlaceSidebarActions = ({ place, activeUserId, isAuth }: PlaceSidebarActionsProps) => {
+export const PlaceSidebarActions = (props: PlaceSidebarActionsProps) => {
     return (
         <div>
             <Item>
-                <PlaceSidebarActionsCheckIn place={place} isAuth={isAuth} />
+                <PlaceSidebarActionsCheckIn {...props} />
             </Item>
             <Item>
-                <PlaceSidebarActionsSave place={place} isAuth={isAuth} />
+                <PlaceSidebarActionsSave {...props} />
             </Item>
             <Item>
-                <PlaceSidebarActionsNavigate place={place} />
+                <PlaceSidebarActionsNavigate {...props} />
             </Item>
             <Item>
-                <PlaceSidebarActionsShowOnMap place={place} isAuth={isAuth} />
+                <PlaceSidebarActionsShowOnMap {...props} />
             </Item>
             <Item>
-                <PlaceSidebarActionsShare place={place} />
+                <PlaceSidebarActionsShare {...props} />
             </Item>
-            {activeUserId === place.author.id && (
+            {props.activeUserId === props.author.id && (
                 <>
                     <Item>
-                        <PlaceSidebarActionsEdit place={place} />
+                        <PlaceSidebarActionsEdit {...props} />
                     </Item>
                     <Item>
-                        <PlaceSidebarActionsDelete place={place} />
+                        <PlaceSidebarActionsDelete {...props} />
                     </Item>
                 </>
             )}
-            {activeUserId !== place.author.id && (
+            {props.activeUserId !== props.author.id && (
                 <Item>
-                    <PlaceSidebarActionsComplain place={place} isAuth={isAuth} />
+                    <PlaceSidebarActionsComplain {...props} />
                 </Item>
             )}
         </div>

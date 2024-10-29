@@ -6,9 +6,13 @@ import { SignIn } from '@/components/features/auth/sign-in'
 import { ComplainFormPlace } from '@/components/features/dialogs/complain-form/complain-form-place'
 import { ComplainIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
-import { IPlace } from '@/utils/types/place'
 
-export const PlaceSidebarActionsComplain = ({ place, isAuth }: { place: IPlace; isAuth: boolean }) => {
+type PlaceSidebarActionsComplainProps = {
+    id: number
+    isAuth: boolean
+}
+
+export const PlaceSidebarActionsComplain = ({ id, isAuth }: PlaceSidebarActionsComplainProps) => {
     const t = useTranslations()
     const dialog = useDialog()
 
@@ -18,7 +22,7 @@ export const PlaceSidebarActionsComplain = ({ place, isAuth }: { place: IPlace; 
             return
         }
 
-        dialog.open(<ComplainFormPlace placeId={place.id} />)
+        dialog.open(<ComplainFormPlace placeId={id} />)
     }
 
     return (

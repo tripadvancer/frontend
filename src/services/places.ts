@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation'
 
 import { GetPlacesAroundParams, GetPlacesAroundResponse } from '@/redux/services/places-around.types'
-import { IPlace, IPlacePreview } from '@/utils/types/place'
+import { GetPlaceByIdResponse, GetPlacesByCountryCodeResponse } from '@/services/places.types'
 
 export async function getPlacesByCountryCode(
     countryCode: string,
     categoriesIds: string | undefined,
-): Promise<IPlacePreview[]> {
+): Promise<GetPlacesByCountryCodeResponse> {
     const url =
         process.env.NEXT_PUBLIC_API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
     const res = await fetch(url)
@@ -18,7 +18,7 @@ export async function getPlacesByCountryCode(
     return res.json()
 }
 
-export async function getPlaceById(placeId: string): Promise<IPlace> {
+export async function getPlaceById(placeId: string): Promise<GetPlaceByIdResponse> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
     const res = await fetch(url, { cache: 'no-store' })
 

@@ -11,11 +11,21 @@ import { placesAroundAPI } from '@/redux/services/places-around.api'
 import { placesAPI } from '@/redux/services/places.api'
 import { UpdatePlaceInputs } from '@/redux/services/places.types'
 import { arrayToString, stringToLngLat } from '@/utils/helpers/maps'
-import { IPlace } from '@/utils/types/place'
+import { GeoJsonPoint } from '@/utils/types/geo'
 
 import { PlaceForm } from './place-form'
 
-export const PlaceEdit = (place: IPlace) => {
+type PlaceEditProps = {
+    id: number
+    title: string
+    description: string
+    location: GeoJsonPoint
+    photos: { id: number; url: string }[]
+    cover: string | null
+    categories: number[]
+}
+
+export const PlaceEdit = ({ id, title, description, location, photos, cover, categories }: PlaceEditProps) => {
     const t = useTranslations()
     const dialog = useDialog()
     const router = useRouter()
@@ -25,13 +35,13 @@ export const PlaceEdit = (place: IPlace) => {
     const [searchPlacesAround, { isLoading: isSearchingPlacesAround }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
     const initialValues: UpdatePlaceInputs = {
-        placeId: place.id,
-        title: place.title,
-        description: place.description,
-        location: arrayToString(place.location.coordinates),
-        photos: place.photos.map(photo => photo.url),
-        cover: place.cover,
-        categories: place.categories,
+        placeId: id,
+        title,
+        description,
+        location: arrayToString(location.coordinates),
+        photos: photos.map(photo => photo.url),
+        cover,
+        categories,
     }
 
     const handleSubmit = async (inputs: UpdatePlaceInputs) => {
@@ -43,7 +53,7 @@ export const PlaceEdit = (place: IPlace) => {
         })
 
         // exclude the current place from the response
-        const placeNearby = response.data?.filter(p => p.id !== place.id) || []
+        const placeNearby = response.data?.filter(p => p.id !== id) || []
 
         if (placeNearby.length > 0) {
             dialog.open(<PlacesNearbyWarning places={placeNearby} />)
@@ -53,7 +63,7 @@ export const PlaceEdit = (place: IPlace) => {
         try {
             await updatePlace(inputs)
             toast.success(t('success.updatePlace'))
-            router.push(`/places/${place.id}`)
+            router.push(`/places/${id}`)
         } catch {
             toast.error(t('common.error'))
         }

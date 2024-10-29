@@ -10,16 +10,21 @@ import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { arrayToLngLat } from '@/utils/helpers/maps'
-import { IPlacePopupInfo } from '@/utils/types/map'
 
 import { MapPopupPlaceActions } from './map-popup-place-actions'
 
 type MapPopupPlaceProps = {
     mapRef: RefObject<HTMLDivElement>
-    place: IPlacePopupInfo
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    isSaved: boolean
+    coordinates: number[]
 }
 
-export const MapPopupPlace = ({ mapRef, place }: MapPopupPlaceProps) => {
+export const MapPopupPlace = ({ mapRef, ...place }: MapPopupPlaceProps) => {
     const dispatch = useAppDispatch()
     const lngLat = arrayToLngLat(place.coordinates)
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { RefObject, useRef } from 'react'
-import { MapRef, Marker, Popup } from 'react-map-gl/maplibre'
+import { Marker, Popup } from 'react-map-gl/maplibre'
 
 import { useTranslations } from 'next-intl'
 import { useOnClickOutside } from 'usehooks-ts'
@@ -19,14 +19,14 @@ import { setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around.api'
 import { LngLatToString } from '@/utils/helpers/maps'
-import { ILocationPopupInfo } from '@/utils/types/map'
+import { LngLat } from '@/utils/types/geo'
 
 type MapPopupLocationProps = {
     mapRef: RefObject<HTMLDivElement>
     activeUserId?: number
     isAuth: boolean
     isEmailVerified?: boolean
-    coordinates: ILocationPopupInfo['coordinates']
+    coordinates: LngLat
 }
 
 export const MapPopupLocation = ({

@@ -1,9 +1,12 @@
 import { getLocale } from 'next-intl/server'
 
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
-import { IPlace } from '@/utils/types/place'
 
-export const PlaceHeaderCategories = async ({ categories }: IPlace) => {
+type PlaceHeaderCategoriesProps = {
+    categories: number[]
+}
+
+export const PlaceHeaderCategories = async ({ categories }: PlaceHeaderCategoriesProps) => {
     const locale = await getLocale()
 
     return (
