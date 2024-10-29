@@ -26,8 +26,7 @@ export const EmailVerificationWithAuth = async () => {
     const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
 
     if (isEmailVerified === false) {
-        const userId = session?.getAccessTokenPayload().userId
-        return <EmailVerification userId={userId} />
+        return <EmailVerification />
     }
 
     return null

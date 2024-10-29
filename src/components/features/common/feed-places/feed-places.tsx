@@ -7,6 +7,7 @@ type FeedPlacesProps = {
         cover: string | null
         avgRating: number | null
         reviewsCount: number
+        distance?: number
     }[]
 }
 

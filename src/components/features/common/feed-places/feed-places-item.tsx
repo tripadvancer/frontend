@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import Link from 'next/link'
 
+import { Distance } from '@/components/ui/distance'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { Rating } from '@/components/ui/rating'
 
@@ -13,9 +14,10 @@ type FeedPlacesItemProps = {
     cover: string | null
     avgRating: number | null
     reviewsCount: number
+    distance?: number
 }
 
-export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount }: FeedPlacesItemProps) => {
+export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount, distance }: FeedPlacesItemProps) => {
     const t = useTranslations()
 
     return (
@@ -33,8 +35,14 @@ export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount }: Fe
                     <div className="h7 line-clamp-4 break-words">{title}</div>
                     <div>
                         <Rating value={avgRating ?? 0} size={16} />
-                        <div className="text-small text-black-40">
-                            {t('common.reviewsCounter', { count: reviewsCount ?? 0 })}
+                        <div className="flex flex-nowrap gap-x-2 text-small text-black-40">
+                            <div>{t('common.reviewsCounter', { count: reviewsCount ?? 0 })}</div>
+                            {distance && (
+                                <>
+                                    <div>•</div>
+                                    <Distance distance={distance} />
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>

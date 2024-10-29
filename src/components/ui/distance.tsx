@@ -13,7 +13,7 @@ export const Distance = ({ distance, className }: DistanceProps) => {
     const getDistance = (distance: number) => {
         return distance < 1000
             ? t('common.distance.m', { distance })
-            : t('common.distance.km', { distance: (distance / 1000).toFixed(1) })
+            : t('common.distance.km', { distance: (distance / 1000).toFixed(1).replace(/\.0$/, '') })
     }
 
     return <div className={className}>{getDistance(distance)}</div>

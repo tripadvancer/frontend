@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { useDialog } from '@/providers/dialog-provider'
 
-export const EmailVerification = ({ userId }: { userId: number }) => {
+export const EmailVerification = () => {
     const t = useTranslations()
     const dialog = useDialog()
 
@@ -14,7 +14,7 @@ export const EmailVerification = ({ userId }: { userId: number }) => {
             <div className="container text-center">
                 {t.rich('banner.emailVerificationNotice.text', {
                     verifiedLink: verifiedLink => (
-                        <span className="link-orange" onClick={() => dialog.open(<ClaimEmailError userId={userId} />)}>
+                        <span className="link-orange" onClick={() => dialog.open(<ClaimEmailError />)}>
                             {verifiedLink}
                         </span>
                     ),

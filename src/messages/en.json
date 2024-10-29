@@ -341,8 +341,7 @@
         "claimEmailError": {
             "title": "Your email is not verified",
             "text": "Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.",
-            "resendVerificationEmail": "Resend verification email",
-            "goToSettings": "Or change your email. <settingsLink>Settings</settingsLink>"
+            "resendVerificationEmail": "Resend verification email"
         },
         "verifyEmail": {
             "loading": "Verifying your email...",
