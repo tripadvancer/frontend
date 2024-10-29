@@ -7,10 +7,11 @@ import { useRouter } from 'next/navigation'
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places-api'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { placesAPI } from '@/redux/services/places.api'
+import { UpdatePlaceInputs } from '@/redux/services/places.types'
 import { arrayToString, stringToLngLat } from '@/utils/helpers/maps'
-import { IPlace, UpdatePlaceInputs } from '@/utils/types/place'
+import { IPlace } from '@/utils/types/place'
 
 import { PlaceForm } from './place-form'
 

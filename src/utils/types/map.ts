@@ -1,12 +1,12 @@
-import { ILocationPreview, IPlace, IPlaceMeta } from '@/utils/types/place'
+import { ILocationPreview } from '@/utils/types/place'
 
 export type IPlacePopupInfo = {
-    id: IPlace['id']
-    title: IPlace['title']
-    cover: IPlace['cover']
-    avgRating: IPlace['avgRating']
-    reviewsCount: IPlace['reviewsCount']
-    isSaved: IPlaceMeta['isSaved']
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    isSaved: boolean
     coordinates: number[]
 }
 

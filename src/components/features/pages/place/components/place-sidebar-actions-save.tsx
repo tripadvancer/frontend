@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 
 import { BookmarkFillIcon24, BookmarkIcon24 } from '@/components/ui/icons'
-import { placesAPI } from '@/redux/services/places-api'
+import { placesAPI } from '@/redux/services/places.api'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
 import { IPlace } from '@/utils/types/place'
 

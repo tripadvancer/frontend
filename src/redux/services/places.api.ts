@@ -1,17 +1,17 @@
-import { LngLatBounds } from 'react-map-gl/maplibre'
-
 import { api } from '@/redux/services/api'
-import { GeoJsonCollection } from '@/utils/types/geo'
-import { CreatePlaceInputs, IPlaceMeta, IPlacePreview, UpdatePlaceInputs } from '@/utils/types/place'
-
-interface GetPlacesParams {
-    mapBounds: LngLatBounds | undefined
-    selectedCategories: number[]
-}
+import {
+    CreatePlaceInputs,
+    CreatePlaceResponse,
+    GetPlaceMetaByIdResponse,
+    GetPlacesParams,
+    GetPlacesResponse,
+    ImageUploadResponse,
+    UpdatePlaceInputs,
+} from '@/redux/services/places.types'
 
 export const placesAPI = api.injectEndpoints({
     endpoints: build => ({
-        getPlaces: build.query<GeoJsonCollection<IPlacePreview>, GetPlacesParams>({
+        getPlaces: build.query<GetPlacesResponse, GetPlacesParams>({
             query: params => ({
                 url: 'places',
                 params: {
@@ -25,12 +25,12 @@ export const placesAPI = api.injectEndpoints({
             providesTags: ['Places'],
         }),
 
-        getPlaceMetaById: build.query<IPlaceMeta, number>({
+        getPlaceMetaById: build.query<GetPlaceMetaByIdResponse, number>({
             query: placeId => `places/${placeId}/meta`,
             providesTags: (result, error, placeId) => [{ type: 'PlacesMeta', id: placeId }],
         }),
 
-        createPlace: build.mutation<{ id: number }, CreatePlaceInputs>({
+        createPlace: build.mutation<CreatePlaceResponse, CreatePlaceInputs>({
             query: inputs => ({
                 url: 'places',
                 method: 'POST',
@@ -53,7 +53,7 @@ export const placesAPI = api.injectEndpoints({
             }),
         }),
 
-        placeCoverUpload: build.mutation<{ url: string }, FormData>({
+        placeCoverUpload: build.mutation<ImageUploadResponse, FormData>({
             query: formData => ({
                 url: 'images/place-cover',
                 method: 'POST',
@@ -61,7 +61,7 @@ export const placesAPI = api.injectEndpoints({
             }),
         }),
 
-        placePhotoUpload: build.mutation<{ url: string }, FormData>({
+        placePhotoUpload: build.mutation<ImageUploadResponse, FormData>({
             query: formData => ({
                 url: 'images/place-photo',
                 method: 'POST',

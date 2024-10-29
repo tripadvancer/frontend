@@ -6,9 +6,9 @@ import * as Yup from 'yup'
 
 import Image from 'next/image'
 
+import { CreatePlaceInputs, UpdatePlaceInputs } from '@/redux/services/places.types'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
-import { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/types/place'
 
 import { PlaceFormErrorMesage } from './components/place-form-error-mesage'
 import { PlaceFormInputCategories } from './components/place-form-input-categories'

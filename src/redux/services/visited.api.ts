@@ -1,5 +1,5 @@
 import { api } from '@/redux/services/api'
-import { placesAPI } from '@/redux/services/places-api'
+import { placesAPI } from '@/redux/services/places.api'
 import { GetVisitedResponse } from '@/redux/services/visited.types'
 
 export const visitedAPI = api.injectEndpoints({

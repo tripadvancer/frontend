@@ -1,4 +1,3 @@
-import { IReview } from '@/utils/types/common'
 import { GeoJsonPoint, LngLat } from '@/utils/types/geo'
 
 export type IPlace = {
@@ -20,64 +19,39 @@ export type IPlace = {
     createdAt: Date
 }
 
-export type IPlaceMeta = {
-    ownReview: IReview | null
-    isSaved: boolean
-    isVisited: boolean
-}
-
 export type IPlacePreview = {
-    id: IPlace['id']
-    title: IPlace['title']
-    cover: IPlace['cover']
-    avgRating: IPlace['avgRating']
-    reviewsCount: IPlace['reviewsCount']
-    countryCode: IPlace['countryCode']
-    isVisited: IPlaceMeta['isVisited']
-    isSaved: IPlaceMeta['isSaved']
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    countryCode: string | null
+    isVisited: boolean
+    isSaved: boolean
     coordinates: number[]
 }
 
 export type IRandomPlace = {
-    id: IPlace['id']
-    title: IPlace['title']
-    description: IPlace['description']
-    cover: IPlace['cover']
-    avgRating: IPlace['avgRating']
-    reviewsCount: IPlace['reviewsCount']
-    countryCode: IPlace['countryCode']
-    isSaved: IPlaceMeta['isSaved']
+    id: number
+    title: string
+    description: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    countryCode: string | null
+    isSaved: boolean
     coordinates: number[]
 }
 
 export type IPlaceNearby = {
-    id: IPlace['id']
-    title: IPlace['title']
-    cover: IPlace['cover']
-    avgRating: IPlace['avgRating']
-    reviewsCount: IPlace['reviewsCount']
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
     distance: number
 }
 
 export type ILocationPreview = {
     coordinates: LngLat
-}
-
-export type CreatePlaceInputs = {
-    title: IPlace['title']
-    description: IPlace['description']
-    cover: IPlace['cover']
-    categories: IPlace['categories']
-    location: string
-    photos: string[]
-}
-
-export type UpdatePlaceInputs = {
-    title: IPlace['title']
-    description: IPlace['description']
-    cover: IPlace['cover']
-    categories: IPlace['categories']
-    placeId: number
-    location: string
-    photos: string[]
 }

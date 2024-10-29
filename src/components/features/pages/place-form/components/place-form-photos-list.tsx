@@ -8,7 +8,7 @@ import Lightbox from 'yet-another-react-lightbox'
 import { PhotoPreview } from '@/components/ui/photo-preview'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places-api'
+import { placesAPI } from '@/redux/services/places.api'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 

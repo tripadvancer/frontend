@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places-api'
+import { placesAPI } from '@/redux/services/places.api'
 
 type PlaceFormInputCoverProps = {
     value: string | null
