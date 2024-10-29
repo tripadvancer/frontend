@@ -8,7 +8,7 @@ import { PinLocationIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { placesAPI } from '@/redux/services/places-api'
-import { visitedAPI } from '@/redux/services/visited-api'
+import { visitedAPI } from '@/redux/services/visited.api'
 import { IPlace } from '@/utils/types/place'
 
 export const PlaceSidebarActionsCheckIn = ({ place, isAuth }: { place: IPlace; isAuth: boolean }) => {
