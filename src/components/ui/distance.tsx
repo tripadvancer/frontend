@@ -2,7 +2,12 @@
 
 import { useTranslations } from 'next-intl'
 
-export const Distance = ({ distance, className }: { distance: number; className?: string }) => {
+type DistanceProps = {
+    distance: number
+    className?: string
+}
+
+export const Distance = ({ distance, className }: DistanceProps) => {
     const t = useTranslations()
 
     const getDistance = (distance: number) => {

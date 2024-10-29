@@ -1,6 +1,6 @@
 'use client'
 
-import { CSSProperties, Ref, forwardRef, useState } from 'react'
+import { Ref, forwardRef, useState } from 'react'
 
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
