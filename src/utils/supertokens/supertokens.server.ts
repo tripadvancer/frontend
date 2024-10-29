@@ -1,7 +1,7 @@
 import SuperTokens from 'supertokens-node'
 import EmailVerification from 'supertokens-node/recipe/emailverification'
 import Session from 'supertokens-node/recipe/session'
-import type { TypeInput } from 'supertokens-node/types'
+import { TypeInput } from 'supertokens-node/types'
 
 import { supertokensConfig } from './supertokens.config'
 

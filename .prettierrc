@@ -11,15 +11,7 @@
     "bracketSpacing": true,
     "bracketSameLine": false,
     "arrowParens": "avoid",
-    "importOrder": [
-        "^react((?!\\.css).)*$",
-        "<THIRD_PARTY_MODULES>",
-        "next/(.*)",
-        "^@/utils/types/(.*)",
-        "^@/(.*)$",
-        "(.*).css",
-        "^[./]"
-    ],
+    "importOrder": ["^react((?!\\.css).)*$", "<THIRD_PARTY_MODULES>", "next/(.*)", "^@/(.*)$", "(.*).css", "^[./]"],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true
 }

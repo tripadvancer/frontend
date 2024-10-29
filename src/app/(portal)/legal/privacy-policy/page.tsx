@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 export const metadata: Metadata = {
     title: 'Privacy Policy',

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { Place } from '@/components/features/pages/place/place'
 import { getCountryByCode } from '@/services/countries'

@@ -4,8 +4,6 @@ import { useTranslations } from 'next-intl'
 
 import { useRouter } from 'next/navigation'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { PinIcon24 } from '@/components/ui/icons'
 import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
@@ -14,6 +12,7 @@ import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places-api'
 import { AppModes, WidgetModes, WidgetTabs } from '@/utils/enums'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceSidebarActionsShowOnMap = ({ place, isAuth }: { place: IPlace; isAuth: boolean }) => {
     const t = useTranslations()

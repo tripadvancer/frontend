@@ -1,17 +1,15 @@
 import Image from 'next/image'
 
-import type { IUserInfo } from '@/utils/types/user'
-
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
 type AvatarProps = {
-    avatar: IUserInfo['avatar']
-    name: IUserInfo['name']
+    name: string
+    avatar: string | null
     size: number
 }
 
-export const Avatar = ({ avatar, name, size }: AvatarProps) => {
+export const Avatar = ({ name, avatar, size }: AvatarProps) => {
     if (avatar) {
         return (
             <Image

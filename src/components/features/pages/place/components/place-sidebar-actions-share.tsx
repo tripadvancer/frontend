@@ -2,10 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlace, IPlacePreview } from '@/utils/types/place'
-
 import { ShareIcon24 } from '@/components/ui/icons'
 import { useSharePlace } from '@/utils/hooks/use-share-place'
+import { IPlace, IPlacePreview } from '@/utils/types/place'
 
 export const PlaceSidebarActionsShare = ({ place }: { place: IPlace }) => {
     const t = useTranslations()

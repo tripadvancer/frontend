@@ -5,7 +5,7 @@ import { Layer, Source, useMap } from 'react-map-gl/maplibre'
 
 import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { listAPI } from '@/redux/services/list-api'
+import { listAPI } from '@/redux/services/list.api'
 import { arrayToLngLat, getBoundsFromCoordinates, getMapFlyToOptions } from '@/utils/helpers/maps'
 
 import { placesLayer } from './map-layers'

@@ -1,6 +1,5 @@
-import type { IUser } from '@/utils/types/user'
-
 import { Avatar } from '@/components/ui/avatar'
+import { IUser } from '@/utils/types/user'
 
 export const UserName = ({ user }: { user: IUser }) => {
     return (

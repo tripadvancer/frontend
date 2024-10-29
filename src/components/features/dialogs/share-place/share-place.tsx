@@ -5,12 +5,11 @@ import { FacebookShareButton, TwitterShareButton } from 'react-share'
 import { useLocale, useTranslations } from 'next-intl'
 import { useCopyToClipboard } from 'usehooks-ts'
 
-import type { IPlace, IPlacePreview } from '@/utils/types/place'
-
 import { FormButton } from '@/components/ui/form-button'
 import { CopyIcon24, FacebookIcon24, XIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { getCountryByCode } from '@/services/countries'
+import { IPlace, IPlacePreview } from '@/utils/types/place'
 
 export const SharePlace = (place: IPlace | IPlacePreview) => {
     const t = useTranslations()

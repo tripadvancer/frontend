@@ -2,11 +2,13 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { Rating } from '@/components/ui/rating'
+import { IPlace } from '@/utils/types/place'
 
-type PlacePreviewRatingProps = Pick<IPlace, 'avgRating' | 'reviewsCount'>
+type PlacePreviewRatingProps = {
+    avgRating: IPlace['avgRating']
+    reviewsCount: IPlace['reviewsCount']
+}
 
 export const PlacePreviewRating = (place: PlacePreviewRatingProps) => {
     const t = useTranslations()

@@ -2,10 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { LngLat } from '@/utils/types/geo'
-
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
+import { LngLat } from '@/utils/types/geo'
 
 import { ChooseNavigationAppItem } from './choose-navigation-app-item'
 

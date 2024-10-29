@@ -2,11 +2,10 @@
 
 import Link from 'next/link'
 
-import type { IRandomPlace } from '@/utils/types/place'
-
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { ImageVariants } from '@/utils/enums'
+import { IRandomPlace } from '@/utils/types/place'
 
 import { WidgetRandomPlaceActions } from './widget-random-place-actions'
 

@@ -2,7 +2,7 @@
 
 import classNames from 'classnames'
 
-import type { IReview } from '@/utils/types/review'
+import { IReview } from '@/utils/types/common'
 
 import { ReviewActions } from './components/review-actions'
 import { ReviewPhotosList } from './components/review-photos-list'

@@ -10,7 +10,7 @@ import { ConfirmationMini } from '@/components/ui/confirmation-mini'
 import { FormFileInput } from '@/components/ui/form-file-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user-api'
+import { userAPI } from '@/redux/services/user.api'
 
 const maxFileSize = validationConfig.common.maxFileSize
 

@@ -9,8 +9,6 @@ import { useOnClickOutside } from 'usehooks-ts'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-import type { ILocationPopupInfo } from '@/utils/types/map'
-
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
@@ -21,6 +19,7 @@ import { setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around-api'
 import { LngLatToString } from '@/utils/helpers/maps'
+import { ILocationPopupInfo } from '@/utils/types/map'
 
 type MapPopupLocationProps = {
     mapRef: RefObject<HTMLDivElement>

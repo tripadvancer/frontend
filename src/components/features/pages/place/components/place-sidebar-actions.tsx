@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import type { IPlace } from '@/utils/types/place'
+import { IPlace } from '@/utils/types/place'
 
 import { PlaceSidebarActionsCheckIn } from './place-sidebar-actions-check-in'
 import { PlaceSidebarActionsComplain } from './place-sidebar-actions-complain'

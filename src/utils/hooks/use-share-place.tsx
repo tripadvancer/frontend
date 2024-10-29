@@ -2,11 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlace, IPlacePreview } from '@/utils/types/place'
-
 import { SharePlace } from '@/components/features/dialogs/share-place/share-place'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
+import { IPlace, IPlacePreview } from '@/utils/types/place'
 
 interface useSharePlaceInterface {
     sharePlace: () => void

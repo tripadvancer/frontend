@@ -4,12 +4,11 @@ import { getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { Distance } from '@/components/ui/distance'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { getPlacesAround } from '@/services/places'
 import { arrayToLngLat } from '@/utils/helpers/maps'
+import { IPlace } from '@/utils/types/place'
 
 import { PlaceSidebarNearbySkeleton } from './place-sidebar-nearby-skeleton'
 

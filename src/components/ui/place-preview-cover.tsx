@@ -1,13 +1,14 @@
 import classNames from 'classnames'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { ImageStub } from '@/components/ui/image-stub'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
+import { IPlace } from '@/utils/types/place'
 
-type PlacePreviewCoverProps = Pick<IPlace, 'title' | 'cover'> & {
+type PlacePreviewCoverProps = {
+    title: IPlace['title']
+    cover: IPlace['cover']
     size: number
     imageVariant?: ImageVariants
     className?: string

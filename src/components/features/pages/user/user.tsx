@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import type { IUser } from '@/utils/types/user'
+import { IUser } from '@/utils/types/user'
 
 import { UserName } from './components/user-name'
 import { UserNavigation } from './components/user-navigation'

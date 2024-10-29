@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { UserSettings } from '@/components/features/pages/user-settings/user-settings'
 import { getUserByUsername } from '@/services/users'
@@ -44,5 +44,5 @@ export default async function UserSettingsPage(props: { params: Params }) {
         return notFound()
     }
 
-    return <UserSettings user={user} />
+    return <UserSettings name={user.name} info={user.info} avatar={user.avatar} social={user.social} />
 }

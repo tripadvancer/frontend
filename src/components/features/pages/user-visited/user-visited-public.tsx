@@ -1,6 +1,5 @@
-import type { IUser } from '@/utils/types/user'
-
 import { getUserVisitedCountries } from '@/services/users'
+import { IUser } from '@/utils/types/user'
 
 import { UserVisitedCountriesFeed } from './components/user-visited-countries-feed'
 import { UserVisitedMap } from './components/user-visited-map'

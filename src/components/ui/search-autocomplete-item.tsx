@@ -1,10 +1,9 @@
 import classNames from 'classnames'
 
-import type { ICountryDict } from '@/utils/types/country'
-import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
-import type { ISearchItem } from '@/utils/types/search'
-
 import { GlobeIcon16, PinIcon16, PointIcon16 } from '@/components/ui/icons'
+import { ICountryDict } from '@/utils/types/country'
+import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { ISearchItem } from '@/utils/types/search'
 
 type SearchAutocompleteItemProps = {
     item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>

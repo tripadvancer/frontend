@@ -1,8 +1,8 @@
 import { cookies } from 'next/headers'
 
-import type { IUserInfo, IUserSettings } from '@/utils/types/user'
+import { GetUserInfoResponse, GetUserSettingsResponse } from '@/services/user.types'
 
-export async function getUserInfo(): Promise<IUserInfo> {
+export async function getUserInfo(): Promise<GetUserInfoResponse> {
     const cookieStore = await cookies()
     const accessToken = cookieStore.get('sAccessToken')?.value
     const url = process.env.NEXT_PUBLIC_API_URL + '/user'
@@ -22,7 +22,7 @@ export async function getUserInfo(): Promise<IUserInfo> {
     return res.json()
 }
 
-export async function getUserSettings(): Promise<IUserSettings> {
+export async function getUserSettings(): Promise<GetUserSettingsResponse> {
     const cookieStore = await cookies()
     const accessToken = cookieStore.get('sAccessToken')?.value
     const url = process.env.NEXT_PUBLIC_API_URL + '/user/settings'

@@ -2,11 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { CreateListInputs } from '@/utils/types/list'
-
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { listAPI } from '@/redux/services/list-api'
+import { listAPI } from '@/redux/services/list.api'
+import { CreateListInputs } from '@/redux/services/list.types'
 
 import { ListForm } from './list-form'
 

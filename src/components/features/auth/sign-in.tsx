@@ -9,13 +9,12 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import type { SignInInputs } from '@/utils/types/auth'
-
 import { Devider } from '@/components/ui/devider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
+import { SignInInputs } from '@/utils/types/auth'
 
 import { ForgotPassword } from './forgot-password'
 import { SignInReject } from './sign-in-reject'

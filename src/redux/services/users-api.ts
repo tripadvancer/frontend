@@ -1,5 +1,5 @@
-import type { PaginatedResponse } from '@/utils/types/common'
-import type { IPlacePreview } from '@/utils/types/place'
+import { PaginatedResponse } from '@/utils/types/common'
+import { IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
 

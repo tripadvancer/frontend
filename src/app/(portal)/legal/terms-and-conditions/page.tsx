@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { ExternalLink } from '@/components/ui/external-link'
 

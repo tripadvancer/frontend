@@ -1,8 +1,7 @@
-import type { ICountryDict } from '@/utils/types/country'
-import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
-import type { ISearchItem, ISearchResult } from '@/utils/types/search'
-
 import { getCountryByCode } from '@/services/countries'
+import { ICountryDict } from '@/utils/types/country'
+import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { ISearchItem, ISearchResult } from '@/utils/types/search'
 
 export const transformSearchCoordinates = (data: ISearchResult): ISearchItem<ILocationPreview>[] => {
     return data.coordinates.map(coordinate => ({ ...coordinate }))

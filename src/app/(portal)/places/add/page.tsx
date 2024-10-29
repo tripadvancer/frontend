@@ -1,7 +1,7 @@
 import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
 
 import { notFound } from 'next/navigation'
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { PlaceAdd } from '@/components/features/pages/place-form/place-add'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'

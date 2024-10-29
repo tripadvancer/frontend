@@ -2,17 +2,17 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlace, IPlaceMeta } from '@/utils/types/place'
-
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
 import { FormButton } from '@/components/ui/form-button'
 import { BookmarkFillIcon16, BookmarkIcon16, MoreIcon16, PinIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
+import { IPlace, IPlaceMeta } from '@/utils/types/place'
 
-// prettier-ignore
-type MapPopupPlaceActionsProps = Pick<IPlace, 'id'> & Pick<IPlaceMeta, 'isSaved'> & {
+type MapPopupPlaceActionsProps = {
+    id: number
+    isSaved: boolean
     coordinates: number[]
 }
 

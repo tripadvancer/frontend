@@ -1,12 +1,18 @@
-import type { PaginatedResponse } from '@/utils/types/common'
-import type { CreateReviewInputs, DeleteReviewInputs, IReview, UpdateReviewInputs } from '@/utils/types/review'
-
-import { api } from './api'
-import { placesAPI } from './places-api'
+import { api } from '@/redux/services/api'
+import { placesAPI } from '@/redux/services/places-api'
+import {
+    CreateReviewInputs,
+    CreateReviewResponse,
+    DeleteReviewInputs,
+    GetReviewsByPlaceIdParams,
+    GetReviewsByUserIdParams,
+    GetReviewsResponse,
+    UpdateReviewInputs,
+} from '@/redux/services/reviews.types'
 
 export const reviewsAPI = api.injectEndpoints({
     endpoints: build => ({
-        getReviewsByPlaceId: build.query<PaginatedResponse<IReview>, { placeId: number; cursor?: number }>({
+        getReviewsByPlaceId: build.query<GetReviewsResponse, GetReviewsByPlaceIdParams>({
             query: ({ placeId, cursor }) => `reviews?place_id=${placeId}${cursor ? `&cursor=${cursor}` : ''}`,
             serializeQueryArgs: ({ endpointName }) => {
                 return endpointName
@@ -29,7 +35,7 @@ export const reviewsAPI = api.injectEndpoints({
             providesTags: (result, error, { placeId }) => [{ type: 'PlaceReviews', id: placeId }],
         }),
 
-        getReviewsByUserId: build.query<PaginatedResponse<IReview>, { userId: number; cursor?: number }>({
+        getReviewsByUserId: build.query<GetReviewsResponse, GetReviewsByUserIdParams>({
             query: ({ userId, cursor }) => `reviews?user_id=${userId}${cursor ? `&cursor=${cursor}` : ''}`,
             serializeQueryArgs: ({ endpointName }) => {
                 return endpointName
@@ -52,7 +58,7 @@ export const reviewsAPI = api.injectEndpoints({
             providesTags: (result, error, { userId }) => [{ type: 'UserReviews', id: userId }],
         }),
 
-        createReview: build.mutation<IReview, CreateReviewInputs>({
+        createReview: build.mutation<CreateReviewResponse, CreateReviewInputs>({
             query: inputs => ({
                 url: 'reviews',
                 method: 'POST',

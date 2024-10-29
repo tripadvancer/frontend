@@ -2,11 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { BookmarkFillIcon24, BookmarkIcon24 } from '@/components/ui/icons'
 import { placesAPI } from '@/redux/services/places-api'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceSidebarActionsSave = ({ place, isAuth }: { place: IPlace; isAuth: boolean }) => {
     const t = useTranslations()

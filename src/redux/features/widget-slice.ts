@@ -1,9 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import type { IList } from '@/utils/types/list'
-
-import type { RootState } from '@/redux/store'
+import { RootState } from '@/redux/store'
 import { WidgetModes, WidgetTabs } from '@/utils/enums'
+import { IList } from '@/utils/types/common'
 
 interface WidgetState {
     mode: WidgetModes

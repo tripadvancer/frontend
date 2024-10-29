@@ -7,14 +7,13 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import type { ChangeUserPasswordInputs } from '@/utils/types/user'
-
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user-api'
+import { userAPI } from '@/redux/services/user.api'
+import { ChangeUserPasswordInputs } from '@/redux/services/user.types'
 
 const userPasswordMinLength = validationConfig.user.password.minLength
 

@@ -1,9 +1,8 @@
 import { date } from 'yup'
 
-import type { ICountryDict } from '@/utils/types/country'
-import type { ISearchItem, ISearchResult, SearchInputs } from '@/utils/types/search'
-
 import { сountriesDictionary } from '@/utils/dictionaries/countries'
+import { ICountryDict } from '@/utils/types/country'
+import { ISearchItem, ISearchResult, SearchInputs } from '@/utils/types/search'
 
 import { api } from './api'
 

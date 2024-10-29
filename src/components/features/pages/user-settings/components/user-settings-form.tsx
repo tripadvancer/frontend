@@ -6,15 +6,14 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import type { IUser, IUserSettings, UpdateUserDataInputs } from '@/utils/types/user'
-
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user-api'
-import { SettingsCategories, UserPrivacySettings } from '@/utils/enums'
+import { userAPI } from '@/redux/services/user.api'
+import { UpdateUserDataInputs } from '@/redux/services/user.types'
+import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
 import { UserSettingsFormPrivacy } from './user-settings-form-privacy'
@@ -25,7 +24,17 @@ const userNameMaxLength = validationConfig.user.name.maxLength
 const userInfoMaxLength = validationConfig.user.info.maxLength
 const userSocialMaxLength = validationConfig.user.social.maxLength
 
-export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser & IUserSettings) => {
+type UserSettingsFormProps = {
+    name: string
+    info: string
+    avatar: string | null
+    social: Partial<Record<UserSocialApps, string>>
+    settings: {
+        [SettingsCategories.PRIVACY]?: Partial<Record<UserPrivacySettings, boolean>>
+    }
+}
+
+export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserSettingsFormProps) => {
     const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
@@ -37,7 +46,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, privacy }: IUser 
         info: info || '',
         settings: {
             [SettingsCategories.PRIVACY]: {
-                [UserPrivacySettings.SHOW_MY_MAP]: privacy?.show_my_map || false,
+                [UserPrivacySettings.SHOW_MY_MAP]: settings.privacy?.show_my_map || false,
             },
         },
         social: social || {},

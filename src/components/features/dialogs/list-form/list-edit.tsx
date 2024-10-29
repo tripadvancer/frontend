@@ -2,13 +2,13 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IList, UpdateListInputs } from '@/utils/types/list'
-
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { listAPI } from '@/redux/services/list-api'
+import { listAPI } from '@/redux/services/list.api'
+import { UpdateListInputs } from '@/redux/services/list.types'
+import { IList } from '@/utils/types/common'
 
 import { ListForm } from './list-form'
 

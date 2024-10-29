@@ -6,15 +6,15 @@ import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
-import type { CreateListInputs, IList, UpdatePlaceInListsInputs } from '@/utils/types/list'
-
 import { FormButton } from '@/components/ui/form-button'
 import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { listAPI } from '@/redux/services/list-api'
+import { listAPI } from '@/redux/services/list.api'
+import { CreateListInputs, UpdatePlaceInListsInputs } from '@/redux/services/list.types'
+import { IList } from '@/utils/types/common'
 
 type SavePlaceFormProps = {
     lists: IList[]
@@ -47,7 +47,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
             .max(listNameMaxLength, t('validation.text.maxLength', { maxLength: listNameMaxLength })),
     })
 
-    const initialValues: UpdatePlaceInListsInputs & CreateListInputs = {
+    const initialValues: CreateListInputs & UpdatePlaceInListsInputs = {
         placeId,
         listIds: lists
             .filter(list => list.listToPlace.some(listToPlace => listToPlace.placeId === placeId))
@@ -61,7 +61,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
         validateOnBlur: false,
         validateOnChange: false,
         validationSchema,
-        onSubmit: async (inputs: UpdatePlaceInListsInputs & CreateListInputs) => {
+        onSubmit: async (inputs: CreateListInputs & UpdatePlaceInListsInputs) => {
             if (inputs.name) {
                 try {
                     const response = await createList({ name: inputs.name, description: inputs.description }).unwrap()

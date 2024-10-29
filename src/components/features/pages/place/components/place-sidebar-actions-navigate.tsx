@@ -2,12 +2,11 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
 import { RouteIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceSidebarActionsNavigate = ({ place }: { place: IPlace }) => {
     const t = useTranslations()

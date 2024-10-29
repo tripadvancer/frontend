@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import { Metadata } from 'next'
 import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
 
 import { notFound } from 'next/navigation'

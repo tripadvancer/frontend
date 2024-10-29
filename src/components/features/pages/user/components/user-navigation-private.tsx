@@ -1,8 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 
-import type { IUser } from '@/utils/types/user'
-
 import { Nav } from '@/components/ui/nav'
+import { IUser } from '@/utils/types/user'
 
 export const UserNavigationPrivate = async ({ user }: { user: IUser }) => {
     const t = await getTranslations()

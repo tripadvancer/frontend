@@ -5,13 +5,12 @@ import { useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
 
-import type { IPlacePopupInfo } from '@/utils/types/map'
-
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { arrayToLngLat } from '@/utils/helpers/maps'
+import { IPlacePopupInfo } from '@/utils/types/map'
 
 import { MapPopupPlaceActions } from './map-popup-place-actions'
 

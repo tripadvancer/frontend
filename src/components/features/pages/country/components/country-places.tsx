@@ -2,10 +2,9 @@
 
 import { useState } from 'react'
 
-import type { IPlacePreview } from '@/utils/types/place'
-
 import { FeedPlaces } from '@/components/features/common/feed-places/feed-places'
 import { ShowMore } from '@/components/ui/show-more'
+import { IPlacePreview } from '@/utils/types/place'
 
 const PAGINATION_LIMIT = 48
 

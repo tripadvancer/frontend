@@ -4,9 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import Link from 'next/link'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { EditIcon24 } from '@/components/ui/icons'
+import { IPlace } from '@/utils/types/place'
 
 export const PlaceSidebarActionsEdit = ({ place }: { place: IPlace }) => {
     const t = useTranslations()

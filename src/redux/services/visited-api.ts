@@ -1,5 +1,5 @@
-import type { GeoJsonCollection } from '@/utils/types/geo'
-import type { IPlacePreview } from '@/utils/types/place'
+import { GeoJsonCollection } from '@/utils/types/geo'
+import { IPlacePreview } from '@/utils/types/place'
 
 import { api } from './api'
 import { placesAPI } from './places-api'

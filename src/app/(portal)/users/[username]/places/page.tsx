@@ -1,4 +1,4 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { UserPlaces } from '@/components/features/pages/user-places/user-places'
 import { getUserByUsername } from '@/services/users'

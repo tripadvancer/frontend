@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { User } from '@/components/features/pages/user/user'
 import { getUserByUsername } from '@/services/users'

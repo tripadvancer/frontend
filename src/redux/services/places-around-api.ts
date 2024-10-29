@@ -1,4 +1,4 @@
-import type { IPlaceNearby, IRandomPlace } from '@/utils/types/place'
+import { IPlaceNearby, IRandomPlace } from '@/utils/types/place'
 
 import { api } from './api'
 

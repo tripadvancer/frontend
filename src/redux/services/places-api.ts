@@ -1,7 +1,7 @@
 import { LngLatBounds } from 'react-map-gl/maplibre'
 
-import type { GeoJsonCollection } from '@/utils/types/geo'
-import type { CreatePlaceInputs, IPlace, IPlaceMeta, IPlacePreview, UpdatePlaceInputs } from '@/utils/types/place'
+import { GeoJsonCollection } from '@/utils/types/geo'
+import { CreatePlaceInputs, IPlaceMeta, IPlacePreview, UpdatePlaceInputs } from '@/utils/types/place'
 
 import { api } from './api'
 

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import type { IPlace, IPlaceNearby, IPlacePreview } from '@/utils/types/place'
+import { IPlace, IPlaceNearby, IPlacePreview } from '@/utils/types/place'
 
 export async function getPlacesByCountryCode(
     countryCode: string,

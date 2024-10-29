@@ -1,11 +1,10 @@
-import type { LngLatBounds, ViewState } from 'react-map-gl/maplibre'
+import { LngLatBounds, ViewState } from 'react-map-gl/maplibre'
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import type { ILocationPopupInfo, IPlacePopupInfo } from '@/utils/types/map'
-
-import type { RootState } from '@/redux/store'
+import { RootState } from '@/redux/store'
 import { getDefaultViewState } from '@/utils/helpers/maps'
+import { ILocationPopupInfo, IPlacePopupInfo } from '@/utils/types/map'
 
 interface MapState {
     isFilterMapBySavedLists: boolean

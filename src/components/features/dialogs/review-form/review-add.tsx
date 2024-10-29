@@ -2,15 +2,19 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { CreateReviewInputs } from '@/utils/types/review'
-
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { reviewsAPI } from '@/redux/services/reviews-api'
+import { reviewsAPI } from '@/redux/services/reviews.api'
+import { CreateReviewInputs } from '@/redux/services/reviews.types'
 
 import { ReviewForm } from './review-form'
 
-export const ReviewAdd = ({ placeId, userId }: { placeId: number; userId: number }) => {
+type ReviewAddProps = {
+    placeId: number
+    userId: number
+}
+
+export const ReviewAdd = ({ placeId, userId }: ReviewAddProps) => {
     const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()

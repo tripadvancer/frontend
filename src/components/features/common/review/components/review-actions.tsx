@@ -1,4 +1,4 @@
-import type { IReview } from '@/utils/types/review'
+import { IReview } from '@/utils/types/common'
 
 import { ReviewActionsPrivate } from './review-actions-private'
 import { ReviewActionsPublic } from './review-actions-public'
