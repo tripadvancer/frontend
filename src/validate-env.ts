@@ -66,21 +66,24 @@ const envSchema = yup.object().shape(
 
 export default function validateEnv() {
     try {
+        envSchema.validateSync(process.env, { abortEarly: false })
+        const bold = '\x1b[1m'
         const green = '\x1b[32m'
         const reset = '\x1b[0m'
-        envSchema.validateSync(process.env, { abortEarly: false })
-        console.log(` ${green}✓${reset} Environment variables validation passed`)
+        console.log(` ${bold}${green}✓${reset} Environment variables validation passed`)
     } catch (error) {
+        const bold = '\x1b[1m'
         const red = '\x1b[31m'
         const reset = '\x1b[0m'
-        console.error(` ${red}✗${reset} Environment variables validation failed:`)
+        console.error(` ${bold}${red}✗${reset} Environment variables validation failed:`)
         if (error instanceof yup.ValidationError) {
             error.inner.forEach(err => {
                 console.error(`   - ${err.message}`)
             })
         }
         console.log('')
-        console.log('The application will now exit. Please fix the environment variables and restart the application.')
+        console.log('The application will now exit.')
+        console.log('Please update the environment variables and relaunch the application.')
         process.exit(1)
     }
 }
