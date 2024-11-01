@@ -1,24 +1,27 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
-import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { searchAPI } from '@/redux/services/search-api'
 import { transformSearchCoordinates, transformSearchLocations } from '@/utils/helpers/search'
-import { ICountryDict } from '@/utils/types/country'
 import { LngLat } from '@/utils/types/geo'
-import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { ILocationPreview } from '@/utils/types/place'
 import { ISearchItem } from '@/utils/types/search'
 
-import { WidgetPickerSearchInput } from './location-picker-search-input'
+import { LocationPickerMapSearchInput } from './location-picker-map-search-input'
 
-export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (lngLat: LngLat) => void }) => {
-    const autocompleteRef = useRef<HTMLDivElement>(null)
+type LocationPickerSearchProps = {
+    onSelect: (lngLat: LngLat) => void
+    onHide: () => void
+}
+
+export const LocationPickerMapSearch = ({ onSelect, onHide }: LocationPickerSearchProps) => {
+    const ref = useRef<HTMLDivElement>(null)
 
     const [value, setValue] = useState<string>('')
-    const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]>([])
+    const [items, setItems] = useState<ISearchItem<ILocationPreview>[]>([])
     const [isAutocompleteVisible, setIsAutocompleteVisible] = useState<boolean>(false)
 
     const [search, { data, isFetching, isSuccess }] = searchAPI.useLazySearchQuery()
@@ -45,22 +48,14 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
         setIsAutocompleteVisible(items.length > 0)
     }, [items])
 
-    useOnClickOutside(autocompleteRef, () => {
+    useOnClickOutside(ref, () => {
         setIsAutocompleteVisible(false)
     })
 
-    const handleClear = () => {
+    const handleInputClear = () => {
         setValue('')
         setItems([])
     }
-
-    const handleSelect = useCallback(
-        (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => {
-            onLocationSelect(item.coordinates)
-            setIsAutocompleteVisible(false)
-        },
-        [onLocationSelect],
-    )
 
     const handleInputClick = () => {
         if (items.length > 0) {
@@ -68,18 +63,35 @@ export const LocationPickerSearch = ({ onLocationSelect }: { onLocationSelect: (
         }
     }
 
+    const handleSelect = (item: ISearchItem<ILocationPreview>) => {
+        onSelect(item.coordinates)
+        setIsAutocompleteVisible(false)
+    }
+
     return (
-        <div className="relative">
-            <WidgetPickerSearchInput
+        <div ref={ref} className="w-full rounded-lg bg-white shadow-black sm:w-72">
+            <LocationPickerMapSearchInput
                 value={value}
                 isLoading={isFetching}
+                onHide={onHide}
                 onChange={setValue}
+                onClear={handleInputClear}
                 onClick={handleInputClick}
-                onClear={handleClear}
             />
 
             {isAutocompleteVisible && (
-                <SearchAutocomplete ref={autocompleteRef} items={items} onSelect={handleSelect} />
+                <div className="p-1">
+                    {items.map((item, index) => (
+                        <div
+                            key={`search-item-${item.title}-${index}`}
+                            className="group cursor-pointer overflow-hidden rounded-md px-2 py-1 hover:bg-black-5"
+                            onClick={() => handleSelect(item)}
+                        >
+                            <div className="line-clamp-1 break-words group-hover:text-blue-active">{item.title}</div>
+                            <div className="line-clamp-2 break-words text-black-40">{item.info}</div>
+                        </div>
+                    ))}
+                </div>
             )}
         </div>
     )

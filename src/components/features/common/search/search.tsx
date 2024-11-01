@@ -23,8 +23,7 @@ export const Search = () => {
     const t = useTranslations()
     const router = useRouter()
 
-    const inputRef = useRef<HTMLInputElement>(null)
-    const autocompleteRef = useRef<HTMLDivElement>(null)
+    const ref = useRef<HTMLDivElement>(null)
 
     const [value, setValue] = useState<string>('')
     const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]>([])
@@ -58,13 +57,19 @@ export const Search = () => {
         setIsAutocompleteVisible(false)
     })
 
-    useOnClickOutside(autocompleteRef, () => {
+    useOnClickOutside(ref, () => {
         setIsAutocompleteVisible(false)
     })
 
-    const handleClear = () => {
+    const handleInputClear = () => {
         setValue('')
         setItems([])
+    }
+
+    const handleInputClick = () => {
+        if (items.length > 0) {
+            setIsAutocompleteVisible(true)
+        }
     }
 
     const handleSelect = useCallback(
@@ -80,31 +85,20 @@ export const Search = () => {
         [router],
     )
 
-    const handleClick = () => {
-        if (items.length > 0) {
-            setIsAutocompleteVisible(true)
-        } else {
-            inputRef.current?.focus()
-        }
-    }
-
     return (
-        <div className="m-auto mb-16 flex gap-x-2 sm:w-2/3">
+        <div ref={ref} className="m-auto mb-16 flex gap-x-2 sm:w-2/3">
             <div className="relative flex-1">
                 <SearchInput
-                    ref={inputRef}
                     value={value}
                     isLoading={isFetching}
                     onChange={setValue}
-                    onClick={handleClick}
-                    onClear={handleClear}
+                    onClick={handleInputClick}
+                    onClear={handleInputClear}
                 />
 
-                {isAutocompleteVisible && (
-                    <SearchAutocomplete ref={autocompleteRef} items={items} onSelect={handleSelect} />
-                )}
+                {isAutocompleteVisible && <SearchAutocomplete items={items} onSelect={handleSelect} />}
             </div>
-            <FormButton className="hidden sm:block" onClick={handleClick}>
+            <FormButton className="hidden sm:block" onClick={handleInputClear}>
                 {t('component.search.button')}
             </FormButton>
         </div>

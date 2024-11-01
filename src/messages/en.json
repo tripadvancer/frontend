@@ -58,6 +58,9 @@
         },
         "username": {
             "invalid": "Username can only contain letters, numbers, underscores, hyphens and dots"
+        },
+        "location": {
+            "invalid": "Coordinates must be in format: 'lat, lng', e.g. '50.4501, 30.5234'"
         }
     },
     "success": {
@@ -244,7 +247,9 @@
         },
         "locationPicker": {
             "title": "Pick place location",
-            "placeholder": "Address or coordinates"
+            "toggleMethodManually": "Enter coordinates manually",
+            "toggleMethodOnMap": "Select a location on the map",
+            "placeholder": "Enter coordinates"
         },
         "placesNearbyWarning": {
             "title": "Attention",

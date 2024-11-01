@@ -39,7 +39,7 @@ export const UserVisitedMap = ({ visitedCountries }: UserVisitedMapProps) => {
                 paint: {
                     'fill-color': ['match', ['get', 'iso_a2'], visited, '#ff9733', '#fff2e6'],
                     'fill-opacity': 1,
-                    'fill-outline-color': '#000',
+                    'fill-outline-color': '#46a6ff',
                 },
             })
         },
