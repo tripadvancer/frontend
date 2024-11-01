@@ -1,6 +1,6 @@
 'use client'
 
-import { Ref, forwardRef } from 'react'
+import { ChangeEvent } from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -15,8 +15,12 @@ type SearchInputProps = {
     onClear: () => void
 }
 
-const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement>) => {
+export const SearchInput = (props: SearchInputProps) => {
     const t = useTranslations()
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        props.onChange(e.target.value)
+    }
 
     return (
         <div className="relative">
@@ -25,7 +29,6 @@ const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement
             </div>
 
             <input
-                ref={ref}
                 type="text"
                 name="search"
                 value={props.value}
@@ -33,7 +36,7 @@ const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement
                 className="hover-animated h-10 w-full rounded-lg border border-black-15 bg-white px-10 placeholder:text-black-40 focus:border-black-40 focus:outline-none disabled:cursor-no-drop"
                 placeholder={t('component.search.placeholder')}
                 onClick={props.onClick}
-                onChange={event => props.onChange(event.target.value)}
+                onChange={handleChange}
             />
 
             {props.value.length > 0 && (
@@ -47,5 +50,3 @@ const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement
         </div>
     )
 }
-
-export const SearchInput = forwardRef(SearchInputComponent)

@@ -16,7 +16,6 @@ import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { transformFullSearchResult } from '@/utils/helpers/search'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { ICountryDict } from '@/utils/types/country'
-import { LngLat } from '@/utils/types/geo'
 import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import { ISearchItem } from '@/utils/types/search'
 
@@ -27,8 +26,7 @@ export const WidgetSearch = () => {
     const dispatch = useAppDispatch()
     const locale = useLocale()
 
-    const inputRef = useRef<HTMLInputElement>(null)
-    const autocompleteRef = useRef<HTMLDivElement>(null)
+    const ref = useRef<HTMLDivElement>(null)
 
     const { map } = useMap()
 
@@ -55,17 +53,23 @@ export const WidgetSearch = () => {
         setIsAutocompleteVisible(items.length > 0)
     }, [items])
 
-    useOnClickOutside(autocompleteRef, () => {
-        setIsAutocompleteVisible(false)
-    })
-
     useKeypress(Keys.ESCAPE, () => {
         setIsAutocompleteVisible(false)
     })
 
-    const handleClear = () => {
+    useOnClickOutside(ref, () => {
+        setIsAutocompleteVisible(false)
+    })
+
+    const handleInputClear = () => {
         setValue('')
         setItems([])
+    }
+
+    const handleInputClick = () => {
+        if (items.length > 0) {
+            setIsAutocompleteVisible(true)
+        }
     }
 
     const handleSelect = (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => {
@@ -89,26 +93,18 @@ export const WidgetSearch = () => {
         setIsAutocompleteVisible(false)
     }
 
-    const handleInputClick = () => {
-        if (items.length > 0) {
-            setIsAutocompleteVisible(true)
-        }
-    }
-
     return (
-        <div className="relative flex gap-x-4">
-            <div ref={inputRef} className="relative flex-1">
+        <div ref={ref} className="relative flex gap-x-4">
+            <div className="relative flex-1">
                 <WidgetSearchInput
                     value={value}
                     isLoading={isFetching}
                     onChange={setValue}
                     onClick={handleInputClick}
-                    onClear={handleClear}
+                    onClear={handleInputClear}
                 />
 
-                {isAutocompleteVisible && (
-                    <SearchAutocomplete ref={autocompleteRef} items={items} onSelect={handleSelect} />
-                )}
+                {isAutocompleteVisible && <SearchAutocomplete items={items} onSelect={handleSelect} />}
             </div>
 
             <WidgetTogler />
