@@ -1,16 +1,13 @@
 import { getTranslations } from 'next-intl/server'
 
-import Link from 'next/link'
-
 import { ExternalLink } from '@/components/ui/external-link'
-import { AlertIcon24 } from '@/components/ui/icons'
-import { Notice } from '@/components/ui/notice'
 import { getUserSettings } from '@/services/user'
 import { getUserVisitedCountries } from '@/services/users'
 import { IUser } from '@/utils/types/user'
 
 import { UserVisitedCountriesFeed } from './components/user-visited-countries-feed'
 import { UserVisitedMap } from './components/user-visited-map'
+import { UserVisitedSwitcherVisible } from './user-visited-switcher-visible'
 
 export const UserVisitedPrivate = async ({ user }: { user: IUser }) => {
     const t = await getTranslations()
@@ -18,19 +15,7 @@ export const UserVisitedPrivate = async ({ user }: { user: IUser }) => {
 
     return (
         <div className="flex flex-col gap-y-8">
-            <Notice
-                message={t.rich(
-                    settings.privacy?.show_my_map
-                        ? 'page.user.profile.visitedCountries.privacy.mapIsVisible'
-                        : 'page.user.profile.visitedCountries.privacy.mapIsHidden',
-                    {
-                        settingsLink: settingsLink => <Link href={`/users/${user.name}/settings`}>{settingsLink}</Link>,
-                    },
-                )}
-                icon={<AlertIcon24 />}
-                variant="red"
-            />
-
+            <UserVisitedSwitcherVisible showMyMap={settings.privacy?.show_my_map} />
             <UserVisitedMap visitedCountries={visitedCountries} />
 
             {!visitedCountries.length && (

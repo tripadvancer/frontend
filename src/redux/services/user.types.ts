@@ -1,13 +1,13 @@
 import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
 
-export type UpdateUserDataInputs = {
+export type UpdateUserDataInputs = Partial<{
     name: string
     info: string
     social: Partial<Record<UserSocialApps, string>>
     settings: {
         [SettingsCategories.PRIVACY]?: Partial<Record<UserPrivacySettings, boolean>>
     }
-}
+}>
 
 export type ChangeUserPasswordInputs = {
     oldPassword: string
