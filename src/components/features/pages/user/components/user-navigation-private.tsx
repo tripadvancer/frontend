@@ -13,5 +13,5 @@ export const UserNavigationPrivate = async ({ user }: { user: IUser }) => {
         { href: `/users/${user.name}/settings`, caption: t('page.user.tabs.settings') },
     ]
 
-    return <Nav links={links} className="mb-8" />
+    return <Nav links={links} />
 }

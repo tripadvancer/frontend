@@ -17,5 +17,5 @@ export const UserNavigationPublic = async ({ user }: { user: IUser }) => {
         { href: `/users/${user.name}/reviews`, caption: t('page.user.tabs.reviews') },
     )
 
-    return <Nav links={links} className="mb-8" />
+    return <Nav links={links} />
 }
