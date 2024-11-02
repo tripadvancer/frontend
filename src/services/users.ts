@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import type { IUser, IUserVisitedCountries } from '@/utils/types/user'
+import { IUser, IUserVisitedCountries } from '@/utils/types/user'
 
 export async function getUserByUsername(username: string): Promise<IUser> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + username
@@ -19,8 +19,9 @@ export async function getUserByUsername(username: string): Promise<IUser> {
 }
 
 export async function getUserVisitedCountries(userId: number): Promise<IUserVisitedCountries> {
+    const cookieStore = await cookies()
+    const accessToken = cookieStore.get('sAccessToken')?.value
     const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + userId + '/visited-countries'
-    const accessToken = cookies().get('sAccessToken')?.value
 
     // todo: handle refresh token
     const res = await fetch(url, {

@@ -4,13 +4,12 @@ import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
-import type { CreateReviewInputs, UpdateReviewInputs } from '@/utils/types/review'
-
 import { FormButton } from '@/components/ui/form-button'
 import { FormRatingInput } from '@/components/ui/form-rating-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
+import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews.types'
 
 import { ReviewFormPhotosList } from './components/review-form-photos-list'
 

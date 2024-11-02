@@ -2,15 +2,25 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IRandomPlace } from '@/utils/types/place'
-
 import { useUserLocation } from '@/utils/hooks/use-user-location'
 
 import { WidgetMessage } from '../widget-message'
 import { WidgetRandomPlace } from './widget-random-place'
 
 type WidgetRandomResultsProps = {
-    place: IRandomPlace | undefined
+    place:
+        | {
+              id: number
+              title: string
+              description: string
+              cover: string | null
+              avgRating: number | null
+              reviewsCount: number
+              countryCode: string | null
+              isSaved: boolean
+              coordinates: number[]
+          }
+        | undefined
     isSuccess: boolean
     isError: boolean
     isUserLocated: boolean

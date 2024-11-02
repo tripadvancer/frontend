@@ -32,7 +32,7 @@ export const PlaceMainAddReviewButton = ({
         }
 
         if (isAuth && activeUserId && isEmailVerified === false) {
-            dialog.open(<ClaimEmailError userId={activeUserId} />)
+            dialog.open(<ClaimEmailError />)
             return
         }
 

@@ -1,7 +1,6 @@
-import { IUser } from '@/utils/types/user'
-
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import { IUser } from '@/utils/types/user'
 
 import { UserNavigationPrivate } from './user-navigation-private'
 import { UserNavigationPublic } from './user-navigation-public'

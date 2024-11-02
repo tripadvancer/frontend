@@ -2,11 +2,14 @@ import { getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { Rating } from '@/components/ui/rating'
 
-export const PlaceSidebarRating = async ({ avgRating, reviewsCount }: IPlace) => {
+type PlaceSidebarRatingProps = {
+    avgRating: number | null
+    reviewsCount: number
+}
+
+export const PlaceSidebarRating = async ({ avgRating, reviewsCount }: PlaceSidebarRatingProps) => {
     const t = await getTranslations()
 
     return (

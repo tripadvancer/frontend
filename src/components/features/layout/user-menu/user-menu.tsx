@@ -9,15 +9,19 @@ import { useMediaQuery, useOnClickOutside } from 'usehooks-ts'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import type { IUserInfo } from '@/utils/types/user'
-
 import { Avatar } from '@/components/ui/avatar'
-import { PointIcon16, ReviewIcon16, SettingsIcon16, SignOutIcon16, UserIcon16 } from '@/components/ui/icons'
+import { SettingsIcon16, SignOutIcon16, UserIcon16 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
-export const UserMenu = ({ userInfo, avatarSize }: { userInfo: IUserInfo; avatarSize?: number }) => {
+type UserMenuProps = {
+    name: string
+    avatar: string | null
+    avatarSize?: number
+}
+
+export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
     const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
@@ -49,14 +53,14 @@ export const UserMenu = ({ userInfo, avatarSize }: { userInfo: IUserInfo; avatar
     return (
         <div className="relative" ref={containerRef}>
             <div onClick={() => setIsMenuOpen(!isMenuOpen)} className="cursor-pointer">
-                <Avatar {...userInfo} size={avatarSize ? avatarSize : isMobile ? 24 : 32} />
+                <Avatar name={name} avatar={avatar} size={avatarSize ? avatarSize : isMobile ? 24 : 32} />
             </div>
 
             {isMenuOpen && (
                 <menu className="absolute right-0 top-full z-20 mt-1 min-w-40 rounded-lg bg-white p-1.5 shadow-medium">
                     <li>
                         <Link
-                            href={`/users/${userInfo.name}`}
+                            href={`/users/${name}`}
                             onClick={() => setIsMenuOpen(false)}
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
@@ -66,7 +70,7 @@ export const UserMenu = ({ userInfo, avatarSize }: { userInfo: IUserInfo; avatar
                     </li>
                     <li>
                         <Link
-                            href={`/users/${userInfo.name}/settings`}
+                            href={`/users/${name}/settings`}
                             onClick={() => setIsMenuOpen(false)}
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >

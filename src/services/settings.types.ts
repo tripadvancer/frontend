@@ -1,4 +1,4 @@
-export type ISettings = {
+export type GetSettingsResponse = {
     placesCount: number
     countriesCount: number
 }

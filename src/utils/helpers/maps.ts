@@ -1,8 +1,8 @@
-import type { ViewState } from 'react-map-gl/maplibre'
+import { ViewState } from 'react-map-gl/maplibre'
 
 import { FlyToOptions } from 'maplibre-gl'
 
-import type { LngLat } from '@/utils/types/geo'
+import { LngLat } from '@/utils/types/geo'
 
 export function stringCoordinatesIsValid(stringCoordinates: string): boolean {
     const reg = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)(\s*,\s*|\s+)([-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?))$/

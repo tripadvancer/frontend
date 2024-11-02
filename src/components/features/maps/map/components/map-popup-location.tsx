@@ -1,15 +1,13 @@
 'use client'
 
 import { RefObject, useRef } from 'react'
-import { MapRef, Marker, Popup } from 'react-map-gl/maplibre'
+import { Marker, Popup } from 'react-map-gl/maplibre'
 
 import { useTranslations } from 'next-intl'
 import { useOnClickOutside } from 'usehooks-ts'
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-
-import type { ILocationPopupInfo } from '@/utils/types/map'
 
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
@@ -19,15 +17,16 @@ import { useDialog } from '@/providers/dialog-provider'
 import { closeMapPopups } from '@/redux/features/map-slice'
 import { setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { placesAroundAPI } from '@/redux/services/places-around.api'
 import { LngLatToString } from '@/utils/helpers/maps'
+import { LngLat } from '@/utils/types/geo'
 
 type MapPopupLocationProps = {
     mapRef: RefObject<HTMLDivElement>
     activeUserId?: number
     isAuth: boolean
     isEmailVerified?: boolean
-    coordinates: ILocationPopupInfo['coordinates']
+    coordinates: LngLat
 }
 
 export const MapPopupLocation = ({
@@ -57,7 +56,7 @@ export const MapPopupLocation = ({
         }
 
         if (isAuth && activeUserId && isEmailVerified === false) {
-            dialog.open(<ClaimEmailError userId={activeUserId} />)
+            dialog.open(<ClaimEmailError />)
             return
         }
 
@@ -73,7 +72,7 @@ export const MapPopupLocation = ({
         }
 
         dispatch(closeMapPopups())
-        router.push(`/add-place?lat=${coordinates.lat}&lng=${coordinates.lng}`)
+        router.push(`/places/add?lat=${coordinates.lat}&lng=${coordinates.lng}`)
     }
 
     const handleIAmHereClick = () => {

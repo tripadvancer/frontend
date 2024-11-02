@@ -1,5 +1,5 @@
-import type { ICountryDict } from '@/utils/types/country'
-import type { IUserVisitedCountries } from '@/utils/types/user'
+import { ICountryDict } from '@/utils/types/country'
+import { IUserVisitedCountries } from '@/utils/types/user'
 
 export function calculateWorldCoverage(
     visitedCountries: IUserVisitedCountries,

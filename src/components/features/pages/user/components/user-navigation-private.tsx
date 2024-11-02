@@ -1,8 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 
-import type { IUser } from '@/utils/types/user'
-
 import { Nav } from '@/components/ui/nav'
+import { IUser } from '@/utils/types/user'
 
 export const UserNavigationPrivate = async ({ user }: { user: IUser }) => {
     const t = await getTranslations()
@@ -14,5 +13,5 @@ export const UserNavigationPrivate = async ({ user }: { user: IUser }) => {
         { href: `/users/${user.name}/settings`, caption: t('page.user.tabs.settings') },
     ]
 
-    return <Nav links={links} className="mb-8" />
+    return <Nav links={links} />
 }

@@ -1,6 +1,6 @@
-import { ISettings } from '@/utils/types/settings'
+import { GetSettingsResponse } from '@/services/settings.types'
 
-export async function getSettings(): Promise<ISettings> {
+export async function getSettings(): Promise<GetSettingsResponse> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/settings'
     const res = await fetch(url)
 

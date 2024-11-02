@@ -2,11 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { PlaceComplaintInputs } from '@/utils/types/complaint'
-
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { complainAPI } from '@/redux/services/complain-api'
+import { complainAPI } from '@/redux/services/complain.api'
+import { PlaceComplaintInputs } from '@/redux/services/complain.types'
 import { ComplaintReasonsEnum } from '@/utils/enums'
 
 import { ComplainForm } from './complain-form'

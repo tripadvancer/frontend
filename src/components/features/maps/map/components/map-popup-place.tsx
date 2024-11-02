@@ -5,8 +5,6 @@ import { useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
 
-import type { IPlacePopupInfo } from '@/utils/types/map'
-
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { closeMapPopups } from '@/redux/features/map-slice'
@@ -17,10 +15,16 @@ import { MapPopupPlaceActions } from './map-popup-place-actions'
 
 type MapPopupPlaceProps = {
     mapRef: RefObject<HTMLDivElement>
-    place: IPlacePopupInfo
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    isSaved: boolean
+    coordinates: number[]
 }
 
-export const MapPopupPlace = ({ mapRef, place }: MapPopupPlaceProps) => {
+export const MapPopupPlace = ({ mapRef, ...place }: MapPopupPlaceProps) => {
     const dispatch = useAppDispatch()
     const lngLat = arrayToLngLat(place.coordinates)
 

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import type { IUser } from '@/utils/types/user'
+import { IUser } from '@/utils/types/user'
 
 import { UserName } from './components/user-name'
 import { UserNavigation } from './components/user-navigation'
@@ -22,7 +22,9 @@ export const User = ({ user, children }: { user: IUser; children: ReactNode }) =
                     </div>
 
                     <div className="min-w-0 flex-1">
-                        <UserNavigation user={user} />
+                        <div className="mb-8">
+                            <UserNavigation user={user} />
+                        </div>
                         {children}
                     </div>
                 </div>

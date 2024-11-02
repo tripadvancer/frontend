@@ -4,11 +4,10 @@ import { useLocale } from 'next-intl'
 
 import Link from 'next/link'
 
-import type { IReview } from '@/utils/types/review'
-
 import { Avatar } from '@/components/ui/avatar'
 import { Rating } from '@/components/ui/rating'
 import { formattedDate } from '@/utils/helpers/common'
+import { IReview } from '@/utils/types/common'
 
 export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {
     const locale = useLocale()

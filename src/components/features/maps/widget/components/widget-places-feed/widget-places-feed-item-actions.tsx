@@ -2,8 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlacePreview } from '@/utils/types/place'
-
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { BookmarkFillIcon16, BookmarkIcon16, PinIcon16, RouteIcon16, ShareIcon16 } from '@/components/ui/icons'
@@ -13,20 +11,32 @@ import { useSavePlace } from '@/utils/hooks/use-save-place'
 import { useSharePlace } from '@/utils/hooks/use-share-place'
 import { useShowOnMap } from '@/utils/hooks/use-show-on-map'
 
-export const WidgetPlacesFeedItemActions = (place: IPlacePreview) => {
+type WidgetPlacesFeedItemActionsProps = {
+    id: number
+    title: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    countryCode: string | null
+    isVisited: boolean
+    isSaved: boolean
+    coordinates: number[]
+}
+
+export const WidgetPlacesFeedItemActions = (props: WidgetPlacesFeedItemActionsProps) => {
     const t = useTranslations()
     const dialog = useDialog()
-    const lngLat = arrayToLngLat(place.coordinates)
+    const lngLat = arrayToLngLat(props.coordinates)
 
-    const { savePlace } = useSavePlace(place.id)
-    const { showOnMap } = useShowOnMap(place)
-    const { sharePlace } = useSharePlace(place)
+    const { savePlace } = useSavePlace(props.id)
+    const { showOnMap } = useShowOnMap(props)
+    const { sharePlace } = useSharePlace(props)
 
     const items: DropdownItemProps[] = [
         {
-            caption: place.isSaved ? t('common.action.place.saved') : t('common.action.place.save'),
+            caption: props.isSaved ? t('common.action.place.saved') : t('common.action.place.save'),
             value: 'save',
-            icon: place.isSaved ? <BookmarkFillIcon16 /> : <BookmarkIcon16 />,
+            icon: props.isSaved ? <BookmarkFillIcon16 /> : <BookmarkIcon16 />,
             onClick: savePlace,
         },
         {

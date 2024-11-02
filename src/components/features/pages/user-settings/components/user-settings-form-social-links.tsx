@@ -5,8 +5,6 @@ import { ChangeEvent } from 'react'
 import classNames from 'classnames'
 import { useTranslations } from 'next-intl'
 
-import type { IUserSocial } from '@/utils/types/user'
-
 import { FormInput } from '@/components/ui/form-input'
 import { FormSelect } from '@/components/ui/form-select'
 import {
@@ -25,6 +23,8 @@ import {
     YoutubeIcon24,
 } from '@/components/ui/icons'
 import { SocialAppUrls, UserSocialApps } from '@/utils/enums'
+
+type IUserSocial = Partial<Record<UserSocialApps, string>>
 
 type UserSettingsFormSocialLinksProps = {
     initialValue: IUserSocial

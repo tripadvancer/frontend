@@ -4,21 +4,17 @@ import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
-import { useRouter } from 'next/navigation'
-
-import type { ChangeUserEmailInputs } from '@/utils/types/user'
-
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user-api'
+import { userAPI } from '@/redux/services/user.api'
+import { ChangeUserEmailInputs } from '@/redux/services/user.types'
 
 import { ChangeEmailCompleting } from './change-email-completing'
 
 export const ChangeEmail = () => {
     const t = useTranslations()
-    const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -46,7 +42,6 @@ export const ChangeEmail = () => {
             switch (response.status) {
                 case 'OK':
                     dialog.open(<ChangeEmailCompleting />)
-                    // toast.success(t('success.change_user_email'))
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
@@ -99,7 +94,7 @@ export const ChangeEmail = () => {
                     onChange={formik.handleChange}
                 />
             </div>
-            <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+            <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
                 {t('common.action.saveChanges')}
             </FormButton>
         </form>

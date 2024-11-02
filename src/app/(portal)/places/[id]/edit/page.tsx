@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import { Metadata } from 'next'
 import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
 
 import { notFound } from 'next/navigation'
@@ -9,7 +9,10 @@ import { getPlaceById } from '@/services/places'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+type Params = Promise<{ id: string }>
+
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
     const place = await getPlaceById(params.id)
     const country = getCountryByCode(place.countryCode)
     const countryName = country?.name['en'] ?? ''
@@ -23,8 +26,10 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     }
 }
 
-export default async function EditPlacePage({ params }: { params: { id: string } }) {
+export default async function EditPlacePage(props: { params: Params }) {
+    const params = await props.params
     const place = await getPlaceById(params.id)
+
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {

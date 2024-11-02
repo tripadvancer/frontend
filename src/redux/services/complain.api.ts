@@ -1,6 +1,5 @@
-import type { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/types/complaint'
-
-import { api } from './api'
+import { api } from '@/redux/services/api'
+import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/redux/services/complain.types'
 
 export const complainAPI = api.injectEndpoints({
     endpoints: build => ({

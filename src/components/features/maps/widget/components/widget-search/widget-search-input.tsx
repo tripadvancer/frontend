@@ -1,6 +1,6 @@
 'use client'
 
-import { Ref, forwardRef } from 'react'
+import { ChangeEvent } from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -15,8 +15,12 @@ type WidgetSearchInputProps = {
     onClear: () => void
 }
 
-const WidgetSearchInputComponent = (props: WidgetSearchInputProps, ref: Ref<HTMLInputElement>) => {
+export const WidgetSearchInput = (props: WidgetSearchInputProps) => {
     const t = useTranslations()
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        props.onChange(e.target.value)
+    }
 
     return (
         <div className="relative">
@@ -25,14 +29,13 @@ const WidgetSearchInputComponent = (props: WidgetSearchInputProps, ref: Ref<HTML
             </div>
 
             <input
-                ref={ref}
                 type="text"
                 name="search"
                 value={props.value}
                 autoComplete="off"
                 className="hover-animated h-10 w-full rounded-lg border border-blue-20 bg-white px-10 placeholder:text-black-40 hover:border-blue-100 focus:border-blue-100 focus:outline-none"
                 placeholder={t('map.widget.search.placeholder')}
-                onChange={e => props.onChange(e.target.value)}
+                onChange={handleChange}
                 onClick={props.onClick}
             />
 
@@ -47,5 +50,3 @@ const WidgetSearchInputComponent = (props: WidgetSearchInputProps, ref: Ref<HTML
         </div>
     )
 }
-
-export const WidgetSearchInput = forwardRef(WidgetSearchInputComponent)

@@ -1,4 +1,5 @@
-import type {
+import { api } from '@/redux/services/api'
+import {
     ChangeUserEmailInputs,
     ChangeUserEmailResponse,
     ChangeUserPasswordInputs,
@@ -7,9 +8,7 @@ import type {
     RestoreUserResponse,
     UpdateUserDataInputs,
     UpdateUserDataResponse,
-} from '@/utils/types/user'
-
-import { api } from './api'
+} from '@/redux/services/user.types'
 
 export const userAPI = api.injectEndpoints({
     endpoints: build => ({

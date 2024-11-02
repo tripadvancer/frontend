@@ -1,4 +1,4 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { Place } from '@/components/features/pages/place/place'
 import { getCountryByCode } from '@/services/countries'
@@ -6,7 +6,10 @@ import { getPlaceById } from '@/services/places'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+type Params = Promise<{ id: string }>
+
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
     const place = await getPlaceById(params.id)
     const country = getCountryByCode(place.countryCode)
     const countryName = country?.name['en'] ?? ''
@@ -40,6 +43,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     }
 }
 
-export default function PlacePage({ params }: { params: { id: string } }) {
+export default async function PlacePage(props: { params: Params }) {
+    const params = await props.params
     return <Place placeId={params.id} />
 }

@@ -91,7 +91,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                     </Marker>
                 )}
 
-                {handlers.placePopupInfo && <MapPopupPlace mapRef={mapContainerRef} place={handlers.placePopupInfo} />}
+                {handlers.placePopupInfo && <MapPopupPlace mapRef={mapContainerRef} {...handlers.placePopupInfo} />}
 
                 {handlers.locationPopupInfo && (
                     <MapPopupLocation

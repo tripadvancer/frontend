@@ -58,6 +58,9 @@
         },
         "username": {
             "invalid": "Username can only contain letters, numbers, underscores, hyphens and dots"
+        },
+        "location": {
+            "invalid": "Coordinates must be in format: 'lat, lng', e.g. '50.4501, 30.5234'"
         }
     },
     "success": {
@@ -244,7 +247,9 @@
         },
         "locationPicker": {
             "title": "Pick place location",
-            "placeholder": "Address or coordinates"
+            "toggleMethodManually": "Enter coordinates manually",
+            "toggleMethodOnMap": "Select a location on the map",
+            "placeholder": "Enter coordinates"
         },
         "placesNearbyWarning": {
             "title": "Attention",
@@ -341,8 +346,7 @@
         "claimEmailError": {
             "title": "Your email is not verified",
             "text": "Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.",
-            "resendVerificationEmail": "Resend verification email",
-            "goToSettings": "Or change your email. <settingsLink>Settings</settingsLink>"
+            "resendVerificationEmail": "Resend verification email"
         },
         "verifyEmail": {
             "loading": "Verifying your email...",
@@ -461,11 +465,7 @@
             "profile": {
                 "visitedCountries": {
                     "emptyMessage": "You have not visited any countries yet.<br></br>To view your visited countries, add a place you have been to.<br></br><learnMoreLink>Learn more</learnMoreLink>",
-                    "allcountries": "All countries",
-                    "privacy": {
-                        "mapIsVisible": "Your visited countries map is visible to everyone. To hide it, go to your <settingsLink>settings</settingsLink>.",
-                        "mapIsHidden": "Your visited countries map is hidden to everyone. To show it, go to your <settingsLink>settings</settingsLink>."
-                    }
+                    "allcountries": "All countries"
                 }
             },
             "settingsForm": {

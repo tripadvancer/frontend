@@ -1,12 +1,10 @@
-import type { GeoJsonCollection } from '@/utils/types/geo'
-import type { IPlacePreview } from '@/utils/types/place'
-
-import { api } from './api'
-import { placesAPI } from './places-api'
+import { api } from '@/redux/services/api'
+import { placesAPI } from '@/redux/services/places.api'
+import { GetVisitedResponse } from '@/redux/services/visited.types'
 
 export const visitedAPI = api.injectEndpoints({
     endpoints: build => ({
-        getVisited: build.query<GeoJsonCollection<IPlacePreview>, void>({
+        getVisited: build.query<GetVisitedResponse, void>({
             query: () => 'visited',
             providesTags: ['Visited'],
         }),

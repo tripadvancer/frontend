@@ -32,5 +32,5 @@ export const UserMenuWithAuth = async ({
 
     const userInfo = await getUserInfo()
 
-    return <UserMenu userInfo={userInfo} avatarSize={avatarSize} />
+    return <UserMenu name={userInfo.name} avatar={userInfo.avatar} avatarSize={avatarSize} />
 }

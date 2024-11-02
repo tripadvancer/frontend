@@ -10,7 +10,7 @@ import { FormFileInput } from '@/components/ui/form-file-input'
 import { PhotoPreview } from '@/components/ui/photo-preview'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { reviewsAPI } from '@/redux/services/reviews-api'
+import { reviewsAPI } from '@/redux/services/reviews.api'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 

@@ -6,8 +6,12 @@ import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-export default async function UserPage({ params }: { params: { username: string } }) {
+type Params = Promise<{ username: string }>
+
+export default async function UserPage(props: { params: Params }) {
+    const params = await props.params
     const user = await getUserByUsername(params.username)
+
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {

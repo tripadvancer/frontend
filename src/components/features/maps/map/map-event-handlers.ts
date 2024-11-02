@@ -3,8 +3,6 @@
 import { useCallback } from 'react'
 import { LngLat, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
-import type { IPlacePreview } from '@/utils/types/place'
-
 import {
     closeMapPopups,
     getMapState,
@@ -116,7 +114,15 @@ export const useMapEventHandlers = () => {
                         coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360
                     }
 
-                    const place = { ...feature.properties, coordinates } as IPlacePreview
+                    const place = { ...feature.properties, coordinates } as {
+                        id: number
+                        title: string
+                        cover: string | null
+                        avgRating: number | null
+                        reviewsCount: number
+                        isSaved: boolean
+                        coordinates: number[]
+                    }
                     dispatch(setMapPlacePopupInfo(place))
                 } else {
                     if (mapState.placePopupInfo || mapState.locationPopupInfo) {

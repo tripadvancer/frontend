@@ -3,10 +3,9 @@
 import { useCallback, useMemo, useRef } from 'react'
 import { MapEvent, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
-import type { IUserVisitedCountries } from '@/utils/types/user'
-
 import { MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
+import { IUserVisitedCountries } from '@/utils/types/user'
 
 type UserVisitedMapProps = {
     visitedCountries: IUserVisitedCountries
@@ -40,7 +39,7 @@ export const UserVisitedMap = ({ visitedCountries }: UserVisitedMapProps) => {
                 paint: {
                     'fill-color': ['match', ['get', 'iso_a2'], visited, '#ff9733', '#fff2e6'],
                     'fill-opacity': 1,
-                    'fill-outline-color': '#000',
+                    'fill-outline-color': '#46a6ff',
                 },
             })
         },

@@ -18,8 +18,11 @@ export async function getSSRSessionHelper(): Promise<{
     let hasInvalidClaims = false
     let error: Error | undefined = undefined
 
+    const cookieStore = await cookies()
+    const headersList = await headers()
+
     try {
-        ;({ session, hasToken, hasInvalidClaims } = await getSSRSession(cookies().getAll(), headers()))
+        ;({ session, hasToken, hasInvalidClaims } = await getSSRSession(cookieStore.getAll(), headersList))
     } catch (err: any) {
         error = err
     }

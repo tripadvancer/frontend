@@ -3,9 +3,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import type { LngLat } from '@/utils/types/geo'
-
 import { navigationProviders } from '@/utils/helpers/navigation'
+import { LngLat } from '@/utils/types/geo'
 
 type ChooseNavigationAppItemProps = {
     provider: string
