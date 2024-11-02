@@ -7,7 +7,7 @@ import { IUser } from '@/utils/types/user'
 
 import { UserVisitedCountriesFeed } from './components/user-visited-countries-feed'
 import { UserVisitedMap } from './components/user-visited-map'
-import { UserVisitedSwitcherVisible } from './user-visited-switcher-visible'
+import { UserVisitedSwitcherVisible } from './components/user-visited-switcher-visible'
 
 export const UserVisitedPrivate = async ({ user }: { user: IUser }) => {
     const t = await getTranslations()
