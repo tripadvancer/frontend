@@ -44,9 +44,12 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
         })
     }, [])
 
-    const handleMove = useCallback((event: ViewStateChangeEvent) => {
-        onChangeViewState(event.viewState)
-    }, [])
+    const handleMove = useCallback(
+        (event: ViewStateChangeEvent) => {
+            onChangeViewState(event.viewState)
+        },
+        [onChangeViewState],
+    )
 
     const handleMoveStart = useCallback(() => {
         setIsMoving(true)
