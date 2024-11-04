@@ -24,6 +24,7 @@ export const Search = () => {
     const router = useRouter()
 
     const ref = useRef<HTMLDivElement>(null)
+    const refInput = useRef<HTMLInputElement>(null)
 
     const [value, setValue] = useState<string>('')
     const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]>([])
@@ -85,10 +86,16 @@ export const Search = () => {
         [router],
     )
 
+    const handleButtonClick = () => {
+        refInput.current?.focus()
+        handleInputClick()
+    }
+
     return (
         <div ref={ref} className="m-auto mb-16 flex gap-x-2 sm:w-2/3">
             <div className="relative flex-1">
                 <SearchInput
+                    ref={refInput}
                     value={value}
                     isLoading={isFetching}
                     onChange={setValue}
@@ -98,7 +105,7 @@ export const Search = () => {
 
                 {isAutocompleteVisible && <SearchAutocomplete items={items} onSelect={handleSelect} />}
             </div>
-            <FormButton className="hidden sm:block" onClick={handleInputClear}>
+            <FormButton className="hidden sm:block" onClick={handleButtonClick}>
                 {t('component.search.button')}
             </FormButton>
         </div>

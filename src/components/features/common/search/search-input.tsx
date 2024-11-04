@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent } from 'react'
+import { ChangeEvent, Ref, forwardRef } from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -15,7 +15,7 @@ type SearchInputProps = {
     onClear: () => void
 }
 
-export const SearchInput = (props: SearchInputProps) => {
+const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement>) => {
     const t = useTranslations()
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +29,7 @@ export const SearchInput = (props: SearchInputProps) => {
             </div>
 
             <input
+                ref={ref}
                 type="text"
                 name="search"
                 value={props.value}
@@ -50,3 +51,5 @@ export const SearchInput = (props: SearchInputProps) => {
         </div>
     )
 }
+
+export const SearchInput = forwardRef(SearchInputComponent)
