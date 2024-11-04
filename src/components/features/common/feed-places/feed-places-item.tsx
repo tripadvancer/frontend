@@ -36,12 +36,12 @@ export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount, dist
                     <div>
                         <Rating value={avgRating ?? 0} size={16} />
                         <div className="flex flex-nowrap gap-x-1 text-small text-black-40">
-                            {distance && (
+                            {/* {distance && (
                                 <>
                                     <Distance distance={distance} />
                                     <div>•</div>
                                 </>
-                            )}
+                            )} */}
                             <div>{t('common.reviewsCounter', { count: reviewsCount ?? 0 })}</div>
                         </div>
                     </div>
