@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import { FeedPlaces } from '@/components/features/common/feed-places/feed-places'
 import { ShowAllLink } from '@/components/ui/show-all-link'
-import { internalApi } from '@/redux/services/api-internal'
-import { placesAroundAPI } from '@/redux/services/places-around-api'
+import { internalApi } from '@/redux/services/internal.api'
+import { placesAroundAPI } from '@/redux/services/places-around.api'
 import { getCountryByCode } from '@/services/countries'
 
 export const LandingAroundPlaces = () => {

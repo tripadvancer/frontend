@@ -4,12 +4,11 @@ import { getLocale, getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import type { ICountryDict } from '@/utils/types/country'
-
 import { FeedPlacesSkeleton } from '@/components/features/common/feed-places/feed-places-skeleton'
 import { getPlacesByCountryCode } from '@/services/places'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { parseQueryString } from '@/utils/helpers/common'
+import { ICountryDict } from '@/utils/types/country'
 
 import { CountryAddPlaceWithAuth } from './components/country-add-place-with-auth'
 import { CountryCategories } from './components/country-categories'

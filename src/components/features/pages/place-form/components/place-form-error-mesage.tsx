@@ -2,9 +2,8 @@
 
 import { FormikErrors } from 'formik'
 
-import type { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/types/place'
-
 import { AlertIcon16 } from '@/components/ui/icons'
+import { CreatePlaceInputs, UpdatePlaceInputs } from '@/redux/services/places.types'
 import { getFormikErrors } from '@/utils/helpers/common'
 
 type PlaceFormErrorMesageProps = {

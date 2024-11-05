@@ -1,13 +1,15 @@
 import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
 import { PlaceMainReviews } from './place-main-reviews'
 
-export const PlaceMainReviewsWithAuth = async ({ place }: { place: IPlace }) => {
+type PlaceMainReviewsWithAuthProps = {
+    id: number
+}
+
+export const PlaceMainReviewsWithAuth = async ({ id }: PlaceMainReviewsWithAuthProps) => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -15,7 +17,7 @@ export const PlaceMainReviewsWithAuth = async ({ place }: { place: IPlace }) => 
             /**
              * This means that there is no session and no session tokens.
              */
-            return <PlaceMainReviews place={place} isAuth={false} />
+            return <PlaceMainReviews placeId={id} isAuth={false} />
         }
 
         /**
@@ -28,7 +30,5 @@ export const PlaceMainReviewsWithAuth = async ({ place }: { place: IPlace }) => 
     const isEmailVerified = await session.getClaimValue(EmailVerificationClaim)
     const activeUserId = session.getAccessTokenPayload().userId
 
-    return (
-        <PlaceMainReviews place={place} activeUserId={activeUserId} isAuth={true} isEmailVerified={isEmailVerified} />
-    )
+    return <PlaceMainReviews placeId={id} activeUserId={activeUserId} isAuth={true} isEmailVerified={isEmailVerified} />
 }

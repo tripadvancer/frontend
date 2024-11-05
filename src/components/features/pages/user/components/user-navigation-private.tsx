@@ -1,18 +1,17 @@
-'use client'
-
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
 import { Nav } from '@/components/ui/nav'
+import { IUser } from '@/utils/types/user'
 
-export const UserNavigationPrivate = ({ username }: { username: string }) => {
-    const t = useTranslations()
+export const UserNavigationPrivate = async ({ user }: { user: IUser }) => {
+    const t = await getTranslations()
 
     const links = [
-        { href: `/users/${username}`, caption: t('page.user.tabs.profile') },
-        { href: `/users/${username}/places`, caption: t('page.user.tabs.places') },
-        { href: `/users/${username}/reviews`, caption: t('page.user.tabs.reviews') },
-        { href: `/users/${username}/settings`, caption: t('page.user.tabs.settings') },
+        { href: `/users/${user.name}`, caption: t('page.user.tabs.visited') },
+        { href: `/users/${user.name}/places`, caption: t('page.user.tabs.places') },
+        { href: `/users/${user.name}/reviews`, caption: t('page.user.tabs.reviews') },
+        { href: `/users/${user.name}/settings`, caption: t('page.user.tabs.settings') },
     ]
 
-    return <Nav links={links} className="mb-8" />
+    return <Nav links={links} />
 }

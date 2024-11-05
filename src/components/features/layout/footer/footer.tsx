@@ -18,7 +18,7 @@ export const Footer = async () => {
                         <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
                             <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{t('layout.footer.contactUs')}</Link>
                             <span className="hidden sm:block">•</span>
-                            <Link href="https://help.tripadvancer.com" target="__blank">
+                            <Link href="https://help.tripadvancer.com" target="_blank">
                                 {t('layout.footer.helpCenter')}
                             </Link>
                         </nav>

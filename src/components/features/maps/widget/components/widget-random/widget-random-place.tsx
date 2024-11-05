@@ -2,32 +2,42 @@
 
 import Link from 'next/link'
 
-import type { IRandomPlace } from '@/utils/types/place'
-
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { ImageVariants } from '@/utils/enums'
 
 import { WidgetRandomPlaceActions } from './widget-random-place-actions'
 
-export const WidgetRandomPlace = (place: IRandomPlace) => {
+type WidgetRandomPlaceProps = {
+    id: number
+    title: string
+    description: string
+    cover: string | null
+    avgRating: number | null
+    reviewsCount: number
+    countryCode: string | null
+    isSaved: boolean
+    coordinates: number[]
+}
+
+export const WidgetRandomPlace = (props: WidgetRandomPlaceProps) => {
     return (
         <div className="flex flex-col gap-y-2">
-            <Link href={`places/${place.id}`} className="link-black flex flex-col gap-y-2" target="_blank">
+            <Link href={`places/${props.id}`} className="link-black flex flex-col gap-y-2" target="_blank">
                 <div className="w-full">
                     <PlacePreviewCover
-                        cover={place.cover}
-                        title={place.title}
+                        cover={props.cover}
+                        title={props.title}
                         imageVariant={ImageVariants.PUBLIC}
                         size={80}
                         className="aspect-video w-full rounded-lg object-cover"
                     />
                 </div>
-                <div className="break-words font-medium">{place.title}</div>
+                <div className="break-words font-medium">{props.title}</div>
             </Link>
             <div className="flex items-center justify-between">
-                <PlacePreviewRating {...place} />
-                <WidgetRandomPlaceActions {...place} />
+                <PlacePreviewRating {...props} />
+                <WidgetRandomPlaceActions {...props} />
             </div>
         </div>
     )

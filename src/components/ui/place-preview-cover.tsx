@@ -1,22 +1,22 @@
 import classNames from 'classnames'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { ImageStub } from '@/components/ui/image-stub'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
-type PlacePreviewCoverProps = Pick<IPlace, 'title' | 'cover'> & {
+type PlacePreviewCoverProps = {
+    title: string
+    cover: string | null
     size: number
     imageVariant?: ImageVariants
     className?: string
 }
 
-export const PlacePreviewCover = (props: PlacePreviewCoverProps) => {
-    if (!props.cover) {
+export const PlacePreviewCover = ({ title, cover, size, imageVariant, className }: PlacePreviewCoverProps) => {
+    if (!cover) {
         return (
-            <div className={classNames('flex-center bg-black-5', props.className)}>
+            <div className={classNames('flex-center bg-black-5', className)}>
                 <ImageStub className="w-1/3 text-black-15 opacity-75" />
             </div>
         )
@@ -24,11 +24,11 @@ export const PlacePreviewCover = (props: PlacePreviewCoverProps) => {
 
     return (
         <ImageWithFallback
-            src={makeImageUrl(props.cover, props.imageVariant ?? ImageVariants.PREVIEW)}
-            width={props.size}
-            height={props.size}
-            className={props.className}
-            alt={props.title}
+            src={makeImageUrl(cover, imageVariant ?? ImageVariants.PREVIEW)}
+            width={size}
+            height={size}
+            className={className}
+            alt={title}
         />
     )
 }

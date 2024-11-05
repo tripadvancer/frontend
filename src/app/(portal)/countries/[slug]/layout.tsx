@@ -1,10 +1,13 @@
 import { ReactNode } from 'react'
 
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { getCountryBySlug } from '@/services/countries'
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+type Params = Promise<{ slug: string }>
+
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
     const country = getCountryBySlug(params.slug)
     const countryName = country?.name['en'] ?? ''
 

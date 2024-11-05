@@ -1,8 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import type { LngLat } from '@/utils/types/geo'
-
-import type { RootState } from '@/redux/store'
+import { RootState } from '@/redux/store'
+import { LngLat } from '@/utils/types/geo'
 
 interface UserState {
     userLocation: LngLat | null

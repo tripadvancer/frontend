@@ -1,21 +1,17 @@
-import type { Metadata } from 'next/types'
+import { redirect } from 'next/navigation'
 
-import { UserProfilePrivate } from '@/components/features/pages/user-profile/user-profile-private'
-import { UserProfilePublic } from '@/components/features/pages/user-profile/user-profile-public'
+import { UserVisitedPrivate } from '@/components/features/pages/user-visited/user-visited-private'
+import { UserVisitedPublic } from '@/components/features/pages/user-visited/user-visited-public'
 import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-    return {
-        alternates: {
-            canonical: `/users/${params.id}`,
-        },
-    }
-}
+type Params = Promise<{ username: string }>
 
-export default async function UserProfilePage({ params }: { params: { username: string } }) {
+export default async function UserPage(props: { params: Params }) {
+    const params = await props.params
     const user = await getUserByUsername(params.username)
+
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -23,7 +19,11 @@ export default async function UserProfilePage({ params }: { params: { username: 
             /**
              * This means that there is no session and no session tokens.
              */
-            return <UserProfilePublic user={user} />
+            if (user.publicSettings.show_my_map) {
+                return <UserVisitedPublic user={user} />
+            }
+
+            redirect(`/users/${params.username}/places`)
         }
 
         /**
@@ -33,9 +33,13 @@ export default async function UserProfilePage({ params }: { params: { username: 
         return <TryRefreshComponent />
     }
 
-    if (session.getAccessTokenPayload().userId !== user.id) {
-        return <UserProfilePublic user={user} />
+    if (session.getAccessTokenPayload().userId === user.id) {
+        return <UserVisitedPrivate user={user} />
     }
 
-    return <UserProfilePrivate user={user} />
+    if (user.publicSettings.show_my_map) {
+        return <UserVisitedPublic user={user} />
+    }
+
+    redirect(`/users/${params.username}/places`)
 }

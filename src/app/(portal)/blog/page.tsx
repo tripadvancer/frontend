@@ -1,4 +1,4 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { Blog } from '@/components/features/pages/blog/blog'
 

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { CookieConsent } from '@/components/features/banners/cookie-consent/cookie-consent'
 import { MapWithAuth } from '@/components/features/maps/map/map-with-auth'

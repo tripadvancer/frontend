@@ -1,6 +1,6 @@
 'use client'
 
-import { Ref, forwardRef } from 'react'
+import { ChangeEvent, Ref, forwardRef } from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -18,6 +18,10 @@ type SearchInputProps = {
 const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement>) => {
     const t = useTranslations()
 
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        props.onChange(e.target.value)
+    }
+
     return (
         <div className="relative">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 transform">
@@ -33,7 +37,7 @@ const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement
                 className="hover-animated h-10 w-full rounded-lg border border-black-15 bg-white px-10 placeholder:text-black-40 focus:border-black-40 focus:outline-none disabled:cursor-no-drop"
                 placeholder={t('component.search.placeholder')}
                 onClick={props.onClick}
-                onChange={event => props.onChange(event.target.value)}
+                onChange={handleChange}
             />
 
             {props.value.length > 0 && (

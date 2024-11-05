@@ -4,15 +4,27 @@ import { useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
-import type { IPlacePreview } from '@/utils/types/place'
-
 import { FormButton } from '@/components/ui/form-button'
 
 import { WidgetPlacesFeedItem } from './widget-places-feed-item'
 
 const PAGINATION_LIMIT = 10
 
-export const WidgetPlacesFeed = ({ places }: { places: IPlacePreview[] }) => {
+type WidgetPlacesFeedProps = {
+    places: {
+        id: number
+        title: string
+        cover: string | null
+        avgRating: number | null
+        reviewsCount: number
+        countryCode: string | null
+        isVisited: boolean
+        isSaved: boolean
+        coordinates: number[]
+    }[]
+}
+
+export const WidgetPlacesFeed = ({ places }: WidgetPlacesFeedProps) => {
     const t = useTranslations()
     const [currentPage, setCurrentPage] = useState(1)
 

@@ -1,11 +1,13 @@
 import { getTranslations } from 'next-intl/server'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { AlertIcon24 } from '@/components/ui/icons'
 import { Notice } from '@/components/ui/notice'
 
-export const PlaceMainAbandonedWarning = async ({ categories }: IPlace) => {
+type PlaceMainAbandonedWarningProps = {
+    categories: number[]
+}
+
+export const PlaceMainAbandonedWarning = async ({ categories }: PlaceMainAbandonedWarningProps) => {
     const t = await getTranslations()
 
     // abandoned category id = 1 from categoriesDictionary

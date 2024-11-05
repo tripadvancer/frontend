@@ -2,8 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { IList } from '@/utils/types/list'
-
 import { ListEdit } from '@/components/features/dialogs/list-form/list-edit'
 import { Confirmation } from '@/components/ui/confirmation'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
@@ -13,7 +11,9 @@ import { useToast } from '@/providers/toast-provider'
 import { getIsFilterMapBySavedLists, setIsFilterMapBySavedLists } from '@/redux/features/map-slice'
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { listAPI } from '@/redux/services/list-api'
+import { listAPI } from '@/redux/services/list.api'
+import { useMapRoute } from '@/utils/hooks/use-map-route'
+import { IList } from '@/utils/types/common'
 
 import { WidgetSavedListsViewPlacesFeed } from './widget-saved-lists-view-places-feed'
 
@@ -24,10 +24,13 @@ export const WidgetSavedListsView = (list: IList) => {
     const isFilterMapBySavedLists = useAppSelector(getIsFilterMapBySavedLists)
     const dispatch = useAppDispatch()
 
+    const { clearRoute } = useMapRoute()
+
     const [deleteList] = listAPI.useDeleteListMutation()
 
     const handleBackClick = () => {
         dispatch(setWidgetActiveList(null))
+        clearRoute()
     }
 
     const handleDeleteClick = () => {

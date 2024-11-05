@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 export const metadata: Metadata = {
     robots: 'noindex, nofollow',

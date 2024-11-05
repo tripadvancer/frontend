@@ -9,12 +9,11 @@ import * as Yup from 'yup'
 
 import Link from 'next/link'
 
-import type { ResetPasswordInputs } from '@/utils/types/auth'
-
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
+import { ResetPasswordInputs } from '@/utils/types/auth'
 
 const userPasswordMinLength = validationConfig.user.password.minLength
 

@@ -7,3 +7,35 @@ export type FormFieldError = {
     id: string
     error: string
 }
+
+export type IReview = {
+    id: number
+    place: {
+        id: number
+        title: string
+        countryCode: string | null
+    }
+    user: {
+        id: number
+        name: string
+        avatar: string | null
+    }
+    text: string
+    rating: number
+    photos: { id: number; url: string }[]
+    createdAt: Date
+    updatedAt: Date
+}
+
+export type IList = {
+    id: number
+    name: string
+    description: string
+    isPublic: boolean
+    listToPlace: {
+        placeId: number
+    }[]
+    _count: {
+        listToPlace: number
+    }
+}

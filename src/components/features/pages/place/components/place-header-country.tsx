@@ -2,16 +2,18 @@ import { getLocale } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { getCountryByCode } from '@/services/countries'
 
-export const PlaceHeaderCountry = async ({ countryCode }: IPlace) => {
+type PlaceHeaderCountryProps = {
+    countryCode: string | null
+}
+
+export const PlaceHeaderCountry = async ({ countryCode }: PlaceHeaderCountryProps) => {
     const locale = await getLocale()
     const country = getCountryByCode(countryCode)
 
     if (!country) {
-        return null
+        return
     }
 
     return (

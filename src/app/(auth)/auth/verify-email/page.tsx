@@ -1,4 +1,4 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { VerifyEmail } from '@/components/features/auth/verify-email'
 

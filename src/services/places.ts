@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation'
 
-import type { IPlace, IPlaceNearby, IPlacePreview } from '@/utils/types/place'
+import { GetPlacesAroundParams, GetPlacesAroundResponse } from '@/redux/services/places-around.types'
+import { GetPlaceByIdResponse, GetPlacesByCountryCodeResponse } from '@/services/places.types'
 
 export async function getPlacesByCountryCode(
     countryCode: string,
     categoriesIds: string | undefined,
-): Promise<IPlacePreview[]> {
+): Promise<GetPlacesByCountryCodeResponse> {
     const url =
         process.env.NEXT_PUBLIC_API_URL + '/countries/' + countryCode + '/places?categories_ids=' + categoriesIds
     const res = await fetch(url)
@@ -17,7 +18,7 @@ export async function getPlacesByCountryCode(
     return res.json()
 }
 
-export async function getPlaceById(placeId: string): Promise<IPlace> {
+export async function getPlaceById(placeId: string): Promise<GetPlaceByIdResponse> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/places/' + placeId
     const res = await fetch(url, { cache: 'no-store' })
 
@@ -32,12 +33,12 @@ export async function getPlaceById(placeId: string): Promise<IPlace> {
     return res.json()
 }
 
-export async function getPlacesAround(
-    lat: number,
-    lng: number,
-    radius: number,
-    categories: number[],
-): Promise<IPlaceNearby[]> {
+export async function getPlacesAround({
+    lat,
+    lng,
+    radius,
+    categories,
+}: GetPlacesAroundParams): Promise<GetPlacesAroundResponse> {
     const params = new URLSearchParams({
         lat: lat.toString(),
         lng: lng.toString(),

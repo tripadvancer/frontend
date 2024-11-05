@@ -5,20 +5,24 @@ import { FacebookShareButton, TwitterShareButton } from 'react-share'
 import { useLocale, useTranslations } from 'next-intl'
 import { useCopyToClipboard } from 'usehooks-ts'
 
-import type { IPlace, IPlacePreview } from '@/utils/types/place'
-
 import { FormButton } from '@/components/ui/form-button'
 import { CopyIcon24, FacebookIcon24, XIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { getCountryByCode } from '@/services/countries'
 
-export const SharePlace = (place: IPlace | IPlacePreview) => {
+type SharePlaceProps = {
+    id: number
+    title: string
+    countryCode: string | null
+}
+
+export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
     const t = useTranslations()
     const locale = useLocale()
     const toast = useToast()
-    const url = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/places/${place.id}`
+    const url = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/places/${id}`
 
-    const [copiedText, copy] = useCopyToClipboard()
+    const [_, copy] = useCopyToClipboard()
 
     const handleCopy = () => {
         copy(url)
@@ -40,9 +44,9 @@ export const SharePlace = (place: IPlace | IPlacePreview) => {
                     title="Look what place I found on Tripadvancer!"
                     via="tripadvancer_me"
                     hashtags={[
-                        `${place.title.replace(/\s/g, '').toLowerCase()}`,
-                        `${getCountryByCode(place.countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
-                        `visit${getCountryByCode(place.countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
+                        `${title.replace(/\s/g, '').toLowerCase()}`,
+                        `${getCountryByCode(countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
+                        `visit${getCountryByCode(countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
                         'tripadvancer_me',
                         'tripadvancer',
                         'travel',

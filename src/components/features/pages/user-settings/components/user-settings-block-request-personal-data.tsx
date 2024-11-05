@@ -2,10 +2,12 @@
 
 import { useTranslations } from 'next-intl'
 
+import Link from 'next/link'
+
 import { Confirmation } from '@/components/ui/confirmation'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user-api'
+import { userAPI } from '@/redux/services/user.api'
 
 export const UserSettingsBlockRequestPersonalData = () => {
     const t = useTranslations()
@@ -40,7 +42,15 @@ export const UserSettingsBlockRequestPersonalData = () => {
                     {t('page.user.account.requestPersonalData.action')}
                 </div>
             </div>
-            <div>{t('page.user.account.requestPersonalData.text')}</div>
+            <div>
+                {t.rich('page.user.account.requestPersonalData.text', {
+                    privacyLink: privacyLink => (
+                        <Link href="/legal/privacy-policy" target="_blank">
+                            {privacyLink}
+                        </Link>
+                    ),
+                })}
+            </div>
         </div>
     )
 }

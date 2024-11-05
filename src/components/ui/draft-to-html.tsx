@@ -3,7 +3,11 @@
 import { convertFromRaw } from 'draft-js'
 import { stateToHTML } from 'draft-js-export-html'
 
-export const DraftToHtml = ({ draft }: { draft: string }) => {
+type DraftToHtmlProps = {
+    draft: string
+}
+
+export const DraftToHtml = ({ draft }: DraftToHtmlProps) => {
     const contentState = convertFromRaw(JSON.parse(draft))
     const html = stateToHTML(contentState)
 

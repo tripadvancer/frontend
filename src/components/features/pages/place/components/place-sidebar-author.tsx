@@ -2,12 +2,19 @@ import { getLocale, getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { Avatar } from '@/components/ui/avatar'
 import { formattedDate } from '@/utils/helpers/common'
 
-export const PlaceSidebarAuthor = async ({ author, createdAt }: IPlace) => {
+type PlaceSidebarAuthorProps = {
+    author: {
+        id: number
+        name: string
+        avatar: string | null
+    }
+    createdAt: Date
+}
+
+export const PlaceSidebarAuthor = async ({ author, createdAt }: PlaceSidebarAuthorProps) => {
     const t = await getTranslations()
     const locale = await getLocale()
 

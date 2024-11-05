@@ -14,9 +14,9 @@ export type DropdownItemProps = {
     caption: string
     icon?: ReactNode
     value: string
+    requiredConfirmation?: boolean
     isRed?: boolean
     isCurrent?: boolean
-    requiredConfirmation?: boolean
     onClick: () => void
 }
 
@@ -38,7 +38,7 @@ const DropdownItem = (props: DropdownItemProps) => {
 
     if (isConfirm) {
         return (
-            <li className="hover-animated flex items-center gap-x-1 text-nowrap rounded p-1.5 text-blue-100 last:mb-0 hover:bg-blue-10">
+            <li className="hover-animated flex items-center gap-x-1 text-nowrap rounded p-1.5 text-blue-100 hover:bg-blue-10">
                 <ConfirmationMini onCancel={handleCancel} onConfirm={handleConfirm} />
             </li>
         )
@@ -47,7 +47,7 @@ const DropdownItem = (props: DropdownItemProps) => {
     return (
         <li
             className={classNames(
-                'flex cursor-pointer items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 last:mb-0 hover:bg-blue-10',
+                'flex cursor-pointer items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 hover:bg-blue-10',
                 {
                     'font-medium': props.isCurrent,
                     'text-red-100': props.isRed,
@@ -62,14 +62,13 @@ const DropdownItem = (props: DropdownItemProps) => {
 }
 
 type DropdownProps = {
-    variant?: 'default' | 'white'
     items: DropdownItemProps[]
     position?: 'left' | 'right' | 'center'
     children?: ReactNode
     currentItem?: string
 }
 
-export const Dropdown = ({ variant = 'default', children, items, position = 'right', currentItem }: DropdownProps) => {
+export const Dropdown = ({ children, items, position = 'right', currentItem }: DropdownProps) => {
     const GAP = 4
 
     const containerRef = useRef<HTMLDivElement>(null)

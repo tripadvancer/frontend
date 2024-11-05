@@ -1,8 +1,8 @@
-import { CostingModel, RouteRequest, RouteResponse, RoutingApi } from '@stadiamaps/api'
+import { CostingModel, DistanceUnit, RouteRequest, RouteResponse, RoutingApi } from '@stadiamaps/api'
 
 import type { LngLat } from '@/utils/types/geo'
 
-export function buildRoute(
+export function getRouteResponseFromApi(
     startLngLat: LngLat,
     endLngLat: LngLat,
     costing: CostingModel,
@@ -24,6 +24,7 @@ export function buildRoute(
             },
         ],
         costing: costing,
+        units: DistanceUnit.Km,
     }
 
     api.route({ routeRequest: req })

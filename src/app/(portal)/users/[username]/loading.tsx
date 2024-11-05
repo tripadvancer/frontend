@@ -1,5 +1,5 @@
-import { UserProfileSkeleton } from '@/components/features/pages/user-profile/user-profile-skeleton'
+import { UserVisitedSkeleton } from '@/components/features/pages/user-visited/user-visited-skeleton'
 
 export default function Loading() {
-    return <UserProfileSkeleton />
+    return <UserVisitedSkeleton />
 }

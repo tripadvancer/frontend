@@ -1,52 +1,18 @@
-import type { GeoJsonPoint, LngLat } from '@/utils/types/geo'
-import type { IPhoto } from '@/utils/types/photo'
-import type { IReview } from '@/utils/types/review'
-import type { IUserInfo } from '@/utils/types/user'
+import { LngLat } from '@/utils/types/geo'
 
-export type IPlace = {
+// todo: remove after search refactoring
+export type IPlacePreview = {
     id: number
     title: string
-    description: string
     cover: string | null
-    photos: IPhoto[]
-    categories: number[]
-    countryCode: string | null
-    author: IUserInfo
-    location: GeoJsonPoint
     avgRating: number | null
     reviewsCount: number
-    createdAt: Date
-}
-
-export type IPlaceMeta = {
-    ownReview: IReview | null
-    isSaved: boolean
+    countryCode: string | null
     isVisited: boolean
-}
-
-// prettier-ignore
-export type IPlacePreview = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isVisited' | 'isSaved'> & {
+    isSaved: boolean
     coordinates: number[]
 }
-
-// prettier-ignore
-export type IRandomPlace = Pick<IPlace, 'id' | 'title' | 'description' | 'cover' | 'avgRating' | 'reviewsCount' | 'countryCode'> & Pick<IPlaceMeta, 'isSaved'> & {
-    coordinates: number[]
-}
-
-export type IPlaceNearby = Pick<IPlace, 'id' | 'title' | 'cover' | 'avgRating' | 'reviewsCount'> & { distance: number }
 
 export type ILocationPreview = {
     coordinates: LngLat
-}
-
-export type CreatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover' | 'categories'> & {
-    location: string
-    photos: string[]
-}
-
-export type UpdatePlaceInputs = Pick<IPlace, 'title' | 'description' | 'cover' | 'categories'> & {
-    placeId: number
-    location: string
-    photos: string[]
 }

@@ -1,4 +1,4 @@
-import type { SuperTokensConfig } from 'supertokens-web-js/lib/build/types'
+import { SuperTokensConfig } from 'supertokens-web-js/lib/build/types'
 import EmailPassword from 'supertokens-web-js/recipe/emailpassword'
 import EmailVerification from 'supertokens-web-js/recipe/emailverification'
 import Session from 'supertokens-web-js/recipe/session'

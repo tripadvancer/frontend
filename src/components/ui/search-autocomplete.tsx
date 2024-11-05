@@ -1,13 +1,12 @@
 'use client'
 
-import { CSSProperties, Ref, forwardRef, useState } from 'react'
-
-import type { ICountryDict } from '@/utils/types/country'
-import type { ILocationPreview, IPlacePreview } from '@/utils/types/place'
-import type { ISearchItem } from '@/utils/types/search'
+import { Ref, forwardRef, useState } from 'react'
 
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
+import { ICountryDict } from '@/utils/types/country'
+import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { ISearchItem } from '@/utils/types/search'
 
 import { SearchAutocompleteItem } from './search-autocomplete-item'
 

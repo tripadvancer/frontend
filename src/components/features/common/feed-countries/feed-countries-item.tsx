@@ -2,11 +2,10 @@ import { getLocale, getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import type { ICountry } from '@/utils/types/country'
-
 import { PinIcon16 } from '@/components/ui/icons'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { getCountryByCode } from '@/services/countries'
+import { ICountry } from '@/utils/types/country'
 
 export const FeedCountriesItem = async ({ countryCode, placesCount }: ICountry) => {
     const t = await getTranslations()

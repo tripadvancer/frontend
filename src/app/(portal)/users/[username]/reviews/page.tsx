@@ -1,11 +1,15 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { UserReviews } from '@/components/features/pages/user-reviews/user-reviews'
 import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata> {
+type Params = Promise<{ username: string }>
+
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
+
     return {
         title: 'Written Reviews',
         alternates: {
@@ -14,8 +18,10 @@ export async function generateMetadata({ params }: { params: { username: string 
     }
 }
 
-export default async function UserReviewsPage({ params }: { params: { username: string } }) {
+export default async function UserReviewsPage(props: { params: Params }) {
+    const params = await props.params
     const user = await getUserByUsername(params.username)
+
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -34,5 +40,6 @@ export default async function UserReviewsPage({ params }: { params: { username: 
     }
 
     const activeUserId = session.getAccessTokenPayload().userId
+
     return <UserReviews userId={user.id} activeUserId={activeUserId} isAuth={true} />
 }

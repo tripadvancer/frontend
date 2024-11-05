@@ -1,4 +1,4 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { ThirdPartyCallback } from '@/components/features/auth/third-party-callback'
 

@@ -1,12 +1,14 @@
 import { getTranslations } from 'next-intl/server'
 
-import type { IUserSocial } from '@/utils/types/user'
-
 import { UserSocialApps } from '@/utils/enums'
 
 import { UserSidebarSocialLink } from './user-sidebar-social-link'
 
-export const UserSidebarSocial = async ({ social }: { social: IUserSocial }) => {
+type UserSidebarSocialProps = {
+    social: Partial<Record<UserSocialApps, string>>
+}
+
+export const UserSidebarSocial = async ({ social }: UserSidebarSocialProps) => {
     const t = await getTranslations()
 
     if (!Object.keys(social).length) {

@@ -1,9 +1,13 @@
-import type { Metadata } from 'next/types'
+import { Metadata } from 'next/types'
 
 import { UserPlaces } from '@/components/features/pages/user-places/user-places'
 import { getUserByUsername } from '@/services/users'
 
-export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata> {
+type Params = Promise<{ username: string }>
+
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
+
     return {
         title: 'Added Places',
         alternates: {
@@ -12,7 +16,9 @@ export async function generateMetadata({ params }: { params: { username: string 
     }
 }
 
-export default async function UserPlacesPage({ params }: { params: { username: string } }) {
+export default async function UserPlacesPage(props: { params: Params }) {
+    const params = await props.params
     const user = await getUserByUsername(params.username)
+
     return <UserPlaces userId={user.id} />
 }

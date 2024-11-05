@@ -11,6 +11,7 @@ import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
 import { useToast } from '@/providers/toast-provider'
 import { getMapViewState } from '@/redux/features/map-slice'
+import { getRouteResponse } from '@/redux/features/route-slice'
 import { getUserLocation, setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
@@ -20,6 +21,8 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
+import { MapPopupRoute } from './components/map-popup-route'
+import { MapSelectCostingModel } from './components/map-select-costing-model'
 import { useMapEventHandlers } from './map-event-handlers'
 import { placesLayer } from './sources/map-layers'
 import { MapSourceRoute } from './sources/map-source-route'
@@ -38,31 +41,32 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
     const userLocation = useAppSelector(getUserLocation)
     const mapViewState = useAppSelector(getMapViewState)
+    const routeResponse = useAppSelector(getRouteResponse)
     const isMobile = useMediaQuery('(max-width: 639px)')
     const isTablet = useMediaQuery('(max-width: 1023px)')
 
-    const { handleLocate, isLocating } = useUserLocation()
+    // const { handleLocate, isLocating } = useUserLocation()
 
     const mapRef = useRef<MapRef>(null)
-    const mapContainerRef = useRef<HTMLDivElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
 
     useGeolocated({
         // The location is obtained when the hook mounts by default.
         // If you want to prevent this and get the location later,
         // set the suppressLocationOnMount to true
         // and use the getPosition function returned by the hook to trigger the geolocation query manually.
-        suppressLocationOnMount: false,
-        watchPosition: true,
-        positionOptions: {
-            enableHighAccuracy: false,
-        },
-        onSuccess: (position: GeolocationPosition) => {
-            const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
-            dispatch(setUserLocation(userLngLat))
-        },
-        onError: () => {
-            toast.error(t('common.error'))
-        },
+        // suppressLocationOnMount: false,
+        // watchPosition: true,
+        // positionOptions: {
+        // enableHighAccuracy: false,
+        // },
+        // onSuccess: (position: GeolocationPosition) => {
+        // const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
+        // dispatch(setUserLocation(userLngLat))
+        // },
+        // onError: () => {
+        // toast.error(t('common.error'))
+        // },
     })
 
     const handleZoomIn = useCallback(() => {
@@ -74,11 +78,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     }, [])
 
     return (
-        <div ref={mapContainerRef} className="size-full">
-            {/* todo: for debug, remove later */}
-            {/* <div className="fixed left-0 right-0 top-1/2 z-50 h-[1px] bg-red-100"></div> */}
-            {/* <div className="fixed bottom-0 left-1/2 top-0 z-50 w-[1px] bg-red-100"></div> */}
-
+        <div ref={containerRef} className="size-full">
             <ReactMapGl
                 id="map"
                 ref={mapRef}
@@ -107,28 +107,22 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                         <MinusIcon16 />
                     </MapControl>
 
-                    <MapControl isLoading={isLocating} onClick={handleLocate}>
+                    {/* <MapControl isLoading={isLocating} onClick={handleLocate}>
                         <LocationIcon16 />
-                    </MapControl>
+                    </MapControl> */}
+
+                    <MapSelectCostingModel />
                 </div>
 
-                {userLocation && (
-                    <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="bottom">
-                        <MapPinUser />
-                    </Marker>
-                )}
-
-                {handlers.placePopupInfo && <MapPopupPlace mapRef={mapContainerRef} place={handlers.placePopupInfo} />}
-
-                {handlers.locationPopupInfo && (
-                    <MapPopupLocation
-                        mapRef={mapContainerRef}
-                        activeUserId={activeUserId}
-                        isAuth={isAuth}
-                        isEmailVerified={isEmailVerified}
-                        {...handlers.locationPopupInfo}
-                    />
-                )}
+                <MapPinUser />
+                <MapPopupRoute />
+                <MapPopupPlace containerRef={containerRef} />
+                <MapPopupLocation
+                    containerRef={containerRef}
+                    activeUserId={activeUserId}
+                    isAuth={isAuth}
+                    isEmailVerified={isEmailVerified}
+                />
 
                 {!isMobile && <AttributionControl compact={true} />}
             </ReactMapGl>

@@ -4,13 +4,12 @@ import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
-import type { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/types/complaint'
-
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { FormRadio } from '@/components/ui/form-radio'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
+import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/redux/services/complain.types'
 import { ComplaintReasonsEnum } from '@/utils/enums'
 
 const textMaxLength = validationConfig.complain.maxLength

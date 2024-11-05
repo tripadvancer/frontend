@@ -1,22 +1,20 @@
 'use client'
 
-import type { IPlace } from '@/utils/types/place'
-
 import { Review } from '@/components/features/common/review/review'
 import { ReviewSkeleton } from '@/components/features/common/review/review-skeleton'
-import { placesAPI } from '@/redux/services/places-api'
+import { placesAPI } from '@/redux/services/places.api'
 
 import { PlaceMainAddReviewButton } from './place-main-add-review-button'
 
 type PlaceMainOwnReviewProps = {
-    place: IPlace
+    placeId: number
     activeUserId?: number
     isAuth: boolean
     isEmailVerified?: boolean
 }
 
-export const PlaceMainOwnReview = ({ place, activeUserId, isAuth, isEmailVerified }: PlaceMainOwnReviewProps) => {
-    const { data: meta, isLoading, isSuccess } = placesAPI.useGetPlaceMetaByIdQuery(place.id, { skip: !isAuth })
+export const PlaceMainOwnReview = ({ placeId, activeUserId, isAuth, isEmailVerified }: PlaceMainOwnReviewProps) => {
+    const { data: meta, isLoading, isSuccess } = placesAPI.useGetPlaceMetaByIdQuery(placeId, { skip: !isAuth })
 
     if (isLoading) {
         return <ReviewSkeleton />
@@ -38,7 +36,7 @@ export const PlaceMainOwnReview = ({ place, activeUserId, isAuth, isEmailVerifie
 
     return (
         <PlaceMainAddReviewButton
-            placeId={place.id}
+            placeId={placeId}
             activeUserId={activeUserId}
             isAuth={isAuth}
             isEmailVerified={isEmailVerified}
