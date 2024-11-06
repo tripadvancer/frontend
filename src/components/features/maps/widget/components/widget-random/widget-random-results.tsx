@@ -64,7 +64,7 @@ export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }
         },
     })
 
-    const handleLocate = useCallback(() => {
+    const handleLocate = () => {
         if (!isGeolocationAvailable) {
             toast.error(t('geolocation.isNotSupported'))
             return
@@ -80,7 +80,7 @@ export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }
             map?.flyTo(getMapFlyToOptions(userLngLat))
             return
         }
-    }, [coords])
+    }
 
     if (isError) {
         return <WidgetMessage />

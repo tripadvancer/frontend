@@ -70,7 +70,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
         },
     })
 
-    const handleLocate = useCallback(() => {
+    const handleLocate = () => {
         if (!isGeolocationAvailable) {
             toast.error(t('geolocation.isNotSupported'))
             return
@@ -86,7 +86,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
             mapRef.current?.flyTo(getMapFlyToOptions(userLngLat))
             return
         }
-    }, [coords])
+    }
 
     const handleZoomIn = useCallback(() => {
         mapRef.current?.zoomIn({ duration: 500 })
