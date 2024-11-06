@@ -14,9 +14,9 @@ export const MapSelectCostingModel = () => {
     return (
         <MapDropdownControl
             options={[
-                { icon: <CarIcon16 />, value: CostingModel.Auto },
-                { icon: <BicycleIcon16 />, value: CostingModel.Bicycle },
-                { icon: <WalkIcon16 />, value: CostingModel.Pedestrian },
+                { value: CostingModel.Auto },
+                { value: CostingModel.Bicycle },
+                { value: CostingModel.Pedestrian },
             ]}
             selectedValue={routeCostingModel}
             onChange={(value: CostingModel) => {

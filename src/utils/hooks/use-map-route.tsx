@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { GeoJSONSource, useMap } from 'react-map-gl/maplibre'
 
 import { CostingModel, DistanceUnit, Route200Response, RouteRequest, RoutingApi } from '@stadiamaps/api'
@@ -28,6 +28,11 @@ export function useMapRoute(): useMapRouteInterface {
 
     const { map } = useMap()
 
+    const setRoutingState = (state: boolean) => {
+        dispatch(setIsRoutingDisabled(state))
+        setIsRouting(state)
+    }
+
     const buildRoute = async (finishPoint: LngLat) => {
         if (!userLocation) {
             return
@@ -44,16 +49,6 @@ export function useMapRoute(): useMapRouteInterface {
         }
     }
 
-    const clearRoute = () => {
-        dispatch(resetRoute())
-        clearMapRoute()
-    }
-
-    const setRoutingState = (state: boolean) => {
-        dispatch(setIsRoutingDisabled(state))
-        setIsRouting(state)
-    }
-
     const handleRouteResponse = (response: Route200Response) => {
         dispatch(setRouteResponse(response))
         dispatch(closeMapPopups())
@@ -62,12 +57,15 @@ export function useMapRoute(): useMapRouteInterface {
 
     const handleRouteError = () => {
         toast.error(t('route.error'))
+        clearRoute()
         setRoutingState(false)
     }
 
-    const clearMapRoute = () => {
+    const clearRoute = () => {
         const source = map?.getSource('route-source') as GeoJSONSource
         source?.setData({ type: 'FeatureCollection', features: [] })
+        dispatch(resetRoute())
+        setRoutingState(false)
     }
 
     const createRouteRequest = (start: LngLat, finish: LngLat, costing: CostingModel): RouteRequest => ({

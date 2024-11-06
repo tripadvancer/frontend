@@ -1,15 +1,18 @@
 'use client'
 
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
+
+import { CostingModel } from '@stadiamaps/api'
+
+import { MapCostingModelIcon } from '../features/maps/map/components/map-costing-model-icon'
 
 type MapDropdownControlOptions = {
-    icon: ReactNode
     value: any
 }
 
 type MapDropdownControlProps = {
     options: MapDropdownControlOptions[]
-    selectedValue: string
+    selectedValue: CostingModel
     onChange: (value: any) => void
 }
 
@@ -22,7 +25,7 @@ export const MapDropdownControl = ({ options, selectedValue, onChange }: MapDrop
                 className="flex-center hover-animated size-10 cursor-pointer hover:text-blue-active sm:size-8"
                 onClick={() => setIsOpen(!isOpen)}
             >
-                {options.find(option => option.value === selectedValue)?.icon}
+                <MapCostingModelIcon costingModel={selectedValue} />
             </div>
 
             {isOpen &&
@@ -35,7 +38,7 @@ export const MapDropdownControl = ({ options, selectedValue, onChange }: MapDrop
                             setIsOpen(false)
                         }}
                     >
-                        {item.icon}
+                        <MapCostingModelIcon costingModel={item.value} />
                     </div>
                 ))}
         </div>
