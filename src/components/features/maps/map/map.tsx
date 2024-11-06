@@ -1,20 +1,16 @@
 'use client'
 
 import { useCallback, useRef } from 'react'
-import { useGeolocated } from 'react-geolocated'
 import { AttributionControl, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
-import { useTranslations } from 'next-intl'
 import { useMediaQuery } from 'usehooks-ts'
 
 import { MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
 import { LocationIcon } from '@/components/ui/location-icon'
 import { MapControl } from '@/components/ui/map-control'
-import { useToast } from '@/providers/toast-provider'
 import { getMapViewState } from '@/redux/features/map-slice'
-import { setUserLocation } from '@/redux/features/user-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { getMapFlyToOptions } from '@/utils/helpers/maps'
+import { useAppSelector } from '@/redux/hooks'
+import { useUserLocation } from '@/utils/hooks/use-user-location'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
@@ -35,9 +31,6 @@ type MapProps = {
 }
 
 export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
-    const t = useTranslations()
-    const dispatch = useAppDispatch()
-    const toast = useToast()
     const handlers = useMapEventHandlers()
     const mapViewState = useAppSelector(getMapViewState)
     const isMobile = useMediaQuery('(max-width: 639px)')
@@ -46,47 +39,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const mapRef = useRef<MapRef>(null)
     const containerRef = useRef<HTMLDivElement>(null)
 
-    const { getPosition, coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated({
-        positionOptions: {
-            enableHighAccuracy: true, // Request the most accurate position available (e.g., GPS)
-            maximumAge: 0, // Do not use cached position data, always get fresh data
-            timeout: Infinity, // Wait indefinitely for the position, no timeout
-        },
-        watchPosition: true, // Do not watch for position changes
-        userDecisionTimeout: 0, // Do not wait for the user's decision
-        suppressLocationOnMount: false, // Get the location when the hook mounts
-        isOptimisticGeolocationEnabled: false, // Do not use optimistic geolocation
-        watchLocationPermissionChange: false, // Do not watch for changes in location permission
-        onSuccess: (position: GeolocationPosition) => {
-            const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
-            dispatch(setUserLocation(userLngLat))
-        },
-        onError: error => {
-            if (error && error.code === error.PERMISSION_DENIED) {
-                // toast.error(t('geolocation.isNotPermission'))
-            } else {
-                toast.error(t('common.error'))
-            }
-        },
-    })
-
-    const handleLocate = () => {
-        if (!isGeolocationAvailable) {
-            toast.error(t('geolocation.isNotSupported'))
-            return
-        }
-
-        if (!isGeolocationEnabled) {
-            toast.error(t('geolocation.isNotEnabled'))
-            return
-        }
-
-        if (coords) {
-            const userLngLat = { lng: coords?.longitude, lat: coords?.latitude }
-            mapRef.current?.flyTo(getMapFlyToOptions(userLngLat))
-            return
-        }
-    }
+    const { handleLocate } = useUserLocation()
 
     const handleZoomIn = useCallback(() => {
         mapRef.current?.zoomIn({ duration: 500 })
