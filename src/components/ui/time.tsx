@@ -25,7 +25,7 @@ export const Time = ({ time, className }: TimeProps) => {
             return t('common.time.minutes', { minutes })
         }
 
-        return t('common.time.seconds', { seconds: time })
+        return t('common.time.minutes', { minutes: '~1' })
     }
 
     return <div className={className}>{getTime(time)}</div>

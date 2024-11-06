@@ -2,6 +2,8 @@
 
 import { Popup } from 'react-map-gl/maplibre'
 
+import { RouteResponse } from '@stadiamaps/api'
+
 import { Distance } from '@/components/ui/distance'
 import { CloseIcon16 } from '@/components/ui/icons'
 import { Time } from '@/components/ui/time'
@@ -15,7 +17,7 @@ import { MapCostingModelIcon } from './map-costing-model-icon'
 
 export const MapPopupRoute = () => {
     const userLocation = useAppSelector(getUserLocation)
-    const routeResponse = useAppSelector(getRouteResponse)
+    const routeResponse = useAppSelector(getRouteResponse) as RouteResponse
     const costingModel = useAppSelector(getRouteCostingModel)
 
     const { clearRoute } = useMapRoute()

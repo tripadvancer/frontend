@@ -17,25 +17,6 @@ export const PlaceButtonRoute = ({ lngLat }: PlaceButtonRouteProps) => {
     const isRoutingDisabled = useAppSelector(getIsRoutingDisabled)
     const { buildRoute, isRouting } = useMapRoute()
 
-    // const { getPosition } = useGeolocated({
-    //     suppressLocationOnMount: false,
-    //     watchPosition: true,
-    //     positionOptions: {
-    //         enableHighAccuracy: true,
-    //         // timeout: 1000,
-    //     },
-
-    //     onSuccess: (position: GeolocationPosition) => {
-    //         // const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
-    //         // buildRoute(userLngLat, lngLat, routeCostingModel, handleRouteResponse)
-    //         // dispatch(setUserLocation(userLngLat))
-    //     },
-    //     onError: () => {
-    //         toast.error(t('common.error'))
-    //         setIsLoading(false)
-    //     },
-    // })
-
     return (
         <FormButton
             type="stroke"

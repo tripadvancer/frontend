@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { GeoJSONSource, Layer, LngLatLike, Source, useMap } from 'react-map-gl/maplibre'
 
 import polyline from '@mapbox/polyline'
+import { RouteResponse } from '@stadiamaps/api'
 
 import { getRouteResponse } from '@/redux/features/route-slice'
 import { useAppSelector } from '@/redux/hooks'
@@ -11,7 +12,7 @@ import { useAppSelector } from '@/redux/hooks'
 import { routeLayer } from './map-layers'
 
 export const MapSourceRoute = () => {
-    const routeResponse = useAppSelector(getRouteResponse)
+    const routeResponse = useAppSelector(getRouteResponse) as RouteResponse
 
     const { map } = useMap()
 
@@ -32,7 +33,7 @@ export const MapSourceRoute = () => {
                 source.setData(geometry)
             })
         }
-    }, [routeResponse])
+    }, [map, routeResponse])
 
     return (
         <Source id="route-source" type="geojson" data={{ type: 'FeatureCollection', features: [] }}>

@@ -71,7 +71,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
             const userLngLat = { lng: coords?.longitude, lat: coords?.latitude }
             mapRef.current?.flyTo(getMapFlyToOptions(userLngLat))
         }
-    }, [getPosition])
+    }, [coords])
 
     const handleZoomIn = useCallback(() => {
         mapRef.current?.zoomIn({ duration: 500 })
