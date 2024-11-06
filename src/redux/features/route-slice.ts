@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { RouteResponse } from '@stadiamaps/api'
+import { Route200Response } from '@stadiamaps/api'
 
 import { RootState } from '@/redux/store'
 
 interface RouteState {
-    response: RouteResponse | null
+    response: Route200Response | null
     isRoutingDisabled: boolean
 }
 
@@ -17,7 +17,7 @@ export const routeSlice = createSlice({
     name: 'route',
     initialState,
     reducers: {
-        setRouteResponse: (state, action: PayloadAction<RouteResponse>) => {
+        setRouteResponse: (state, action: PayloadAction<Route200Response>) => {
             state.response = action.payload
         },
         setIsRoutingDisabled: (state, action: PayloadAction<boolean>) => {
