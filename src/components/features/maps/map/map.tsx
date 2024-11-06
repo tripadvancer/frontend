@@ -39,7 +39,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const mapRef = useRef<MapRef>(null)
     const containerRef = useRef<HTMLDivElement>(null)
 
-    const { handleLocate } = useUserLocation()
+    const { handleLocate, isGeolocationEnabled } = useUserLocation()
 
     const handleZoomIn = useCallback(() => {
         mapRef.current?.zoomIn({ duration: 500 })
@@ -80,7 +80,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                     </MapControl>
 
                     <MapControl onClick={handleLocate}>
-                        <LocationIcon />
+                        <LocationIcon isLocating={isGeolocationEnabled} />
                     </MapControl>
 
                     <MapSelectCostingModel />

@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 
 interface useUserLocationInterface {
+    isGeolocationEnabled: boolean
     handleLocate: () => void
 }
 
@@ -62,5 +63,5 @@ export function useUserLocation(): useUserLocationInterface {
         }
     }
 
-    return { handleLocate }
+    return { isGeolocationEnabled, handleLocate }
 }
