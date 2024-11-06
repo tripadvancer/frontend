@@ -1,13 +1,17 @@
 'use client'
 
 import { useCallback, useRef, useState } from 'react'
+import { useGeolocated } from 'react-geolocated'
 import { MapRef, Map as ReactMapGl, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
+
+import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
 
 import { MinusIcon16, PlusIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { LocationIcon } from '@/components/ui/location-icon'
 import { MapControl } from '@/components/ui/map-control'
+import { useToast } from '@/providers/toast-provider'
 import { LngLat } from '@/utils/types/geo'
 
 import { LocationPickerMapSearch } from './location-picker-map-search'
@@ -18,24 +22,46 @@ type LocationPickerMapProps = {
 }
 
 export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPickerMapProps) => {
+    const t = useTranslations()
     const mapRef = useRef<MapRef>(null)
+    const toast = useToast()
 
     const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false)
     const [isMoving, setIsMoving] = useState<boolean>(false)
     const [isUserLocating, setIsUserLocating] = useState<boolean>(false)
 
-    const handleUserLocate = () => {
-        if ('geolocation' in navigator) {
-            setIsUserLocating(true)
-            navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
-                const lngLat: LngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
-                mapRef.current?.jumpTo({
-                    center: lngLat,
-                    zoom: 15,
-                })
-                setIsUserLocating(false)
+    const { getPosition } = useGeolocated({
+        positionOptions: {
+            enableHighAccuracy: true, // Request the most accurate position available (e.g., GPS)
+            maximumAge: 0, // Do not use cached position data, always get fresh data
+            timeout: Infinity, // Wait indefinitely for the position, no timeout
+        },
+        watchPosition: false, // Do not watch for position changes
+        userDecisionTimeout: 0, // Do not wait for the user's decision
+        suppressLocationOnMount: true, // Do not get the location when the hook mounts
+        isOptimisticGeolocationEnabled: false, // Do not use optimistic geolocation
+        watchLocationPermissionChange: false, // Do not watch for changes in location permission
+        onSuccess: (position: GeolocationPosition) => {
+            const lngLat: LngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
+            mapRef.current?.jumpTo({
+                center: lngLat,
+                zoom: 15,
             })
-        }
+            setIsUserLocating(false)
+        },
+        onError: error => {
+            if (error && error.code === error.PERMISSION_DENIED) {
+                toast.error(t('geolocation.isNotPermission'))
+            } else {
+                toast.error(t('common.error'))
+            }
+            setIsUserLocating(false)
+        },
+    })
+
+    const handleUserLocate = () => {
+        setIsUserLocating(true)
+        getPosition()
     }
 
     const handleSearchResultSelect = useCallback((lngLat: LngLat) => {
