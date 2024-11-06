@@ -4,15 +4,17 @@ import { useEffect } from 'react'
 import { GeoJSONSource, Layer, LngLatLike, Source, useMap } from 'react-map-gl/maplibre'
 
 import polyline from '@mapbox/polyline'
-import { RouteResponse } from '@stadiamaps/api'
+import { CostingModel, RouteResponse } from '@stadiamaps/api'
 
+import { getRouteCostingModel } from '@/redux/features/map-slice'
 import { getRouteResponse } from '@/redux/features/route-slice'
 import { useAppSelector } from '@/redux/hooks'
 
-import { routeLayer } from './map-layers'
+import { routeLayerVehicle, routeLayerWalking } from './map-layers'
 
 export const MapSourceRoute = () => {
     const routeResponse = useAppSelector(getRouteResponse) as RouteResponse
+    const costingModel = useAppSelector(getRouteCostingModel)
 
     const { map } = useMap()
 
@@ -37,7 +39,7 @@ export const MapSourceRoute = () => {
 
     return (
         <Source id="route-source" type="geojson" data={{ type: 'FeatureCollection', features: [] }}>
-            <Layer {...routeLayer} />
+            <Layer {...(costingModel === CostingModel.Pedestrian ? routeLayerWalking : routeLayerVehicle)} />
         </Source>
     )
 }

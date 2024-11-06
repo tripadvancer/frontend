@@ -29,7 +29,7 @@ export const circleLayer: FillLayer = {
     },
 }
 
-export const routeLayer: LineLayer = {
+export const routeLayerVehicle: LineLayer = {
     id: 'route-layer',
     source: 'route-source',
     type: 'line',
@@ -39,7 +39,21 @@ export const routeLayer: LineLayer = {
     },
     paint: {
         'line-color': '#d96c04',
-        'line-width': 6,
-        // 'line-dasharray': [2, 2],
+        'line-width': 4,
+    },
+}
+
+export const routeLayerWalking: LineLayer = {
+    id: 'route-layer',
+    source: 'route-source',
+    type: 'line',
+    layout: {
+        'line-join': 'round',
+        'line-cap': 'round',
+    },
+    paint: {
+        'line-color': '#d96c04',
+        'line-width': 4,
+        'line-dasharray': [1, 2],
     },
 }
