@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useRef } from 'react'
 import { useGeolocated } from 'react-geolocated'
 import { AttributionControl, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
@@ -46,34 +46,31 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const mapRef = useRef<MapRef>(null)
     const containerRef = useRef<HTMLDivElement>(null)
 
-    const [isLocating, setIsLocating] = useState(false)
-
-    const { getPosition, isGeolocationAvailable } = useGeolocated({
+    const { getPosition, coords, isGeolocationAvailable } = useGeolocated({
         positionOptions: {
             enableHighAccuracy: true, // Request the most accurate position available (e.g., GPS)
             maximumAge: 0, // Do not use cached position data, always get fresh data
             timeout: Infinity, // Wait indefinitely for the position, no timeout
         },
-        watchPosition: false, // Do not watch for position changes
+        watchPosition: true, // Do not watch for position changes
         userDecisionTimeout: 0, // Do not wait for the user's decision
-        suppressLocationOnMount: true, // Do not get the location when the hook mounts
+        suppressLocationOnMount: false, // Do not get the location when the hook mounts
         isOptimisticGeolocationEnabled: false, // Do not use optimistic geolocation
         watchLocationPermissionChange: false, // Do not watch for changes in location permission
         onSuccess: (position: GeolocationPosition) => {
             const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
-            mapRef.current?.flyTo(getMapFlyToOptions(userLngLat))
             dispatch(setUserLocation(userLngLat))
-            setIsLocating(false)
         },
         onError: () => {
             toast.error(t('common.error'))
-            setIsLocating(false)
         },
     })
 
     const handleLocate = useCallback(() => {
-        setIsLocating(true)
-        getPosition()
+        if (coords) {
+            const userLngLat = { lng: coords?.longitude, lat: coords?.latitude }
+            mapRef.current?.flyTo(getMapFlyToOptions(userLngLat))
+        }
     }, [getPosition])
 
     const handleZoomIn = useCallback(() => {
@@ -114,7 +111,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                         <MinusIcon16 />
                     </MapControl>
 
-                    <MapControl isLoading={isLocating} onClick={handleLocate}>
+                    <MapControl onClick={handleLocate}>
                         <LocationIcon />
                     </MapControl>
 
