@@ -5,7 +5,8 @@ import { MapRef, Map as ReactMapGl, ViewState, ViewStateChangeEvent } from 'reac
 
 import Image from 'next/image'
 
-import { LocationIcon16, MinusIcon16, PlusIcon16, SearchIcon16 } from '@/components/ui/icons'
+import { MinusIcon16, PlusIcon16, SearchIcon16 } from '@/components/ui/icons'
+import { LocationIcon } from '@/components/ui/location-icon'
 import { MapControl } from '@/components/ui/map-control'
 import { LngLat } from '@/utils/types/geo'
 
@@ -101,7 +102,7 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
                 </MapControl>
 
                 <MapControl isLoading={isUserLocating} onClick={handleUserLocate}>
-                    <LocationIcon16 />
+                    <LocationIcon />
                 </MapControl>
             </div>
 
