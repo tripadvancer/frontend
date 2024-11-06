@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GeoJSONSource, useMap } from 'react-map-gl/maplibre'
 
-import { DistanceUnit, Route200Response, RoutingApi } from '@stadiamaps/api'
+import { CostingModel, DistanceUnit, Route200Response, RouteRequest, RoutingApi } from '@stadiamaps/api'
+import { useTranslations } from 'next-intl'
 
 import { useToast } from '@/providers/toast-provider'
 import { closeMapPopups, getRouteCostingModel } from '@/redux/features/map-slice'
@@ -17,60 +18,66 @@ interface useMapRouteInterface {
 }
 
 export function useMapRoute(): useMapRouteInterface {
-    const api = new RoutingApi()
-    const dispatch = useAppDispatch()
+    const t = useTranslations()
     const toast = useToast()
     const userLocation = useAppSelector(getUserLocation)
     const costingModel = useAppSelector(getRouteCostingModel)
+    const dispatch = useAppDispatch()
 
     const [isRouting, setIsRouting] = useState(false)
 
     const { map } = useMap()
 
     const buildRoute = async (finishPoint: LngLat) => {
-        dispatch(setIsRoutingDisabled(true))
-        setIsRouting(true)
-        if (userLocation) {
-            try {
-                const response = await api.route({
-                    routeRequest: {
-                        locations: [
-                            {
-                                lat: userLocation.lat,
-                                lon: userLocation.lng,
-                                type: 'break',
-                            },
-                            {
-                                lat: finishPoint.lat,
-                                lon: finishPoint.lng,
-                                type: 'break',
-                            },
-                        ],
-                        costing: costingModel,
-                        units: DistanceUnit.Km,
-                    },
-                })
-                handleRouteResponse(response)
-            } catch (e) {
-                toast.error('Failed to build route')
-                dispatch(setIsRoutingDisabled(false))
-                setIsRouting(false)
-            }
+        if (!userLocation) {
+            return
+        }
+
+        setRoutingState(true)
+        try {
+            const routeRequest = createRouteRequest(userLocation, finishPoint, costingModel)
+            const api = new RoutingApi()
+            const response = await api.route({ routeRequest })
+            handleRouteResponse(response)
+        } catch (error) {
+            handleRouteError()
         }
     }
 
     const clearRoute = () => {
         dispatch(resetRoute())
-        const source = map?.getSource('route-source') as GeoJSONSource
-        source.setData({ type: 'FeatureCollection', features: [] })
+        clearMapRoute()
+    }
+
+    const setRoutingState = (state: boolean) => {
+        dispatch(setIsRoutingDisabled(state))
+        setIsRouting(state)
     }
 
     const handleRouteResponse = (response: Route200Response) => {
         dispatch(setRouteResponse(response))
         dispatch(closeMapPopups())
-        dispatch(setIsRoutingDisabled(false))
-        setIsRouting(false)
+        setRoutingState(false)
     }
+
+    const handleRouteError = () => {
+        toast.error(t('route.error'))
+        setRoutingState(false)
+    }
+
+    const clearMapRoute = () => {
+        const source = map?.getSource('route-source') as GeoJSONSource
+        source?.setData({ type: 'FeatureCollection', features: [] })
+    }
+
+    const createRouteRequest = (start: LngLat, finish: LngLat, costing: CostingModel): RouteRequest => ({
+        locations: [
+            { lat: start.lat, lon: start.lng, type: 'break' },
+            { lat: finish.lat, lon: finish.lng, type: 'break' },
+        ],
+        costing,
+        units: DistanceUnit.Km,
+    })
 
     return { buildRoute, clearRoute, isRouting }
 }

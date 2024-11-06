@@ -142,6 +142,9 @@
             }
         }
     },
+    "route": {
+        "error": "Failed to build route"
+    },
     "layout": {
         "header": {
             "signIn": "Sign In",
@@ -551,8 +554,7 @@
         "popup": {
             "location": {
                 "title": "Selected location",
-                "addPlace": "Add place here",
-                "iAmHere": "I am here"
+                "addPlace": "Add place here"
             }
         },
         "widget": {
@@ -591,7 +593,7 @@
             },
             "random": {
                 "emptyMessage": "No places matcing your filter found.<br></br>Try changing categories or radius.",
-                "notLocation": "To find a random place around you — allow access to your location or select “I am here” on the map.",
+                "notLocation": "To find a random place around you, please allow access to your location.",
                 "distance": {
                     "title": "Distance from you",
                     "km": "{distance} km"

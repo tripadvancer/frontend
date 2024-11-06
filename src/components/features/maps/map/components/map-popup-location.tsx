@@ -15,11 +15,9 @@ import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 import { closeMapPopups, getMapState } from '@/redux/features/map-slice'
-import { setUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { placesAroundAPI } from '@/redux/services/places-around.api'
 import { LngLatToString } from '@/utils/helpers/maps'
-import { LngLat } from '@/utils/types/geo'
 
 type MapPopupLocationProps = {
     containerRef: RefObject<HTMLDivElement>
@@ -72,11 +70,6 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
         router.push(`/places/add?lat=${popupInfo.coordinates.lat}&lng=${popupInfo.coordinates.lng}`)
     }
 
-    const handleIAmHereClick = () => {
-        dispatch(closeMapPopups())
-        dispatch(setUserLocation(popupInfo.coordinates))
-    }
-
     return (
         <>
             <Popup
@@ -89,14 +82,9 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
                 <div ref={ref}>
                     <div>{t('map.popup.location.title')}</div>
                     <div className="mb-4 text-small text-black-40">{LngLatToString(popupInfo.coordinates)}</div>
-                    <div className="flex flex-col gap-y-1">
-                        <FormButton type="stroke" size="small" onClick={handleIAmHereClick}>
-                            {t('map.popup.location.iAmHere')}
-                        </FormButton>
-                        <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
-                            {t('map.popup.location.addPlace')}
-                        </FormButton>
-                    </div>
+                    <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
+                        {t('map.popup.location.addPlace')}
+                    </FormButton>
                 </div>
             </Popup>
             <Marker
