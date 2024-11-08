@@ -14,13 +14,15 @@ export const MapSelectCostingModel = () => {
 
     const { clearRoute } = useMapRoute()
 
+    const filteredOptions = [
+        { value: CostingModel.Auto },
+        { value: CostingModel.Bicycle },
+        { value: CostingModel.Pedestrian },
+    ].filter(option => option.value !== routeCostingModel)
+
     return (
         <MapDropdownControl
-            options={[
-                { value: CostingModel.Auto },
-                { value: CostingModel.Bicycle },
-                { value: CostingModel.Pedestrian },
-            ]}
+            options={filteredOptions}
             selectedValue={routeCostingModel}
             onChange={(value: CostingModel) => {
                 dispatch(setRouteCostingModel(value))

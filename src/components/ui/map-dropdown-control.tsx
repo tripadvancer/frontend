@@ -20,7 +20,7 @@ export const MapDropdownControl = ({ options, selectedValue, onChange }: MapDrop
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <div className="flex rounded-lg bg-white shadow-black">
+        <div className="flex flex-row-reverse rounded-lg bg-white shadow-black sm:flex-row">
             <div
                 className="flex-center hover-animated size-10 cursor-pointer hover:text-blue-active sm:size-8"
                 onClick={() => setIsOpen(!isOpen)}

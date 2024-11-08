@@ -70,7 +70,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 <MapSourceRoute />
                 <MapSources isAuth={isAuth} />
 
-                <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
+                <div className="absolute right-2 top-20 z-30 flex flex-col items-end gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0 sm:items-start">
                     <MapControl onClick={handleZoomIn}>
                         <PlusIcon16 />
                     </MapControl>
