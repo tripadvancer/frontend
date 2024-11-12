@@ -35,9 +35,11 @@ export const validationSchema = (t: any) =>
                 value => getDescriptionLength(value as string) <= descriptionMaxLength,
             ),
 
-        location: Yup.string().test('isValidLocation', t('validation.place.location.invalid'), value =>
-            stringCoordinatesIsValid(value as string),
-        ),
+        location: Yup.string()
+            .trim()
+            .test('isValidLocation', t('validation.place.location.invalid'), value =>
+                stringCoordinatesIsValid(value as string),
+            ),
 
         categories: Yup.array()
             .min(1, t('validation.place.categories.required'))

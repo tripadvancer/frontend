@@ -42,12 +42,14 @@ export const SignUp = () => {
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .matches(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
                 t('validation.email.invalid'),
             ),
         username: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .min(userNameMinLength, t('validation.text.minLength', { minLength: userNameMinLength }))
             .max(userNameMaxLength, t('validation.text.maxLength', { maxLength: userNameMaxLength }))
