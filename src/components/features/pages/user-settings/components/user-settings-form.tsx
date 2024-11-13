@@ -102,6 +102,9 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
                 case 'USERNAME_ALREADY_EXISTS_ERROR':
                     formik.setErrors({ name: t('validation.wrong.usernameTaken') })
                     break
+                case 'USERNAME_INVALID_FORMAT_ERROR':
+                    formik.setErrors({ name: t('validation.username.invalid') })
+                    break
                 default:
                     toast.error(t('common.error'))
                     break

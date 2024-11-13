@@ -99,6 +99,9 @@ export const SignUp = () => {
                         if (usernameError.error === 'USERNAME_ALREADY_EXISTS_ERROR') {
                             formik.setErrors({ username: t('validation.wrong.usernameTaken') })
                         }
+                        if (usernameError.error === 'USERNAME_INVALID_FORMAT_ERROR') {
+                            formik.setErrors({ username: t('validation.username.invalid') })
+                        }
                     }
                     break
 
