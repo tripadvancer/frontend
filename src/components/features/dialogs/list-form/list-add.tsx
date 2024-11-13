@@ -22,7 +22,12 @@ export const ListAdd = () => {
     }
     const handleSubmit = async (inputs: CreateListInputs) => {
         try {
-            await createList(inputs)
+            const trimmedInputs = {
+                ...inputs,
+                name: inputs.name.trim(),
+                description: inputs.description.trim(),
+            }
+            await createList(trimmedInputs)
             dialog.close()
         } catch {
             toast.error(t('common.error'))

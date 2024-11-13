@@ -84,6 +84,14 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
 
     const handleSubmit = async (inputs: UpdateUserDataInputs) => {
         try {
+            const trimmedInputs = {
+                ...inputs,
+                name: inputs.name?.trim(),
+                info: inputs.info?.trim(),
+                social: inputs.social
+                    ? Object.fromEntries(Object.entries(inputs.social).map(([key, value]) => [key, value.trim()]))
+                    : {},
+            }
             const response = await updateUserData(inputs).unwrap()
             switch (response.status) {
                 case 'OK':

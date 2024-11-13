@@ -49,7 +49,7 @@ export const SignIn = () => {
         try {
             setIsLoading(true)
             const formFields = [
-                { id: 'email', value: values.email },
+                { id: 'email', value: values.email.trim() },
                 { id: 'password', value: values.password },
             ]
             const response = await emailPasswordSignIn({ formFields })

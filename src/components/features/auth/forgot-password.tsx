@@ -41,7 +41,7 @@ export const ForgotPassword = () => {
     const handleSubmit = async (values: ForgotPasswordInputs) => {
         try {
             setIsLoading(true)
-            const formFields = [{ id: 'email', value: values.email }]
+            const formFields = [{ id: 'email', value: values.email.trim() }]
             const response = await sendPasswordResetEmail({ formFields })
 
             switch (response.status) {

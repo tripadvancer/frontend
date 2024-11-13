@@ -38,7 +38,11 @@ export const ChangeEmail = () => {
 
     const handleSubmit = async (inputs: ChangeUserEmailInputs) => {
         try {
-            const response = await changeUserEmail(inputs).unwrap()
+            const trimedInputs = {
+                ...inputs,
+                newEmail: inputs.newEmail.trim(),
+            }
+            const response = await changeUserEmail(trimedInputs).unwrap()
 
             switch (response.status) {
                 case 'OK':

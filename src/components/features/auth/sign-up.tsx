@@ -64,9 +64,9 @@ export const SignUp = () => {
         try {
             setIsLoading(true)
             const formFields = [
-                { id: 'email', value: values.email },
+                { id: 'email', value: values.email.trim() },
                 { id: 'password', value: values.password },
-                { id: 'username', value: values.username },
+                { id: 'username', value: values.username.trim() },
             ]
             const response = await emailPasswordSignUp({ formFields })
 
