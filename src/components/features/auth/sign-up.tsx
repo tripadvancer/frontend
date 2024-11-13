@@ -25,6 +25,7 @@ import { ThirdPartyButton } from './third-party-button'
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userPasswordMinLength = validationConfig.user.password.minLength
+const userPasswordMaxLength = validationConfig.user.password.maxLength
 
 export const SignUp = () => {
     const t = useTranslations()
@@ -57,6 +58,7 @@ export const SignUp = () => {
         password: Yup.string()
             .required(t('validation.required'))
             .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
+            .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
             .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
     })
 
@@ -92,7 +94,7 @@ export const SignUp = () => {
                     }
 
                     if (passwordError) {
-                        formik.setErrors({ email: passwordError.error })
+                        formik.setErrors({ password: passwordError.error })
                     }
 
                     if (usernameError) {
