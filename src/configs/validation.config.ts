@@ -12,7 +12,7 @@ export const validationConfig = {
         },
         password: {
             minLength: 8,
-            maxLength: 100,
+            maxLength: 99,
         },
         social: {
             maxLength: 50,
