@@ -1,14 +1,14 @@
 import { Metadata } from 'next/types'
 
-import { RessetPassword } from '@/components/features/auth/resset-password'
+import { ResetPassword } from '@/components/features/auth/reset-password'
 
 export const metadata: Metadata = {
-    title: 'Resset Password',
+    title: 'Reset Password',
     alternates: {
-        canonical: 'auth/resset-password',
+        canonical: 'auth/reset-password',
     },
 }
 
-export default async function RessetPasswordPage() {
-    return <RessetPassword />
+export default async function ResetPasswordPage() {
+    return <ResetPassword />
 }

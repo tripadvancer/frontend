@@ -18,7 +18,7 @@ import { ResetPasswordInputs } from '@/utils/types/auth'
 const userPasswordMinLength = validationConfig.user.password.minLength
 const userPasswordMaxLength = validationConfig.user.password.maxLength
 
-export const RessetPassword = () => {
+export const ResetPassword = () => {
     const t = useTranslations()
     const toast = useToast()
 
