@@ -64,7 +64,11 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
         onSubmit: async (inputs: CreateListInputs & UpdatePlaceInListsInputs) => {
             if (inputs.name) {
                 try {
-                    const response = await createList({ name: inputs.name, description: inputs.description }).unwrap()
+                    const trimmedInputs = {
+                        name: inputs.name.trim(),
+                        description: inputs.description.trim(),
+                    }
+                    const response = await createList(trimmedInputs).unwrap()
                     await updatePlaceInLists({ placeId, listIds: [...inputs.listIds, response.id] }).unwrap()
                     dialog.close()
                 } catch {

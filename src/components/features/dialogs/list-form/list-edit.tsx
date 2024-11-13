@@ -23,13 +23,18 @@ export const ListEdit = (list: IList) => {
     const initialValues: UpdateListInputs = {
         id: list.id,
         name: list.name,
-        description: list.description,
+        description: list.description || '',
         isPublic: list.isPublic,
     }
 
     const handleSubmit = async (inputs: UpdateListInputs) => {
         try {
-            const updatedList = await updateList(inputs).unwrap()
+            const trimmedInputs = {
+                ...inputs,
+                name: inputs.name.trim(),
+                description: inputs.description.trim(),
+            }
+            const updatedList = await updateList(trimmedInputs).unwrap()
             dispatch(setWidgetActiveList(updatedList))
             dialog.close()
         } catch {

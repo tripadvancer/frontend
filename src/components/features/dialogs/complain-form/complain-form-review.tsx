@@ -19,7 +19,11 @@ export const ComplainFormReview = ({ reviewId }: { reviewId: number }) => {
 
     const handleSubmit = async (inputs: ReviewComplaintInputs) => {
         try {
-            await complain(inputs)
+            const trimmedInputs = {
+                ...inputs,
+                text: inputs.text.trim(),
+            }
+            await complain(trimmedInputs)
             toast.success(t('success.sendComplaint'))
             dialog.close()
         } catch {

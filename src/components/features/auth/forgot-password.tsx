@@ -30,6 +30,7 @@ export const ForgotPassword = () => {
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .matches(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
@@ -40,7 +41,7 @@ export const ForgotPassword = () => {
     const handleSubmit = async (values: ForgotPasswordInputs) => {
         try {
             setIsLoading(true)
-            const formFields = [{ id: 'email', value: values.email }]
+            const formFields = [{ id: 'email', value: values.email.trim() }]
             const response = await sendPasswordResetEmail({ formFields })
 
             switch (response.status) {
