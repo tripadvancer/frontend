@@ -61,7 +61,11 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
         }
 
         try {
-            await updatePlace(inputs)
+            const trimmedInputs = {
+                ...inputs,
+                title: inputs.title.trim(),
+            }
+            await updatePlace(trimmedInputs)
             toast.success(t('success.updatePlace'))
             router.push(`/places/${id}`)
         } catch {

@@ -36,6 +36,7 @@ export const SignIn = () => {
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .matches(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
@@ -48,7 +49,7 @@ export const SignIn = () => {
         try {
             setIsLoading(true)
             const formFields = [
-                { id: 'email', value: values.email },
+                { id: 'email', value: values.email.trim() },
                 { id: 'password', value: values.password },
             ]
             const response = await emailPasswordSignIn({ formFields })

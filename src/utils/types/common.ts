@@ -30,7 +30,7 @@ export type IReview = {
 export type IList = {
     id: number
     name: string
-    description: string
+    description: string | null
     isPublic: boolean
     listToPlace: {
         placeId: number

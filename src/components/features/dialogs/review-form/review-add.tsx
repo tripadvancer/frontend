@@ -31,7 +31,11 @@ export const ReviewAdd = ({ placeId, userId }: ReviewAddProps) => {
 
     const handleSubmit = async (inputs: CreateReviewInputs) => {
         try {
-            await createReview(inputs)
+            const trimmedInputs = {
+                ...inputs,
+                text: inputs.text.trim(),
+            }
+            await createReview(trimmedInputs)
             dialog.close()
         } catch {
             toast.error(t('common.error'))
