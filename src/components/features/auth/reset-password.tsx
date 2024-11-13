@@ -16,6 +16,7 @@ import { useToast } from '@/providers/toast-provider'
 import { ResetPasswordInputs } from '@/utils/types/auth'
 
 const userPasswordMinLength = validationConfig.user.password.minLength
+const userPasswordMaxLength = validationConfig.user.password.maxLength
 
 export const ResetPassword = () => {
     const t = useTranslations()
@@ -32,6 +33,7 @@ export const ResetPassword = () => {
         password: Yup.string()
             .required(t('validation.required'))
             .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
+            .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
             .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
     })
 
