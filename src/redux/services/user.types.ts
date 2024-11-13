@@ -20,7 +20,7 @@ export type ChangeUserEmailInputs = {
 }
 
 export type UpdateUserDataResponse = {
-    status: 'OK' | 'USERNAME_ALREADY_EXISTS_ERROR'
+    status: 'OK' | 'USERNAME_ALREADY_EXISTS_ERROR' | 'USERNAME_INVALID_FORMAT_ERROR'
 }
 
 export type ChangeUserPasswordResponse = {

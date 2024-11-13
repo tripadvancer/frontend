@@ -92,15 +92,18 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
                     ? Object.fromEntries(Object.entries(inputs.social).map(([key, value]) => [key, value.trim()]))
                     : {},
             }
-            const response = await updateUserData(inputs).unwrap()
+            const response = await updateUserData(trimmedInputs).unwrap()
             switch (response.status) {
                 case 'OK':
-                    router.replace(`/users/${inputs.name}/settings`)
+                    router.replace(`/users/${trimmedInputs.name}/settings`)
                     router.refresh()
                     toast.success(t('success.updateUserInfo'))
                     break
                 case 'USERNAME_ALREADY_EXISTS_ERROR':
                     formik.setErrors({ name: t('validation.wrong.usernameTaken') })
+                    break
+                case 'USERNAME_INVALID_FORMAT_ERROR':
+                    formik.setErrors({ name: t('validation.username.invalid') })
                     break
                 default:
                     toast.error(t('common.error'))

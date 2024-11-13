@@ -23,7 +23,7 @@ export const ListEdit = (list: IList) => {
     const initialValues: UpdateListInputs = {
         id: list.id,
         name: list.name,
-        description: list.description,
+        description: list.description || '',
         isPublic: list.isPublic,
     }
 
