@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useGeolocated } from 'react-geolocated'
 import { useMap } from 'react-map-gl/maplibre'
 
@@ -24,15 +23,15 @@ export function useUserLocation(): useUserLocationInterface {
 
     const { isGeolocationAvailable, isGeolocationEnabled } = useGeolocated({
         positionOptions: {
-            enableHighAccuracy: true, // Request the most accurate position available (e.g., GPS)
-            maximumAge: 0, // Do not use cached position data, always get fresh data
-            timeout: Infinity, // Wait indefinitely for the position, no timeout
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: Infinity,
         },
-        watchPosition: true, // Do not watch for position changes
-        userDecisionTimeout: 0, // Do not wait for the user's decision
-        suppressLocationOnMount: false, // Get the location when the hook mounts
-        isOptimisticGeolocationEnabled: false, // Do not use optimistic geolocation
-        watchLocationPermissionChange: false, // Do not watch for changes in location permission
+        watchPosition: true,
+        userDecisionTimeout: 0,
+        suppressLocationOnMount: false,
+        isOptimisticGeolocationEnabled: false,
+        watchLocationPermissionChange: false,
         onSuccess: (position: GeolocationPosition) => {
             const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
             dispatch(setUserLocation(userLngLat))
