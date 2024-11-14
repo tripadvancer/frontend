@@ -5,10 +5,12 @@ import { CostingModel, DistanceUnit, Route200Response, RouteRequest, RoutingApi 
 import { useTranslations } from 'next-intl'
 
 import { useToast } from '@/providers/toast-provider'
+import { setAppMode } from '@/redux/features/app-slice'
 import { closeMapPopups, getRouteCostingModel } from '@/redux/features/map-slice'
 import { resetRoute, setIsRoutingDisabled, setRouteResponse } from '@/redux/features/route-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { AppModes } from '@/utils/enums'
 import { LngLat } from '@/utils/types/geo'
 
 interface useMapRouteInterface {
@@ -61,6 +63,7 @@ export function useMapRoute(): useMapRouteInterface {
     const handleRouteResponse = (response: Route200Response) => {
         dispatch(setRouteResponse(response))
         dispatch(closeMapPopups())
+        dispatch(setAppMode(AppModes.MAP))
         setRoutingState(false)
     }
 
