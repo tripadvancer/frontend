@@ -151,8 +151,7 @@
     },
     "geolocation": {
         "isNotPermission": "You have denied access to geolocation. Please enable it in settings.",
-        "isNotSupported": "Geolocation is not supported by your browser.",
-        "isNotEnabled": "Geolocation is not enabled. Please enable it in your browser settings."
+        "isNotSupported": "Geolocation is not supported by your browser."
     },
     "layout": {
         "header": {

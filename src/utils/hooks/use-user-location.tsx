@@ -65,7 +65,7 @@ export function useUserLocation(): useUserLocationInterface {
 
     const handleLocate = () => {
         if (isDenied) {
-            toast.error(t('geolocation.isNotEnabled'))
+            toast.error(t('geolocation.isNotPermission'))
             return
         }
 
