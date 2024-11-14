@@ -13,7 +13,7 @@ import { getUserLocation } from '@/redux/features/user-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { useMapRoute } from '@/utils/hooks/use-map-route'
 
-import { MapCostingModelIcon } from './map-costing-model-icon'
+import { MapIconCostingModel } from './map-icon-costing-model'
 
 export const MapPopupRoute = () => {
     const userLocation = useAppSelector(getUserLocation)
@@ -38,7 +38,7 @@ export const MapPopupRoute = () => {
             <div className="relative pr-6">
                 <div>
                     <div className="flex items-center gap-x-2">
-                        <MapCostingModelIcon costingModel={costingModel} />
+                        <MapIconCostingModel costingModel={costingModel} />
                         <Time time={routeResponse.trip.summary.time} />
                     </div>
                     <Distance

@@ -6,19 +6,18 @@ import { AttributionControl, MapRef, Map as ReactMapGl } from 'react-map-gl/mapl
 import { useMediaQuery } from 'usehooks-ts'
 
 import { MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
-import { LocationIcon } from '@/components/ui/location-icon'
 import { MapControl } from '@/components/ui/map-control'
 import { getMapViewState } from '@/redux/features/map-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { useUserLocation } from '@/utils/hooks/use-user-location'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
+import { MapControlCostingModel } from './components/map-control-costing-model'
+import { MapControlUserLocation } from './components/map-control-user-location'
 import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
 import { MapPopupRoute } from './components/map-popup-route'
-import { MapSelectCostingModel } from './components/map-select-costing-model'
 import { useMapEventHandlers } from './map-event-handlers'
 import { placesLayer } from './sources/map-layers'
 import { MapSourceRoute } from './sources/map-source-route'
@@ -38,8 +37,6 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
 
     const mapRef = useRef<MapRef>(null)
     const containerRef = useRef<HTMLDivElement>(null)
-
-    const { handleLocate, isGeolocationEnabled } = useUserLocation()
 
     const handleZoomIn = useCallback(() => {
         mapRef.current?.zoomIn({ duration: 500 })
@@ -79,11 +76,8 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                         <MinusIcon16 />
                     </MapControl>
 
-                    <MapControl onClick={handleLocate}>
-                        <LocationIcon isLocating={isGeolocationEnabled} />
-                    </MapControl>
-
-                    <MapSelectCostingModel />
+                    <MapControlUserLocation />
+                    <MapControlCostingModel />
                 </div>
 
                 <MapPinUser />

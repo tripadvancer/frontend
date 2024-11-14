@@ -1,4 +1,4 @@
-import { useGeolocated } from 'react-geolocated'
+import { useEffect, useState } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
 import { useTranslations } from 'next-intl'
@@ -9,7 +9,9 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 
 interface useUserLocationInterface {
-    isGeolocationEnabled: boolean
+    isLocating: boolean
+    isWatching: boolean
+    isDenied: boolean
     handleLocate: () => void
 }
 
@@ -19,48 +21,59 @@ export function useUserLocation(): useUserLocationInterface {
     const userLocation = useAppSelector(getUserLocation)
     const dispatch = useAppDispatch()
 
+    const [isLocating, setIsLocating] = useState(false)
+    const [isWatching, setIsWatching] = useState(false)
+    const [isDenied, setIsDenied] = useState(false)
+
     const { map } = useMap()
 
-    const { isGeolocationAvailable, isGeolocationEnabled } = useGeolocated({
-        positionOptions: {
-            enableHighAccuracy: true,
-            maximumAge: 0,
-            timeout: Infinity,
-        },
-        watchPosition: true,
-        userDecisionTimeout: 0,
-        suppressLocationOnMount: false,
-        isOptimisticGeolocationEnabled: false,
-        watchLocationPermissionChange: false,
-        onSuccess: (position: GeolocationPosition) => {
-            const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
-            dispatch(setUserLocation(userLngLat))
-        },
-        onError: error => {
-            if (error && error.code === error.PERMISSION_DENIED) {
-                // toast.error(t('geolocation.isNotPermission'))
-            } else {
-                toast.error(t('common.error'))
-            }
-        },
-    })
+    useEffect(() => {
+        setIsLocating(true)
 
-    const handleLocate = () => {
-        if (userLocation) {
-            map?.flyTo(getMapFlyToOptions(userLocation))
-            return
-        }
-
-        if (!isGeolocationAvailable) {
+        if (!navigator.geolocation) {
+            setIsLocating(false)
             toast.error(t('geolocation.isNotSupported'))
             return
         }
 
-        if (!isGeolocationEnabled) {
+        const watchId = navigator.geolocation.watchPosition(
+            position => {
+                const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
+                dispatch(setUserLocation(userLngLat))
+                setIsLocating(false)
+                setIsWatching(true)
+            },
+            error => {
+                if (error.code === error.PERMISSION_DENIED) {
+                    setIsDenied(true)
+                } else {
+                    toast.error(t('common.error'))
+                }
+                setIsLocating(false)
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0,
+            },
+        )
+
+        return () => {
+            navigator.geolocation.clearWatch(watchId)
+        }
+    }, [dispatch, toast, t])
+
+    const handleLocate = () => {
+        if (isDenied) {
             toast.error(t('geolocation.isNotEnabled'))
+            return
+        }
+
+        if (userLocation) {
+            map?.flyTo(getMapFlyToOptions(userLocation))
             return
         }
     }
 
-    return { isGeolocationEnabled, handleLocate }
+    return { isLocating, isWatching, isDenied, handleLocate }
 }

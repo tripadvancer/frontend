@@ -6,7 +6,7 @@ type MapCostingModelIconProps = {
     costingModel: CostingModel
 }
 
-export const MapCostingModelIcon = ({ costingModel }: MapCostingModelIconProps) => {
+export const MapIconCostingModel = ({ costingModel }: MapCostingModelIconProps) => {
     const mappingCostingModelToIcon = {
         [CostingModel.Auto]: <CarIcon16 />,
         [CostingModel.Bicycle]: <BicycleIcon16 />,
