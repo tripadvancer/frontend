@@ -11,6 +11,8 @@ import { getUserLocation } from '@/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { LngLat } from '@/utils/types/geo'
 
+import { useUserLocation } from './use-user-location'
+
 interface useMapRouteInterface {
     buildRoute: (finishPoint: LngLat) => void
     clearRoute: () => void
@@ -26,6 +28,7 @@ export function useMapRoute(): useMapRouteInterface {
 
     const [isRouting, setIsRouting] = useState(false)
 
+    const { handleLocate } = useUserLocation()
     const { map } = useMap()
 
     const setRoutingState = (state: boolean) => {
@@ -34,11 +37,14 @@ export function useMapRoute(): useMapRouteInterface {
     }
 
     const buildRoute = async (finishPoint: LngLat) => {
+        setRoutingState(true)
+
         if (!userLocation) {
+            handleLocate()
+            setRoutingState(false)
             return
         }
 
-        setRoutingState(true)
         try {
             const routeRequest = createRouteRequest(userLocation, finishPoint, costingModel)
             const api = new RoutingApi()
@@ -47,6 +53,8 @@ export function useMapRoute(): useMapRouteInterface {
         } catch (error) {
             handleRouteError()
         }
+
+        setRoutingState(false)
     }
 
     const handleRouteResponse = (response: Route200Response) => {
