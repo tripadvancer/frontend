@@ -12,6 +12,7 @@ import { useAppDispatch } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places.api'
 import { AppModes, WidgetModes, WidgetTabs } from '@/utils/enums'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
+import { useMapRoute } from '@/utils/hooks/use-map-route'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
 type PlaceSidebarActionsShowOnMap = {
@@ -31,6 +32,7 @@ export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap
     const lngLat = arrayToLngLat(props.location.coordinates)
 
     const { data: meta } = placesAPI.useGetPlaceMetaByIdQuery(props.id, { skip: !props.isAuth })
+    const { clearRoute } = useMapRoute()
 
     const handleClick = () => {
         const viewState = getFlyToViewState(lngLat)
@@ -50,6 +52,7 @@ export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap
                 isSaved: meta?.isSaved || false,
             }),
         )
+        clearRoute()
 
         router.push('/maps')
     }

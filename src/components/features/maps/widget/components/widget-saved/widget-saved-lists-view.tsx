@@ -59,7 +59,10 @@ export const WidgetSavedListsView = (list: IList) => {
                 : t('map.widget.tabs.savedPlaces.lists.action.enableMapFilter'),
             value: 'preview_mode',
             icon: isFilterMapBySavedLists ? <VisibilityIcon16 /> : <VisibilityOffIcon16 />,
-            onClick: () => dispatch(setIsFilterMapBySavedLists(!isFilterMapBySavedLists)),
+            onClick: () => {
+                dispatch(setIsFilterMapBySavedLists(!isFilterMapBySavedLists))
+                clearRoute()
+            },
         },
         {
             caption: t('map.widget.tabs.savedPlaces.lists.action.edit'),

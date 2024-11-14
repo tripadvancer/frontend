@@ -36,7 +36,7 @@ export const WidgetRandom = () => {
 
                 if (randomPlace) {
                     const source = map?.getSource('random-place-source') as GeoJSONSource
-                    source.setData({
+                    source?.setData({
                         type: 'FeatureCollection',
                         features: [
                             {

@@ -32,7 +32,7 @@ export const MapSourceRoute = () => {
             routeResponse.trip.legs.forEach(leg => {
                 const geometry = polyline.toGeoJSON(leg.shape, 6)
                 const source = map?.getSource('route-source') as GeoJSONSource
-                source.setData(geometry)
+                source?.setData(geometry)
             })
         }
     }, [map, routeResponse])
