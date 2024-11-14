@@ -25,7 +25,11 @@ export const ReviewEdit = (review: IReview) => {
     }
 
     const handleSubmit = (inputs: UpdateReviewInputs) => {
-        updateReview(inputs)
+        const trimmedInputs = {
+            ...inputs,
+            text: inputs.text.trim(),
+        }
+        updateReview(trimmedInputs)
         dialog.close()
     }
 

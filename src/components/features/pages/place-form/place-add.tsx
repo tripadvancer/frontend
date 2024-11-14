@@ -52,7 +52,11 @@ export const PlaceAdd = () => {
         }
 
         try {
-            const response = await createPlace(inputs).unwrap()
+            const trimmedInputs = {
+                ...inputs,
+                title: inputs.title.trim(),
+            }
+            const response = await createPlace(trimmedInputs).unwrap()
             toast.success(t('success.createPlace'))
             router.push(`/places/${response.id}`)
         } catch {

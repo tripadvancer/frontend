@@ -25,6 +25,7 @@ import { ThirdPartyButton } from './third-party-button'
 const userNameMinLength = validationConfig.user.name.minLength
 const userNameMaxLength = validationConfig.user.name.maxLength
 const userPasswordMinLength = validationConfig.user.password.minLength
+const userPasswordMaxLength = validationConfig.user.password.maxLength
 
 export const SignUp = () => {
     const t = useTranslations()
@@ -42,12 +43,14 @@ export const SignUp = () => {
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .matches(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
                 t('validation.email.invalid'),
             ),
         username: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .min(userNameMinLength, t('validation.text.minLength', { minLength: userNameMinLength }))
             .max(userNameMaxLength, t('validation.text.maxLength', { maxLength: userNameMaxLength }))
@@ -55,6 +58,7 @@ export const SignUp = () => {
         password: Yup.string()
             .required(t('validation.required'))
             .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
+            .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
             .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
     })
 
@@ -62,9 +66,9 @@ export const SignUp = () => {
         try {
             setIsLoading(true)
             const formFields = [
-                { id: 'email', value: values.email },
+                { id: 'email', value: values.email.trim() },
                 { id: 'password', value: values.password },
-                { id: 'username', value: values.username },
+                { id: 'username', value: values.username.trim() },
             ]
             const response = await emailPasswordSignUp({ formFields })
 
@@ -96,6 +100,9 @@ export const SignUp = () => {
                     if (usernameError) {
                         if (usernameError.error === 'USERNAME_ALREADY_EXISTS_ERROR') {
                             formik.setErrors({ username: t('validation.wrong.usernameTaken') })
+                        }
+                        if (usernameError.error === 'USERNAME_INVALID_FORMAT_ERROR') {
+                            formik.setErrors({ username: t('validation.username.invalid') })
                         }
                     }
                     break

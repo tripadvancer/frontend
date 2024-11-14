@@ -27,6 +27,7 @@ export const ChangeEmail = () => {
 
     const validationSchema = Yup.object().shape({
         newEmail: Yup.string()
+            .trim()
             .required(t('validation.required'))
             .matches(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
@@ -37,7 +38,11 @@ export const ChangeEmail = () => {
 
     const handleSubmit = async (inputs: ChangeUserEmailInputs) => {
         try {
-            const response = await changeUserEmail(inputs).unwrap()
+            const trimedInputs = {
+                ...inputs,
+                newEmail: inputs.newEmail.trim(),
+            }
+            const response = await changeUserEmail(trimedInputs).unwrap()
 
             switch (response.status) {
                 case 'OK':
