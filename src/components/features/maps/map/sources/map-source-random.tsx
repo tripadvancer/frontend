@@ -10,7 +10,7 @@ import { useMediaQuery } from 'usehooks-ts'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetRandomRadius } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { LngLatToArray, getFlyToViewState } from '@/utils/helpers/maps'
+import { LngLatToArray, getBoundsFromCoordinates, getFlyToViewState, getMapFlyToOptions } from '@/utils/helpers/maps'
 
 import { circleLayer, placesLayer } from './map-layers'
 
@@ -32,7 +32,10 @@ export const MapSourceRandom = () => {
 
     useEffect(() => {
         if (userLocation && map) {
-            map.flyTo(getFlyToViewState(userLocation))
+            map.flyTo({
+                ...getMapFlyToOptions(userLocation),
+                zoom: isMobile ? 8 : 10,
+            })
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -44,13 +47,8 @@ export const MapSourceRandom = () => {
             })
 
             setGeoJson(geoJson)
-
-            // const bounds = getBoundsFromCoordinates(geoJson.geometry.coordinates[0])
-            // map.fitBounds(bounds, {
-            //     animate: false,
-            // })
         }
-    }, [userLocation, isMobile, map, radius])
+    }, [userLocation, map, radius])
 
     if (!userLocation) {
         return null
