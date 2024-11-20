@@ -33,7 +33,6 @@ export const PlaceAdd = () => {
         description: '',
         location,
         photos: [],
-        cover: null,
         categories: [],
     }
 

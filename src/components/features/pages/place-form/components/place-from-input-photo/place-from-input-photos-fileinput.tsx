@@ -6,25 +6,18 @@ import classNames from 'classnames'
 import { useTranslations } from 'next-intl'
 
 import { CameraIcon48 } from '@/components/ui/icons'
-import { Spinner } from '@/components/ui/spinner'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 
-const maxFileSize = validationConfig.common.maxFileSize
-
-type PlaceFormInputPhotoProps = {
-    currentPhotosCount: number
-    maxPhotosCount: number
-    isUploading: boolean
+type PlaceFormInputPhotosFileinputProps = {
+    photosLength: number
     onChange: (files: FileList) => void
 }
 
-export const PlaceFormInputPhoto = ({
-    currentPhotosCount,
-    maxPhotosCount,
-    isUploading,
-    onChange,
-}: PlaceFormInputPhotoProps) => {
+const maxPhotosCount = validationConfig.place.photos.maxCount
+const maxFileSize = validationConfig.common.maxFileSize
+
+export const PlaceFormInputPhotosFileinput = ({ photosLength, onChange }: PlaceFormInputPhotosFileinputProps) => {
     const t = useTranslations()
     const toast = useToast()
 
@@ -37,7 +30,7 @@ export const PlaceFormInputPhoto = ({
         hiddenFileInput.current?.click()
     }
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files?.length) {
             return
         }
@@ -45,7 +38,7 @@ export const PlaceFormInputPhoto = ({
         const files = e.target.files
         const fileSize = e.target.files[0].size
 
-        if (files.length + currentPhotosCount > maxPhotosCount) {
+        if (files.length + photosLength > maxPhotosCount) {
             toast.error(t('validation.file.maxCount', { count: maxPhotosCount }))
             return
         }
@@ -55,7 +48,7 @@ export const PlaceFormInputPhoto = ({
             return
         }
 
-        onChange(e.target.files)
+        onChange(files)
     }
 
     return (
@@ -63,23 +56,21 @@ export const PlaceFormInputPhoto = ({
             className={classNames(
                 'flex-center hover-animated aspect-square size-full cursor-pointer rounded-lg border border-blue-20 text-blue-100 hover:border-blue-active hover:text-blue-active',
                 {
-                    'pointer-events-none cursor-not-allowed opacity-30': currentPhotosCount >= maxPhotosCount,
-                    'pointer-events-none cursor-wait': isUploading,
+                    '!cursor-not-allowed opacity-30': photosLength >= maxPhotosCount,
                 },
             )}
-            onClick={handleClickFileInput}
+            onClick={photosLength >= maxPhotosCount ? undefined : handleClickFileInput}
         >
-            {isUploading ? <Spinner size={48} /> : <CameraIcon48 />}
-
             <input
                 ref={hiddenFileInput}
                 type="file"
                 className="hidden"
                 accept="image/jpg, image/jpeg, image/png, image/webp"
                 multiple
-                disabled={isUploading || currentPhotosCount >= maxPhotosCount}
+                disabled={photosLength >= maxPhotosCount}
                 onChange={handleChange}
             />
+            <CameraIcon48 />
         </div>
     )
 }

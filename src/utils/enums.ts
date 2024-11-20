@@ -15,6 +15,12 @@ export enum ImageVariants {
     AVATAR = 'avatar',
 }
 
+export enum UploadingImageStatus {
+    UPLOADING = 'uploading',
+    SUCCESS = 'success',
+    ERROR = 'error',
+}
+
 export enum Keys {
     ENTER = 'Enter',
     ESCAPE = 'Escape',
