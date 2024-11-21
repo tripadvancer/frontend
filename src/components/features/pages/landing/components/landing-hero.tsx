@@ -11,7 +11,7 @@ export const LandingHero = async () => {
     const t = await getTranslations()
 
     return (
-        <div className="relative flex flex-col justify-center bg-blue-80 pb-7 lg:h-[700px]">
+        <div className="relative -mb-7 flex flex-col justify-center bg-blue-80 pb-7 lg:h-[700px]">
             <LandingHeroBg />
 
             <div className="m-auto flex flex-col gap-y-8 px-4 py-16 text-center sm:w-[608px] lg:absolute lg:left-16 lg:top-1/2 lg:w-[600px] lg:-translate-y-1/2 lg:transform lg:px-0 lg:py-0 lg:text-left xl:left-1/2 xl:-translate-x-full">

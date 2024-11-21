@@ -8,7 +8,7 @@ export const Landing = () => {
     return (
         <div>
             <LandingHero />
-            <div className="relative z-40 -mt-7 rounded-t-4xl bg-white">
+            <div className="relative z-40 rounded-t-4xl bg-white">
                 <div className="container flex flex-col gap-y-24 py-24">
                     <LandingCountries />
                     <LandingAroundPlaces />

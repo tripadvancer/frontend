@@ -16,7 +16,7 @@ type PlaceHeaderProps = {
 
 export const PlaceHeader = ({ title, cover, categories, countryCode, location }: PlaceHeaderProps) => {
     return (
-        <div className="flex-center relative z-10 -mb-8 flex-[540px] pb-8">
+        <div className="flex-center relative z-10 -mb-7 flex-[540px] pb-7">
             <PlaceHeaderCover cover={cover} />
             <section className="container relative z-30 py-8">
                 <div className="flex-center m-auto flex-col gap-y-4 sm:w-2/3">
