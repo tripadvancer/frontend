@@ -17,7 +17,7 @@ export const LandingFeaturesRandom = async () => {
                 alt="Random places around me"
             />
             <section className="flex flex-col gap-y-4 sm:gap-y-8">
-                <h3 className="h5">{t.rich('page.landing.features.featureRandom.title', { br: () => <br /> })}</h3>
+                <h4 className="h5">{t.rich('page.landing.features.featureRandom.title', { br: () => <br /> })}</h4>
                 <p>{t('page.landing.features.featureRandom.text')}</p>
                 <div className="flex-none">
                     <LandingFeaturesRandomButton />

@@ -17,7 +17,7 @@ export const LandingFeaturesLists = async () => {
                 alt="Personalized travel lists"
             />
             <section className="flex flex-col gap-y-4 sm:-order-1 sm:gap-y-8 sm:text-right">
-                <h3 className="h5">{t.rich('page.landing.features.featureLists.title', { br: () => <br /> })}</h3>
+                <h4 className="h5">{t.rich('page.landing.features.featureLists.title', { br: () => <br /> })}</h4>
                 <p>{t('page.landing.features.featureLists.text')}</p>
                 <div className="flex-none">
                     <LandingFeaturesListsButton />
