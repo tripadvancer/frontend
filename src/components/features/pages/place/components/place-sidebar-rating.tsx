@@ -18,7 +18,7 @@ export const PlaceSidebarRating = async ({ avgRating, reviewsCount }: PlaceSideb
             <p className="text-small text-black-40">
                 {reviewsCount
                     ? t.rich('page.place.rating.average', {
-                          reviewsLink: reviewsLink => <Link href={'#reviews'}>{reviewsLink}</Link>,
+                          reviewsLink: reviewsLink => <Link href="#reviews">{reviewsLink}</Link>,
                           reviewsCount: reviewsCount,
                           avgRating: avgRating?.toFixed(2),
                       })
