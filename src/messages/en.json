@@ -429,9 +429,6 @@
         },
         "placeForm": {
             "field": {
-                "cover": {
-                    "placeholder": "Upload the cover (jpg, png up to 10 MB)"
-                },
                 "title": {
                     "placeholder": "Enter place title"
                 },
@@ -448,7 +445,8 @@
                 },
                 "photos": {
                     "label": "Photos",
-                    "text": "You can upload up to {maxCount} photos of the place."
+                    "text": "You can upload up to {maxCount} photos of the place.",
+                    "cover": "Cover"
                 }
             },
             "terms": "By adding a new place to the map, you acknowledge and accept our <termsLink>Terms and Conditions</termsLink> and <privacyLink>Privacy Policy</privacyLink>."
