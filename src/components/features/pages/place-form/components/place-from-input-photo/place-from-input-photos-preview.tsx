@@ -23,11 +23,11 @@ export const PlaceFormInputPhotosPreview = ({
     onSetAsCover,
     onRetry,
 }: PlaceFormInputPhotoPreviewProps) => {
-    if (status === UploadingImageStatus.UPLOADING) {
+    if ([UploadingImageStatus.READY, UploadingImageStatus.UPLOADING].includes(status)) {
         return <PlaceFormInputPhotosPreviewUploading />
     }
 
-    if (status === UploadingImageStatus.ERROR) {
+    if ([UploadingImageStatus.ERROR].includes(status)) {
         return <PlaceFormInputPhotosPreviewError onDelete={onDelete} onRetry={onRetry} />
     }
 

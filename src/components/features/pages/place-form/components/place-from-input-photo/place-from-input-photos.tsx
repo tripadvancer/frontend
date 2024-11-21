@@ -18,8 +18,9 @@ const maxPhotosCount = validationConfig.place.photos.maxCount
 
 type UploadingImage = {
     key: string
-    uploadedImageUrl: string
-    uploadedImageIsCover: boolean
+    file: File | null
+    uploadedPhotoUrl: string
+    uploadedPhotoIsCover: boolean
     status: UploadingImageStatus
 }
 
@@ -35,83 +36,84 @@ export const PlaceFormInputPhotos = ({ initialPhotos, onChange }: PlaceFormInput
     const t = useTranslations()
     const toast = useToast()
 
-    const [photos, setPhotos] = useState<UploadingImage[]>([])
+    const [photos, setPhotos] = useState<UploadingImage[]>(
+        initialPhotos.map(photo => ({
+            key: crypto.randomUUID(),
+            file: null,
+            uploadedPhotoUrl: photo.url,
+            uploadedPhotoIsCover: photo.isCover,
+            status: UploadingImageStatus.SUCCESS,
+        })),
+    )
     const [upload] = placesAPI.usePlacePhotoUploadMutation()
     const [indexSlide, setIndexSlide] = useState<number>(-1)
-
-    useEffect(() => {
-        if (initialPhotos) {
-            setPhotos(
-                initialPhotos.map(photo => ({
-                    key: crypto.randomUUID(),
-                    uploadedImageUrl: photo.url,
-                    uploadedImageIsCover: photo.isCover,
-                    status: UploadingImageStatus.SUCCESS,
-                })),
-            )
-        }
-    }, [initialPhotos])
 
     useEffect(() => {
         const allUploadsFinished = photos.every(({ status }) => status !== UploadingImageStatus.UPLOADING)
 
         if (allUploadsFinished) {
-            const hasCover = photos.some(photo => photo.uploadedImageIsCover)
+            const hasCover = photos.some(photo => photo.uploadedPhotoIsCover)
 
             if (!hasCover) {
                 const firstSuccessfulPhoto = photos.find(({ status }) => status === UploadingImageStatus.SUCCESS)
 
                 if (firstSuccessfulPhoto) {
-                    updatePhoto(firstSuccessfulPhoto.key, { uploadedImageIsCover: true })
+                    updatePhoto(firstSuccessfulPhoto.key, { uploadedPhotoIsCover: true })
                 }
             }
         }
 
-        onChange(photos.map(photo => ({ url: photo.uploadedImageUrl, isCover: photo.uploadedImageIsCover })))
-    }, [photos, onChange])
+        const result = photos.map(photo => ({ url: photo.uploadedPhotoUrl, isCover: photo.uploadedPhotoIsCover }))
+        onChange(result)
+        // todo: fix this eslint-disable-line
+    }, [photos]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleFileInputChange = async (files: FileList) => {
-        Array.from(files).map(async file => {
+        Array.from(files).forEach(async file => {
             const key = crypto.randomUUID()
-
-            setPhotos(prevPhotos => [
-                ...prevPhotos,
-                {
-                    key,
-                    uploadedImageUrl: '',
-                    uploadedImageIsCover: false,
-                    status: UploadingImageStatus.UPLOADING,
-                },
-            ])
-
-            try {
-                const response = await upload(file).unwrap()
-                updatePhoto(key, {
-                    uploadedImageUrl: response.url,
-                    status: UploadingImageStatus.SUCCESS,
-                })
-            } catch {
-                updatePhoto(key, { status: UploadingImageStatus.ERROR })
-                toast.error(t('common.error'))
-            }
+            addPhoto(key, file)
+            await uploadPhoto(key, file)
         })
+    }
+
+    const addPhoto = (key: string, file: File) => {
+        setPhotos(prev => [
+            ...prev,
+            { key, file, uploadedPhotoUrl: '', uploadedPhotoIsCover: false, status: UploadingImageStatus.UPLOADING },
+        ])
     }
 
     const updatePhoto = (key: string, updatedFields: Partial<UploadingImage>) => {
         setPhotos(prev => prev.map(photo => (photo.key === key ? { ...photo, ...updatedFields } : photo)))
     }
 
+    const uploadPhoto = async (key: string, file: File) => {
+        try {
+            const response = await upload(file).unwrap()
+            updatePhoto(key, { status: UploadingImageStatus.SUCCESS, uploadedPhotoUrl: response.url })
+        } catch {
+            toast.error(t('common.error'))
+            updatePhoto(key, { status: UploadingImageStatus.ERROR })
+        }
+    }
+
     const handleDelete = (key: string) => {
-        setPhotos(prevPhotos => prevPhotos.filter(photo => photo.key !== key))
+        setPhotos(prev => prev.filter(photo => photo.key !== key))
     }
 
     const handleSetAsCover = (key: string) => {
-        setPhotos(prevPhotos =>
-            prevPhotos.map(photo => ({
-                ...photo,
-                uploadedImageIsCover: photo.key === key,
-            })),
-        )
+        setPhotos(prev => prev.map(photo => ({ ...photo, uploadedPhotoIsCover: photo.key === key })))
+    }
+
+    const handleRetry = async (key: string) => {
+        const photo = photos.find(photo => photo.key === key)
+
+        if (!photo || !photo.file) {
+            return
+        }
+
+        updatePhoto(key, { status: UploadingImageStatus.UPLOADING })
+        await uploadPhoto(key, photo.file)
     }
 
     return (
@@ -143,13 +145,13 @@ export const PlaceFormInputPhotos = ({ initialPhotos, onChange }: PlaceFormInput
                         {photos.map((photo, index) => (
                             <PlaceFormInputPhotosPreview
                                 key={`place-form-input-photo-${photo.key}`}
-                                url={photo.uploadedImageUrl}
-                                isCover={photo.uploadedImageIsCover}
+                                url={photo.uploadedPhotoUrl}
+                                isCover={photo.uploadedPhotoIsCover}
                                 status={photo.status}
                                 onClick={() => setIndexSlide(index)}
                                 onDelete={() => handleDelete(photo.key)}
                                 onSetAsCover={() => handleSetAsCover(photo.key)}
-                                onRetry={() => {}}
+                                onRetry={() => handleRetry(photo.key)}
                             />
                         ))}
 
@@ -158,7 +160,7 @@ export const PlaceFormInputPhotos = ({ initialPhotos, onChange }: PlaceFormInput
                             close={() => setIndexSlide(-1)}
                             index={indexSlide}
                             slides={photos.map(photo => ({
-                                src: makeImageUrl(photo.uploadedImageUrl, ImageVariants.PUBLIC),
+                                src: makeImageUrl(photo.uploadedPhotoUrl, ImageVariants.PUBLIC),
                             }))}
                         />
                     </div>

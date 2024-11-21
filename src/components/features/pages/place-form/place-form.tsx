@@ -53,6 +53,10 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
         )
     }
 
+    const handlePhotosChange = (value: { url: string; isCover: boolean }[]) => {
+        formik.setFieldValue('photos', value)
+    }
+
     return (
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
             <div className="flex-center relative z-10 -mb-8 flex-[540px] pb-8">
@@ -86,7 +90,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                         />
                         <PlaceFormInputPhotos
                             initialPhotos={formik.initialValues.photos}
-                            onChange={value => formik.setFieldValue('photos', value)}
+                            onChange={handlePhotosChange}
                         />
                         <div className="flex flex-col gap-y-4">
                             <PlaceFormErrorMesage errors={formik.errors} />

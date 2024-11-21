@@ -16,6 +16,7 @@ export enum ImageVariants {
 }
 
 export enum UploadingImageStatus {
+    READY = 'ready',
     UPLOADING = 'uploading',
     SUCCESS = 'success',
     ERROR = 'error',
