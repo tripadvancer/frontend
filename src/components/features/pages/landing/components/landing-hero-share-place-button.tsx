@@ -21,7 +21,7 @@ export const LandingHeroSharePlaceButton = ({
 
     return (
         <FormButton variant="orange" onClick={handleClick}>
-            Share Place
+            {t('page.landing.hero.sharePlaces')}
         </FormButton>
     )
 }

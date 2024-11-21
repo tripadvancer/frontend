@@ -392,6 +392,13 @@
             "text": "We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place."
         },
         "landing": {
+            "hero": {
+                "title": "Share your favorite spots and track visited countries",
+                "text": "Join the community of travelers and share your favorite places with others. Track the countries you have visited and plan your next trip.",
+                "joinNow": "Join Now",
+                "sharePlaces": "Share Places",
+                "learnMore": "Learn More"
+            },
             "countries": {
                 "title": "Where are you going?",
                 "text": "Visit top-rated destinations recommended by fellow travelers. Discover must-see sights, from iconic landmarks to hidden gems waiting to be explored.",

@@ -2,7 +2,16 @@
 
 import { MouseParallaxChild, MouseParallaxContainer } from 'react-parallax-mouse'
 
+import { useMediaQuery } from 'usehooks-ts'
+
 export const LandingHeroBg = () => {
+    const isMobile = useMediaQuery('(max-width: 639px)')
+    const isTablet = useMediaQuery('(max-width: 1023px)')
+
+    if (isMobile || isTablet) {
+        return null
+    }
+
     return (
         <MouseParallaxContainer
             globalFactorX={0.1}
