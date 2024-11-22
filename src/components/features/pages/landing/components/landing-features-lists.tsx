@@ -10,15 +10,15 @@ export const LandingFeaturesLists = async () => {
     return (
         <div className="grid items-center gap-y-8 sm:grid-cols-2 sm:gap-x-16">
             <Image
-                src="/images/features-lists.svg"
+                src="/images/landing-features-lists.svg"
                 width={448}
                 height={448}
                 className="m-auto block"
                 alt="Personalized travel lists"
             />
-            <section className="flex flex-col gap-y-4 sm:-order-1 sm:gap-y-8 sm:text-right">
-                <h3 className="h5">{t.rich('page.landing.features.featureLists.title', { br: () => <br /> })}</h3>
-                <p>{t('page.landing.features.featureLists.text')}</p>
+            <section className="flex flex-col gap-y-4 sm:gap-y-8">
+                <h4 className="h5">{t.rich('page.landing.features.lists.title', { br: () => <br /> })}</h4>
+                <p>{t('page.landing.features.lists.text')}</p>
                 <div className="flex-none">
                     <LandingFeaturesListsButton />
                 </div>

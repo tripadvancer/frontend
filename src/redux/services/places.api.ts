@@ -53,20 +53,16 @@ export const placesAPI = api.injectEndpoints({
             }),
         }),
 
-        placeCoverUpload: build.mutation<ImageUploadResponse, FormData>({
-            query: formData => ({
-                url: 'images/place-cover',
-                method: 'POST',
-                body: formData,
-            }),
-        }),
-
-        placePhotoUpload: build.mutation<ImageUploadResponse, FormData>({
-            query: formData => ({
-                url: 'images/place-photo',
-                method: 'POST',
-                body: formData,
-            }),
+        placePhotoUpload: build.mutation<ImageUploadResponse, File>({
+            query: file => {
+                const formData = new FormData()
+                formData.append('file', file)
+                return {
+                    url: 'images/place-photo',
+                    method: 'POST',
+                    body: formData,
+                }
+            },
         }),
     }),
     overrideExisting: false,

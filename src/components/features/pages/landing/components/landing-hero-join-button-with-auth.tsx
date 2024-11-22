@@ -3,9 +3,10 @@ import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverificatio
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { LandingFeaturesPlacesButton } from './landing-features-places-button'
+import { LandingHeroJoinButton } from './landing-hero-join-button'
+import { LandingHeroSharePlaceButton } from './landing-hero-share-place-button'
 
-export const LandingFeaturesPlacesButtonWithAuth = async () => {
+export const LandingJoinButtonWithAuth = async () => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -13,7 +14,7 @@ export const LandingFeaturesPlacesButtonWithAuth = async () => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return <LandingFeaturesPlacesButton isAuth={false} />
+            return <LandingHeroJoinButton />
         }
 
         /**
@@ -26,5 +27,5 @@ export const LandingFeaturesPlacesButtonWithAuth = async () => {
     const isEmailVerified = await session.getClaimValue(EmailVerificationClaim)
     const activeUserId = session.getAccessTokenPayload().userId
 
-    return <LandingFeaturesPlacesButton activeUserId={activeUserId} isAuth={true} isEmailVerified={isEmailVerified} />
+    return <LandingHeroSharePlaceButton activeUserId={activeUserId} isAuth={true} isEmailVerified={isEmailVerified} />
 }
