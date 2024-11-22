@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import { useTranslations } from 'next-intl'
 
 import { useRouter } from 'next/navigation'
@@ -34,13 +36,16 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
     const [updatePlace, { isLoading }] = placesAPI.useUpdatePlaceMutation()
     const [searchPlacesAround, { isLoading: isSearchingPlacesAround }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
+    useEffect(() => {
+        console.log(photos)
+    }, [photos])
+
     const initialValues: UpdatePlaceInputs = {
         placeId: id,
         title,
         description,
         location: arrayToString(location.coordinates),
-        photos: photos.map(photo => photo.url),
-        cover,
+        photos: photos.map(photo => ({ url: photo.url, isCover: cover === photo.url })),
         categories,
     }
 

@@ -35,7 +35,7 @@ export const validationConfig = {
             maxLength: 40,
         },
         photos: {
-            maxCount: 10,
+            maxCount: 11,
         },
     },
     review: {

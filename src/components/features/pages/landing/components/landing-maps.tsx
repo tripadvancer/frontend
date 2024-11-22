@@ -8,7 +8,7 @@ export const LandingMaps = async () => {
 
     return (
         <section>
-            <h2 className="h3 mb-4 text-center">{t('page.landing.map.title')}</h2>
+            <h3 className="h3 mb-4 text-center">{t('page.landing.map.title')}</h3>
             <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
                 {t('page.landing.map.text')}
             </p>

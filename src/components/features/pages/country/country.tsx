@@ -30,7 +30,7 @@ export const Country = async ({
 
     return (
         <div className="flex flex-col">
-            <div className="flex-center relative z-10 -mb-8 flex-[540px] pb-8">
+            <div className="flex-center relative z-10 -mb-7 flex-[540px] pb-7">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
                     <CountryCover countryCode={country.code} />
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
