@@ -145,7 +145,7 @@
     "layout": {
         "header": {
             "signIn": "Sign In",
-            "addPlace": "Add place",
+            "addPlace": "Share place",
             "links": {
                 "map": "Map"
             }
