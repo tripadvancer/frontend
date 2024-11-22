@@ -17,7 +17,7 @@ export const HeaderAddPlace = ({ activeUserId, isAuth, isEmailVerified }: Header
 
     return (
         <div
-            className="flex-center hover-animated cursor-pointer text-blue-100 sm:h-8 sm:rounded-full sm:bg-white sm:px-4 sm:text-small"
+            className="flex-center hover-animated cursor-pointer text-orange-100 sm:h-8 sm:rounded-full sm:bg-orange-100 sm:px-4 sm:text-small sm:text-white sm:hover:bg-orange-active"
             onClick={handleClick}
         >
             <RoundPlus24 className="block sm:hidden" />
