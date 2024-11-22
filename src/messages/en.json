@@ -407,7 +407,7 @@
             "aroundPlaces": {
                 "title": "Explore places around you",
                 "text": "Discover what interesting places are near you. These locations are recommended by other travelers, and you can visit them today.",
-                "button": "See All Places"
+                "button": "Explore {country}"
             },
             "map": {
                 "title": "Not enough? Use our map",
