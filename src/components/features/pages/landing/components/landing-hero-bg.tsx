@@ -21,12 +21,12 @@ export const LandingHeroBg = () => {
             <MouseParallaxChild
                 factorX={0.1}
                 factorY={0.1}
-                inverted
                 className="absolute size-full bg-[url('/images/landing-hero-bg-2.svg')] bg-center bg-no-repeat"
             />
             <MouseParallaxChild
                 factorX={0.15}
                 factorY={0.15}
+                inverted
                 className="absolute size-full bg-[url('/images/landing-hero-bg-3.svg')] bg-center bg-no-repeat"
             />
             <MouseParallaxChild
