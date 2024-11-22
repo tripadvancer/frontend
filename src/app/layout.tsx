@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     },
     title: {
         template: '%s | Tripadvancer',
-        default: 'Tripadvancer - Plan your trip and find interesting places',
+        default: 'Tripadvancer - Share your favorite spots and track visited countries',
     },
     description:
-        'Tripadvancer will help you discover the world in a new way, find interesting places and go to an amazing trip.',
+        'Join the community of travelers and share your favorite places with others. Track the countries you have visited and plan your next trip.',
     appleWebApp: {
         title: 'Tripadvancer',
         startupImage: [

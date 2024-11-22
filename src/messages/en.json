@@ -392,6 +392,13 @@
             "text": "We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place."
         },
         "landing": {
+            "hero": {
+                "title": "Share your favorite spots and track visited countries",
+                "text": "Join the community of travelers and share your favorite places with others. Track the countries you have visited and plan your next trip.",
+                "joinNow": "Join Now",
+                "sharePlaces": "Share Places",
+                "learnMore": "Learn More"
+            },
             "countries": {
                 "title": "Where are you going?",
                 "text": "Visit top-rated destinations recommended by fellow travelers. Discover must-see sights, from iconic landmarks to hidden gems waiting to be explored.",
@@ -409,21 +416,21 @@
             },
             "features": {
                 "title": "Our Features",
-                "text": "Check out our app’s exciting features and connect with a community of like-minded travelers.<br></br>Join us today and start your adventure!",
-                "featurePlaces": {
-                    "title": "Add your favorite<br></br>places",
-                    "text": "You can add any place to the map yourself. Just a few clicks and your favorite place will be available to all travelers around the world.",
-                    "button": "Add place"
+                "text": "Explore the exciting possibilities of our app and connect with a global community of travelers.<br></br>Join us today and start your unforgettable adventure!",
+                "sharePlaces": {
+                    "title": "Share hidden gems<br></br>with fellow travelers",
+                    "text": "Add unique locations to the map and help other adventurers discover amazing places. With just a few clicks, your favorite spots become accessible to the entire travel community.",
+                    "button": "Share Place"
                 },
-                "featureLists": {
-                    "title": "Create your own<br></br>lists of places",
-                    "text": "Create, edit, and manage lists of your favorite places. Organize landmarks for easy access during your travels.",
+                "visitedMap": {
+                    "title": "Visited countries map<br></br>to track your adventures",
+                    "text": "Mark the countries you’ve explored and watch your personalized map come to life. Showcase your travel history and motivate others to start their journeys.",
+                    "button": "View Your Map"
+                },
+                "lists": {
+                    "title": "Plan seamlessly<br></br>with custom travel lists",
+                    "text": "Organize your future trips by creating personalized lists of must-see places. Make travel planning simple, efficient, and fun.",
                     "button": "Create Lists"
-                },
-                "featureRandom": {
-                    "title": "Find random<br></br>places nearby",
-                    "text": "Can’t decide where to go? Try our random place search! Pick a category, set a distance, and embark on new adventures.",
-                    "button": "Find Random Place"
                 }
             }
         },
