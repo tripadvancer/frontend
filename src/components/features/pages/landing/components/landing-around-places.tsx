@@ -16,6 +16,7 @@ export const LandingAroundPlaces = () => {
     const lng = parseFloat(edgeGeo.data?.lng || '0')
     const radius = parseInt(process.env.NEXT_PUBLIC_AROUND_ME_RADIUS || '150000')
     const userCountryCode = edgeGeo.data?.countryCode
+    const userCountryName = getCountryByCode(userCountryCode)?.name['en']
 
     const {
         data: places,
@@ -40,9 +41,9 @@ export const LandingAroundPlaces = () => {
                 </p>
                 <div className="flex flex-col gap-y-8">
                     <FeedPlaces places={places} />
-                    {userCountryCode && (
+                    {userCountryName && (
                         <ShowAllLink href={`/countries/${getCountryByCode(userCountryCode)?.slug}`}>
-                            {t('page.landing.aroundPlaces.button')}
+                            {t('page.landing.aroundPlaces.button', { country: userCountryName })}
                         </ShowAllLink>
                     )}
                 </div>
