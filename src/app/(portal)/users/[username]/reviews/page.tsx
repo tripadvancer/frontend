@@ -13,7 +13,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     return {
         title: 'Written Reviews',
         alternates: {
-            canonical: `/users/${params.username}/reviews`,
+            canonical: `/users/${params.username.toLowerCase()}/reviews`,
         },
     }
 }

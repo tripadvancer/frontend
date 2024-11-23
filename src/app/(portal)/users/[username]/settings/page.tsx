@@ -14,7 +14,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     return {
         title: 'Settings',
         alternates: {
-            canonical: `/users/${params.username}/settings`,
+            canonical: `/users/${params.username.toLowerCase()}/settings`,
         },
     }
 }

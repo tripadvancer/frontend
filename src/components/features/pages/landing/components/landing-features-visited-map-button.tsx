@@ -24,7 +24,7 @@ export const LandingFeaturesVisitedMapButton = ({ username, isAuth }: LandingFea
             return
         }
 
-        router.push(`/users/${username}`)
+        router.push(`/users/${username?.toLowerCase()}`)
     }
 
     return (

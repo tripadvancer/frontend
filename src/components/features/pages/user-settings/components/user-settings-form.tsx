@@ -95,7 +95,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
             const response = await updateUserData(trimmedInputs).unwrap()
             switch (response.status) {
                 case 'OK':
-                    router.replace(`/users/${trimmedInputs.name}/settings`)
+                    router.replace(`/users/${trimmedInputs.name?.toLowerCase()}/settings`)
                     router.refresh()
                     toast.success(t('success.updateUserInfo'))
                     break
