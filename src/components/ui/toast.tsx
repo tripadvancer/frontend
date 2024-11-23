@@ -22,6 +22,7 @@ export const Toast = ({ variant, message, onClose }: ToastProps) => {
                 'bg-green-10': variant === 'green',
                 'bg-red-10': variant === 'red',
             })}
+            onClick={onClose}
         >
             {message}
             <div
