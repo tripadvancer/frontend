@@ -23,7 +23,7 @@ export default async function UserPage(props: { params: Params }) {
                 return <UserVisitedPublic user={user} />
             }
 
-            redirect(`/users/${params.username}/places`)
+            redirect(`/users/${params.username.toLowerCase()}/places`)
         }
 
         /**
@@ -41,5 +41,5 @@ export default async function UserPage(props: { params: Params }) {
         return <UserVisitedPublic user={user} />
     }
 
-    redirect(`/users/${params.username}/places`)
+    redirect(`/users/${params.username.toLowerCase()}/places`)
 }
