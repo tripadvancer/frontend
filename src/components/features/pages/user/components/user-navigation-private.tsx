@@ -5,12 +5,13 @@ import { IUser } from '@/utils/types/user'
 
 export const UserNavigationPrivate = async ({ user }: { user: IUser }) => {
     const t = await getTranslations()
+    const username = user.name.toLowerCase()
 
     const links = [
-        { href: `/users/${user.name}`, caption: t('page.user.tabs.visited') },
-        { href: `/users/${user.name}/places`, caption: t('page.user.tabs.places') },
-        { href: `/users/${user.name}/reviews`, caption: t('page.user.tabs.reviews') },
-        { href: `/users/${user.name}/settings`, caption: t('page.user.tabs.settings') },
+        { href: `/users/${username}`, caption: t('page.user.tabs.visited') },
+        { href: `/users/${username}/places`, caption: t('page.user.tabs.places') },
+        { href: `/users/${username}/reviews`, caption: t('page.user.tabs.reviews') },
+        { href: `/users/${username}/settings`, caption: t('page.user.tabs.settings') },
     ]
 
     return <Nav links={links} />

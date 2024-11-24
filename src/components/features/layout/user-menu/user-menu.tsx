@@ -60,7 +60,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                 <menu className="absolute right-0 top-full z-20 mt-1 min-w-40 rounded-lg bg-white p-1.5 shadow-medium">
                     <li>
                         <Link
-                            href={`/users/${name}`}
+                            href={`/users/${name.toLowerCase()}`}
                             onClick={() => setIsMenuOpen(false)}
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
@@ -70,7 +70,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                     </li>
                     <li>
                         <Link
-                            href={`/users/${name}/settings`}
+                            href={`/users/${name.toLowerCase()}/settings`}
                             onClick={() => setIsMenuOpen(false)}
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
