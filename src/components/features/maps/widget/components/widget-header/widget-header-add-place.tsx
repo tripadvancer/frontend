@@ -13,7 +13,7 @@ export const WidgetHeaderAddPlace = ({ activeUserId, isAuth, isEmailVerified }: 
     const handleClick = useAddPlaceClickHandler({ activeUserId, isAuth, isEmailVerified })
 
     return (
-        <div className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active" onClick={handleClick}>
+        <div className="hover-animated cursor-pointer text-orange-100 hover:text-orange-active" onClick={handleClick}>
             <RoundPlus24 />
         </div>
     )
