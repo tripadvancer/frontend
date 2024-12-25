@@ -7,7 +7,6 @@ import { LocateFixedIcon, MinusIcon, PlusIcon, SearchIcon } from 'lucide-react'
 
 import Image from 'next/image'
 
-import { LocationIcon16, MinusIcon16, PlusIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
 import { LngLat } from '@/utils/types/geo'
 

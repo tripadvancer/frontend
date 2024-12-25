@@ -1,7 +1,5 @@
 import { StarIcon } from 'lucide-react'
 
-import { StarIcon16 } from '@/components/ui/icons'
-
 type RatingProps = {
     value: number
     size: 16 | 32

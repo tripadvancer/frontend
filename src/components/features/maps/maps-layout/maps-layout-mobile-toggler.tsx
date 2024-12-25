@@ -5,7 +5,6 @@ import { ListIcon, MapIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { FormButton } from '@/components/ui/form-button'
-import { MapIcon16, PinIcon16 } from '@/components/ui/icons'
 import { getAppMode, setAppMode } from '@/redux/features/app-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { AppModes } from '@/utils/enums'

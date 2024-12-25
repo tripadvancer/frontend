@@ -6,8 +6,9 @@ import { CopyIcon } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import { useCopyToClipboard } from 'usehooks-ts'
 
+import Image from 'next/image'
+
 import { FormButton } from '@/components/ui/form-button'
-import { FacebookIcon24, XIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { getCountryByCode } from '@/services/countries'
 
@@ -60,14 +61,14 @@ export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
                     ]}
                     className="hover-animated flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white hover:!bg-blue-active"
                 >
-                    <XIcon24 />
+                    <Image src="/images/icons/social/x.svg" width={24} height={24} alt="Twitter" />
                 </TwitterShareButton>
 
                 <FacebookShareButton
                     url={url}
                     className="hover-animated flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white hover:!bg-blue-active"
                 >
-                    <FacebookIcon24 />
+                    <Image src="/images/icons/social/facebook.svg" width={24} height={24} alt="Facebook" />
                 </FacebookShareButton>
 
                 <div className="flex h-10 min-w-0 flex-1 items-center rounded-lg border border-black-15 px-4">
