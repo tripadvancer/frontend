@@ -2,9 +2,9 @@
 
 import { ChangeEvent, Ref, forwardRef } from 'react'
 
+import { SearchIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { Spinner } from '@/components/ui/spinner'
 
 type SearchInputProps = {
@@ -25,7 +25,7 @@ const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement
     return (
         <div className="relative">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 transform">
-                {props.isLoading ? <Spinner size={16} /> : <SearchIcon16 />}
+                {props.isLoading ? <Spinner size={16} /> : <SearchIcon size={16} absoluteStrokeWidth />}
             </div>
 
             <input
@@ -45,7 +45,7 @@ const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement
                     className="hover-animated absolute right-4 top-1/2 -translate-y-1/2 transform cursor-pointer text-black-15 hover:text-blue-active"
                     onClick={props.onClear}
                 >
-                    <CloseIcon16 />
+                    <XIcon size={16} absoluteStrokeWidth />
                 </div>
             )}
         </div>

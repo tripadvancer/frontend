@@ -3,7 +3,8 @@
 import { useCallback, useMemo, useRef } from 'react'
 import { MapEvent, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
-import { MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
+import { MinusIcon, PlusIcon } from 'lucide-react'
+
 import { MapControl } from '@/components/ui/map-control'
 import { IUserVisitedCountries } from '@/utils/types/user'
 
@@ -74,11 +75,11 @@ export const UserVisitedMap = ({ visitedCountries }: UserVisitedMapProps) => {
             >
                 <div className="absolute right-2 top-2 z-30 flex flex-col gap-y-1">
                     <MapControl onClick={handleZoomIn}>
-                        <PlusIcon16 />
+                        <PlusIcon size={16} />
                     </MapControl>
 
                     <MapControl onClick={handleZoomOut}>
-                        <MinusIcon16 />
+                        <MinusIcon size={16} />
                     </MapControl>
                 </div>
             </ReactMapGl>

@@ -4,8 +4,7 @@ import { InputHTMLAttributes, useState } from 'react'
 import { Ref, forwardRef } from 'react'
 
 import classNames from 'classnames'
-
-import { VisibilityIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
+import { EyeIcon, EyeOffIcon } from 'lucide-react'
 
 type FormInputProps = InputHTMLAttributes<HTMLInputElement> & {
     error?: string
@@ -43,7 +42,7 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                         className="hover-animated absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-black-15 hover:text-blue-active"
                         onClick={() => setIsShowPassword(!isShowPassword)}
                     >
-                        {isShowPassword ? <VisibilityIcon16 /> : <VisibilityOffIcon16 />}
+                        {isShowPassword ? <EyeIcon size={16} /> : <EyeOffIcon size={16} />}
                     </div>
                 )}
             </div>

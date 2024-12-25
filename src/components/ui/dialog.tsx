@@ -1,8 +1,7 @@
 import { ReactNode } from 'react'
 
+import { XIcon } from 'lucide-react'
 import { useScrollLock } from 'usehooks-ts'
-
-import { CloseIcon24 } from '@/components/ui/icons'
 
 type DialogProps = {
     content: ReactNode
@@ -21,7 +20,7 @@ export const Dialog = ({ content, onClose }: DialogProps) => {
                         className="hover-animated absolute right-4 top-4 cursor-pointer text-black-15 hover:text-blue-active"
                         onClick={onClose}
                     >
-                        <CloseIcon24 />
+                        <XIcon />
                     </div>
                     {content}
                 </div>

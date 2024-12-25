@@ -3,10 +3,10 @@
 import { useState } from 'react'
 
 import classNames from 'classnames'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { Categories } from '@/components/ui/categories'
-import { ChevronBottomIcon16, ChevronTopIcon16 } from '@/components/ui/icons'
 import { getWidgetSelectedCategories, setWidgetSelectedCategories } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
@@ -41,7 +41,11 @@ export const WidgetCategories = ({ variant }: WidgetCategoriesProps) => {
                 <div className="text-caps uppercase">{t('map.widget.categories.title')}</div>
                 <div className="flex items-center justify-center gap-2">
                     {info && <span className={classNames('text-small', colorVariants[variant])}>{info}</span>}
-                    {isOpened ? <ChevronTopIcon16 /> : <ChevronBottomIcon16 />}
+                    {isOpened ? (
+                        <ChevronUpIcon size={16} absoluteStrokeWidth />
+                    ) : (
+                        <ChevronDownIcon size={16} absoluteStrokeWidth />
+                    )}
                 </div>
             </div>
 

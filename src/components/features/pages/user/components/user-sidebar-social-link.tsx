@@ -1,44 +1,37 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
-import {
-    FacebookIcon24,
-    InstagramIcon24,
-    TelegramIcon24,
-    TiktokIcon24,
-    XIcon24,
-    YoutubeIcon24,
-} from '@/components/ui/icons'
 import { SocialAppUrls, UserSocialApps } from '@/utils/enums'
 
 export const UserSidebarSocialLink = ({ app, appUsername }: { app: UserSocialApps; appUsername?: string }) => {
     const socialLinks = {
         [UserSocialApps.FACEBOOK]: {
-            icon: <FacebookIcon24 />,
+            icon: <Image src="/images/icons/social/facebook.svg" width={24} height={24} alt="Facebook" />,
             title: 'Facebook',
             url: SocialAppUrls.FACEBOOK,
         },
         [UserSocialApps.INSTAGRAM]: {
-            icon: <InstagramIcon24 />,
+            icon: <Image src="/images/icons/social/instagram.svg" width={24} height={24} alt="Instagram" />,
             title: 'Instagram',
             url: SocialAppUrls.INSTAGRAM,
         },
         [UserSocialApps.TELEGRAM]: {
-            icon: <TelegramIcon24 />,
+            icon: <Image src="/images/icons/social/telegram.svg" width={24} height={24} alt="Telegram" />,
             title: 'Telegram',
             url: SocialAppUrls.TELEGRAM,
         },
         [UserSocialApps.TIKTOK]: {
-            icon: <TiktokIcon24 />,
+            icon: <Image src="/images/icons/social/tiktok.svg" width={24} height={24} alt="Tiktok" />,
             title: 'Tiktok',
             url: SocialAppUrls.TIKTOK,
         },
         [UserSocialApps.X]: {
-            icon: <XIcon24 />,
+            icon: <Image src="/images/icons/social/x.svg" width={24} height={24} alt="X" />,
             title: 'X',
             url: SocialAppUrls.X,
         },
         [UserSocialApps.YOUTUBE]: {
-            icon: <YoutubeIcon24 />,
+            icon: <Image src="/images/icons/social/youtube.svg" width={24} height={24} alt="Youtube" />,
             title: 'Youtube',
             url: SocialAppUrls.YOUTUBE,
         },

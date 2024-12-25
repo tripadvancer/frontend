@@ -1,11 +1,11 @@
 'use client'
 
+import { Trash2Icon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { useRouter } from 'next/navigation'
 
 import { Confirmation } from '@/components/ui/confirmation'
-import { DeleteIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { placesAPI } from '@/redux/services/places.api'
@@ -45,7 +45,7 @@ export const PlaceSidebarActionsDelete = ({ id }: PlaceSidebarActionsDeleteProps
 
     return (
         <div className="link-red flex items-center gap-x-2 align-top" onClick={handleClick}>
-            <DeleteIcon24 />
+            <Trash2Icon />
             {t('common.action.place.delete')}
         </div>
     )

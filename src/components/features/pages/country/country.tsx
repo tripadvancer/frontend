@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 
+import { MapPinnedIcon } from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
@@ -58,8 +59,11 @@ export const Country = async ({
                     )}
 
                     {places.length === 0 && (
-                        <div className="flex-center flex-col gap-y-8">
-                            <div className="text-center text-black-40">{t('page.country.emptyPlaces')}</div>
+                        <div className="flex-center flex-col gap-y-8 text-black-40">
+                            <div className="flex flex-col items-center gap-y-4">
+                                <MapPinnedIcon size={96} strokeWidth={0.5} />
+                                <div className="text-center">{t('page.country.emptyPlaces')}</div>
+                            </div>
                             <CountryAddPlaceWithAuth />
                         </div>
                     )}

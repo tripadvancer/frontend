@@ -1,12 +1,11 @@
 import { ReactNode, useRef, useState } from 'react'
 
 import classNames from 'classnames'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 import { useOnClickOutside } from 'usehooks-ts'
 
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
-
-import { ChevronBottomIcon16, ChevronTopIcon16, FacebookIcon16 } from './icons'
 
 type FormSelectProps = {
     name: string
@@ -14,7 +13,7 @@ type FormSelectProps = {
     options: {
         value: string
         label: string
-        icon: ReactNode
+        icon?: ReactNode
     }[]
     disabled?: boolean
     onChange: (value: string) => void
@@ -51,7 +50,11 @@ export const FormSelect = ({ name, placeholder, options, disabled, onChange }: F
                 onClick={() => (disabled ? null : setIsOpen(!isOpen))}
             >
                 <div className="text-black-100">{placeholder}</div>
-                {isOpen ? <ChevronTopIcon16 /> : <ChevronBottomIcon16 />}
+                {isOpen ? (
+                    <ChevronUpIcon size={16} absoluteStrokeWidth />
+                ) : (
+                    <ChevronDownIcon size={16} absoluteStrokeWidth />
+                )}
             </div>
             {isOpen && (
                 <div className="absolute left-0 right-0 top-full z-40 rounded-lg border bg-white p-1 shadow-small">
@@ -62,7 +65,7 @@ export const FormSelect = ({ name, placeholder, options, disabled, onChange }: F
                             onClick={() => handleClick(option.value)}
                         >
                             <div className="flex gap-x-2 px-3 py-2">
-                                <div className="mt-[3px] text-black-40">{option.icon}</div>
+                                {option.icon && <div className="mt-[3px] text-black-40">{option.icon}</div>}
                                 <div className="overflow-hidden">
                                     <div className="hover-animated line-clamp-2 break-words group-hover:text-blue-active">
                                         {option.label}

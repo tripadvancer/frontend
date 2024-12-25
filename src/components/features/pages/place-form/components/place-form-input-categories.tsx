@@ -1,9 +1,9 @@
 'use client'
 
+import { PlusIcon } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 
 import { SelectCategories } from '@/components/features/dialogs/select-categories/select-categories'
-import { PlusIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 
@@ -28,7 +28,7 @@ export const PlaceFormInputCategories = ({ value, onChange }: PlaceFormInputCate
                     className="hover-animated flex h-8 cursor-pointer items-center gap-x-2 rounded-full border border-white px-4 text-small text-white hover:border-blue-active hover:text-blue-active"
                     onClick={handleSelectCategories}
                 >
-                    <PlusIcon16 />
+                    <PlusIcon size={16} />
                     {t('page.placeForm.field.categories.label')}
                 </div>
             )}

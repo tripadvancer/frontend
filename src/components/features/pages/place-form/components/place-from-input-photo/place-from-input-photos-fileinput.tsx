@@ -3,9 +3,9 @@
 import { ChangeEvent, useRef } from 'react'
 
 import classNames from 'classnames'
+import { CameraIcon, CameraOffIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { CameraIcon48 } from '@/components/ui/icons'
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
 
@@ -54,8 +54,9 @@ export const PlaceFormInputPhotosFileinput = ({ photosLength, onChange }: PlaceF
     return (
         <div
             className={classNames(
-                'flex-center hover-animated aspect-square size-full cursor-pointer rounded-lg border border-blue-20 text-blue-100 hover:border-blue-active hover:text-blue-active',
+                'flex-center hover-animated aspect-square size-full cursor-pointer rounded-lg border border-blue-20 text-blue-100',
                 {
+                    'hover:border-blue-active hover:text-blue-active': photosLength < maxPhotosCount,
                     '!cursor-not-allowed opacity-30': photosLength >= maxPhotosCount,
                 },
             )}
@@ -70,7 +71,7 @@ export const PlaceFormInputPhotosFileinput = ({ photosLength, onChange }: PlaceF
                 disabled={photosLength >= maxPhotosCount}
                 onChange={handleChange}
             />
-            <CameraIcon48 />
+            {photosLength < maxPhotosCount ? <CameraIcon size={48} /> : <CameraOffIcon size={48} />}
         </div>
     )
 }

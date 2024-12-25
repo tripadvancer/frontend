@@ -80,9 +80,6 @@ export default function validateEnv() {
                 console.error(`   - ${err.message}`)
             })
         }
-        console.log('')
-        console.log('The application will now exit.')
-        console.log('Please update the environment variables and relaunch the application.')
-        process.exit(1)
+        console.log(`   Please update the environment variables and relaunch the application.`)
     }
 }

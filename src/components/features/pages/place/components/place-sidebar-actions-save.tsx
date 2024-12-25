@@ -1,8 +1,8 @@
 'use client'
 
+import { BookmarkIcon, BookmarkPlusIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { BookmarkFillIcon24, BookmarkIcon24 } from '@/components/ui/icons'
 import { placesAPI } from '@/redux/services/places.api'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
 
@@ -19,7 +19,7 @@ export const PlaceSidebarActionsSave = ({ id, isAuth }: PlaceSidebarActionsSaveP
 
     return (
         <div className="link flex items-center gap-x-2 align-top" onClick={savePlace}>
-            {!!meta?.isSaved ? <BookmarkFillIcon24 /> : <BookmarkIcon24 />}
+            {!!meta?.isSaved ? <BookmarkIcon fill="currentColor" /> : <BookmarkPlusIcon />}
             {!!meta?.isSaved ? t('common.action.place.saved') : t('common.action.place.save')}
         </div>
     )

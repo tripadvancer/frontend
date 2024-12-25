@@ -1,4 +1,5 @@
-import { DeleteIcon16 } from '@/components/ui/icons'
+import { TrashIcon } from 'lucide-react'
+
 import { Photo } from '@/components/ui/photo'
 
 type PhotoPreviewProps = {
@@ -16,7 +17,7 @@ export const PhotoPreview = ({ url, alt, size, onPhotoClick, onPhotoDelete }: Ph
                 className="flex-center absolute right-0 top-0 h-8 w-8 cursor-pointer rounded-lg bg-red-10 text-red-100"
                 onClick={onPhotoDelete}
             >
-                <DeleteIcon16 />
+                <TrashIcon size={16} />
             </div>
             <Photo url={url} size={size} alt={alt} onClick={onPhotoClick} />
         </div>
