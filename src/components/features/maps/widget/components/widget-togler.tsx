@@ -2,8 +2,9 @@
 
 import { SearchIcon } from 'lucide-react'
 
+import Image from 'next/image'
+
 import { FormButton } from '@/components/ui/form-button'
-import { RandomIcon24 } from '@/components/ui/icons'
 import { getWidgetMode, setWidgetMode } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetModes } from '@/utils/enums'
@@ -15,7 +16,7 @@ export const WidgetTogler = () => {
     const buttonProps = {
         [WidgetModes.PLACES]: {
             variant: 'orange' as 'blue' | 'orange',
-            icon: <RandomIcon24 />,
+            icon: <Image src="/images/icons/random.svg" alt="Random" width={24} height={24} />,
             onClick: () => dispatch(setWidgetMode(WidgetModes.RANDOM)),
         },
         [WidgetModes.RANDOM]: {

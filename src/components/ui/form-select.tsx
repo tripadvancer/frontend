@@ -13,7 +13,7 @@ type FormSelectProps = {
     options: {
         value: string
         label: string
-        icon: ReactNode
+        icon?: ReactNode
     }[]
     disabled?: boolean
     onChange: (value: string) => void
@@ -65,7 +65,7 @@ export const FormSelect = ({ name, placeholder, options, disabled, onChange }: F
                             onClick={() => handleClick(option.value)}
                         >
                             <div className="flex gap-x-2 px-3 py-2">
-                                <div className="mt-[3px] text-black-40">{option.icon}</div>
+                                {option.icon && <div className="mt-[3px] text-black-40">{option.icon}</div>}
                                 <div className="overflow-hidden">
                                     <div className="hover-animated line-clamp-2 break-words group-hover:text-blue-active">
                                         {option.label}

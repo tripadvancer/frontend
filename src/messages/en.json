@@ -304,6 +304,7 @@
         },
         "signUp": {
             "title": "Sign Up",
+            "thirdPartyGoogle": "Continue with Google",
             "thirdPartyTitle": "Or, sign up with your email address",
             "submit": "Sign up",
             "info": "By completing the registration process, you acknowledge and accept our <termsLink>Terms and Conditions</termsLink> and <privacyLink>Privacy Policy</privacyLink>.",
