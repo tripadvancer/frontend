@@ -1,12 +1,12 @@
 'use client'
 
+import { MessageCircleWarningIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 
 import { SignIn } from '@/components/features/auth/sign-in'
 import { ComplainFormReview } from '@/components/features/dialogs/complain-form/complain-form-review'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { ComplainIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { IReview } from '@/utils/types/common'
 
@@ -23,7 +23,7 @@ export const ReviewActionsPublic = ({ id }: IReview) => {
         {
             caption: t('common.action.review.complain'),
             value: 'complain',
-            icon: <ComplainIcon16 />,
+            icon: <MessageCircleWarningIcon size={16} />,
             isRed: true,
             onClick: handleClick,
         },

@@ -3,8 +3,8 @@
 import { ReactNode } from 'react'
 
 import classNames from 'classnames'
+import { XIcon } from 'lucide-react'
 
-import { CloseIcon16 } from '@/components/ui/icons'
 import { useTimeout } from '@/utils/hooks/use-timeout'
 
 type ToastProps = {
@@ -32,7 +32,7 @@ export const Toast = ({ variant, message, onClose }: ToastProps) => {
                 })}
                 onClick={onClose}
             >
-                <CloseIcon16 />
+                <XIcon size={16} />
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 
-import { UserRankBeginnerIcon48 } from '@/components/ui/icons'
+import Image from 'next/image'
+
 import { IUserStatistics } from '@/utils/types/user'
 
 const Item = ({ label, value }: { label: string; value: number }) => {
@@ -34,10 +35,14 @@ export const UserSidebarAchievement = async ({
 
     return (
         <div className="rounded-2xl bg-orange-10 p-8">
-            <div className="mb-8 items-center bg-[url('/images/laurel.svg')] bg-top bg-no-repeat pl-4 pr-4 pt-4 text-orange-100">
-                <div className="flex-center">
-                    <UserRankBeginnerIcon48 />
-                </div>
+            <div className="mb-8 items-center bg-[url('/images/user-rank/laurel.svg')] bg-top bg-no-repeat pl-4 pr-4 pt-4 text-orange-100">
+                <Image
+                    src="/images/user-rank/user-rank-beginner.svg"
+                    alt="begginer"
+                    width={48}
+                    height={48}
+                    className="m-auto"
+                />
                 <div className="break-words text-center font-medium">
                     {t('component.userAchievement.level.beginner')}
                 </div>

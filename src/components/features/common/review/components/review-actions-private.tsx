@@ -1,10 +1,10 @@
 'use client'
 
+import { PencilIcon, TrashIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ReviewEdit } from '@/components/features/dialogs/review-form/review-edit'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { DeleteIcon16, EditIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { reviewsAPI } from '@/redux/services/reviews.api'
 import { IReview } from '@/utils/types/common'
@@ -19,13 +19,13 @@ export const ReviewActionsPrivate = (review: IReview) => {
         {
             caption: t('common.action.review.edit'),
             value: 'edit',
-            icon: <EditIcon16 />,
+            icon: <PencilIcon size={16} />,
             onClick: () => dialog.open(<ReviewEdit {...review} />),
         },
         {
             caption: t('common.action.review.delete'),
             value: 'delete',
-            icon: <DeleteIcon16 />,
+            icon: <TrashIcon size={16} />,
             isRed: true,
             requiredConfirmation: true,
             onClick: () => {

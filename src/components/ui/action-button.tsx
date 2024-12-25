@@ -1,6 +1,5 @@
 import classNames from 'classnames'
-
-import { MoreIcon16 } from '@/components/ui/icons'
+import { EllipsisIcon } from 'lucide-react'
 
 type ActionButtonProps = {
     isActivated: boolean
@@ -16,7 +15,7 @@ export const ActionButton = ({ isActivated }: ActionButtonProps) => {
                 },
             )}
         >
-            <MoreIcon16 />
+            <EllipsisIcon size={16} />
         </div>
     )
 }

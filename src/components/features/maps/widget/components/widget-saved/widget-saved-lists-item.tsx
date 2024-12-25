@@ -1,8 +1,8 @@
 'use client'
 
+import { ArrowRightIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { ArrowRightIcon16 } from '@/components/ui/icons'
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
 import { IList } from '@/utils/types/common'
@@ -28,7 +28,7 @@ export const WidgetSavedListsItem = (list: IList) => {
                     {t('common.placesCounter', { count: list._count.listToPlace })}
                 </div>
             </div>
-            <ArrowRightIcon16 />
+            <ArrowRightIcon size={16} absoluteStrokeWidth />
         </div>
     )
 }

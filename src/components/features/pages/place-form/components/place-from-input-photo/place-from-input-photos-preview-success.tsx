@@ -1,7 +1,7 @@
+import { CheckIcon, TrashIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { Dropdown } from '@/components/ui/dropdown'
-import { CheckIcon16, DeleteIcon16 } from '@/components/ui/icons'
 import { Photo } from '@/components/ui/photo'
 
 type PlaceFormInputPhotosPreviewSuccessProps = {
@@ -34,13 +34,13 @@ export const PlaceFormInputPhotosPreviewSuccess = ({
                         {
                             caption: 'Set as cover',
                             value: 'set-as-cover',
-                            icon: <CheckIcon16 />,
+                            icon: <CheckIcon size={16} />,
                             onClick: onSetAsCover,
                         },
                         {
                             caption: 'Delete',
                             value: 'delete',
-                            icon: <DeleteIcon16 />,
+                            icon: <TrashIcon size={16} />,
                             isRed: true,
                             onClick: onDelete,
                         },

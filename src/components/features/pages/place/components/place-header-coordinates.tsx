@@ -1,8 +1,8 @@
 'use client'
 
+import { CopyIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { CopyIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { arrayToString } from '@/utils/helpers/maps'
 import { GeoJsonPoint } from '@/utils/types/geo'
@@ -24,9 +24,9 @@ export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps
     }
 
     return (
-        <div className="inline-flex cursor-pointer gap-2 text-big text-white" onClick={handleCopy}>
+        <div className="flex-center cursor-pointer gap-2 text-big text-white" onClick={handleCopy}>
             {coordinatesString}
-            <CopyIcon24 />
+            <CopyIcon size={20} />
         </div>
     )
 }

@@ -2,7 +2,7 @@
 
 import { InputHTMLAttributes, Ref, forwardRef } from 'react'
 
-import { CheckIcon16 } from '@/components/ui/icons'
+import { CheckIcon } from 'lucide-react'
 
 type FormCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
     label: string
@@ -17,7 +17,7 @@ const FormCheckboxComponent = (props: FormCheckboxProps, ref: Ref<HTMLInputEleme
             <div className="flex-center hover-animated h-5 w-5 flex-none rounded border border-black-15 group-hover:border-black-40">
                 <input {...props} ref={ref} type="checkbox" className="peer hidden" />
                 <div className="hidden h-4 w-4 peer-checked:block">
-                    <CheckIcon16 />
+                    <CheckIcon size={16} absoluteStrokeWidth />
                 </div>
             </div>
             <div className="min-w-0 break-words">{props.label}</div>

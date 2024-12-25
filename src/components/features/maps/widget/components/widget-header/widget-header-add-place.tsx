@@ -1,6 +1,7 @@
 'use client'
 
-import { RoundPlus24 } from '@/components/ui/icons'
+import { MapPinPlusIcon } from 'lucide-react'
+
 import { useAddPlaceClickHandler } from '@/utils/hooks/use-add-place-click-handler'
 
 type WidgetHeaderAddPlaceProps = {
@@ -13,8 +14,8 @@ export const WidgetHeaderAddPlace = ({ activeUserId, isAuth, isEmailVerified }: 
     const handleClick = useAddPlaceClickHandler({ activeUserId, isAuth, isEmailVerified })
 
     return (
-        <div className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active" onClick={handleClick}>
-            <RoundPlus24 />
+        <div className="hover-animated cursor-pointer text-orange-100 hover:text-orange-active" onClick={handleClick}>
+            <MapPinPlusIcon />
         </div>
     )
 }

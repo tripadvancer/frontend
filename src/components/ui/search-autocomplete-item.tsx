@@ -1,6 +1,6 @@
 import classNames from 'classnames'
+import { GlobeIcon, LocateFixedIcon, MapPinIcon } from 'lucide-react'
 
-import { GlobeIcon16, PinIcon16, PointIcon16 } from '@/components/ui/icons'
 import { ICountryDict } from '@/utils/types/country'
 import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import { ISearchItem } from '@/utils/types/search'
@@ -21,9 +21,9 @@ export const SearchAutocompleteItem = ({ item, isSelected, onMouseEnter, onClick
         >
             <div className="flex gap-x-2 px-3 py-2">
                 <div className="mt-[3px] text-black-40">
-                    {item.type === 'country' && <GlobeIcon16 />}
-                    {item.type === 'place' && <PinIcon16 />}
-                    {item.type === 'location' && <PointIcon16 />}
+                    {item.type === 'country' && <GlobeIcon size={16} />}
+                    {item.type === 'place' && <MapPinIcon size={16} />}
+                    {item.type === 'location' && <LocateFixedIcon size={16} />}
                 </div>
                 <div className="overflow-hidden">
                     <div className="line-clamp-2 break-words group-hover:text-blue-active">{item.title}</div>

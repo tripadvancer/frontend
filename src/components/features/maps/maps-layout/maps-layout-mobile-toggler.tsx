@@ -1,10 +1,10 @@
 'use client'
 
 import { animated, useTransition } from '@react-spring/web'
+import { ListIcon, MapIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { FormButton } from '@/components/ui/form-button'
-import { MapIcon16, PinIcon16 } from '@/components/ui/icons'
 import { getAppMode, setAppMode } from '@/redux/features/app-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { AppModes } from '@/utils/enums'
@@ -26,12 +26,12 @@ export const MapLayoutMobileToggler = ({ isVisible }: MapLayoutMobileTogglerProp
 
     const buttonProps = {
         [AppModes.MAP]: {
-            icon: <PinIcon16 />,
-            children: t('map.widget.toggler.searchAndFilters'),
+            icon: <ListIcon size={16} />,
+            children: t('map.widget.toggler.list'),
             onClick: () => dispatch(setAppMode(AppModes.WIDGET)),
         },
         [AppModes.WIDGET]: {
-            icon: <MapIcon16 />,
+            icon: <MapIcon size={16} />,
             children: t('map.widget.toggler.map'),
             onClick: () => dispatch(setAppMode(AppModes.MAP)),
         },

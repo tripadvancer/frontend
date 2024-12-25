@@ -1,9 +1,9 @@
 'use client'
 
+import { MapPinPlusIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { FormButton } from '@/components/ui/form-button'
-import { PinPlusIcon24 } from '@/components/ui/icons'
 import { useAddPlaceClickHandler } from '@/utils/hooks/use-add-place-click-handler'
 
 type CountryAddPlaceProps = {
@@ -17,7 +17,7 @@ export const CountryAddPlace = ({ activeUserId, isAuth, isEmailVerified }: Count
     const handleClick = useAddPlaceClickHandler({ activeUserId, isAuth, isEmailVerified })
 
     return (
-        <FormButton icon={<PinPlusIcon24 />} onClick={handleClick}>
+        <FormButton icon={<MapPinPlusIcon />} onClick={handleClick}>
             {t('page.country.addPlace')}
         </FormButton>
     )

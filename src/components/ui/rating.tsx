@@ -1,4 +1,4 @@
-import { StarIcon16, StarIcon32 } from '@/components/ui/icons'
+import { StarIcon } from 'lucide-react'
 
 type RatingProps = {
     value: number
@@ -15,8 +15,8 @@ export const Rating = ({ value, size }: RatingProps) => {
                         key={`rating-star-${index}`}
                         className={Math.round(value) >= index + 1 ? 'opacity-100' : 'opacity-30'}
                     >
-                        {size === 16 && <StarIcon16 />}
-                        {size === 32 && <StarIcon32 />}
+                        {size === 16 && <StarIcon size={16} fill="currentColor" />}
+                        {size === 32 && <StarIcon size={32} fill="currentColor" />}
                     </div>
                 ))}
         </div>

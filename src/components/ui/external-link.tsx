@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 
-import Link from 'next/link'
+import { ExternalLinkIcon } from 'lucide-react'
 
-import { ExternalLinkIcon10 } from './icons'
+import Link from 'next/link'
 
 type ExternalLinkProps = {
     children: ReactNode
@@ -11,9 +11,10 @@ type ExternalLinkProps = {
 
 export const ExternalLink = ({ children, href }: ExternalLinkProps) => {
     return (
-        <Link href={href} target="_blank" className="inline-flex items-center gap-x-0.5">
+        <Link href={href} target="_blank" className="inline-flex items-center justify-center gap-x-0.5">
             {children}
-            <ExternalLinkIcon10 />
+
+            <ExternalLinkIcon size={12} strokeWidth={2.75} />
         </Link>
     )
 }
