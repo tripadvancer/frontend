@@ -1,10 +1,10 @@
 'use client'
 
+import { PlusIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ListAdd } from '@/components/features/dialogs/list-form/list-add'
 import { FormButton } from '@/components/ui/form-button'
-import { PlusIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 
 export const WidgetSavedListAddButton = () => {
@@ -20,7 +20,7 @@ export const WidgetSavedListAddButton = () => {
             type="stroke"
             size="small"
             shape="rounded"
-            icon={<PlusIcon16 />}
+            icon={<PlusIcon size={16} />}
             className="mb-6 w-full sm:mb-8"
             onClick={handleClick}
         >

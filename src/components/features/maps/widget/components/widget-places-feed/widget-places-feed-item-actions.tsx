@@ -1,10 +1,10 @@
 'use client'
 
+import { BookmarkIcon, LocateFixedIcon, NavigationIcon, Share2Icon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { BookmarkFillIcon16, BookmarkIcon16, PinIcon16, RouteIcon16, ShareIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
@@ -36,25 +36,25 @@ export const WidgetPlacesFeedItemActions = (props: WidgetPlacesFeedItemActionsPr
         {
             caption: props.isSaved ? t('common.action.place.saved') : t('common.action.place.save'),
             value: 'save',
-            icon: props.isSaved ? <BookmarkFillIcon16 /> : <BookmarkIcon16 />,
+            icon: props.isSaved ? <BookmarkIcon size={16} fill="currentColor" /> : <BookmarkIcon size={16} />,
             onClick: savePlace,
         },
         {
             caption: t('common.action.place.navigate'),
             value: 'navigate',
-            icon: <RouteIcon16 />,
+            icon: <NavigationIcon size={16} />,
             onClick: () => dialog.open(<ChooseNavigationApp lngLat={lngLat} />),
         },
         {
             caption: t('common.action.place.showOnMap'),
             value: 'showOnMap',
-            icon: <PinIcon16 />,
+            icon: <LocateFixedIcon size={16} />,
             onClick: showOnMap,
         },
         {
             caption: t('common.action.place.share'),
             value: 'share',
-            icon: <ShareIcon16 />,
+            icon: <Share2Icon size={16} />,
             onClick: sharePlace,
         },
     ]

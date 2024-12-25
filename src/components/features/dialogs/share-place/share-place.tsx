@@ -2,11 +2,12 @@
 
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
 
+import { CopyIcon } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import { useCopyToClipboard } from 'usehooks-ts'
 
 import { FormButton } from '@/components/ui/form-button'
-import { CopyIcon24, FacebookIcon24, XIcon24 } from '@/components/ui/icons'
+import { FacebookIcon24, XIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { getCountryByCode } from '@/services/countries'
 
@@ -73,7 +74,7 @@ export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
                     <div className="overflow-hidden text-ellipsis">{url}</div>
                 </div>
 
-                <FormButton type="stroke" icon={<CopyIcon24 />} className="flex-none" onClick={handleCopy} />
+                <FormButton type="stroke" icon={<CopyIcon size={20} />} className="flex-none" onClick={handleCopy} />
             </div>
         </div>
     )

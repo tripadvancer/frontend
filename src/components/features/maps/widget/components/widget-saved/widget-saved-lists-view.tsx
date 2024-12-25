@@ -1,11 +1,11 @@
 'use client'
 
+import { ArrowLeftIcon, FilterIcon, FilterXIcon, PencilIcon, TrashIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ListEdit } from '@/components/features/dialogs/list-form/list-edit'
 import { Confirmation } from '@/components/ui/confirmation'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { ArrowLeftIcon16, DeleteIcon16, EditIcon16, VisibilityIcon16, VisibilityOffIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { getIsFilterMapBySavedLists, setIsFilterMapBySavedLists } from '@/redux/features/map-slice'
@@ -54,19 +54,19 @@ export const WidgetSavedListsView = (list: IList) => {
                 ? t('map.widget.tabs.savedPlaces.lists.action.disableMapFilter')
                 : t('map.widget.tabs.savedPlaces.lists.action.enableMapFilter'),
             value: 'preview_mode',
-            icon: isFilterMapBySavedLists ? <VisibilityIcon16 /> : <VisibilityOffIcon16 />,
+            icon: isFilterMapBySavedLists ? <FilterXIcon size={16} /> : <FilterIcon size={16} />,
             onClick: () => dispatch(setIsFilterMapBySavedLists(!isFilterMapBySavedLists)),
         },
         {
             caption: t('map.widget.tabs.savedPlaces.lists.action.edit'),
             value: 'edit',
-            icon: <EditIcon16 />,
+            icon: <PencilIcon size={16} />,
             onClick: () => dialog.open(<ListEdit {...list} />),
         },
         {
             caption: t('map.widget.tabs.savedPlaces.lists.action.delete'),
             value: 'delete',
-            icon: <DeleteIcon16 />,
+            icon: <TrashIcon size={16} />,
             isRed: true,
             onClick: handleDeleteClick,
         },
@@ -81,7 +81,7 @@ export const WidgetSavedListsView = (list: IList) => {
                     onClick={handleBackClick}
                 >
                     <div className="absolute left-0 top-1">
-                        <ArrowLeftIcon16 />
+                        <ArrowLeftIcon size={16} absoluteStrokeWidth />
                     </div>
                     <div className="overflow-hidden text-ellipsis text-big-bold">{list.name}</div>
                 </div>

@@ -1,6 +1,7 @@
 'use client'
 
-import { CloseIcon24, MenuIcon24 } from '@/components/ui/icons'
+import { MenuIcon, XIcon } from 'lucide-react'
+
 import { getWidgetState, toggleWidgetAbout } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
@@ -13,7 +14,7 @@ export const WidgetHeaderAboutToggler = () => {
             className="hover-animated cursor-pointer hover:text-blue-active"
             onClick={() => dispatch(toggleWidgetAbout())}
         >
-            {widgetState.isAboutOpened ? <CloseIcon24 /> : <MenuIcon24 />}
+            {widgetState.isAboutOpened ? <XIcon /> : <MenuIcon />}
         </div>
     )
 }

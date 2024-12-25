@@ -1,5 +1,6 @@
+import { CloudAlertIcon, RotateCcwIcon, TrashIcon } from 'lucide-react'
+
 import { Dropdown } from '@/components/ui/dropdown'
-import { DeleteIcon16, FaceSadIcon24, RetryIcon16 } from '@/components/ui/icons'
 
 type PlaceFormInputPhotosPreviewErrorProps = {
     onDelete: () => void
@@ -15,20 +16,20 @@ export const PlaceFormInputPhotosPreviewError = ({ onDelete, onRetry }: PlaceFor
                         {
                             caption: 'Retry',
                             value: 'retry',
-                            icon: <RetryIcon16 />,
+                            icon: <RotateCcwIcon size={16} />,
                             onClick: onRetry,
                         },
                         {
                             caption: 'Delete',
                             value: 'delete',
-                            icon: <DeleteIcon16 />,
+                            icon: <TrashIcon size={16} />,
                             isRed: true,
                             onClick: onDelete,
                         },
                     ]}
                 />
             </div>
-            <FaceSadIcon24 />
+            <CloudAlertIcon />
         </div>
     )
 }

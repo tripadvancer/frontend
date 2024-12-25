@@ -1,10 +1,10 @@
 'use client'
 
+import { MessageCircleWarningIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { SignIn } from '@/components/features/auth/sign-in'
 import { ComplainFormPlace } from '@/components/features/dialogs/complain-form/complain-form-place'
-import { ComplainIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 
 type PlaceSidebarActionsComplainProps = {
@@ -27,7 +27,7 @@ export const PlaceSidebarActionsComplain = ({ id, isAuth }: PlaceSidebarActionsC
 
     return (
         <div className="link-red flex items-center gap-x-2 align-top" onClick={handleClick}>
-            <ComplainIcon24 />
+            <MessageCircleWarningIcon />
             {t('common.action.place.complain')}
         </div>
     )

@@ -586,8 +586,8 @@
                         "private": "Private",
                         "public": "Public",
                         "action": {
-                            "enableMapFilter": "Filter map by list",
-                            "disableMapFilter": "Disable map filter",
+                            "enableMapFilter": "Hide other places",
+                            "disableMapFilter": "Show all places",
                             "edit": "Edit",
                             "delete": "Delete"
                         }
@@ -608,8 +608,8 @@
                 }
             },
             "toggler": {
-                "map": "Map",
-                "searchAndFilters": "Search and filters"
+                "map": "View map",
+                "list": "View list"
             }
         }
     }

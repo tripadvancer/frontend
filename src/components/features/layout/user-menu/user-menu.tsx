@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 
+import { CircleUserIcon, LogOutIcon, SettingsIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 import { useMediaQuery, useOnClickOutside } from 'usehooks-ts'
@@ -10,7 +11,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import { Avatar } from '@/components/ui/avatar'
-import { SettingsIcon16, SignOutIcon16, UserIcon16 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
@@ -64,7 +64,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                             onClick={() => setIsMenuOpen(false)}
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
-                            <UserIcon16 />
+                            <CircleUserIcon size={16} />
                             {t('layout.userMenu.profile')}
                         </Link>
                     </li>
@@ -74,7 +74,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                             onClick={() => setIsMenuOpen(false)}
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
-                            <SettingsIcon16 />
+                            <SettingsIcon size={16} />
                             {t('layout.userMenu.settings')}
                         </Link>
                     </li>
@@ -83,7 +83,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                             className="flex cursor-pointer items-center gap-x-2 text-nowrap rounded p-1.5 text-red-100 hover:bg-blue-10"
                             onClick={signOut}
                         >
-                            <SignOutIcon16 />
+                            <LogOutIcon size={16} />
                             {t('layout.userMenu.logOut')}
                         </div>
                     </li>

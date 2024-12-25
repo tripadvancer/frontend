@@ -1,8 +1,7 @@
 'use client'
 
 import classNames from 'classnames'
-
-import { StarIcon32 } from '@/components/ui/icons'
+import { StarIcon } from 'lucide-react'
 
 type FormRatingInputProps = {
     value: number
@@ -36,7 +35,7 @@ export const FormRatingInput = ({ value, error, className, isDisabled, onChange 
                             })}
                             onClick={() => handleClick(index + 1)}
                         >
-                            <StarIcon32 />
+                            <StarIcon size={32} fill="currentColor" />
                         </div>
                     ))}
             </div>

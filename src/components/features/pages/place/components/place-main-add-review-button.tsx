@@ -1,12 +1,12 @@
 'use client'
 
+import { MessageSquareIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
 import { ReviewAdd } from '@/components/features/dialogs/review-form/review-add'
 import { FormButton } from '@/components/ui/form-button'
-import { ReviewIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 
 type PlaceMainAddReviewButtonProps = {
@@ -40,7 +40,13 @@ export const PlaceMainAddReviewButton = ({
     }
 
     return (
-        <FormButton variant="light-blue" size="small" icon={<ReviewIcon16 />} className="w-full" onClick={handleClick}>
+        <FormButton
+            variant="light-blue"
+            size="small"
+            icon={<MessageSquareIcon size={16} />}
+            className="w-full"
+            onClick={handleClick}
+        >
             {t('page.place.addReview')}
         </FormButton>
     )

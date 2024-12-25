@@ -1,7 +1,8 @@
 'use client'
 
+import { CircleUserIcon } from 'lucide-react'
+
 import { SignIn } from '@/components/features/auth/sign-in'
-import { UserIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 
 export const WidgetHeaderSignInLink = () => {
@@ -12,7 +13,7 @@ export const WidgetHeaderSignInLink = () => {
             className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
             onClick={() => dialog.open(<SignIn />)}
         >
-            <UserIcon24 />
+            <CircleUserIcon />
         </div>
     )
 }

@@ -1,10 +1,10 @@
 'use client'
 
+import { LocateFixedIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
 import { FormButton } from '@/components/ui/form-button'
-import { PinIcon16 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useShowOnMap } from '@/utils/hooks/use-show-on-map'
@@ -30,7 +30,13 @@ export const WidgetRandomPlaceActions = (props: WidgetRandomPlaceActionsProps) =
 
     return (
         <div className="flex gap-x-1">
-            <FormButton type="stroke" size="small" icon={<PinIcon16 />} className="flex-none" onClick={showOnMap} />
+            <FormButton
+                type="stroke"
+                size="small"
+                icon={<LocateFixedIcon size={16} />}
+                className="flex-none"
+                onClick={showOnMap}
+            />
             <FormButton
                 type="stroke"
                 size="small"

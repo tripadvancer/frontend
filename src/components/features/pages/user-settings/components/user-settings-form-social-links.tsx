@@ -3,12 +3,12 @@
 import { ChangeEvent } from 'react'
 
 import classNames from 'classnames'
+import { TrashIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { FormInput } from '@/components/ui/form-input'
 import { FormSelect } from '@/components/ui/form-select'
 import {
-    DeleteIcon16,
     FacebookIcon16,
     FacebookIcon24,
     InstagramIcon16,
@@ -143,7 +143,7 @@ export const UserSettingsFormSocialLinks = ({
                         })}
                         onClick={isDisabled ? undefined : () => handleDelete(app as UserSocialApps)}
                     >
-                        <DeleteIcon16 />
+                        <TrashIcon size={16} />
                     </div>
                 </div>
             ))}

@@ -3,9 +3,10 @@
 import { useCallback, useRef } from 'react'
 import { AttributionControl, MapRef, Marker, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
+import { MinusIcon, PlusIcon } from 'lucide-react'
 import { useMediaQuery } from 'usehooks-ts'
 
-import { LocationIcon16, MinusIcon16, PlusIcon16 } from '@/components/ui/icons'
+import { LocationIcon16 } from '@/components/ui/icons'
 import { MapControl } from '@/components/ui/map-control'
 import { getMapViewState } from '@/redux/features/map-slice'
 import { getUserLocation } from '@/redux/features/user-slice'
@@ -73,11 +74,11 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
 
                 <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
                     <MapControl onClick={handleZoomIn}>
-                        <PlusIcon16 />
+                        <PlusIcon size={16} absoluteStrokeWidth />
                     </MapControl>
 
                     <MapControl onClick={handleZoomOut}>
-                        <MinusIcon16 />
+                        <MinusIcon size={16} absoluteStrokeWidth />
                     </MapControl>
 
                     <MapControl isLoading={isLocating} onClick={handleLocate}>

@@ -3,6 +3,8 @@
 import { useCallback, useRef, useState } from 'react'
 import { MapRef, Map as ReactMapGl, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
+import { LocateFixedIcon, MinusIcon, PlusIcon, SearchIcon } from 'lucide-react'
+
 import Image from 'next/image'
 
 import { LocationIcon16, MinusIcon16, PlusIcon16, SearchIcon16 } from '@/components/ui/icons'
@@ -86,22 +88,22 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
                     />
                 ) : (
                     <MapControl onClick={() => setIsSearchVisible(true)}>
-                        <SearchIcon16 />
+                        <SearchIcon size={16} />
                     </MapControl>
                 )}
             </div>
 
             <div className="absolute bottom-2 right-2 z-10 flex flex-col gap-y-1">
                 <MapControl desktopOnly onClick={handleZoomIn}>
-                    <PlusIcon16 />
+                    <PlusIcon size={16} />
                 </MapControl>
 
                 <MapControl desktopOnly onClick={handleZoomOut}>
-                    <MinusIcon16 />
+                    <MinusIcon size={16} />
                 </MapControl>
 
                 <MapControl isLoading={isUserLocating} onClick={handleUserLocate}>
-                    <LocationIcon16 />
+                    <LocateFixedIcon size={16} />
                 </MapControl>
             </div>
 

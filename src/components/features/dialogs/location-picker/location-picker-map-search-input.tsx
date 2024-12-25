@@ -2,9 +2,9 @@
 
 import { ChangeEvent } from 'react'
 
+import { SearchIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { Spinner } from '@/components/ui/spinner'
 
 type LocationPickerMapSearchInputProps = {
@@ -29,7 +29,7 @@ export const LocationPickerMapSearchInput = (props: LocationPickerMapSearchInput
                 className="flex-center size-10 shrink-0 cursor-pointer text-blue-active sm:size-8"
                 onClick={props.isLoading ? undefined : props.onHide}
             >
-                {props.isLoading ? <Spinner size={16} /> : <SearchIcon16 />}
+                {props.isLoading ? <Spinner size={16} /> : <SearchIcon size={16} />}
             </div>
 
             <div className="h-full w-full shrink">
@@ -51,7 +51,7 @@ export const LocationPickerMapSearchInput = (props: LocationPickerMapSearchInput
                     className="flex-center hover-animated size-10 shrink-0 cursor-pointer text-black-15 hover:text-blue-active sm:size-8"
                     onClick={props.onClear}
                 >
-                    <CloseIcon16 />
+                    <XIcon size={16} />
                 </div>
             )}
         </div>

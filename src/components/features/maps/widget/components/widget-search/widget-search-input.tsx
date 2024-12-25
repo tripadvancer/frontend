@@ -2,9 +2,9 @@
 
 import { ChangeEvent } from 'react'
 
+import { SearchIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { CloseIcon16, SearchIcon16 } from '@/components/ui/icons'
 import { Spinner } from '@/components/ui/spinner'
 
 type WidgetSearchInputProps = {
@@ -25,7 +25,7 @@ export const WidgetSearchInput = (props: WidgetSearchInputProps) => {
     return (
         <div className="relative">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 transform text-blue-100">
-                {props.isLoading ? <Spinner size={16} /> : <SearchIcon16 />}
+                {props.isLoading ? <Spinner size={16} /> : <SearchIcon size={16} absoluteStrokeWidth />}
             </div>
 
             <input
@@ -44,7 +44,7 @@ export const WidgetSearchInput = (props: WidgetSearchInputProps) => {
                     className="hover-animated absolute right-4 top-1/2 -translate-y-1/2 transform cursor-pointer text-black-15 hover:text-blue-active"
                     onClick={props.onClear}
                 >
-                    <CloseIcon16 />
+                    <XIcon size={16} absoluteStrokeWidth />
                 </div>
             )}
         </div>
