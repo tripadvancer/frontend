@@ -11,7 +11,7 @@ export const MapIconCostingModel = ({ costingModel }: MapCostingModelIconProps) 
     const mappingCostingModelToIcon = {
         [CostingModel.Auto]: <CarFrontIcon size={16} />,
         [CostingModel.Bicycle]: <BikeIcon size={16} />,
-        [CostingModel.Pedestrian]: <Image src="/images/ions/walk.svg" width={16} height={16} alt="" />,
+        [CostingModel.Pedestrian]: <Image src="/images/icons/walk.svg" width={16} height={16} alt="" />,
 
         [CostingModel.Bikeshare]: '',
         [CostingModel.Bus]: '',

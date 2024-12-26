@@ -18,6 +18,7 @@ export const MapPopupPlaceActions = (place: MapPopupPlaceActionsProps) => {
 
     return (
         <div className="flex gap-x-1">
+            <PlaceButtonRoute lngLat={arrayToLngLat(place.coordinates)} />
             <FormButton
                 type="stroke"
                 size="small"
@@ -25,7 +26,6 @@ export const MapPopupPlaceActions = (place: MapPopupPlaceActionsProps) => {
                 className="flex-none"
                 onClick={savePlace}
             />
-            <PlaceButtonRoute lngLat={arrayToLngLat(place.coordinates)} />
         </div>
     )
 }
