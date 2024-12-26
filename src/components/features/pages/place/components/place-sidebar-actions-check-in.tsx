@@ -1,10 +1,10 @@
 'use client'
 
+import { MapPinCheckIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { SignIn } from '@/components/features/auth/sign-in'
 import { FormSwitcher } from '@/components/ui/form-switcher'
-import { PinLocationIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { placesAPI } from '@/redux/services/places.api'
@@ -41,7 +41,7 @@ export const PlaceSidebarActionsCheckIn = ({ id, isAuth }: PlaceSidebarActionsCh
     return (
         <div className="flex items-center justify-between">
             <div className="flex flex-1 cursor-pointer items-center gap-x-2" onClick={toggle}>
-                <PinLocationIcon24 />
+                <MapPinCheckIcon />
                 {t('common.action.place.iWasHere')}
             </div>
             <FormSwitcher checked={!!meta?.isVisited} onChange={toggle} />

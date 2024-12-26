@@ -1,8 +1,8 @@
 'use client'
 
+import { Share2Icon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { ShareIcon24 } from '@/components/ui/icons'
 import { useSharePlace } from '@/utils/hooks/use-share-place'
 
 type PlaceSidebarActionsShareProps = {
@@ -17,7 +17,7 @@ export const PlaceSidebarActionsShare = ({ id, title, countryCode }: PlaceSideba
 
     return (
         <div className="link flex items-center gap-x-2 align-top" onClick={sharePlace}>
-            <ShareIcon24 />
+            <Share2Icon />
             {t('common.action.place.share')}
         </div>
     )

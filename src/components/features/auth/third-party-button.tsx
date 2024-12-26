@@ -5,14 +5,14 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { getAuthorisationURLWithQueryParamsAndSetState } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 import { FormButton } from '@/components/ui/form-button'
-import { FacebookIcon24, GoogleIcon24 } from '@/components/ui/icons'
 import { useToast } from '@/providers/toast-provider'
 
 type ThirdPartyButtonProps = {
-    provider: 'google' | 'facebook'
+    provider: 'google'
     isDisabled?: boolean
 }
 
@@ -48,14 +48,8 @@ export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps
         >
             {provider === 'google' && (
                 <>
-                    <GoogleIcon24 />
-                    Google
-                </>
-            )}
-            {provider === 'facebook' && (
-                <>
-                    <FacebookIcon24 />
-                    Facebook
+                    <Image src="/images/icons/social/google.svg" width={24} height={24} alt="Google" />
+                    {t('auth.signUp.thirdPartyGoogle')}
                 </>
             )}
         </FormButton>

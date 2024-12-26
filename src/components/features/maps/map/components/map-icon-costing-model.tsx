@@ -1,6 +1,7 @@
 import { CostingModel } from '@stadiamaps/api'
+import { BikeIcon, CarFrontIcon } from 'lucide-react'
 
-import { BicycleIcon16, CarIcon16, WalkIcon16 } from '@/components/ui/icons'
+import Image from 'next/image'
 
 type MapCostingModelIconProps = {
     costingModel: CostingModel
@@ -8,9 +9,9 @@ type MapCostingModelIconProps = {
 
 export const MapIconCostingModel = ({ costingModel }: MapCostingModelIconProps) => {
     const mappingCostingModelToIcon = {
-        [CostingModel.Auto]: <CarIcon16 />,
-        [CostingModel.Bicycle]: <BicycleIcon16 />,
-        [CostingModel.Pedestrian]: <WalkIcon16 />,
+        [CostingModel.Auto]: <CarFrontIcon size={16} />,
+        [CostingModel.Bicycle]: <BikeIcon size={16} />,
+        [CostingModel.Pedestrian]: <Image src="/images/ions/walk.svg" width={16} height={16} alt="" />,
 
         [CostingModel.Bikeshare]: '',
         [CostingModel.Bus]: '',

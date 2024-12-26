@@ -1,9 +1,9 @@
 import { ChangeEvent, useRef, useState } from 'react'
 
 import classNames from 'classnames'
+import { FolderIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { FolderIcon16 } from '@/components/ui/icons'
 import { Spinner } from '@/components/ui/spinner'
 
 type FormFileInputProps = {
@@ -103,7 +103,7 @@ export const FormFileInput = ({
                                     <div className="text-black-40">{t('placeholder.action.selectFile')}</div>
                                 )}
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                                    <FolderIcon16 />
+                                    <FolderIcon size={16} />
                                 </div>
                             </>
                         )}

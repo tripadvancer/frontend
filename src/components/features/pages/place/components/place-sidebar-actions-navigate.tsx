@@ -1,9 +1,9 @@
 'use client'
 
+import { NavigationIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
-import { RouteIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { GeoJsonPoint } from '@/utils/types/geo'
@@ -23,7 +23,7 @@ export const PlaceSidebarActionsNavigate = ({ location }: PlaceSidebarActionsNav
 
     return (
         <div className="link flex items-center gap-x-2 align-top" onClick={handleClick}>
-            <RouteIcon24 />
+            <NavigationIcon />
             {t('common.action.place.navigate')}
         </div>
     )

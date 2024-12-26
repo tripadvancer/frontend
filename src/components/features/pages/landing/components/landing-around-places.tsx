@@ -16,6 +16,7 @@ export const LandingAroundPlaces = () => {
     const lng = parseFloat(edgeGeo.data?.lng || '0')
     const radius = parseInt(process.env.NEXT_PUBLIC_AROUND_ME_RADIUS || '150000')
     const userCountryCode = edgeGeo.data?.countryCode
+    const userCountryName = getCountryByCode(userCountryCode)?.name['en']
 
     const {
         data: places,
@@ -34,15 +35,15 @@ export const LandingAroundPlaces = () => {
     if (isSuccess && places.length > 0) {
         return (
             <section>
-                <h2 className="h3 mb-4 text-center">{t('page.landing.aroundPlaces.title')}</h2>
+                <h3 className="h3 mb-4 text-center">{t('page.landing.aroundPlaces.title')}</h3>
                 <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
                     {t('page.landing.aroundPlaces.text')}
                 </p>
                 <div className="flex flex-col gap-y-8">
                     <FeedPlaces places={places} />
-                    {userCountryCode && (
+                    {userCountryName && (
                         <ShowAllLink href={`/countries/${getCountryByCode(userCountryCode)?.slug}`}>
-                            {t('page.landing.aroundPlaces.button')}
+                            {t('page.landing.aroundPlaces.button', { country: userCountryName })}
                         </ShowAllLink>
                     )}
                 </div>

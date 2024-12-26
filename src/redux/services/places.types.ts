@@ -29,20 +29,24 @@ export type GetPlaceMetaByIdResponse = {
 export type CreatePlaceInputs = {
     title: string
     description: string
-    cover: string | null
     categories: number[]
     location: string
-    photos: string[]
+    photos: {
+        url: string
+        isCover: boolean
+    }[]
 }
 
 export type UpdatePlaceInputs = {
     title: string
     description: string
-    cover: string | null
     categories: number[]
     placeId: number
     location: string
-    photos: string[]
+    photos: {
+        url: string
+        isCover: boolean
+    }[]
 }
 
 export type CreatePlaceResponse = {

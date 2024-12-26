@@ -1,11 +1,11 @@
 'use client'
 
+import { CircleUserIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useMediaQuery } from 'usehooks-ts'
 
 import { SignIn } from '@/components/features/auth/sign-in'
 import { FormButton } from '@/components/ui/form-button'
-import { UserIcon24 } from '@/components/ui/icons'
 import { useDialog } from '@/providers/dialog-provider'
 
 export const HeaderSignIn = () => {
@@ -20,7 +20,7 @@ export const HeaderSignIn = () => {
     if (isMobile) {
         return (
             <div className="link" onClick={handleClick}>
-                <UserIcon24 />
+                <CircleUserIcon />
             </div>
         )
     }

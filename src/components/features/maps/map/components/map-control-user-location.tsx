@@ -1,6 +1,7 @@
 'use client'
 
-import { LocationAnimatedIcon16, LocationIcon16 } from '@/components/ui/icons'
+import { LocateFixedIcon } from 'lucide-react'
+
 import { MapControl } from '@/components/ui/map-control'
 import { useUserLocation } from '@/utils/hooks/use-user-location'
 
@@ -10,13 +11,13 @@ export const MapControlUserLocation = () => {
     return (
         <MapControl isLoading={isLocating} onClick={handleLocate}>
             {isWatching ? (
-                <LocationAnimatedIcon16 />
+                <LocateFixedIcon size={16} />
             ) : isDenied ? (
                 <div className="text-black-40">
-                    <LocationIcon16 />
+                    <LocateFixedIcon size={16} />
                 </div>
             ) : (
-                <LocationIcon16 />
+                <LocateFixedIcon size={16} />
             )}
         </MapControl>
     )

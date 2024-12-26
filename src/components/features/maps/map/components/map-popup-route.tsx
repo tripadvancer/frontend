@@ -3,9 +3,9 @@
 import { Popup } from 'react-map-gl/maplibre'
 
 import { RouteResponse } from '@stadiamaps/api'
+import { XIcon } from 'lucide-react'
 
 import { Distance } from '@/components/ui/distance'
-import { CloseIcon16 } from '@/components/ui/icons'
 import { Time } from '@/components/ui/time'
 import { getRouteCostingModel } from '@/redux/features/map-slice'
 import { getRouteResponse } from '@/redux/features/route-slice'
@@ -50,7 +50,7 @@ export const MapPopupRoute = () => {
                     className="hover-animated absolute -right-2 -top-2 cursor-pointer text-black-40 hover:text-blue-active"
                     onClick={clearRoute}
                 >
-                    <CloseIcon16 />
+                    <XIcon size={16} />
                 </div>
             </div>
         </Popup>

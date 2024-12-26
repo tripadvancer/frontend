@@ -1,10 +1,10 @@
 'use client'
 
+import { LocateFixedIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { useRouter } from 'next/navigation'
 
-import { PinIcon24 } from '@/components/ui/icons'
 import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
 import { setWidgetActiveTab, setWidgetMode } from '@/redux/features/widget-slice'
@@ -59,7 +59,7 @@ export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap
 
     return (
         <div className="link flex items-center gap-x-2 align-top" onClick={handleClick}>
-            <PinIcon24 />
+            <LocateFixedIcon />
             {t('common.action.place.showOnMap')}
         </div>
     )

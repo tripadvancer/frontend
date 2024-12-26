@@ -23,7 +23,7 @@ export const Avatar = ({ name, avatar, size }: AvatarProps) => {
     }
 
     return (
-        <div className="flex-center rounded-full bg-orange-100 text-white" style={{ width: size, height: size }}>
+        <div className="flex-center rounded-full bg-blue-100 text-white" style={{ width: size, height: size }}>
             {name[0].toUpperCase()}
         </div>
     )

@@ -2,7 +2,6 @@
 
 import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
-import * as Yup from 'yup'
 
 import Image from 'next/image'
 
@@ -12,12 +11,11 @@ import { makeImageUrl } from '@/utils/helpers/common'
 
 import { PlaceFormErrorMesage } from './components/place-form-error-mesage'
 import { PlaceFormInputCategories } from './components/place-form-input-categories'
-import { PlaceFormInputCover } from './components/place-form-input-cover'
 import { PlaceFormInputDescription } from './components/place-form-input-description'
 import { PlaceFormInputLocation } from './components/place-form-input-location'
 import { PlaceFormInputTitle } from './components/place-form-input-title'
-import { PlaceFormPhotosList } from './components/place-form-photos-list'
 import { PlaceFormSubmit } from './components/place-form-submit'
+import { PlaceFormInputPhotos } from './components/place-from-input-photo/place-from-input-photos'
 import { validationSchema } from './validation-schema'
 
 type PlaceFormProps = {
@@ -37,27 +35,37 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
         onSubmit,
     })
 
+    const renderCover = () => {
+        const cover = formik.values.photos.find(photo => photo.isCover)
+
+        if (!cover) {
+            return null
+        }
+
+        return (
+            <Image
+                src={makeImageUrl(cover.url, ImageVariants.PUBLIC)}
+                alt={formik.values.title}
+                fill
+                priority
+                className="object-cover"
+            />
+        )
+    }
+
+    const handlePhotosChange = (value: { url: string; isCover: boolean }[]) => {
+        formik.setFieldValue('photos', value)
+    }
+
     return (
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
             <div className="flex-center relative z-10 -mb-8 flex-[540px] pb-8">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
-                    {formik.values.cover && (
-                        <Image
-                            src={makeImageUrl(formik.values.cover, ImageVariants.PUBLIC)}
-                            alt=""
-                            fill
-                            priority
-                            className="object-cover"
-                        />
-                    )}
+                    {renderCover()}
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
                 </div>
                 <section className="container relative z-30 py-8">
                     <div className="flex-center m-auto flex-col gap-y-4 sm:w-2/3">
-                        <PlaceFormInputCover
-                            value={formik.values.cover}
-                            onChange={value => formik.setFieldValue('cover', value)}
-                        />
                         <PlaceFormInputTitle
                             value={formik.values.title}
                             onChange={value => formik.setFieldValue('title', value)}
@@ -80,9 +88,9 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                             value={formik.values.description}
                             onChange={value => formik.setFieldValue('description', value)}
                         />
-                        <PlaceFormPhotosList
-                            photos={formik.values.photos}
-                            onChange={value => formik.setFieldValue('photos', value)}
+                        <PlaceFormInputPhotos
+                            initialPhotos={formik.initialValues.photos}
+                            onChange={handlePhotosChange}
                         />
                         <div className="flex flex-col gap-y-4">
                             <PlaceFormErrorMesage errors={formik.errors} />

@@ -1,8 +1,8 @@
+import { MapPin } from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import { PinIcon16 } from '@/components/ui/icons'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { getCountryByCode } from '@/services/countries'
 import { ICountry } from '@/utils/types/country'
@@ -29,7 +29,7 @@ export const FeedCountriesItem = async ({ countryCode, placesCount }: ICountry) 
                 <figcaption className="flex flex-col justify-between p-4">
                     <h4 className="h7 mb-4 line-clamp-2 h-12 break-words sm:h-[52px]">{countryName}</h4>
                     <div className="flex flex-row items-center gap-x-2 text-black-40">
-                        <PinIcon16 />
+                        <MapPin size={16} />
                         {t('common.placesCounter', { count: placesCount })}
                     </div>
                 </figcaption>
