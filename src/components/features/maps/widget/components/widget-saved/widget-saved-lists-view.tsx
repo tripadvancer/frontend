@@ -12,6 +12,7 @@ import { getIsFilterMapBySavedLists, setIsFilterMapBySavedLists } from '@/redux/
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list.api'
+import { useMapRoute } from '@/utils/hooks/use-map-route'
 import { IList } from '@/utils/types/common'
 
 import { WidgetSavedListsViewPlacesFeed } from './widget-saved-lists-view-places-feed'
@@ -23,10 +24,13 @@ export const WidgetSavedListsView = (list: IList) => {
     const isFilterMapBySavedLists = useAppSelector(getIsFilterMapBySavedLists)
     const dispatch = useAppDispatch()
 
+    const { clearRoute } = useMapRoute()
+
     const [deleteList] = listAPI.useDeleteListMutation()
 
     const handleBackClick = () => {
         dispatch(setWidgetActiveList(null))
+        clearRoute()
     }
 
     const handleDeleteClick = () => {

@@ -7,32 +7,30 @@ import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
-import { closeMapPopups } from '@/redux/features/map-slice'
-import { useAppDispatch } from '@/redux/hooks'
+import { closeMapPopups, getMapState } from '@/redux/features/map-slice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 
 import { MapPopupPlaceActions } from './map-popup-place-actions'
 
 type MapPopupPlaceProps = {
-    mapRef: RefObject<HTMLDivElement>
-    id: number
-    title: string
-    cover: string | null
-    avgRating: number | null
-    reviewsCount: number
-    isSaved: boolean
-    coordinates: number[]
+    containerRef: RefObject<HTMLDivElement>
 }
 
-export const MapPopupPlace = ({ mapRef, ...place }: MapPopupPlaceProps) => {
+export const MapPopupPlace = ({ containerRef }: MapPopupPlaceProps) => {
     const dispatch = useAppDispatch()
-    const lngLat = arrayToLngLat(place.coordinates)
-
+    const popupInfo = useAppSelector(getMapState).placePopupInfo
     const ref = useRef<HTMLDivElement>(null)
 
-    useOnClickOutside([ref, mapRef], () => {
+    useOnClickOutside([ref, containerRef], () => {
         dispatch(closeMapPopups())
     })
+
+    if (!popupInfo) {
+        return null
+    }
+
+    const lngLat = arrayToLngLat(popupInfo.coordinates)
 
     return (
         <Popup
@@ -44,21 +42,21 @@ export const MapPopupPlace = ({ mapRef, ...place }: MapPopupPlaceProps) => {
         >
             <div ref={ref} className="flex w-56 flex-col gap-y-4">
                 <Link
-                    href={`/places/${place.id}`}
+                    href={`/places/${popupInfo.id}`}
                     target="_blank"
                     className="link-black flex gap-x-4 focus:outline-none"
                 >
                     <PlacePreviewCover
-                        cover={place.cover}
-                        title={place.title}
+                        cover={popupInfo.cover}
+                        title={popupInfo.title}
                         size={80}
                         className="aspect-square w-20 flex-none rounded-lg"
                     />
-                    <div className="line-clamp-4 break-words font-medium">{place.title}</div>
+                    <div className="line-clamp-4 break-words font-medium">{popupInfo.title}</div>
                 </Link>
                 <div className="flex items-center justify-between">
-                    <PlacePreviewRating {...place} />
-                    <MapPopupPlaceActions {...place} />
+                    <PlacePreviewRating {...popupInfo} />
+                    <MapPopupPlaceActions {...popupInfo} />
                 </div>
             </div>
         </Popup>

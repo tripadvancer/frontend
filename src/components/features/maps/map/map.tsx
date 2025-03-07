@@ -1,24 +1,26 @@
 'use client'
 
 import { useCallback, useRef } from 'react'
-import { AttributionControl, MapRef, Marker, Map as ReactMapGl } from 'react-map-gl/maplibre'
+import { AttributionControl, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
-import { LocateFixedIcon, MinusIcon, PlusIcon } from 'lucide-react'
+import { MinusIcon, PlusIcon } from 'lucide-react'
 import { useMediaQuery } from 'usehooks-ts'
 
 import { MapControl } from '@/components/ui/map-control'
 import { getMapViewState } from '@/redux/features/map-slice'
-import { getUserLocation } from '@/redux/features/user-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { useUserLocation } from '@/utils/hooks/use-user-location'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
+import { MapControlCostingModel } from './components/map-control-costing-model'
+import { MapControlUserLocation } from './components/map-control-user-location'
 import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
+import { MapPopupRoute } from './components/map-popup-route'
 import { useMapEventHandlers } from './map-event-handlers'
 import { placesLayer } from './sources/map-layers'
+import { MapSourceRoute } from './sources/map-source-route'
 import { MapSources } from './sources/map-sources'
 
 type MapProps = {
@@ -29,15 +31,12 @@ type MapProps = {
 
 export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     const handlers = useMapEventHandlers()
-    const userLocation = useAppSelector(getUserLocation)
     const mapViewState = useAppSelector(getMapViewState)
     const isMobile = useMediaQuery('(max-width: 639px)')
     const isTablet = useMediaQuery('(max-width: 1023px)')
 
     const mapRef = useRef<MapRef>(null)
-    const mapContainerRef = useRef<HTMLDivElement>(null)
-
-    const { handleLocate, isLocating } = useUserLocation()
+    const containerRef = useRef<HTMLDivElement>(null)
 
     const handleZoomIn = useCallback(() => {
         mapRef.current?.zoomIn({ duration: 500 })
@@ -48,11 +47,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
     }, [])
 
     return (
-        <div ref={mapContainerRef} className="size-full">
-            {/* todo: for debug, remove later */}
-            {/* <div className="fixed left-0 right-0 top-1/2 z-50 h-[1px] bg-red-100"></div> */}
-            {/* <div className="fixed bottom-0 left-1/2 top-0 z-50 w-[1px] bg-red-100"></div> */}
-
+        <div ref={containerRef} className="size-full">
             <ReactMapGl
                 id="map"
                 ref={mapRef}
@@ -69,9 +64,10 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 }}
                 {...handlers}
             >
+                <MapSourceRoute />
                 <MapSources isAuth={isAuth} />
 
-                <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
+                <div className="absolute right-2 top-20 z-30 flex flex-col items-end gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0 sm:items-start">
                     <MapControl onClick={handleZoomIn}>
                         <PlusIcon size={16} />
                     </MapControl>
@@ -80,28 +76,19 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                         <MinusIcon size={16} />
                     </MapControl>
 
-                    <MapControl isLoading={isLocating} onClick={handleLocate}>
-                        <LocateFixedIcon size={16} />
-                    </MapControl>
+                    <MapControlUserLocation />
+                    <MapControlCostingModel />
                 </div>
 
-                {userLocation && (
-                    <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="bottom">
-                        <MapPinUser />
-                    </Marker>
-                )}
-
-                {handlers.placePopupInfo && <MapPopupPlace mapRef={mapContainerRef} {...handlers.placePopupInfo} />}
-
-                {handlers.locationPopupInfo && (
-                    <MapPopupLocation
-                        mapRef={mapContainerRef}
-                        activeUserId={activeUserId}
-                        isAuth={isAuth}
-                        isEmailVerified={isEmailVerified}
-                        {...handlers.locationPopupInfo}
-                    />
-                )}
+                <MapPinUser />
+                <MapPopupRoute />
+                <MapPopupPlace containerRef={containerRef} />
+                <MapPopupLocation
+                    containerRef={containerRef}
+                    activeUserId={activeUserId}
+                    isAuth={isAuth}
+                    isEmailVerified={isEmailVerified}
+                />
 
                 {!isMobile && <AttributionControl compact={true} />}
             </ReactMapGl>

@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { getWidgetState, setWidgetActiveTab } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabs as WidgetTabsEnum } from '@/utils/enums'
+import { useMapRoute } from '@/utils/hooks/use-map-route'
 
 type TabType = {
     id: WidgetTabsEnum
@@ -17,6 +18,8 @@ export const WidgetTabs = () => {
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
 
+    const { clearRoute } = useMapRoute()
+
     const tabs: TabType[] = [
         { id: WidgetTabsEnum.ALL, caption: t('map.widget.tabs.allPlaces.title') },
         { id: WidgetTabsEnum.SAVED, caption: t('map.widget.tabs.savedPlaces.title') },
@@ -24,6 +27,7 @@ export const WidgetTabs = () => {
 
     const handleTabClick = (tab: TabType) => {
         dispatch(setWidgetActiveTab(tab.id))
+        clearRoute()
     }
 
     return (

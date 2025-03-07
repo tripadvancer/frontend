@@ -4,6 +4,7 @@ import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 import appReducer from '@/redux/features/app-slice'
 import mapReducer from '@/redux/features/map-slice'
+import routeReducer from '@/redux/features/route-slice'
 import userReducer from '@/redux/features/user-slice'
 import widgetReducer from '@/redux/features/widget-slice'
 import { api } from '@/redux/services/api'
@@ -34,6 +35,7 @@ const persistConfig = {
 const reducers = combineReducers({
     app: appReducer,
     map: mapReducer,
+    route: routeReducer,
     user: userReducer,
     widget: widgetReducer,
     [api.reducerPath]: api.reducer,

@@ -4,10 +4,12 @@ import { useCallback, useRef, useState } from 'react'
 import { MapRef, Map as ReactMapGl, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
 import { LocateFixedIcon, MinusIcon, PlusIcon, SearchIcon } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
 
 import { MapControl } from '@/components/ui/map-control'
+import { useToast } from '@/providers/toast-provider'
 import { LngLat } from '@/utils/types/geo'
 
 import { LocationPickerMapSearch } from './location-picker-map-search'
@@ -18,24 +20,45 @@ type LocationPickerMapProps = {
 }
 
 export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPickerMapProps) => {
+    const t = useTranslations()
     const mapRef = useRef<MapRef>(null)
+    const toast = useToast()
 
     const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false)
     const [isMoving, setIsMoving] = useState<boolean>(false)
     const [isUserLocating, setIsUserLocating] = useState<boolean>(false)
 
     const handleUserLocate = () => {
-        if ('geolocation' in navigator) {
-            setIsUserLocating(true)
-            navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
+        setIsUserLocating(true)
+        if (!navigator.geolocation) {
+            setIsUserLocating(false)
+            toast.error(t('geolocation.isNotSupported'))
+            return
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            position => {
                 const lngLat: LngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
                 mapRef.current?.jumpTo({
                     center: lngLat,
                     zoom: 15,
                 })
                 setIsUserLocating(false)
-            })
-        }
+            },
+            error => {
+                if (error && error.code === error.PERMISSION_DENIED) {
+                    toast.error(t('geolocation.isNotPermission'))
+                } else {
+                    toast.error(t('common.error'))
+                }
+                setIsUserLocating(false)
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0,
+            },
+        )
     }
 
     const handleSearchResultSelect = useCallback((lngLat: LngLat) => {
