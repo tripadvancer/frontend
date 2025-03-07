@@ -28,8 +28,8 @@ export const MapPopupRoute = () => {
 
     return (
         <Popup
-            latitude={userLocation.lat}
-            longitude={userLocation.lng}
+            latitude={routeResponse.trip.locations[1].lat}
+            longitude={routeResponse.trip.locations[1].lon}
             anchor="left"
             offset={[10, -5] as [number, number]}
             closeOnClick={false}
