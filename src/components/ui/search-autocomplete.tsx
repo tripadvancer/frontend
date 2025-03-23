@@ -1,6 +1,6 @@
 'use client'
 
-import { Ref, forwardRef, useState } from 'react'
+import { useState } from 'react'
 
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
@@ -15,7 +15,7 @@ type SearchAutocompleteProps = {
     onSelect: (item: ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>) => void
 }
 
-function SearchAutocompleteComponent({ items, onSelect }: SearchAutocompleteProps, ref: Ref<HTMLDivElement>) {
+export function SearchAutocomplete({ items, onSelect }: SearchAutocompleteProps) {
     const [cursor, setCursor] = useState<number>(0)
 
     useKeypress(Keys.ENTER, () => {
@@ -41,7 +41,7 @@ function SearchAutocompleteComponent({ items, onSelect }: SearchAutocompleteProp
     }
 
     return (
-        <div ref={ref} className="absolute left-0 right-0 top-full z-40 rounded-lg bg-white p-1 shadow-small">
+        <div className="absolute left-0 right-0 top-full z-40 rounded-lg bg-white p-1 shadow-small">
             {items.map((item, index) => (
                 <SearchAutocompleteItem
                     key={`search-item-${index}`}
@@ -54,5 +54,3 @@ function SearchAutocompleteComponent({ items, onSelect }: SearchAutocompleteProp
         </div>
     )
 }
-
-export const SearchAutocomplete = forwardRef(SearchAutocompleteComponent)

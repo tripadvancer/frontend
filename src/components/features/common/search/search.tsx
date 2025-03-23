@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
@@ -58,7 +58,10 @@ export const Search = () => {
         setIsAutocompleteVisible(false)
     })
 
-    useOnClickOutside(ref, () => {
+    // TODO: Consider switching to a different package or waiting for a fix
+    // Issue: `useOnClickOutside` does not support a `null` ref
+    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
+    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
         setIsAutocompleteVisible(false)
     })
 
