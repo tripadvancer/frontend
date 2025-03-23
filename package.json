@@ -25,7 +25,7 @@
         "draft-js": "^0.11.7",
         "draft-js-export-html": "^1.4.1",
         "formik": "^2.4.6",
-        "lucide-react": "^0.469.0",
+        "lucide-react": "^0.483.0",
         "maplibre-gl": "^4.7.1",
         "next": "^15.2.3",
         "next-intl": "^3.26.5",
@@ -51,7 +51,7 @@
     "devDependencies": {
         "@mdx-js/loader": "^3.1.0",
         "@next/mdx": "^15.2.3",
-        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+        "@trivago/prettier-plugin-sort-imports": "^5.2.2",
         "@types/draft-js": "^0.11.18",
         "@types/mapbox__polyline": "^1.0.5",
         "@types/mdx": "^2.0.13",
