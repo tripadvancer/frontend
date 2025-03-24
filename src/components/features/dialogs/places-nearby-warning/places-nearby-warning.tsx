@@ -26,7 +26,7 @@ export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
             <h1 className="h7 text-center">{t('dialog.placesNearbyWarning.title')}</h1>
             <p className="text-center">
                 {t('dialog.placesNearbyWarning.text', {
-                    radius: process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS,
+                    radius: process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS as string,
                 })}
             </p>
 

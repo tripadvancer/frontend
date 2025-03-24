@@ -1,6 +1,6 @@
-import { FillLayer, SymbolLayer } from 'react-map-gl/maplibre'
+import { FillLayerSpecification, SymbolLayerSpecification } from 'react-map-gl/maplibre'
 
-export const placesLayer: SymbolLayer = {
+export const placesLayer: SymbolLayerSpecification = {
     id: 'places-layer',
     source: 'places-source',
     type: 'symbol',
@@ -19,7 +19,7 @@ export const placesLayer: SymbolLayer = {
     },
 }
 
-export const circleLayer: FillLayer = {
+export const circleLayer: FillLayerSpecification = {
     id: 'circle',
     type: 'fill',
     source: 'circle-source',
