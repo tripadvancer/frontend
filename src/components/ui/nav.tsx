@@ -23,7 +23,8 @@ export const Nav = ({ links, className }: NavProps) => {
                     key={`nav-link-${link.href}`}
                     href={link.href}
                     className={classNames('whitespace-nowrap', {
-                        'border-b-2 border-black-100 text-black-100 hover:text-black-100': pathname === link.href,
+                        'border-b-2 border-black-100 text-black-100 hover:text-black-100':
+                            pathname.toLowerCase() === link.href.toLowerCase(),
                     })}
                 >
                     {link.caption}
