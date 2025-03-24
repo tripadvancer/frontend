@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Lightbox from 'yet-another-react-lightbox'
 
+import { PhotoAttribute } from '@/components/features/dialogs/photo-attribute/photo-attribute'
 import { validationConfig } from '@/configs/validation.config'
+import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { placesAPI } from '@/redux/services/places.api'
 import { ImageVariants, UploadingImageStatus } from '@/utils/enums'
@@ -35,6 +37,7 @@ type PlaceFormInputPhotoProps = {
 export const PlaceFormInputPhotos = ({ initialPhotos, onChange }: PlaceFormInputPhotoProps) => {
     const t = useTranslations()
     const toast = useToast()
+    const dialog = useDialog()
 
     const [photos, setPhotos] = useState<UploadingImage[]>(
         initialPhotos.map(photo => ({
@@ -97,6 +100,10 @@ export const PlaceFormInputPhotos = ({ initialPhotos, onChange }: PlaceFormInput
         }
     }
 
+    const handleAddPhotoAttribute = () => {
+        dialog.open(<PhotoAttribute />)
+    }
+
     const handleDelete = (key: string) => {
         setPhotos(prev => prev.filter(photo => photo.key !== key))
     }
@@ -149,8 +156,9 @@ export const PlaceFormInputPhotos = ({ initialPhotos, onChange }: PlaceFormInput
                                 isCover={photo.uploadedPhotoIsCover}
                                 status={photo.status}
                                 onClick={() => setIndexSlide(index)}
-                                onDelete={() => handleDelete(photo.key)}
+                                onAddAttribute={handleAddPhotoAttribute}
                                 onSetAsCover={() => handleSetAsCover(photo.key)}
+                                onDelete={() => handleDelete(photo.key)}
                                 onRetry={() => handleRetry(photo.key)}
                             />
                         ))}

@@ -1,4 +1,4 @@
-import { CheckIcon, TrashIcon } from 'lucide-react'
+import { CheckIcon, CopyrightIcon, TrashIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { Dropdown } from '@/components/ui/dropdown'
@@ -8,16 +8,18 @@ type PlaceFormInputPhotosPreviewSuccessProps = {
     url: string
     isCover: boolean
     onClick: () => void
-    onDelete: () => void
+    onAddAttribute: () => void
     onSetAsCover: () => void
+    onDelete: () => void
 }
 
 export const PlaceFormInputPhotosPreviewSuccess = ({
     url,
     isCover,
     onClick,
-    onDelete,
+    onAddAttribute,
     onSetAsCover,
+    onDelete,
 }: PlaceFormInputPhotosPreviewSuccessProps) => {
     const t = useTranslations()
 
@@ -31,6 +33,12 @@ export const PlaceFormInputPhotosPreviewSuccess = ({
             <div className="absolute right-1 top-1 h-8 w-8">
                 <Dropdown
                     items={[
+                        {
+                            caption: 'Add a photo attribute',
+                            value: 'add-photo-attribute',
+                            icon: <CopyrightIcon size={16} />,
+                            onClick: onAddAttribute,
+                        },
                         {
                             caption: 'Set as cover',
                             value: 'set-as-cover',

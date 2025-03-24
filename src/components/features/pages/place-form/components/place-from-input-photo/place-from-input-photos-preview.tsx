@@ -9,8 +9,9 @@ type PlaceFormInputPhotoPreviewProps = {
     isCover: boolean
     status: UploadingImageStatus
     onClick: () => void
-    onDelete: () => void
+    onAddAttribute: () => void
     onSetAsCover: () => void
+    onDelete: () => void
     onRetry: () => void
 }
 
@@ -19,8 +20,9 @@ export const PlaceFormInputPhotosPreview = ({
     isCover,
     status,
     onClick,
-    onDelete,
+    onAddAttribute,
     onSetAsCover,
+    onDelete,
     onRetry,
 }: PlaceFormInputPhotoPreviewProps) => {
     if ([UploadingImageStatus.READY, UploadingImageStatus.UPLOADING].includes(status)) {
@@ -36,8 +38,9 @@ export const PlaceFormInputPhotosPreview = ({
             url={url}
             isCover={isCover}
             onClick={onClick}
-            onDelete={onDelete}
+            onAddAttribute={onAddAttribute}
             onSetAsCover={onSetAsCover}
+            onDelete={onDelete}
         />
     )
 }
