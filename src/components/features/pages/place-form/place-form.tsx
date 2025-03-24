@@ -15,6 +15,7 @@ import { PlaceFormInputDescription } from './components/place-form-input-descrip
 import { PlaceFormInputLocation } from './components/place-form-input-location'
 import { PlaceFormInputTitle } from './components/place-form-input-title'
 import { PlaceFormSubmit } from './components/place-form-submit'
+import { PlaceFormToggleIsVisited } from './components/place-form-toggle-is-visited'
 import { PlaceFormInputPhotos } from './components/place-from-input-photo/place-from-input-photos'
 import { validationSchema } from './validation-schema'
 
@@ -91,6 +92,11 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                         <PlaceFormInputPhotos
                             initialPhotos={formik.initialValues.photos}
                             onChange={handlePhotosChange}
+                        />
+                        <PlaceFormToggleIsVisited
+                            isVisited={formik.values.isVisited}
+                            isLoading={isLoading}
+                            onChange={value => formik.setFieldValue('isVisited', value)}
                         />
                         <div className="flex flex-col gap-y-4">
                             <PlaceFormErrorMesage errors={formik.errors} />

@@ -22,6 +22,7 @@ export const ReviewEdit = (review: IReview) => {
         rating: review.rating,
         text: review.text,
         photos: review.photos.map(photo => photo.url),
+        isVisited: review.isVisited,
     }
 
     const handleSubmit = (inputs: UpdateReviewInputs) => {

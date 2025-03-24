@@ -25,9 +25,19 @@ type PlaceEditProps = {
     photos: { id: number; url: string }[]
     cover: string | null
     categories: number[]
+    isVisited: boolean
 }
 
-export const PlaceEdit = ({ id, title, description, location, photos, cover, categories }: PlaceEditProps) => {
+export const PlaceEdit = ({
+    id,
+    title,
+    description,
+    location,
+    photos,
+    cover,
+    categories,
+    isVisited,
+}: PlaceEditProps) => {
     const t = useTranslations()
     const dialog = useDialog()
     const router = useRouter()
@@ -47,6 +57,7 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
         location: arrayToString(location.coordinates),
         photos: photos.map(photo => ({ url: photo.url, isCover: cover === photo.url })),
         categories,
+        isVisited,
     }
 
     const handleSubmit = async (inputs: UpdatePlaceInputs) => {
