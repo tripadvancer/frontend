@@ -5,7 +5,7 @@ module.exports = {
     corePlugins: {
         container: false,
     },
-    content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+    content: ['./src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
             fontSize: {
