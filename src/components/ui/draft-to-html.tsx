@@ -1,7 +1,8 @@
 'use client'
 
 import { convertFromRaw } from 'draft-js'
-import { stateToHTML } from 'draft-js-export-html'
+
+// import { stateToHTML } from 'draft-js-export-html'
 
 type DraftToHtmlProps = {
     draft: string
@@ -9,7 +10,8 @@ type DraftToHtmlProps = {
 
 export const DraftToHtml = ({ draft }: DraftToHtmlProps) => {
     const contentState = convertFromRaw(JSON.parse(draft))
-    const html = stateToHTML(contentState)
+    // const html = stateToHTML(contentState)
 
-    return <div dangerouslySetInnerHTML={{ __html: html }} />
+    // return <div dangerouslySetInnerHTML={{ __html: html }} />
+    return <div>Todo: need to implement dangerouslySetInnerHTML</div>
 }
