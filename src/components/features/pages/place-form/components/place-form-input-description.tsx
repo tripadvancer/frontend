@@ -1,22 +1,14 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import classNames from 'classnames'
-import { Editor, EditorState, convertFromRaw, convertToRaw } from 'draft-js'
 import { useTranslations } from 'next-intl'
 
+import { TextEditor } from '@/components/ui/text-editor'
 import { validationConfig } from '@/configs/validation.config'
 
 const maxLength = validationConfig.place.description.maxLength
-
-const createEditorState = (value: string) => {
-    if (value.length > 0) {
-        return EditorState.createWithContent(convertFromRaw(JSON.parse(value)))
-    }
-
-    return EditorState.createEmpty()
-}
 
 type PlaceFormInputDescriptionProps = {
     value: string
@@ -25,26 +17,16 @@ type PlaceFormInputDescriptionProps = {
 
 export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDescriptionProps) => {
     const t = useTranslations()
-
-    const [editorState, setEditorState] = useState<EditorState>(() => createEditorState(value))
     const [characterCount, setCharacterCount] = useState(0)
 
     useEffect(() => {
-        const contentState = editorState.getCurrentContent()
-        const plainText = contentState.getPlainText('')
-        setCharacterCount(plainText.length)
-    }, [editorState])
+        const clearedValue = removeFormatting(value)
+        setCharacterCount(clearedValue.replace(/\s+/g, '').length)
+    }, [value])
 
-    const handleChange = useCallback(
-        (state: EditorState) => {
-            const contentState = state.getCurrentContent()
-            const contentRaw = convertToRaw(contentState)
-            const json = JSON.stringify(contentRaw)
-            setEditorState(state)
-            onChange(json)
-        },
-        [onChange],
-    )
+    const removeFormatting = (text: string) => {
+        return text.replace(/([*]{1,2}|[_]{1,2}|~{1,2}|#{1,6}|[!\[]\((.*?)\))/g, '').replace(/[\r\n]/g, '')
+    }
 
     return (
         <div className="flex flex-col gap-y-8">
@@ -66,13 +48,8 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
                 <div className="hidden w-full text-black-40 lg:block lg:w-64">
                     {t('page.placeForm.field.about.text')}
                 </div>
-                <div className="flex-1 overflow-hidden break-words text-big">
-                    <Editor
-                        editorState={editorState}
-                        placeholder={t('page.placeForm.field.about.placeholder')}
-                        stripPastedStyles
-                        onChange={handleChange}
-                    />
+                <div className="flex-1 text-big">
+                    <TextEditor markdown="" onChange={() => {}} />
                 </div>
             </div>
         </div>
