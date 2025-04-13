@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
+import { Editor } from '@tiptap/react'
 import classNames from 'classnames'
 import { useTranslations } from 'next-intl'
 
@@ -19,13 +20,10 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
     const t = useTranslations()
     const [characterCount, setCharacterCount] = useState(0)
 
-    useEffect(() => {
-        const clearedValue = removeFormatting(value)
-        setCharacterCount(clearedValue.replace(/\s+/g, '').length)
-    }, [value])
-
-    const removeFormatting = (text: string) => {
-        return text.replace(/([*]{1,2}|[_]{1,2}|~{1,2}|#{1,6}|[!\[]\((.*?)\))/g, '').replace(/[\r\n]/g, '')
+    const handleChange = ({ editor }: { editor: Editor }) => {
+        const text = editor.getHTML()
+        setCharacterCount(editor.storage.characterCount.characters())
+        onChange(text)
     }
 
     return (
@@ -49,7 +47,7 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
                     {t('page.placeForm.field.about.text')}
                 </div>
                 <div className="flex-1 text-big">
-                    <TextEditor markdown="" onChange={() => {}} />
+                    <TextEditor value={value} onChange={handleChange} />
                 </div>
             </div>
         </div>
