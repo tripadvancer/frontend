@@ -1,4 +1,3 @@
-import { convertFromRaw } from 'draft-js'
 import * as Yup from 'yup'
 
 import { validationConfig } from '@/configs/validation.config'
@@ -48,10 +47,10 @@ export const validationSchema = (t: any) =>
 
 function getDescriptionLength(value: string | undefined): number {
     if (typeof value === 'string') {
-        const contentState = convertFromRaw(JSON.parse(value))
-        const plainText = contentState.getPlainText('')
-        const charCount = plainText.length
-        return charCount
+        const clearedValue = value
+            .replace(/([*]{1,2}|[_]{1,2}|~{1,2}|#{1,6}|[!\[]\((.*?)\))/g, '')
+            .replace(/[\r\n]/g, '')
+        return clearedValue.replace(/\s+/g, '').length
     }
 
     return 0

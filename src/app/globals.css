@@ -10,18 +10,6 @@ a {
     @apply link;
 }
 
-.DraftEditor-root {
-    @apply relative;
-}
-
-.public-DraftEditorPlaceholder-root {
-    @apply absolute z-0 text-black-40;
-}
-
-.DraftEditor-editorContainer {
-    @apply relative z-10;
-}
-
 .mapboxgl-popup-content,
 .maplibregl-popup-content {
     @apply rounded-lg p-4 text-base shadow-small !important;
@@ -50,4 +38,16 @@ a {
 .mapboxgl-popup,
 .maplibregl-popup {
     @apply max-w-none !important;
+}
+
+.tiptap-editor p.is-editor-empty:first-child::before {
+    @apply text-black-40;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+}
+
+.tiptap {
+    @apply !break-all !outline-none;
 }

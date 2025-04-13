@@ -1,22 +1,15 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useState } from 'react'
 
+import { Editor } from '@tiptap/react'
 import classNames from 'classnames'
-import { Editor, EditorState, convertFromRaw, convertToRaw } from 'draft-js'
 import { useTranslations } from 'next-intl'
 
+import { TextEditor } from '@/components/ui/text-editor'
 import { validationConfig } from '@/configs/validation.config'
 
 const maxLength = validationConfig.place.description.maxLength
-
-const createEditorState = (value: string) => {
-    if (value.length > 0) {
-        return EditorState.createWithContent(convertFromRaw(JSON.parse(value)))
-    }
-
-    return EditorState.createEmpty()
-}
 
 type PlaceFormInputDescriptionProps = {
     value: string
@@ -25,26 +18,13 @@ type PlaceFormInputDescriptionProps = {
 
 export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDescriptionProps) => {
     const t = useTranslations()
-
-    const [editorState, setEditorState] = useState<EditorState>(() => createEditorState(value))
     const [characterCount, setCharacterCount] = useState(0)
 
-    useEffect(() => {
-        const contentState = editorState.getCurrentContent()
-        const plainText = contentState.getPlainText('')
-        setCharacterCount(plainText.length)
-    }, [editorState])
-
-    const handleChange = useCallback(
-        (state: EditorState) => {
-            const contentState = state.getCurrentContent()
-            const contentRaw = convertToRaw(contentState)
-            const json = JSON.stringify(contentRaw)
-            setEditorState(state)
-            onChange(json)
-        },
-        [onChange],
-    )
+    const handleChange = ({ editor }: { editor: Editor }) => {
+        const text = editor.getHTML()
+        setCharacterCount(editor.storage.characterCount.characters())
+        onChange(text)
+    }
 
     return (
         <div className="flex flex-col gap-y-8">
@@ -66,13 +46,8 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
                 <div className="hidden w-full text-black-40 lg:block lg:w-64">
                     {t('page.placeForm.field.about.text')}
                 </div>
-                <div className="flex-1 overflow-hidden break-words text-big">
-                    <Editor
-                        editorState={editorState}
-                        placeholder={t('page.placeForm.field.about.placeholder')}
-                        stripPastedStyles
-                        onChange={handleChange}
-                    />
+                <div className="flex-1 text-big">
+                    <TextEditor value={value} onChange={handleChange} />
                 </div>
             </div>
         </div>

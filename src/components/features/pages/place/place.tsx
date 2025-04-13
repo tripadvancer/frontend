@@ -18,9 +18,9 @@ export const Place = async ({ placeId }: { placeId: string }) => {
     return (
         <div className="flex flex-col">
             <PlaceHeader {...place} />
-            <div className="relative z-20 flex-1 rounded-t-4xl bg-white">
+            <div className="flex-1 bg-white">
                 <div className="container py-24">
-                    <div className="inner-container flex flex-col gap-y-16 lg:flex-row-reverse lg:gap-x-8">
+                    <div className="flex flex-col gap-y-16 lg:flex-row-reverse lg:gap-x-8">
                         <div className="flex w-full flex-col gap-y-8 lg:w-64">
                             <div className="flex flex-col gap-y-4">
                                 <PlaceSidebarRating {...place} />

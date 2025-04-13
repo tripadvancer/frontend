@@ -1,33 +1,40 @@
-import { EmailVerificationWithAuth } from '@/components/features/banners/email-verification/email-verification-with-auth'
+import { getTranslations } from 'next-intl/server'
+
+import Link from 'next/link'
+
 import { UserMenuWithAuth } from '@/components/features/layout/user-menu/user-menu-with-auth'
 
 import { HeaderAddPlaceWithAuth } from './components/header-add-place-with-auth'
 import { HeaderLogo } from './components/header-logo'
-import { HeaderMap } from './components/header-map'
 import { HeaderSignIn } from './components/header-signin'
 
-export const Header = () => {
-    return (
-        <>
-            <div className="absolute left-0 right-0 top-0 -z-10 h-[200px] bg-blue-20" />
-            <header className="sticky top-0 z-50 bg-blue-20">
-                <EmailVerificationWithAuth />
-                <div className="container relative flex h-[56px] items-center justify-between gap-x-6 sm:h-[76px]">
-                    <HeaderLogo />
+export const Header = async () => {
+    const t = await getTranslations()
 
-                    <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 transform sm:block">
-                        <HeaderMap />
+    return (
+        <header className="sticky top-0 z-50 bg-blue-20">
+            <div className="container relative flex h-14 items-center justify-between gap-x-6">
+                <HeaderLogo />
+
+                <div className="flex items-center gap-x-8">
+                    <nav className="flex gap-x-2.5">
+                        <Link href="/maps" className="flex items-center gap-x-2 text-big">
+                            {t('layout.header.links.map')}
+                        </Link>
+                        <Link href="/countries" className="flex items-center gap-x-2 text-big">
+                            Countries
+                        </Link>
+                        <Link href="/about" className="flex items-center gap-x-2 text-big">
+                            About
+                        </Link>
                     </nav>
 
-                    <div className="flex items-center gap-x-2">
-                        <div className="block sm:hidden">
-                            <HeaderMap />
-                        </div>
+                    <div className="flex gap-x-2">
                         <HeaderAddPlaceWithAuth />
                         <UserMenuWithAuth signInComponent={<HeaderSignIn />} />
                     </div>
                 </div>
-            </header>
-        </>
+            </div>
+        </header>
     )
 }
