@@ -2,7 +2,7 @@
 
 import { RefObject, useRef, useState } from 'react'
 
-import { GlobeIcon, InfoIcon, MapIcon, MenuIcon, XIcon } from 'lucide-react'
+import { GlobeIcon, MapIcon, MenuIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useOnClickOutside } from 'usehooks-ts'
 
@@ -43,10 +43,6 @@ export const HeaderMobileMenu = () => {
                         <Link href="/countries" className="flex items-center gap-x-2 text-big-bold">
                             <GlobeIcon />
                             {t('layout.header.links.countries')}
-                        </Link>
-                        <Link href="/about" className="flex items-center gap-x-2 text-big-bold">
-                            <InfoIcon />
-                            {t('layout.header.links.about')}
                         </Link>
                     </nav>
                 </div>

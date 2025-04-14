@@ -13,21 +13,19 @@ export const HeaderMobile = async () => {
     const t = await getTranslations()
 
     return (
-        <header className="sticky top-0 z-50 bg-blue-20">
-            <div className="container relative flex h-14 items-center justify-between gap-x-6">
-                <div className="flex-center gap-x-4">
-                    <HeaderMobileMenu />
-                    <HeaderLogo />
-                </div>
-
-                <div className="flex-center gap-x-2">
-                    <Link href="/maps">
-                        <MapIcon />
-                    </Link>
-                    <HeaderAddPlaceWithAuth />
-                    <UserMenuWithAuth signInComponent={<HeaderSignIn />} />
-                </div>
+        <div className="container relative flex h-14 items-center justify-between gap-x-6 sm:hidden">
+            <div className="flex-center gap-x-4">
+                <HeaderMobileMenu />
+                <HeaderLogo />
             </div>
-        </header>
+
+            <div className="flex-center gap-x-2">
+                <Link href="/maps">
+                    <MapIcon />
+                </Link>
+                <HeaderAddPlaceWithAuth />
+                <UserMenuWithAuth signInComponent={<HeaderSignIn />} />
+            </div>
+        </div>
     )
 }

@@ -33,7 +33,6 @@
         "next": "^15.3.0",
         "next-intl": "^4.0.2",
         "react": "^19.1.0",
-        "react-device-detect": "^2.2.3",
         "react-dom": "^19.1.0",
         "react-error-boundary": "^5.0.0",
         "react-map-gl": "^8.0.3",
