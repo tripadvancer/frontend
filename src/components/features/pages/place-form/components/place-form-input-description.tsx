@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl'
 import { TextEditor } from '@/components/ui/text-editor'
 import { validationConfig } from '@/configs/validation.config'
 
-const maxLength = validationConfig.place.description.maxLength
+const maxLength = 10
 
 type PlaceFormInputDescriptionProps = {
     value: string
@@ -46,7 +46,7 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
                 <div className="hidden w-full text-black-40 lg:block lg:w-64">
                     {t('page.placeForm.field.about.text')}
                 </div>
-                <div className="flex-1 text-big">
+                <div className="min-w-0 flex-1 text-big">
                     <TextEditor value={value} onChange={handleChange} />
                 </div>
             </div>

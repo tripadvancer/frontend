@@ -49,5 +49,5 @@ a {
 }
 
 .tiptap {
-    @apply !break-all !outline-none;
+    @apply !outline-none;
 }

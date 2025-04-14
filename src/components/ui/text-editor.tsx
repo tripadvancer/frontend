@@ -29,7 +29,6 @@ export const TextEditor = ({ value, onChange }: TextEditorProps) => {
             CharacterCount,
         ],
         content: value,
-
         onUpdate: onChange,
     })
 
