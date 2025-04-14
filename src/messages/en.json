@@ -613,8 +613,9 @@
                 }
             },
             "toggler": {
-                "map": "View map",
-                "list": "View list"
+                "map": "Map",
+                "list": "List",
+                "random": "Random"
             }
         }
     }
