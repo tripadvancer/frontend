@@ -147,6 +147,8 @@
             "signIn": "Sign In",
             "addPlace": "Share place",
             "links": {
+                "profile": "Profile",
+                "addPlace": "Add place",
                 "map": "Map",
                 "countries": "Countries",
                 "about": "About"
