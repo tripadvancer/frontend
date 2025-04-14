@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl'
 import { TextEditor } from '@/components/ui/text-editor'
 import { validationConfig } from '@/configs/validation.config'
 
-const maxLength = 10
+const maxLength = validationConfig.place.description.maxLength
 
 type PlaceFormInputDescriptionProps = {
     value: string

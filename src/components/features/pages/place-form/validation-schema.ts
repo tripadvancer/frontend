@@ -5,8 +5,8 @@ import { stringCoordinatesIsValid } from '@/utils/helpers/maps'
 
 const titleMinLength = validationConfig.place.title.minLength
 const titleMaxLength = validationConfig.place.title.maxLength
-const descriptionMinLength = 5
-const descriptionMaxLength = 10
+const descriptionMinLength = validationConfig.place.description.minLength
+const descriptionMaxLength = validationConfig.place.description.maxLength
 const maxCategories = validationConfig.place.category.maxCount
 
 export const validationSchema = (t: any) =>
