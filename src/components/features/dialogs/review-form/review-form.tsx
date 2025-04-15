@@ -9,6 +9,7 @@ import { FormRatingInput } from '@/components/ui/form-rating-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
+import { placesAPI } from '@/redux/services/places.api'
 import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews.types'
 
 import { ReviewFormIsVisited } from './components/review-form-is-visited'
@@ -26,6 +27,8 @@ type ReviewFormProps = {
 export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {
     const t = useTranslations()
     const dialog = useDialog()
+
+    const { isSuccess } = placesAPI.useGetPlaceMetaByIdQuery(initialValues.placeId)
 
     const validationSchema = Yup.object().shape({
         rating: Yup.number().min(1, t('validation.required')),
@@ -86,7 +89,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 </div>
                 <ReviewFormIsVisited
                     isVisited={formik.values.isVisited}
-                    isLoading={isLoading}
+                    isLoading={isLoading || !isSuccess}
                     onChange={value => formik.setFieldValue('isVisited', value)}
                 />
             </div>

@@ -23,7 +23,6 @@ export type IReview = {
     text: string
     rating: number
     photos: { id: number; url: string }[]
-    isVisited: boolean
     createdAt: Date
     updatedAt: Date
 }
