@@ -1,13 +1,16 @@
 'use client'
 
-import { animated, useTransition } from '@react-spring/web'
+import { motion } from 'framer-motion'
 import { ListIcon, MapIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
+import Image from 'next/image'
+
 import { FormButton } from '@/components/ui/form-button'
 import { getAppMode, setAppMode } from '@/redux/features/app-slice'
+import { getWidgetMode } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { AppModes } from '@/utils/enums'
+import { AppModes, WidgetModes } from '@/utils/enums'
 
 type MapLayoutMobileTogglerProps = {
     isVisible: boolean
@@ -17,35 +20,45 @@ export const MapLayoutMobileToggler = ({ isVisible }: MapLayoutMobileTogglerProp
     const t = useTranslations()
     const dispatch = useAppDispatch()
     const appMode = useAppSelector(getAppMode)
-
-    const slide = useTransition(isVisible, {
-        from: { opacity: 0, transform: 'translateY(100px) translateX(-50%)' },
-        enter: { opacity: 1, transform: 'translateY(-48px) translateX(-50%)' },
-        leave: { opacity: 0, transform: 'translateY(100px) translateX(-50%)' },
-    })
+    const widgetMode = useAppSelector(getWidgetMode)
 
     const buttonProps = {
-        [AppModes.MAP]: {
-            icon: <ListIcon size={16} />,
-            children: t('map.widget.toggler.list'),
-            onClick: () => dispatch(setAppMode(AppModes.WIDGET)),
+        [WidgetModes.PLACES]: {
+            [AppModes.MAP]: {
+                icon: <ListIcon size={16} />,
+                children: t('map.widget.toggler.list'),
+                onClick: () => dispatch(setAppMode(AppModes.WIDGET)),
+            },
+            [AppModes.WIDGET]: {
+                icon: <MapIcon size={16} />,
+                children: t('map.widget.toggler.map'),
+                onClick: () => dispatch(setAppMode(AppModes.MAP)),
+            },
         },
-        [AppModes.WIDGET]: {
-            icon: <MapIcon size={16} />,
-            children: t('map.widget.toggler.map'),
-            onClick: () => dispatch(setAppMode(AppModes.MAP)),
+        [WidgetModes.RANDOM]: {
+            [AppModes.MAP]: {
+                icon: <Image src="/images/icons/random.svg" alt="Random" width={16} height={16} />,
+                children: t('map.widget.toggler.random'),
+                variant: 'orange' as 'blue' | 'orange',
+                onClick: () => dispatch(setAppMode(AppModes.WIDGET)),
+            },
+            [AppModes.WIDGET]: {
+                icon: <MapIcon size={16} />,
+                children: t('map.widget.toggler.map'),
+                variant: 'orange' as 'blue' | 'orange',
+                onClick: () => dispatch(setAppMode(AppModes.MAP)),
+            },
         },
     }
 
-    return slide(
-        (style, item) =>
-            item && (
-                // @ts-ignore
-                <animated.div style={style} className="fixed bottom-0 left-1/2 z-40 transform">
-                    {/* todo: maybe add a shadow if filter is applied */}
-                    {/* <div className="shadow-red absolute bottom-0 left-0 right-0 top-0 animate-pulse rounded-full" /> */}
-                    <FormButton shape="rounded" {...buttonProps[appMode]} />
-                </animated.div>
-            ),
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 100, x: '-50%' }}
+            animate={isVisible ? { opacity: 1, y: -48, x: '-50%' } : { opacity: 0, y: 100, x: '-50%' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="fixed bottom-0 left-1/2 z-40 transform"
+        >
+            <FormButton shape="rounded" {...buttonProps[widgetMode][appMode]} />
+        </motion.div>
     )
 }
