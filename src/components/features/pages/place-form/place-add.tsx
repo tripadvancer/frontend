@@ -34,6 +34,7 @@ export const PlaceAdd = () => {
         location,
         photos: [],
         categories: [],
+        isVisited: true,
     }
 
     const handleSubmit = async (inputs: CreatePlaceInputs) => {

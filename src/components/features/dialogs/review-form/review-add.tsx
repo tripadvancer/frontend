@@ -16,6 +16,7 @@ type ReviewAddProps = {
 
 export const ReviewAdd = ({ placeId, userId }: ReviewAddProps) => {
     const t = useTranslations()
+
     const dialog = useDialog()
     const toast = useToast()
 
@@ -27,6 +28,7 @@ export const ReviewAdd = ({ placeId, userId }: ReviewAddProps) => {
         rating: 0,
         text: '',
         photos: [],
+        isVisited: true,
     }
 
     const handleSubmit = async (inputs: CreateReviewInputs) => {
@@ -35,7 +37,7 @@ export const ReviewAdd = ({ placeId, userId }: ReviewAddProps) => {
                 ...inputs,
                 text: inputs.text.trim(),
             }
-            await createReview(trimmedInputs)
+            createReview(trimmedInputs)
             dialog.close()
         } catch {
             toast.error(t('common.error'))

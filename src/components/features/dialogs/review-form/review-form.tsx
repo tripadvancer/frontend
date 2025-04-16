@@ -9,8 +9,10 @@ import { FormRatingInput } from '@/components/ui/form-rating-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
+import { placesAPI } from '@/redux/services/places.api'
 import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews.types'
 
+import { ReviewFormIsVisited } from './components/review-form-is-visited'
 import { ReviewFormPhotosList } from './components/review-form-photos-list'
 
 const reviewTextMinLength = validationConfig.review.text.minLength
@@ -25,6 +27,8 @@ type ReviewFormProps = {
 export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {
     const t = useTranslations()
     const dialog = useDialog()
+
+    const { isSuccess } = placesAPI.useGetPlaceMetaByIdQuery(initialValues.placeId)
 
     const validationSchema = Yup.object().shape({
         rating: Yup.number().min(1, t('validation.required')),
@@ -83,6 +87,11 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         onChange={value => formik.setFieldValue('photos', value)}
                     />
                 </div>
+                <ReviewFormIsVisited
+                    isVisited={formik.values.isVisited}
+                    isLoading={isLoading || !isSuccess}
+                    onChange={value => formik.setFieldValue('isVisited', value)}
+                />
             </div>
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty}>

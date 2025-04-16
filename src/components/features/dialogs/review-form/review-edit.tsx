@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 
 import { useDialog } from '@/providers/dialog-provider'
+import { placesAPI } from '@/redux/services/places.api'
 import { reviewsAPI } from '@/redux/services/reviews.api'
 import { UpdateReviewInputs } from '@/redux/services/reviews.types'
 import { IReview } from '@/utils/types/common'
@@ -13,6 +14,7 @@ export const ReviewEdit = (review: IReview) => {
     const t = useTranslations()
     const dialog = useDialog()
 
+    const { data: meta, isSuccess } = placesAPI.useGetPlaceMetaByIdQuery(review.place.id)
     const [updateReview] = reviewsAPI.useUpdateReviewMutation()
 
     const initialValues: UpdateReviewInputs = {
@@ -22,6 +24,7 @@ export const ReviewEdit = (review: IReview) => {
         rating: review.rating,
         text: review.text,
         photos: review.photos.map(photo => photo.url),
+        isVisited: isSuccess && meta.isVisited,
     }
 
     const handleSubmit = (inputs: UpdateReviewInputs) => {

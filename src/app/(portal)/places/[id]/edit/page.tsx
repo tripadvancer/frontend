@@ -57,5 +57,5 @@ export default async function EditPlacePage(props: { params: Params }) {
         return notFound()
     }
 
-    return <PlaceEdit {...place} />
+    return <PlaceEdit {...place} isVisited={true} />
 }
