@@ -26,6 +26,7 @@
         "async-mutex": "^0.5.0",
         "classnames": "^2.5.1",
         "cookie": "^1.0.2",
+        "dompurify": "^3.2.5",
         "formik": "^2.4.6",
         "framer-motion": "^12.7.3",
         "lucide-react": "^0.488.0",

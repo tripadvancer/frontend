@@ -2,6 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
+import { useRouter } from 'next/navigation'
+
 import { useDialog } from '@/providers/dialog-provider'
 import { placesAPI } from '@/redux/services/places.api'
 import { reviewsAPI } from '@/redux/services/reviews.api'
@@ -12,10 +14,15 @@ import { ReviewForm } from './review-form'
 
 export const ReviewEdit = (review: IReview) => {
     const t = useTranslations()
+    const router = useRouter()
     const dialog = useDialog()
 
     const { data: meta, isSuccess } = placesAPI.useGetPlaceMetaByIdQuery(review.place.id)
     const [updateReview] = reviewsAPI.useUpdateReviewMutation()
+
+    if (!isSuccess) {
+        return null
+    }
 
     const initialValues: UpdateReviewInputs = {
         placeId: review.place.id,
@@ -24,7 +31,7 @@ export const ReviewEdit = (review: IReview) => {
         rating: review.rating,
         text: review.text,
         photos: review.photos.map(photo => photo.url),
-        isVisited: isSuccess && meta.isVisited,
+        isVisited: meta.isVisited,
     }
 
     const handleSubmit = (inputs: UpdateReviewInputs) => {
@@ -33,6 +40,7 @@ export const ReviewEdit = (review: IReview) => {
             text: inputs.text.trim(),
         }
         updateReview(trimmedInputs)
+        router.refresh()
         dialog.close()
     }
 
