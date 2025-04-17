@@ -47,10 +47,9 @@ export const validationSchema = (t: any) =>
 
 function getDescriptionLength(value: string | undefined): number {
     if (typeof value === 'string') {
-        const clearedValue = value
-            .replace(/([*]{1,2}|[_]{1,2}|~{1,2}|#{1,6}|[!\[]\((.*?)\))/g, '')
-            .replace(/[\r\n]/g, '')
-        return clearedValue.replace(/\s+/g, '').length
+        const textWithoutTags = value.replace(/<[^>]*>/g, '')
+        const textLength = textWithoutTags.trim().length
+        return textLength
     }
 
     return 0
