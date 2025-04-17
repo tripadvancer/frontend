@@ -20,7 +20,7 @@ export const UserSettingsSkeleton = () => {
                         </div>
                         <FormCheckboxSkeleton labeled />
                     </div>
-                    <FormButtonSkeleton />
+                    <FormButtonSkeleton className="w-full" />
                 </div>
             </section>
         </div>
