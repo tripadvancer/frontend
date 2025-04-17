@@ -30,6 +30,13 @@ export const TextEditor = ({ value, onChange }: TextEditorProps) => {
         ],
         content: value,
         onUpdate: onChange,
+        editorProps: {
+            transformPastedHTML: html => {
+                const parser = new DOMParser()
+                const doc = parser.parseFromString(html, 'text/html')
+                return doc.body.textContent ?? ''
+            },
+        },
     })
 
     if (!editor) {
