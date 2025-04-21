@@ -10,7 +10,7 @@ type FormButtonSkeletonProps = {
 export const FormButtonSkeleton = ({ children, className }: FormButtonSkeletonProps) => {
     return (
         <div className={classNames('flex-center h-10 rounded-lg bg-black-5 px-6 text-black-40', className)}>
-            {children}
+            <span className="invisible">{children}</span>
         </div>
     )
 }

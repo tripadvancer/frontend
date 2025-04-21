@@ -36,6 +36,7 @@ export const placesAPI = api.injectEndpoints({
                 method: 'POST',
                 body: inputs,
             }),
+            invalidatesTags: ['Visited', 'Places'],
         }),
 
         updatePlace: build.mutation<void, UpdatePlaceInputs>({
@@ -44,6 +45,7 @@ export const placesAPI = api.injectEndpoints({
                 method: 'PATCH',
                 body: inputs,
             }),
+            invalidatesTags: (result, error, { placeId }) => [{ type: 'PlaceMeta', id: placeId }, 'Visited', 'Places'],
         }),
 
         deletePlace: build.mutation<void, number>({

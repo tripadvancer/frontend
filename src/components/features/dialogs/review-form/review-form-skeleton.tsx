@@ -14,29 +14,13 @@ export const ReviewFormSkeleton = () => {
     return (
         <div role="status" className="flex animate-pulse flex-col gap-y-8">
             <div className="flex flex-col gap-y-4">
-                <div className="flex flex-col gap-y-2">
-                    <label htmlFor="text" className="font-medium">
-                        {t('dialog.reviewForm.field.rating.label')}
-                    </label>
-                    <FormRatingInputSkeleton />
-                </div>
-                <div className="flex flex-col gap-y-2">
-                    <label htmlFor="text" className="font-medium">
-                        {t('dialog.reviewForm.field.text.label')}
-                    </label>
-                    <FormTextareaSkeleton />
-                </div>
-                <div className="flex flex-col gap-y-2">
-                    <label htmlFor="text" className="font-medium">
-                        {t('dialog.reviewForm.field.photos.label')}
-                    </label>
-                    <FormFileInputSkeleton />
-                </div>
-
-                <div className="flex items-center gap-x-2">
-                    <FormSwitcherSkeleton />
-                    <div className="text-black-40">{t('common.action.place.iWasHere')}</div>
-                </div>
+                <FormRatingInputSkeleton labeled />
+                <FormTextareaSkeleton labeled />
+                <FormFileInputSkeleton labeled />
+            </div>
+            <div className="flex items-center gap-x-2">
+                <FormSwitcherSkeleton />
+                <div className="h-5 w-1/4 rounded-full bg-black-5" />
             </div>
             <div className="flex gap-x-2">
                 <FormButtonSkeleton>{t('common.action.send')}</FormButtonSkeleton>

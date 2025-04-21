@@ -1,12 +1,11 @@
 'use client'
 
-import { useEffect } from 'react'
-
 import { useTranslations } from 'next-intl'
 
 import { useRouter } from 'next/navigation'
 
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
+import { GlobalLoading } from '@/components/ui/global-loading'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { placesAroundAPI } from '@/redux/services/places-around.api'
@@ -25,19 +24,9 @@ type PlaceEditProps = {
     photos: { id: number; url: string }[]
     cover: string | null
     categories: number[]
-    isVisited: boolean
 }
 
-export const PlaceEdit = ({
-    id,
-    title,
-    description,
-    location,
-    photos,
-    cover,
-    categories,
-    isVisited,
-}: PlaceEditProps) => {
+export const PlaceEdit = ({ id, title, description, location, photos, cover, categories }: PlaceEditProps) => {
     const t = useTranslations()
     const dialog = useDialog()
     const router = useRouter()
@@ -45,10 +34,15 @@ export const PlaceEdit = ({
 
     const [updatePlace, { isLoading }] = placesAPI.useUpdatePlaceMutation()
     const [searchPlacesAround, { isLoading: isSearchingPlacesAround }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
+    const { data: meta, isLoading: isMetaLoading, isError: isMetaError } = placesAPI.useGetPlaceMetaByIdQuery(id)
 
-    useEffect(() => {
-        console.log(photos)
-    }, [photos])
+    if (isMetaLoading) {
+        return <GlobalLoading />
+    }
+
+    if (isMetaError) {
+        return <div>{t('common.error')}</div>
+    }
 
     const initialValues: UpdatePlaceInputs = {
         placeId: id,
@@ -57,7 +51,7 @@ export const PlaceEdit = ({
         location: arrayToString(location.coordinates),
         photos: photos.map(photo => ({ url: photo.url, isCover: cover === photo.url })),
         categories,
-        isVisited,
+        isVisited: meta?.isVisited ?? false,
     }
 
     const handleSubmit = async (inputs: UpdatePlaceInputs) => {

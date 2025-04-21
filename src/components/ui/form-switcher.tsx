@@ -17,7 +17,7 @@ export const FormSwitcher = ({ checked, isDisabled, onChange }: FormSwitcherProp
             onClick={isDisabled ? undefined : onChange}
         >
             <div
-                className={classNames('absolute left-0.5 top-0.5 h-4 w-4 rounded-full bg-white transition-transform', {
+                className={classNames('absolute left-0.5 top-0.5 size-4 rounded-full bg-white transition-transform', {
                     'translate-x-2': checked,
                 })}
             />

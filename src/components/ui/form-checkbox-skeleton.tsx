@@ -1,6 +1,7 @@
 type FormCheckboxSkeletonProps = {
     labeled?: boolean
 }
+
 export const FormCheckboxSkeleton = ({ labeled }: FormCheckboxSkeletonProps) => {
     return (
         <div className="flex w-full flex-col gap-y-2">

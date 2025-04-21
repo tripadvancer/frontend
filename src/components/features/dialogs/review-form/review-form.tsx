@@ -84,12 +84,12 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         onChange={value => formik.setFieldValue('photos', value)}
                     />
                 </div>
-                <ReviewFormIsVisited
-                    isVisited={formik.values.isVisited}
-                    isLoading={isLoading}
-                    onChange={value => formik.setFieldValue('isVisited', value)}
-                />
             </div>
+            <ReviewFormIsVisited
+                isVisited={formik.values.isVisited}
+                isLoading={isLoading}
+                onChange={value => formik.setFieldValue('isVisited', value)}
+            />
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty}>
                     {t('common.action.send')}

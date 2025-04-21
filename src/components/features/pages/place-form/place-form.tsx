@@ -95,7 +95,6 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                         />
                         <PlaceFormToggleIsVisited
                             isVisited={formik.values.isVisited}
-                            isLoading={isLoading}
                             onChange={value => formik.setFieldValue('isVisited', value)}
                         />
                         <div className="flex flex-col gap-y-4">

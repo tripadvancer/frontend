@@ -25,6 +25,7 @@ export const ReviewEdit = (review: IReview) => {
         isLoading: isMetaLoading,
         isError: isMetaError,
     } = placesAPI.useGetPlaceMetaByIdQuery(review.place.id)
+
     const [updateReview, { isLoading }] = reviewsAPI.useUpdateReviewMutation()
 
     if (isMetaLoading) {
