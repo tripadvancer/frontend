@@ -31,7 +31,7 @@ export const Country = async ({
 
     return (
         <div className="flex flex-col">
-            <div className="flex-center relative z-10 -mb-7 flex-[540px] pb-7">
+            <div className="flex-center relative z-10 flex-[540px] pb-7">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
                     <CountryCover countryCode={country.code} />
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
@@ -48,7 +48,7 @@ export const Country = async ({
                     </div>
                 </section>
             </div>
-            <div className="relative z-20 flex-1 rounded-t-4xl bg-white">
+            <div className="flex-1 bg-white">
                 <div className="container flex flex-col gap-y-16 py-24">
                     <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />
 

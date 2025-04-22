@@ -18,6 +18,7 @@ export type CreateReviewInputs = {
     placeId: number
     userId: number
     photos: string[]
+    isVisited: boolean
 }
 
 export type UpdateReviewInputs = {
@@ -27,6 +28,7 @@ export type UpdateReviewInputs = {
     placeId: number
     userId: number
     photos: string[]
+    isVisited: boolean
 }
 
 export type DeleteReviewInputs = {

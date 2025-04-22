@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, RefObject, useEffect, useRef, useState } from 'react'
 
 import classNames from 'classnames'
 import { useOnClickOutside } from 'usehooks-ts'
@@ -95,7 +95,10 @@ export const Dropdown = ({ children, items, position = 'right', currentItem }: D
         }
     }, [isVisible])
 
-    useOnClickOutside(containerRef, () => {
+    // TODO: Consider switching to a different package or waiting for a fix
+    // Issue: `useOnClickOutside` does not support a `null` ref
+    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
+    useOnClickOutside(containerRef as RefObject<HTMLDivElement>, () => {
         setIsVisible(false)
     })
 

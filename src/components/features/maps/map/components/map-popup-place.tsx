@@ -30,7 +30,10 @@ export const MapPopupPlace = ({ mapRef, ...place }: MapPopupPlaceProps) => {
 
     const ref = useRef<HTMLDivElement>(null)
 
-    useOnClickOutside([ref, mapRef], () => {
+    // TODO: Consider switching to a different package or waiting for a fix
+    // Issue: `useOnClickOutside` does not support a `null` ref
+    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
+    useOnClickOutside([ref as RefObject<HTMLDivElement>, mapRef], () => {
         dispatch(closeMapPopups())
     })
 

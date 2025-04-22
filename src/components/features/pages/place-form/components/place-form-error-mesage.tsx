@@ -11,6 +11,10 @@ type PlaceFormErrorMesageProps = {
 }
 
 export const PlaceFormErrorMesage = ({ errors }: PlaceFormErrorMesageProps) => {
+    if (getFormikErrors(errors).length === 0) {
+        return null
+    }
+
     return (
         <div className="flex flex-col gap-y-2 text-red-100">
             {getFormikErrors(errors).map(error => (

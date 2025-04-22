@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { RefObject, useRef, useState } from 'react'
 
 import { CircleUserIcon, LogOutIcon, SettingsIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -27,11 +27,14 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
     const toast = useToast()
     const isMobile = useMediaQuery('(max-width: 639px)')
 
-    const containerRef = useRef(null)
+    const ref = useRef<HTMLDivElement>(null)
 
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
-    useOnClickOutside(containerRef, () => {
+    // TODO: Consider switching to a different package or waiting for a fix
+    // Issue: `useOnClickOutside` does not support a `null` ref
+    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
+    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
         setIsMenuOpen(false)
     })
 
@@ -51,7 +54,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
     }
 
     return (
-        <div className="relative" ref={containerRef}>
+        <div className="relative" ref={ref}>
             <div onClick={() => setIsMenuOpen(!isMenuOpen)} className="cursor-pointer">
                 <Avatar name={name} avatar={avatar} size={avatarSize ? avatarSize : isMobile ? 24 : 32} />
             </div>

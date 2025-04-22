@@ -27,7 +27,7 @@ export const placesAPI = api.injectEndpoints({
 
         getPlaceMetaById: build.query<GetPlaceMetaByIdResponse, number>({
             query: placeId => `places/${placeId}/meta`,
-            providesTags: (result, error, placeId) => [{ type: 'PlacesMeta', id: placeId }],
+            providesTags: (result, error, placeId) => [{ type: 'PlaceMeta', id: placeId }],
         }),
 
         createPlace: build.mutation<CreatePlaceResponse, CreatePlaceInputs>({
@@ -36,6 +36,7 @@ export const placesAPI = api.injectEndpoints({
                 method: 'POST',
                 body: inputs,
             }),
+            invalidatesTags: ['Visited', 'Places'],
         }),
 
         updatePlace: build.mutation<void, UpdatePlaceInputs>({
@@ -44,6 +45,7 @@ export const placesAPI = api.injectEndpoints({
                 method: 'PATCH',
                 body: inputs,
             }),
+            invalidatesTags: (result, error, { placeId }) => [{ type: 'PlaceMeta', id: placeId }, 'Visited', 'Places'],
         }),
 
         deletePlace: build.mutation<void, number>({

@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, Ref, forwardRef } from 'react'
+import { ChangeEvent, Ref } from 'react'
 
 import { SearchIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl'
 import { Spinner } from '@/components/ui/spinner'
 
 type SearchInputProps = {
+    ref: Ref<HTMLInputElement | null>
     value: string
     isLoading: boolean
     onChange: (value: string) => void
@@ -15,7 +16,7 @@ type SearchInputProps = {
     onClear: () => void
 }
 
-const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement>) => {
+export const SearchInput = (props: SearchInputProps) => {
     const t = useTranslations()
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +30,7 @@ const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement
             </div>
 
             <input
-                ref={ref}
+                ref={props.ref}
                 type="text"
                 name="search"
                 value={props.value}
@@ -51,5 +52,3 @@ const SearchInputComponent = (props: SearchInputProps, ref: Ref<HTMLInputElement
         </div>
     )
 }
-
-export const SearchInput = forwardRef(SearchInputComponent)

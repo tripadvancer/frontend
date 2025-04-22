@@ -11,6 +11,7 @@ import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews.types'
 
+import { ReviewFormIsVisited } from './components/review-form-is-visited'
 import { ReviewFormPhotosList } from './components/review-form-photos-list'
 
 const reviewTextMinLength = validationConfig.review.text.minLength
@@ -84,6 +85,11 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     />
                 </div>
             </div>
+            <ReviewFormIsVisited
+                isVisited={formik.values.isVisited}
+                isLoading={isLoading}
+                onChange={value => formik.setFieldValue('isVisited', value)}
+            />
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty}>
                     {t('common.action.send')}

@@ -35,6 +35,7 @@ export type CreatePlaceInputs = {
         url: string
         isCover: boolean
     }[]
+    isVisited: boolean
 }
 
 export type UpdatePlaceInputs = {
@@ -47,6 +48,7 @@ export type UpdatePlaceInputs = {
         url: string
         isCover: boolean
     }[]
+    isVisited: boolean
 }
 
 export type CreatePlaceResponse = {

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
 import { useLocale } from 'next-intl'
@@ -57,7 +57,10 @@ export const WidgetSearch = () => {
         setIsAutocompleteVisible(false)
     })
 
-    useOnClickOutside(ref, () => {
+    // TODO: Consider switching to a different package or waiting for a fix
+    // Issue: `useOnClickOutside` does not support a `null` ref
+    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
+    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
         setIsAutocompleteVisible(false)
     })
 

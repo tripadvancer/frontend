@@ -16,11 +16,11 @@ export const PlaceSidebarRating = async ({ avgRating, reviewsCount }: PlaceSideb
         <div className="flex flex-col gap-y-2.5">
             <Rating value={avgRating ?? 0} size={32} />
             <p className="text-small text-black-40">
-                {reviewsCount
+                {reviewsCount && avgRating
                     ? t.rich('page.place.rating.average', {
                           reviewsLink: reviewsLink => <Link href="#reviews">{reviewsLink}</Link>,
                           reviewsCount: reviewsCount,
-                          avgRating: avgRating?.toFixed(2),
+                          avgRating: avgRating.toFixed(2),
                       })
                     : t('page.place.rating.empty')}
             </p>

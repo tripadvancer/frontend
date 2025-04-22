@@ -64,6 +64,7 @@ export const reviewsAPI = api.injectEndpoints({
                 method: 'POST',
                 body: inputs,
             }),
+            invalidatesTags: (result, error, { placeId }) => [{ type: 'PlaceMeta', id: placeId }, 'Visited', 'Places'],
             async onQueryStarted({ placeId }, { dispatch, queryFulfilled }) {
                 const { data } = await queryFulfilled
 
@@ -95,6 +96,7 @@ export const reviewsAPI = api.injectEndpoints({
                 method: 'PATCH',
                 body: inputs,
             }),
+            invalidatesTags: (result, error, { placeId }) => [{ type: 'PlaceMeta', id: placeId }, 'Visited', 'Places'],
             async onQueryStarted({ reviewId, placeId, userId, rating, text }, { dispatch, queryFulfilled }) {
                 const optimisticResultPlacePage = dispatch(
                     reviewsAPI.util.updateQueryData('getReviewsByPlaceId', { placeId, cursor: undefined }, draft => {
