@@ -25,7 +25,7 @@ export const PlaceFormInputCategories = ({ value, onChange }: PlaceFormInputCate
         <div className="flex-center flex-wrap gap-2">
             {value.length === 0 && (
                 <div
-                    className="hover-animated flex h-8 cursor-pointer items-center gap-x-2 rounded-full border border-white px-4 text-small text-white hover:border-blue-active hover:text-blue-active"
+                    className="flex h-8 cursor-pointer items-center gap-x-2 rounded-full border border-white px-4 text-small text-white"
                     onClick={handleSelectCategories}
                 >
                     <PlusIcon size={16} />
@@ -35,7 +35,7 @@ export const PlaceFormInputCategories = ({ value, onChange }: PlaceFormInputCate
             {value.map(categoryId => (
                 <div
                     key={`category-${categoryId}`}
-                    className="hover-animated flex h-8 cursor-pointer items-center gap-x-2 whitespace-nowrap rounded-full border border-white px-4 text-small text-white hover:border-blue-active hover:text-blue-active"
+                    className="flex h-8 cursor-pointer items-center gap-x-2 whitespace-nowrap rounded-full border border-white px-4 text-small text-white"
                     onClick={handleSelectCategories}
                 >
                     {categoriesDictionary.find(category => category.id === categoryId)?.localizedName[locale]}

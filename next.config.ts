@@ -1,12 +1,10 @@
 import { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
-import withMDX from '@next/mdx'
-
 const withNextIntl = createNextIntlPlugin('./src/utils/i18n/i18n.config.ts')
 
 const nextConfig: NextConfig = {
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
     images: {
         unoptimized: true,
         formats: ['image/avif', 'image/webp'],
@@ -39,4 +37,4 @@ const nextConfig: NextConfig = {
     },
 }
 
-export default withNextIntl(withMDX()(nextConfig))
+export default withNextIntl(nextConfig)

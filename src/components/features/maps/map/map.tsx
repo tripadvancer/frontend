@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useRef } from 'react'
+import { RefObject, useCallback, useRef } from 'react'
 import { AttributionControl, MapRef, Marker, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
 import { LocateFixedIcon, MinusIcon, PlusIcon } from 'lucide-react'
@@ -91,11 +91,13 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                     </Marker>
                 )}
 
-                {handlers.placePopupInfo && <MapPopupPlace mapRef={mapContainerRef} {...handlers.placePopupInfo} />}
+                {handlers.placePopupInfo && (
+                    <MapPopupPlace mapRef={mapContainerRef as RefObject<HTMLDivElement>} {...handlers.placePopupInfo} />
+                )}
 
                 {handlers.locationPopupInfo && (
                     <MapPopupLocation
-                        mapRef={mapContainerRef}
+                        mapRef={mapContainerRef as RefObject<HTMLDivElement>}
                         activeUserId={activeUserId}
                         isAuth={isAuth}
                         isEmailVerified={isEmailVerified}

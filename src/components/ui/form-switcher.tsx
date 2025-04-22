@@ -12,11 +12,12 @@ export const FormSwitcher = ({ checked, isDisabled, onChange }: FormSwitcherProp
             className={classNames('hover-animated relative h-5 w-7 flex-none cursor-pointer rounded-full', {
                 'bg-black-15 hover:bg-black-40': !checked,
                 'bg-blue-80 hover:bg-blue-active': checked,
+                'cursor-no-drop opacity-30': isDisabled,
             })}
             onClick={isDisabled ? undefined : onChange}
         >
             <div
-                className={classNames('absolute left-0.5 top-0.5 h-4 w-4 rounded-full bg-white transition-transform', {
+                className={classNames('absolute left-0.5 top-0.5 size-4 rounded-full bg-white transition-transform', {
                     'translate-x-2': checked,
                 })}
             />

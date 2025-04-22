@@ -1,7 +1,8 @@
 'use client'
 
-import { GeoJSONSource, useMap } from 'react-map-gl/maplibre'
+import { useMap } from 'react-map-gl/maplibre'
 
+import { GeoJSONSource } from 'maplibre-gl'
 import { useTranslations } from 'next-intl'
 
 import { useToast } from '@/providers/toast-provider'
@@ -36,19 +37,21 @@ export const WidgetRandom = () => {
 
                 if (randomPlace) {
                     const source = map?.getSource('random-place-source') as GeoJSONSource
-                    source.setData({
-                        type: 'FeatureCollection',
-                        features: [
-                            {
-                                type: 'Feature',
-                                geometry: {
-                                    type: 'Point',
-                                    coordinates: randomPlace.coordinates,
+                    if (source) {
+                        source.setData({
+                            type: 'FeatureCollection',
+                            features: [
+                                {
+                                    type: 'Feature',
+                                    geometry: {
+                                        type: 'Point',
+                                        coordinates: randomPlace.coordinates,
+                                    },
+                                    properties: randomPlace,
                                 },
-                                properties: randomPlace,
-                            },
-                        ],
-                    })
+                            ],
+                        })
+                    }
                 }
             } catch (error) {
                 toast.error(t('common.error'))

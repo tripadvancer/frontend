@@ -1,20 +1,21 @@
 'use client'
 
 import { InputHTMLAttributes, useState } from 'react'
-import { Ref, forwardRef } from 'react'
+import { Ref } from 'react'
 
 import classNames from 'classnames'
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
 
 type FormInputProps = InputHTMLAttributes<HTMLInputElement> & {
+    ref?: Ref<HTMLInputElement | null>
     error?: string
     className?: string
 }
 
-const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) => {
+export const FormInput = (props: FormInputProps) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false)
 
-    const { error, className, ...inputProps } = props
+    const { ref, error, className, ...rest } = props
 
     return (
         <div>
@@ -26,7 +27,7 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
                 })}
             >
                 <input
-                    {...inputProps}
+                    {...rest}
                     ref={ref}
                     type={isShowPassword ? 'text' : props.type}
                     className={classNames(
@@ -51,5 +52,3 @@ const FormInputComponent = (props: FormInputProps, ref: Ref<HTMLInputElement>) =
         </div>
     )
 }
-
-export const FormInput = forwardRef(FormInputComponent)

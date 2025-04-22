@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
@@ -48,7 +48,10 @@ export const LocationPickerMapSearch = ({ onSelect, onHide }: LocationPickerSear
         setIsAutocompleteVisible(items.length > 0)
     }, [items])
 
-    useOnClickOutside(ref, () => {
+    // TODO: Consider switching to a different package or waiting for a fix
+    // Issue: `useOnClickOutside` does not support a `null` ref
+    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
+    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
         setIsAutocompleteVisible(false)
     })
 

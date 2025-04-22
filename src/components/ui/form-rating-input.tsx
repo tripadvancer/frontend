@@ -19,7 +19,7 @@ export const FormRatingInput = ({ value, error, className, isDisabled, onChange 
     return (
         <div className={className}>
             <div
-                className={classNames('group inline-flex text-orange-100', {
+                className={classNames('group inline-flex align-top text-orange-100', {
                     'opacity-30': isDisabled,
                 })}
             >
