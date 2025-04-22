@@ -75,27 +75,29 @@ export const ReviewFormPhotosList = ({ photos, isDisabled, onChange }: ReviewFor
                 onChange={handlePhotoUpload}
             />
 
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
-                {photos.map((photo, index) => (
-                    <PhotoPreview
-                        key={`review-photo-${photo}`}
-                        url={photo}
-                        alt=""
-                        size={64}
-                        onPhotoClick={() => setIndexSlide(index)}
-                        onPhotoDelete={() => handlePhotoDelete(photo)}
-                    />
-                ))}
+            {photos.length > 0 && (
+                <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
+                    {photos.map((photo, index) => (
+                        <PhotoPreview
+                            key={`review-photo-${photo}`}
+                            url={photo}
+                            alt=""
+                            size={64}
+                            onPhotoClick={() => setIndexSlide(index)}
+                            onPhotoDelete={() => handlePhotoDelete(photo)}
+                        />
+                    ))}
 
-                <Lightbox
-                    open={indexSlide >= 0}
-                    close={() => setIndexSlide(-1)}
-                    index={indexSlide}
-                    slides={photos.map(photo => ({
-                        src: makeImageUrl(photo, ImageVariants.PUBLIC),
-                    }))}
-                />
-            </div>
+                    <Lightbox
+                        open={indexSlide >= 0}
+                        close={() => setIndexSlide(-1)}
+                        index={indexSlide}
+                        slides={photos.map(photo => ({
+                            src: makeImageUrl(photo, ImageVariants.PUBLIC),
+                        }))}
+                    />
+                </div>
+            )}
         </div>
     )
 }
