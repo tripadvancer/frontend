@@ -4,13 +4,13 @@ import { ReactNode } from 'react'
 
 import classNames from 'classnames'
 
-type TextEditorButtonProps = {
+type PlaceFormInputDescriptionButtonProps = {
     icon: ReactNode
     isActive: boolean
     onClick: () => void
 }
 
-export const TextEditorButton = ({ icon, isActive, onClick }: TextEditorButtonProps) => {
+export const PlaceFormInputDescriptionButton = ({ icon, isActive, onClick }: PlaceFormInputDescriptionButtonProps) => {
     return (
         <div
             className={classNames(
