@@ -4,31 +4,47 @@ import { useEffect, useState } from 'react'
 
 import DOMPurify from 'dompurify'
 
+import { Translate } from '@/components/ui/translate'
+
 type PlaceMainDescriptionProps = {
     description: string
 }
 
 export const PlaceMainDescription = ({ description }: PlaceMainDescriptionProps) => {
     const [sanitizedHTML, setSanitizedHTML] = useState('')
+    const [displayText, setDisplayText] = useState(description)
 
     useEffect(() => {
-        // Step 1: Sanitize incoming HTML
-        const clean = DOMPurify.sanitize(description, {
-            ALLOWED_TAGS: ['p', 'strong', 'em', 'u', 's'], // Only allow safe formatting tags
-            ALLOWED_ATTR: [], // Disallow all attributes
-            KEEP_CONTENT: true, // Keep inner text of disallowed tags
+        setDisplayText(description)
+    }, [description])
+
+    useEffect(() => {
+        const clean = DOMPurify.sanitize(displayText, {
+            ALLOWED_TAGS: ['p', 'strong', 'em', 'u', 's'],
+            ALLOWED_ATTR: [],
+            KEEP_CONTENT: true,
         })
 
-        // Step 2: Normalize empty paragraphs so they are visible
         const normalized = clean.replace(/<p><\/p>/g, '<p>&nbsp;</p>')
-
         setSanitizedHTML(normalized)
-    }, [description])
+    }, [displayText])
 
     return (
         <section className="flex flex-col gap-y-8">
             <h2 className="h5">About</h2>
-            <div className="break-words text-big" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
+
+            <div className="flex flex-col gap-y-4">
+                <Translate
+                    originalText={description}
+                    availableTargets={[
+                        { label: 'Русский', code: 'ru' },
+                        { label: 'English', code: 'en' },
+                    ]}
+                    onTranslate={setDisplayText}
+                />
+
+                <div className="break-words text-big" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
+            </div>
         </section>
     )
 }

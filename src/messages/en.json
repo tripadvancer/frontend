@@ -140,6 +140,11 @@
                 "complain": "Complain",
                 "add": "Add review"
             }
+        },
+        "translate": {
+            "translating": "Translating ...",
+            "showOriginal": "Show original",
+            "translateTo": "Translate to:"
         }
     },
     "layout": {
