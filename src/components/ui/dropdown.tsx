@@ -112,7 +112,7 @@ export const Dropdown = ({ children, items, position = 'right', currentItem }: D
     }
 
     return (
-        <div ref={containerRef} className="relative">
+        <div ref={containerRef} className="flex-0 relative">
             <div ref={toggleRef} className="relative z-10 cursor-pointer" onClick={() => setIsVisible(!isVisible)}>
                 {children ? children : <ActionButton isActivated={isVisible} />}
             </div>
