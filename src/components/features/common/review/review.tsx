@@ -32,18 +32,20 @@ export const Review = ({ review, variant, className, activeUserId, isAuth }: Rev
                 <ReviewActions review={review} activeUserId={activeUserId} isAuth={isAuth} />
             </div>
 
-            <div className="text-small">
-                <Translate
-                    originalText={review.text}
-                    availableTargets={[
-                        { label: 'Русский', code: 'ru' },
-                        { label: 'English', code: 'en' },
-                    ]}
-                    onTranslate={setDisplayText}
-                />
+            <div className="flex flex-col gap-y-2.5">
+                <div className="text-small">
+                    <Translate
+                        originalText={review.text}
+                        availableTargets={[
+                            { label: 'Русский', code: 'ru' },
+                            { label: 'English', code: 'en' },
+                        ]}
+                        onTranslate={setDisplayText}
+                    />
+                </div>
+                <div className="break-words">{displayText}</div>
             </div>
 
-            <div className="break-words">{displayText}</div>
             <ReviewPhotosList title={review.place.title} description={review.user.name} photos={review.photos} />
         </div>
     )
