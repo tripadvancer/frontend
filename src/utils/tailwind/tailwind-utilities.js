@@ -28,6 +28,9 @@ module.exports = function ({ addComponents, theme }) {
             transitionDuration: '300ms',
             transitionTimingFunction: 'ease-in-out',
         },
+        '.animate-pulse-full': {
+            animation: 'pulse-full 1s steps(1, end) infinite',
+        },
     }
 
     addComponents(utilities)
