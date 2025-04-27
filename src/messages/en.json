@@ -147,6 +147,10 @@
             "translateTo": "Translate to:"
         }
     },
+    "geolocation": {
+        "isNotPermission": "You have denied access to geolocation. Please enable it in settings.",
+        "isNotSupported": "Geolocation is not supported by your browser."
+    },
     "layout": {
         "header": {
             "signIn": "Sign In",
@@ -606,7 +610,7 @@
             },
             "random": {
                 "emptyMessage": "No places matcing your filter found.<br></br>Try changing categories or radius.",
-                "notLocation": "To find a random place around you — allow access to your location or select “I am here” on the map.",
+                "notLocation": "Allow location access to find places near you.",
                 "distance": {
                     "title": "Distance from you",
                     "km": "{distance} km"
