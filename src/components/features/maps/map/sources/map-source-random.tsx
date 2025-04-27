@@ -39,12 +39,12 @@ export const MapSourceRandom = () => {
 
             setGeoJson(geoJson)
 
-            const bounds = getBoundsFromCoordinates(geoJson.geometry.coordinates[0])
-            map.fitBounds(bounds, {
-                animate: false,
-            })
+            // const bounds = getBoundsFromCoordinates(geoJson.geometry.coordinates[0])
+            // map.fitBounds(bounds, {
+            //     animate: false,
+            // })
         }
-    }, [userLocation, isMobile, map, radius])
+    }, [userLocation, map, radius])
 
     if (!userLocation) {
         return null
