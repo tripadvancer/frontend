@@ -1,7 +1,7 @@
 'use client'
 
-import { RefObject, useCallback, useRef } from 'react'
-import { AttributionControl, MapRef, Marker, Map as ReactMapGl } from 'react-map-gl/maplibre'
+import { Ref, RefObject, useCallback, useRef } from 'react'
+import { AttributionControl, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 
 import { MinusIcon, PlusIcon } from 'lucide-react'
 import { useMediaQuery } from 'usehooks-ts'
@@ -12,12 +12,15 @@ import { useAppSelector } from '@/redux/hooks'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
+import { MapControlCostingModel } from './components/map-control-costing-model'
 import { MapControlUserLocation } from './components/map-control-user-location'
 import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
 import { MapPopupPlace } from './components/map-popup-place'
+import { MapPopupRoute } from './components/map-popup-route'
 import { useMapEventHandlers } from './map-event-handlers'
 import { placesLayer } from './sources/map-layers'
+import { MapSourceRoute } from './sources/map-source-route'
 import { MapSources } from './sources/map-sources'
 
 type MapProps = {
@@ -45,10 +48,6 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
 
     return (
         <div ref={containerRef} className="size-full">
-            {/* todo: for debug, remove later */}
-            {/* <div className="fixed left-0 right-0 top-1/2 z-50 h-[1px] bg-red-100"></div> */}
-            {/* <div className="fixed bottom-0 left-1/2 top-0 z-50 w-[1px] bg-red-100"></div> */}
-
             <ReactMapGl
                 id="map"
                 ref={mapRef}
@@ -65,9 +64,10 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 }}
                 {...handlers}
             >
+                <MapSourceRoute />
                 <MapSources isAuth={isAuth} />
 
-                <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
+                <div className="absolute right-2 top-20 z-30 flex flex-col items-end gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0 sm:items-start">
                     <MapControl onClick={handleZoomIn}>
                         <PlusIcon size={16} />
                     </MapControl>
@@ -77,9 +77,11 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                     </MapControl>
 
                     <MapControlUserLocation />
+                    <MapControlCostingModel />
                 </div>
 
                 <MapPinUser />
+                <MapPopupRoute />
                 <MapPopupPlace containerRef={containerRef as RefObject<HTMLDivElement>} />
                 <MapPopupLocation
                     containerRef={containerRef as RefObject<HTMLDivElement>}

@@ -1,12 +1,12 @@
 'use client'
 
-import { InputHTMLAttributes, Ref } from 'react'
+import { InputHTMLAttributes, ReactNode, Ref } from 'react'
 
 import { CheckIcon } from 'lucide-react'
 
 type FormCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
     ref?: Ref<HTMLInputElement | null>
-    label: string
+    label: ReactNode
 }
 
 export const FormCheckbox = (props: FormCheckboxProps) => {

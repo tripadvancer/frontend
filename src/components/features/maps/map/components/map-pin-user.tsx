@@ -14,7 +14,7 @@ export const MapPinUser = () => {
 
     return (
         <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="bottom">
-            <div className="flex-center relative flex size-3">
+            <div className="flex-center relative flex size-4">
                 <div className="absolute h-full w-full animate-ping rounded-full bg-blue-active opacity-75" />
                 <div className="relative inline-flex size-full rounded-full border border-white bg-blue-active" />
             </div>

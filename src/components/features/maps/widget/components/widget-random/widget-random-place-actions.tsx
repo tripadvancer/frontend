@@ -1,11 +1,9 @@
 'use client'
 
 import { LocateFixedIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
-import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
+import { PlaceButtonRoute } from '@/components/features/maps/place-route-button/place-route-button'
 import { FormButton } from '@/components/ui/form-button'
-import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useShowOnMap } from '@/utils/hooks/use-show-on-map'
 
@@ -22,10 +20,6 @@ type WidgetRandomPlaceActionsProps = {
 }
 
 export const WidgetRandomPlaceActions = (props: WidgetRandomPlaceActionsProps) => {
-    const t = useTranslations()
-    const dialog = useDialog()
-    const lngLat = arrayToLngLat(props.coordinates)
-
     const { showOnMap } = useShowOnMap(props)
 
     return (
@@ -37,14 +31,7 @@ export const WidgetRandomPlaceActions = (props: WidgetRandomPlaceActionsProps) =
                 className="flex-none"
                 onClick={showOnMap}
             />
-            <FormButton
-                type="stroke"
-                size="small"
-                onClick={() => dialog.open(<ChooseNavigationApp lngLat={lngLat} />)}
-                className="flex-none"
-            >
-                {t('common.action.route')}
-            </FormButton>
+            <PlaceButtonRoute lngLat={arrayToLngLat(props.coordinates)} />
         </div>
     )
 }
