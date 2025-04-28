@@ -46,9 +46,12 @@ export function useUserLocation(): useUserLocationInterface {
             error => {
                 if (error.code === error.PERMISSION_DENIED) {
                     setIsDenied(true)
-                } else {
-                    toast.error(t('Error getting location: ' + error))
                 }
+                // TODO: Fix this error handling
+                // else {
+                //     console.error('Error getting location:', error)
+                //     toast.error(t('common.error'))
+                // }
                 setIsLocating(false)
             },
             {
