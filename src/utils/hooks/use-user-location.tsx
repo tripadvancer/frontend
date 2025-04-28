@@ -54,7 +54,7 @@ export function useUserLocation(): useUserLocationInterface {
             },
             {
                 enableHighAccuracy: true,
-                timeout: 5000,
+                timeout: 7000,
                 maximumAge: 0,
             },
         )
