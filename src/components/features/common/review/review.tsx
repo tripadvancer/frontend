@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import classNames from 'classnames'
 
@@ -21,7 +21,11 @@ type ReviewProps = {
 }
 
 export const Review = ({ review, variant, className, activeUserId, isAuth }: ReviewProps) => {
-    const [displayText, setDisplayText] = useState<string>(review.text)
+    const [displayText, setDisplayText] = useState<string>()
+
+    useEffect(() => {
+        setDisplayText(review.text)
+    }, [review.text])
 
     return (
         <div className={classNames('flex flex-col gap-y-5 border-b border-black-15 py-8 first:border-t', className)}>
