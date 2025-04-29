@@ -15,7 +15,7 @@ export const PlaceMainReviews = async ({ placeId, activeUserId, isAuth, isEmailV
 
     return (
         <section className="flex scroll-m-24 flex-col gap-y-8 sm:scroll-m-28" id="reviews">
-            <h2 className="h5">{t('page.place.reviews')}</h2>
+            <h2 className="h5">{t('page.place.reviews.title')}</h2>
             <div className="flex flex-col gap-y-8">
                 <PlaceMainOwnReview
                     placeId={placeId}
