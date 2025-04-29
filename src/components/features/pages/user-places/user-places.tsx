@@ -21,11 +21,15 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
     const { data: places, isFetching, isSuccess, isError } = usersAPI.useGetPlacesByUserIdQuery({ userId, page })
 
     if (isError) {
-        return <div className="text-center text-black-40">{t('common.error')}</div>
+        return <div className="mt-16 text-center text-black-40">{t('common.error')}</div>
     }
 
     if (isSuccess && places.items.length === 0) {
-        return <div className="text-center text-black-40">{t('common.emptyMessage.places')}</div>
+        return (
+            <div className="mt-16 text-center text-black-40">
+                {t.rich('page.user.profile.places.emptyMessage', { br: () => <br /> })}
+            </div>
+        )
     }
 
     if (isSuccess && places.items.length > 0) {

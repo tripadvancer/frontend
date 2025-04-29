@@ -16,7 +16,7 @@ import { PlaceFormInputLocation } from './components/place-form-input-location'
 import { PlaceFormInputTitle } from './components/place-form-input-title'
 import { PlaceFormSubmit } from './components/place-form-submit'
 import { PlaceFormToggleIsVisited } from './components/place-form-toggle-is-visited'
-import { PlaceFormInputPhotos } from './components/place-from-input-photo/place-from-input-photos'
+import { PlaceFormInputPhotos } from './components/place-from-input-photos/place-from-input-photos'
 import { validationSchema } from './validation-schema'
 
 type PlaceFormProps = {

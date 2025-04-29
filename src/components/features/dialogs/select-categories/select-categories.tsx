@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 import { useLocale, useTranslations } from 'next-intl'
 
+import Link from 'next/link'
+
 import { FormButton } from '@/components/ui/form-button'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
@@ -55,9 +57,21 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
                     />
                 ))}
             </div>
-            <FormButton isDisabled={selectedCategoryIds.length === 0} onClick={handleConfirm}>
-                {t('common.action.confirm')}
-            </FormButton>
+            <div className="flex flex-col gap-y-4">
+                <FormButton isDisabled={selectedCategoryIds.length === 0} onClick={handleConfirm}>
+                    {t('common.action.confirm')}
+                </FormButton>
+                <div className="text-center text-small text-black-40">
+                    {t.rich('dialog.selectCategories.help', {
+                        br: () => <br />,
+                        helpLink: helpLink => (
+                            <Link href="https://help.tripadvancer.com/categories" target="_blank">
+                                {helpLink}
+                            </Link>
+                        ),
+                    })}
+                </div>
+            </div>
         </div>
     )
 }
