@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import DOMPurify from 'dompurify'
 
-import { Translate } from '@/components/ui/translate'
+// import { Translate } from '@/components/ui/translate'
 
 type PlaceMainDescriptionProps = {
     description: string
@@ -34,14 +34,14 @@ export const PlaceMainDescription = ({ description }: PlaceMainDescriptionProps)
             <h2 className="h5">About</h2>
 
             <div className="flex flex-col gap-y-4">
-                <Translate
+                {/* <Translate
                     originalText={description}
                     availableTargets={[
                         { label: 'Русский', code: 'ru' },
                         { label: 'English', code: 'en' },
                     ]}
                     onTranslate={setDisplayText}
-                />
+                /> */}
 
                 <div className="break-words text-big" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
             </div>
