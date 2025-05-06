@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import DOMPurify from 'dompurify'
 
-import { Translate } from '@/components/ui/translate'
+// import { Translate } from '@/components/ui/translate'
 
 type PlaceMainDescriptionProps = {
     description: string
