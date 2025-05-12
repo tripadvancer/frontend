@@ -4,6 +4,7 @@ import { BookmarkIcon, LocateFixedIcon, NavigationIcon, Share2Icon } from 'lucid
 import { useTranslations } from 'next-intl'
 
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
+import { PlaceButtonRoute } from '@/components/features/maps/place-route-button/place-route-button'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
@@ -61,6 +62,7 @@ export const WidgetPlacesFeedItemActions = (props: WidgetPlacesFeedItemActionsPr
 
     return (
         <div className="flex gap-x-1">
+            <PlaceButtonRoute lngLat={arrayToLngLat(props.coordinates)} />
             <Dropdown items={items} />
         </div>
     )

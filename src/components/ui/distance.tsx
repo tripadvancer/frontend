@@ -3,6 +3,9 @@
 import { useTranslations } from 'next-intl'
 
 type DistanceProps = {
+    /**
+     * Distance in meters
+     */
     distance: number
     className?: string
 }

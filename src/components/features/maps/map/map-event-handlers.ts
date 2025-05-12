@@ -152,8 +152,6 @@ export const useMapEventHandlers = () => {
     )
 
     return {
-        placePopupInfo: mapState.placePopupInfo,
-        locationPopupInfo: mapState.locationPopupInfo,
         onLoad: handleLoad,
         onMove: handleMove,
         onDragEnd: handleMoveEnd,

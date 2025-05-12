@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import { RootState } from '@/redux/store'
 import { AppModes } from '@/utils/enums'
@@ -15,7 +15,7 @@ export const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        setAppMode(state, action) {
+        setAppMode(state, action: PayloadAction<AppModes>) {
             state.appMode = action.payload
         },
     },

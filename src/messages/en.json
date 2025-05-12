@@ -100,6 +100,11 @@
             "km": "{distance} km",
             "m": "{distance} m"
         },
+        "time": {
+            "seconds": "{seconds} s",
+            "minutes": "{minutes} min",
+            "hours": "{hours} h"
+        },
         "placesCounter": "{count, plural, =0 {No places} =1 {# place} other {# places}}",
         "reviewsCounter": "{count, plural, =0 {No reviews} =1 {# review} other {# reviews}}",
         "action": {
@@ -110,7 +115,6 @@
             "goHome": "Go to Home",
             "goToMap": "Go to map",
             "loadMore": "Load more ...",
-            "locateMe": "Locate me",
             "ok": "Ok",
             "returnHome": "Return Home",
             "route": "Route",
@@ -142,6 +146,9 @@
             "showOriginal": "Show original",
             "translateTo": "Translate to:"
         }
+    },
+    "route": {
+        "error": "Failed to build route"
     },
     "geolocation": {
         "isNotPermission": "You have denied access to geolocation. Please enable it in settings.",
@@ -316,7 +323,7 @@
             "title": "Sign Up",
             "thirdPartyGoogle": "Continue with Google",
             "thirdPartyTitle": "Or, sign up with your email address",
-            "submit": "Sign up",
+            "submit": "Create account",
             "info": "By completing the registration process, you acknowledge and accept our <termsLink>Terms and Conditions</termsLink> and <privacyLink>Privacy Policy</privacyLink>.",
             "toBack": "Have an account? <signInLink>Sign in</signInLink>"
         },
@@ -576,8 +583,7 @@
         "popup": {
             "location": {
                 "title": "Selected location",
-                "addPlace": "Add place here",
-                "iAmHere": "I am here"
+                "addPlace": "Add place here"
             }
         },
         "widget": {
@@ -616,7 +622,7 @@
             },
             "random": {
                 "emptyMessage": "No places matcing your filter found.<br></br>Try changing categories or radius.",
-                "notLocation": "Allow location access to find places near you.",
+                "notLocation": "To find a random place around you, please allow access to your location.",
                 "distance": {
                     "title": "Distance from you",
                     "km": "{distance} km"
