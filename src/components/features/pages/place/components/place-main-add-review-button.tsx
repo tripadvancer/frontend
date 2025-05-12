@@ -47,7 +47,7 @@ export const PlaceMainAddReviewButton = ({
             className="w-full"
             onClick={handleClick}
         >
-            {t('page.place.addReview')}
+            {t('page.place.reviews.addReview')}
         </FormButton>
     )
 }

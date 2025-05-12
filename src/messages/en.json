@@ -96,10 +96,6 @@
     "common": {
         "error": "An unexpected error has occurred. Please try again later.",
         "loading": "Loading ...",
-        "emptyMessage": {
-            "reviews": "There are no reviews here at the moment.",
-            "places": "There are no places here at the moment."
-        },
         "distance": {
             "km": "{distance} km",
             "m": "{distance} m"
@@ -278,7 +274,7 @@
         "reviewForm": {
             "title": {
                 "edit": "Edit review",
-                "add": "Leave feedback"
+                "add": "Write a review"
             },
             "field": {
                 "rating": {
@@ -303,7 +299,8 @@
             }
         },
         "selectCategories": {
-            "title": "Select up to {maxCount} categories"
+            "title": "Select up to {maxCount} categories",
+            "help": "Not sure which categories to choose?<br></br>Take a look at our <helpLink>category descriptions</helpLink> to choose the right ones."
         },
         "sharePlace": {
             "title": "Share place",
@@ -492,6 +489,12 @@
                 "visitedCountries": {
                     "emptyMessage": "You have not visited any countries yet.<br></br>To view your visited countries, add a place you have been to.<br></br><learnMoreLink>Learn more</learnMoreLink>",
                     "allcountries": "All countries"
+                },
+                "places": {
+                    "emptyMessage": "Nothing has been added here yet.<br></br>Places will show up as they’re added."
+                },
+                "reviews": {
+                    "emptyMessage": "Nothing has been added here yet.<br></br>Reviews will show up as they’re written."
                 }
             },
             "settingsForm": {
@@ -556,14 +559,17 @@
         "country": {
             "description": "Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.",
             "viewAll": "View all countries",
-            "emptyPlaces": "There are no places yet. Be the first to add a place!",
+            "emptyPlaces": "There are no places here yet.<br></br>Be the first to add one and help others discover something new!",
             "addPlace": "Add place"
         },
         "place": {
             "about": "About this place",
             "photos": "Photos",
-            "reviews": "Visitor reviews",
-            "addReview": "Add review",
+            "reviews": {
+                "title": "Visitor reviews",
+                "emptyMessage": "Do you know this place?<br></br>Other users will appreciate your review!",
+                "addReview": "Write a review"
+            },
             "placeNearby": "Places nearby",
             "author": "Author",
             "abandonedWarning": "Places in the \"Abandoned\" category might be dangerous, be careful.",

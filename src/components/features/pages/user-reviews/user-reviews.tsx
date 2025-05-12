@@ -23,11 +23,15 @@ export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) 
     const { data: reviews, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsByUserIdQuery({ userId, cursor })
 
     if (isError) {
-        return <div className="text-center text-black-40">{t('common.error')}</div>
+        return <div className="mt-16 text-center text-black-40">{t('common.error')}</div>
     }
 
     if (isSuccess && reviews.items.length === 0) {
-        return <div className="text-center text-black-40">{t('common.emptyMessage.reviews')}</div>
+        return (
+            <div className="mt-16 text-center text-black-40">
+                {t.rich('page.user.profile.reviews.emptyMessage', { br: () => <br /> })}
+            </div>
+        )
     }
 
     if (isSuccess && reviews.items.length > 0) {

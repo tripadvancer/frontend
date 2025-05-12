@@ -33,7 +33,7 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
     if (isSuccess && reviews.items.length === 0) {
         return (
             <div className="border-y border-black-15 py-8 text-center text-black-40">
-                {t('common.emptyMessage.reviews')}
+                {t.rich('page.place.reviews.emptyMessage', { br: () => <br /> })}
             </div>
         )
     }
