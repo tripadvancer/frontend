@@ -23,7 +23,7 @@ export const PlaceHeader = ({ title, cover, categories, countryCode, location }:
                     <PlaceHeaderCountry countryCode={countryCode} />
                     <PlaceHeaderTitle title={title} />
                     <PlaceHeaderCoordinates location={location} />
-                    <PlaceHeaderCategories categories={categories} />
+                    <PlaceHeaderCategories countryCode={countryCode} categories={categories} />
                 </div>
             </section>
         </div>
