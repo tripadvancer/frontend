@@ -12,9 +12,9 @@ export const HeaderDesktop = async () => {
 
     return (
         <div className="container relative hidden h-14 items-center justify-between gap-x-6 sm:flex">
-            <HeaderLogo />
-
             <div className="flex items-center gap-x-8">
+                <HeaderLogo />
+
                 <nav className="flex gap-x-2.5">
                     <Link href="/maps" className="flex items-center gap-x-2 text-big">
                         {t('layout.header.links.map')}
@@ -23,11 +23,11 @@ export const HeaderDesktop = async () => {
                         {t('layout.header.links.countries')}
                     </Link>
                 </nav>
+            </div>
 
-                <div className="flex-center gap-x-2">
-                    <HeaderAddPlaceWithAuth />
-                    <UserMenuWithAuth signInComponent={<HeaderSignIn />} />
-                </div>
+            <div className="flex-center gap-x-2">
+                <HeaderAddPlaceWithAuth />
+                <UserMenuWithAuth signInComponent={<HeaderSignIn />} />
             </div>
         </div>
     )
