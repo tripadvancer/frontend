@@ -1,5 +1,5 @@
 import { Countries } from '@/components/features/pages/countries/countries'
 
-export default async function CountriesPage() {
+export default function CountriesPage() {
     return <Countries />
 }

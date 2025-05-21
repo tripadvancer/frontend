@@ -15,12 +15,15 @@ export const HeaderDesktop = async () => {
             <div className="flex items-center gap-x-8">
                 <HeaderLogo />
 
-                <nav className="flex gap-x-2.5">
+                <nav className="flex gap-x-4">
                     <Link href="/maps" className="flex items-center gap-x-2 text-big">
                         {t('layout.header.links.map')}
                     </Link>
                     <Link href="/countries" className="flex items-center gap-x-2 text-big">
                         {t('layout.header.links.countries')}
+                    </Link>
+                    <Link href="/about" className="flex items-center gap-x-2 text-big">
+                        {t('layout.header.links.about')}
                     </Link>
                 </nav>
             </div>
