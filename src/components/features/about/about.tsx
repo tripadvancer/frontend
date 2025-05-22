@@ -41,25 +41,18 @@ export const About = () => {
                     <hr />
                     <h2 className="h5">Here&rsquo;s what you can&nbsp;do:</h2>
 
-                    <ul className="space-y-2 pl-0">
+                    <ul className="list-disc space-y-2 pl-4 sm:pl-8">
+                        <li>Share your favorite locations by adding them to the map,</li>
+                        <li>Discover cool new places recommended by other travelers,</li>
+                        <li>Leave reviews and tips about places you&rsquo;ve visited,</li>
                         <li>
-                            📍 <span className="pl-1">Share your favorite locations by adding them to the map,</span>
+                            Keep your own travel journal&nbsp;&mdash; mark places you&rsquo;ve been, save memories, and
+                            share them,
                         </li>
+                        <li>Track the countries you&rsquo;ve already explored,</li>
                         <li>
-                            🗺️ <span className="pl-1">Discover cool new places recommended by other travelers,</span>
-                        </li>
-                        <li>
-                            📝 <span className="pl-1">Leave reviews and tips about places you&rsquo;ve visited,</span>
-                        </li>
-                        <li>
-                            📖{' '}
-                            <span className="pl-1">
-                                Keep your own travel journal&nbsp;&mdash; mark places you&rsquo;ve been, save memories,
-                                and share them,
-                            </span>
-                        </li>
-                        <li>
-                            🌍 <span className="pl-1">Track the countries you&rsquo;ve already explored.</span>
+                            Create and organize custom travel lists to plan your trips and access them easily while on
+                            the go.
                         </li>
                     </ul>
 
