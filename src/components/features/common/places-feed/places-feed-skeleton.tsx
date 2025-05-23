@@ -1,6 +1,6 @@
 'use client'
 
-export const WidgetPlacesFeedSkeleton = () => {
+export const PlacesFeedSkeleton = () => {
     return (
         <div role="status" className="flex animate-pulse flex-col gap-4">
             {Array.from({ length: 1 }).map((_, i) => (

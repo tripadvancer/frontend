@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 
-import { FeedCountries } from '@/components/features/common/feed-countries/feed-countries'
+import { CountriesGrid } from '@/components/features/common/countries-grid/countries-grid'
 import { Search } from '@/components/features/common/search/search'
 import { ShowAllLink } from '@/components/ui/show-all-link'
 import { getCountries } from '@/services/countries'
@@ -18,7 +18,7 @@ export const LandingCountries = async () => {
             </p>
             <Search />
             <div className="flex flex-col gap-y-8">
-                <FeedCountries countries={countries.slice(0, 12)} />
+                <CountriesGrid countries={countries.slice(0, 12)} />
                 <ShowAllLink href="/countries">{t('page.landing.countries.button')}</ShowAllLink>
             </div>
         </section>

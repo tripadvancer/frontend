@@ -5,12 +5,12 @@ import { getLocale, getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import { FeedPlacesSkeleton } from '@/components/features/common/feed-places/feed-places-skeleton'
 import { getPlacesByCountryCode } from '@/services/places'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { parseQueryString } from '@/utils/helpers/common'
 import { ICountryDict } from '@/utils/types/country'
 
+import { PlacesGridSkeleton } from '../../common/places-grid/places-grid-skeleton'
 import { CountryAddPlaceWithAuth } from './components/country-add-place-with-auth'
 import { CountryCategories } from './components/country-categories'
 import { CountryCover } from './components/country-cover'
@@ -53,7 +53,7 @@ export const Country = async ({
                     <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />
 
                     {places.length !== 0 && (
-                        <Suspense fallback={<FeedPlacesSkeleton />}>
+                        <Suspense fallback={<PlacesGridSkeleton />}>
                             <CountryPlaces places={places} />
                         </Suspense>
                     )}

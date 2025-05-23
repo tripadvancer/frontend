@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { FeedPlaces } from '@/components/features/common/feed-places/feed-places'
+import { PlacesGrid } from '@/components/features/common/places-grid/places-grid'
 import { ShowMore } from '@/components/ui/show-more'
 
 const PAGINATION_LIMIT = 48
@@ -27,7 +27,7 @@ export const CountryPlaces = (props: CountryPlacesProps) => {
 
     return (
         <div className="flex flex-col gap-y-8">
-            <FeedPlaces places={visiblePlaces} />
+            <PlacesGrid places={visiblePlaces} />
             {currentPage * PAGINATION_LIMIT < props.places.length && <ShowMore onClick={handleLoadMore} />}
         </div>
     )

@@ -4,13 +4,13 @@ import { useMemo } from 'react'
 
 import { useTranslations } from 'next-intl'
 
+import { PlacesFeed } from '@/components/features/common/places-feed/places-feed'
+import { PlacesFeedSkeleton } from '@/components/features/common/places-feed/places-feed-skeleton'
 import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list.api'
 
 import { WidgetMessage } from '../widget-message'
-import { WidgetPlacesFeed } from '../widget-places-feed/widget-places-feed'
-import { WidgetPlacesFeedSkeleton } from '../widget-places-feed/widget-places-feed-skeleton'
 
 export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) => {
     const t = useTranslations()
@@ -34,8 +34,8 @@ export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) =
     }
 
     if (isSuccess && places.length > 0) {
-        return <WidgetPlacesFeed places={places} />
+        return <PlacesFeed places={places} paginationLimit={10} />
     }
 
-    return <WidgetPlacesFeedSkeleton />
+    return <PlacesFeedSkeleton />
 }

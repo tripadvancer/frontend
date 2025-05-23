@@ -507,7 +507,7 @@
                         "privacy": {
                             "label": "Privacy",
                             "options": {
-                                "show_my_map": "Show my visited map to everyone"
+                                "show_my_map": "Show my travel journal to everyone"
                             }
                         }
                     },
