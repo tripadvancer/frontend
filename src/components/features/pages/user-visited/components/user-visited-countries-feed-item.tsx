@@ -25,11 +25,12 @@ export const UserVisitedCountriesFeedItem = ({ name, count, places }: UserMapCou
                 className="flex cursor-pointer items-center justify-between rounded-2xl bg-orange-10 p-4"
                 onClick={handleToggle}
             >
-                <div className="h6">{name}</div>
                 <div className="flex items-center gap-x-4">
+                    <div className="h6">{name}</div>
                     <div className="h6 text-orange-80">{count}</div>
-                    {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
                 </div>
+
+                {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
             </div>
 
             {isOpen && <PlacesFeed places={places} paginationLimit={10} />}
