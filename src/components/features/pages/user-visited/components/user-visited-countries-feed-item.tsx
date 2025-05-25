@@ -1,23 +1,39 @@
-import classNames from 'classnames'
+'use client'
+
+import { useState } from 'react'
+
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
+
+import { PlacesFeed } from '@/components/features/common/places-feed/places-feed'
 
 type UserMapCountriesFeedItemProps = {
-    variant: 'orange' | 'blue'
-    count: string
     name: string
+    count: number
+    places: any
 }
 
-export const UserVisitedCountriesFeedItem = ({ variant, count, name }: UserMapCountriesFeedItemProps) => {
+export const UserVisitedCountriesFeedItem = ({ name, count, places }: UserMapCountriesFeedItemProps) => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const handleToggle = () => {
+        setIsOpen(prev => !prev)
+    }
+
     return (
-        <div className="rounded-2xl bg-orange-10 p-4">
+        <div className="flex flex-col gap-4">
             <div
-                className={classNames('h1', {
-                    'text-orange-80': variant === 'orange',
-                    'text-blue-80': variant === 'blue',
-                })}
+                className="flex cursor-pointer items-center justify-between rounded-2xl bg-orange-10 p-4"
+                onClick={handleToggle}
             >
-                {count}
+                <div className="flex items-center gap-x-4">
+                    <div className="h6">{name}</div>
+                    <div className="h6 text-orange-80">{count}</div>
+                </div>
+
+                {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
             </div>
-            <div className="h7">{name}</div>
+
+            {isOpen && <PlacesFeed places={places} paginationLimit={10} />}
         </div>
     )
 }

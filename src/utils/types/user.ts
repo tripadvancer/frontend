@@ -23,4 +23,5 @@ export type IUserStatistics = {
 export type IUserVisitedCountries = {
     code: string
     count: number
+    places: any
 }[]

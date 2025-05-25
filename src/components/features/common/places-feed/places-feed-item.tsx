@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 
-import { WidgetPlacesFeedItemActions } from './widget-places-feed-item-actions'
+import { PlacesFeedItemActions } from './places-feed-item-actions'
 
-type WidgetPlacesFeedItemProps = {
+type PlacesFeedItemProps = {
     id: number
     title: string
     cover: string | null
@@ -19,10 +19,10 @@ type WidgetPlacesFeedItemProps = {
     coordinates: number[]
 }
 
-export const WidgetPlacesFeedItem = (props: WidgetPlacesFeedItemProps) => {
+export const PlacesFeedItem = (props: PlacesFeedItemProps) => {
     return (
-        <div className="flex gap-x-4">
-            <Link href={`places/${props.id}`} className="peer flex-none" target="_blank">
+        <div className="relative flex gap-x-4">
+            <Link href={`/places/${props.id}`} className="peer flex-none" target="_blank">
                 <PlacePreviewCover
                     cover={props.cover}
                     title={props.title}
@@ -32,7 +32,7 @@ export const WidgetPlacesFeedItem = (props: WidgetPlacesFeedItemProps) => {
             </Link>
             <div className="flex min-w-0 flex-1 flex-col justify-between text-black-100 peer-hover:text-blue-active">
                 <Link
-                    href={`places/${props.id}`}
+                    href={`/places/${props.id}`}
                     className="line-clamp-2 flex-none break-words font-medium text-inherit"
                     target="_blank"
                 >
@@ -40,7 +40,7 @@ export const WidgetPlacesFeedItem = (props: WidgetPlacesFeedItemProps) => {
                 </Link>
                 <div className="flex items-center justify-between">
                     <PlacePreviewRating {...props} />
-                    <WidgetPlacesFeedItemActions {...props} />
+                    <PlacesFeedItemActions {...props} />
                 </div>
             </div>
         </div>

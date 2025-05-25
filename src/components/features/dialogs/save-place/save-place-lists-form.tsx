@@ -6,6 +6,8 @@ import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
+import { useRouter } from 'next/navigation'
+
 import { FormButton } from '@/components/ui/form-button'
 import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { FormInput } from '@/components/ui/form-input'
@@ -27,6 +29,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     const t = useTranslations()
     const toast = useToast()
     const dialog = useDialog()
+    const router = useRouter()
 
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -84,6 +87,8 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
             } catch {
                 toast.error(t('common.error'))
             }
+
+            router.refresh()
         },
     })
 

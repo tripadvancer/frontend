@@ -1,6 +1,6 @@
-import { FeedPlacesItem } from './feed-places-item'
+import { PlacesGridItem } from './places-grid-item'
 
-type FeedPlacesProps = {
+type PlacesGridProps = {
     places: {
         id: number
         title: string
@@ -11,11 +11,11 @@ type FeedPlacesProps = {
     }[]
 }
 
-export const FeedPlaces = ({ places }: FeedPlacesProps) => {
+export const PlacesGrid = ({ places }: PlacesGridProps) => {
     return (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4 xl:gap-8">
             {places.map(place => (
-                <FeedPlacesItem key={`feed-place-${place.id}`} {...place} />
+                <PlacesGridItem key={`places-grid-item-${place.id}`} {...place} />
             ))}
         </div>
     )
