@@ -21,12 +21,11 @@ export const UserVisitedCountriesFeed = async ({ visitedCountries }: UserVisited
     }
 
     return (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-8">
-            <UserVisitedCountriesFeedItem
-                variant="blue"
-                count={`${worldCoverageInPercent}%`}
-                name={t('page.user.profile.visitedCountries.allcountries')}
-            />
+        <div className="flex flex-col gap-y-4">
+            <div className="flex items-center justify-between rounded-2xl bg-orange-10 p-4">
+                <div className="h6">{t('page.user.profile.visitedCountries.allcountries')}</div>
+                <div className="h6 text-blue-80">{`${worldCoverageInPercent}%`}</div>
+            </div>
 
             {visitedCountries.map(item => {
                 const country = getCountryByCode(item.code)
@@ -35,9 +34,9 @@ export const UserVisitedCountriesFeed = async ({ visitedCountries }: UserVisited
                     return (
                         <UserVisitedCountriesFeedItem
                             key={`country-${country.code}`}
-                            variant="orange"
-                            count={item.count.toString()}
                             name={country.name[locale]}
+                            count={item.count}
+                            places={item.places}
                         />
                     )
                 }

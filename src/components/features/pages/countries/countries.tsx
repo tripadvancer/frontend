@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 
-import { FeedCountries } from '@/components/features/common/feed-countries/feed-countries'
+import { CountriesGrid } from '@/components/features/common/countries-grid/countries-grid'
 import { Search } from '@/components/features/common/search/search'
 import { getCountries } from '@/services/countries'
 
@@ -13,7 +13,7 @@ export const Countries = async () => {
             <section>
                 <h1 className="h1 mb-8 text-center">{t('page.countries.title')}</h1>
                 <Search />
-                <FeedCountries countries={countries} />
+                <CountriesGrid countries={countries} />
             </section>
         </div>
     )

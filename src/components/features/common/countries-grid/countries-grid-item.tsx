@@ -7,7 +7,7 @@ import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { getCountryByCode } from '@/services/countries'
 import { ICountry } from '@/utils/types/country'
 
-export const FeedCountriesItem = async ({ countryCode, placesCount }: ICountry) => {
+export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) => {
     const t = await getTranslations()
     const locale = await getLocale()
     const country = getCountryByCode(countryCode)

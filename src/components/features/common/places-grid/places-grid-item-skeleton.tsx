@@ -1,4 +1,4 @@
-export const FeedPlacesItemSkeleton = () => {
+export const PlacesGridItemSkeleton = () => {
     return (
         <div className="flex flex-row gap-4">
             <div className="flex-none">

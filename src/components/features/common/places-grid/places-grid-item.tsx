@@ -4,11 +4,10 @@ import { useTranslations } from 'next-intl'
 
 import Link from 'next/link'
 
-import { Distance } from '@/components/ui/distance'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { Rating } from '@/components/ui/rating'
 
-type FeedPlacesItemProps = {
+type PlacesGridItemProps = {
     id: number
     title: string
     cover: string | null
@@ -17,7 +16,7 @@ type FeedPlacesItemProps = {
     distance?: number
 }
 
-export const FeedPlacesItem = ({ id, title, cover, avgRating, reviewsCount, distance }: FeedPlacesItemProps) => {
+export const PlacesGridItem = ({ id, title, cover, avgRating, reviewsCount, distance }: PlacesGridItemProps) => {
     const t = useTranslations()
 
     return (

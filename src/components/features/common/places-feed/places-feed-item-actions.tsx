@@ -11,7 +11,7 @@ import { useSavePlace } from '@/utils/hooks/use-save-place'
 import { useSharePlace } from '@/utils/hooks/use-share-place'
 import { useShowOnMap } from '@/utils/hooks/use-show-on-map'
 
-type WidgetPlacesFeedItemActionsProps = {
+type PlacesFeedItemActionsProps = {
     id: number
     title: string
     cover: string | null
@@ -23,7 +23,7 @@ type WidgetPlacesFeedItemActionsProps = {
     coordinates: number[]
 }
 
-export const WidgetPlacesFeedItemActions = (props: WidgetPlacesFeedItemActionsProps) => {
+export const PlacesFeedItemActions = (props: PlacesFeedItemActionsProps) => {
     const t = useTranslations()
     const dialog = useDialog()
     const lngLat = arrayToLngLat(props.coordinates)

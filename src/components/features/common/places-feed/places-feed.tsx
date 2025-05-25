@@ -6,11 +6,9 @@ import { useTranslations } from 'next-intl'
 
 import { FormButton } from '@/components/ui/form-button'
 
-import { WidgetPlacesFeedItem } from './widget-places-feed-item'
+import { PlacesFeedItem } from './places-feed-item'
 
-const PAGINATION_LIMIT = 10
-
-type WidgetPlacesFeedProps = {
+type PlacesFeedProps = {
     places: {
         id: number
         title: string
@@ -22,19 +20,20 @@ type WidgetPlacesFeedProps = {
         isSaved: boolean
         coordinates: number[]
     }[]
+    paginationLimit: number
 }
 
-export const WidgetPlacesFeed = ({ places }: WidgetPlacesFeedProps) => {
+export const PlacesFeed = ({ places, paginationLimit }: PlacesFeedProps) => {
     const t = useTranslations()
     const [currentPage, setCurrentPage] = useState(1)
 
     return (
         <div className="flex flex-col gap-4">
-            {places.slice(0, currentPage * PAGINATION_LIMIT).map(place => (
-                <WidgetPlacesFeedItem key={`widget-place-${place.id}`} {...place} />
+            {places.slice(0, currentPage * paginationLimit).map(place => (
+                <PlacesFeedItem key={`places-feed-item-${place.id}`} {...place} />
             ))}
 
-            {places.length > currentPage * PAGINATION_LIMIT && (
+            {places.length > currentPage * paginationLimit && (
                 <FormButton
                     type="stroke"
                     size="small"

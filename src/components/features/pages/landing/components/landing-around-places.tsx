@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { FeedPlaces } from '@/components/features/common/feed-places/feed-places'
+import { PlacesGrid } from '@/components/features/common/places-grid/places-grid'
 import { ShowAllLink } from '@/components/ui/show-all-link'
 import { internalApi } from '@/redux/services/internal.api'
 import { placesAroundAPI } from '@/redux/services/places-around.api'
@@ -40,7 +40,7 @@ export const LandingAroundPlaces = () => {
                     {t('page.landing.aroundPlaces.text')}
                 </p>
                 <div className="flex flex-col gap-y-8">
-                    <FeedPlaces places={places} />
+                    <PlacesGrid places={places} />
                     {userCountryName && (
                         <ShowAllLink href={`/countries/${getCountryByCode(userCountryCode)?.slug}`}>
                             {t('page.landing.aroundPlaces.button', { country: userCountryName })}
