@@ -594,6 +594,9 @@
                     "title": "All places",
                     "emptyMessage": "No places found.<br></br>Try changing categories or zooming out the map."
                 },
+                "aroundMe": {
+                    "title": "Around me"
+                },
                 "savedPlaces": {
                     "title": "Saved",
                     "emptyMessage": "You have not saved places.<br></br>Create a new list and start adding places to it.",
@@ -628,8 +631,8 @@
                 }
             },
             "toggler": {
-                "map": "Map",
-                "list": "List",
+                "map": "View map",
+                "list": "View list",
                 "random": "Random"
             }
         }

@@ -1,9 +1,9 @@
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
 
-import { WidgetPlaces } from './widget-places'
+import { WidgetBase } from './widget-base'
 
-export const WidgetPlacesWithAuth = async () => {
+export const WidgetBaseWithAuth = async () => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -11,7 +11,7 @@ export const WidgetPlacesWithAuth = async () => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return <WidgetPlaces isAuth={false} />
+            return <WidgetBase isAuth={false} />
         }
 
         /**
@@ -21,5 +21,5 @@ export const WidgetPlacesWithAuth = async () => {
         return <TryRefreshComponent />
     }
 
-    return <WidgetPlaces isAuth={true} />
+    return <WidgetBase isAuth={true} />
 }

@@ -41,6 +41,7 @@ export enum WidgetModes {
 
 export enum WidgetTabs {
     ALL = 'ALL',
+    AROUND_ME = 'AROUND_ME',
     SAVED = 'SAVED',
 }
 

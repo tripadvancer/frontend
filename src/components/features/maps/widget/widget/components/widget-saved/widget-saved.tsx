@@ -3,11 +3,11 @@
 import { useTranslations } from 'next-intl'
 
 import { SignIn } from '@/components/features/auth/sign-in'
+import { WidgetMessage } from '@/components/features/maps/widget/components/widget-message'
 import { useDialog } from '@/providers/dialog-provider'
 import { getWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 
-import { WidgetMessage } from '../widget-message'
 import { WidgetSavedListAddButton } from './widget-saved-list-add-button'
 import { WidgetSavedLists } from './widget-saved-lists'
 import { WidgetSavedListsView } from './widget-saved-lists-view'

@@ -12,13 +12,14 @@ type TabType = {
     caption: string
 }
 
-export const WidgetTabs = () => {
+export const WidgetBaseTabs = () => {
     const t = useTranslations()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
 
     const tabs: TabType[] = [
         { id: WidgetTabsEnum.ALL, caption: t('map.widget.tabs.allPlaces.title') },
+        { id: WidgetTabsEnum.AROUND_ME, caption: t('map.widget.tabs.aroundMe.title') },
         { id: WidgetTabsEnum.SAVED, caption: t('map.widget.tabs.savedPlaces.title') },
     ]
 
