@@ -64,7 +64,6 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                     <li>
                         <Link
                             href={`/users/${name.toLowerCase()}`}
-                            scroll={false}
                             onClick={() => setIsMenuOpen(false)}
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
