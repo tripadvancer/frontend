@@ -4,7 +4,6 @@ import { IUser } from '@/utils/types/user'
 
 import { UserName } from './components/user-name'
 import { UserNavigation } from './components/user-navigation'
-import ScrollToTop from './components/user-scroll-to-top'
 import { UserSidebarAbout } from './components/user-sidebar-about'
 import { UserSidebarAchievement } from './components/user-sidebar-achievement'
 import { UserSidebarSocial } from './components/user-sidebar-social'
@@ -27,7 +26,6 @@ export const User = ({ user, children }: { user: IUser; children: ReactNode }) =
                             <UserNavigation user={user} />
                         </div>
                         {children}
-                        <ScrollToTop />
                     </div>
                 </div>
             </div>
