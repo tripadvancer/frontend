@@ -23,7 +23,7 @@ export const UserVisitedSwitcherVisible = ({ showMyMap }: UserVisitedSwitcherVis
 
     return (
         <div className="flex items-center gap-x-2">
-            <FormSwitcher checked={!!showMyMap} isDisabled={isLoading} onChange={handleChange} />
+            <FormSwitcher checked={!!showMyMap} onChange={handleChange} />
             <div className="cursor-pointer text-big-bold" onClick={isLoading ? undefined : handleChange}>
                 {t('page.user.settingsForm.field.settings.privacy.options.show_my_map')}
             </div>
