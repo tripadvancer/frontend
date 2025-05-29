@@ -2,7 +2,6 @@ import { redirect } from 'next/navigation'
 
 import { UserVisitedPrivate } from '@/components/features/pages/user-visited/user-visited-private'
 import { UserVisitedPublic } from '@/components/features/pages/user-visited/user-visited-public'
-import { UserRedirect } from '@/components/features/pages/user/components/user-redirect'
 import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
@@ -24,8 +23,7 @@ export default async function UserPage(props: { params: Params }) {
                 return <UserVisitedPublic user={user} />
             }
 
-            // redirect(`/users/${params.username.toLowerCase()}/places`)
-            return <UserRedirect username={params.username} />
+            redirect(`/users/${params.username.toLowerCase()}/places`)
         }
 
         /**
