@@ -39,13 +39,9 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
     const renderCover = () => {
         const cover = formik.values.photos.find(photo => photo.isCover)
 
-        if (!cover) {
-            return null
-        }
-
         return (
             <Image
-                src={makeImageUrl(cover.url, ImageVariants.PUBLIC)}
+                src={cover ? makeImageUrl(cover.url, ImageVariants.PUBLIC) : '/images/place-cover-placeholder.jpg'}
                 alt={formik.values.title}
                 fill
                 priority
