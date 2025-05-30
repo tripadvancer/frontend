@@ -60,7 +60,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
 
     return (
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-            <div className="flex-center relative z-10 flex-[540px] pb-8">
+            <div className="flex-center relative z-10 aspect-[16/7] max-h-[840px] min-h-[540px] pb-7">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
                     {renderCover()}
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />

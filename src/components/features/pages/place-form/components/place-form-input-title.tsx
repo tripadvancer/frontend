@@ -16,7 +16,7 @@ export const PlaceFormInputTitle = ({ value, onChange }: PlaceFormInputTitleProp
         <TextareaAutosize
             value={value}
             onChange={e => onChange(e.target.value)}
-            className="h1 w-full resize-none bg-transparent text-center text-white placeholder:text-white focus:outline-none"
+            className="title w-full resize-none bg-transparent text-center text-white placeholder:text-white focus:outline-none"
             placeholder={t('page.placeForm.field.title.placeholder')}
         />
     )
