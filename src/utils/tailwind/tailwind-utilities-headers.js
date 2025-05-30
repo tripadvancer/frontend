@@ -1,5 +1,18 @@
 module.exports = function ({ addComponents, theme }) {
     const utilities = {
+        '.title': {
+            fontSize: '2.75rem',
+            lineHeight: '3.25rem',
+            fontWeight: '500',
+            '@screen sm': {
+                fontSize: '3rem',
+                lineHeight: '3.5rem',
+            },
+            '@screen lg': {
+                fontSize: '4rem',
+                lineHeight: '4.5rem',
+            },
+        },
         '.h1': {
             fontSize: '2.75rem',
             lineHeight: '3.25rem',
