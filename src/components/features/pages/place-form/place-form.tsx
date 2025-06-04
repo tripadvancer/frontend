@@ -39,13 +39,9 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
     const renderCover = () => {
         const cover = formik.values.photos.find(photo => photo.isCover)
 
-        if (!cover) {
-            return null
-        }
-
         return (
             <Image
-                src={makeImageUrl(cover.url, ImageVariants.PUBLIC)}
+                src={cover ? makeImageUrl(cover.url, ImageVariants.PUBLIC) : '/images/place-cover-placeholder.jpg'}
                 alt={formik.values.title}
                 fill
                 priority
@@ -60,7 +56,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
 
     return (
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-            <div className="flex-center relative z-10 aspect-[16/7] max-h-[840px] min-h-[540px] overflow-hidden pb-7">
+            <div className="flex-center relative z-10 flex-[540px] pb-7">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
                     {renderCover()}
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
