@@ -10,6 +10,7 @@ import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { ShowMore } from '@/components/ui/show-more'
 import { usersAPI } from '@/redux/services/users.api'
 import { getCountryByCode } from '@/services/countries'
+import { formattedDate } from '@/utils/helpers/common'
 
 import { UserPlacesSkeleton } from './user-places-skeleton'
 
@@ -52,11 +53,23 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                                     </div>
                                     <div className="line-clamp-3 break-words font-medium">{place.title}</div>
                                 </Link>
-                                {country && (
-                                    <Link href={`/countries/${country.slug}`} className="text-small text-black-40">
-                                        {country.name[locale]}
-                                    </Link>
-                                )}
+
+                                <div className="flex gap-x-2">
+                                    {country && (
+                                        <>
+                                            <Link
+                                                href={`/countries/${country.slug}`}
+                                                className="text-small text-black-40"
+                                            >
+                                                {country.name[locale]}
+                                            </Link>
+                                            <div className="text-small text-black-40">•</div>
+                                        </>
+                                    )}
+                                    <div className="text-small text-black-40">
+                                        {formattedDate(place.createdAt, locale)}
+                                    </div>
+                                </div>
                             </div>
                         )
                     })}

@@ -23,7 +23,7 @@ export const ReviewRatingPlace = ({ place, rating, createdAt }: IReview) => {
                 <div className="flex gap-x-2">
                     {country && (
                         <>
-                            <Link href={`/countries/${country?.slug}`} className="text-small text-black-40">
+                            <Link href={`/countries/${country.slug}`} className="text-small text-black-40">
                                 {country.name[locale]}
                             </Link>
                             <div className="text-small text-black-40">•</div>
