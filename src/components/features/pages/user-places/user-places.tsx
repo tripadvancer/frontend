@@ -2,20 +2,16 @@
 
 import { useState } from 'react'
 
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
-import Link from 'next/link'
-
-import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { ShowMore } from '@/components/ui/show-more'
 import { usersAPI } from '@/redux/services/users.api'
-import { getCountryByCode } from '@/services/countries'
 
+import { UserPlacesItem } from './user-places-item'
 import { UserPlacesSkeleton } from './user-places-skeleton'
 
 export const UserPlaces = ({ userId }: { userId: number }) => {
     const t = useTranslations()
-    const locale = useLocale()
     const [page, setPage] = useState(1)
 
     const { data: places, isFetching, isSuccess, isError } = usersAPI.useGetPlacesByUserIdQuery({ userId, page })
@@ -36,30 +32,16 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
         return (
             <div className="flex flex-col gap-y-8">
                 <div className="grid grid-cols-2 gap-4 last:mb-0 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-3">
-                    {places.items.map(place => {
-                        const country = getCountryByCode(place.countryCode)
-
-                        return (
-                            <div key={`user-place-${place.id}`}>
-                                <Link href={`/places/${place.id}`} className="text-black-100">
-                                    <div className="mb-2 flex-none">
-                                        <PlacePreviewCover
-                                            cover={place.cover}
-                                            title={place.title}
-                                            size={192}
-                                            className="aspect-square rounded-lg"
-                                        />
-                                    </div>
-                                    <div className="line-clamp-3 break-words font-medium">{place.title}</div>
-                                </Link>
-                                {country && (
-                                    <Link href={`/countries/${country.slug}`} className="text-small text-black-40">
-                                        {country.name[locale]}
-                                    </Link>
-                                )}
-                            </div>
-                        )
-                    })}
+                    {places.items.map(place => (
+                        <UserPlacesItem
+                            key={`user-places-item-${place.id}`}
+                            id={place.id}
+                            title={place.title}
+                            cover={place.cover}
+                            countryCode={place.countryCode}
+                            createdAt={place.createdAt}
+                        />
+                    ))}
                 </div>
 
                 {places.total > page && <ShowMore isLoading={isFetching} onClick={() => setPage(prev => prev + 1)} />}
