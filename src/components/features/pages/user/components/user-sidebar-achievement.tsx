@@ -6,11 +6,17 @@ import { IUserStatistics } from '@/utils/types/user'
 
 const Item = ({ label, value }: { label: string; value: number }) => {
     return (
-        <li className="mb-2 flex justify-between gap-x-1">
+        <li className="mb-2 flex items-center justify-between gap-x-1">
             <div className="whitespace-nowrap">{label}</div>
-            <div className="overflow-hidden">
-                ...........................................................................................................................................................................................................
-            </div>
+            <div
+                className="grow border-b border-dotted"
+                style={{
+                    borderBottomColor: 'rgba(0, 0, 0, 0.4)',
+                    borderBottomWidth: '2px',
+                    height: '5px',
+                    marginTop: '4px',
+                }}
+            ></div>
             <div className="font-medium">{value}</div>
         </li>
     )
