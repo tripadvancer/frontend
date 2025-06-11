@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { UserMenuWithAuth } from '../user-menu/user-menu-with-auth'
 import { HeaderAddPlaceWithAuth } from './components/header-add-place-with-auth'
 import { HeaderLogo } from './components/header-logo'
+import { HeaderSearch } from './components/header-search'
 import { HeaderSignIn } from './components/header-signin'
 
 export const HeaderDesktop = async () => {
@@ -15,12 +16,14 @@ export const HeaderDesktop = async () => {
             <div className="flex items-center gap-x-8">
                 <HeaderLogo />
 
+                <HeaderSearch />
+
                 <nav className="flex gap-x-4">
                     <Link href="/maps" className="flex items-center gap-x-2 text-big">
                         {t('layout.header.links.map')}
                     </Link>
                     <Link href="/countries" className="flex items-center gap-x-2 text-big">
-                        {t('layout.header.links.countries')}
+                        {t('layout.header.links.world')}
                     </Link>
                     <Link href="/about" className="flex items-center gap-x-2 text-big">
                         {t('layout.header.links.about')}

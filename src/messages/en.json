@@ -155,7 +155,7 @@
                 "profile": "Profile",
                 "addPlace": "Add place",
                 "map": "Map",
-                "countries": "Countries",
+                "world": "World",
                 "about": "About"
             }
         },
@@ -413,7 +413,7 @@
             "countries": {
                 "title": "Where are you going?",
                 "text": "Visit top-rated destinations recommended by fellow travelers. Discover must-see sights, from iconic landmarks to hidden gems waiting to be explored.",
-                "button": "Explore World"
+                "button": "Explore the World"
             },
             "aroundPlaces": {
                 "title": "Explore places around you",
@@ -547,7 +547,7 @@
             }
         },
         "countries": {
-            "title": "All countries"
+            "title": "Explore the World"
         },
         "country": {
             "description": "Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.",

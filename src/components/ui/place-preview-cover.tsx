@@ -16,8 +16,8 @@ type PlacePreviewCoverProps = {
 export const PlacePreviewCover = ({ title, cover, size, imageVariant, className }: PlacePreviewCoverProps) => {
     if (!cover) {
         return (
-            <div className={classNames('flex-center bg-black-5', className)}>
-                <ImageStub className="w-1/3 text-black-15 opacity-75" />
+            <div className={classNames('flex-center bg-black-15', className)}>
+                <ImageStub className="w-1/3 text-black-40 opacity-75" />
             </div>
         )
     }
