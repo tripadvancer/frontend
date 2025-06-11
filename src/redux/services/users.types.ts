@@ -9,10 +9,9 @@ export type GetPlacesByUserIdResponse = PaginatedResponse<{
     id: number
     title: string
     cover: string | null
-    avgRating: number | null
-    reviewsCount: number
+    coordinates: [number, number]
     countryCode: string | null
-    isVisited: boolean
     isSaved: boolean
-    coordinates: number[]
+    isVisited: boolean
+    createdAt: Date
 }>
