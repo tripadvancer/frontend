@@ -41,9 +41,9 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
     })
 
     return (
-        <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col gap-y-4">
-                <div className="flex flex-col gap-y-2">
+        <form className="space-y-8" onSubmit={formik.handleSubmit}>
+            <div className="space-y-4">
+                <div className="space-y-2">
                     {reasons.map(reason => (
                         <FormRadio
                             key={reason}
@@ -66,7 +66,7 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
                     onChange={formik.handleChange}
                 />
             </div>
-            <div className="flex gap-x-2">
+            <div className="space-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading}>
                     {t('common.action.send')}
                 </FormButton>

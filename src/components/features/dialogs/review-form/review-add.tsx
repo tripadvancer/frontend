@@ -44,7 +44,7 @@ export const ReviewAdd = ({ placeId, userId }: ReviewAddProps) => {
     }
 
     return (
-        <div className="flex w-full flex-col gap-y-4 sm:w-104">
+        <div className="space-y-4 sm:w-104">
             <h1 className="h7">{t('dialog.reviewForm.title.add')}</h1>
             <hr className="border-black-70" />
             <ReviewForm

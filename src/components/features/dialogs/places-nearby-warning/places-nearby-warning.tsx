@@ -22,7 +22,7 @@ export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
     const dialog = useDialog()
 
     return (
-        <div className="flex w-full flex-col gap-y-8 sm:w-104">
+        <div className="space-y-8 sm:w-104">
             <h1 className="h7 text-center">{t('dialog.placesNearbyWarning.title')}</h1>
             <p className="text-center">
                 {t('dialog.placesNearbyWarning.text', {
@@ -30,7 +30,7 @@ export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
                 })}
             </p>
 
-            <div className="flex flex-col gap-y-4">
+            <div className="space-y-4">
                 {places.map(place => (
                     <div key={`place-nearby-${place.id}`} className="flex gap-x-4">
                         <Link href={`places/${place.id}`} className="peer flex-none" target="_blank">
@@ -55,7 +55,7 @@ export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
                 ))}
             </div>
 
-            <FormButton type="stroke" onClick={() => dialog.close()}>
+            <FormButton className="w-full" type="stroke" onClick={() => dialog.close()}>
                 {t('common.action.ok')}
             </FormButton>
         </div>

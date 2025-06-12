@@ -3,18 +3,17 @@
 import { useEffect, useMemo } from 'react'
 import { Layer, Source, useMap } from 'react-map-gl/maplibre'
 
-import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list.api'
 import { arrayToLngLat, getBoundsFromCoordinates, getMapFlyToOptions } from '@/utils/helpers/maps'
+import { useMapFilters } from '@/utils/hooks/use-map-filters'
 
 import { placesLayer } from './map-layers'
 
 export const MapSourceSavedPlaces = ({ listId }: { listId: number }) => {
-    const selectedCategories = useAppSelector(getWidgetSelectedCategories)
+    const [initialFilters] = useMapFilters()
 
     const { map } = useMap()
-    const { data, isSuccess } = listAPI.useGetListPlacesQuery({ listId, selectedCategories })
+    const { data, isSuccess } = listAPI.useGetListPlacesQuery({ listId, selectedCategories: initialFilters.categories })
 
     const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])
 

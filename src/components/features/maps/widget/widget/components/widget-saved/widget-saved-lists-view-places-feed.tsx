@@ -7,17 +7,16 @@ import { useTranslations } from 'next-intl'
 import { PlacesFeed } from '@/components/features/common/places-feed/places-feed'
 import { PlacesFeedSkeleton } from '@/components/features/common/places-feed/places-feed-skeleton'
 import { WidgetMessage } from '@/components/features/maps/widget/components/widget-message'
-import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list.api'
+import { useMapFilters } from '@/utils/hooks/use-map-filters'
 
 export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) => {
     const t = useTranslations()
-    const selectedCategories = useAppSelector(getWidgetSelectedCategories)
+    const [initialFilters] = useMapFilters()
 
     const { data, isError, isLoading, isSuccess, refetch } = listAPI.useGetListPlacesQuery({
         listId,
-        selectedCategories,
+        selectedCategories: initialFilters.categories,
     })
 
     const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])

@@ -13,7 +13,7 @@ export const ChooseNavigationApp = ({ lngLat }: { lngLat: LngLat }) => {
     const dialog = useDialog()
 
     return (
-        <div className="flex w-full flex-col gap-y-8 sm:w-104">
+        <div className="space-y-8 sm:w-104">
             <h1 className="h7 text-center">{t('dialog.chooseNavigationApp.title')}</h1>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <ChooseNavigationAppItem provider="google" lngLat={lngLat} />
@@ -21,7 +21,7 @@ export const ChooseNavigationApp = ({ lngLat }: { lngLat: LngLat }) => {
                 <ChooseNavigationAppItem provider="apple" lngLat={lngLat} />
                 <ChooseNavigationAppItem provider="yandex" lngLat={lngLat} />
             </div>
-            <FormButton type="stroke" onClick={() => dialog.close()}>
+            <FormButton className="w-full" type="stroke" onClick={() => dialog.close()}>
                 {t('common.action.cancel')}
             </FormButton>
         </div>

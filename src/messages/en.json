@@ -594,10 +594,6 @@
                     "title": "All places",
                     "emptyMessage": "No places found.<br></br>Try changing categories or zooming out the map."
                 },
-                "aroundMe": {
-                    "title": "Around me",
-                    "notLocation": "Allow location access to find places near you."
-                },
                 "savedPlaces": {
                     "title": "Saved",
                     "emptyMessage": "You have not saved places.<br></br>Create a new list and start adding places to it.",
@@ -610,8 +606,6 @@
                         "private": "Private",
                         "public": "Public",
                         "action": {
-                            "enableMapFilter": "Hide other places",
-                            "disableMapFilter": "Show all places",
                             "edit": "Edit",
                             "delete": "Delete"
                         }

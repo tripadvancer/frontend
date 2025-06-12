@@ -39,8 +39,8 @@ export const LocationPickerMethodOnMap = ({
     }
 
     return (
-        <div className="flex flex-col gap-y-8">
-            <div className="flex flex-col gap-y-4">
+        <div className="space-y-8">
+            <div className="space-y-4">
                 <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-black-15">
                     <LocationPickerMap viewState={viewState} onChangeViewState={handleCangeViewState} />
                 </div>
@@ -48,7 +48,9 @@ export const LocationPickerMethodOnMap = ({
                     {t('dialog.locationPicker.toggleMethodManually')}
                 </div>
             </div>
-            <FormButton onClick={handleConfirm}>{t('common.action.confirm')}</FormButton>
+            <FormButton className="w-full" onClick={handleConfirm}>
+                {t('common.action.confirm')}
+            </FormButton>
         </div>
     )
 }

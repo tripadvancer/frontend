@@ -102,15 +102,14 @@ export const SignIn = () => {
     })
 
     return (
-        <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
+        <form className="space-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
             <h1 className="h7 text-center">{t('auth.signIn.title')}</h1>
-            <div className="flex flex-col gap-y-4">
-                <div className="flex gap-x-2">
+            <div className="space-y-4">
+                <div className="space-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading} />
-                    {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
                 </div>
                 <Devider>{t('auth.or')}</Devider>
-                <div className="flex flex-col gap-y-2">
+                <div className="space-y-2">
                     <FormInput
                         type="text"
                         name="email"
@@ -132,7 +131,7 @@ export const SignIn = () => {
                     />
                 </div>
             </div>
-            <div className="flex flex-col gap-y-4">
+            <div className="space-y-4">
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                     {t('auth.signIn.submit')}
                 </FormButton>

@@ -8,18 +8,24 @@ import { PlacesFeed } from '@/components/features/common/places-feed/places-feed
 import { PlacesFeedSkeleton } from '@/components/features/common/places-feed/places-feed-skeleton'
 import { WidgetMessage } from '@/components/features/maps/widget/components/widget-message'
 import { getMapState } from '@/redux/features/map-slice'
-import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places.api'
+import { useMapFilters } from '@/utils/hooks/use-map-filters'
 
 export const WidgetAllPlaces = () => {
     const t = useTranslations()
     const mapBounds = useAppSelector(getMapState).bounds
-    const selectedCategories = useAppSelector(getWidgetState).selectedCategories
+    const [initialFilters] = useMapFilters()
 
     const { data, isError, isLoading, isSuccess, refetch } = placesAPI.useGetPlacesQuery(
-        { mapBounds, selectedCategories },
-        { skip: !mapBounds },
+        {
+            mapBounds,
+            selectedCategories: initialFilters.categories,
+            skip_visited: initialFilters.skipVisited,
+        },
+        {
+            skip: !mapBounds,
+        },
     )
 
     const places = useMemo(() => data?.features.map(({ properties }) => properties) ?? [], [data])

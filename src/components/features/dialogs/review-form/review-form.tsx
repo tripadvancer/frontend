@@ -45,9 +45,9 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
     })
 
     return (
-        <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col gap-y-4">
-                <div className="flex flex-col gap-y-2">
+        <form className="space-y-8" onSubmit={formik.handleSubmit}>
+            <div className="space-y-4">
+                <div className="space-y-2">
                     <label htmlFor="text" className="font-medium">
                         {t('dialog.reviewForm.field.rating.label')}
                     </label>
@@ -58,7 +58,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         onChange={value => formik.setFieldValue('rating', value)}
                     />
                 </div>
-                <div className="flex flex-col gap-y-2">
+                <div className="space-y-2">
                     <label htmlFor="text" className="font-medium">
                         {t('dialog.reviewForm.field.text.label')}
                     </label>
@@ -74,7 +74,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         onChange={formik.handleChange}
                     />
                 </div>
-                <div className="flex flex-col gap-y-2">
+                <div className="space-y-2">
                     <label htmlFor="text" className="font-medium">
                         {t('dialog.reviewForm.field.photos.label')}
                     </label>
@@ -90,7 +90,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 isLoading={isLoading}
                 onChange={value => formik.setFieldValue('isVisited', value)}
             />
-            <div className="flex gap-x-2">
+            <div className="space-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty}>
                     {t('common.action.save')}
                 </FormButton>
