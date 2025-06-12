@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent } from 'react'
+import { ChangeEvent, Ref } from 'react'
 
 import { SearchIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -23,7 +23,7 @@ export const HeaderSearchInput = (props: HeaderSearchInputProps) => {
     }
 
     return (
-        <div className="relative z-10">
+        <div className="relative z-10 w-full">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 transform text-blue-100">
                 {props.isLoading ? <Spinner size={16} /> : <SearchIcon size={16} absoluteStrokeWidth />}
             </div>

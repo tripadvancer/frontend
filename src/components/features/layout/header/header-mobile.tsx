@@ -7,6 +7,7 @@ import { UserMenuWithAuth } from '../user-menu/user-menu-with-auth'
 import { HeaderAddPlaceWithAuth } from './components/header-add-place-with-auth'
 import { HeaderLogo } from './components/header-logo'
 import { HeaderMobileMenu } from './components/header-mobile-menu'
+import { HeaderMobileSearch } from './components/header-mobile-search'
 import { HeaderSignIn } from './components/header-signin'
 
 export const HeaderMobile = async () => {
@@ -20,6 +21,7 @@ export const HeaderMobile = async () => {
             </div>
 
             <div className="flex-center gap-x-2">
+                <HeaderMobileSearch />
                 <Link href="/maps">
                     <MapIcon />
                 </Link>
