@@ -12,8 +12,8 @@ export const ReviewFormSkeleton = () => {
     const t = useTranslations()
 
     return (
-        <div role="status" className="flex animate-pulse flex-col gap-y-8">
-            <div className="flex flex-col gap-y-4">
+        <div role="status" className="animate-pulse space-y-8">
+            <div className="space-y-4">
                 <FormRatingInputSkeleton labeled />
                 <FormTextareaSkeleton labeled />
                 <FormFileInputSkeleton labeled />
@@ -22,7 +22,7 @@ export const ReviewFormSkeleton = () => {
                 <FormSwitcherSkeleton />
                 <div className="h-5 w-1/4 rounded-full bg-black-5" />
             </div>
-            <div className="flex gap-x-2">
+            <div className="space-x-2">
                 <FormButtonSkeleton>{t('common.action.send')}</FormButtonSkeleton>
                 <FormButtonSkeleton>{t('common.action.close')}</FormButtonSkeleton>
             </div>

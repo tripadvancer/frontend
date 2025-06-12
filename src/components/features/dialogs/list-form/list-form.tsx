@@ -43,9 +43,9 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
     })
 
     return (
-        <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col gap-y-4">
-                <div className="flex flex-col gap-y-2">
+        <form className="space-y-8" onSubmit={formik.handleSubmit}>
+            <div className="space-y-4">
+                <div className="space-y-2">
                     <label htmlFor="text" className="font-medium">
                         {t('dialog.listForm.field.name.label')}
                     </label>
@@ -63,7 +63,7 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
                     />
                 </div>
 
-                <div className="flex flex-col gap-y-2">
+                <div className="space-y-2">
                     <label htmlFor="text" className="font-medium">
                         {t('dialog.listForm.field.description.label')}
                     </label>
@@ -80,7 +80,7 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
                     />
                 </div>
             </div>
-            <div className="flex gap-x-2">
+            <div className="space-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty}>
                     {t('common.action.send')}
                 </FormButton>

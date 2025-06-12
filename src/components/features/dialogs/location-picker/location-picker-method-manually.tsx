@@ -41,8 +41,8 @@ export const LocationPickerMethodManually = ({
     }
 
     return (
-        <div className="flex flex-col gap-y-8">
-            <div className="flex flex-col gap-y-4">
+        <div className="space-y-8">
+            <div className="space-y-4">
                 <FormInput
                     type="text"
                     name="location"
@@ -57,7 +57,7 @@ export const LocationPickerMethodManually = ({
                     {t('dialog.locationPicker.toggleMethodOnMap')}
                 </div>
             </div>
-            <FormButton onClick={handleConfirm} isDisabled={!value}>
+            <FormButton className="w-full" onClick={handleConfirm} isDisabled={!value}>
                 {t('common.action.confirm')}
             </FormButton>
         </div>

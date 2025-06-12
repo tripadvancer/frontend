@@ -40,7 +40,7 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
     }
 
     return (
-        <div className="flex w-full flex-col gap-y-8 sm:w-104">
+        <div className="space-y-8 sm:w-104">
             <h1 className="h7 text-center">{t('dialog.selectCategories.title', { maxCount: maxCategoriesCount })}</h1>
             <div className="flex flex-wrap justify-center gap-1">
                 {sortedCategories.map(category => (
@@ -57,8 +57,8 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
                     />
                 ))}
             </div>
-            <div className="flex flex-col gap-y-4">
-                <FormButton isDisabled={selectedCategoryIds.length === 0} onClick={handleConfirm}>
+            <div className="space-y-4">
+                <FormButton className="w-full" isDisabled={selectedCategoryIds.length === 0} onClick={handleConfirm}>
                     {t('common.action.confirm')}
                 </FormButton>
                 <div className="text-center text-small text-black-40">

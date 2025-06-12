@@ -77,9 +77,9 @@ export const ChangePassword = () => {
     })
 
     return (
-        <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
+        <form className="space-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
             <h1 className="h7 text-center">{t('auth.changePassword.title')}</h1>
-            <div className="flex flex-col gap-y-2">
+            <div className="space-y-2">
                 <p className="text-center">{t('auth.changePassword.text')}</p>
                 <FormInput
                     type="password"

@@ -72,8 +72,8 @@ export const ResetPassword = () => {
 
     if (!status) {
         return (
-            <form className="flex w-full flex-col gap-y-8" onSubmit={formik.handleSubmit}>
-                <div className="flex flex-col gap-y-2">
+            <form className="space-y-8" onSubmit={formik.handleSubmit}>
+                <div className="space-y-2">
                     <p className="text-center">{t('auth.resetPassword.title')}</p>
                     <FormInput
                         type="password"

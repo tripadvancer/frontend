@@ -8,7 +8,7 @@ export const HeaderSearchNearby = () => {
             title="Places Nearby"
             info="See places near your location"
             icon={<MapPinnedIcon size={16} />}
-            href="/around-me"
+            href="/maps?nearby_only=true"
         />
     )
 }
