@@ -10,7 +10,6 @@ import { useKeypress } from '@/utils/hooks/use-keypress'
 
 import { HeaderSearchInput } from './header-search-input'
 import { HeaderSearchNearby } from './header-search-nearby'
-import { HeaderSearchRecent } from './header-search-recent'
 import { HeaderSearchResult } from './header-search-result'
 import { HeaderSearchSuggest } from './header-search-suggest'
 
@@ -41,7 +40,7 @@ export const HeaderSearch = () => {
     }
 
     return (
-        <div className="relative w-[350px]" ref={ref}>
+        <div className="relative sm:w-[350px]" ref={ref}>
             <HeaderSearchInput
                 value={searchTerm}
                 isLoading={isLoading}

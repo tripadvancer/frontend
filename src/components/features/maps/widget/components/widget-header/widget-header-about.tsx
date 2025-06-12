@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import Link from 'next/link'
 
+import { ExternalLink } from '@/components/ui/external-link'
 import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 
@@ -15,7 +16,6 @@ export const WidgetHeaderAbout = () => {
         return (
             <div className="flex flex-col gap-y-4 px-4 pb-8 pt-4 sm:px-8 sm:pt-0">
                 <div className="flex flex-col gap-y-2">
-                    <p>{t('about.title')}</p>
                     <p>{t('about.description')}</p>
                 </div>
                 <ul className="flex flex-col gap-y-2">
@@ -43,7 +43,17 @@ export const WidgetHeaderAbout = () => {
                         </Link>
                     </li>
                 </ul>
-                <p className="text-black-70">{t('layout.footer.copyright')}</p>
+
+                <div className="flex gap-x-2 text-black-70">
+                    <div>{t('layout.footer.copyright')}</div>|
+                    <div>
+                        {t.rich('layout.footer.poweredByStadiaMaps', {
+                            stadiaMapsLink: stadiaMapsLink => (
+                                <ExternalLink href="https://stadiamaps.com/">{stadiaMapsLink}</ExternalLink>
+                            ),
+                        })}
+                    </div>
+                </div>
             </div>
         )
     }
