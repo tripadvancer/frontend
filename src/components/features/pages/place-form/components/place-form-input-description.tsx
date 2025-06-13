@@ -3,12 +3,13 @@
 import { useState } from 'react'
 
 import CharacterCount from '@tiptap/extension-character-count'
+import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import Underline from '@tiptap/extension-underline'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import classNames from 'classnames'
-import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon } from 'lucide-react'
+import { BoldIcon, ItalicIcon, LinkIcon, StrikethroughIcon, UnderlineIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { validationConfig } from '@/configs/validation.config'
@@ -34,6 +35,42 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
                 emptyEditorClass: 'is-editor-empty',
             }),
             Underline,
+            Link.configure({
+                openOnClick: false,
+                autolink: true,
+                defaultProtocol: 'https',
+                protocols: ['http', 'https'],
+                isAllowedUri: (url, ctx) => {
+                    try {
+                        const parsedUrl = url.includes(':') ? new URL(url) : new URL(`${ctx.defaultProtocol}://${url}`)
+                        if (!ctx.defaultValidate(parsedUrl.href)) return false
+
+                        const disallowedProtocols = ['ftp', 'file', 'mailto']
+                        const protocol = parsedUrl.protocol.replace(':', '')
+                        if (disallowedProtocols.includes(protocol)) return false
+
+                        const allowedProtocols = ctx.protocols.map(p => (typeof p === 'string' ? p : p.scheme))
+                        if (!allowedProtocols.includes(protocol)) return false
+
+                        const disallowedDomains = ['example-phishing.com', 'malicious-site.net']
+                        const domain = parsedUrl.hostname
+                        if (disallowedDomains.includes(domain)) return false
+
+                        return true
+                    } catch {
+                        return false
+                    }
+                },
+                shouldAutoLink: url => {
+                    try {
+                        const parsedUrl = url.includes(':') ? new URL(url) : new URL(`https://${url}`)
+                        const disallowedDomains = ['example-no-autolink.com', 'another-no-autolink.com']
+                        return !disallowedDomains.includes(parsedUrl.hostname)
+                    } catch {
+                        return false
+                    }
+                },
+            }),
             CharacterCount,
         ],
         content: value,
@@ -99,6 +136,37 @@ export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDes
                                         icon={<StrikethroughIcon size={24} />}
                                         isActive={editor.isActive('strike')}
                                         onClick={() => editor.chain().focus().toggleStrike().run()}
+                                    />
+
+                                    <PlaceFormInputDescriptionButton
+                                        icon={<LinkIcon size={24} />}
+                                        isActive={editor.isActive('link')}
+                                        onClick={() => {
+                                            const previousUrl = editor.getAttributes('link').href
+                                            let url = window.prompt('URL', previousUrl ?? '')
+
+                                            if (url === null) return
+
+                                            if (url.trim() === '') {
+                                                editor.chain().focus().extendMarkRange('link').unsetLink().run()
+                                                return
+                                            }
+
+                                            if (!/^https?:\/\//i.test(url)) {
+                                                url = `https://${url}`
+                                            }
+
+                                            try {
+                                                editor
+                                                    .chain()
+                                                    .focus()
+                                                    .extendMarkRange('link')
+                                                    .setLink({ href: url })
+                                                    .run()
+                                            } catch (e) {
+                                                alert((e as Error).message)
+                                            }
+                                        }}
                                     />
                                 </div>
                             </div>
