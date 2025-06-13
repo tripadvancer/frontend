@@ -4,13 +4,15 @@ import { useCallback, useState } from 'react'
 
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
-import { MapFiltersState, buildFiltersQueryString, parseFiltersFromSearchParams } from '@/utils/helpers/map-filters'
+import { MapFiltersState } from '@/utils/helpers/map-filters'
 import { useMapFilters } from '@/utils/hooks/use-map-filters'
 
 import { MapFiltersCategories } from './components/map-filters-categories'
+import { MapFiltersCountries } from './components/map-filters-countries'
 import { MapFiltersSwitcherNearbyOnly } from './components/map-filters-switcher-hide-nearby-only'
 import { MapFiltersSwitcherHideVisited } from './components/map-filters-switcher-hide-visited'
 import { MapFiltersSwitcherShowOnlySaved } from './components/map-filters-switcher-show-only-saved'
+import { MapFiltersUsers } from './components/map-filters-users'
 
 export const MapFilters = () => {
     const dialog = useDialog()
@@ -23,6 +25,16 @@ export const MapFilters = () => {
         dialog.close()
     }, [filters, setFiltersToUrl, dialog])
 
+    const handleResetFilters = useCallback(() => {
+        setFilters({
+            categories: [],
+            skipVisited: false,
+            nearbyOnly: false,
+            radius: 0,
+            showOnlySaved: false,
+        })
+    }, [setFilters])
+
     return (
         <div className="space-y-4 sm:w-104">
             <h1 className="h7">Filters</h1>
@@ -30,10 +42,14 @@ export const MapFilters = () => {
 
             <div className="space-y-8">
                 <div className="space-y-4">
+                    <MapFiltersCountries />
+                    <MapFiltersUsers />
+
                     <MapFiltersCategories
                         selectedCategoriesIds={filters.categories}
                         onClick={newCats => setFilters(prev => ({ ...prev, categories: newCats }))}
                     />
+
                     <hr />
                     <MapFiltersSwitcherNearbyOnly
                         checked={filters.nearbyOnly}
@@ -54,8 +70,8 @@ export const MapFilters = () => {
 
                 <div className="space-x-2">
                     <FormButton onClick={handleApplyFilters}>Apply</FormButton>
-                    <FormButton type="stroke" onClick={() => dialog.close()}>
-                        Close
+                    <FormButton type="stroke" onClick={handleResetFilters}>
+                        Reset
                     </FormButton>
                 </div>
             </div>
