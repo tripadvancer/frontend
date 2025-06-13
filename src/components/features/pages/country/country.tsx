@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 
-import { TentTreeIcon } from 'lucide-react'
+import { MapIcon, TentTreeIcon } from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
@@ -36,15 +36,22 @@ export const Country = async ({
                     <CountryCover countryCode={country.code} />
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
                 </div>
-                <section className="container relative z-30 py-8 text-center">
-                    <div className="m-auto sm:w-2/3">
-                        <Link href="/countries" className="mb-4 inline-block font-medium text-white hover:text-white">
+                <section className="container relative z-30 py-8">
+                    <div className="m-auto space-y-4 text-center sm:w-2/3">
+                        <Link href="/countries" className="inline-block font-medium text-white hover:text-white">
                             {t('page.country.viewAll')}
                         </Link>
-                        <h1 className="title mb-4 text-white">{country.name[locale]}</h1>
+                        <h1 className="title text-white">{country.name[locale]}</h1>
                         <p className="text-big text-white">
                             {t('page.country.description', { country: country.name[locale] })}
                         </p>
+
+                        <Link
+                            href="/maps"
+                            className="inline-flex gap-x-2 text-big font-medium text-white hover:text-white"
+                        >
+                            <MapIcon /> Show on Map
+                        </Link>
                     </div>
                 </section>
             </div>

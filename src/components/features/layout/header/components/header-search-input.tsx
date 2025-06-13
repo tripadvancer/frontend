@@ -2,6 +2,7 @@
 
 import { ChangeEvent, Ref } from 'react'
 
+import classNames from 'classnames'
 import { SearchIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
@@ -9,6 +10,7 @@ import { Spinner } from '@/components/ui/spinner'
 
 type HeaderSearchInputProps = {
     value: string
+    className?: string
     isLoading: boolean
     onChange: (value: string) => void
     onClick: () => void
@@ -23,7 +25,7 @@ export const HeaderSearchInput = (props: HeaderSearchInputProps) => {
     }
 
     return (
-        <div className="relative z-10 w-full">
+        <div className={classNames('relative z-10 w-full', props.className)}>
             <div className="absolute left-4 top-1/2 -translate-y-1/2 transform text-blue-100">
                 {props.isLoading ? <Spinner size={16} /> : <SearchIcon size={16} absoluteStrokeWidth />}
             </div>

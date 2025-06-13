@@ -10,7 +10,6 @@ export const Widget = () => {
             <WidgetHeader />
             <div className="flex flex-col gap-y-4 rounded-2xl bg-blue-10 px-4 py-6 sm:relative sm:gap-y-4 sm:p-8">
                 <WidgetSearch />
-                {/* <WidgetCategories variant="blue" /> */}
                 <WidgetFilters />
             </div>
             <div className="px-4 py-6 sm:p-8">

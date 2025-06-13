@@ -1,5 +1,7 @@
 'use client'
 
+import { ChevronDown, ChevronDownIcon } from 'lucide-react'
+
 import { MapFilters } from '@/components/features/dialogs/map-filters/map-filters'
 import { useDialog } from '@/providers/dialog-provider'
 import { useMapFilters } from '@/utils/hooks/use-map-filters'
@@ -20,7 +22,10 @@ export const WidgetFilters = () => {
 
     return (
         <div className="flex cursor-pointer items-center gap-x-2 text-caps" onClick={handleClick}>
-            <span className="uppercase">Filters</span>
+            <div className="flex items-center gap-x-1 uppercase">
+                Filters
+                <ChevronDownIcon size={16} />
+            </div>
             {activeCount > 0 && <span className="text-small text-blue-100">{activeCount} selected</span>}
         </div>
     )

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { SearchIcon, XIcon } from 'lucide-react'
@@ -52,7 +52,7 @@ export const HeaderMobileSearch = () => {
                                 onClear={handleInputClear}
                             />
 
-                            <div className="mt-1">
+                            <div className="max-h-[calc(100vh-6rem)] overflow-y-auto pb-4 pt-1">
                                 <HeaderSearchNearby />
                                 <hr className="my-1" />
                                 <HeaderSearchResult searchTerm={searchTerm} setIsLoading={setIsLoading} />
