@@ -83,7 +83,7 @@ export const LocationPickerMapSearch = ({ onSelect, onHide }: LocationPickerSear
             />
 
             {isAutocompleteVisible && (
-                <div className="p-1">
+                <div className="px-1 pb-1">
                     {items.map((item, index) => (
                         <div
                             key={`search-item-${item.title}-${index}`}

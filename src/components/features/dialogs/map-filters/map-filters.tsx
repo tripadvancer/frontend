@@ -27,6 +27,8 @@ export const MapFilters = () => {
 
     const handleResetFilters = useCallback(() => {
         setFilters({
+            country: '',
+            user: '',
             categories: [],
             skipVisited: false,
             nearbyOnly: false,
@@ -42,8 +44,14 @@ export const MapFilters = () => {
 
             <div className="space-y-8">
                 <div className="space-y-4">
-                    <MapFiltersCountries />
-                    <MapFiltersUsers />
+                    <MapFiltersCountries
+                        value={filters.country}
+                        onChange={value => setFilters(prev => ({ ...prev, country: value }))}
+                    />
+                    <MapFiltersUsers
+                        value={filters.user}
+                        onChange={value => setFilters(prev => ({ ...prev, user: value }))}
+                    />
 
                     <MapFiltersCategories
                         selectedCategoriesIds={filters.categories}
@@ -51,14 +59,14 @@ export const MapFilters = () => {
                     />
 
                     <hr />
-                    <MapFiltersSwitcherNearbyOnly
-                        checked={filters.nearbyOnly}
-                        onChange={() => setFilters(prev => ({ ...prev, nearbyOnly: !prev.nearbyOnly }))}
-                    />
-                    <hr />
                     <MapFiltersSwitcherHideVisited
                         checked={filters.skipVisited}
                         onChange={() => setFilters(prev => ({ ...prev, skipVisited: !prev.skipVisited }))}
+                    />
+                    <hr />
+                    <MapFiltersSwitcherNearbyOnly
+                        checked={filters.nearbyOnly}
+                        onChange={() => setFilters(prev => ({ ...prev, nearbyOnly: !prev.nearbyOnly }))}
                     />
                     <hr />
                     <MapFiltersSwitcherShowOnlySaved

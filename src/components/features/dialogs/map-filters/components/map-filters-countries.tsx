@@ -2,7 +2,12 @@
 
 import { FormInput } from '@/components/ui/form-input'
 
-export const MapFiltersCountries = () => {
+type MapFiltersCountriesProps = {
+    value: string
+    onChange: (value: string) => void
+}
+
+export const MapFiltersCountries = ({ value, onChange }: MapFiltersCountriesProps) => {
     return (
         <div className="space-y-2">
             <label htmlFor="text" className="font-medium">
@@ -11,10 +16,10 @@ export const MapFiltersCountries = () => {
             <FormInput
                 type="text"
                 name="countries"
-                value=""
+                value={value}
                 autoComplete="off"
                 placeholder="Search countries"
-                onChange={() => {}}
+                onChange={e => onChange(e.target.value.trim())}
             />
         </div>
     )

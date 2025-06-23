@@ -1,6 +1,6 @@
 import { date } from 'yup'
 
-import { сountriesDictionary } from '@/utils/dictionaries/countries'
+import { countriesDictionary } from '@/utils/dictionaries/countries'
 import { ICountryDict } from '@/utils/types/country'
 import { ISearchItem, ISearchResult, SearchInputs } from '@/utils/types/search'
 
@@ -12,7 +12,7 @@ export const searchAPI = api.injectEndpoints({
             query: ({ query }) => `search?query=${query}`,
             transformResponse: (returnValue: ISearchResult, meta, arg) => {
                 // Add countries to the response
-                const countriesData = сountriesDictionary.filter(country => {
+                const countriesData = countriesDictionary.filter(country => {
                     return country.name['en'].toLowerCase().includes(arg.query.toLowerCase())
                 })
                 const countriesSearchResult: ISearchItem<ICountryDict>[] = countriesData.map(country => ({

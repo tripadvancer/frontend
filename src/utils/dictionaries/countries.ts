@@ -1,6 +1,6 @@
 import { ICountryDict } from '@/utils/types/country'
 
-export const сountriesDictionary: ICountryDict[] = [
+export const countriesDictionary: ICountryDict[] = [
     {
         code: 'XK',
         slug: 'kosovo',
