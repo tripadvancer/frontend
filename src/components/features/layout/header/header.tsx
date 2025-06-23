@@ -3,7 +3,7 @@ import { HeaderMobile } from './header-mobile'
 
 export const Header = () => {
     return (
-        <header className="sticky top-0 z-40 bg-blue-20">
+        <header className="sticky top-0 z-50 bg-blue-20">
             <HeaderMobile />
             <HeaderDesktop />
         </header>

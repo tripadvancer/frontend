@@ -1,12 +1,15 @@
 'use client'
 
-import { useCallback } from 'react'
-import { LngLat, MapEvent, MapLayerMouseEvent, ViewStateChangeEvent } from 'react-map-gl/maplibre'
+import { useCallback, useEffect, useState } from 'react'
+import { LngLat, MapEvent, MapLayerMouseEvent, ViewState, ViewStateChangeEvent } from 'react-map-gl/maplibre'
 
+import { useRouter, useSearchParams } from 'next/navigation'
+
+import { PlacePreview } from '@/components/features/dialogs/place-preview/place-preview'
+import { useDialog } from '@/providers/dialog-provider'
 import {
     closeMapPopups,
     getMapState,
-    setMapBounds,
     setMapLocationPopupInfo,
     setMapPlacePopupInfo,
     setMapViewState,
@@ -16,6 +19,9 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 export const useMapEventHandlers = () => {
     const dispatch = useAppDispatch()
     const mapState = useAppSelector(getMapState)
+    const router = useRouter()
+    const searchParams = useSearchParams()
+    const dialog = useDialog()
 
     const showLocationPopup = useCallback(
         (lngLat: LngLat) => {
@@ -51,9 +57,6 @@ export const useMapEventHandlers = () => {
                 pinGrayImage.src = '/images/pin-gray.svg'
                 pinGrayImage.onload = () => map.addImage('pin-gray', pinGrayImage)
             }
-
-            const mapBounds = map.getBounds()
-            dispatch(setMapBounds(mapBounds))
         },
         [dispatch],
     )
@@ -71,13 +74,25 @@ export const useMapEventHandlers = () => {
 
     /**
      * This function is called when the map is moved.
-     * It updates the bounds state.
      */
     const handleMoveEnd = useCallback(
         (event: ViewStateChangeEvent) => {
             const map = event.target
-            const mapBounds = map.getBounds()
-            dispatch(setMapBounds(mapBounds))
+            const center = map.getCenter()
+            const zoom = map.getZoom()
+
+            if (isNaN(center.lat) || isNaN(center.lng) || isNaN(zoom)) return
+
+            const roundedZoom = Math.round(zoom * 10) / 10
+            const roundedLat = parseFloat(center.lat.toFixed(6))
+            const roundedLng = parseFloat(center.lng.toFixed(6))
+
+            const params = new URLSearchParams(searchParams.toString())
+            params.set('lat', roundedLat.toString())
+            params.set('lng', roundedLng.toString())
+            params.set('zoom', roundedZoom.toFixed(1))
+
+            router.replace(`?${params.toString()}`, { scroll: false })
         },
         [dispatch],
     )
@@ -102,42 +117,42 @@ export const useMapEventHandlers = () => {
      * This function is called when the mouse clicks a feature on the map.
      * It popup a modal with the place details.
      */
-    const handleClick = useCallback(
-        (event: MapLayerMouseEvent) => {
-            if (event.features) {
-                const feature = event.features[0]
-                if (feature) {
-                    // @ts-ignore
-                    const coordinates = feature.geometry.coordinates.slice()
+    // const handleClick = useCallback(
+    //     (event: MapLayerMouseEvent) => {
+    //         if (event.features) {
+    //             const feature = event.features[0]
+    //             if (feature) {
+    //                 dialog.open(<PlacePreview />)
 
-                    while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
-                        coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360
-                    }
+    //                 // // @ts-ignore
+    //                 // const coordinates = feature.geometry.coordinates.slice()
+    //                 // while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
+    //                 //     coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360
+    //                 // }
+    //                 // const place = { ...feature.properties, coordinates } as {
+    //                 //     id: number
+    //                 //     title: string
+    //                 //     cover: string | null
+    //                 //     avgRating: number | null
+    //                 //     reviewsCount: number
+    //                 //     isSaved: boolean
+    //                 //     coordinates: number[]
+    //                 // }
+    //                 // dispatch(setMapPlacePopupInfo(place))
+    //             } else {
+    //                 if (mapState.placePopupInfo || mapState.locationPopupInfo) {
+    //                     dispatch(closeMapPopups())
+    //                     return
+    //                 }
 
-                    const place = { ...feature.properties, coordinates } as {
-                        id: number
-                        title: string
-                        cover: string | null
-                        avgRating: number | null
-                        reviewsCount: number
-                        isSaved: boolean
-                        coordinates: number[]
-                    }
-                    dispatch(setMapPlacePopupInfo(place))
-                } else {
-                    if (mapState.placePopupInfo || mapState.locationPopupInfo) {
-                        dispatch(closeMapPopups())
-                        return
-                    }
+    //                 showLocationPopup(event.lngLat.wrap())
+    //             }
+    //         }
 
-                    showLocationPopup(event.lngLat.wrap())
-                }
-            }
-
-            event.originalEvent.stopPropagation()
-        },
-        [dispatch, mapState, showLocationPopup],
-    )
+    //         event.originalEvent.stopPropagation()
+    //     },
+    //     [dispatch, mapState, showLocationPopup],
+    // )
 
     /**
      * This function is called when the mouse right clicks on the map.
@@ -160,7 +175,7 @@ export const useMapEventHandlers = () => {
         onZoomEnd: handleMoveEnd,
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave,
-        onClick: handleClick,
+        // onClick: handleClick,
         onContextMenu: handleContextMenu,
     }
 }

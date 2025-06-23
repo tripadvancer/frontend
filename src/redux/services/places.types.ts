@@ -1,10 +1,9 @@
-import { LngLatBounds } from 'react-map-gl/maplibre'
-
 import { IReview } from '@/utils/types/common'
 import { GeoJsonCollection } from '@/utils/types/geo'
 
 export type GetPlacesParams = {
-    mapBounds: LngLatBounds | undefined
+    lat: number
+    lng: number
     selectedCategories: number[]
     skip_visited: boolean
 }

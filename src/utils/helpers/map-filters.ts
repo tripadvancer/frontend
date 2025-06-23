@@ -2,6 +2,9 @@ import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { countriesDictionary } from '@/utils/dictionaries/countries'
 
 export interface MapFiltersState {
+    lng: number
+    lat: number
+    zoom: number
     country: string
     user: string
     categories: number[]
@@ -47,6 +50,9 @@ export const safeParseUser = (val: string | null): string => {
 
 export function parseFiltersFromSearchParams(params: URLSearchParams): MapFiltersState {
     return {
+        lng: safeParseNumber(params.get('lng'), 0),
+        lat: safeParseNumber(params.get('lat'), 0),
+        zoom: safeParseNumber(params.get('zoom'), 10),
         country: safeParseCountry(params.get('country') || ''),
         user: safeParseUser(params.get('user') || ''),
         categories: safeParseCategories(params.get('categories')),

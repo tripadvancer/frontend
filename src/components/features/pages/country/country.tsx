@@ -47,7 +47,7 @@ export const Country = async ({
                         </p>
 
                         <Link
-                            href="/maps"
+                            href={`/maps?bb=${country.bounds}`}
                             className="inline-flex gap-x-2 text-big font-medium text-white hover:text-white"
                         >
                             <MapIcon /> Show on Map
