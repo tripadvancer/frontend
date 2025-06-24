@@ -15,20 +15,20 @@ export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) 
     const countrySlug = country?.slug ?? ''
 
     return (
-        <figure className="group overflow-hidden rounded-2xl bg-orange-10">
+        <figure className="group overflow-hidden rounded-lg bg-orange-10">
             <Link href={`/countries/${countrySlug}`} className="link-black">
                 <div className="w-full overflow-hidden">
                     <ImageWithFallback
                         src={`/images/countries/preview/${countryCode.toLowerCase()}.jpg`}
                         width={256}
                         height={256}
-                        className="aspect-square w-full rounded-t-2xl transition duration-300 group-hover:scale-110"
+                        className="w-full transition duration-300 group-hover:scale-110"
                         alt={countryName}
                     />
                 </div>
-                <figcaption className="flex flex-col justify-between p-4">
-                    <h4 className="h7 mb-4 line-clamp-2 h-12 break-words sm:h-[52px]">{countryName}</h4>
-                    <div className="flex flex-row items-center gap-x-2 text-black-40">
+                <figcaption className="flex flex-col gap-y-4 p-4">
+                    <h4 className="h7 line-clamp-1 h-6 break-words sm:h-[26px]">{countryName}</h4>
+                    <div className="flex items-center gap-x-2 text-black-40">
                         <MapPin size={16} />
                         {t('common.placesCounter', { count: placesCount })}
                     </div>
