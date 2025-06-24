@@ -5,18 +5,32 @@ type PlacesGridProps = {
         id: number
         title: string
         cover: string | null
-        avgRating: number | null
-        reviewsCount: number
+        rating?: {
+            avgRating: number | null
+            reviewsCount: number
+        }
+        meta?: {
+            countryCode: string | null
+            createdAt: Date
+        }
         distance?: number
     }[]
 }
 
 export const PlacesGrid = ({ places }: PlacesGridProps) => {
-    return (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4 xl:gap-8">
-            {places.map(place => (
-                <PlacesGridItem key={`places-grid-item-${place.id}`} {...place} />
-            ))}
-        </div>
-    )
+    return places.map(place => (
+        <PlacesGridItem
+            key={`places-grid-item-${place.id}`}
+            id={place.id}
+            title={place.title}
+            cover={place.cover}
+            rating={place.rating}
+            meta={place.meta}
+            distance={place.distance}
+        />
+    ))
+}
+
+{
+    /* <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-5 xl:gap-8"></div> */
 }

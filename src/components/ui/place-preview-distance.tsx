@@ -1,13 +1,13 @@
 'use client'
 
+import { FootprintsIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-type DistanceProps = {
+type PlacePreviewDistanceProps = {
     distance: number
-    className?: string
 }
 
-export const Distance = ({ distance, className }: DistanceProps) => {
+export const PlacePreviewDistance = ({ distance }: PlacePreviewDistanceProps) => {
     const t = useTranslations()
 
     const getDistance = (distance: number) => {
@@ -16,5 +16,9 @@ export const Distance = ({ distance, className }: DistanceProps) => {
             : t('common.distance.km', { distance: (distance / 1000).toFixed(1).replace(/\.0$/, '') })
     }
 
-    return <div className={className}>{getDistance(distance)}</div>
+    return (
+        <div className="flex items-center gap-x-1 text-small text-black-40">
+            <FootprintsIcon size={16} /> {getDistance(distance)}
+        </div>
+    )
 }

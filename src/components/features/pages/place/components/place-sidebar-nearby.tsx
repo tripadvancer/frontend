@@ -4,8 +4,8 @@ import { getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import { Distance } from '@/components/ui/distance'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
+import { PlacePreviewDistance } from '@/components/ui/place-preview-distance'
 import { getPlacesAround } from '@/services/places'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { GeoJsonPoint } from '@/utils/types/geo'
@@ -54,7 +54,7 @@ export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyPro
                                 />
                                 <div className="flex min-w-0 flex-col gap-y-1">
                                     <div className="line-clamp-3 break-words font-medium">{place.title}</div>
-                                    <Distance distance={place.distance} className="text-small text-black-40" />
+                                    <PlacePreviewDistance distance={place.distance} />
                                 </div>
                             </div>
                         </Link>
