@@ -68,7 +68,7 @@ export function useUserLocation(): useUserLocationInterface {
         return () => {
             navigator.geolocation.clearWatch(watchId)
         }
-    }, [])
+    }, [dispatch, toast, t])
 
     const handleLocate = () => {
         if (isDenied) {

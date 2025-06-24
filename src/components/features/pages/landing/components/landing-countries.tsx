@@ -16,7 +16,7 @@ export const LandingCountries = async () => {
                 {t('page.landing.countries.text')}
             </p>
             <div className="flex flex-col gap-y-8">
-                <CountriesGrid countries={countries.slice(0, 12)} />
+                <CountriesGrid countries={countries.slice(0, 8)} />
                 <ShowAllLink href="/countries">{t('page.landing.countries.button')}</ShowAllLink>
             </div>
         </section>
