@@ -29,7 +29,7 @@ type PlaceFormProps = {
 
 export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps) => {
     const t = useTranslations()
-    const [isUploading, setIsUploading] = useState(false)
+    const [isFormDisabled, setIsFormDisabled] = useState(false)
 
     const formik = useFormik({
         initialValues,
@@ -90,7 +90,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                         />
                         <PlaceFormInputPhotos
                             initialPhotos={formik.initialValues.photos}
-                            setIsUploading={setIsUploading}
+                            setIsFormDisabled={setIsFormDisabled}
                             onChange={handlePhotosChange}
                         />
                         <PlaceFormToggleIsVisited
@@ -99,7 +99,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                         />
                         <div className="flex flex-col gap-y-4">
                             <PlaceFormErrorMesage errors={formik.errors} />
-                            <PlaceFormSubmit isLoading={isLoading} isDisabled={!formik.dirty || isUploading} />
+                            <PlaceFormSubmit isLoading={isLoading} isDisabled={!formik.dirty || isFormDisabled} />
                         </div>
                     </div>
                 </div>

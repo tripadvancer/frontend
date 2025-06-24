@@ -20,10 +20,16 @@ const maxFileSize = validationConfig.common.maxFileSize
 type ReviewFormPhotosListProps = {
     photos: string[]
     isDisabled?: boolean
+    setIsFormDisabled: (isUploading: boolean) => void
     onChange: (urls: string[]) => void
 }
 
-export const ReviewFormPhotosList = ({ photos, isDisabled, onChange }: ReviewFormPhotosListProps) => {
+export const ReviewFormPhotosList = ({
+    photos,
+    isDisabled,
+    setIsFormDisabled,
+    onChange,
+}: ReviewFormPhotosListProps) => {
     const t = useTranslations()
     const toast = useToast()
 
@@ -38,12 +44,14 @@ export const ReviewFormPhotosList = ({ photos, isDisabled, onChange }: ReviewFor
 
             try {
                 setIsUploading(true)
+                setIsFormDisabled(true)
                 const response = await upload(formData).unwrap()
                 return response.url
             } catch {
                 toast.error(t('common.error'))
             } finally {
                 setIsUploading(false)
+                setIsFormDisabled(false)
             }
         })
 

@@ -29,11 +29,11 @@ type PlaceFormInputPhotoProps = {
         url: string
         isCover: boolean
     }[]
-    setIsUploading: (isUploading: boolean) => void
+    setIsFormDisabled: (isUploading: boolean) => void
     onChange: (value: { url: string; isCover: boolean }[]) => void
 }
 
-export const PlaceFormInputPhotos = ({ initialPhotos, setIsUploading, onChange }: PlaceFormInputPhotoProps) => {
+export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChange }: PlaceFormInputPhotoProps) => {
     const t = useTranslations()
     const toast = useToast()
 
@@ -51,7 +51,7 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsUploading, onChange }
 
     useEffect(() => {
         const someUploading = photos.some(({ status }) => status === UploadingImageStatus.UPLOADING)
-        setIsUploading(someUploading)
+        setIsFormDisabled(someUploading)
     }, [photos])
 
     useEffect(() => {
