@@ -9,6 +9,8 @@ import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
 import { HeaderSearchInput } from './header-search-input'
+import { HeaderSearchNearby } from './header-search-nearby'
+import { HeaderSearchResult } from './header-search-result'
 import { HeaderSearchSuggest } from './header-search-suggest'
 
 export const HeaderSearch = () => {
@@ -35,9 +37,11 @@ export const HeaderSearch = () => {
 
     const handleInputClear = () => {
         setSearchTerm('')
+        setIsResultVisible(false)
     }
 
     const hideResults = () => {
+        setSearchTerm('')
         setIsResultVisible(false)
     }
 
@@ -66,6 +70,14 @@ export const HeaderSearch = () => {
                         className="absolute -left-1 -right-1 -top-1 z-0"
                     >
                         <div className="rounded-lg bg-white p-1 pt-12 shadow-small">
+                            {/* <HeaderSearchNearby hideResults={hideResults} /> */}
+                            {/* <hr className="my-1" /> */}
+                            <HeaderSearchResult
+                                searchTerm={searchTerm}
+                                setIsLoading={setIsLoading}
+                                hideResults={hideResults}
+                            />
+                            <hr className="my-1" />
                             <HeaderSearchSuggest hideResults={hideResults} />
                         </div>
                     </motion.div>

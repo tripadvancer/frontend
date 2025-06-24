@@ -198,7 +198,13 @@
         "search": {
             "placeholder": "Search",
             "suggestTitle": "May be interesting for you:",
-            "suggestAway": "~ {distance} km away"
+            "suggestAway": "~ {distance} km away",
+            "result": {
+                "title": "Search for a country, place or location",
+                "error": "An error occurred while searching. Please try again later.",
+                "loading": "Searching ...",
+                "empty": "No results found. Please try changing your search query."
+            }
         },
         "categories": {
             "all": "All"
