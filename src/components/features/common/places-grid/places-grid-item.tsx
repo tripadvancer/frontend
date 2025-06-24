@@ -1,51 +1,43 @@
-'use client'
-
-import { useTranslations } from 'next-intl'
-
 import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
-import { Rating } from '@/components/ui/rating'
+import { PlacePreviewDistance } from '@/components/ui/place-preview-distance'
+import { PlacePreviewMeta } from '@/components/ui/place-preview-meta'
+import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 
-type PlacesGridItemProps = {
+type UserPlacesItemProps = {
     id: number
     title: string
     cover: string | null
-    avgRating: number | null
-    reviewsCount: number
+    rating?: {
+        avgRating: number | null
+        reviewsCount: number
+    }
+    meta?: {
+        countryCode: string | null
+        createdAt: Date
+    }
     distance?: number
 }
 
-export const PlacesGridItem = ({ id, title, cover, avgRating, reviewsCount, distance }: PlacesGridItemProps) => {
-    const t = useTranslations()
-
+export const PlacesGridItem = ({ id, title, cover, rating, meta, distance }: UserPlacesItemProps) => {
     return (
-        <Link href={`/places/${id}`} className="text-black-100">
-            <div className="flex flex-row gap-4">
-                <div className="flex-none">
+        <div className="space-y-1">
+            <Link href={`/places/${id}`} className="text-black-100">
+                <div className="mb-2 flex-none">
                     <PlacePreviewCover
                         cover={cover}
                         title={title}
-                        size={160}
-                        className="aspect-square w-32 rounded-2xl xl:w-40"
+                        size={192}
+                        className="aspect-square w-full rounded-lg"
                     />
                 </div>
-                <div className="flex flex-col justify-between overflow-hidden">
-                    <div className="h7 line-clamp-4 break-words">{title}</div>
-                    <div>
-                        <Rating value={avgRating ?? 0} size={16} />
-                        <div className="flex flex-nowrap gap-x-1 text-small text-black-40">
-                            {/* {distance && (
-                                <>
-                                    <Distance distance={distance} />
-                                    <div>•</div>
-                                </>
-                            )} */}
-                            <div>{t('common.reviewsCounter', { count: reviewsCount ?? 0 })}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Link>
+                <div className="line-clamp-3 break-words font-medium">{title}</div>
+            </Link>
+
+            {rating && <PlacePreviewRating avgRating={rating.avgRating} reviewsCount={rating.reviewsCount} />}
+            {meta && <PlacePreviewMeta countryCode={meta.countryCode} createdAt={meta.createdAt} />}
+            {distance && <PlacePreviewDistance distance={distance} />}
+        </div>
     )
 }
