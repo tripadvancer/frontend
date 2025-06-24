@@ -22,7 +22,7 @@ export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) 
                         src={`/images/countries/preview/${countryCode.toLowerCase()}.jpg`}
                         width={256}
                         height={256}
-                        className="w-full transition duration-300 group-hover:scale-110"
+                        className="aspect-square w-full transition duration-300 group-hover:scale-110"
                         alt={countryName}
                     />
                 </div>
