@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 
 import { CountriesGrid } from '@/components/features/common/countries-grid/countries-grid'
-import { Search } from '@/components/features/common/search/search'
 import { getCountries } from '@/services/countries'
 import { getSettings } from '@/services/settings'
 
