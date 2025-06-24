@@ -20,7 +20,7 @@ export const HeaderDesktop = async () => {
                         {t('layout.header.links.map')}
                     </Link>
                     <Link href="/countries" className="flex items-center gap-x-2 text-big">
-                        {t('layout.header.links.world')}
+                        {t('layout.header.links.explore')}
                     </Link>
                     <Link href="/about" className="flex items-center gap-x-2 text-big">
                         {t('layout.header.links.about')}
