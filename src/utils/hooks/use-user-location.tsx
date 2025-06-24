@@ -15,6 +15,11 @@ interface useUserLocationInterface {
     handleLocate: () => void
 }
 
+interface LngLat {
+    lng: number
+    lat: number
+}
+
 export function useUserLocation(): useUserLocationInterface {
     const t = useTranslations()
     const toast = useToast()
@@ -28,38 +33,37 @@ export function useUserLocation(): useUserLocationInterface {
     const { map } = useMap()
 
     useEffect(() => {
-        setIsLocating(true)
-
         if (!navigator.geolocation) {
-            setIsLocating(false)
             toast.error(t('geolocation.isNotSupported'))
             return
         }
 
-        const watchId = navigator.geolocation.watchPosition(
-            position => {
-                const userLngLat = { lng: position.coords.longitude, lat: position.coords.latitude }
-                dispatch(setUserLocation(userLngLat))
-                setIsLocating(false)
-                setIsWatching(true)
-            },
-            error => {
-                if (error.code === error.PERMISSION_DENIED) {
-                    setIsDenied(true)
-                }
-                // TODO: Fix this error handling
-                // else {
-                //     console.error('Error getting location:', error)
-                //     toast.error(t('common.error'))
-                // }
-                setIsLocating(false)
-            },
-            {
-                enableHighAccuracy: true,
-                timeout: 7000,
-                maximumAge: 0,
-            },
-        )
+        setIsLocating(true)
+
+        const handleSuccess = (position: GeolocationPosition) => {
+            const userLngLat: LngLat = {
+                lng: position.coords.longitude,
+                lat: position.coords.latitude,
+            }
+            dispatch(setUserLocation(userLngLat))
+            setIsLocating(false)
+            setIsWatching(true)
+        }
+
+        const handleError = (error: GeolocationPositionError) => {
+            if (error.code === error.PERMISSION_DENIED) {
+                setIsDenied(true)
+            } else {
+                toast.error(t('common.error'))
+            }
+            setIsLocating(false)
+        }
+
+        const watchId = navigator.geolocation.watchPosition(handleSuccess, handleError, {
+            enableHighAccuracy: true,
+            timeout: 7000,
+            maximumAge: 0,
+        })
 
         return () => {
             navigator.geolocation.clearWatch(watchId)
@@ -74,9 +78,13 @@ export function useUserLocation(): useUserLocationInterface {
 
         if (userLocation) {
             map?.flyTo(getMapFlyToOptions(userLocation))
-            return
         }
     }
 
-    return { isLocating, isWatching, isDenied, handleLocate }
+    return {
+        isLocating,
+        isWatching,
+        isDenied,
+        handleLocate,
+    }
 }
