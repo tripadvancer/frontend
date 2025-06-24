@@ -1,5 +1,3 @@
-import { Suspense } from 'react'
-
 import { TentTreeIcon } from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
 
@@ -10,7 +8,6 @@ import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { parseQueryString } from '@/utils/helpers/common'
 import { ICountryDict } from '@/utils/types/country'
 
-import { PlacesGridSkeleton } from '../../common/places-grid/places-grid-skeleton'
 import { CountryAddPlaceWithAuth } from './components/country-add-place-with-auth'
 import { CountryCategories } from './components/country-categories'
 import { CountryCover } from './components/country-cover'
@@ -53,9 +50,17 @@ export const Country = async ({
                     <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />
 
                     {places.length !== 0 && (
-                        <Suspense fallback={<PlacesGridSkeleton />}>
-                            <CountryPlaces places={places} />
-                        </Suspense>
+                        <CountryPlaces
+                            places={places.map(place => ({
+                                id: place.id,
+                                title: place.title,
+                                cover: place.cover,
+                                rating: {
+                                    avgRating: place.avgRating,
+                                    reviewsCount: place.reviewsCount,
+                                },
+                            }))}
+                        />
                     )}
 
                     {places.length === 0 && (
