@@ -1,7 +1,7 @@
 import { getLocale, getTranslations } from 'next-intl/server'
 
 import { getCountryByCode } from '@/services/countries'
-import { сountriesDictionary } from '@/utils/dictionaries/countries'
+import { countriesDictionary } from '@/utils/dictionaries/countries'
 import { calculateWorldCoverage } from '@/utils/helpers/world-coverage'
 import { IUserVisitedCountries } from '@/utils/types/user'
 
@@ -14,7 +14,7 @@ type UserVisitedCountriesFeedProps = {
 export const UserVisitedCountriesFeed = async ({ visitedCountries }: UserVisitedCountriesFeedProps) => {
     const t = await getTranslations()
     const locale = await getLocale()
-    const worldCoverageInPercent = calculateWorldCoverage(visitedCountries, сountriesDictionary)
+    const worldCoverageInPercent = calculateWorldCoverage(visitedCountries, countriesDictionary)
 
     if (visitedCountries.length === 0) {
         return null
