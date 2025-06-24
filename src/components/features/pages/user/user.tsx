@@ -10,8 +10,8 @@ import { UserSidebarSocial } from './components/user-sidebar-social'
 
 export const User = ({ user, children }: { user: IUser; children: ReactNode }) => {
     return (
-        <div className="container py-24">
-            <div className="inner-container">
+        <div className="container py-16">
+            <div className="1inner-container">
                 <UserName user={user} />
 
                 <div className="flex flex-col gap-16 lg:flex-row-reverse lg:gap-8">

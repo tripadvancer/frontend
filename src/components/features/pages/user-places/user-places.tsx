@@ -31,7 +31,7 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
     if (isSuccess && places.items.length > 0) {
         return (
             <div className="flex flex-col gap-y-8">
-                <div className="grid grid-cols-2 gap-4 last:mb-0 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-3">
+                <div className="grid grid-cols-2 gap-4 last:mb-0 sm:grid-cols-4 sm:gap-8">
                     {places.items.map(place => (
                         <UserPlacesItem
                             key={`user-places-item-${place.id}`}
