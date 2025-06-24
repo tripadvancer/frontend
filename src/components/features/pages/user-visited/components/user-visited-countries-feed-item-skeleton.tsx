@@ -1,3 +1,3 @@
 export const UserVisitedCountriesFeedItemSkeleton = () => {
-    return <div className="h-[114px] rounded-2xl bg-black-5" />
+    return <div className="h-[60px] rounded-2xl bg-black-5" />
 }
