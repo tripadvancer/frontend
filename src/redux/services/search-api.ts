@@ -1,5 +1,3 @@
-import { date } from 'yup'
-
 import { countriesDictionary } from '@/utils/dictionaries/countries'
 import { ICountryDict } from '@/utils/types/country'
 import { ISearchItem, ISearchResult, SearchInputs } from '@/utils/types/search'
