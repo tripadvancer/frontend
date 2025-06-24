@@ -49,7 +49,7 @@ export const HeaderMobileMenu = () => {
                         </Link>
                         <Link href="/countries" className="flex items-center gap-x-2 text-big-bold">
                             <GlobeIcon />
-                            {t('layout.header.links.world')}
+                            {t('layout.header.links.explore')}
                         </Link>
                         <Link href="/about" className="flex items-center gap-x-2 text-big-bold">
                             <InfoIcon />
