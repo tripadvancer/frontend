@@ -12,14 +12,15 @@ type CountryPlacesProps = {
         id: number
         title: string
         cover: string | null
-        avgRating: number | null
-        reviewsCount: number
+        rating: {
+            avgRating: number | null
+            reviewsCount: number
+        }
     }[]
 }
 
 export const CountryPlaces = (props: CountryPlacesProps) => {
     const [currentPage, setCurrentPage] = useState(1)
-    const visiblePlaces = props.places.slice(0, currentPage * PAGINATION_LIMIT)
 
     const handleLoadMore = () => {
         setCurrentPage((prevPage: number) => prevPage + 1)
@@ -27,7 +28,10 @@ export const CountryPlaces = (props: CountryPlacesProps) => {
 
     return (
         <div className="flex flex-col gap-y-8">
-            <PlacesGrid places={visiblePlaces} />
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-5 xl:gap-8">
+                <PlacesGrid places={props.places.slice(0, currentPage * PAGINATION_LIMIT)} />
+            </div>
+
             {currentPage * PAGINATION_LIMIT < props.places.length && <ShowMore onClick={handleLoadMore} />}
         </div>
     )

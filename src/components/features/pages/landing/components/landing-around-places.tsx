@@ -18,21 +18,20 @@ export const LandingAroundPlaces = () => {
     const userCountryCode = edgeGeo.data?.countryCode
     const userCountryName = getCountryByCode(userCountryCode)?.name['en']
 
-    const {
-        data: places,
-        isError,
-        isSuccess,
-    } = placesAroundAPI.useGetPlacesAroundQuery({ lat, lng, radius, categories: [] }, { skip: !edgeGeo.isSuccess })
+    const { data, isError, isSuccess } = placesAroundAPI.useGetPlacesAroundQuery(
+        { lat, lng, radius, categories: [] },
+        { skip: !edgeGeo.isSuccess },
+    )
 
     if (isError) {
         return null
     }
 
-    if (isSuccess && places.length === 0) {
+    if (isSuccess && data.length === 0) {
         return null
     }
 
-    if (isSuccess && places.length > 0) {
+    if (isSuccess && data.length > 0) {
         return (
             <section>
                 <h3 className="h3 mb-4 text-center">{t('page.landing.aroundPlaces.title')}</h3>
@@ -40,7 +39,16 @@ export const LandingAroundPlaces = () => {
                     {t('page.landing.aroundPlaces.text')}
                 </p>
                 <div className="flex flex-col gap-y-8">
-                    <PlacesGrid places={places} />
+                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-5 xl:gap-8">
+                        <PlacesGrid
+                            places={data.map(item => ({
+                                id: item.id,
+                                title: item.title,
+                                cover: item.cover,
+                                distance: item.distance,
+                            }))}
+                        />
+                    </div>
                     {userCountryName && (
                         <ShowAllLink href={`/countries/${getCountryByCode(userCountryCode)?.slug}`}>
                             {t('page.landing.aroundPlaces.button', { country: userCountryName })}
