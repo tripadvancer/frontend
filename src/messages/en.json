@@ -196,8 +196,9 @@
             }
         },
         "search": {
-            "placeholder": "Find a country or place",
-            "button": "Search"
+            "placeholder": "Search",
+            "suggestTitle": "May be interesting for you:",
+            "suggestAway": "~ {distance} km away"
         },
         "categories": {
             "all": "All"
