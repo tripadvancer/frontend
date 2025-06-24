@@ -16,13 +16,16 @@ export const PlaceFormErrorMesage = ({ errors }: PlaceFormErrorMesageProps) => {
     }
 
     return (
-        <div className="flex flex-col gap-y-2 text-red-100">
-            {getFormikErrors(errors).map(error => (
-                <div key={`place-form-error-${error}`} className="flex gap-x-2 text-small">
-                    <TriangleAlertIcon size={16} />
-                    {error}
-                </div>
-            ))}
+        <div className="flex flex-col lg:flex-row lg:gap-x-8">
+            <div className="flex-1 space-y-2 rounded-lg bg-red-10 p-4 text-red-100">
+                {getFormikErrors(errors).map(error => (
+                    <div key={`place-form-error-${error}`} className="flex gap-x-2">
+                        <TriangleAlertIcon size={16} />
+                        {error}
+                    </div>
+                ))}
+            </div>
+            <div className="hidden w-64 lg:block" />
         </div>
     )
 }

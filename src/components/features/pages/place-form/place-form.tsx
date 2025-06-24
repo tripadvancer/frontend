@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 
@@ -27,6 +29,7 @@ type PlaceFormProps = {
 
 export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps) => {
     const t = useTranslations()
+    const [isUploading, setIsUploading] = useState(false)
 
     const formik = useFormik({
         initialValues,
@@ -87,6 +90,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                         />
                         <PlaceFormInputPhotos
                             initialPhotos={formik.initialValues.photos}
+                            setIsUploading={setIsUploading}
                             onChange={handlePhotosChange}
                         />
                         <PlaceFormToggleIsVisited
@@ -95,7 +99,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                         />
                         <div className="flex flex-col gap-y-4">
                             <PlaceFormErrorMesage errors={formik.errors} />
-                            <PlaceFormSubmit isLoading={isLoading} />
+                            <PlaceFormSubmit isLoading={isLoading} isDisabled={!formik.dirty || isUploading} />
                         </div>
                     </div>
                 </div>
