@@ -27,6 +27,7 @@ export const placesAroundAPI = api.injectEndpoints({
                     lat: params.lat,
                     radius: params.radius,
                     categories_ids: params.categories.join(),
+                    limit: params.limit,
                 },
             }),
         }),

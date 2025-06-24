@@ -3,6 +3,7 @@ export type GetPlacesAroundParams = {
     lng: number
     radius: number
     categories: number[]
+    limit?: number
 }
 
 export type GetRandomPlaceResponse = {
