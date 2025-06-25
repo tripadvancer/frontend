@@ -38,20 +38,18 @@ export const ReviewFormPhotosList = ({
     const [isUploading, setIsUploading] = useState<boolean>(false)
 
     const handlePhotoUpload = async (files: FileList) => {
+        setIsUploading(true)
+        setIsFormDisabled(true)
+
         const uploadPromises = Array.from(files).map(async file => {
             const formData = new FormData()
             formData.append('file', file)
 
             try {
-                setIsUploading(true)
-                setIsFormDisabled(true)
                 const response = await upload(formData).unwrap()
                 return response.url
             } catch {
                 toast.error(t('common.error'))
-            } finally {
-                setIsUploading(false)
-                setIsFormDisabled(false)
             }
         })
 
@@ -61,6 +59,9 @@ export const ReviewFormPhotosList = ({
             onChange([...photos, ...filteredUrls])
         } catch (error) {
             toast.error(t('common.error'))
+        } finally {
+            setIsUploading(false)
+            setIsFormDisabled(false)
         }
     }
 
