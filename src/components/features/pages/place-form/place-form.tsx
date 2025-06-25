@@ -11,7 +11,7 @@ import { CreatePlaceInputs, UpdatePlaceInputs } from '@/redux/services/places.ty
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
-import { PlaceFormErrorMesage } from './components/place-form-error-mesage'
+import { PlaceFormErrorMessage } from './components/place-form-error-message'
 import { PlaceFormInputCategories } from './components/place-form-input-categories'
 import { PlaceFormInputDescription } from './components/place-form-input-description'
 import { PlaceFormInputLocation } from './components/place-form-input-location'
@@ -98,7 +98,7 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                             onChange={value => formik.setFieldValue('isVisited', value)}
                         />
                         <div className="flex flex-col gap-y-4">
-                            <PlaceFormErrorMesage errors={formik.errors} />
+                            <PlaceFormErrorMessage errors={formik.errors} />
                             <PlaceFormSubmit isLoading={isLoading} isDisabled={!formik.dirty || isFormDisabled} />
                         </div>
                     </div>
