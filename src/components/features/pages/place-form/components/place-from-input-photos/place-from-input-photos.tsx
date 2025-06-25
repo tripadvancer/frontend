@@ -29,10 +29,11 @@ type PlaceFormInputPhotoProps = {
         url: string
         isCover: boolean
     }[]
+    setIsFormDisabled: (isUploading: boolean) => void
     onChange: (value: { url: string; isCover: boolean }[]) => void
 }
 
-export const PlaceFormInputPhotos = ({ initialPhotos, onChange }: PlaceFormInputPhotoProps) => {
+export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChange }: PlaceFormInputPhotoProps) => {
     const t = useTranslations()
     const toast = useToast()
 
@@ -47,6 +48,11 @@ export const PlaceFormInputPhotos = ({ initialPhotos, onChange }: PlaceFormInput
     )
     const [upload] = placesAPI.usePlacePhotoUploadMutation()
     const [indexSlide, setIndexSlide] = useState<number>(-1)
+
+    useEffect(() => {
+        const someUploading = photos.some(({ status }) => status === UploadingImageStatus.UPLOADING)
+        setIsFormDisabled(someUploading)
+    }, [photos])
 
     useEffect(() => {
         const allUploadsFinished = photos.every(({ status }) => status !== UploadingImageStatus.UPLOADING)
