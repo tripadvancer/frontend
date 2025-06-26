@@ -12,7 +12,7 @@ export const Countries = async () => {
     const settings = await getSettings()
 
     return (
-        <div className="container py-16">
+        <div className="container py-24">
             <section>
                 <div className="mb-16 flex flex-col items-start justify-between gap-4 sm:flex-row">
                     <div className="space-y-2">
