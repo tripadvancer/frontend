@@ -38,12 +38,15 @@ export async function getPlacesAround({
     lng,
     radius,
     categories,
+    limit,
 }: GetPlacesAroundParams): Promise<GetPlacesAroundResponse> {
     const params = new URLSearchParams({
         lat: lat.toString(),
         lng: lng.toString(),
         radius: radius.toString(),
         categories_ids: categories.join(),
+
+        ...(limit && { limit: limit.toString() }),
     })
     const url = process.env.NEXT_PUBLIC_API_URL + '/places-around?' + params.toString()
     const res = await fetch(url)
