@@ -4,8 +4,8 @@ import { CookieConsent } from '@/components/features/banners/cookie-consent/cook
 import { MapWithAuth } from '@/components/features/maps/map/map-with-auth'
 import { MapsLayout } from '@/components/features/maps/maps-layout/maps-layout'
 import { WidgetHeader } from '@/components/features/maps/widget/components/widget-header/widget-header'
-import { WidgetPlaces } from '@/components/features/maps/widget/widget-places'
-import { WidgetRandomPlace } from '@/components/features/maps/widget/widget-random-place'
+import { WidgetRandom } from '@/components/features/maps/widget/widget-random/widget-random'
+import { Widget } from '@/components/features/maps/widget/widget/widget'
 
 export const metadata: Metadata = {
     title: 'Maps',
@@ -43,8 +43,8 @@ export default function MapsPage() {
             <MapsLayout
                 map={<MapWithAuth />}
                 header={<WidgetHeader />}
-                widget={<WidgetPlaces />}
-                widgetRandom={<WidgetRandomPlace />}
+                widget={<Widget />}
+                widgetRandom={<WidgetRandom />}
             />
             <CookieConsent />
         </div>

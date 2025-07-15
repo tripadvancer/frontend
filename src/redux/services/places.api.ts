@@ -11,15 +11,14 @@ import {
 
 export const placesAPI = api.injectEndpoints({
     endpoints: build => ({
-        getPlaces: build.query<GetPlacesResponse, GetPlacesParams>({
+        getPlacesByCenter: build.query<GetPlacesResponse, GetPlacesParams>({
             query: params => ({
                 url: 'places',
                 params: {
+                    lat: params.lat,
+                    lng: params.lng,
                     categories_ids: params.selectedCategories.join(),
-                    ne_lat: params.mapBounds?._ne.lat,
-                    ne_lng: params.mapBounds?._ne.lng,
-                    sw_lat: params.mapBounds?._sw.lat,
-                    sw_lng: params.mapBounds?._sw.lng,
+                    skip_visited: params.skip_visited,
                 },
             }),
             providesTags: ['Places'],

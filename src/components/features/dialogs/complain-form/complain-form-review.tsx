@@ -32,7 +32,7 @@ export const ComplainFormReview = ({ reviewId }: { reviewId: number }) => {
     }
 
     return (
-        <div className="flex w-full flex-col gap-y-4 sm:w-104">
+        <div className="space-y-4 sm:w-104">
             <h1 className="h7">{t('dialog.complaintForm.title.review')}</h1>
             <hr className="border-black-70" />
             <ComplainForm

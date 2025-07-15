@@ -2,17 +2,20 @@
 
 import { Layer, Source } from 'react-map-gl/maplibre'
 
-import { getMapBounds } from '@/redux/features/map-slice'
-import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places.api'
+import { useMapFilters } from '@/utils/hooks/use-map-filters'
 
 import { placesLayer } from './map-layers'
 
 export const MapSourceDefault = () => {
-    const mapBounds = useAppSelector(getMapBounds)
-    const selectedCategories = useAppSelector(getWidgetSelectedCategories)
-    const { data: places, isSuccess } = placesAPI.useGetPlacesQuery({ mapBounds, selectedCategories })
+    const [initialFilters] = useMapFilters()
+
+    const { data: places, isSuccess } = placesAPI.useGetPlacesByCenterQuery({
+        lat: initialFilters.lat,
+        lng: initialFilters.lng,
+        selectedCategories: initialFilters.categories,
+        skip_visited: initialFilters.skipVisited,
+    })
 
     return (
         <Source

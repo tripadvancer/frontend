@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowLeftIcon, FilterIcon, FilterXIcon, PencilIcon, TrashIcon } from 'lucide-react'
+import { ArrowLeftIcon, PencilIcon, TrashIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ListEdit } from '@/components/features/dialogs/list-form/list-edit'
@@ -8,9 +8,8 @@ import { Confirmation } from '@/components/ui/confirmation'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { getIsFilterMapBySavedLists, setIsFilterMapBySavedLists } from '@/redux/features/map-slice'
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useAppDispatch } from '@/redux/hooks'
 import { listAPI } from '@/redux/services/list.api'
 import { IList } from '@/utils/types/common'
 
@@ -20,7 +19,6 @@ export const WidgetSavedListsView = (list: IList) => {
     const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
-    const isFilterMapBySavedLists = useAppSelector(getIsFilterMapBySavedLists)
     const dispatch = useAppDispatch()
 
     const [deleteList] = listAPI.useDeleteListMutation()
@@ -49,14 +47,6 @@ export const WidgetSavedListsView = (list: IList) => {
     }
 
     const items: DropdownItemProps[] = [
-        {
-            caption: isFilterMapBySavedLists
-                ? t('map.widget.tabs.savedPlaces.lists.action.disableMapFilter')
-                : t('map.widget.tabs.savedPlaces.lists.action.enableMapFilter'),
-            value: 'preview_mode',
-            icon: isFilterMapBySavedLists ? <FilterXIcon size={16} /> : <FilterIcon size={16} />,
-            onClick: () => dispatch(setIsFilterMapBySavedLists(!isFilterMapBySavedLists)),
-        },
         {
             caption: t('map.widget.tabs.savedPlaces.lists.action.edit'),
             value: 'edit',

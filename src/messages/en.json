@@ -1,7 +1,7 @@
 {
     "about": {
-        "title": "Planing a trip but don`t know where to go?",
-        "description": "Tripadvancer will help you discover the world in a new way, find interesting places and go on an amazing trip."
+        "title": "Tripadvancer",
+        "description": "Tripadvancer built by travelers — for discovering, sharing, and remembering amazing places."
     },
     "placeholder": {
         "email": "Email",
@@ -601,22 +601,20 @@
             "tabs": {
                 "allPlaces": {
                     "title": "All places",
-                    "emptyMessage": "No places found.<br></br>Try changing categories or zooming out the map."
+                    "emptyMessage": "No places found.<br></br>Try changing filters or zooming out the map."
                 },
                 "savedPlaces": {
                     "title": "Saved",
                     "emptyMessage": "You have not saved places.<br></br>Create a new list and start adding places to it.",
                     "notLoggedIn": "You are not logged in.<br></br><signInLink>Sign in</signInLink> to see saved places.",
                     "lists": {
-                        "emptyMessage": "This list is empty.<br></br>Add place to this list or try changing categories.",
+                        "emptyMessage": "This list is empty.<br></br>Add place to this list or try changing filters.",
                         "addButton": "Create new list",
                         "info": "Select a list to view saved places.",
                         "showOnlyList": "On map",
                         "private": "Private",
                         "public": "Public",
                         "action": {
-                            "enableMapFilter": "Hide other places",
-                            "disableMapFilter": "Show all places",
                             "edit": "Edit",
                             "delete": "Delete"
                         }

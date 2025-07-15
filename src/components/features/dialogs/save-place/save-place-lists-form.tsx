@@ -93,9 +93,9 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     })
 
     return (
-        <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col gap-y-2">
-                <div className="flex flex-col gap-y-2">
+        <form className="space-y-8" onSubmit={formik.handleSubmit}>
+            <div className="space-y-2">
+                <div className="space-y-2">
                     {lists.map(list => (
                         <FormCheckbox
                             key={`list-${list.id}`}
@@ -139,7 +139,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     onChange={formik.handleChange}
                 />
             </div>
-            <div className="flex gap-x-2">
+            <div className="space-x-2">
                 <FormButton htmlType="submit" isLoading={isListCreating || isPlaceUpdating} isDisabled={!formik.dirty}>
                     {t('common.action.save')}
                 </FormButton>
