@@ -15,16 +15,17 @@ export const HeaderMobile = async () => {
     return (
         <div className="container relative flex h-14 items-center justify-between gap-x-6 sm:hidden">
             <div className="flex-center gap-x-4">
-                <HeaderMobileMenu />
+                {/* <HeaderMobileMenu /> */}
                 <HeaderLogo />
             </div>
 
             <div className="flex-center gap-x-2">
-                <Link href="/maps">
+                {/* <Link href="/maps">
                     <MapIcon />
-                </Link>
-                <HeaderAddPlaceWithAuth />
-                <UserMenuWithAuth signInComponent={<HeaderSignIn />} />
+                </Link> */}
+                {/* <HeaderAddPlaceWithAuth /> */}
+                {/* <UserMenuWithAuth signInComponent={<HeaderSignIn />} /> */}
+                <HeaderMobileMenu />
             </div>
         </div>
     )
