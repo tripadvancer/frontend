@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { complainAPI } from '@/redux/services/complain.api'
-import { ReviewComplaintInputs } from '@/redux/services/complain.types'
+import { complainAPI } from '@/redux/services/complain/complain.api'
+import { ReviewComplaintInputs } from '@/redux/services/complain/complain.types'
 import { ComplaintReasonsEnum } from '@/utils/enums'
 
 import { ComplainForm } from './complain-form'

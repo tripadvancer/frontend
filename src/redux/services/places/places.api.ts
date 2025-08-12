@@ -7,7 +7,7 @@ import {
     GetPlacesResponse,
     ImageUploadResponse,
     UpdatePlaceInputs,
-} from '@/redux/services/places.types'
+} from '@/redux/services/places/places.types'
 
 export const placesAPI = api.injectEndpoints({
     endpoints: build => ({

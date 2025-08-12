@@ -9,7 +9,7 @@ import { FormRatingInput } from '@/components/ui/form-rating-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
-import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews.types'
+import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
 
 import { ReviewFormIsVisited } from './components/review-form-is-visited'
 import { ReviewFormPhotosList } from './components/review-form-photos-list'

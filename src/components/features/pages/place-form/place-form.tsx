@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
 
-import { CreatePlaceInputs, UpdatePlaceInputs } from '@/redux/services/places.types'
+import { CreatePlaceInputs, UpdatePlaceInputs } from '@/redux/services/places/places.types'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 

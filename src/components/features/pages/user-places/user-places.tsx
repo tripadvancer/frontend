@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { PlacesGrid } from '@/components/features/common/places-grid/places-grid'
 import { ShowMore } from '@/components/ui/show-more'
-import { usersAPI } from '@/redux/services/users.api'
+import { usersAPI } from '@/redux/services/users/users.api'
 
 import { UserPlacesSkeleton } from './user-places-skeleton'
 

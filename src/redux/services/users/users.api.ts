@@ -1,5 +1,5 @@
 import { api } from '@/redux/services/api'
-import { GetPlacesByUserIdParams, GetPlacesByUserIdResponse } from '@/redux/services/users.types'
+import { GetPlacesByUserIdParams, GetPlacesByUserIdResponse } from '@/redux/services/users/users.types'
 
 export const usersAPI = api.injectEndpoints({
     endpoints: build => ({

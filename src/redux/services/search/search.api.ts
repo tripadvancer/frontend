@@ -1,8 +1,7 @@
+import { api } from '@/redux/services/api'
 import { countriesDictionary } from '@/utils/dictionaries/countries'
 import { ICountryDict } from '@/utils/types/country'
 import { ISearchItem, ISearchResult, SearchInputs } from '@/utils/types/search'
-
-import { api } from './api'
 
 export const searchAPI = api.injectEndpoints({
     endpoints: build => ({

@@ -4,14 +4,14 @@ import { useTranslations } from 'next-intl'
 
 import { PlacesGrid } from '@/components/features/common/places-grid/places-grid'
 import { ShowAllLink } from '@/components/ui/show-all-link'
-import { internalApi } from '@/redux/services/internal.api'
-import { placesAroundAPI } from '@/redux/services/places-around.api'
+import { internalAPI } from '@/redux/services/internal/internal.api'
+import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
 import { getCountryByCode } from '@/services/countries'
 
 export const LandingAroundPlaces = () => {
     const t = useTranslations()
 
-    const edgeGeo = internalApi.useGetEdgeGeoQuery()
+    const edgeGeo = internalAPI.useGetEdgeGeoQuery()
     const lat = parseFloat(edgeGeo.data?.lat || '0')
     const lng = parseFloat(edgeGeo.data?.lng || '0')
     const radius = parseInt(process.env.NEXT_PUBLIC_AROUND_ME_RADIUS || '150000')

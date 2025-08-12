@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
-import { internalApi } from '@/redux/services/internal.api'
-import { placesAroundAPI } from '@/redux/services/places-around.api'
+import { internalAPI } from '@/redux/services/internal/internal.api'
+import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
 import { getCountryByCode } from '@/services/countries'
 
 import { HeaderSearchItem } from './header-search-item'
@@ -18,7 +18,7 @@ type HeaderSearchSuggestProps = {
 
 export const HeaderSearchSuggest = ({ hideResults }: HeaderSearchSuggestProps) => {
     const t = useTranslations()
-    const edgeGeo = internalApi.useGetEdgeGeoQuery()
+    const edgeGeo = internalAPI.useGetEdgeGeoQuery()
 
     const lat = parseFloat(edgeGeo.data?.lat || '0')
     const lng = parseFloat(edgeGeo.data?.lng || '0')

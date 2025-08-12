@@ -6,7 +6,7 @@ import { MapPinIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useDebounceCallback } from 'usehooks-ts'
 
-import { searchAPI } from '@/redux/services/search-api'
+import { searchAPI } from '@/redux/services/search/search.api'
 import { transformSearchCountries, transformSearchPlaces } from '@/utils/helpers/search'
 import { ICountryDict } from '@/utils/types/country'
 import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
