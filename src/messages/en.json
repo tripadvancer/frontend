@@ -551,7 +551,7 @@
             "title": "Explore the World",
             "description": "{placesCount} places in {countriesCount} countries",
             "goToMapTitle": "View places on the map",
-            "goToMapText": "Open the interactive map to explore places by country and region.",
+            "goToMapText": "Discover places around the world with our interactive map.",
             "goToMapButton": "View Map"
         },
         "country": {
