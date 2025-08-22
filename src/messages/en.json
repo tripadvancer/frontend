@@ -550,7 +550,9 @@
         "countries": {
             "title": "Explore the World",
             "description": "{placesCount} places in {countriesCount} countries",
-            "goToMap": "View places on a Map"
+            "goToMapTitle": "View places on the map",
+            "goToMapText": "Open the interactive map to explore places by country and region.",
+            "goToMapButton": "View Map"
         },
         "country": {
             "description": "Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.",
