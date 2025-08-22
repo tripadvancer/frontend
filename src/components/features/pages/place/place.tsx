@@ -16,7 +16,7 @@ export const Place = async ({ placeId }: { placeId: string }) => {
     const place = await getPlaceById(placeId)
 
     return (
-        <div className="container space-y-8 py-16 sm:space-y-16">
+        <section className="container space-y-8 py-16 sm:space-y-16">
             <PlaceHeader {...place} />
 
             <div className="flex flex-col gap-y-8 sm:gap-y-16 lg:flex-row-reverse lg:gap-x-8">
@@ -38,6 +38,6 @@ export const Place = async ({ placeId }: { placeId: string }) => {
                     <PlaceMainReviewsWithAuth {...place} />
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
