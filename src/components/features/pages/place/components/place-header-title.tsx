@@ -3,5 +3,5 @@ type PlaceHeaderTitleProps = {
 }
 
 export const PlaceHeaderTitle = ({ title }: PlaceHeaderTitleProps) => {
-    return <h1 className="title max-w-full break-words text-center text-white">{title}</h1>
+    return <h1 className="h1 max-w-full break-words">{title}</h1>
 }

@@ -12,25 +12,23 @@ export const Countries = async () => {
     const settings = await getSettings()
 
     return (
-        <div className="container py-16">
-            <section>
-                <div className="mb-16 flex flex-col items-start justify-between gap-4 sm:flex-row">
-                    <div className="space-y-2">
-                        <h1 className="h1">{t('page.countries.title')}</h1>
-                        <p className="text-big text-black-70">
-                            {t.rich('page.countries.description', {
-                                placesCount: settings.placesCount,
-                                countriesCount: settings.countriesCount,
-                            })}
-                        </p>
-                    </div>
-                    <LinkButton href="/maps" className="flex w-full items-center gap-2 sm:mt-2 sm:w-auto">
-                        <MapIcon />
-                        {t('page.countries.goToMap')}
-                    </LinkButton>
+        <section className="container py-16">
+            <div className="mb-16 flex flex-col items-start justify-between gap-4 sm:flex-row">
+                <div className="space-y-2">
+                    <h1 className="h1">{t('page.countries.title')}</h1>
+                    <p className="text-big text-black-70">
+                        {t.rich('page.countries.description', {
+                            placesCount: settings.placesCount,
+                            countriesCount: settings.countriesCount,
+                        })}
+                    </p>
                 </div>
-                <CountriesGrid countries={countries} />
-            </section>
-        </div>
+                <LinkButton href="/maps" className="flex w-full items-center gap-2 sm:mt-2 sm:w-auto">
+                    <MapIcon />
+                    {t('page.countries.goToMap')}
+                </LinkButton>
+            </div>
+            <CountriesGrid countries={countries} />
+        </section>
     )
 }

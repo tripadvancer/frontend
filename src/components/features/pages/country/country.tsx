@@ -1,8 +1,9 @@
-import { TentTreeIcon } from 'lucide-react'
+import { MapIcon, TentTreeIcon } from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
+import { LinkButton } from '@/components/ui/link-button'
 import { getPlacesByCountryCode } from '@/services/places'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { parseQueryString } from '@/utils/helpers/common'
@@ -27,55 +28,92 @@ export const Country = async ({
     const places = await getPlacesByCountryCode(country.code, selectedCategoriesIds.join())
 
     return (
-        <div className="flex flex-col">
-            <div className="flex-center relative z-10 flex-[540px] pb-7">
-                <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
-                    <CountryCover countryCode={country.code} />
-                    <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
-                </div>
-                <section className="container relative z-30 py-8 text-center">
-                    <div className="m-auto sm:w-2/3">
-                        <Link href="/countries" className="mb-4 inline-block font-medium text-white hover:text-white">
-                            {t('page.country.viewAll')}
-                        </Link>
-                        <h1 className="title mb-4 text-white">{country.name[locale]}</h1>
-                        <p className="text-big text-white">
-                            {t('page.country.description', { country: country.name[locale] })}
-                        </p>
-                    </div>
-                </section>
+        <section className="container py-16">
+            <div className="mb-16">
+                <h1 className="h1 mb-2">{country.name[locale]}</h1>
+                <p className="mb-4 text-big text-black-70">
+                    {t('page.country.description', { country: country.name[locale] })}
+                </p>
+                <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />
             </div>
-            <div className="flex-1 bg-white">
-                <div className="container flex flex-col gap-y-16 py-24">
-                    <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />
 
-                    {places.length !== 0 && (
-                        <CountryPlaces
-                            places={places.map(place => ({
-                                id: place.id,
-                                title: place.title,
-                                cover: place.cover,
-                                rating: {
-                                    avgRating: place.avgRating,
-                                    reviewsCount: place.reviewsCount,
-                                },
-                            }))}
-                        />
-                    )}
+            <div>
+                {places.length !== 0 && (
+                    <CountryPlaces
+                        places={places.map(place => ({
+                            id: place.id,
+                            title: place.title,
+                            cover: place.cover,
+                            rating: {
+                                avgRating: place.avgRating,
+                                reviewsCount: place.reviewsCount,
+                            },
+                        }))}
+                    />
+                )}
 
-                    {places.length === 0 && (
-                        <div className="flex-center flex-col gap-y-8 text-black-40">
-                            <div className="flex flex-col items-center gap-y-4">
-                                <TentTreeIcon size={96} strokeWidth={1} />
-                                <div className="text-center">
-                                    {t.rich('page.country.emptyPlaces', { br: () => <br /> })}
-                                </div>
+                {places.length === 0 && (
+                    <div className="flex-center flex-col gap-y-8 text-black-40">
+                        <div className="flex flex-col items-center gap-y-4">
+                            <TentTreeIcon size={96} strokeWidth={1} />
+                            <div className="text-center">
+                                {t.rich('page.country.emptyPlaces', { br: () => <br /> })}
                             </div>
-                            <CountryAddPlaceWithAuth />
                         </div>
-                    )}
-                </div>
+                        <CountryAddPlaceWithAuth />
+                    </div>
+                )}
             </div>
-        </div>
+        </section>
+        // <div className="flex flex-col">
+        //     <div className="flex-center relative z-10 flex-[540px] pb-7">
+        //         <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
+        //             <CountryCover countryCode={country.code} />
+        //             <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
+        //         </div>
+        //         <section className="container relative z-30 py-8 text-center">
+        //             <div className="m-auto sm:w-2/3">
+        //                 <Link href="/countries" className="mb-4 inline-block font-medium text-white hover:text-white">
+        //                     {t('page.country.viewAll')}
+        //                 </Link>
+        //                 <h1 className="title mb-4 text-white">{country.name[locale]}</h1>
+        //                 <p className="text-big text-white">
+        //                     {t('page.country.description', { country: country.name[locale] })}
+        //                 </p>
+        //             </div>
+        //         </section>
+        //     </div>
+        //     <div className="flex-1 bg-white">
+        //         <div className="container flex flex-col gap-y-16 py-24">
+        //             <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />
+
+        // {places.length !== 0 && (
+        //     <CountryPlaces
+        //         places={places.map(place => ({
+        //             id: place.id,
+        //             title: place.title,
+        //             cover: place.cover,
+        //             rating: {
+        //                 avgRating: place.avgRating,
+        //                 reviewsCount: place.reviewsCount,
+        //             },
+        //         }))}
+        //     />
+        // )}
+
+        // {places.length === 0 && (
+        //     <div className="flex-center flex-col gap-y-8 text-black-40">
+        //         <div className="flex flex-col items-center gap-y-4">
+        //             <TentTreeIcon size={96} strokeWidth={1} />
+        //             <div className="text-center">
+        //                 {t.rich('page.country.emptyPlaces', { br: () => <br /> })}
+        //             </div>
+        //         </div>
+        //         <CountryAddPlaceWithAuth />
+        //     </div>
+        // )}
+        //         </div>
+        //     </div>
+        // </div>
     )
 }

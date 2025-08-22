@@ -73,7 +73,8 @@
         "sendComplaint": "Your complaint has been sent.",
         "updatePlace": "Your place has been updated.",
         "updateUserAvatar": "Your avatar has been updated.",
-        "updateUserInfo": "Your profile has been updated."
+        "updateUserInfo": "Your profile has been updated.",
+        "copied": "Copied"
     },
     "confirmation": {
         "deletePlace": {

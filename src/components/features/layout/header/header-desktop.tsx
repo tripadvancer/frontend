@@ -11,18 +11,18 @@ export const HeaderDesktop = async () => {
     const t = await getTranslations()
 
     return (
-        <div className="container relative hidden h-14 items-center justify-between gap-x-6 sm:flex">
-            <div className="flex items-center gap-x-8">
+        <div className="container relative hidden h-16 items-center justify-between gap-x-6 sm:flex">
+            <div className="flex items-center gap-x-12">
                 <HeaderLogo />
 
-                <nav className="flex gap-x-4">
-                    <Link href="/maps" className="flex items-center gap-x-2 text-big">
+                <nav className="flex gap-x-6">
+                    <Link href="/maps" className="flex items-center gap-x-2 text-big-bold">
                         {t('layout.header.links.map')}
                     </Link>
-                    <Link href="/countries" className="flex items-center gap-x-2 text-big">
+                    <Link href="/countries" className="flex items-center gap-x-2 text-big-bold">
                         {t('layout.header.links.explore')}
                     </Link>
-                    <Link href="/about" className="flex items-center gap-x-2 text-big">
+                    <Link href="/about" className="flex items-center gap-x-2 text-big-bold">
                         {t('layout.header.links.about')}
                     </Link>
                 </nav>

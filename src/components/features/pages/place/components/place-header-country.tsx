@@ -17,8 +17,8 @@ export const PlaceHeaderCountry = async ({ countryCode }: PlaceHeaderCountryProp
     }
 
     return (
-        <Link href={`/countries/${country.slug}`} className="font-medium text-white hover:text-white">
-            {country.name[locale]}
+        <Link href={`/countries/${country.slug}`} className="font-medium text-blue-100 hover:text-blue-active">
+            View all places in {country.name[locale]}
         </Link>
     )
 }

@@ -1,6 +1,8 @@
 'use client'
 
-import { CopyIcon } from 'lucide-react'
+import { useState } from 'react'
+
+import { CheckIcon, CopyIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { useToast } from '@/providers/toast-provider'
@@ -16,17 +18,32 @@ export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps
     const toast = useToast()
     const coordinatesString = arrayToString(location.coordinates)
 
-    const handleCopy = () => {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(coordinatesString)
-            toast.success(t('success.copyCoordinates'))
+    const [copied, setCopied] = useState(false)
+
+    const handleCopy = async () => {
+        if (typeof window !== 'undefined' && window.navigator.clipboard) {
+            try {
+                await window.navigator.clipboard.writeText(coordinatesString)
+                setCopied(true)
+                setTimeout(() => setCopied(false), 2000)
+            } catch {
+                toast.error(t('common.error'))
+            }
+        } else {
+            toast.error(t('common.error'))
         }
     }
 
     return (
-        <div className="flex-center cursor-pointer gap-2 text-big text-white" onClick={handleCopy}>
+        <div className="group flex cursor-pointer items-center gap-x-2 text-big text-black-70" onClick={handleCopy}>
             {coordinatesString}
-            <CopyIcon size={20} />
+            {copied ? (
+                <span className="flex items-center gap-1 text-green-600">
+                    <CheckIcon className="h-4 w-4" size={20} /> {t('success.copied')}
+                </span>
+            ) : (
+                <CopyIcon className="rotate-90 text-blue-100 group-hover:text-blue-active" size={20} />
+            )}
         </div>
     )
 }
