@@ -449,7 +449,7 @@
         "placeForm": {
             "field": {
                 "title": {
-                    "placeholder": "Enter place title"
+                    "placeholder": "Place name..."
                 },
                 "location": {
                     "placeholder": "Pick place location"

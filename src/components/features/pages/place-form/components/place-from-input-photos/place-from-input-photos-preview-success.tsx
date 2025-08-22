@@ -24,7 +24,7 @@ export const PlaceFormInputPhotosPreviewSuccess = ({
     return (
         <div className="relative">
             {isCover && (
-                <div className="absolute left-1 top-1 rounded-lg bg-black-100 px-2 py-0.5 text-small-bold text-white">
+                <div className="absolute left-1 top-1 rounded-2xl bg-black-100 px-2 py-0.5 text-small-bold text-white">
                     {t('page.placeForm.field.photos.cover')}
                 </div>
             )}
