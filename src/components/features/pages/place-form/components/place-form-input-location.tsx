@@ -1,6 +1,7 @@
 'use client'
 
 import classNames from 'classnames'
+import { PencilIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { LocationPicker } from '@/components/features/dialogs/location-picker/location-picker'
@@ -24,12 +25,22 @@ export const PlaceFormInputLocation = ({ value, error, onChange }: PlaceFormInpu
 
     return (
         <div
-            className={classNames('hover-animated cursor-pointer text-big text-blue-100 hover:text-blue-active', {
-                'text-red-100': error,
-            })}
+            className={classNames(
+                'group flex cursor-pointer items-center gap-x-2 text-big text-blue-100 hover:text-blue-active',
+                {
+                    'text-red-100': error,
+                },
+            )}
             onClick={handleClick}
         >
-            {valueIsValidStringCoordinates ? value : t('page.placeForm.field.location.placeholder')}
+            {valueIsValidStringCoordinates ? (
+                <>
+                    {value}
+                    <PencilIcon size={20} />
+                </>
+            ) : (
+                t('page.placeForm.field.location.placeholder')
+            )}
         </div>
     )
 }
