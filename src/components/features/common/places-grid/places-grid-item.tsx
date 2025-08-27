@@ -29,7 +29,7 @@ export const PlacesGridItem = ({ id, title, cover, rating, meta, distance }: Use
                         cover={cover}
                         title={title}
                         size={192}
-                        className="aspect-square w-full rounded-lg"
+                        className="aspect-square w-full rounded-2xl"
                     />
                 </div>
                 <div className="line-clamp-3 break-words font-medium">{title}</div>

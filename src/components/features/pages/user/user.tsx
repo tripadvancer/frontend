@@ -10,7 +10,7 @@ import { UserSidebarSocial } from './components/user-sidebar-social'
 
 export const User = ({ user, children }: { user: IUser; children: ReactNode }) => {
     return (
-        <div className="container py-16">
+        <div className="container py-24">
             <div className="inner-container">
                 <UserName user={user} />
 

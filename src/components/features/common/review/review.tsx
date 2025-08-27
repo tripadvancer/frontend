@@ -28,7 +28,12 @@ export const Review = ({ review, variant, className, activeUserId, isAuth }: Rev
     }, [review.text])
 
     return (
-        <div className={classNames('flex flex-col gap-y-5 border-b border-black-15 py-8 first:border-t', className)}>
+        <div
+            className={classNames(
+                'flex flex-col gap-y-5 border-b border-black-15 py-8 first:border-t last:border-b-0 last:pb-0',
+                className,
+            )}
+        >
             <div className="flex items-start justify-between gap-x-8">
                 {variant === 'place-page' && <ReviewRatingAuthor {...review} />}
                 {variant === 'user-page' && <ReviewRatingPlace {...review} />}

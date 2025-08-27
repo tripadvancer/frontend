@@ -6,13 +6,18 @@ import Link from 'next/link'
 
 import { FormButton } from '@/components/ui/form-button'
 
-export const PlaceFormSubmit = ({ isLoading }: { isLoading: boolean }) => {
+type PlaceFormSubmitProps = {
+    isLoading: boolean
+    isDisabled: boolean
+}
+
+export const PlaceFormSubmit = ({ isLoading, isDisabled }: PlaceFormSubmitProps) => {
     const t = useTranslations()
 
     return (
         <div className="flex flex-col lg:flex-row lg:gap-x-8">
             <div className="flex-1">
-                <FormButton htmlType="submit" className="mb-4 w-full" isLoading={isLoading}>
+                <FormButton htmlType="submit" className="mb-4 w-full" isLoading={isLoading} isDisabled={isDisabled}>
                     {t('common.action.saveChanges')}
                 </FormButton>
                 <p className="text-center text-small text-black-40">

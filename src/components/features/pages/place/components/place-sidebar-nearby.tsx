@@ -25,6 +25,7 @@ export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyPro
         lng: lngLat.lng,
         radius: parseInt(process.env.NEXT_PUBLIC_NEARBY_PLACES_RADIUS || '30000', 10),
         categories: [],
+        limit: 6,
     })
 
     // Filter out the current place

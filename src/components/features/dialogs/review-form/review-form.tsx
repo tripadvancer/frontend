@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
@@ -26,6 +28,7 @@ type ReviewFormProps = {
 export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {
     const t = useTranslations()
     const dialog = useDialog()
+    const [isFormDisabled, setIsFormDisabled] = useState(false)
 
     const validationSchema = Yup.object().shape({
         rating: Yup.number().min(1, t('validation.required')),
@@ -81,6 +84,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                     <ReviewFormPhotosList
                         photos={formik.values.photos}
                         isDisabled={isLoading}
+                        setIsFormDisabled={setIsFormDisabled}
                         onChange={value => formik.setFieldValue('photos', value)}
                     />
                 </div>
@@ -91,7 +95,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 onChange={value => formik.setFieldValue('isVisited', value)}
             />
             <div className="flex gap-x-2">
-                <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty}>
+                <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty || isFormDisabled}>
                     {t('common.action.save')}
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>

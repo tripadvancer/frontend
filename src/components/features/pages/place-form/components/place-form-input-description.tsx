@@ -20,10 +20,11 @@ const maxLength = validationConfig.place.description.maxLength
 
 type PlaceFormInputDescriptionProps = {
     value: string
+    error?: string
     onChange: (value: string) => void
 }
 
-export const PlaceFormInputDescription = ({ value, onChange }: PlaceFormInputDescriptionProps) => {
+export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormInputDescriptionProps) => {
     const t = useTranslations()
     const [characterCount, setCharacterCount] = useState(0)
 

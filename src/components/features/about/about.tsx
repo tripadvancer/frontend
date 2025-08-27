@@ -20,7 +20,7 @@ export const About = () => {
             </div>
 
             <div className="container flex-1 bg-white">
-                <div className="inner-container flex flex-col gap-y-8 py-24 text-big">
+                <div className="inner-container flex flex-col gap-y-8 py-16 text-big">
                     <p>
                         <strong>Tripadvancer</strong> is&nbsp;a&nbsp;platform where travelers share the most interesting
                         places they&rsquo;ve discovered&nbsp;&mdash; hidden gems, unusual spots, and local favorites all

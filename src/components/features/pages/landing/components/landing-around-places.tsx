@@ -19,7 +19,7 @@ export const LandingAroundPlaces = () => {
     const userCountryName = getCountryByCode(userCountryCode)?.name['en']
 
     const { data, isError, isSuccess } = placesAroundAPI.useGetPlacesAroundQuery(
-        { lat, lng, radius, categories: [], limit: 10 },
+        { lat, lng, radius, categories: [], limit: 5 },
         { skip: !edgeGeo.isSuccess },
     )
 

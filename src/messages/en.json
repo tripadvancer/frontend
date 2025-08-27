@@ -73,7 +73,8 @@
         "sendComplaint": "Your complaint has been sent.",
         "updatePlace": "Your place has been updated.",
         "updateUserAvatar": "Your avatar has been updated.",
-        "updateUserInfo": "Your profile has been updated."
+        "updateUserInfo": "Your profile has been updated.",
+        "copied": "Copied"
     },
     "confirmation": {
         "deletePlace": {
@@ -153,7 +154,7 @@
             "addPlace": "Share place",
             "links": {
                 "profile": "Profile",
-                "addPlace": "Add place",
+                "addPlace": "Share place",
                 "map": "Map",
                 "explore": "Explore",
                 "about": "About"
@@ -455,7 +456,7 @@
         "placeForm": {
             "field": {
                 "title": {
-                    "placeholder": "Enter place title"
+                    "placeholder": "Place name..."
                 },
                 "location": {
                     "placeholder": "Pick place location"
@@ -556,7 +557,9 @@
         "countries": {
             "title": "Explore the World",
             "description": "{placesCount} places in {countriesCount} countries",
-            "goToMap": "View places on a Map"
+            "goToMapTitle": "View places on the map",
+            "goToMapText": "Discover places around the world with our interactive map.",
+            "goToMapButton": "View Map"
         },
         "country": {
             "description": "Discover the best places to visit in {country}, curated by fellow travelers who know it best. Find out the top things to do in {country} based on insider recommendations.",
@@ -565,6 +568,7 @@
             "addPlace": "Add place"
         },
         "place": {
+            "viewAll": "View all places in {country}",
             "about": "About this place",
             "photos": "Photos",
             "reviews": {
