@@ -17,11 +17,11 @@ export const HeaderAddPlace = ({ activeUserId, isAuth, isEmailVerified }: Header
 
     return (
         <div
-            className="flex-center hover-animated cursor-pointer text-blue-100 sm:h-8 sm:rounded-full sm:bg-white sm:px-4 sm:text-small sm:text-blue-100 sm:hover:text-blue-active"
+            className="flex-center hover-animated cursor-pointer text-nowrap text-blue-100 lg:h-8 lg:rounded-full lg:bg-white lg:px-4 lg:text-small lg:text-blue-100 lg:hover:text-blue-active"
             onClick={handleClick}
         >
-            <MapPinPlusIcon className="block sm:hidden" />
-            <span className="hidden sm:block">{t('layout.header.addPlace')}</span>
+            <MapPinPlusIcon className="block lg:hidden" />
+            <span className="hidden lg:block">{t('layout.header.addPlace')}</span>
         </div>
     )
 }

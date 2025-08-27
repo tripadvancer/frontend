@@ -46,7 +46,7 @@ export const HeaderSearch = () => {
     }
 
     return (
-        <div className="relative sm:w-[350px]" ref={ref}>
+        <div className="relative w-full lg:w-[350px]" ref={ref}>
             <HeaderSearchInput
                 value={searchTerm}
                 isLoading={isLoading}

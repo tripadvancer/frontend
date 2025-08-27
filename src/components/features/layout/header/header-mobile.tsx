@@ -13,19 +13,18 @@ export const HeaderMobile = async () => {
     const t = await getTranslations()
 
     return (
-        <div className="container relative flex h-14 items-center justify-between gap-x-6 sm:hidden">
+        <div className="container relative flex h-14 items-center justify-between gap-x-6 lg:hidden">
             <div className="flex-center gap-x-4">
-                {/* <HeaderMobileMenu /> */}
+                <HeaderMobileMenu />
                 <HeaderLogo />
             </div>
 
             <div className="flex-center gap-x-2">
-                {/* <Link href="/maps">
+                <Link href="/maps">
                     <MapIcon />
-                </Link> */}
-                {/* <HeaderAddPlaceWithAuth /> */}
-                {/* <UserMenuWithAuth signInComponent={<HeaderSignIn />} /> */}
-                <HeaderMobileMenu />
+                </Link>
+                <HeaderAddPlaceWithAuth />
+                <UserMenuWithAuth signInComponent={<HeaderSignIn />} />
             </div>
         </div>
     )
