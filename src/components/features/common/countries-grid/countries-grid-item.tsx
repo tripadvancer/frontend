@@ -15,7 +15,7 @@ export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) 
     const countrySlug = country?.slug ?? ''
 
     return (
-        <figure className="group overflow-hidden rounded-lg bg-orange-10">
+        <figure className="group overflow-hidden rounded-2xl bg-orange-10">
             <Link href={`/countries/${countrySlug}`} className="link-black">
                 <div className="w-full overflow-hidden">
                     <ImageWithFallback

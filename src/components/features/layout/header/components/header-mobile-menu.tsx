@@ -2,7 +2,7 @@
 
 import { RefObject, useRef, useState } from 'react'
 
-import { GlobeIcon, InfoIcon, MapIcon, MapPinPlusIcon, MenuIcon, XIcon } from 'lucide-react'
+import { GlobeIcon, InfoIcon, MapIcon, MenuIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useOnClickOutside } from 'usehooks-ts'
 
@@ -34,24 +34,26 @@ export const HeaderMobileMenu = () => {
             </div>
 
             {isOpen && (
-                <div className="container absolute left-0 right-0 top-14 bg-blue-20 px-4 pb-8 pt-4" ref={ref}>
-                    <nav className="flex flex-col gap-y-4" onClick={toggleMenu}>
+                <div className="container absolute left-0 right-0 top-14 bg-blue-20 px-4 pb-4" ref={ref}>
+                    <nav onClick={toggleMenu}>
                         <Link
-                            href="/places/add"
-                            className="flex items-center gap-x-2 text-big-bold text-orange-100 hover:text-orange-active"
+                            href="/maps"
+                            className="flex items-center gap-x-4 border-t border-dashed border-white py-4 text-big-bold"
                         >
-                            <MapPinPlusIcon />
-                            {t('layout.header.links.addPlace')}
-                        </Link>
-                        <Link href="/maps" className="flex items-center gap-x-2 text-big-bold">
                             <MapIcon />
                             {t('layout.header.links.map')}
                         </Link>
-                        <Link href="/countries" className="flex items-center gap-x-2 text-big-bold">
+                        <Link
+                            href="/countries"
+                            className="flex items-center gap-x-4 border-t border-dashed border-white py-4 text-big-bold"
+                        >
                             <GlobeIcon />
                             {t('layout.header.links.explore')}
                         </Link>
-                        <Link href="/about" className="flex items-center gap-x-2 text-big-bold">
+                        <Link
+                            href="/about"
+                            className="flex items-center gap-x-4 border-y border-dashed border-white py-4 text-big-bold"
+                        >
                             <InfoIcon />
                             {t('layout.header.links.about')}
                         </Link>
