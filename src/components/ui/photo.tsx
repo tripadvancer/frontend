@@ -14,7 +14,7 @@ export const Photo = ({ url, size, alt, onClick }: PhotoProps) => {
     return (
         <Image
             src={makeImageUrl(url, ImageVariants.PREVIEW)}
-            className="w-full cursor-pointer rounded-lg align-top"
+            className="w-full cursor-pointer rounded-2xl align-top"
             width={size}
             height={size}
             placeholder="blur"
