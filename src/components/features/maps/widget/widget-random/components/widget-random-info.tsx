@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { WidgetTogler } from '../widget-togler'
+import { WidgetTogler } from '@/components/features/maps/widget/components/widget-togler'
 
 export const WidgetRandomInfo = () => {
     const t = useTranslations()

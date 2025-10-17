@@ -6,20 +6,24 @@ import { useTranslations } from 'next-intl'
 
 import { PlacesFeed } from '@/components/features/common/places-feed/places-feed'
 import { PlacesFeedSkeleton } from '@/components/features/common/places-feed/places-feed-skeleton'
+import { WidgetMessage } from '@/components/features/maps/widget/components/widget-message'
 import { getMapState } from '@/redux/features/map-slice'
-import { getWidgetState } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places.api'
-
-import { WidgetMessage } from './widget-message'
+import { useMapState } from '@/utils/hooks/use-map-state'
 
 export const WidgetAllPlaces = () => {
     const t = useTranslations()
     const mapBounds = useAppSelector(getMapState).bounds
-    const selectedCategories = useAppSelector(getWidgetState).selectedCategories
+    const [mapState] = useMapState()
 
     const { data, isError, isLoading, isSuccess, refetch } = placesAPI.useGetPlacesQuery(
-        { mapBounds, selectedCategories },
+        {
+            mapBounds,
+            selectedCategories: mapState.filters.categories
+                .map(id => Number(id))
+                .filter((id): id is number => Number.isFinite(id)),
+        },
         { skip: !mapBounds },
     )
 

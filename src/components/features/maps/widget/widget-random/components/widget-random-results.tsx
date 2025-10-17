@@ -2,7 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
-import { WidgetMessage } from '../widget-message'
+import { WidgetMessage } from '@/components/features/maps/widget/components/widget-message'
+
 import { WidgetRandomPlace } from './widget-random-place'
 
 type WidgetRandomResultsProps = {

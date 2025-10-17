@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 
+import { WidgetMessage } from '@/components/features/maps/widget/components/widget-message'
 import { listAPI } from '@/redux/services/list.api'
 
-import { WidgetMessage } from '../widget-message'
 import { WidgetSavedListsItem } from './widget-saved-lists-item'
 import { WidgetSavedListsItemSkeleton } from './widget-saved-lists-item-skeleton'
 

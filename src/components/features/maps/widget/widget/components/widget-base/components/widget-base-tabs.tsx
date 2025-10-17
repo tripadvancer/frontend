@@ -12,7 +12,7 @@ type TabType = {
     caption: string
 }
 
-export const WidgetTabs = () => {
+export const WidgetBaseTabs = () => {
     const t = useTranslations()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)

@@ -15,7 +15,7 @@ import { WidgetRandomButton } from './widget-random-button'
 import { WidgetRandomResults } from './widget-random-results'
 import { WidgetRandomSlider } from './widget-random-slider'
 
-export const WidgetRandom = () => {
+export const WidgetRandomBase = () => {
     const t = useTranslations()
     const toast = useToast()
     const userLocation = useAppSelector(getUserLocation)
