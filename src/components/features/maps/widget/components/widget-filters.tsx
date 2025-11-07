@@ -2,7 +2,7 @@
 
 import { MapFilters } from '@/components/features/dialogs/map-filters/map-filters'
 import { useDialog } from '@/providers/dialog-provider'
-import { useMapState } from '@/utils/hooks/use-map-state'
+import { useMapState } from '@/utils/map/use-map-state'
 
 export const WidgetFilters = () => {
     const dialog = useDialog()

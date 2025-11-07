@@ -10,7 +10,7 @@ import { WidgetMessage } from '@/components/features/maps/widget/components/widg
 import { getMapState } from '@/redux/features/map-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { placesAPI } from '@/redux/services/places.api'
-import { useMapState } from '@/utils/hooks/use-map-state'
+import { useMapState } from '@/utils/map/use-map-state'
 
 export const WidgetAllPlaces = () => {
     const t = useTranslations()

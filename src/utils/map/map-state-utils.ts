@@ -24,8 +24,6 @@ export const filterSchema = yup
     .noUnknown(true)
     .defined()
 
-export type FiltersType = yup.InferType<typeof filterSchema>
-
 export const mapStateSchema = yup
     .object({
         lng: yup.number().min(-180).max(180).default(DEFAULT_MAP_STATE.lng),
@@ -36,6 +34,7 @@ export const mapStateSchema = yup
     .noUnknown(true)
     .defined()
 
+export type FiltersType = yup.InferType<typeof filterSchema>
 export type MapStateType = yup.InferType<typeof mapStateSchema>
 
 export function encodeMapState(state: MapStateType): string {

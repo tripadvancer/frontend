@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import { MapStateType, decodeMapState, encodeMapState, mapStateSchema } from '@/utils/helpers/map-state-utils'
+import { MapStateType, decodeMapState, encodeMapState, mapStateSchema } from '@/utils/map/map-state-utils'
 
 export function useMapState(): [MapStateType, (next: MapStateType, options?: { cleanUrl?: boolean }) => void] {
     const searchParams = useSearchParams()

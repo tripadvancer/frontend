@@ -4,8 +4,8 @@ import { useCallback, useState } from 'react'
 
 import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
-import { mapStateSchema } from '@/utils/helpers/map-state-utils'
-import { useMapState } from '@/utils/hooks/use-map-state'
+import { mapStateSchema } from '@/utils/map/map-state-utils'
+import { useMapState } from '@/utils/map/use-map-state'
 
 import { MapFiltersCategories } from './components/map-filters-categories'
 import { MapFiltersSwitcherNearbyOnly } from './components/map-filters-switcher-hide-nearby-only'
