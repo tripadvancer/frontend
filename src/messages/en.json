@@ -300,6 +300,20 @@
             "title": "Share place",
             "text": "Share the place with your friends and invite them to visit it."
         }
+        ,
+        "mapFilter": {
+            "title": "Filters",
+            "categories": {
+                "title": "Categories"
+            },
+            "switcherShowOnlySaved": {
+                "label": "Show only saved places",
+                "description": "* This filter is applied only when viewing your saved places."
+            },
+            "switcherHideVisited": {
+                "label": "Hide visited places"
+            }
+        }
     },
     "auth": {
         "or": "Or",
@@ -590,6 +604,10 @@
             "error": "An unexpected error has occurred.<br></br>Please try again later.",
             "search": {
                 "placeholder": "Find a country, place or address"
+            },
+            "filters": {
+                "title": "Filters",
+                "selected": "{count, plural, =1 {# selected} other {# selected}}"
             },
             "categories": {
                 "title": "Categories",

@@ -28,7 +28,7 @@ export const MapFiltersCategories = ({ selectedCategoriesIds, onClick }: MapFilt
         <div className="space-y-4">
             <div className="space-y-2">
                 <label htmlFor="categories" className="font-medium">
-                    Categories
+                    {t('dialog.mapFilter.categories.title')}
                 </label>
                 <div className="flex flex-wrap gap-2">
                     <MapFiltersCategoriesItem
