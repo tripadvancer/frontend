@@ -17,7 +17,6 @@ export const MapFilters = () => {
     const [mapState, setMapState] = useMapState()
     const [filters, setFilters] = useState(mapState.filters)
 
-    // ✅ Применить фильтры: обновляем URL
     const handleApplyFilters = useCallback(() => {
         const defaults = mapStateSchema.getDefault().filters
         const isDefault = JSON.stringify(filters) === JSON.stringify(defaults)
@@ -26,7 +25,6 @@ export const MapFilters = () => {
         dialog.close()
     }, [filters, mapState, setMapState, dialog])
 
-    // ✅ Сбросить фильтры к дефолтам (только локально, URL не трогаем)
     const handleResetFilters = useCallback(() => {
         const defaults = mapStateSchema.getDefault().filters
         setFilters(defaults)
@@ -64,7 +62,7 @@ export const MapFilters = () => {
                     <hr />
                 </div>
 
-                <div className="flex space-x-2">
+                <div className="space-x-2">
                     <FormButton onClick={handleApplyFilters}>Apply</FormButton>
                     <FormButton type="stroke" onClick={handleResetFilters}>
                         Reset

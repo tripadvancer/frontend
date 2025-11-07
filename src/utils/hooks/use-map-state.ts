@@ -15,7 +15,6 @@ export function useMapState(): [MapStateType, (next: MapStateType, options?: { c
     const setMapState = (next: MapStateType, options?: { cleanUrl?: boolean }) => {
         const encoded = encodeMapState(next)
 
-        // Если cleanUrl и все значения дефолтные → убираем query
         if (options?.cleanUrl && encoded === encodeMapState(mapStateSchema.getDefault())) {
             router.replace('/maps')
         } else {
