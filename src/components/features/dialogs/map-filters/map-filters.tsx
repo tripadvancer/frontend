@@ -8,8 +8,6 @@ import { mapStateSchema } from '@/utils/map/map-state-utils'
 import { useMapState } from '@/utils/map/use-map-state'
 
 import { MapFiltersCategories } from './components/map-filters-categories'
-import { MapFiltersSwitcherNearbyOnly } from './components/map-filters-switcher-hide-nearby-only'
-import { MapFiltersSwitcherHideVisited } from './components/map-filters-switcher-hide-visited'
 import { MapFiltersSwitcherShowOnlySaved } from './components/map-filters-switcher-show-only-saved'
 
 export const MapFilters = () => {
@@ -40,18 +38,6 @@ export const MapFilters = () => {
                     <MapFiltersCategories
                         selectedCategoriesIds={filters.categories.filter((v): v is number => v !== undefined)}
                         onClick={newCats => setFilters(prev => ({ ...prev, categories: newCats }))}
-                    />
-                    <hr />
-
-                    <MapFiltersSwitcherNearbyOnly
-                        checked={filters.nearbyOnly}
-                        onChange={() => setFilters(prev => ({ ...prev, nearbyOnly: !prev.nearbyOnly }))}
-                    />
-                    <hr />
-
-                    <MapFiltersSwitcherHideVisited
-                        checked={filters.skipVisited}
-                        onChange={() => setFilters(prev => ({ ...prev, skipVisited: !prev.skipVisited }))}
                     />
                     <hr />
 

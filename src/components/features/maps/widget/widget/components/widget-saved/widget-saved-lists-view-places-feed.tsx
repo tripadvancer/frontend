@@ -12,6 +12,7 @@ import { useMapState } from '@/utils/map/use-map-state'
 
 export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) => {
     const t = useTranslations()
+
     const [mapState] = useMapState()
 
     const { data, isError, isLoading, isSuccess, refetch } = listAPI.useGetListPlacesQuery({
