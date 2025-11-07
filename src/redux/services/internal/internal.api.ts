@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import { EdgeGeoResponse } from '@/redux/services/internal.types'
+import { EdgeGeoResponse } from '@/redux/services/internal/internal.types'
 
 export const internalApi = createApi({
     reducerPath: 'internalApi',

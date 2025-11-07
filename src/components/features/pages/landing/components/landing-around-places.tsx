@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import { PlacesGrid } from '@/components/features/common/places-grid/places-grid'
 import { ShowAllLink } from '@/components/ui/show-all-link'
-import { internalApi } from '@/redux/services/internal.api'
-import { placesAroundAPI } from '@/redux/services/places-around.api'
+import { internalApi } from '@/redux/services/internal/internal.api'
+import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
 import { getCountryByCode } from '@/services/countries'
 
 export const LandingAroundPlaces = () => {

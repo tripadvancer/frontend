@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { GetPlacesAroundParams, GetPlacesAroundResponse } from '@/redux/services/places-around.types'
+import { GetPlacesAroundParams, GetPlacesAroundResponse } from '@/redux/services/places-around/places-around.types'
 import { GetPlaceByIdResponse, GetPlacesByCountryCodeResponse } from '@/services/places.types'
 
 export async function getPlacesByCountryCode(

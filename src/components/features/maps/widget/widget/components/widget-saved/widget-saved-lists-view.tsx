@@ -10,7 +10,7 @@ import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { listAPI } from '@/redux/services/list.api'
+import { listAPI } from '@/redux/services/list/list.api'
 import { IList } from '@/utils/types/common'
 
 import { WidgetSavedListsViewPlacesFeed } from './widget-saved-lists-view-places-feed'

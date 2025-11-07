@@ -6,6 +6,7 @@ import { GeoJsonCollection } from '@/utils/types/geo'
 export type GetPlacesParams = {
     mapBounds: LngLatBounds | undefined
     selectedCategories: number[]
+    skip_visited: boolean
 }
 
 export type GetPlacesResponse = GeoJsonCollection<{

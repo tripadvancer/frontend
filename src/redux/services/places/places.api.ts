@@ -7,7 +7,7 @@ import {
     GetPlacesResponse,
     ImageUploadResponse,
     UpdatePlaceInputs,
-} from '@/redux/services/places.types'
+} from '@/redux/services/places/places.types'
 
 export const placesAPI = api.injectEndpoints({
     endpoints: build => ({
@@ -20,6 +20,7 @@ export const placesAPI = api.injectEndpoints({
                     ne_lng: params.mapBounds?._ne.lng,
                     sw_lat: params.mapBounds?._sw.lat,
                     sw_lng: params.mapBounds?._sw.lng,
+                    skip_visited: params.skip_visited,
                 },
             }),
             providesTags: ['Places'],

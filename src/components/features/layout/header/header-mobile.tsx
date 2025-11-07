@@ -3,7 +3,8 @@ import { getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
-import { UserMenuWithAuth } from '../user-menu/user-menu-with-auth'
+import { UserMenuWithAuth } from '@/components/features/layout/user-menu/user-menu-with-auth'
+
 import { HeaderAddPlaceWithAuth } from './components/header-add-place-with-auth'
 import { HeaderLogo } from './components/header-logo'
 import { HeaderMobileMenu } from './components/header-mobile-menu'

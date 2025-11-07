@@ -612,8 +612,6 @@
                         "private": "Private",
                         "public": "Public",
                         "action": {
-                            "enableMapFilter": "Hide other places",
-                            "disableMapFilter": "Show all places",
                             "edit": "Edit",
                             "delete": "Delete"
                         }

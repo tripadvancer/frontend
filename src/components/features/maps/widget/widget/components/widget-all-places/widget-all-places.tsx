@@ -9,7 +9,7 @@ import { PlacesFeedSkeleton } from '@/components/features/common/places-feed/pla
 import { WidgetMessage } from '@/components/features/maps/widget/components/widget-message'
 import { getMapState } from '@/redux/features/map-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { placesAPI } from '@/redux/services/places.api'
+import { placesAPI } from '@/redux/services/places/places.api'
 import { useMapState } from '@/utils/map/use-map-state'
 
 export const WidgetAllPlaces = () => {
@@ -23,6 +23,7 @@ export const WidgetAllPlaces = () => {
             selectedCategories: mapState.filters.categories
                 .map(id => Number(id))
                 .filter((id): id is number => Number.isFinite(id)),
+            skip_visited: mapState.filters.skipVisited,
         },
         { skip: !mapBounds },
     )

@@ -6,7 +6,7 @@ import {
     UpdateListInputs,
     UpdateListResponse,
     UpdatePlaceInListsInputs,
-} from '@/redux/services/list.types'
+} from '@/redux/services/list/list.types'
 
 export const listAPI = api.injectEndpoints({
     endpoints: build => ({

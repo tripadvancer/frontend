@@ -6,7 +6,7 @@ import { RequestUserDeletionCompleting } from '@/components/features/auth/reques
 import { Confirmation } from '@/components/ui/confirmation'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user.api'
+import { userAPI } from '@/redux/services/user/user.api'
 
 export const UserSettingsBlockRequestUserDeletion = () => {
     const t = useTranslations()
