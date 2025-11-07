@@ -8,9 +8,8 @@ import { setAppMode } from '@/redux/features/app-slice'
 import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
 import { setWidgetActiveTab, setWidgetMode } from '@/redux/features/widget-slice'
 import { useAppDispatch } from '@/redux/hooks'
-
-import { AppModes, WidgetModes, WidgetTabs } from '../enums'
-import { arrayToLngLat, getFlyToViewState, getMapFlyToOptions } from '../helpers/maps'
+import { AppModes, WidgetModes, WidgetTabs } from '@/utils/enums'
+import { arrayToLngLat, getFlyToViewState, getMapFlyToOptions } from '@/utils/helpers/maps'
 
 interface useShowOnMapInterface {
     showOnMap: () => void

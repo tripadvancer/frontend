@@ -1,9 +1,9 @@
 'use client'
 
-import { getIsFilterMapBySavedLists } from '@/redux/features/map-slice'
 import { getWidgetActiveList, getWidgetActiveTab, getWidgetMode } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
 import { WidgetModes, WidgetTabs } from '@/utils/enums'
+import { useMapState } from '@/utils/map/use-map-state'
 
 import { MapSourceDefault } from './map-source-default'
 import { MapSourceRandom } from './map-source-random'
@@ -13,14 +13,15 @@ export const MapSources = ({ isAuth }: { isAuth: boolean }) => {
     const widgetMode = useAppSelector(getWidgetMode)
     const widgetActiveTab = useAppSelector(getWidgetActiveTab)
     const activeList = useAppSelector(getWidgetActiveList)
-    const isFilterMapBySavedList = useAppSelector(getIsFilterMapBySavedLists)
+
+    const [mapState] = useMapState()
 
     if (
         isAuth &&
         widgetMode === WidgetModes.PLACES &&
         widgetActiveTab == WidgetTabs.SAVED &&
         activeList &&
-        isFilterMapBySavedList
+        mapState.filters.showOnlySaved
     ) {
         return <MapSourceSavedPlaces listId={activeList.id} />
     }

@@ -7,7 +7,7 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { LinkButton } from '@/components/ui/link-button'
 import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user.api'
+import { userAPI } from '@/redux/services/user/user.api'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 
 type ConfirmUserRemovalProps = {

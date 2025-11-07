@@ -9,7 +9,7 @@ import { FormInput } from '@/components/ui/form-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
-import { CreateListInputs, UpdateListInputs } from '@/redux/services/list.types'
+import { CreateListInputs, UpdateListInputs } from '@/redux/services/list/list.types'
 
 const listNameMaxLength = validationConfig.list.name.maxLength
 const listDescriptionMaxLength = validationConfig.list.description.maxLength

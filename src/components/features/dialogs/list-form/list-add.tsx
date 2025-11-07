@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { listAPI } from '@/redux/services/list.api'
-import { CreateListInputs } from '@/redux/services/list.types'
+import { listAPI } from '@/redux/services/list/list.api'
+import { CreateListInputs } from '@/redux/services/list/list.types'
 
 import { ListForm } from './list-form'
 

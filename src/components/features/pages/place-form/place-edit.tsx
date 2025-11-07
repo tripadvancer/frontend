@@ -8,9 +8,9 @@ import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { placesAroundAPI } from '@/redux/services/places-around.api'
-import { placesAPI } from '@/redux/services/places.api'
-import { UpdatePlaceInputs } from '@/redux/services/places.types'
+import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
+import { placesAPI } from '@/redux/services/places/places.api'
+import { UpdatePlaceInputs } from '@/redux/services/places/places.types'
 import { arrayToString, stringToLngLat } from '@/utils/helpers/maps'
 import { GeoJsonPoint } from '@/utils/types/geo'
 

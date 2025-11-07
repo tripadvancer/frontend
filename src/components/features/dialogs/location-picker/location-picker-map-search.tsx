@@ -4,7 +4,7 @@ import { RefObject, useEffect, useRef, useState } from 'react'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
-import { searchAPI } from '@/redux/services/search-api'
+import { searchAPI } from '@/redux/services/search/search.api'
 import { transformSearchCoordinates, transformSearchLocations } from '@/utils/helpers/search'
 import { LngLat } from '@/utils/types/geo'
 import { ILocationPreview } from '@/utils/types/place'

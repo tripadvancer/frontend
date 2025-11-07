@@ -16,7 +16,7 @@ import { FormButton } from '@/components/ui/form-button'
 import { useDialog } from '@/providers/dialog-provider'
 import { closeMapPopups, getMapState } from '@/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { placesAroundAPI } from '@/redux/services/places-around.api'
+import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
 import { LngLatToString } from '@/utils/helpers/maps'
 
 type MapPopupLocationProps = {

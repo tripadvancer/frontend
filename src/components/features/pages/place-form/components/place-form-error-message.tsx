@@ -3,7 +3,7 @@
 import { FormikErrors } from 'formik'
 import { TriangleAlertIcon } from 'lucide-react'
 
-import { CreatePlaceInputs, UpdatePlaceInputs } from '@/redux/services/places.types'
+import { CreatePlaceInputs, UpdatePlaceInputs } from '@/redux/services/places/places.types'
 import { getFormikErrors } from '@/utils/helpers/common'
 
 type PlaceFormErrorMessageProps = {

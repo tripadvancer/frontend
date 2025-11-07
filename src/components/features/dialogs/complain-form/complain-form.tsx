@@ -9,7 +9,7 @@ import { FormInput } from '@/components/ui/form-input'
 import { FormRadio } from '@/components/ui/form-radio'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
-import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/redux/services/complain.types'
+import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/redux/services/complain/complain.types'
 import { ComplaintReasonsEnum } from '@/utils/enums'
 
 const textMaxLength = validationConfig.complain.maxLength
