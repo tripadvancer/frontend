@@ -1,3 +1,5 @@
+[![Deploy Status](https://github.com/tripadvancer/portal/actions/workflows/deploy.yml/badge.svg)](https://github.com/tripadvancer/portal/actions/workflows/deploy.yml)
+
 # Tripadvancer Portal
 
 ## Prerequisites
