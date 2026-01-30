@@ -52,7 +52,7 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
     useEffect(() => {
         const someUploading = photos.some(({ status }) => status === UploadingImageStatus.UPLOADING)
         setIsFormDisabled(someUploading)
-    }, [photos])
+    }, [photos, setIsFormDisabled])
 
     useEffect(() => {
         const allUploadsFinished = photos.every(({ status }) => status !== UploadingImageStatus.UPLOADING)
