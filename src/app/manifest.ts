@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
         short_name: 'Tripadvancer',
         description: 'Discovering, sharing, and remembering amazing places.',
 
-        start_url: '/maps',
+        start_url: '/',
         scope: '/',
 
         display: 'standalone',
@@ -20,11 +20,6 @@ export default function manifest(): MetadataRoute.Manifest {
         categories: ['travel', 'social', 'maps'],
 
         icons: [
-            {
-                src: '/favicon.ico',
-                sizes: 'any',
-                type: 'image/x-icon',
-            },
             {
                 src: '/icons/icon-192.png',
                 sizes: '192x192',
@@ -42,6 +37,8 @@ export default function manifest(): MetadataRoute.Manifest {
                 purpose: 'maskable',
             },
         ],
+
+        screenshots: [],
 
         protocol_handlers: [
             {
