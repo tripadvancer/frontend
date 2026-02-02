@@ -1,3 +1,4 @@
+import { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 import withPWA from 'next-pwa'
 
@@ -10,7 +11,7 @@ const withPWANext = withPWA({
     disable: process.env.NODE_ENV === 'development',
 })
 
-const nextConfig = {
+const nextConfig: NextConfig = {
     pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
     images: {
         unoptimized: true,
@@ -40,4 +41,4 @@ const nextConfig = {
     },
 }
 
-export default withNextIntl(withPWANext(nextConfig))
+export default withPWANext(withNextIntl(nextConfig) as any)
