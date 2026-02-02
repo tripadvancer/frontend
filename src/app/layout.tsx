@@ -122,8 +122,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
                 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-                <link href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css" rel="stylesheet" />
                 <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+                <link href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css" rel="stylesheet" />
             </head>
             <body className={roboto.className}>
                 <NextIntlClientProvider messages={messages}>
