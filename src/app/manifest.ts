@@ -38,7 +38,20 @@ export default function manifest(): MetadataRoute.Manifest {
             },
         ],
 
-        screenshots: [],
+        screenshots: [
+            {
+                src: '/images/screenshots/desktop/map.jpg',
+                sizes: '1280x940',
+                type: 'image/jpg',
+                form_factor: 'wide',
+            },
+            {
+                src: '/images/screenshots/mobile/map.png',
+                sizes: '800x1334',
+                type: 'image/png',
+                form_factor: 'narrow',
+            },
+        ],
 
         protocol_handlers: [
             {
