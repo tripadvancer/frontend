@@ -201,7 +201,7 @@
             "suggestTitle": "May be interesting for you:",
             "suggestAway": "~ {distance} km away",
             "result": {
-                "title": "Search for a country, place or location",
+                "title": "Search for a country or place",
                 "error": "An error occurred while searching. Please try again later.",
                 "loading": "Searching ...",
                 "empty": "No results found. Please try changing your search query."

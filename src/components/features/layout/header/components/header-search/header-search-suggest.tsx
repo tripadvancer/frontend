@@ -40,6 +40,7 @@ export const HeaderSearchSuggest = ({ hideResults }: HeaderSearchSuggestProps) =
 
     return (
         <div>
+            <hr className="my-1" />
             <div className="mb-1 mt-4 pl-3 text-black-70">{t('component.search.suggestTitle')}</div>
 
             <HeaderSearchItem
