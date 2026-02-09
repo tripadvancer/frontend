@@ -6,7 +6,11 @@ import { MapPinIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useDebounceCallback } from 'usehooks-ts'
 
+import Image from 'next/image'
+
 import { searchAPI } from '@/redux/services/search/search.api'
+import { ImageVariants } from '@/utils/enums'
+import { makeImageUrl } from '@/utils/helpers/common'
 import { transformSearchCountries, transformSearchPlaces } from '@/utils/helpers/search'
 import { ICountryDict } from '@/utils/types/country'
 import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
@@ -22,7 +26,7 @@ type HeaderSearchResultProps = {
 
 export const HeaderSearchResult = ({ searchTerm, setIsLoading, hideResults }: HeaderSearchResultProps) => {
     const t = useTranslations()
-    const [items, setItems] = useState<ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[]>([])
+    const [items, setItems] = useState<ISearchItem<IPlacePreview | ICountryDict>[]>([])
     const [search, { data, isFetching, isSuccess, isError }] = searchAPI.useLazySearchQuery()
 
     const debouncedSearch = useDebounceCallback(search, 500)
@@ -65,7 +69,25 @@ export const HeaderSearchResult = ({ searchTerm, setIsLoading, hideResults }: He
                 key={`header-search-item-${item.title}`}
                 title={item.title}
                 info={item.info}
-                icon={<MapPinIcon />}
+                icon={
+                    item.type === 'country' ? (
+                        <Image
+                            src={`/images/countries/preview/${(item.properties as ICountryDict).code.toLowerCase()}.jpg`}
+                            alt={(item.properties as ICountryDict).name['en']}
+                            width={36}
+                            height={36}
+                            className="rounded-md"
+                        />
+                    ) : (
+                        <Image
+                            src={makeImageUrl((item.properties as IPlacePreview).cover, ImageVariants.PREVIEW)}
+                            alt={(item.properties as IPlacePreview).title}
+                            width={36}
+                            height={36}
+                            className="rounded-md"
+                        />
+                    )
+                }
                 href={
                     item.type === 'country'
                         ? `/countries/${(item.properties as ICountryDict).slug}`
