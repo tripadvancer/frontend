@@ -8,11 +8,11 @@ import { useOnClickOutside } from 'usehooks-ts'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
-import { HeaderSearchInput } from './header-search-input'
-import { HeaderSearchResult } from './header-search-result'
-import { HeaderSearchSuggest } from './header-search-suggest'
+import { SearchInput } from './search-input'
+import { SearchResult } from './search-result'
+import { SearchSuggest } from './search-suggest'
 
-export const HeaderSearch = () => {
+export const Search = () => {
     const ref = useRef<HTMLDivElement>(null)
 
     const [searchTerm, setSearchTerm] = useState<string>('')
@@ -46,7 +46,7 @@ export const HeaderSearch = () => {
 
     return (
         <div className="relative w-full lg:w-[350px]" ref={ref}>
-            <HeaderSearchInput
+            <SearchInput
                 value={searchTerm}
                 isLoading={isLoading}
                 onChange={setSearchTerm}
@@ -69,14 +69,14 @@ export const HeaderSearch = () => {
                         className="absolute -left-1 -right-1 -top-1 z-0"
                     >
                         <div className="rounded-lg bg-white p-1 pt-12 shadow-small">
-                            {/* <HeaderSearchNearby hideResults={hideResults} /> */}
+                            {/* <SearchNearby hideResults={hideResults} /> */}
                             {/* <hr className="my-1" /> */}
-                            <HeaderSearchResult
+                            <SearchResult
                                 searchTerm={searchTerm}
                                 setIsLoading={setIsLoading}
                                 hideResults={hideResults}
                             />
-                            <HeaderSearchSuggest hideResults={hideResults} />
+                            <SearchSuggest hideResults={hideResults} />
                         </div>
                     </motion.div>
                 )}

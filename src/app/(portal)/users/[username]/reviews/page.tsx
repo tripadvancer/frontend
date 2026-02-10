@@ -3,7 +3,7 @@ import { Metadata } from 'next/types'
 import { UserReviews } from '@/components/features/pages/user-reviews/user-reviews'
 import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 type Params = Promise<{ username: string }>
 

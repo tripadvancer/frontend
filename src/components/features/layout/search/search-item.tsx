@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import Link from 'next/link'
 
-type HeaderSearchItemProps = {
+type SearchItemProps = {
     title: string
     info: string
     icon: ReactNode
@@ -10,7 +10,7 @@ type HeaderSearchItemProps = {
     hideResults: () => void
 }
 
-export const HeaderSearchItem = (props: HeaderSearchItemProps) => {
+export const SearchItem = (props: SearchItemProps) => {
     return (
         <Link
             href={props.href}

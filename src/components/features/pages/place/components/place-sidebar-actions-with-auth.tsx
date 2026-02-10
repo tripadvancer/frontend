@@ -1,5 +1,5 @@
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
 import { PlaceSidebarActions } from './place-sidebar-actions'

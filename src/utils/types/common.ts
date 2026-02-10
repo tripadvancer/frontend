@@ -8,6 +8,12 @@ export type FormFieldError = {
     error: string
 }
 
+export type AuthContext = {
+    activeUserId: number | undefined
+    isAuth: boolean
+    isEmailVerified: boolean | undefined
+}
+
 export type IReview = {
     id: number
     place: {

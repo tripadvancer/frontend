@@ -9,14 +9,14 @@ import { internalAPI } from '@/redux/services/internal/internal.api'
 import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
 import { getCountryByCode } from '@/services/countries'
 
-import { HeaderSearchItem } from './header-search-item'
-import { HeaderSearchSuggestSkeleton } from './header-search-suggest-skeleton'
+import { SearchItem } from './search-item'
+import { SearchSuggestSkeleton } from './search-suggest-skeleton'
 
-type HeaderSearchSuggestProps = {
+type SearchSuggestProps = {
     hideResults: () => void
 }
 
-export const HeaderSearchSuggest = ({ hideResults }: HeaderSearchSuggestProps) => {
+export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
     const t = useTranslations()
     const edgeGeo = internalAPI.useGetEdgeGeoQuery()
 
@@ -31,7 +31,7 @@ export const HeaderSearchSuggest = ({ hideResults }: HeaderSearchSuggestProps) =
     )
 
     if (edgeGeo.isFetching || places.isFetching) {
-        return <HeaderSearchSuggestSkeleton />
+        return <SearchSuggestSkeleton />
     }
 
     if (!userCountry) {
@@ -43,7 +43,7 @@ export const HeaderSearchSuggest = ({ hideResults }: HeaderSearchSuggestProps) =
             <hr className="my-1" />
             <div className="mb-1 mt-4 pl-3 text-black-70">{t('component.search.suggestTitle')}</div>
 
-            <HeaderSearchItem
+            <SearchItem
                 title={userCountry.name['en']}
                 info={`Discover the beauty of ${userCountry.name['en']}`}
                 icon={
@@ -60,8 +60,8 @@ export const HeaderSearchSuggest = ({ hideResults }: HeaderSearchSuggestProps) =
             />
 
             {places.data?.slice(0, 3).map(place => (
-                <HeaderSearchItem
-                    key={`header-search-suggest-item-${place.id}`}
+                <SearchItem
+                    key={`search-suggest-item-${place.id}`}
                     title={place.title}
                     info={
                         place.distance

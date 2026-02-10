@@ -5,7 +5,7 @@ import { Metadata } from 'next/types'
 
 import { PlaceAdd } from '@/components/features/pages/place-form/place-add'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 export const metadata: Metadata = {
     title: 'Add Place',

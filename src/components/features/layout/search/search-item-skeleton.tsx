@@ -1,4 +1,4 @@
-export const HeaderSearchItemSkeleton = () => {
+export const SearchItemSkeleton = () => {
     return (
         <div className="rounded-md">
             <div className="flex gap-x-2 px-3 py-2">

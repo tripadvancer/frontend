@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { getUserInfo } from '@/services/user'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 import { UserMenu } from './user-menu'
 

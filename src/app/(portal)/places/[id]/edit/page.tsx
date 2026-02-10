@@ -7,7 +7,7 @@ import { PlaceEdit } from '@/components/features/pages/place-form/place-edit'
 import { getCountryByCode } from '@/services/countries'
 import { getPlaceById } from '@/services/places'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 type Params = Promise<{ id: string }>
 

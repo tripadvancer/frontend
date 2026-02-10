@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-import { MapPinIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useDebounceCallback } from 'usehooks-ts'
 
@@ -13,18 +12,18 @@ import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { transformSearchCountries, transformSearchPlaces } from '@/utils/helpers/search'
 import { ICountryDict } from '@/utils/types/country'
-import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
+import { IPlacePreview } from '@/utils/types/place'
 import { ISearchItem } from '@/utils/types/search'
 
-import { HeaderSearchItem } from './header-search-item'
+import { SearchItem } from './search-item'
 
-type HeaderSearchResultProps = {
+type SearchResultProps = {
     searchTerm: string
     setIsLoading: (loading: boolean) => void
     hideResults: () => void
 }
 
-export const HeaderSearchResult = ({ searchTerm, setIsLoading, hideResults }: HeaderSearchResultProps) => {
+export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchResultProps) => {
     const t = useTranslations()
     const [items, setItems] = useState<ISearchItem<IPlacePreview | ICountryDict>[]>([])
     const [search, { data, isFetching, isSuccess, isError }] = searchAPI.useLazySearchQuery()
@@ -65,8 +64,8 @@ export const HeaderSearchResult = ({ searchTerm, setIsLoading, hideResults }: He
 
     if (isSuccess && items.length > 0) {
         return items.map(item => (
-            <HeaderSearchItem
-                key={`header-search-item-${item.title}`}
+            <SearchItem
+                key={`search-item-${item.title}`}
                 title={item.title}
                 info={item.info}
                 icon={

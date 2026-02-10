@@ -4,7 +4,7 @@ import { UserVisitedPrivate } from '@/components/features/pages/user-visited/use
 import { UserVisitedPublic } from '@/components/features/pages/user-visited/user-visited-public'
 import { getUserByUsername } from '@/services/users'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 type Params = Promise<{ username: string }>
 

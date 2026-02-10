@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 
 import { Spinner } from '@/components/ui/spinner'
 
-type HeaderSearchInputProps = {
+type SearchInputProps = {
     value: string
     isLoading: boolean
     onChange: (value: string) => void
@@ -15,7 +15,7 @@ type HeaderSearchInputProps = {
     onClear: () => void
 }
 
-export const HeaderSearchInput = ({ value, isLoading, onChange, onClick, onClear }: HeaderSearchInputProps) => {
+export const SearchInput = ({ value, isLoading, onChange, onClick, onClear }: SearchInputProps) => {
     const t = useTranslations()
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

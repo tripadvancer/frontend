@@ -1,7 +1,7 @@
 import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverification'
 
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-client-component'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 import { Map } from './map'
 

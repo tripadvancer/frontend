@@ -1,14 +1,14 @@
 import { MapPinnedIcon } from 'lucide-react'
 
-import { HeaderSearchItem } from './header-search-item'
+import { SearchItem } from './search-item'
 
-type HeaderSearchNearbyProps = {
+type SearchNearbyProps = {
     hideResults: () => void
 }
 
-export const HeaderSearchNearby = ({ hideResults }: HeaderSearchNearbyProps) => {
+export const SearchNearby = ({ hideResults }: SearchNearbyProps) => {
     return (
-        <HeaderSearchItem
+        <SearchItem
             title="Places Nearby"
             info="See places near your location"
             icon={<MapPinnedIcon size={16} />}
