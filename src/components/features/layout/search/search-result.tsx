@@ -7,6 +7,7 @@ import { useDebounceCallback } from 'usehooks-ts'
 
 import Image from 'next/image'
 
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { searchAPI } from '@/redux/services/search/search.api'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
@@ -70,20 +71,20 @@ export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchRe
                 info={item.info}
                 icon={
                     item.type === 'country' ? (
-                        <Image
+                        <ImageWithFallback
                             src={`/images/countries/preview/${(item.properties as ICountryDict).code.toLowerCase()}.jpg`}
                             alt={(item.properties as ICountryDict).name['en']}
                             width={36}
                             height={36}
-                            className="rounded-md"
+                            className="aspect-square rounded-md"
                         />
                     ) : (
-                        <Image
+                        <ImageWithFallback
                             src={makeImageUrl((item.properties as IPlacePreview).cover, ImageVariants.PREVIEW)}
                             alt={(item.properties as IPlacePreview).title}
                             width={36}
                             height={36}
-                            className="rounded-md"
+                            className="aspect-square rounded-md"
                         />
                     )
                 }

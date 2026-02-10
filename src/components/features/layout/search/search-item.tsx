@@ -18,7 +18,7 @@ export const SearchItem = (props: SearchItemProps) => {
             onClick={props.hideResults}
         >
             <div className="flex gap-x-2 px-3 py-2">
-                <div className="flex-shrink-0 text-black-40">{props.icon}</div>
+                <div className="size-9 shrink-0 text-black-40">{props.icon}</div>
                 <div className="overflow-hidden">
                     <div className="hover-animated line-clamp-1 break-words text-black-100 group-hover:text-blue-active">
                         {props.title}
