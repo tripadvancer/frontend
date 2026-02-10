@@ -12,7 +12,11 @@ import { SearchInput } from './search-input'
 import { SearchResult } from './search-result'
 import { SearchSuggest } from './search-suggest'
 
-export const Search = () => {
+type SearchProps = {
+    closeMobileMenu?: () => void
+}
+
+export const Search = ({ closeMobileMenu }: SearchProps) => {
     const ref = useRef<HTMLDivElement>(null)
 
     const [searchTerm, setSearchTerm] = useState<string>('')
@@ -42,6 +46,7 @@ export const Search = () => {
     const hideResults = () => {
         setSearchTerm('')
         setIsResultVisible(false)
+        closeMobileMenu?.()
     }
 
     return (

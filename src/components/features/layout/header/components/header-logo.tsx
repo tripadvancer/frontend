@@ -1,9 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const HeaderLogo = () => {
+type HeaderLogoProps = {
+    closeMobileMenu?: () => void
+}
+
+export const HeaderLogo = ({ closeMobileMenu }: HeaderLogoProps) => {
     return (
-        <Link href="/" className="flex flex-none">
+        <Link href="/" className="flex flex-none" onClick={closeMobileMenu!!}>
             <Image
                 src="/images/logo.svg"
                 width="187"

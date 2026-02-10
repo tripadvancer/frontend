@@ -29,10 +29,10 @@ export const HeaderMobile = (props: HeaderMobileProps) => {
 
     return (
         <div className="container relative flex h-14 items-center justify-between gap-x-6 lg:hidden">
-            <HeaderLogo />
+            <HeaderLogo closeMobileMenu={closeMobileMenu} />
 
             <div className="flex-center gap-x-3">
-                <Link href="/maps">
+                <Link href="/maps" onClick={closeMobileMenu}>
                     <MapIcon />
                 </Link>
 
