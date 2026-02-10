@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { useToast } from '@/providers/toast-provider'
-import { translateApi } from '@/redux/services/translate.api'
+import { translateApi } from '@/redux/services/translate/translate.api'
 
 type TranslateProps = {
     originalText: string

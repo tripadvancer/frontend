@@ -130,7 +130,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                     <Providers>{children}</Providers>
                 </NextIntlClientProvider>
 
-                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MENSUREMENT_ID as string} />
+                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
                 <TailwindIndicator />
             </body>
         </html>

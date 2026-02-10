@@ -11,7 +11,7 @@ import { useToast } from '@/providers/toast-provider'
 import { getIsFilterMapBySavedLists, setIsFilterMapBySavedLists } from '@/redux/features/map-slice'
 import { setWidgetActiveList } from '@/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { listAPI } from '@/redux/services/list.api'
+import { listAPI } from '@/redux/services/list/list.api'
 import { IList } from '@/utils/types/common'
 
 import { WidgetSavedListsViewPlacesFeed } from './widget-saved-lists-view-places-feed'

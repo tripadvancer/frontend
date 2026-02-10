@@ -1,6 +1,6 @@
 import { api } from '@/redux/services/api'
-import { placesAPI } from '@/redux/services/places.api'
-import { GetVisitedResponse } from '@/redux/services/visited.types'
+import { placesAPI } from '@/redux/services/places/places.api'
+import { GetVisitedResponse } from '@/redux/services/visited/visited.types'
 
 export const visitedAPI = api.injectEndpoints({
     endpoints: build => ({

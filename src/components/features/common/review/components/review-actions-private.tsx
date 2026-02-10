@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 import { ReviewEdit } from '@/components/features/dialogs/review-form/review-edit'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { useDialog } from '@/providers/dialog-provider'
-import { reviewsAPI } from '@/redux/services/reviews.api'
+import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { IReview } from '@/utils/types/common'
 
 export const ReviewActionsPrivate = (review: IReview) => {

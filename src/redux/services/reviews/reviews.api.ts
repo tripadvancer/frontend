@@ -1,5 +1,5 @@
 import { api } from '@/redux/services/api'
-import { placesAPI } from '@/redux/services/places.api'
+import { placesAPI } from '@/redux/services/places/places.api'
 import {
     CreateReviewInputs,
     CreateReviewResponse,
@@ -8,7 +8,7 @@ import {
     GetReviewsByUserIdParams,
     GetReviewsResponse,
     UpdateReviewInputs,
-} from '@/redux/services/reviews.types'
+} from '@/redux/services/reviews/reviews.types'
 
 export const reviewsAPI = api.injectEndpoints({
     endpoints: build => ({

@@ -3,7 +3,7 @@ import {
     GetPlacesAroundParams,
     GetPlacesAroundResponse,
     GetRandomPlaceResponse,
-} from '@/redux/services/places-around.types'
+} from '@/redux/services/places-around/places-around.types'
 
 export const placesAroundAPI = api.injectEndpoints({
     endpoints: build => ({

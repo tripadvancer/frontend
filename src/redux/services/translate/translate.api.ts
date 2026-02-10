@@ -1,5 +1,5 @@
 import { api } from '@/redux/services/api'
-import { TranslateRequest, TranslateResponse } from '@/redux/services/translate.types'
+import { TranslateRequest, TranslateResponse } from '@/redux/services/translate/translate.types'
 
 export const translateApi = api.injectEndpoints({
     endpoints: builder => ({

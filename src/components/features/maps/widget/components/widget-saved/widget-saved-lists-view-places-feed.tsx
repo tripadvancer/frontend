@@ -8,7 +8,7 @@ import { PlacesFeed } from '@/components/features/common/places-feed/places-feed
 import { PlacesFeedSkeleton } from '@/components/features/common/places-feed/places-feed-skeleton'
 import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { listAPI } from '@/redux/services/list.api'
+import { listAPI } from '@/redux/services/list/list.api'
 
 import { WidgetMessage } from '../widget-message'
 

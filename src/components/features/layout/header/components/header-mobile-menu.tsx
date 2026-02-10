@@ -2,11 +2,21 @@
 
 import { RefObject, useRef, useState } from 'react'
 
-import { GlobeIcon, InfoIcon, MapIcon, MenuIcon, XIcon } from 'lucide-react'
+import {
+    ChevronRightIcon,
+    CircleUserIcon,
+    LogOutIcon,
+    MapPinPlusIcon,
+    MenuIcon,
+    SettingsIcon,
+    XIcon,
+} from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
+
+import { HeaderSearch } from './header-search/header-search'
 
 export const HeaderMobileMenu = () => {
     const t = useTranslations()
@@ -34,28 +44,48 @@ export const HeaderMobileMenu = () => {
             </div>
 
             {isOpen && (
-                <div className="container absolute left-0 right-0 top-14 bg-blue-20 px-4 pb-4" ref={ref}>
-                    <nav onClick={toggleMenu}>
-                        <Link
-                            href="/maps"
-                            className="flex items-center gap-x-4 border-t border-dashed border-white py-4 text-big-bold"
-                        >
-                            <MapIcon />
+                <div className="fixed bottom-0 left-0 right-0 top-14 space-y-6 bg-blue-20 px-4 pb-8 pt-2" ref={ref}>
+                    <HeaderSearch />
+
+                    <nav className="flex flex-col gap-y-4 px-1 text-big">
+                        <Link href="/maps" className="flex items-center justify-between gap-x-2">
                             {t('layout.header.links.map')}
+                            <ChevronRightIcon size={20} />
                         </Link>
-                        <Link
-                            href="/countries"
-                            className="flex items-center gap-x-4 border-t border-dashed border-white py-4 text-big-bold"
-                        >
-                            <GlobeIcon />
-                            {t('layout.header.links.explore')}
+                        <Link href="/countries" className="flex items-center justify-between gap-x-2">
+                            Explore World
+                            <ChevronRightIcon size={20} />
                         </Link>
+                        <Link href="/about" className="flex items-center justify-between gap-x-2">
+                            About Tripadvancer
+                            <ChevronRightIcon size={20} />
+                        </Link>
+                    </nav>
+
+                    <hr className="border-t border-blue-80" />
+
+                    <nav className="flex flex-col gap-y-4 text-big">
+                        <Link href="/about" className="flex items-center justify-between gap-x-2">
+                            Profile
+                            <CircleUserIcon size={20} />
+                        </Link>
+
+                        <Link href="/about" className="flex items-center justify-between gap-x-2">
+                            Settings
+                            <SettingsIcon size={20} />
+                        </Link>
+
+                        <Link href="/places/add" className="flex items-center justify-between gap-x-2">
+                            {t('layout.header.links.addPlace')}
+                            <MapPinPlusIcon size={20} />
+                        </Link>
+
                         <Link
                             href="/about"
-                            className="flex items-center gap-x-4 border-y border-dashed border-white py-4 text-big-bold"
+                            className="flex items-center justify-between gap-x-2 text-red-100 hover:text-red-active"
                         >
-                            <InfoIcon />
-                            {t('layout.header.links.about')}
+                            Log Out
+                            <LogOutIcon size={20} />
                         </Link>
                     </nav>
                 </div>

@@ -9,7 +9,7 @@ import { useToast } from '@/providers/toast-provider'
 import { getUserLocation } from '@/redux/features/user-slice'
 import { getWidgetRandomRadius, getWidgetSelectedCategories } from '@/redux/features/widget-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { placesAroundAPI } from '@/redux/services/places-around.api'
+import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
 
 import { WidgetRandomButton } from './widget-random-button'
 import { WidgetRandomResults } from './widget-random-results'

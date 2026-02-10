@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places.api'
-import { reviewsAPI } from '@/redux/services/reviews.api'
-import { UpdateReviewInputs } from '@/redux/services/reviews.types'
+import { placesAPI } from '@/redux/services/places/places.api'
+import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
+import { UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
 import { IReview } from '@/utils/types/common'
 
 import { ReviewForm } from './review-form'

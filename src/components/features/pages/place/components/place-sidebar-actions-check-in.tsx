@@ -7,8 +7,8 @@ import { SignIn } from '@/components/features/auth/sign-in'
 import { FormSwitcher } from '@/components/ui/form-switcher'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places.api'
-import { visitedAPI } from '@/redux/services/visited.api'
+import { placesAPI } from '@/redux/services/places/places.api'
+import { visitedAPI } from '@/redux/services/visited/visited.api'
 
 type PlaceSidebarActionsCheckInProps = {
     id: number
