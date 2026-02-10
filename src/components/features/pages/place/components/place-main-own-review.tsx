@@ -2,7 +2,7 @@
 
 import { Review } from '@/components/features/common/review/review'
 import { ReviewSkeleton } from '@/components/features/common/review/review-skeleton'
-import { placesAPI } from '@/redux/services/places.api'
+import { placesAPI } from '@/redux/services/places/places.api'
 
 import { PlaceMainAddReviewButton } from './place-main-add-review-button'
 

@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import { Confirmation } from '@/components/ui/confirmation'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places.api'
+import { placesAPI } from '@/redux/services/places/places.api'
 
 type PlaceSidebarActionsDeleteProps = {
     id: number

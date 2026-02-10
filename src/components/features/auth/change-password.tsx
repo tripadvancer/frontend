@@ -12,8 +12,8 @@ import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user.api'
-import { ChangeUserPasswordInputs } from '@/redux/services/user.types'
+import { userAPI } from '@/redux/services/user/user.api'
+import { ChangeUserPasswordInputs } from '@/redux/services/user/user.types'
 
 const userPasswordMinLength = validationConfig.user.password.minLength
 const userPasswordMaxLength = validationConfig.user.password.maxLength

@@ -8,7 +8,7 @@ import {
     RestoreUserResponse,
     UpdateUserDataInputs,
     UpdateUserDataResponse,
-} from '@/redux/services/user.types'
+} from '@/redux/services/user/user.types'
 
 export const userAPI = api.injectEndpoints({
     endpoints: build => ({

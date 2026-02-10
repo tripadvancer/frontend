@@ -119,6 +119,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     return (
         <html lang={locale}>
             <head>
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+                <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+                <link rel="icon" href="/favicon.ico" type="image/x-icon" />
                 <link href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css" rel="stylesheet" />
             </head>
             <body className={roboto.className}>
@@ -126,7 +130,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                     <Providers>{children}</Providers>
                 </NextIntlClientProvider>
 
-                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MENSUREMENT_ID as string} />
+                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
                 <TailwindIndicator />
             </body>
         </html>

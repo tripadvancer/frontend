@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { PlacesGrid } from '@/components/features/common/places-grid/places-grid'
 import { ShowMore } from '@/components/ui/show-more'
 
-const PAGINATION_LIMIT = 50
+const PAGINATION_LIMIT = 100
 
 type CountryPlacesProps = {
     places: {

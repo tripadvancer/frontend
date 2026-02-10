@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import { useDialog } from '@/providers/dialog-provider'
 import { useToast } from '@/providers/toast-provider'
-import { reviewsAPI } from '@/redux/services/reviews.api'
-import { CreateReviewInputs } from '@/redux/services/reviews.types'
+import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
+import { CreateReviewInputs } from '@/redux/services/reviews/reviews.types'
 
 import { ReviewForm } from './review-form'
 

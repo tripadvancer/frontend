@@ -7,7 +7,7 @@ import Lightbox from 'yet-another-react-lightbox'
 
 import { validationConfig } from '@/configs/validation.config'
 import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places.api'
+import { placesAPI } from '@/redux/services/places/places.api'
 import { ImageVariants, UploadingImageStatus } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 
@@ -52,7 +52,7 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
     useEffect(() => {
         const someUploading = photos.some(({ status }) => status === UploadingImageStatus.UPLOADING)
         setIsFormDisabled(someUploading)
-    }, [photos])
+    }, [photos, setIsFormDisabled])
 
     useEffect(() => {
         const allUploadsFinished = photos.every(({ status }) => status !== UploadingImageStatus.UPLOADING)

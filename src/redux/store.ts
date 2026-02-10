@@ -7,7 +7,7 @@ import mapReducer from '@/redux/features/map-slice'
 import userReducer from '@/redux/features/user-slice'
 import widgetReducer from '@/redux/features/widget-slice'
 import { api } from '@/redux/services/api'
-import { internalApi } from '@/redux/services/internal.api'
+import { internalAPI } from '@/redux/services/internal/internal.api'
 
 const createNoopStorage = () => {
     return {
@@ -37,7 +37,7 @@ const reducers = combineReducers({
     user: userReducer,
     widget: widgetReducer,
     [api.reducerPath]: api.reducer,
-    [internalApi.reducerPath]: internalApi.reducer,
+    [internalAPI.reducerPath]: internalAPI.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)
@@ -45,7 +45,7 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 export const store = configureStore({
     reducer: persistedReducer,
     middleware: getDefaultMiddleware =>
-        getDefaultMiddleware({ serializableCheck: false }).concat([api.middleware, internalApi.middleware]),
+        getDefaultMiddleware({ serializableCheck: false }).concat([api.middleware, internalAPI.middleware]),
     devTools: process.env.NODE_ENV !== 'production',
 })
 
