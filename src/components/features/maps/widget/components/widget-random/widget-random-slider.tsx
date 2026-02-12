@@ -25,7 +25,7 @@ export const WidgetRandomSlider = () => {
             ) => (
                 <div
                     {...props}
-                    key={`slider-track-${props.key}`}
+                    key={`slider-track-${String(props.key)}`}
                     className="h-full rounded bg-orange-10 odd:bg-orange-80"
                 />
             )}
