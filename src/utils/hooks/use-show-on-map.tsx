@@ -4,10 +4,10 @@ import { useMap } from 'react-map-gl/maplibre'
 
 import { useRouter } from 'next/navigation'
 
-import { setAppMode } from '@/redux/features/app-slice'
-import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { setWidgetActiveTab, setWidgetMode } from '@/redux/features/widget-slice'
-import { useAppDispatch } from '@/redux/hooks'
+import { setAppMode } from '@/utils/redux/features/app-slice'
+import { setMapPlacePopupInfo, setMapViewState } from '@/utils/redux/features/map-slice'
+import { setWidgetActiveTab, setWidgetMode } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch } from '@/utils/redux/hooks'
 
 import { AppModes, WidgetModes, WidgetTabs } from '../enums'
 import { arrayToLngLat, getFlyToViewState, getMapFlyToOptions } from '../helpers/maps'

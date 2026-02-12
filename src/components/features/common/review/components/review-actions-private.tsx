@@ -4,9 +4,9 @@ import { PencilIcon, TrashIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ReviewEdit } from '@/components/features/dialogs/review-form/review-edit'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { useDialog } from '@/providers/dialog-provider'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
 import { IReview } from '@/utils/types/common'
 
 export const ReviewActionsPrivate = (review: IReview) => {

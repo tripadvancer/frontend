@@ -1,9 +1,9 @@
 'use client'
 
-import { getIsFilterMapBySavedLists } from '@/redux/features/map-slice'
-import { getWidgetActiveList, getWidgetActiveTab, getWidgetMode } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
 import { WidgetModes, WidgetTabs } from '@/utils/enums'
+import { getIsFilterMapBySavedLists } from '@/utils/redux/features/map-slice'
+import { getWidgetActiveList, getWidgetActiveTab, getWidgetMode } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
 
 import { MapSourceDefault } from './map-source-default'
 import { MapSourceRandom } from './map-source-random'

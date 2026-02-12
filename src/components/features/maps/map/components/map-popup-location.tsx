@@ -12,12 +12,12 @@ import { useRouter } from 'next/navigation'
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { useDialog } from '@/providers/dialog-provider'
-import { closeMapPopups, getMapState } from '@/redux/features/map-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
 import { LngLatToString } from '@/utils/helpers/maps'
+import { closeMapPopups, getMapState } from '@/utils/redux/features/map-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
+import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
 
 type MapPopupLocationProps = {
     containerRef: RefObject<HTMLDivElement>

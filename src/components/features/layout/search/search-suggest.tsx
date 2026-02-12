@@ -5,9 +5,9 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
-import { internalAPI } from '@/redux/services/internal/internal.api'
-import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
 import { getCountryByCode } from '@/services/countries'
+import { internalAPI } from '@/utils/redux/services/internal/internal.api'
+import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
 
 import { SearchItem } from './search-item'
 import { SearchSuggestSkeleton } from './search-suggest-skeleton'

@@ -6,13 +6,13 @@ import classNames from 'classnames'
 import { useTranslations } from 'next-intl'
 import Lightbox from 'yet-another-react-lightbox'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { FormFileInput } from '@/components/ui/form-file-input'
 import { PhotoPreview } from '@/components/ui/photo-preview'
 import { validationConfig } from '@/configs/validation.config'
-import { useToast } from '@/providers/toast-provider'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
 
 const maxFilesCount = validationConfig.review.photos.maxCount
 const maxFileSize = validationConfig.common.maxFileSize

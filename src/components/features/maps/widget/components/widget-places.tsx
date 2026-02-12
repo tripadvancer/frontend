@@ -1,8 +1,8 @@
 'use client'
 
-import { getWidgetState } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
 import { WidgetTabs as WidgetTabsEnum } from '@/utils/enums'
+import { getWidgetState } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
 
 import { WidgetAllPlaces } from './widget-all-places'
 import { WidgetSaved } from './widget-saved/widget-saved'

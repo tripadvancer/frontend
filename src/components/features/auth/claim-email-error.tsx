@@ -5,9 +5,9 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverification'
 
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
 
 import { SignUpCompleting } from './sign-up-completing'
 

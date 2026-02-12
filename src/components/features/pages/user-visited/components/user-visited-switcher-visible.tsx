@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 
 import { FormSwitcher } from '@/components/ui/form-switcher'
-import { userAPI } from '@/redux/services/user/user.api'
+import { userAPI } from '@/utils/redux/services/user/user.api'
 
 type UserVisitedSwitcherVisibleProps = {
     showMyMap?: boolean

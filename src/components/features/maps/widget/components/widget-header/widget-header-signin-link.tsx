@@ -3,7 +3,7 @@
 import { CircleUserIcon } from 'lucide-react'
 
 import { SignIn } from '@/components/features/auth/sign-in'
-import { useDialog } from '@/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 export const WidgetHeaderSignInLink = () => {
     const dialog = useDialog()

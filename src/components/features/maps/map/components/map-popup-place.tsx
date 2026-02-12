@@ -7,9 +7,9 @@ import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
-import { closeMapPopups, getMapState } from '@/redux/features/map-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { arrayToLngLat } from '@/utils/helpers/maps'
+import { closeMapPopups, getMapState } from '@/utils/redux/features/map-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 import { MapPopupPlaceActions } from './map-popup-place-actions'
 

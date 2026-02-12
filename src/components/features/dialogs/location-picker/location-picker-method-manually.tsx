@@ -4,9 +4,9 @@ import { ChangeEvent, useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { useDialog } from '@/providers/dialog-provider'
 import { stringCoordinatesIsValid } from '@/utils/helpers/maps'
 
 type LocationPickerMethodManuallyProps = {

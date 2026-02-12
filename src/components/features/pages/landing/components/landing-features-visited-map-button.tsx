@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 
 import { SignIn } from '@/components/features/auth/sign-in'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { useDialog } from '@/providers/dialog-provider'
 
 type LandingFeaturesVisitedMapButtonProps = {
     username?: string

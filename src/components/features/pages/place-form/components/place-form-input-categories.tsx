@@ -5,7 +5,7 @@ import { PlusIcon } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 
 import { SelectCategories } from '@/components/features/dialogs/select-categories/select-categories'
-import { useDialog } from '@/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 
 type PlaceFormInputCategoriesProps = {

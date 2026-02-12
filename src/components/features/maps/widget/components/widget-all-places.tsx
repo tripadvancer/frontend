@@ -6,10 +6,10 @@ import { useTranslations } from 'next-intl'
 
 import { PlacesFeed } from '@/components/features/common/places-feed/places-feed'
 import { PlacesFeedSkeleton } from '@/components/features/common/places-feed/places-feed-skeleton'
-import { getMapState } from '@/redux/features/map-slice'
-import { getWidgetState } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
-import { placesAPI } from '@/redux/services/places/places.api'
+import { getMapState } from '@/utils/redux/features/map-slice'
+import { getWidgetState } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
+import { placesAPI } from '@/utils/redux/services/places/places.api'
 
 import { WidgetMessage } from './widget-message'
 

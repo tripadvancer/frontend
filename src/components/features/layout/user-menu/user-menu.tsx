@@ -10,8 +10,8 @@ import { useMediaQuery, useOnClickOutside } from 'usehooks-ts'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { Avatar } from '@/components/ui/avatar'
-import { useToast } from '@/providers/toast-provider'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 

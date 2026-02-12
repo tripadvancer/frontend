@@ -5,7 +5,7 @@ import { PencilIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { LocationPicker } from '@/components/features/dialogs/location-picker/location-picker'
-import { useDialog } from '@/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { stringCoordinatesIsValid } from '@/utils/helpers/maps'
 
 type PlaceFormInputLocationProps = {

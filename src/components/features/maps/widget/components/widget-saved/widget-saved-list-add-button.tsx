@@ -4,8 +4,8 @@ import { PlusIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { ListAdd } from '@/components/features/dialogs/list-form/list-add'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { useDialog } from '@/providers/dialog-provider'
 
 export const WidgetSavedListAddButton = () => {
     const t = useTranslations()

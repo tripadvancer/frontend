@@ -2,8 +2,8 @@
 
 import { Marker } from 'react-map-gl/maplibre'
 
-import { getUserLocation } from '@/redux/features/user-slice'
-import { useAppSelector } from '@/redux/hooks'
+import { getUserLocation } from '@/utils/redux/features/user-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
 
 export const MapPinUser = () => {
     const userLocation = useAppSelector(getUserLocation)

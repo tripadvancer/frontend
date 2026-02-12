@@ -2,8 +2,8 @@
 
 import { MenuIcon, XIcon } from 'lucide-react'
 
-import { getWidgetState, toggleWidgetAbout } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { getWidgetState, toggleWidgetAbout } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 export const WidgetHeaderAboutToggler = () => {
     const dispatch = useAppDispatch()

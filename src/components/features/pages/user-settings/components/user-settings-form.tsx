@@ -6,14 +6,14 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
 import { validationConfig } from '@/configs/validation.config'
-import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user/user.api'
-import { UpdateUserDataInputs } from '@/redux/services/user/user.types'
 import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
+import { userAPI } from '@/utils/redux/services/user/user.api'
+import { UpdateUserDataInputs } from '@/utils/redux/services/user/user.types'
 
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
 import { UserSettingsFormPrivacy } from './user-settings-form-privacy'

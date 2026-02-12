@@ -3,10 +3,10 @@
 import { useTranslations } from 'next-intl'
 
 import { RequestUserDeletionCompleting } from '@/components/features/auth/request-user-deletion-completing'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user/user.api'
+import { userAPI } from '@/utils/redux/services/user/user.api'
 
 export const UserSettingsBlockRequestUserDeletion = () => {
     const t = useTranslations()

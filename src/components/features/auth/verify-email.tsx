@@ -5,8 +5,8 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { verifyEmail } from 'supertokens-web-js/recipe/emailverification'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { LinkButton } from '@/components/ui/link-button'
-import { useToast } from '@/providers/toast-provider'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 
 export const VerifyEmail = () => {

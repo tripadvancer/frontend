@@ -4,13 +4,13 @@ import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { FormRadio } from '@/components/ui/form-radio'
 import { validationConfig } from '@/configs/validation.config'
-import { useDialog } from '@/providers/dialog-provider'
-import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/redux/services/complain/complain.types'
 import { ComplaintReasonsEnum } from '@/utils/enums'
+import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/redux/services/complain/complain.types'
 
 const textMaxLength = validationConfig.complain.maxLength
 

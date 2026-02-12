@@ -6,8 +6,8 @@ import { useTranslations } from 'next-intl'
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
 import { ReviewAdd } from '@/components/features/dialogs/review-form/review-add'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { useDialog } from '@/providers/dialog-provider'
 
 type PlaceMainAddReviewButtonProps = {
     placeId: number

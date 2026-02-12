@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Lightbox from 'yet-another-react-lightbox'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { validationConfig } from '@/configs/validation.config'
-import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places/places.api'
 import { ImageVariants, UploadingImageStatus } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
+import { placesAPI } from '@/utils/redux/services/places/places.api'
 
 import { PlaceFormInputPhotosFileinput } from './place-from-input-photos-fileinput'
 import { PlaceFormInputPhotosPreview } from './place-from-input-photos-preview'

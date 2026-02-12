@@ -6,8 +6,8 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { SignIn } from '@/components/features/auth/sign-in'
 import { ComplainFormReview } from '@/components/features/dialogs/complain-form/complain-form-review'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { useDialog } from '@/providers/dialog-provider'
 import { IReview } from '@/utils/types/common'
 
 export const ReviewActionsPublic = ({ id }: IReview) => {

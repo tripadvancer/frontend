@@ -7,8 +7,8 @@ import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { Categories } from '@/components/ui/categories'
-import { getWidgetSelectedCategories, setWidgetSelectedCategories } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { getWidgetSelectedCategories, setWidgetSelectedCategories } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 type WidgetCategoriesProps = {
     variant: 'blue' | 'orange'

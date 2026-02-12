@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
-import { useDialog } from '@/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 export const EmailVerification = () => {
     const t = useTranslations()

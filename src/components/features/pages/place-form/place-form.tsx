@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 
-import { CreatePlaceInputs, UpdatePlaceInputs } from '@/redux/services/places/places.types'
+import { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/redux/services/places/places.types'
 
 import { PlaceFormErrorMessage } from './components/place-form-error-message'
 import { PlaceFormInputCategories } from './components/place-form-input-categories'

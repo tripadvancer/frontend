@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 import { FormButton } from '@/components/ui/form-button'
-import { getIsCookieAccepted, setCookieAccepted } from '@/redux/features/user-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { getIsCookieAccepted, setCookieAccepted } from '@/utils/redux/features/user-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 export const CookieConsent = () => {
     const t = useTranslations()

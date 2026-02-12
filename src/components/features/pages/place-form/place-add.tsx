@@ -5,12 +5,12 @@ import { useTranslations } from 'next-intl'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { placesAroundAPI } from '@/redux/services/places-around/places-around.api'
-import { placesAPI } from '@/redux/services/places/places.api'
-import { CreatePlaceInputs } from '@/redux/services/places/places.types'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { stringToLngLat } from '@/utils/helpers/maps'
+import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
+import { placesAPI } from '@/utils/redux/services/places/places.api'
+import { CreatePlaceInputs } from '@/utils/redux/services/places/places.types'
 
 import { PlaceForm } from './place-form'
 

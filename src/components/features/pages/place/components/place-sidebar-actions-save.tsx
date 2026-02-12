@@ -3,8 +3,8 @@
 import { BookmarkIcon, BookmarkPlusIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { placesAPI } from '@/redux/services/places/places.api'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
+import { placesAPI } from '@/utils/redux/services/places/places.api'
 
 type PlaceSidebarActionsSaveProps = {
     id: number

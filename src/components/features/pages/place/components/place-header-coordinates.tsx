@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { useToast } from '@/providers/toast-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { arrayToString } from '@/utils/helpers/maps'
 import { GeoJsonPoint } from '@/utils/types/geo'
 

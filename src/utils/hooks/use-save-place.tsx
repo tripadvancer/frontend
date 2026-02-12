@@ -4,7 +4,7 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { SignIn } from '@/components/features/auth/sign-in'
 import { SavePlace } from '@/components/features/dialogs/save-place/save-space'
-import { useDialog } from '@/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 interface useSavePlaceInterface {
     savePlace: () => void

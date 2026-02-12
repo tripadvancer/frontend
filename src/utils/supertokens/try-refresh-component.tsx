@@ -7,8 +7,8 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { GlobalLoading } from '@/components/ui/global-loading'
-import { useToast } from '@/providers/toast-provider'
 
 type TryRefreshComponentProps = {
     fallback?: ReactNode

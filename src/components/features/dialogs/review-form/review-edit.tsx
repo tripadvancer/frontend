@@ -4,11 +4,11 @@ import { useTranslations } from 'next-intl'
 
 import { useRouter } from 'next/navigation'
 
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places/places.api'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
-import { UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
+import { placesAPI } from '@/utils/redux/services/places/places.api'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
+import { UpdateReviewInputs } from '@/utils/redux/services/reviews/reviews.types'
 import { IReview } from '@/utils/types/common'
 
 import { ReviewForm } from './review-form'

@@ -8,14 +8,14 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { listAPI } from '@/redux/services/list/list.api'
-import { CreateListInputs, UpdatePlaceInListsInputs } from '@/redux/services/list/list.types'
+import { listAPI } from '@/utils/redux/services/list/list.api'
+import { CreateListInputs, UpdatePlaceInListsInputs } from '@/utils/redux/services/list/list.types'
 import { IList } from '@/utils/types/common'
 
 type SavePlaceFormProps = {

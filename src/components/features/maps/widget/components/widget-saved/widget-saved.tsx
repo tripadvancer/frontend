@@ -3,9 +3,9 @@
 import { useTranslations } from 'next-intl'
 
 import { SignIn } from '@/components/features/auth/sign-in'
-import { useDialog } from '@/providers/dialog-provider'
-import { getWidgetActiveList } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { getWidgetActiveList } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
 
 import { WidgetMessage } from '../widget-message'
 import { WidgetSavedListAddButton } from './widget-saved-list-add-button'

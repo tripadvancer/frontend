@@ -7,10 +7,10 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 import { FormButton } from '@/components/ui/form-button'
-import { getAppMode, setAppMode } from '@/redux/features/app-slice'
-import { getWidgetMode } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { AppModes, WidgetModes } from '@/utils/enums'
+import { getAppMode, setAppMode } from '@/utils/redux/features/app-slice'
+import { getWidgetMode } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 type MapLayoutMobileTogglerProps = {
     isVisible: boolean

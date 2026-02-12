@@ -4,8 +4,8 @@ import { BookmarkIcon, LocateFixedIcon, NavigationIcon, Share2Icon } from 'lucid
 import { useTranslations } from 'next-intl'
 
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { useDialog } from '@/providers/dialog-provider'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { useSavePlace } from '@/utils/hooks/use-save-place'
 import { useSharePlace } from '@/utils/hooks/use-share-place'

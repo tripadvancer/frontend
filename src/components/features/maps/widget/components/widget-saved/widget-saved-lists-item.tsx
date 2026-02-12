@@ -3,8 +3,8 @@
 import { ArrowRightIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { setWidgetActiveList } from '@/redux/features/widget-slice'
-import { useAppDispatch } from '@/redux/hooks'
+import { setWidgetActiveList } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch } from '@/utils/redux/hooks'
 import { IList } from '@/utils/types/common'
 
 export const WidgetSavedListsItem = (list: IList) => {

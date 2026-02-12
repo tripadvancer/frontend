@@ -10,8 +10,8 @@ import {
     setMapLocationPopupInfo,
     setMapPlacePopupInfo,
     setMapViewState,
-} from '@/redux/features/map-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+} from '@/utils/redux/features/map-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 export const useMapEventHandlers = () => {
     const dispatch = useAppDispatch()

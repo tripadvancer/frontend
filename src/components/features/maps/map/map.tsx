@@ -7,8 +7,8 @@ import { MinusIcon, PlusIcon } from 'lucide-react'
 import { useMediaQuery } from 'usehooks-ts'
 
 import { MapControl } from '@/components/ui/map-control'
-import { getMapViewState } from '@/redux/features/map-slice'
-import { useAppSelector } from '@/redux/hooks'
+import { getMapViewState } from '@/utils/redux/features/map-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 

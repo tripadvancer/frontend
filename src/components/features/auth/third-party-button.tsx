@@ -8,8 +8,8 @@ import { getAuthorisationURLWithQueryParamsAndSetState } from 'supertokens-web-j
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { useToast } from '@/providers/toast-provider'
 
 type ThirdPartyButtonProps = {
     provider: 'google'

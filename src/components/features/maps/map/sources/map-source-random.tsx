@@ -7,10 +7,10 @@ import { circle } from '@turf/turf'
 import { Feature, GeoJsonProperties, Polygon } from 'geojson'
 import { useMediaQuery } from 'usehooks-ts'
 
-import { getUserLocation } from '@/redux/features/user-slice'
-import { getWidgetRandomRadius } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
 import { LngLatToArray, getBoundsFromCoordinates } from '@/utils/helpers/maps'
+import { getUserLocation } from '@/utils/redux/features/user-slice'
+import { getWidgetRandomRadius } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
 
 import { circleLayer, placesLayer } from './map-layers'
 

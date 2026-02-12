@@ -6,7 +6,7 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
 
-import { useToast } from '@/providers/toast-provider'
+import { useToast } from '@/components/providers/toast-provider'
 
 type HeaderMobileSignoutButtonTypes = {
     closeMobileMenu: () => void

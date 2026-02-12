@@ -2,11 +2,11 @@
 
 import { useTranslations } from 'next-intl'
 
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { complainAPI } from '@/redux/services/complain/complain.api'
-import { PlaceComplaintInputs } from '@/redux/services/complain/complain.types'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { ComplaintReasonsEnum } from '@/utils/enums'
+import { complainAPI } from '@/utils/redux/services/complain/complain.api'
+import { PlaceComplaintInputs } from '@/utils/redux/services/complain/complain.types'
 
 import { ComplainForm } from './complain-form'
 

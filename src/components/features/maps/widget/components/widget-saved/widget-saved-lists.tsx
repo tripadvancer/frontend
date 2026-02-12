@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { listAPI } from '@/redux/services/list/list.api'
+import { listAPI } from '@/utils/redux/services/list/list.api'
 
 import { WidgetMessage } from '../widget-message'
 import { WidgetSavedListsItem } from './widget-saved-lists-item'

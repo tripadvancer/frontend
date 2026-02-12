@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import Link from 'next/link'
 
-import { getWidgetState } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
+import { getWidgetState } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
 
 export const WidgetHeaderAbout = () => {
     const t = useTranslations()

@@ -5,9 +5,9 @@ import { SearchIcon } from 'lucide-react'
 import Image from 'next/image'
 
 import { FormButton } from '@/components/ui/form-button'
-import { getWidgetMode, setWidgetMode } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetModes } from '@/utils/enums'
+import { getWidgetMode, setWidgetMode } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 export const WidgetTogler = () => {
     const dispatch = useAppDispatch()

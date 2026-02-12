@@ -3,8 +3,8 @@
 import { useTranslations } from 'next-intl'
 
 import { SharePlace } from '@/components/features/dialogs/share-place/share-place'
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 
 interface useSharePlaceInterface {
     sharePlace: () => void

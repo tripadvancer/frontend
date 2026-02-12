@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 
 import { ChangeEmail } from '@/components/features/auth/change-email'
-import { useDialog } from '@/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 export const UserSettingsBlockChangeEmail = () => {
     const t = useTranslations()

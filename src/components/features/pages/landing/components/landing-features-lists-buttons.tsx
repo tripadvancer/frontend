@@ -5,10 +5,10 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 
 import { FormButton } from '@/components/ui/form-button'
-import { setAppMode } from '@/redux/features/app-slice'
-import { setWidgetActiveTab, setWidgetMode } from '@/redux/features/widget-slice'
-import { useAppDispatch } from '@/redux/hooks'
 import { AppModes, WidgetModes, WidgetTabs } from '@/utils/enums'
+import { setAppMode } from '@/utils/redux/features/app-slice'
+import { setWidgetActiveTab, setWidgetMode } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch } from '@/utils/redux/hooks'
 
 export const LandingFeaturesListsButton = () => {
     const t = useTranslations()

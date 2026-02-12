@@ -2,10 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
-import { CreateReviewInputs } from '@/redux/services/reviews/reviews.types'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
+import { CreateReviewInputs } from '@/utils/redux/services/reviews/reviews.types'
 
 import { ReviewForm } from './review-form'
 

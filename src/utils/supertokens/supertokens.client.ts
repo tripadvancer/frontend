@@ -4,9 +4,9 @@ import EmailVerification from 'supertokens-web-js/recipe/emailverification'
 import Session from 'supertokens-web-js/recipe/session'
 import ThirdPartyEmailPassword from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 
-import { setWidgetActiveList } from '@/redux/features/widget-slice'
-import { api } from '@/redux/services/api'
-import { store } from '@/redux/store'
+import { setWidgetActiveList } from '@/utils/redux/features/widget-slice'
+import { api } from '@/utils/redux/services/api'
+import { store } from '@/utils/redux/store'
 
 import { supertokensConfig } from './supertokens.config'
 

@@ -4,12 +4,12 @@ import { useFormik } from 'formik'
 import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user/user.api'
-import { ChangeUserEmailInputs } from '@/redux/services/user/user.types'
+import { userAPI } from '@/utils/redux/services/user/user.api'
+import { ChangeUserEmailInputs } from '@/utils/redux/services/user/user.types'
 
 import { ChangeEmailCompleting } from './change-email-completing'
 

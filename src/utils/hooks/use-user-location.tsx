@@ -3,10 +3,10 @@ import { useMap } from 'react-map-gl/maplibre'
 
 import { useTranslations } from 'next-intl'
 
-import { useToast } from '@/providers/toast-provider'
-import { getUserLocation, setUserLocation } from '@/redux/features/user-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useToast } from '@/components/providers/toast-provider'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
+import { getUserLocation, setUserLocation } from '@/utils/redux/features/user-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 interface useUserLocationInterface {
     isLocating: boolean

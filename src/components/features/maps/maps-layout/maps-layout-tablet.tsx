@@ -4,10 +4,10 @@ import { ReactNode, useEffect, useRef, useState } from 'react'
 
 import classNames from 'classnames'
 
-import { getAppMode } from '@/redux/features/app-slice'
-import { getWidgetMode } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
 import { AppModes, WidgetModes } from '@/utils/enums'
+import { getAppMode } from '@/utils/redux/features/app-slice'
+import { getWidgetMode } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
 
 import { MapLayoutMobileToggler } from './maps-layout-mobile-toggler'
 

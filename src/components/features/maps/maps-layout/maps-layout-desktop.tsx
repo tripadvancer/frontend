@@ -2,9 +2,9 @@
 
 import { ReactNode } from 'react'
 
-import { getWidgetMode } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
 import { WidgetModes } from '@/utils/enums'
+import { getWidgetMode } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
 
 type MapsLayoutDesktopProps = {
     map: ReactNode

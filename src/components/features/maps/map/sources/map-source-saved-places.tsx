@@ -3,10 +3,10 @@
 import { useEffect, useMemo } from 'react'
 import { Layer, Source, useMap } from 'react-map-gl/maplibre'
 
-import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
-import { listAPI } from '@/redux/services/list/list.api'
 import { arrayToLngLat, getBoundsFromCoordinates, getMapFlyToOptions } from '@/utils/helpers/maps'
+import { getWidgetSelectedCategories } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
+import { listAPI } from '@/utils/redux/services/list/list.api'
 
 import { placesLayer } from './map-layers'
 

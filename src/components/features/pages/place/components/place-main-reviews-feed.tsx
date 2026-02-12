@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 import { Review } from '@/components/features/common/review/review'
 import { ReviewSkeleton } from '@/components/features/common/review/review-skeleton'
 import { ShowMore } from '@/components/ui/show-more'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
 
 type PlaceMainReviewsFeedProps = {
     placeId: number

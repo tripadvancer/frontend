@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 
 import { SignIn } from '@/components/features/auth/sign-in'
 import { ComplainFormPlace } from '@/components/features/dialogs/complain-form/complain-form-place'
-import { useDialog } from '@/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 type PlaceSidebarActionsComplainProps = {
     id: number

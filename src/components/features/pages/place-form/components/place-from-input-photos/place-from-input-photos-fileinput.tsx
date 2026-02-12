@@ -6,8 +6,8 @@ import classNames from 'classnames'
 import { CameraIcon, CameraOffIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { validationConfig } from '@/configs/validation.config'
-import { useToast } from '@/providers/toast-provider'
 
 type PlaceFormInputPhotosFileinputProps = {
     photosLength: number

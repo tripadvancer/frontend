@@ -4,10 +4,10 @@ import { useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { LinkButton } from '@/components/ui/link-button'
-import { useToast } from '@/providers/toast-provider'
-import { userAPI } from '@/redux/services/user/user.api'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
+import { userAPI } from '@/utils/redux/services/user/user.api'
 
 type RestoreUserProps = {
     token: string

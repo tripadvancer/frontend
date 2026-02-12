@@ -2,10 +2,10 @@ import { useTranslations } from 'next-intl'
 
 import Link from 'next/link'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
-import { useDialog } from '@/providers/dialog-provider'
 
 type PlacesNearbyWarningProps = {
     places: {

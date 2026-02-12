@@ -2,7 +2,7 @@ import { useRouter } from 'next/navigation'
 
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
-import { useDialog } from '@/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 type useAddPlaceClickHandlerProps = {
     activeUserId?: number

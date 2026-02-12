@@ -5,8 +5,8 @@ import { ViewState } from 'react-map-gl/maplibre'
 
 import { useTranslations } from 'next-intl'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { useDialog } from '@/providers/dialog-provider'
 import { getDefaultViewState, stringToViewState, viewStateToString } from '@/utils/helpers/maps'
 
 import { LocationPickerMap } from './location-picker-map'

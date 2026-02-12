@@ -3,9 +3,9 @@
 import classNames from 'classnames'
 import { useTranslations } from 'next-intl'
 
-import { getWidgetState, setWidgetActiveTab } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { WidgetTabs as WidgetTabsEnum } from '@/utils/enums'
+import { getWidgetState, setWidgetActiveTab } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 type TabType = {
     id: WidgetTabsEnum

@@ -4,11 +4,11 @@ import { MapPinCheckIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 import { SignIn } from '@/components/features/auth/sign-in'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { FormSwitcher } from '@/components/ui/form-switcher'
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
-import { placesAPI } from '@/redux/services/places/places.api'
-import { visitedAPI } from '@/redux/services/visited/visited.api'
+import { placesAPI } from '@/utils/redux/services/places/places.api'
+import { visitedAPI } from '@/utils/redux/services/visited/visited.api'
 
 type PlaceSidebarActionsCheckInProps = {
     id: number

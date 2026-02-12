@@ -2,10 +2,10 @@
 
 import { Layer, Source } from 'react-map-gl/maplibre'
 
-import { getMapBounds } from '@/redux/features/map-slice'
-import { getWidgetSelectedCategories } from '@/redux/features/widget-slice'
-import { useAppSelector } from '@/redux/hooks'
-import { placesAPI } from '@/redux/services/places/places.api'
+import { getMapBounds } from '@/utils/redux/features/map-slice'
+import { getWidgetSelectedCategories } from '@/utils/redux/features/widget-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
+import { placesAPI } from '@/utils/redux/services/places/places.api'
 
 import { placesLayer } from './map-layers'
 

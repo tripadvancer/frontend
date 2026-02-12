@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { Review } from '@/components/features/common/review/review'
 import { ShowMore } from '@/components/ui/show-more'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
 
 import { UserReviewsSkeleton } from './user-reviews-skeleton'
 

@@ -6,9 +6,9 @@ import { useLocale, useTranslations } from 'next-intl'
 
 import Link from 'next/link'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { validationConfig } from '@/configs/validation.config'
-import { useDialog } from '@/providers/dialog-provider'
 import { getSortedCategories } from '@/utils/dictionaries/categories'
 import { updateSelectedCategories } from '@/utils/helpers/common'
 

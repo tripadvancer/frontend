@@ -5,13 +5,13 @@ import { useTranslations } from 'next-intl'
 
 import { useRouter } from 'next/navigation'
 
-import { setAppMode } from '@/redux/features/app-slice'
-import { setMapPlacePopupInfo, setMapViewState } from '@/redux/features/map-slice'
-import { setWidgetActiveTab, setWidgetMode } from '@/redux/features/widget-slice'
-import { useAppDispatch } from '@/redux/hooks'
-import { placesAPI } from '@/redux/services/places/places.api'
 import { AppModes, WidgetModes, WidgetTabs } from '@/utils/enums'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
+import { setAppMode } from '@/utils/redux/features/app-slice'
+import { setMapPlacePopupInfo, setMapViewState } from '@/utils/redux/features/map-slice'
+import { setWidgetActiveTab, setWidgetMode } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch } from '@/utils/redux/hooks'
+import { placesAPI } from '@/utils/redux/services/places/places.api'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
 type PlaceSidebarActionsShowOnMap = {

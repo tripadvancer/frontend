@@ -5,8 +5,8 @@ import { ClassAttributes, HTMLAttributes, JSX } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { ReactSlider } from '@/components/vendor/react-slider/react-slider'
-import { getWidgetRandomRadius, setWidgetRandomRadius } from '@/redux/features/widget-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { getWidgetRandomRadius, setWidgetRandomRadius } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 export const WidgetRandomSlider = () => {
     const t = useTranslations()

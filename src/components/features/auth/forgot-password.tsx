@@ -7,10 +7,10 @@ import { useTranslations } from 'next-intl'
 import { sendPasswordResetEmail } from 'supertokens-web-js/recipe/emailpassword'
 import * as Yup from 'yup'
 
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { useDialog } from '@/providers/dialog-provider'
-import { useToast } from '@/providers/toast-provider'
 import { ForgotPasswordInputs } from '@/utils/types/auth'
 
 import { ForgotPasswordCompleting } from './forgot-password-completing'
