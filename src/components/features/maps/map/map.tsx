@@ -52,7 +52,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
             <ReactMapGl
                 id="map"
                 ref={mapRef}
-                mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
+                mapStyle="https://tiles.openfreemap.org/styles/bright"
                 interactiveLayerIds={[placesLayer.id]}
                 attributionControl={false}
                 reuseMaps
