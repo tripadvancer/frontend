@@ -19,7 +19,7 @@ export default function LegalTermsAndConditionsPage() {
                 <section className="text-center text-black-70">
                     <p className="mb-5">
                         These terms and conditions (&laquo;Agreement&raquo;) set forth the general terms and conditions
-                        of&nbsp;your use of&nbsp;the tripadvancer.me website (&laquo;Website&raquo;
+                        of&nbsp;your use of&nbsp;the tripadvancer.com website (&laquo;Website&raquo;
                         or&nbsp;&laquo;Service&raquo;) and any of&nbsp;its related products and services (collectively,
                         &laquo;Services&raquo;). This Agreement is&nbsp;legally binding between you (&laquo;User&raquo;,
                         &laquo;users&raquo;, &laquo;they&raquo;, &laquo;you&raquo; or&nbsp;&laquo;your&raquo;) and this
