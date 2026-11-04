@@ -410,6 +410,18 @@
             "title": "Page not found",
             "text": "We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place."
         },
+        "feed": {
+            "title": "Feed",
+            "empty": "No places have been shared yet.",
+            "filters": {
+                "title": "Filter by country",
+                "searchPlaceholder": "Search countries...",
+                "empty": "No countries found.",
+                "clear": "Clear",
+                "selected": "{count} selected"
+            },
+            "latestReviews": "Latest reviews"
+        },
         "landing": {
             "hero": {
                 "title": "Share your favorite spots and track visited countries",

@@ -25,6 +25,9 @@ export const HeaderDesktop = (props: HeaderDesktopProps) => {
                     <Link href="/maps" className="flex items-center gap-x-2 text-big-bold">
                         Map
                     </Link>
+                    <Link href="/feed" className="flex items-center gap-x-2 text-big-bold">
+                        Feed
+                    </Link>
                     <Link href="/countries" className="flex items-center gap-x-2 text-big-bold">
                         Explore
                     </Link>

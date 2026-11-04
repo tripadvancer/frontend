@@ -34,6 +34,11 @@ const nextConfig: NextConfig = {
             },
             {
                 protocol: 'https',
+                hostname: 'picsum.photos',
+                pathname: '/seed/**',
+            },
+            {
+                protocol: 'https',
                 hostname: 'api.mapbox.com',
                 pathname: '/styles/v1/mapbox/streets-v12/static/**',
             },

@@ -3,6 +3,9 @@ import { FormikErrors } from 'formik'
 import { ImageVariants } from '@/utils/enums'
 
 export function makeImageUrl(url: string | null, imageVariant: ImageVariants) {
+    if (!url) return ''
+    if (!url.includes('imagedelivery.net')) return url
+
     return `${url}/${imageVariant}`
 }
 

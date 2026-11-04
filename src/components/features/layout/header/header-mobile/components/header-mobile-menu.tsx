@@ -20,6 +20,7 @@ type HeaderMobileMenuProps = {
 
 const publicLinks = [
     { href: '/maps', label: 'Map' },
+    { href: '/feed', label: 'Feed' },
     { href: '/countries', label: 'Explore the World' },
     { href: '/about', label: 'About Tripadvancer' },
 ]
