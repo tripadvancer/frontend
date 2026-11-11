@@ -4,6 +4,7 @@
 
 html {
     scroll-padding-top: 156px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
