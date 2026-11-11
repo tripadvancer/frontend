@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
@@ -18,11 +20,12 @@ type UserPlacesItemProps = {
         createdAt: Date
     }
     distance?: number
+    actions?: ReactNode
 }
 
-export const PlacesGridItem = ({ id, title, cover, rating, meta, distance }: UserPlacesItemProps) => {
+export const PlacesGridItem = ({ id, title, cover, rating, meta, distance, actions }: UserPlacesItemProps) => {
     return (
-        <div className="space-y-1">
+        <div className="relative space-y-1">
             <Link href={`/places/${id}`} className="text-black-100">
                 <div className="mb-2 flex-none">
                     <PlacePreviewCover
@@ -34,6 +37,8 @@ export const PlacesGridItem = ({ id, title, cover, rating, meta, distance }: Use
                 </div>
                 <div className="line-clamp-3 break-words font-medium">{title}</div>
             </Link>
+
+            {actions}
 
             {rating && <PlacePreviewRating avgRating={rating.avgRating} reviewsCount={rating.reviewsCount} />}
             {meta && <PlacePreviewMeta countryCode={meta.countryCode} createdAt={meta.createdAt} />}
