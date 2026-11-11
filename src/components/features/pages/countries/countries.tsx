@@ -5,12 +5,17 @@ import Image from 'next/image'
 
 import { CountriesGrid } from '@/components/features/common/countries-grid/countries-grid'
 import { LinkButton } from '@/components/ui/link-button'
-import { getCountries } from '@/services/countries'
+import { getCountries, getCountryByCode } from '@/services/countries'
 import { getSettings } from '@/services/settings'
 
 export const Countries = async () => {
     const t = await getTranslations()
-    const countries = await getCountries()
+    const countries = (await getCountries()).sort((first, second) => {
+        const firstName = getCountryByCode(first.countryCode)?.name.en ?? first.countryCode
+        const secondName = getCountryByCode(second.countryCode)?.name.en ?? second.countryCode
+
+        return firstName.localeCompare(secondName, 'en')
+    })
     const settings = await getSettings()
 
     return (
