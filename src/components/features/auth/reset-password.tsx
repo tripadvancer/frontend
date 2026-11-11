@@ -34,7 +34,7 @@ export const ResetPassword = () => {
             .required(t('validation.required'))
             .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
             .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
+            .matches(validationConfig.user.password.policyRegex, validationConfig.user.password.policyMessage),
     })
 
     const handleSubmit = async (values: ResetPasswordInputs) => {

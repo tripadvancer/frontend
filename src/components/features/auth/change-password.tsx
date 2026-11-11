@@ -37,7 +37,7 @@ export const ChangePassword = () => {
             .required(t('validation.required'))
             .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
             .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
+            .matches(validationConfig.user.password.policyRegex, validationConfig.user.password.policyMessage),
     })
 
     const handleSubmit = async (inputs: ChangeUserPasswordInputs) => {
@@ -56,7 +56,7 @@ export const ChangePassword = () => {
                     break
 
                 case 'PASSWORD_POLICY_VIOLATED_ERROR':
-                    formik.setErrors({ newPassword: t('validation.wrong.passwordPolicy') })
+                    formik.setErrors({ newPassword: validationConfig.user.password.policyMessage })
                     break
 
                 default:

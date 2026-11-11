@@ -59,7 +59,7 @@ export const SignUp = () => {
             .required(t('validation.required'))
             .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
             .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
+            .matches(validationConfig.user.password.policyRegex, validationConfig.user.password.policyMessage),
     })
 
     const handleSubmit = async (values: SignUpInputs) => {
@@ -94,7 +94,7 @@ export const SignUp = () => {
                     }
 
                     if (passwordError) {
-                        formik.setErrors({ email: passwordError.error })
+                        formik.setErrors({ password: passwordError.error })
                     }
 
                     if (usernameError) {

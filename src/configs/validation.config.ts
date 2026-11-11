@@ -13,6 +13,8 @@ export const validationConfig = {
         password: {
             minLength: 8,
             maxLength: 99,
+            policyMessage: 'Password must contain at least one letter and one number.',
+            policyRegex: new RegExp('^(?=.*\\p{L})(?=.*[0-9])', 'u'),
         },
         social: {
             maxLength: 50,
