@@ -192,7 +192,7 @@ export const SignUp = () => {
                         name="agreePrivacy"
                         checked={formik.values.agreePrivacy}
                         label={
-                            <>
+                            <div className="text-center text-small text-black-40">
                                 By completing the registration process, you acknowledge and accept our{' '}
                                 <Link
                                     href="/legal/terms-and-conditions"
@@ -212,7 +212,7 @@ export const SignUp = () => {
                                     Privacy Policy
                                 </Link>
                                 .
-                            </>
+                            </div>
                         }
                         disabled={isLoading}
                         onChange={formik.handleChange}
