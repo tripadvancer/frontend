@@ -1,7 +1,6 @@
 'use client'
 
 import classNames from 'classnames'
-import { useTranslations } from 'next-intl'
 
 import { WidgetTabs as WidgetTabsEnum } from '@/utils/enums'
 import { getWidgetState, setWidgetActiveTab } from '@/utils/redux/features/widget-slice'
@@ -13,13 +12,12 @@ type TabType = {
 }
 
 export const WidgetTabs = () => {
-    const t = useTranslations()
     const dispatch = useAppDispatch()
     const widgetState = useAppSelector(getWidgetState)
 
     const tabs: TabType[] = [
-        { id: WidgetTabsEnum.ALL, caption: t('map.widget.tabs.allPlaces.title') },
-        { id: WidgetTabsEnum.SAVED, caption: t('map.widget.tabs.savedPlaces.title') },
+        { id: WidgetTabsEnum.ALL, caption: 'All places' },
+        { id: WidgetTabsEnum.SAVED, caption: 'Saved' },
     ]
 
     const handleTabClick = (tab: TabType) => {

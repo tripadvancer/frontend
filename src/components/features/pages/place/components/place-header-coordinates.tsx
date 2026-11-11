@@ -3,7 +3,6 @@
 import { useState } from 'react'
 
 import { CheckIcon, CopyIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { arrayToString } from '@/utils/helpers/maps'
@@ -14,7 +13,6 @@ type PlaceHeaderCoordinatesProps = {
 }
 
 export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps) => {
-    const t = useTranslations()
     const toast = useToast()
     const coordinatesString = arrayToString(location.coordinates)
 
@@ -27,10 +25,10 @@ export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps
                 setCopied(true)
                 setTimeout(() => setCopied(false), 2000)
             } catch {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             }
         } else {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
@@ -39,7 +37,7 @@ export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps
             {coordinatesString}
             {copied ? (
                 <span className="flex items-center gap-1 text-green-600">
-                    <CheckIcon className="h-4 w-4" size={20} /> {t('success.copied')}
+                    <CheckIcon className="h-4 w-4" size={20} /> Copied
                 </span>
             ) : (
                 <CopyIcon className="rotate-90 text-blue-100 group-hover:text-blue-active" size={20} />

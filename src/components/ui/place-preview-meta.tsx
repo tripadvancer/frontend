@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-import { useLocale } from 'next-intl'
-
 import Link from 'next/link'
 
 import { getCountryByCode } from '@/services/countries'
@@ -15,7 +13,6 @@ type PlacePreviewMetaProps = {
 }
 
 export const PlacePreviewMeta = ({ countryCode, createdAt }: PlacePreviewMetaProps) => {
-    const locale = useLocale()
     const country = getCountryByCode(countryCode)
 
     const countryRef = useRef<HTMLAnchorElement | null>(null)
@@ -48,12 +45,12 @@ export const PlacePreviewMeta = ({ countryCode, createdAt }: PlacePreviewMetaPro
                         href={`/countries/${country.slug}`}
                         className="max-w-[150px] truncate text-inherit"
                     >
-                        {country.name[locale]}
+                        {country.name}
                     </Link>
                     <div className={!sameLine ? 'invisible' : ''}>•</div>
                 </>
             )}
-            <div ref={dateRef}>{formattedDate(createdAt, locale)}</div>
+            <div ref={dateRef}>{formattedDate(createdAt)}</div>
         </div>
     )
 }
