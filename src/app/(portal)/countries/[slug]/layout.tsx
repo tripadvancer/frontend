@@ -9,18 +9,19 @@ type Params = Promise<{ slug: string }>
 export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
     const params = await props.params
     const country = getCountryBySlug(params.slug)
-    const countryName = country?.name['en'] ?? ''
+    const countryName = country.name
+    const title = `Best Places to Visit in ${countryName}`
+    const description = `Explore ${countryName} through traveler-recommended attractions, scenic places, and things to do. Browse local recommendations by category and plan your visit.`
 
     return {
-        title: `What To Visit In ${countryName}`,
-        description: `Discover the best places to visit in ${countryName}, curated by fellow travelers who know it best. Find out the top things to do in ${countryName} based on insider recommendations.`,
-        keywords: `${countryName}, travel, tourism, vacation, holiday, trip, journey, adventure, guide, tips, what to see in ${countryName}, attractions of ${countryName}, spending weekends in ${countryName}, planning a trip around ${countryName} ,tourism in ${countryName}, things to do in ${countryName}`,
+        title,
+        description,
         alternates: {
             canonical: `/countries/${params.slug}`,
         },
         openGraph: {
-            title: `What To Visit In ${countryName}`,
-            description: `Discover the best places to visit in ${countryName}, curated by fellow travelers who know it best. Find out the top things to do in ${countryName} based on insider recommendations.`,
+            title,
+            description,
             images: [
                 {
                     url: `/images/countries/public/${country.code.toLowerCase()}.jpg`,
@@ -33,8 +34,8 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
             url: `/countries/${params.slug}`,
         },
         twitter: {
-            title: `What To Visit In ${countryName}`,
-            description: `Discover the best places to visit in ${countryName}, curated by fellow travelers who know it best. Find out the top things to do in ${countryName} based on insider recommendations.`,
+            title,
+            description,
             images: `/images/countries/public/${country.code.toLowerCase()}.jpg`,
         },
     }

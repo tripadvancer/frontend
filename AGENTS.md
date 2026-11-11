@@ -49,7 +49,6 @@
 - The backend README currently mentions the frontend at `http://localhost:5173`; the frontend's current Next.js scripts and Docker mapping use port `3000`.
 - Before editing, inspect `git status` and preserve unrelated user changes. Existing local modifications may be present in files outside the scope of a task.
 - Do not assume all old API tests remain active: many backend test files are named `*.spec.old.ts`. Inspect the specific test configuration and target before relying on them.
-
 ## Bugfix workflow
 
 - Verify that a GitHub issue is still open and applies to the current code before changing anything. Reproduce it in the app when practical, then inspect the relevant implementation and data flow.
