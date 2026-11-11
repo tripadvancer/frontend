@@ -58,19 +58,13 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
                     Confirm
                 </FormButton>
                 <div className="text-center text-small text-black-40">
-                    {
-                        <>
-                            Not sure which categories to choose?
-                            <br />
-                            Take a look at our{' '}
-                            {
-                                <Link href="https://help.tripadvancer.com/categories" target="_blank">
-                                    category descriptions
-                                </Link>
-                            }{' '}
-                            to choose the right ones.
-                        </>
-                    }
+                    Not sure which categories to choose?
+                    <br />
+                    Take a look at our{' '}
+                    <Link href="https://help.tripadvancer.com/categories" target="_blank">
+                        category descriptions
+                    </Link>{' '}
+                    to choose the right ones.
                 </div>
             </div>
         </div>

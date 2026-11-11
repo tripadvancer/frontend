@@ -48,7 +48,7 @@ export const LandingAroundPlaces = () => {
                     </div>
                     {userCountryName && (
                         <ShowAllLink href={`/countries/${getCountryByCode(userCountryCode)?.slug}`}>
-                            {`Explore ${userCountryName}`}
+                            Explore {userCountryName}
                         </ShowAllLink>
                     )}
                 </div>

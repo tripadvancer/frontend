@@ -35,7 +35,7 @@ export const WidgetRandomSlider = () => {
                     key="slider-thumb"
                     className="trasform flex-center top-1 h-8 w-[70px] -translate-y-1/2 whitespace-nowrap rounded-full border-2 border-black-5 bg-white text-small-bold shadow-small focus:outline-none"
                 >
-                    {`${state.valueNow} km`}
+                    {state.valueNow} km
                 </div>
             )}
             onChange={(value: number) => dispatch(setWidgetRandomRadius(value))}

@@ -20,12 +20,8 @@ export const CookieConsent = () => {
                 <div className="text-black-70">
                     <div className="font-medium">Allow Cookies</div>
                     <div>
-                        {
-                            <>
-                                This website uses cookies to ensure you get the best experience on our website. For more
-                                information, you can read our {<Link href="/legal/cookie-policy">Cookie Policy</Link>}.
-                            </>
-                        }
+                        This website uses cookies to ensure you get the best experience on our website. For more
+                        information, you can read our <Link href="/legal/cookie-policy">Cookie Policy</Link>.
                     </div>
                 </div>
                 <div className="flex-none">

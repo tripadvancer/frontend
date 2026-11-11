@@ -89,13 +89,9 @@ export const Country = async ({
                             <div className="flex flex-col items-center gap-y-4">
                                 <TentTreeIcon size={96} strokeWidth={1} />
                                 <div className="text-center">
-                                    {
-                                        <>
-                                            There are no places here yet.
-                                            <br />
-                                            Be the first to add one and help others discover something new!
-                                        </>
-                                    }
+                                    There are no places here yet.
+                                    <br />
+                                    Be the first to add one and help others discover something new!
                                 </div>
                             </div>
                             <CountryAddPlaceWithAuth />

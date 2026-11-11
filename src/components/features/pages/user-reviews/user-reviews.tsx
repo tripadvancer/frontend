@@ -30,13 +30,9 @@ export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) 
     if (isSuccess && reviews.items.length === 0) {
         return (
             <div className="mt-16 text-center text-black-40">
-                {
-                    <>
-                        Nothing has been added here yet.
-                        <br />
-                        Reviews will show up as they’re written.
-                    </>
-                }
+                Nothing has been added here yet.
+                <br />
+                Reviews will show up as they’re written.
             </div>
         )
     }

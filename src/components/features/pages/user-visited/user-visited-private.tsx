@@ -17,19 +17,11 @@ export const UserVisitedPrivate = async ({ user }: { user: IUser }) => {
 
             {!visitedCountries.length && (
                 <div className="text-center text-black-40">
-                    {
-                        <>
-                            You have not visited any countries yet.
-                            <br />
-                            To view your visited countries, add a place you have been to.
-                            <br />
-                            {
-                                <ExternalLink href="https://help.tripadvancer.com/profile/user-map">
-                                    Learn more
-                                </ExternalLink>
-                            }
-                        </>
-                    }
+                    You have not visited any countries yet.
+                    <br />
+                    To view your visited countries, add a place you have been to.
+                    <br />
+                    <ExternalLink href="https://help.tripadvancer.com/profile/user-map">Learn more</ExternalLink>
                 </div>
             )}
 

@@ -40,19 +40,13 @@ export const UserSettingsBlockRequestPersonalData = () => {
                 </div>
             </div>
             <div>
-                {
-                    <>
-                        You may request a copy of the personal data we hold about you. This includes any information you
-                        provided to us when you registered, such as your username, email address, and other additional
-                        details. For more information, please refer to our{' '}
-                        {
-                            <Link href="/legal/privacy-policy" target="_blank">
-                                Privacy Policy
-                            </Link>
-                        }
-                        .
-                    </>
-                }
+                You may request a copy of the personal data we hold about you. This includes any information you
+                provided to us when you registered, such as your username, email address, and other additional details.
+                For more information, please refer to our{' '}
+                <Link href="/legal/privacy-policy" target="_blank">
+                    Privacy Policy
+                </Link>
+                .
             </div>
         </div>
     )

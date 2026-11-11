@@ -14,13 +14,9 @@ export const LandingFeaturesLists = async () => {
             />
             <section className="flex flex-col gap-y-4 sm:gap-y-8">
                 <h4 className="h5">
-                    {
-                        <>
-                            Plan seamlessly
-                            <br />
-                            with custom travel lists
-                        </>
-                    }
+                    Plan seamlessly
+                    <br />
+                    with custom travel lists
                 </h4>
                 <p>
                     Organize your future trips by creating personalized lists of must-see places. Make travel planning

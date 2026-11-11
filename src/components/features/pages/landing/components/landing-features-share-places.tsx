@@ -14,13 +14,9 @@ export const LandingFeaturesSharePlaces = async () => {
             />
             <section className="flex flex-col gap-y-4 sm:gap-y-8">
                 <h4 className="h5">
-                    {
-                        <>
-                            Share hidden gems
-                            <br />
-                            with fellow travelers
-                        </>
-                    }
+                    Share hidden gems
+                    <br />
+                    with fellow travelers
                 </h4>
                 <p>
                     Add unique locations to the map and help other adventurers discover amazing places. With just a few

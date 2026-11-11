@@ -24,13 +24,9 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
     if (isSuccess && data.items.length === 0) {
         return (
             <div className="mt-16 text-center text-black-40">
-                {
-                    <>
-                        Nothing has been added here yet.
-                        <br />
-                        Places will show up as they’re added.
-                    </>
-                }
+                Nothing has been added here yet.
+                <br />
+                Places will show up as they’re added.
             </div>
         )
     }

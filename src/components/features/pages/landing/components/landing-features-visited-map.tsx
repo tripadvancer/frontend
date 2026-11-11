@@ -14,13 +14,9 @@ export const LandingFeaturesVisitedMap = async () => {
             />
             <section className="flex flex-col gap-y-4 sm:-order-1 sm:gap-y-8 sm:text-right">
                 <h4 className="h5">
-                    {
-                        <>
-                            Visited countries map
-                            <br />
-                            to track your adventures
-                        </>
-                    }
+                    Visited countries map
+                    <br />
+                    to track your adventures
                 </h4>
                 <p>
                     Mark the countries you’ve explored and watch your personalized map come to life. Showcase your

@@ -34,13 +34,9 @@ export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }
     if (isSuccess && !place) {
         return (
             <div className="m-auto text-center text-black-40">
-                {
-                    <>
-                        No places matcing your filter found.
-                        <br />
-                        Try changing categories or radius.
-                    </>
-                }
+                No places matcing your filter found.
+                <br />
+                Try changing categories or radius.
             </div>
         )
     }

@@ -141,16 +141,10 @@ export const SignIn = () => {
                 </div>
             </div>
             <div className="text-center">
-                {
-                    <>
-                        Don’t have an account?{' '}
-                        {
-                            <span className="link" onClick={handleSignUpClick}>
-                                Sign up
-                            </span>
-                        }
-                    </>
-                }
+                Don’t have an account?{' '}
+                <span className="link" onClick={handleSignUpClick}>
+                    Sign up
+                </span>
             </div>
         </form>
     )

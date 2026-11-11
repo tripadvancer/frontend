@@ -175,48 +175,34 @@ export const SignUp = () => {
                     Sign up
                 </FormButton>
                 <div className="text-center text-small text-black-40">
-                    {
-                        <>
-                            By completing the registration process, you acknowledge and accept our{' '}
-                            {
-                                <span
-                                    className="link"
-                                    onClick={() => {
-                                        dialog.close()
-                                        router.push('/legal/terms-and-conditions')
-                                    }}
-                                >
-                                    Terms and Conditions
-                                </span>
-                            }{' '}
-                            and{' '}
-                            {
-                                <span
-                                    className="link"
-                                    onClick={() => {
-                                        dialog.close()
-                                        router.push('/legal/privacy-policy')
-                                    }}
-                                >
-                                    Privacy Policy
-                                </span>
-                            }
-                            .
-                        </>
-                    }
+                    By completing the registration process, you acknowledge and accept our{' '}
+                    <span
+                        className="link"
+                        onClick={() => {
+                            dialog.close()
+                            router.push('/legal/terms-and-conditions')
+                        }}
+                    >
+                        Terms and Conditions
+                    </span>{' '}
+                    and{' '}
+                    <span
+                        className="link"
+                        onClick={() => {
+                            dialog.close()
+                            router.push('/legal/privacy-policy')
+                        }}
+                    >
+                        Privacy Policy
+                    </span>
+                    .
                 </div>
             </div>
             <div className="text-center">
-                {
-                    <>
-                        Have an account?{' '}
-                        {
-                            <span className="link" onClick={handleSignInClick}>
-                                Sign in
-                            </span>
-                        }
-                    </>
-                }
+                Have an account?{' '}
+                <span className="link" onClick={handleSignInClick}>
+                    Sign in
+                </span>
             </div>
         </form>
     )

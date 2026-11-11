@@ -21,11 +21,9 @@ export const WidgetSaved = ({ isAuth }: { isAuth: boolean }) => {
                     <>
                         You are not logged in.
                         <br />
-                        {
-                            <span className="link" onClick={() => dialog.open(<SignIn />)}>
-                                Sign in
-                            </span>
-                        }{' '}
+                        <span className="link" onClick={() => dialog.open(<SignIn />)}>
+                            Sign in
+                        </span>{' '}
                         to see saved places.
                     </>
                 }

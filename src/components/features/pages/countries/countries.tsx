@@ -16,11 +16,7 @@ export const Countries = async () => {
             <div className="space-y-4 sm:w-3/4">
                 <h1 className="h1 max-w-full break-words">Explore Countries and Travel Destinations</h1>
                 <p className="text-big text-black-70">
-                    {
-                        <>
-                            {settings.placesCount} places in {settings.countriesCount} countries
-                        </>
-                    }
+                    {settings.placesCount} places in {settings.countriesCount} countries
                 </p>
             </div>
 

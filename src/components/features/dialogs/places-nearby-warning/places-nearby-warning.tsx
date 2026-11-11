@@ -22,7 +22,9 @@ export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
             <h1 className="h7 text-center">Attention</h1>
             <p className="text-center">
-                {`Sorry, we cannot add a new place here because there are already others nearby, within ${process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS as string} meters. If the place you want to add is on the list below, please share your review. If it is not listed, just contact our support team for help.`}
+                Sorry, we cannot add a new place here because there are already others nearby, within $
+                {process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS as string} meters. If the place you want to add is on the
+                list below, please share your review. If it is not listed, just contact our support team for help.
             </p>
 
             <div className="flex flex-col gap-y-4">
