@@ -75,6 +75,8 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
     }, [photos]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleFileInputChange = async (files: FileList) => {
+        setIsFormDisabled(true)
+
         Array.from(files).forEach(async file => {
             const key = crypto.randomUUID()
             addPhoto(key, file)
