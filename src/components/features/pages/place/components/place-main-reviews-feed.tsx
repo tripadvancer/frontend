@@ -2,8 +2,6 @@
 
 import { ChangeEvent, useState } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { Review } from '@/components/features/common/review/review'
 import { ReviewSkeleton } from '@/components/features/common/review/review-skeleton'
 import { FormCheckbox } from '@/components/ui/form-checkbox'
@@ -17,7 +15,6 @@ type PlaceMainReviewsFeedProps = {
 }
 
 export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMainReviewsFeedProps) => {
-    const t = useTranslations()
     const [cursor, setCursor] = useState<number>()
     const [withPhotos, setWithPhotos] = useState(false)
 
@@ -45,12 +42,16 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
             </div>
 
             {isError && (
-                <div className="border-y border-black-15 py-8 text-center text-black-40">{t('common.error')}</div>
+                <div className="border-y border-black-15 py-8 text-center text-black-40">
+                    An unexpected error has occurred. Please try again later.
+                </div>
             )}
 
             {isSuccess && reviews.items.length === 0 && (
                 <div className="border-y border-black-15 py-8 text-center text-black-40">
-                    {t.rich('page.place.reviews.emptyMessage', { br: () => <br /> })}
+                    Do you know this place?
+                    <br />
+                    Other users will appreciate your review!
                 </div>
             )}
 
