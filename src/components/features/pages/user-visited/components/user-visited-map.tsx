@@ -56,7 +56,7 @@ export const UserVisitedMap = ({ visitedCountries }: UserVisitedMapProps) => {
     }, [])
 
     return (
-        <div className="bg-blue-80 fill-black-40 relative h-[480px] rounded-2xl p-4">
+        <div className="bg-blue-80 fill-black-40 relative h-120 rounded-2xl p-4">
             <ReactMapGl
                 id="user-map"
                 ref={mapRef}

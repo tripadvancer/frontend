@@ -55,7 +55,7 @@ export const MapPopupPlace = ({ containerRef }: MapPopupPlaceProps) => {
                         size={80}
                         className="aspect-square w-20 flex-none rounded-lg"
                     />
-                    <div className="line-clamp-4 font-medium break-words">{popupInfo.title}</div>
+                    <div className="line-clamp-4 font-medium wrap-break-word">{popupInfo.title}</div>
                 </Link>
                 <div className="flex items-center justify-between">
                     <PlacePreviewRating {...popupInfo} />

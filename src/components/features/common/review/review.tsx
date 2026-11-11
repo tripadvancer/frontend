@@ -33,7 +33,7 @@ export const Review = ({ review, variant, className, activeUserId, isAuth }: Rev
             </div>
 
             <div className="flex flex-col gap-y-2.5">
-                <div className="break-words">{review.text}</div>
+                <div className="wrap-break-word">{review.text}</div>
             </div>
 
             <ReviewPhotosList title={review.place.title} description={review.user.name} photos={review.photos} />

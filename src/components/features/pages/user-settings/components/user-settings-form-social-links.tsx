@@ -112,7 +112,7 @@ export const UserSettingsFormSocialLinks = ({
                         placeholder={socialInputs[app as UserSocialApps].placeholder}
                         disabled={isDisabled}
                         error={error?.[app]}
-                        className="[&>input]:pr-9 [&>input]:pl-[54px]"
+                        className="[&>input]:pr-9 [&>input]:pl-13.5"
                         onChange={handleChange}
                     />
                     <div

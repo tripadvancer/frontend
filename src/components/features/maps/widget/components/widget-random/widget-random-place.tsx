@@ -33,7 +33,7 @@ export const WidgetRandomPlace = (props: WidgetRandomPlaceProps) => {
                         className="aspect-video w-full rounded-lg object-cover"
                     />
                 </div>
-                <div className="font-medium break-words">{props.title}</div>
+                <div className="font-medium wrap-break-word">{props.title}</div>
             </Link>
             <div className="flex items-center justify-between">
                 <PlacePreviewRating {...props} />

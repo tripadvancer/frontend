@@ -32,7 +32,7 @@ export const WidgetTabs = () => {
                     className={classNames(
                         'hover-animated text-big-bold hover:text-blue-active cursor-pointer text-blue-100',
                         {
-                            'border-black-100 !text-black-100 border-b-2': widgetState.activeTab === tab.id,
+                            'border-black-100 text-black-100! border-b-2': widgetState.activeTab === tab.id,
                         },
                     )}
                     onClick={() => handleTabClick(tab)}

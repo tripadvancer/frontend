@@ -37,13 +37,13 @@ export const PlacePreviewMeta = ({ countryCode, createdAt }: PlacePreviewMetaPro
     }, [])
 
     return (
-        <div className="text-small text-black-40 flex flex-wrap gap-x-2 break-words whitespace-normal">
+        <div className="text-small text-black-40 flex flex-wrap gap-x-2 wrap-break-word whitespace-normal">
             {country && (
                 <>
                     <Link
                         ref={countryRef}
                         href={`/countries/${country.slug}`}
-                        className="max-w-[150px] truncate text-inherit"
+                        className="max-w-37.5 truncate text-inherit"
                     >
                         {country.name}
                     </Link>

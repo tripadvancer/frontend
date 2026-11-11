@@ -56,14 +56,14 @@ export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
                         'points_of_interest',
                         'places_to_visit',
                     ]}
-                    className="hover-animated hover:!bg-blue-active flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white"
+                    className="hover-animated hover:bg-blue-active! flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white"
                 >
                     <Image src="/images/icons/social/x.svg" width={24} height={24} alt="X" />
                 </XShareButton>
 
                 <FacebookShareButton
                     url={url}
-                    className="hover-animated hover:!bg-blue-active flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white"
+                    className="hover-animated hover:bg-blue-active! flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white"
                 >
                     <Image src="/images/icons/social/facebook.svg" width={24} height={24} alt="Facebook" />
                 </FacebookShareButton>

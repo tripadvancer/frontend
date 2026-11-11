@@ -7,10 +7,10 @@ import { LandingJoinButtonWithAuth } from './landing-hero-join-button-with-auth'
 
 export const LandingHero = async () => {
     return (
-        <div className="bg-blue-80 relative flex flex-col justify-center pb-7 lg:h-[700px]">
+        <div className="bg-blue-80 relative flex flex-col justify-center pb-7 lg:h-175">
             <LandingHeroBg />
 
-            <div className="m-auto flex flex-col gap-y-8 px-4 py-16 text-center sm:w-[608px] lg:absolute lg:top-1/2 lg:left-16 lg:w-[600px] lg:-translate-y-1/2 lg:transform lg:px-0 lg:py-0 lg:text-left xl:left-1/2 xl:-translate-x-full">
+            <div className="m-auto flex flex-col gap-y-8 px-4 py-16 text-center sm:w-152 lg:absolute lg:top-1/2 lg:left-16 lg:w-150 lg:-translate-y-1/2 lg:transform lg:px-0 lg:py-0 lg:text-left xl:left-1/2 xl:-translate-x-full">
                 <div>
                     <h1 className="h1 mb-4 text-white">Discover places to visit and plan your next trip</h1>
                     <p className="text-big text-white">

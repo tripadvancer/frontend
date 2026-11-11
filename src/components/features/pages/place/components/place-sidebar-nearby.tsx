@@ -51,7 +51,7 @@ export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyPro
                                     className="aspect-square w-20 flex-none rounded-lg"
                                 />
                                 <div className="flex min-w-0 flex-col gap-y-1">
-                                    <div className="line-clamp-3 font-medium break-words">{place.title}</div>
+                                    <div className="line-clamp-3 font-medium wrap-break-word">{place.title}</div>
                                     <PlacePreviewDistance distance={place.distance} />
                                 </div>
                             </div>

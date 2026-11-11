@@ -33,7 +33,7 @@ export const PlacesFeedItem = (props: PlacesFeedItemProps) => {
             <div className="text-black-100 peer-hover:text-blue-active flex min-w-0 flex-1 flex-col justify-between">
                 <Link
                     href={`/places/${props.id}`}
-                    className="line-clamp-2 flex-none font-medium break-words text-inherit"
+                    className="line-clamp-2 flex-none font-medium wrap-break-word text-inherit"
                     target="_blank"
                 >
                     {props.title}

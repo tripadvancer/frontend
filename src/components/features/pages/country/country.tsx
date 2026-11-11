@@ -60,7 +60,7 @@ export const Country = async ({
                         <Link href="/countries" className="hover:text-blue-active font-medium text-blue-100">
                             View all countries
                         </Link>
-                        <h1 className="h1 max-w-full break-words">Places to visit in {country.name}</h1>
+                        <h1 className="h1 max-w-full wrap-break-word">Places to visit in {country.name}</h1>
                         <p className="text-big text-black-70">
                             {`Explore ${country.name} through traveler-recommended attractions, scenic places, and things to do. Browse local recommendations by category and plan your visit.`}
                         </p>

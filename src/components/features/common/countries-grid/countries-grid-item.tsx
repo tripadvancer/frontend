@@ -24,7 +24,7 @@ export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) 
                     />
                 </div>
                 <figcaption className="flex flex-col gap-y-4 p-4">
-                    <h4 className="h7 line-clamp-1 h-6 break-words sm:h-[26px]">{countryName}</h4>
+                    <h4 className="h7 line-clamp-1 h-6 wrap-break-word sm:h-6.5">{countryName}</h4>
                     <div className="text-black-40 flex items-center gap-x-2">
                         <MapPin size={16} />
                         {placesCount === 0 ? 'No places' : placesCount === 1 ? '1 place' : placesCount + ' places'}

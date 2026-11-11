@@ -26,7 +26,7 @@ export const PlaceMainOwnReview = ({ placeId, activeUserId, isAuth, isEmailVerif
                 <Review
                     review={meta.ownReview}
                     variant="place-page"
-                    className="border-none !p-0"
+                    className="border-none p-0!"
                     activeUserId={activeUserId}
                     isAuth={isAuth}
                 />

@@ -90,8 +90,10 @@ export const LocationPickerMapSearch = ({ onSelect, onHide }: LocationPickerSear
                             className="group hover:bg-black-5 cursor-pointer overflow-hidden rounded-md px-2 py-1"
                             onClick={() => handleSelect(item)}
                         >
-                            <div className="group-hover:text-blue-active line-clamp-1 break-words">{item.title}</div>
-                            <div className="text-black-40 line-clamp-2 break-words">{item.info}</div>
+                            <div className="group-hover:text-blue-active line-clamp-1 wrap-break-word">
+                                {item.title}
+                            </div>
+                            <div className="text-black-40 line-clamp-2 wrap-break-word">{item.info}</div>
                         </div>
                     ))}
                 </div>

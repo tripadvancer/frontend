@@ -18,7 +18,7 @@ export const ReviewSkeleton = () => {
 
             <div className="flex flex-col gap-y-2">
                 <div className="bg-black-5 h-4 w-full rounded-full" />
-                <div className="bg-black-5 h-4 max-w-[360px] rounded-full" />
+                <div className="bg-black-5 h-4 max-w-90 rounded-full" />
             </div>
 
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-9">

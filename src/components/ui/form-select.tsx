@@ -68,9 +68,9 @@ export const FormSelect = ({ name, placeholder, options, disabled, onChange }: F
                             onClick={() => handleClick(option.value)}
                         >
                             <div className="flex gap-x-2 px-3 py-2">
-                                {option.icon && <div className="text-black-40 mt-[3px]">{option.icon}</div>}
+                                {option.icon && <div className="text-black-40 mt-0.75">{option.icon}</div>}
                                 <div className="overflow-hidden">
-                                    <div className="hover-animated group-hover:text-blue-active line-clamp-2 break-words">
+                                    <div className="hover-animated group-hover:text-blue-active line-clamp-2 wrap-break-word">
                                         {option.label}
                                     </div>
                                 </div>

@@ -20,7 +20,7 @@ export const PlaceSidebarAuthor = async ({ author, createdAt }: PlaceSidebarAuth
                 <div className="grow-0">
                     <Avatar {...author} size={32} />
                 </div>
-                <div className="grow-1 overflow-hidden">
+                <div className="grow overflow-hidden">
                     <div className="text-small-bold truncate">{author.name}</div>
                     <div className="text-small text-black-40">{formattedDate(createdAt)}</div>
                 </div>

@@ -41,7 +41,7 @@ export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
                         <div className="text-black-100 peer-hover:text-blue-active flex flex-1 flex-col justify-between overflow-hidden">
                             <Link
                                 href={`places/${place.id}`}
-                                className="line-clamp-2 font-medium break-words text-inherit"
+                                className="line-clamp-2 font-medium wrap-break-word text-inherit"
                                 target="_blank"
                             >
                                 {place.title}

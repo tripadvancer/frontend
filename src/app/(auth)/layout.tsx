@@ -25,7 +25,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
                         width="144"
                         height="24"
                         alt="Tripadvancer"
-                        className="sm:h-[28px] sm:w-[168px]"
+                        className="sm:h-7 sm:w-42"
                     />
                 </Link>
                 {children}

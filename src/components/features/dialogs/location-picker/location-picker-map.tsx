@@ -110,7 +110,7 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
                 src="/images/location-picker/location-picker-pin-shadow.svg"
                 width={27}
                 height={41}
-                className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-[13.5px] -translate-y-[36px]"
+                className="pointer-events-none absolute top-1/2 left-1/2 translate-x-[-13.5px] -translate-y-9"
                 alt=""
             />
 
@@ -119,7 +119,7 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
                 width={27}
                 height={41}
                 alt=""
-                className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-[13.5px] -translate-y-[36px]"
+                className="pointer-events-none absolute top-1/2 left-1/2 translate-x-[-13.5px] -translate-y-9"
                 style={{ marginTop: isMoving ? -8 : 0 }}
             />
         </ReactMapGl>

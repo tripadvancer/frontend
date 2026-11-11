@@ -50,7 +50,7 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
     }
 
     return (
-        <div className="relative z-50 w-full lg:w-[350px]" ref={ref}>
+        <div className="relative z-50 w-full lg:w-87.5" ref={ref}>
             <SearchInput
                 value={searchTerm}
                 isLoading={isLoading}

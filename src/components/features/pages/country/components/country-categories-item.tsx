@@ -17,7 +17,7 @@ export const CountryCategoriesItem = ({ href, caption, isSelected }: CountryCate
             className={classNames(
                 'flex-center border-blue-20 bg-blue-20 text-small h-8 cursor-pointer rounded-full border px-4 whitespace-nowrap text-blue-100 hover:border-blue-100 hover:bg-white',
                 {
-                    '!border-blue-100 bg-white': isSelected,
+                    'border-blue-100! bg-white': isSelected,
                 },
             )}
         >

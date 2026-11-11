@@ -45,7 +45,7 @@ export const UserSidebarAchievement = async ({
                     height={48}
                     className="m-auto"
                 />
-                <div className="text-center font-medium break-words">Beginner</div>
+                <div className="text-center font-medium wrap-break-word">Beginner</div>
             </div>
             <ul>
                 <Item label="Added places" value={places} />

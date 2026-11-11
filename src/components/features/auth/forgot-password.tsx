@@ -105,17 +105,13 @@ export const ForgotPassword = () => {
                     Restore password
                 </FormButton>
                 <div className="text-center">
-                    {
-                        <>
-                            <span className="link" onClick={handleSignInClcik}>
-                                Sign in
-                            </span>{' '}
-                            or{' '}
-                            <span className="link" onClick={handleSignUpClick}>
-                                Sign up
-                            </span>
-                        </>
-                    }
+                    <span className="link" onClick={handleSignInClcik}>
+                        Sign in
+                    </span>{' '}
+                    or{' '}
+                    <span className="link" onClick={handleSignUpClick}>
+                        Sign up
+                    </span>
                 </div>
             </div>
         </form>

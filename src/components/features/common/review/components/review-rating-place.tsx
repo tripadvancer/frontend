@@ -9,7 +9,7 @@ export const ReviewRatingPlace = ({ place, rating, createdAt }: IReview) => {
         <div className="flex flex-col gap-y-1 overflow-hidden">
             <Rating value={rating} size={16} />
             <div className="flex flex-col flex-wrap gap-x-2 sm:flex-row">
-                <Link href={`/places/${place.id}`} className="text-small-bold text-black-70 break-words">
+                <Link href={`/places/${place.id}`} className="text-small-bold text-black-70 wrap-break-word">
                     {place.title}
                 </Link>
                 <PlacePreviewMeta countryCode={place.countryCode} createdAt={createdAt} />

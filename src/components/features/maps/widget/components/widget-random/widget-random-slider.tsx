@@ -33,7 +33,7 @@ export const WidgetRandomSlider = () => {
                 <div
                     {...props}
                     key="slider-thumb"
-                    className="trasform flex-center border-black-5 text-small-bold shadow-small top-1 h-8 w-[70px] -translate-y-1/2 rounded-full border-2 bg-white whitespace-nowrap focus:outline-none"
+                    className="trasform flex-center border-black-5 text-small-bold shadow-small top-1 h-8 w-17.5 -translate-y-1/2 rounded-full border-2 bg-white whitespace-nowrap focus:outline-none"
                 >
                     {state.valueNow} km
                 </div>

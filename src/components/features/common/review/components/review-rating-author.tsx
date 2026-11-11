@@ -11,16 +11,19 @@ export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {
     return (
         <div className="flex flex-row gap-x-2 overflow-hidden">
             <div className="grow-0">
-                <Link href={`/users/${user.name.toLowerCase()}`} className="text-small-bold text-black-70 break-words">
+                <Link
+                    href={`/users/${user.name.toLowerCase()}`}
+                    className="text-small-bold text-black-70 wrap-break-word"
+                >
                     <Avatar {...user} size={32} />
                 </Link>
             </div>
-            <div className="grow-1 overflow-hidden">
+            <div className="grow overflow-hidden">
                 <Rating value={rating} size={16} />
                 <div className="flex flex-col gap-x-2 sm:flex-row">
                     <Link
                         href={`/users/${user.name.toLowerCase()}`}
-                        className="text-small-bold text-black-70 break-words"
+                        className="text-small-bold text-black-70 wrap-break-word"
                     >
                         {user.name}
                     </Link>
