@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 import classNames from 'classnames'
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { Categories } from '@/components/ui/categories'
 import { getWidgetSelectedCategories, setWidgetSelectedCategories } from '@/utils/redux/features/widget-slice'
@@ -15,7 +14,6 @@ type WidgetCategoriesProps = {
 }
 
 export const WidgetCategories = ({ variant }: WidgetCategoriesProps) => {
-    const t = useTranslations()
     const dispatch = useAppDispatch()
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
 
@@ -26,10 +24,7 @@ export const WidgetCategories = ({ variant }: WidgetCategoriesProps) => {
         orange: 'text-orange-100',
     }
 
-    const info =
-        selectedCategories.length > 0
-            ? t('map.widget.categories.selected', { count: selectedCategories.length })
-            : undefined
+    const info = selectedCategories.length > 0 ? `${selectedCategories.length} selected` : undefined
 
     const handleCategoriesClick = (selectedCategories: number[]) => {
         dispatch(setWidgetSelectedCategories(selectedCategories))
@@ -38,7 +33,7 @@ export const WidgetCategories = ({ variant }: WidgetCategoriesProps) => {
     return (
         <div className="flex flex-col gap-y-4">
             <div className="flex cursor-pointer items-center justify-between" onClick={() => setIsOpened(!isOpened)}>
-                <div className="text-caps uppercase">{t('map.widget.categories.title')}</div>
+                <div className="text-caps uppercase">Categories</div>
                 <div className="flex items-center justify-center gap-2">
                     {info && <span className={classNames('text-small', colorVariants[variant])}>{info}</span>}
                     {isOpened ? (

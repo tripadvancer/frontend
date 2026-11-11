@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { FormButton } from '@/components/ui/form-button'
 
 type WidgetRandomButtonProps = {
@@ -13,7 +11,6 @@ type WidgetRandomButtonProps = {
 }
 
 export const WidgetRandomButton = ({ isLoading, isUserLocated, onClick }: WidgetRandomButtonProps) => {
-    const t = useTranslations()
     const [isDisabled, setIsDisabled] = useState<boolean>(false)
     const [countdown, setCountdown] = useState<number | null>(null)
 
@@ -37,8 +34,8 @@ export const WidgetRandomButton = ({ isLoading, isUserLocated, onClick }: Widget
     return (
         <FormButton variant="orange" isLoading={isLoading} isDisabled={!isUserLocated || isDisabled} onClick={onClick}>
             {isDisabled && countdown !== null && countdown > 0
-                ? t('map.widget.random.button.captionCoundown', { countdown })
-                : t('map.widget.random.button.caption')}
+                ? `Find a random place in (${countdown})`
+                : 'Find a random place'}
         </FormButton>
     )
 }

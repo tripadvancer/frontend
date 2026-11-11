@@ -1,110 +1,72 @@
 type CategoryDict = {
     id: number
+    code: string
     name: string
-    localizedName: {
-        [locale: string]: string
-    }
 }
 
 export const categoriesDictionary: CategoryDict[] = [
     {
         id: 1,
-        name: 'ABANDONED',
-        localizedName: {
-            en: 'Abandoned',
-            ru: 'Заброшки',
-        },
+        code: 'ABANDONED',
+        name: 'Abandoned',
     },
     {
         id: 2,
-        name: 'ADVENTURE_ACTIVITIES',
-        localizedName: {
-            en: 'Adventure',
-            ru: 'Приключения',
-        },
+        code: 'ADVENTURE_ACTIVITIES',
+        name: 'Adventure',
     },
     {
         id: 3,
-        name: 'ARCHITECTURE',
-        localizedName: {
-            en: 'Architecture',
-            ru: 'Архитектура',
-        },
+        code: 'ARCHITECTURE',
+        name: 'Architecture',
     },
     {
         id: 4,
-        name: 'CAMPING_SITES',
-        localizedName: {
-            en: 'Camping',
-            ru: 'Кемпинги',
-        },
+        code: 'CAMPING_SITES',
+        name: 'Camping',
     },
     {
         id: 5,
-        name: 'HISTORICAL',
-        localizedName: {
-            en: 'Historical',
-            ru: 'История',
-        },
+        code: 'HISTORICAL',
+        name: 'Historical',
     },
     {
         id: 6,
-        name: 'LANDMARKS',
-        localizedName: {
-            en: 'Landmarks',
-            ru: 'Достопримечательности',
-        },
+        code: 'LANDMARKS',
+        name: 'Landmarks',
     },
     {
         id: 7,
-        name: 'NATURAL_ATTRACTIONS',
-        localizedName: {
-            en: 'Natural',
-            ru: 'Природа',
-        },
+        code: 'NATURAL_ATTRACTIONS',
+        name: 'Natural',
     },
     {
         id: 8,
-        name: 'OFF_ROAD',
-        localizedName: {
-            en: 'Off-road',
-            ru: 'Офф-роуд',
-        },
+        code: 'OFF_ROAD',
+        name: 'Off-road',
     },
     {
         id: 9,
-        name: 'RECREATIONAL_AREAS',
-        localizedName: {
-            en: 'Recreation',
-            ru: 'Места отдыха',
-        },
+        code: 'RECREATIONAL_AREAS',
+        name: 'Recreation',
     },
     {
         id: 10,
-        name: 'SCENIC_VIEWS',
-        localizedName: {
-            en: 'Scenic',
-            ru: 'Красивые виды',
-        },
+        code: 'SCENIC_VIEWS',
+        name: 'Scenic',
     },
     {
         id: 11,
-        name: 'MUSEUMS',
-        localizedName: {
-            en: 'Museums',
-            ru: 'Музеи',
-        },
+        code: 'MUSEUMS',
+        name: 'Museums',
     },
     {
         id: 12,
-        name: 'HIKING',
-        localizedName: {
-            en: 'Hiking',
-            ru: 'Пешие тропы',
-        },
+        code: 'HIKING',
+        name: 'Hiking',
     },
 ]
 
-export const getSortedCategories = (locale: string): CategoryDict[] => {
-    return categoriesDictionary.sort((a, b) => a.localizedName[locale].localeCompare(b.localizedName[locale]))
+export const getSortedCategories = (): CategoryDict[] => {
+    return [...categoriesDictionary].sort((a, b) => a.name.localeCompare(b.name))
 }

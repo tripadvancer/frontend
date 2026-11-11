@@ -4,7 +4,6 @@ import { ChangeEvent, useRef } from 'react'
 
 import classNames from 'classnames'
 import { CameraIcon, CameraOffIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { validationConfig } from '@/configs/validation.config'
@@ -18,7 +17,6 @@ const maxPhotosCount = validationConfig.place.photos.maxCount
 const maxFileSize = validationConfig.common.maxFileSize
 
 export const PlaceFormInputPhotosFileinput = ({ photosLength, onChange }: PlaceFormInputPhotosFileinputProps) => {
-    const t = useTranslations()
     const toast = useToast()
 
     // Create a reference to the hidden file input element
@@ -39,12 +37,12 @@ export const PlaceFormInputPhotosFileinput = ({ photosLength, onChange }: PlaceF
         const fileSize = e.target.files[0].size
 
         if (files.length + photosLength > maxPhotosCount) {
-            toast.error(t('validation.file.maxCount', { count: maxPhotosCount }))
+            toast.error(`You can upload up to ${maxPhotosCount} files`)
             return
         }
 
         if (fileSize > maxFileSize) {
-            toast.error(t('validation.file.maxSize', { size: maxFileSize / 1000000 }))
+            toast.error(`The file size must not exceed ${maxFileSize / 1000000} MB`)
             return
         }
 

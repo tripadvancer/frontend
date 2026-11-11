@@ -3,7 +3,6 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
-import { useLocale } from 'next-intl'
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
@@ -24,7 +23,6 @@ import { WidgetSearchInput } from './widget-search-input'
 
 export const WidgetSearch = () => {
     const dispatch = useAppDispatch()
-    const locale = useLocale()
 
     const ref = useRef<HTMLDivElement>(null)
 
@@ -46,8 +44,8 @@ export const WidgetSearch = () => {
 
     useEffect(() => {
         const isSearchSuccess = isSuccess && data && value.length >= 2
-        setItems(isSearchSuccess ? transformFullSearchResult(data, locale) : [])
-    }, [data, isSuccess, locale, value])
+        setItems(isSearchSuccess ? transformFullSearchResult(data) : [])
+    }, [data, isSuccess, value])
 
     useEffect(() => {
         setIsAutocompleteVisible(items.length > 0)

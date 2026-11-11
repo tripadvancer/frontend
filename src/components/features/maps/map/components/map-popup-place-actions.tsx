@@ -1,7 +1,6 @@
 'use client'
 
 import { BookmarkIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -16,7 +15,6 @@ type MapPopupPlaceActionsProps = {
 }
 
 export const MapPopupPlaceActions = (place: MapPopupPlaceActionsProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const lngLat = arrayToLngLat(place.coordinates)
 
@@ -32,7 +30,7 @@ export const MapPopupPlaceActions = (place: MapPopupPlaceActionsProps) => {
                 onClick={savePlace}
             />
             <FormButton type="stroke" size="small" onClick={() => dialog.open(<ChooseNavigationApp lngLat={lngLat} />)}>
-                {t('common.action.route')}
+                Route
             </FormButton>
         </div>
     )
