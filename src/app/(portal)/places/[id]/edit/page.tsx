@@ -15,7 +15,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const params = await props.params
     const place = await getPlaceById(params.id)
     const country = getCountryByCode(place.countryCode)
-    const countryName = country?.name['en'] ?? ''
+    const countryName = country?.name ?? ''
 
     return {
         title: `Edit | ${place.title} | ${countryName}`,

@@ -2,7 +2,6 @@
 
 import { ReactNode, useEffect } from 'react'
 
-import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
@@ -15,7 +14,6 @@ type TryRefreshComponentProps = {
 }
 
 export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {
-    const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
 
@@ -27,7 +25,7 @@ export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {
                 }
             })
             .catch(() => {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             })
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
