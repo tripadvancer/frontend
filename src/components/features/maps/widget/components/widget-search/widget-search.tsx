@@ -39,13 +39,15 @@ export const WidgetSearch = () => {
     const debouncedSearch = useDebounceCallback(search, 500)
 
     useEffect(() => {
-        if (value.length >= 2) {
-            debouncedSearch({ query: value })
+        const query = value.trim()
+
+        if (query.length >= 2) {
+            debouncedSearch({ query })
         }
     }, [debouncedSearch, value])
 
     useEffect(() => {
-        const isSearchSuccess = isSuccess && data && value.length >= 2
+        const isSearchSuccess = isSuccess && data && value.trim().length >= 2
         setItems(isSearchSuccess ? transformFullSearchResult(data, locale) : [])
     }, [data, isSuccess, locale, value])
 
