@@ -71,9 +71,9 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
                             exit: { opacity: 0, y: -5 },
                         }}
                         transition={{ duration: 0.05 }}
-                        className="absolute -left-1 -right-1 -top-1 z-0"
+                        className="absolute -top-1 -right-1 -left-1 z-0"
                     >
-                        <div className="rounded-lg bg-white p-1 pt-12 shadow-small">
+                        <div className="shadow-small rounded-lg bg-white p-1 pt-12">
                             {/* <SearchNearby hideResults={hideResults} /> */}
                             {/* <hr className="my-1" /> */}
                             <SearchResult

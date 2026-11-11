@@ -87,11 +87,11 @@ export const LocationPickerMapSearch = ({ onSelect, onHide }: LocationPickerSear
                     {items.map((item, index) => (
                         <div
                             key={`search-item-${item.title}-${index}`}
-                            className="group cursor-pointer overflow-hidden rounded-md px-2 py-1 hover:bg-black-5"
+                            className="group hover:bg-black-5 cursor-pointer overflow-hidden rounded-md px-2 py-1"
                             onClick={() => handleSelect(item)}
                         >
-                            <div className="line-clamp-1 break-words group-hover:text-blue-active">{item.title}</div>
-                            <div className="line-clamp-2 break-words text-black-40">{item.info}</div>
+                            <div className="group-hover:text-blue-active line-clamp-1 break-words">{item.title}</div>
+                            <div className="text-black-40 line-clamp-2 break-words">{item.info}</div>
                         </div>
                     ))}
                 </div>

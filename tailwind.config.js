@@ -1,10 +1,5 @@
-const plugin = require('tailwindcss/plugin')
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    corePlugins: {
-        container: false,
-    },
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
@@ -100,11 +95,4 @@ module.exports = {
             },
         },
     },
-    plugins: [
-        require('./src/utils/tailwind/tailwind-custom-links.js'),
-        require('./src/utils/tailwind/tailwind-plugin-markdown.js'),
-        require('./src/utils/tailwind/tailwind-utilities-headers.js'),
-        require('./src/utils/tailwind/tailwind-utilities-scrollbar.js'),
-        require('./src/utils/tailwind/tailwind-utilities.js'),
-    ],
 }

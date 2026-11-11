@@ -13,7 +13,7 @@ export const UserName = ({ user }: { user: IUser }) => {
             <div className="flex-none">
                 <Avatar avatar={user.avatar} name={user.name} size={isMobile ? 96 : 64} />
             </div>
-            <div className="max-w-full break-words text-center lg:overflow-hidden lg:truncate">{user.name}</div>
+            <div className="max-w-full text-center break-words lg:truncate lg:overflow-hidden">{user.name}</div>
         </h1>
     )
 }

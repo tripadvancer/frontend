@@ -9,7 +9,7 @@ export const LandingCountries = async () => {
     return (
         <section>
             <h2 className="h1 mb-4 text-center">Where are you going?</h2>
-            <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
+            <p className="text-big text-black-70 m-auto mb-16 w-full text-center sm:w-2/3">
                 Visit top-rated destinations recommended by fellow travelers. Discover must-see sights, from iconic
                 landmarks to hidden gems waiting to be explored.
             </p>

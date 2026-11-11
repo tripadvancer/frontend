@@ -134,7 +134,7 @@ export const SignIn = () => {
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                     Sign in
                 </FormButton>
-                <div className="text-center text-small">
+                <div className="text-small text-center">
                     <span className="link text-small" onClick={handleForgotPasswordClick}>
                         Forgot password?
                     </span>

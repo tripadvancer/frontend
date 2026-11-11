@@ -16,19 +16,19 @@ type HeaderDesktopProps = {
 
 export const HeaderDesktop = (props: HeaderDesktopProps) => {
     return (
-        <div className="container relative hidden h-16 items-center justify-between gap-x-6 lg:flex">
+        <div className="relative container hidden h-16 items-center justify-between gap-x-6 lg:flex">
             <div className="flex items-center gap-x-6">
                 <HeaderLogo />
                 <Search />
 
                 <nav className="flex gap-x-4">
-                    <Link href="/maps" className="flex items-center gap-x-2 text-big-bold">
+                    <Link href="/maps" className="text-big-bold flex items-center gap-x-2">
                         Map
                     </Link>
-                    <Link href="/countries" className="flex items-center gap-x-2 text-big-bold">
+                    <Link href="/countries" className="text-big-bold flex items-center gap-x-2">
                         Explore
                     </Link>
-                    <Link href="/about" className="flex items-center gap-x-2 text-big-bold">
+                    <Link href="/about" className="text-big-bold flex items-center gap-x-2">
                         About
                     </Link>
                 </nav>

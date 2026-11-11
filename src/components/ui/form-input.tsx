@@ -31,7 +31,7 @@ export const FormInput = (props: FormInputProps) => {
                     ref={ref}
                     type={isShowPassword ? 'text' : props.type}
                     className={classNames(
-                        'h-full w-full rounded-lg bg-transparent px-4 placeholder:text-black-40 focus:outline-none',
+                        'placeholder:text-black-40 h-full w-full rounded-lg bg-transparent px-4 focus:outline-none',
                         {
                             'pr-9': props.type === 'password',
                         },
@@ -40,7 +40,7 @@ export const FormInput = (props: FormInputProps) => {
 
                 {props.type === 'password' && (
                     <div
-                        className="hover-animated absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-black-15 hover:text-blue-active"
+                        className="hover-animated text-black-15 hover:text-blue-active absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
                         onClick={() => setIsShowPassword(!isShowPassword)}
                     >
                         {isShowPassword ? <EyeIcon size={16} /> : <EyeOffIcon size={16} />}
@@ -48,7 +48,7 @@ export const FormInput = (props: FormInputProps) => {
                 )}
             </div>
 
-            {error && <div className="mt-1 text-small text-red-100">{error}</div>}
+            {error && <div className="text-small mt-1 text-red-100">{error}</div>}
         </div>
     )
 }

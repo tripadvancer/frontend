@@ -57,7 +57,7 @@ export const Country = async ({
             <section className="container space-y-8 py-16 sm:space-y-16">
                 <div className="space-y-8 sm:w-3/4">
                     <div className="space-y-4">
-                        <Link href="/countries" className="font-medium text-blue-100 hover:text-blue-active">
+                        <Link href="/countries" className="hover:text-blue-active font-medium text-blue-100">
                             View all countries
                         </Link>
                         <h1 className="h1 max-w-full break-words">Places to visit in {country.name}</h1>
@@ -85,7 +85,7 @@ export const Country = async ({
                     )}
 
                     {places.length === 0 && (
-                        <div className="flex-center flex-col gap-y-8 py-16 text-black-40 sm:py-32">
+                        <div className="flex-center text-black-40 flex-col gap-y-8 py-16 sm:py-32">
                             <div className="flex flex-col items-center gap-y-4">
                                 <TentTreeIcon size={96} strokeWidth={1} />
                                 <div className="text-center">

@@ -12,7 +12,7 @@ export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) 
     const countrySlug = country?.slug ?? ''
 
     return (
-        <figure className="group overflow-hidden rounded-2xl bg-orange-10">
+        <figure className="group bg-orange-10 overflow-hidden rounded-2xl">
             <Link href={`/countries/${countrySlug}`} className="link-black">
                 <div className="w-full overflow-hidden">
                     <ImageWithFallback
@@ -25,7 +25,7 @@ export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) 
                 </div>
                 <figcaption className="flex flex-col gap-y-4 p-4">
                     <h4 className="h7 line-clamp-1 h-6 break-words sm:h-[26px]">{countryName}</h4>
-                    <div className="flex items-center gap-x-2 text-black-40">
+                    <div className="text-black-40 flex items-center gap-x-2">
                         <MapPin size={16} />
                         {placesCount === 0 ? 'No places' : placesCount === 1 ? '1 place' : placesCount + ' places'}
                     </div>

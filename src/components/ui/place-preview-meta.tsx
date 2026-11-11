@@ -37,7 +37,7 @@ export const PlacePreviewMeta = ({ countryCode, createdAt }: PlacePreviewMetaPro
     }, [])
 
     return (
-        <div className="flex flex-wrap gap-x-2 whitespace-normal break-words text-small text-black-40">
+        <div className="text-small text-black-40 flex flex-wrap gap-x-2 break-words whitespace-normal">
             {country && (
                 <>
                     <Link

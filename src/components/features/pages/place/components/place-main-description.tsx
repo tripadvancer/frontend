@@ -43,7 +43,7 @@ export const PlaceMainDescription = ({ description }: PlaceMainDescriptionProps)
         <section className="flex flex-col gap-y-8">
             <h2 className="h5">About this place</h2>
             <div className="flex flex-col gap-y-4">
-                <div className="break-words text-big" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
+                <div className="text-big break-words" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
             </div>
         </section>
     )

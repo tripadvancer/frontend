@@ -18,7 +18,7 @@ export const UserVisitedCountriesFeed = async ({ visitedCountries }: UserVisited
 
     return (
         <div className="flex flex-col gap-y-4">
-            <div className="flex items-center justify-between rounded-2xl bg-orange-10 p-4">
+            <div className="bg-orange-10 flex items-center justify-between rounded-2xl p-4">
                 <div className="h6">All countries</div>
                 <div className="h6 text-blue-80">{`${worldCoverageInPercent}%`}</div>
             </div>

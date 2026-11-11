@@ -12,7 +12,7 @@ import { PlaceSidebarActionsShare } from './place-sidebar-actions-share'
 import { PlaceSidebarActionsShowOnMap } from './place-sidebar-actions-show-on-map'
 
 const Item = ({ children }: { children: ReactNode }) => {
-    return <div className="border-t border-dashed border-black-40 py-4 text-big-bold last:border-b">{children}</div>
+    return <div className="border-black-40 text-big-bold border-t border-dashed py-4 last:border-b">{children}</div>
 }
 
 type PlaceSidebarActionsProps = {

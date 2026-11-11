@@ -11,7 +11,7 @@ export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {
     return (
         <div className="flex flex-row gap-x-2 overflow-hidden">
             <div className="grow-0">
-                <Link href={`/users/${user.name.toLowerCase()}`} className="break-words text-small-bold text-black-70">
+                <Link href={`/users/${user.name.toLowerCase()}`} className="text-small-bold text-black-70 break-words">
                     <Avatar {...user} size={32} />
                 </Link>
             </div>
@@ -20,7 +20,7 @@ export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {
                 <div className="flex flex-col gap-x-2 sm:flex-row">
                     <Link
                         href={`/users/${user.name.toLowerCase()}`}
-                        className="break-words text-small-bold text-black-70"
+                        className="text-small-bold text-black-70 break-words"
                     >
                         {user.name}
                     </Link>

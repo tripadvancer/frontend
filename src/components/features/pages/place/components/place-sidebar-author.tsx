@@ -15,13 +15,13 @@ type PlaceSidebarAuthorProps = {
 export const PlaceSidebarAuthor = async ({ author, createdAt }: PlaceSidebarAuthorProps) => {
     return (
         <section>
-            <h3 className="mb-4 text-caps uppercase">Author</h3>
-            <Link href={`/users/${author.name.toLowerCase()}`} className="flex items-center gap-2 text-black-70">
+            <h3 className="text-caps mb-4 uppercase">Author</h3>
+            <Link href={`/users/${author.name.toLowerCase()}`} className="text-black-70 flex items-center gap-2">
                 <div className="grow-0">
                     <Avatar {...author} size={32} />
                 </div>
                 <div className="grow-1 overflow-hidden">
-                    <div className="truncate text-small-bold">{author.name}</div>
+                    <div className="text-small-bold truncate">{author.name}</div>
                     <div className="text-small text-black-40">{formattedDate(createdAt)}</div>
                 </div>
             </Link>

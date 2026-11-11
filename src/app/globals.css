@@ -1,13 +1,274 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@config '../../tailwind.config.js';
+
+@utility container {
+    margin-inline: auto;
+    width: 100%;
+    padding-inline: calc(var(--spacing) * 4);
+
+    @media (width >= 40rem) {
+        max-width: 1184px;
+        padding-inline: calc(var(--spacing) * 8);
+    }
+}
+
+@utility inner-container {
+    margin-inline: auto;
+    width: 100%;
+
+    @media (width >= 40rem) {
+        max-width: 928px;
+    }
+}
+
+@utility flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@utility hover-animated {
+    transition-property: color, background-color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+@utility animate-pulse-full {
+    animation: pulse-full 1s steps(1, end) infinite;
+}
+
+@utility scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@utility scrollbar-default {
+    -ms-overflow-style: auto;
+    scrollbar-width: auto;
+
+    &::-webkit-scrollbar {
+        display: block;
+    }
+}
+
+@utility link {
+    color: var(--color-blue-100);
+    cursor: pointer;
+    transition-property: color, background-color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+        color: var(--color-blue-active);
+    }
+}
+
+@utility link-red {
+    color: var(--color-red-100);
+    cursor: pointer;
+    transition-property: color, background-color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+        color: var(--color-red-active);
+    }
+}
+
+@utility link-orange {
+    color: var(--color-orange-100);
+    cursor: pointer;
+    transition-property: color, background-color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+        color: var(--color-orange-active);
+    }
+}
+
+@utility link-white {
+    color: var(--color-white);
+    cursor: pointer;
+    transition-property: color, background-color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+        color: var(--color-blue-active);
+    }
+}
+
+@utility link-black {
+    color: var(--color-black-100);
+    cursor: pointer;
+    transition-property: color, background-color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+        color: var(--color-blue-active);
+    }
+}
+
+@utility title {
+    font-size: 2.75rem;
+    line-height: 3.25rem;
+    font-weight: 500;
+
+    @media (width >= 40rem) {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+
+    @media (width >= 64rem) {
+        font-size: 4rem;
+        line-height: 4.5rem;
+    }
+}
+
+@utility h1 {
+    font-size: 2.75rem;
+    line-height: 3.25rem;
+    font-weight: 500;
+
+    @media (width >= 40rem) {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+}
+
+@utility h2 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    font-weight: 500;
+
+    @media (width >= 40rem) {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+}
+
+@utility h3 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    font-weight: 500;
+
+    @media (width >= 40rem) {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+}
+
+@utility h4 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 500;
+
+    @media (width >= 40rem) {
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+    }
+}
+
+@utility h5 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+
+    @media (width >= 40rem) {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+@utility h6 {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    font-weight: 500;
+
+    @media (width >= 40rem) {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+}
+
+@utility h7 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+
+    @media (width >= 40rem) {
+        font-size: 1.125rem;
+        line-height: 1.625rem;
+    }
+}
+
+@layer components {
+    .markdown article:not(:last-child) {
+        margin-bottom: 4rem;
+    }
+
+    .markdown h1 {
+        @apply h1;
+        margin-bottom: 4rem;
+        text-align: center;
+    }
+
+    .markdown h2 {
+        @apply h2;
+    }
+
+    .markdown h3 {
+        @apply h3;
+    }
+
+    .markdown h4 {
+        @apply h4;
+    }
+
+    .markdown h5 {
+        @apply h5;
+        margin-bottom: 2rem;
+    }
+
+    .markdown h6 {
+        @apply h6;
+    }
+
+    .markdown h7 {
+        @apply h7;
+    }
+
+    .markdown p:not(:last-child) {
+        margin-bottom: 1.25rem;
+    }
+
+    .markdown ol {
+        list-style-type: decimal;
+        padding-left: 1rem;
+        margin-bottom: 1.25rem;
+
+        @media (width >= 40rem) {
+            padding-left: 3rem;
+        }
+    }
+
+    .markdown ol li:not(:last-child) {
+        margin-bottom: 0.75rem;
+    }
+}
 
 html {
     scroll-padding-top: 156px;
 }
 
 body {
-    @apply text-base text-black-100 antialiased;
+    @apply text-black-100 text-base antialiased;
 }
 
 a {
@@ -16,32 +277,32 @@ a {
 
 .mapboxgl-popup-content,
 .maplibregl-popup-content {
-    @apply rounded-lg p-4 text-base shadow-small !important;
+    @apply shadow-small! rounded-lg! p-4! text-base!;
 
     .mapboxgl-popup-anchor-top-left &,
     .maplibregl-popup-anchor-top-left & {
-        @apply rounded-tl-none !important;
+        @apply rounded-tl-none!;
     }
 
     .mapboxgl-popup-anchor-top-right &,
     .maplibregl-popup-anchor-top-right & {
-        @apply rounded-tr-none !important;
+        @apply rounded-tr-none!;
     }
 
     .mapboxgl-popup-anchor-bottom-left &,
     .maplibregl-popup-anchor-bottom-left & {
-        @apply rounded-bl-none !important;
+        @apply rounded-bl-none!;
     }
 
     .mapboxgl-popup-anchor-bottom-right &,
     .maplibregl-popup-anchor-bottom-right & {
-        @apply rounded-br-none !important;
+        @apply rounded-br-none!;
     }
 }
 
 .mapboxgl-popup,
 .maplibregl-popup {
-    @apply max-w-none !important;
+    @apply max-w-none!;
 }
 
 .tiptap-editor p.is-editor-empty:first-child::before {

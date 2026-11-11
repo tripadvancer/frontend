@@ -17,7 +17,7 @@ export const FormCheckbox = (props: FormCheckboxProps) => {
             htmlFor={props.id}
             className="group flex cursor-pointer gap-x-2 has-[:disabled]:pointer-events-none has-[:disabled]:opacity-30"
         >
-            <div className="flex-center hover-animated h-5 w-5 flex-none rounded border border-black-15 group-hover:border-black-40">
+            <div className="flex-center hover-animated border-black-15 group-hover:border-black-40 h-5 w-5 flex-none rounded border">
                 <input {...rest} ref={ref} type="checkbox" className="peer hidden" />
                 <div className="hidden h-4 w-4 peer-checked:block">
                     <CheckIcon size={16} absoluteStrokeWidth />

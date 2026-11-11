@@ -21,7 +21,7 @@ export const Countries = async () => {
             </div>
 
             <div className="space-y-4 sm:space-y-8">
-                <div className="flex flex-col items-center gap-8 rounded-2xl bg-orange-10 p-8 text-center sm:flex-row sm:text-left">
+                <div className="bg-orange-10 flex flex-col items-center gap-8 rounded-2xl p-8 text-center sm:flex-row sm:text-left">
                     <Image
                         src="/images/mini-map.png"
                         width={162}

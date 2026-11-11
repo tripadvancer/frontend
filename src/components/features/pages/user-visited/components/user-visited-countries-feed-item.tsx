@@ -22,7 +22,7 @@ export const UserVisitedCountriesFeedItem = ({ name, count, places }: UserMapCou
     return (
         <div className="flex flex-col gap-4">
             <div
-                className="flex cursor-pointer items-center justify-between rounded-2xl bg-orange-10 p-4"
+                className="bg-orange-10 flex cursor-pointer items-center justify-between rounded-2xl p-4"
                 onClick={handleToggle}
             >
                 <div className="flex items-center gap-x-4">

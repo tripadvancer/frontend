@@ -30,10 +30,10 @@ export const PlacesFeedItem = (props: PlacesFeedItemProps) => {
                     className="aspect-square w-20 rounded-lg"
                 />
             </Link>
-            <div className="flex min-w-0 flex-1 flex-col justify-between text-black-100 peer-hover:text-blue-active">
+            <div className="text-black-100 peer-hover:text-blue-active flex min-w-0 flex-1 flex-col justify-between">
                 <Link
                     href={`/places/${props.id}`}
-                    className="line-clamp-2 flex-none break-words font-medium text-inherit"
+                    className="line-clamp-2 flex-none font-medium break-words text-inherit"
                     target="_blank"
                 >
                     {props.title}

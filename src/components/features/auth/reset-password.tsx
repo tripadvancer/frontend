@@ -100,7 +100,7 @@ export const ResetPassword = () => {
             </p>
             <Link
                 href="/"
-                className="hover-animated inline-flex h-10 w-full items-center justify-center rounded-lg bg-blue-100 px-6 text-white hover:bg-blue-active hover:text-white focus:outline-none"
+                className="hover-animated hover:bg-blue-active inline-flex h-10 w-full items-center justify-center rounded-lg bg-blue-100 px-6 text-white hover:text-white focus:outline-none"
             >
                 Go to Home
             </Link>

@@ -25,7 +25,7 @@ export const PlaceFormInputCategories = ({ value, error, onChange }: PlaceFormIn
             {value.length === 0 && (
                 <div
                     className={classNames(
-                        'hover-animated flex h-8 cursor-pointer items-center gap-x-2 rounded-full bg-blue-20 px-4 text-small text-blue-100 hover:text-blue-active',
+                        'hover-animated bg-blue-20 text-small hover:text-blue-active flex h-8 cursor-pointer items-center gap-x-2 rounded-full px-4 text-blue-100',
                         { 'bg-red-20 text-red-100': error },
                     )}
                     onClick={handleSelectCategories}
@@ -37,7 +37,7 @@ export const PlaceFormInputCategories = ({ value, error, onChange }: PlaceFormIn
             {value.map(categoryId => (
                 <div
                     key={`category-${categoryId}`}
-                    className="hover-animated flex h-8 cursor-pointer items-center gap-x-2 whitespace-nowrap rounded-full border border-blue-100 px-4 text-small text-blue-100 hover:border-blue-active hover:text-blue-active"
+                    className="hover-animated text-small hover:border-blue-active hover:text-blue-active flex h-8 cursor-pointer items-center gap-x-2 rounded-full border border-blue-100 px-4 whitespace-nowrap text-blue-100"
                     onClick={handleSelectCategories}
                 >
                     {categoriesDictionary.find(category => category.id === categoryId)?.name}

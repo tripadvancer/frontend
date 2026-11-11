@@ -31,7 +31,7 @@ export const LandingAroundPlaces = () => {
         return (
             <section>
                 <h3 className="h3 mb-4 text-center">Explore places around you</h3>
-                <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
+                <p className="text-big text-black-70 m-auto mb-16 w-full text-center sm:w-2/3">
                     Discover what interesting places are near you. These locations are recommended by other travelers,
                     and you can visit them today.
                 </p>

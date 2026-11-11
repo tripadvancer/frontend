@@ -174,7 +174,7 @@ export const SignUp = () => {
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                     Sign up
                 </FormButton>
-                <div className="text-center text-small text-black-40">
+                <div className="text-small text-black-40 text-center">
                     By completing the registration process, you acknowledge and accept our{' '}
                     <span
                         className="link"

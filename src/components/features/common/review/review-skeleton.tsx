@@ -4,28 +4,28 @@ import { ActionButtonSkeleton } from '@/components/ui/action-button-skeleton'
 
 export const ReviewSkeleton = () => {
     return (
-        <div role="status" className="flex animate-pulse flex-col gap-y-5 border-b border-black-15 py-8 first:border-t">
+        <div role="status" className="border-black-15 flex animate-pulse flex-col gap-y-5 border-b py-8 first:border-t">
             <div className="flex justify-between gap-x-8">
                 <div className="flex flex-col gap-1">
-                    <div className="h-4 w-20 rounded-full bg-black-5" />
+                    <div className="bg-black-5 h-4 w-20 rounded-full" />
                     <div className="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2">
-                        <div className="h-4 w-40 rounded-full bg-black-5" />
-                        <div className="h-4 w-40 rounded-full bg-black-5" />
+                        <div className="bg-black-5 h-4 w-40 rounded-full" />
+                        <div className="bg-black-5 h-4 w-40 rounded-full" />
                     </div>
                 </div>
                 <ActionButtonSkeleton />
             </div>
 
             <div className="flex flex-col gap-y-2">
-                <div className="h-4 w-full rounded-full bg-black-5" />
-                <div className="h-4 max-w-[360px] rounded-full bg-black-5" />
+                <div className="bg-black-5 h-4 w-full rounded-full" />
+                <div className="bg-black-5 h-4 max-w-[360px] rounded-full" />
             </div>
 
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-9">
                 {Array.from({ length: 3 }).map((_, i) => (
-                    <div key={`review-skeleton-${i}`} className="flex-center aspect-square w-full rounded bg-black-5">
+                    <div key={`review-skeleton-${i}`} className="flex-center bg-black-5 aspect-square w-full rounded">
                         <svg
-                            className="w-10 text-black-15 opacity-20"
+                            className="text-black-15 w-10 opacity-20"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"

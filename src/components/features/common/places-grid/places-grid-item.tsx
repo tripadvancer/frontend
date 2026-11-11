@@ -35,7 +35,7 @@ export const PlacesGridItem = ({ id, title, cover, rating, meta, distance, actio
                         className="aspect-square w-full rounded-2xl"
                     />
                 </div>
-                <div className="line-clamp-3 break-words font-medium">{title}</div>
+                <div className="line-clamp-3 font-medium break-words">{title}</div>
             </Link>
 
             {actions}

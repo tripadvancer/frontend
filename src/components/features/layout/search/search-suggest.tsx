@@ -38,7 +38,7 @@ export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
     return (
         <div>
             <hr className="my-1" />
-            <div className="mb-1 mt-4 pl-3 text-black-70">May be interesting for you:</div>
+            <div className="text-black-70 mt-4 mb-1 pl-3">May be interesting for you:</div>
 
             <SearchItem
                 title={userCountry.name}

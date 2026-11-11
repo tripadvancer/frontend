@@ -2,9 +2,9 @@ export const SearchItemSkeleton = () => {
     return (
         <div className="rounded-md">
             <div className="flex gap-x-2 px-3 py-2">
-                <div className="flex-center h-9 w-9 flex-none rounded-lg bg-black-5">
+                <div className="flex-center bg-black-5 h-9 w-9 flex-none rounded-lg">
                     <svg
-                        className="h-4 text-black-15 opacity-30"
+                        className="text-black-15 h-4 opacity-30"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -15,8 +15,8 @@ export const SearchItemSkeleton = () => {
                 </div>
 
                 <div className="flex w-full flex-col justify-center gap-y-1">
-                    <div className="h-3.5 w-2/3 rounded-full bg-black-5" />
-                    <div className="h-3 w-1/3 rounded-full bg-black-5" />
+                    <div className="bg-black-5 h-3.5 w-2/3 rounded-full" />
+                    <div className="bg-black-5 h-3 w-1/3 rounded-full" />
                 </div>
             </div>
         </div>

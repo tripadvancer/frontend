@@ -52,7 +52,7 @@ export const PlaceFormInputPhotosFileinput = ({ photosLength, onChange }: PlaceF
     return (
         <div
             className={classNames(
-                'flex-center hover-animated aspect-square size-full cursor-pointer rounded-2xl border border-blue-20 text-blue-100',
+                'flex-center hover-animated border-blue-20 aspect-square size-full cursor-pointer rounded-2xl border text-blue-100',
                 {
                     'hover:border-blue-active hover:text-blue-active': photosLength < maxPhotosCount,
                     '!cursor-not-allowed opacity-30': photosLength >= maxPhotosCount,

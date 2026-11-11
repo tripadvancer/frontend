@@ -56,7 +56,7 @@ export const UserPlacesItemActions = ({ id, userId }: UserPlacesItemActionsProps
     ]
 
     return (
-        <div className="absolute right-2 top-2 z-10">
+        <div className="absolute top-2 right-2 z-10">
             <Dropdown items={items} />
         </div>
     )

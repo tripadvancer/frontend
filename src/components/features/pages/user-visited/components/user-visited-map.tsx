@@ -56,7 +56,7 @@ export const UserVisitedMap = ({ visitedCountries }: UserVisitedMapProps) => {
     }, [])
 
     return (
-        <div className="relative h-[480px] rounded-2xl bg-blue-80 fill-black-40 p-4">
+        <div className="bg-blue-80 fill-black-40 relative h-[480px] rounded-2xl p-4">
             <ReactMapGl
                 id="user-map"
                 ref={mapRef}
@@ -73,7 +73,7 @@ export const UserVisitedMap = ({ visitedCountries }: UserVisitedMapProps) => {
                 scrollZoom={false}
                 onLoad={handleLoad}
             >
-                <div className="absolute right-2 top-2 z-30 flex flex-col gap-y-1">
+                <div className="absolute top-2 right-2 z-30 flex flex-col gap-y-1">
                     <MapControl onClick={handleZoomIn}>
                         <PlusIcon size={16} />
                     </MapControl>

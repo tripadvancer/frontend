@@ -40,7 +40,7 @@ export const UserSidebarSocialLink = ({ app, appUsername }: { app: UserSocialApp
     return (
         <Link
             href={socialLinks[app].url + appUsername}
-            className="link inline-flex items-center gap-x-2 text-big-bold"
+            className="link text-big-bold inline-flex items-center gap-x-2"
             target="_blank"
         >
             {socialLinks[app].icon}

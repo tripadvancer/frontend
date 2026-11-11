@@ -21,7 +21,7 @@ export const UserPlaces = ({ userId, isOwnProfile }: UserPlacesProps) => {
 
     if (isError) {
         return (
-            <div className="mt-16 text-center text-black-40">
+            <div className="text-black-40 mt-16 text-center">
                 An unexpected error has occurred. Please try again later.
             </div>
         )
@@ -29,7 +29,7 @@ export const UserPlaces = ({ userId, isOwnProfile }: UserPlacesProps) => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="mt-16 text-center text-black-40">
+            <div className="text-black-40 mt-16 text-center">
                 Nothing has been added here yet.
                 <br />
                 Places will show up as they’re added.
