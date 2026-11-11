@@ -6,9 +6,15 @@ import { PlacesGrid } from '@/components/features/common/places-grid/places-grid
 import { ShowMore } from '@/components/ui/show-more'
 import { usersAPI } from '@/utils/redux/services/users/users.api'
 
+import { UserPlacesItemActions } from './components/user-places-item-actions'
 import { UserPlacesSkeleton } from './user-places-skeleton'
 
-export const UserPlaces = ({ userId }: { userId: number }) => {
+type UserPlacesProps = {
+    userId: number
+    isOwnProfile: boolean
+}
+
+export const UserPlaces = ({ userId, isOwnProfile }: UserPlacesProps) => {
     const [page, setPage] = useState(1)
 
     const { data, isFetching, isSuccess, isError } = usersAPI.useGetPlacesByUserIdQuery({ userId, page })
@@ -44,6 +50,7 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                                 countryCode: item.countryCode,
                                 createdAt: new Date(item.createdAt),
                             },
+                            actions: isOwnProfile ? <UserPlacesItemActions id={item.id} userId={userId} /> : undefined,
                         }))}
                     />
                 </div>

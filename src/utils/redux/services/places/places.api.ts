@@ -53,6 +53,7 @@ export const placesAPI = api.injectEndpoints({
                 url: `places/${placeId}`,
                 method: 'DELETE',
             }),
+            invalidatesTags: ['Places', 'UserPlaces'],
         }),
 
         placePhotoUpload: build.mutation<ImageUploadResponse, File>({
