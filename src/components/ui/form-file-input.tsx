@@ -98,7 +98,9 @@ export const FormFileInput = ({
                         {!isUploading && (
                             <>
                                 {fileName ? (
-                                    <div className="text-black-100">{fileName}</div>
+                                    <div className="min-w-0 truncate text-black-100" title={fileName}>
+                                        {fileName}
+                                    </div>
                                 ) : (
                                     <div className="text-black-40">{t('placeholder.action.selectFile')}</div>
                                 )}
