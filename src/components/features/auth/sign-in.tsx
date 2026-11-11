@@ -21,7 +21,11 @@ import { SignInReject } from './sign-in-reject'
 import { SignUp } from './sign-up'
 import { ThirdPartyButton } from './third-party-button'
 
-export const SignIn = () => {
+type SignInProps = {
+    redirectTo?: string
+}
+
+export const SignIn = ({ redirectTo }: SignInProps) => {
     const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
@@ -56,7 +60,13 @@ export const SignIn = () => {
             switch (response.status) {
                 case 'OK':
                     dialog.close()
-                    router.refresh()
+                    window.sessionStorage.removeItem('signInRedirectTo')
+
+                    if (redirectTo) {
+                        router.push(redirectTo)
+                    } else {
+                        router.refresh()
+                    }
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
@@ -106,7 +116,7 @@ export const SignIn = () => {
             <h1 className="h7 text-center">{t('auth.signIn.title')}</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
-                    <ThirdPartyButton provider="google" isDisabled={isLoading} />
+                    <ThirdPartyButton provider="google" redirectTo={redirectTo} isDisabled={isLoading} />
                     {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
                 </div>
                 <Devider>{t('auth.or')}</Devider>
