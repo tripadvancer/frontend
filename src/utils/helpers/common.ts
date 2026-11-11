@@ -6,8 +6,8 @@ export function makeImageUrl(url: string | null, imageVariant: ImageVariants) {
     return `${url}/${imageVariant}`
 }
 
-export function formattedDate(date: Date, locale: string = 'en') {
-    return new Date(date).toLocaleDateString(locale, {
+export function formattedDate(date: Date) {
+    return new Date(date).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',

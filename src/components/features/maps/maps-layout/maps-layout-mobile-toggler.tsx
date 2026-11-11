@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { ListIcon, MapIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
 
@@ -17,7 +16,6 @@ type MapLayoutMobileTogglerProps = {
 }
 
 export const MapLayoutMobileToggler = ({ isVisible }: MapLayoutMobileTogglerProps) => {
-    const t = useTranslations()
     const dispatch = useAppDispatch()
     const appMode = useAppSelector(getAppMode)
     const widgetMode = useAppSelector(getWidgetMode)
@@ -26,25 +24,25 @@ export const MapLayoutMobileToggler = ({ isVisible }: MapLayoutMobileTogglerProp
         [WidgetModes.PLACES]: {
             [AppModes.MAP]: {
                 icon: <ListIcon size={16} />,
-                children: t('map.widget.toggler.list'),
+                children: 'View list',
                 onClick: () => dispatch(setAppMode(AppModes.WIDGET)),
             },
             [AppModes.WIDGET]: {
                 icon: <MapIcon size={16} />,
-                children: t('map.widget.toggler.map'),
+                children: 'View map',
                 onClick: () => dispatch(setAppMode(AppModes.MAP)),
             },
         },
         [WidgetModes.RANDOM]: {
             [AppModes.MAP]: {
                 icon: <Image src="/images/icons/random.svg" alt="Random" width={16} height={16} />,
-                children: t('map.widget.toggler.random'),
+                children: 'Random',
                 variant: 'orange' as 'blue' | 'orange',
                 onClick: () => dispatch(setAppMode(AppModes.WIDGET)),
             },
             [AppModes.WIDGET]: {
                 icon: <MapIcon size={16} />,
-                children: t('map.widget.toggler.map'),
+                children: 'View map',
                 variant: 'orange' as 'blue' | 'orange',
                 onClick: () => dispatch(setAppMode(AppModes.MAP)),
             },

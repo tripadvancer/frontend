@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
-import { useTranslations } from 'next-intl'
-
 import { useToast } from '@/components/providers/toast-provider'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { getUserLocation, setUserLocation } from '@/utils/redux/features/user-slice'
@@ -21,7 +19,6 @@ interface LngLat {
 }
 
 export function useUserLocation(): useUserLocationInterface {
-    const t = useTranslations()
     const toast = useToast()
     const userLocation = useAppSelector(getUserLocation)
     const dispatch = useAppDispatch()
@@ -34,7 +31,7 @@ export function useUserLocation(): useUserLocationInterface {
 
     useEffect(() => {
         if (!navigator.geolocation) {
-            toast.error(t('geolocation.isNotSupported'))
+            toast.error('Geolocation is not supported by your browser.')
             return
         }
 
@@ -54,11 +51,6 @@ export function useUserLocation(): useUserLocationInterface {
             if (error.code === error.PERMISSION_DENIED) {
                 setIsDenied(true)
             }
-            // TODO: Fix this error handling
-            // else {
-            //     console.error('Error getting location:', error)
-            //     toast.error(t('common.error'))
-            // }
             setIsLocating(false)
         }
 
@@ -71,11 +63,11 @@ export function useUserLocation(): useUserLocationInterface {
         return () => {
             navigator.geolocation.clearWatch(watchId)
         }
-    }, [dispatch, toast, t])
+    }, [dispatch, toast])
 
     const handleLocate = () => {
         if (isDenied) {
-            toast.error(t('geolocation.isNotPermission'))
+            toast.error('You have denied access to geolocation. Please enable it in settings.')
             return
         }
 

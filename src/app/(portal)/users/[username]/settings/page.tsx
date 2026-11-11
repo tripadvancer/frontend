@@ -13,6 +13,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
     return {
         title: 'Settings',
+        robots: 'noindex, nofollow',
         alternates: {
             canonical: `/users/${params.username.toLowerCase()}/settings`,
         },
