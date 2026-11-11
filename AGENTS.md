@@ -57,5 +57,7 @@
 - Handle one issue per branch and pull request. Create branches from the latest `develop` using `bugfix/<issue-number>-<short-kebab-description>`. Use the same branch name in both repositories when a fix needs both.
 - Open pull requests against `develop` through GitHub MCP, and include only the repository changes needed for that issue. Use English for branch names, commits, issue comments, and pull request content.
 - Run focused checks for every fix and run the relevant project build or tests when practical. Report blocked checks and their cause.
-- Update issue tracking as work progresses using existing labels or project fields when available. Keep an issue open until its pull request is merged; only then mark it complete or close it.
+- After pushing a fix, add an English comment to the issue with a short fix summary and a clickable branch link. Add the PR link once the PR exists; do not say a PR was created before GitHub confirms it.
+- Link work to the issue by including its number in the branch name and `Fixes #<issue-number>` in the PR body when the fix fully resolves it.
+- Update issue status to `In Progress` when work starts, `In Review` when a PR is open, and `Done` only after merge, but only when those status options are exposed. If no status field or suitable existing label is available, leave the issue open and report that limitation instead of inventing labels.
 - Preserve existing UI design and shared components. Apply small SEO improvements when they naturally fit the fix. Database changes require a Prisma migration; never edit production data directly.
