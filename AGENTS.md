@@ -54,10 +54,9 @@
 
 - Verify that a GitHub issue is still open and applies to the current code before changing anything. Reproduce it in the app when practical, then inspect the relevant implementation and data flow.
 - If an issue is outdated, cannot be reproduced, lacks necessary details, or cannot be fixed safely, leave a concise English comment explaining the finding or asking for the missing information; do not make a speculative change.
-- Handle one issue per branch and pull request. Create branches from the latest `develop` using `bugfix/<issue-number>-<short-kebab-description>`. Use the same branch name in both repositories when a fix needs both.
-- Open pull requests against `develop` through GitHub MCP, and include only the repository changes needed for that issue. Use English for branch names, commits, issue comments, and pull request content.
+- Handle one issue per branch. Create branches from the latest `develop` using `bugfix/<issue-number>` for bugs or `feature/<issue-number>` for features. Use the same branch name in both repositories when a fix needs both.
 - Run focused checks for every fix and run the relevant project build or tests when practical. Report blocked checks and their cause.
-- After pushing a fix, add an English comment to the issue with a short fix summary and a clickable branch link. Add the PR link once the PR exists; do not say a PR was created before GitHub confirms it.
-- Link work to the issue by including its number in the branch name and `Fixes #<issue-number>` in the PR body when the fix fully resolves it.
-- Update issue status to `In Progress` when work starts, `In Review` when a PR is open, and `Done` only after merge, but only when those status options are exposed. If no status field or suitable existing label is available, leave the issue open and report that limitation instead of inventing labels.
+- After pushing a fix, add a concise English issue comment that says the bug is fixed and includes the branch link and fix commit hash(es). Do not include PR status or links unless the user asks.
+- Start each commit message with `[<issue-number>]` followed by a short English description, for example `[358] Refresh review photos after edit`. Use English for branch names and issue comments.
+- The user handles PR creation and issue status changes manually unless they explicitly ask otherwise. Do not close an issue or change its status by default.
 - Preserve existing UI design and shared components. Apply small SEO improvements when they naturally fit the fix. Database changes require a Prisma migration; never edit production data directly.
