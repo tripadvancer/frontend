@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { useToast } from '@/components/providers/toast-provider'
 import { LinkButton } from '@/components/ui/link-button'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
@@ -14,7 +12,6 @@ type RestoreUserProps = {
 }
 
 export const RestoreUser = ({ token }: RestoreUserProps) => {
-    const t = useTranslations()
     const toast = useToast()
 
     const [status, setStatus] = useState<string>()
@@ -26,24 +23,24 @@ export const RestoreUser = ({ token }: RestoreUserProps) => {
                 const response = await restoreUser(token).unwrap()
                 setStatus(response.status)
             } catch (err) {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             }
         }
         handleRestoreUser()
     })
 
     if (!status) {
-        return <p className="text-center">{t('auth.restoreUser.loading')}</p>
+        return <p className="text-center">Restoring your account...</p>
     }
 
     return (
         <>
             <p className="text-center">
-                {status === 'OK' && t('auth.restoreUser.status.ok')}
-                {status === 'INVALID_TOKEN_ERROR' && t('auth.restoreUser.status.expired')}
+                {status === 'OK' && 'Your account has been restored.'}
+                {status === 'INVALID_TOKEN_ERROR' && 'The restore link has expired. Please request a new restore link.'}
             </p>
             <LinkButton href="/" className="w-full">
-                {t('common.action.goHome')}
+                Go to Home
             </LinkButton>
         </>
     )

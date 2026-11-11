@@ -3,7 +3,6 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -26,17 +25,16 @@ type ReviewFormProps = {
 }
 
 export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const [isFormDisabled, setIsFormDisabled] = useState(false)
 
     const validationSchema = Yup.object().shape({
-        rating: Yup.number().min(1, t('validation.required')),
+        rating: Yup.number().min(1, 'This field is required'),
         text: Yup.string()
             .trim()
-            .required(t('validation.required'))
-            .min(reviewTextMinLength, t('validation.text.minLength', { minLength: reviewTextMinLength }))
-            .max(reviewTextMaxLength, t('validation.text.maxLength', { maxLength: reviewTextMaxLength })),
+            .required('This field is required')
+            .min(reviewTextMinLength, `This field must be at least ${reviewTextMinLength} characters long`)
+            .max(reviewTextMaxLength, `This field must be at most ${reviewTextMaxLength} characters long`),
     })
 
     const formik = useFormik({
@@ -52,7 +50,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
             <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {t('dialog.reviewForm.field.rating.label')}
+                        Your rating
                     </label>
                     <FormRatingInput
                         value={formik.values.rating}
@@ -63,13 +61,13 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {t('dialog.reviewForm.field.text.label')}
+                        Review
                     </label>
                     <FormTextarea
                         id="text"
                         name="text"
                         value={formik.values.text}
-                        placeholder={t('dialog.reviewForm.field.text.placeholder')}
+                        placeholder="Share your impressions in detail — this way you will help others learn more about this place"
                         maxLength={reviewTextMaxLength}
                         style={{ height: '120px' }}
                         error={formik.errors.text}
@@ -79,7 +77,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {t('dialog.reviewForm.field.photos.label')}
+                        Photos
                     </label>
                     <ReviewFormPhotosList
                         photos={formik.values.photos}
@@ -96,10 +94,10 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
             />
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty || isFormDisabled}>
-                    {t('common.action.save')}
+                    Save
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
-                    {t('common.action.close')}
+                    Close
                 </FormButton>
             </div>
         </form>

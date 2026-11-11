@@ -1,12 +1,10 @@
 import { ReactNode } from 'react'
 
-import { NextIntlClientProvider } from 'next-intl'
-import { getLocale, getMessages } from 'next-intl/server'
-
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 import { Metadata, Viewport } from 'next/types'
 
+import { JsonLd } from '@/components/features/common/json-ld'
 import YandexMetrika from '@/components/features/common/yandex-metrika'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 
@@ -17,15 +15,13 @@ import 'yet-another-react-lightbox/styles.css'
 import { Providers } from './providers'
 
 const roboto = Roboto({
-    subsets: ['latin', 'cyrillic'],
+    subsets: ['latin'],
     weight: ['400', '500', '700'],
 })
 
 export const viewport: Viewport = {
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
 }
 
 export const metadata: Metadata = {
@@ -35,10 +31,10 @@ export const metadata: Metadata = {
     },
     title: {
         template: '%s | Tripadvancer',
-        default: 'Tripadvancer - Share your favorite spots and track visited countries',
+        default: 'Discover Hidden Gems & Plan Your Trip | Tripadvancer',
     },
     description:
-        'Join the community of travelers and share your favorite places with others. Track the countries you have visited and plan your next trip.',
+        "Explore traveler-recommended attractions and hidden gems on an interactive map. Save places to trip lists, read reviews, and track the countries you've visited.",
     appleWebApp: {
         title: 'Tripadvancer',
         startupImage: [
@@ -87,10 +83,10 @@ export const metadata: Metadata = {
     openGraph: {
         title: {
             template: '%s | Tripadvancer',
-            default: 'Welcome to Tripadvancer',
+            default: 'Discover Hidden Gems & Plan Your Trip | Tripadvancer',
         },
         type: 'website',
-        locale: 'en',
+        locale: 'en_US',
         url: '/',
         siteName: 'Tripadvancer',
         images: [
@@ -106,19 +102,16 @@ export const metadata: Metadata = {
     twitter: {
         title: {
             template: '%s | Tripadvancer',
-            default: 'Welcome to Tripadvancer',
+            default: 'Discover Hidden Gems & Plan Your Trip | Tripadvancer',
         },
         card: 'summary_large_image',
         images: '/open-graph/image-1.jpg',
     },
 }
 
-export default async function RootLayout({ children }: { children: ReactNode }) {
-    const locale = await getLocale()
-    const messages = await getMessages()
-
+export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang={locale}>
+        <html lang="en">
             <head>
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -128,9 +121,32 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                 <link href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css" rel="stylesheet" />
             </head>
             <body className={roboto.className}>
-                <NextIntlClientProvider messages={messages}>
-                    <Providers>{children}</Providers>
-                </NextIntlClientProvider>
+                <JsonLd
+                    data={[
+                        {
+                            '@context': 'https://schema.org',
+                            '@type': 'Organization',
+                            '@id': `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/#organization`,
+                            name: 'Tripadvancer',
+                            url: process.env.NEXT_PUBLIC_WEBSITE_DOMAIN,
+                            logo: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/logo.svg`,
+                            description:
+                                'A travel community for discovering places, planning trips, and sharing recommendations.',
+                            sameAs: ['https://twitter.com/tripadvancer_me'],
+                        },
+                        {
+                            '@context': 'https://schema.org',
+                            '@type': 'WebSite',
+                            '@id': `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/#website`,
+                            name: 'Tripadvancer',
+                            url: process.env.NEXT_PUBLIC_WEBSITE_DOMAIN,
+                            publisher: {
+                                '@id': `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/#organization`,
+                            },
+                        },
+                    ]}
+                />
+                <Providers>{children}</Providers>
                 <YandexMetrika />
                 <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
                 <TailwindIndicator />

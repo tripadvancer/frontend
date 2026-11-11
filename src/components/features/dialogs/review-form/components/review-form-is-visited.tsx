@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { FormSwitcher } from '@/components/ui/form-switcher'
 
 type ReviewFormIsVisitedProps = {
@@ -11,8 +9,6 @@ type ReviewFormIsVisitedProps = {
 }
 
 export const ReviewFormIsVisited = ({ isVisited, isLoading, onChange }: ReviewFormIsVisitedProps) => {
-    const t = useTranslations()
-
     const handleToggleIsVisited = () => {
         onChange(!isVisited)
     }
@@ -21,7 +17,7 @@ export const ReviewFormIsVisited = ({ isVisited, isLoading, onChange }: ReviewFo
         <div className="flex items-center gap-x-2">
             <FormSwitcher checked={isVisited} isDisabled={isLoading} onChange={handleToggleIsVisited} />
             <div className="cursor-pointer" onClick={isLoading ? undefined : handleToggleIsVisited}>
-                {t('common.action.place.iWasHere')}
+                I was here
             </div>
         </div>
     )

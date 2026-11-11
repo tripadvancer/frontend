@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -15,7 +13,6 @@ import { ReviewForm } from './review-form'
 import { ReviewFormSkeleton } from './review-form-skeleton'
 
 export const ReviewEdit = (review: IReview) => {
-    const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -31,7 +28,7 @@ export const ReviewEdit = (review: IReview) => {
     if (isMetaLoading) {
         return (
             <div className="flex w-full flex-col gap-y-4 sm:w-104">
-                <h1 className="h7">{t('dialog.reviewForm.title.edit')}</h1>
+                <h1 className="h7">Edit review</h1>
                 <hr className="border-black-70" />
                 <ReviewFormSkeleton />
             </div>
@@ -39,7 +36,7 @@ export const ReviewEdit = (review: IReview) => {
     }
 
     if (isMetaError) {
-        return <div>{t('common.error')}</div>
+        return <div>An unexpected error has occurred. Please try again later.</div>
     }
 
     const initialValues: UpdateReviewInputs = {
@@ -62,13 +59,13 @@ export const ReviewEdit = (review: IReview) => {
             router.refresh()
             dialog.close()
         } catch (error) {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
     return (
         <div className="flex w-full flex-col gap-y-4 sm:w-104">
-            <h1 className="h7">{t('dialog.reviewForm.title.edit')}</h1>
+            <h1 className="h7">Edit review</h1>
             <hr className="border-black-70" />
             <ReviewForm
                 initialValues={initialValues}

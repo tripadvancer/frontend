@@ -92,7 +92,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified, initialBounds }: Ma
                     isEmailVerified={isEmailVerified}
                 />
 
-                {!isMobile && <AttributionControl compact={true} />}
+                <AttributionControl compact={true} position="bottom-left" />
             </ReactMapGl>
         </div>
     )

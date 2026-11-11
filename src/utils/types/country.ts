@@ -1,3 +1,5 @@
+import { LngLatBoundsLike } from 'react-map-gl/maplibre'
+
 export type ICountry = {
     countryCode: string
     placesCount: number
@@ -6,8 +8,6 @@ export type ICountry = {
 export type ICountryDict = {
     code: string
     slug: string
-    name: {
-        [locale: string]: string
-    }
-    bounds: [number, number, number, number]
+    name: string
+    bounds: LngLatBoundsLike
 }
