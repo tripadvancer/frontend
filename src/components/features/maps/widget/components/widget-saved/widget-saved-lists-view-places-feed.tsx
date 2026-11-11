@@ -2,8 +2,6 @@
 
 import { useMemo } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { PlacesFeed } from '@/components/features/common/places-feed/places-feed'
 import { PlacesFeedSkeleton } from '@/components/features/common/places-feed/places-feed-skeleton'
 import { getWidgetSelectedCategories } from '@/utils/redux/features/widget-slice'
@@ -13,7 +11,6 @@ import { listAPI } from '@/utils/redux/services/list/list.api'
 import { WidgetMessage } from '../widget-message'
 
 export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) => {
-    const t = useTranslations()
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
 
     const { data, isError, isLoading, isSuccess, refetch } = listAPI.useGetListPlacesQuery({
@@ -29,7 +26,15 @@ export const WidgetSavedListsViewPlacesFeed = ({ listId }: { listId: number }) =
 
     if (isSuccess && places.length === 0) {
         return (
-            <WidgetMessage message={t.rich('map.widget.tabs.savedPlaces.lists.emptyMessage', { br: () => <br /> })} />
+            <WidgetMessage
+                message={
+                    <>
+                        This list is empty.
+                        <br />
+                        Add place to this list or try changing categories.
+                    </>
+                }
+            />
         )
     }
 

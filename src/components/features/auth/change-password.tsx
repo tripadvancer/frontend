@@ -1,7 +1,6 @@
 'use client'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 import * as Yup from 'yup'
 
@@ -20,7 +19,6 @@ const userPasswordMaxLength = validationConfig.user.password.maxLength
 const passwordMustDifferMessage = 'New password must be different from your current password.'
 
 export const ChangePassword = () => {
-    const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -33,13 +31,13 @@ export const ChangePassword = () => {
     }
 
     const validationSchema = Yup.object().shape({
-        oldPassword: Yup.string().required(t('validation.required')),
+        oldPassword: Yup.string().required('This field is required'),
         newPassword: Yup.string()
-            .required(t('validation.required'))
+            .required('This field is required')
             .notOneOf([Yup.ref('oldPassword')], passwordMustDifferMessage)
-            .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
-            .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
+            .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
+            .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
+            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, 'Password must contain at least 8 characters, including a number'),
     })
 
     const handleSubmit = async (inputs: ChangeUserPasswordInputs) => {
@@ -54,19 +52,19 @@ export const ChangePassword = () => {
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
-                    formik.setErrors({ oldPassword: t('validation.wrong.password') })
+                    formik.setErrors({ oldPassword: 'Wrong password' })
                     break
 
                 case 'PASSWORD_POLICY_VIOLATED_ERROR':
-                    formik.setErrors({ newPassword: t('validation.wrong.passwordPolicy') })
+                    formik.setErrors({ newPassword: 'Password must contain at least 8 characters, including a number' })
                     break
 
                 default:
-                    toast.error(t('common.error'))
+                    toast.error('An unexpected error has occurred. Please try again later.')
                     break
             }
         } catch (err: any) {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
@@ -82,14 +80,16 @@ export const ChangePassword = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{t('auth.changePassword.title')}</h1>
+            <h1 className="h7 text-center">Change password</h1>
             <div className="flex flex-col gap-y-2">
-                <p className="text-center">{t('auth.changePassword.text')}</p>
+                <p className="text-center">
+                    Create a new password that is at least 8 characters long and contains a mix of letters and numbers:
+                </p>
                 <FormInput
                     type="password"
                     name="oldPassword"
                     value={formik.values.oldPassword}
-                    placeholder={t('placeholder.action.enterPassword')}
+                    placeholder="Enter your password"
                     autoFocus
                     error={formik.errors.oldPassword}
                     disabled={isLoading}
@@ -99,7 +99,7 @@ export const ChangePassword = () => {
                     type="password"
                     name="newPassword"
                     value={formik.values.newPassword}
-                    placeholder={t('placeholder.action.enterNewPassword')}
+                    placeholder="Enter new password"
                     error={formik.errors.newPassword || (isPasswordUnchanged ? passwordMustDifferMessage : '')}
                     disabled={isLoading}
                     onChange={formik.handleChange}
@@ -111,7 +111,7 @@ export const ChangePassword = () => {
                 isLoading={isLoading}
                 isDisabled={!formik.dirty || isPasswordUnchanged}
             >
-                {t('common.action.saveChanges')}
+                Save changes
             </FormButton>
         </form>
     )
