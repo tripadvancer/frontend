@@ -19,6 +19,9 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
         description:
             user.info ||
             'Join the community of travelers and share your favorite places with others. Track the countries you have visited and plan your next trip.',
+        alternates: {
+            canonical: `/users/${user.name.toLowerCase()}`,
+        },
         openGraph: {
             title: params.username,
             description:

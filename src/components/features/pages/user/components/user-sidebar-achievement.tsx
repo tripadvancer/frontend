@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import Image from 'next/image'
 
 import { usersAPI } from '@/utils/redux/services/users/users.api'
@@ -42,7 +40,6 @@ export const UserSidebarAchievement = ({
     visitedPlaces,
     visitedCountries,
 }: UserSidebarAchievementProps) => {
-    const t = useTranslations()
     const { data: user } = usersAPI.useGetUserByUsernameQuery(username)
 
     return (
@@ -55,31 +52,14 @@ export const UserSidebarAchievement = ({
                     height={48}
                     className="m-auto"
                 />
-                <div className="break-words text-center font-medium">
-                    {t('component.userAchievement.level.beginner')}
-                </div>
+                <div className="break-words text-center font-medium">Beginner</div>
             </div>
             <ul>
-                <Item
-                    label={t('component.userAchievement.statistic.addedPlaces')}
-                    value={user?._count.places ?? places}
-                />
-                <Item
-                    label={t('component.userAchievement.statistic.addedReviews')}
-                    value={user?._count.placeReviews ?? placeReviews}
-                />
-                <Item
-                    label={t('component.userAchievement.statistic.addedPhotos')}
-                    value={user?._count.placePhotos ?? placePhotos}
-                />
-                <Item
-                    label={t('component.userAchievement.statistic.visitedPlaces')}
-                    value={user?._count.visitedPlaces ?? visitedPlaces}
-                />
-                <Item
-                    label={t('component.userAchievement.statistic.visitedCountries')}
-                    value={user?._count.visitedCountries ?? visitedCountries}
-                />
+                <Item label="Added places" value={user?._count.places ?? places} />
+                <Item label="Written reviews" value={user?._count.placeReviews ?? placeReviews} />
+                <Item label="Added photos" value={user?._count.placePhotos ?? placePhotos} />
+                <Item label="Visited places" value={user?._count.visitedPlaces ?? visitedPlaces} />
+                <Item label="Visited countries" value={user?._count.visitedCountries ?? visitedCountries} />
             </ul>
         </div>
     )

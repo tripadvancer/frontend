@@ -1,7 +1,6 @@
 'use client'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -21,17 +20,16 @@ type ListFormProps = {
 }
 
 export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
 
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .trim()
-            .required(t('validation.required'))
-            .max(listNameMaxLength, t('validation.text.maxLength', { maxLength: listNameMaxLength })),
+            .required('This field is required')
+            .max(listNameMaxLength, `This field must be at most ${listNameMaxLength} characters long`),
         description: Yup.string()
             .trim()
-            .max(listDescriptionMaxLength, t('validation.text.maxLength', { maxLength: listDescriptionMaxLength })),
+            .max(listDescriptionMaxLength, `This field must be at most ${listDescriptionMaxLength} characters long`),
     })
 
     const formik = useFormik({
@@ -47,7 +45,7 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
             <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {t('dialog.listForm.field.name.label')}
+                        Name
                     </label>
                     <FormInput
                         id="name"
@@ -55,7 +53,7 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
                         value={formik.values.name}
                         autoFocus
                         autoComplete="off"
-                        placeholder={t('dialog.listForm.field.name.placeholder')}
+                        placeholder="Enter list name"
                         maxLength={listNameMaxLength}
                         error={formik.errors.name}
                         disabled={isLoading}
@@ -65,13 +63,13 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {t('dialog.listForm.field.description.label')}
+                        Description
                     </label>
                     <FormTextarea
                         id="description"
                         name="description"
                         value={formik.values.description}
-                        placeholder={t('dialog.listForm.field.description.placeholder')}
+                        placeholder="Enter list description"
                         maxLength={listDescriptionMaxLength}
                         style={{ height: '60px' }}
                         error={formik.errors.description}
@@ -82,10 +80,10 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
             </div>
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty}>
-                    {t('common.action.send')}
+                    Save
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
-                    {t('common.action.close')}
+                    Close
                 </FormButton>
             </div>
         </form>

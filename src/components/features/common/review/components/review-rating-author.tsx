@@ -1,7 +1,5 @@
 'use client'
 
-import { useLocale } from 'next-intl'
-
 import Link from 'next/link'
 
 import { Avatar } from '@/components/ui/avatar'
@@ -10,8 +8,6 @@ import { formattedDate } from '@/utils/helpers/common'
 import { IReview } from '@/utils/types/common'
 
 export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {
-    const locale = useLocale()
-
     return (
         <div className="flex flex-row gap-x-2 overflow-hidden">
             <div className="grow-0">
@@ -28,7 +24,7 @@ export const ReviewRatingAuthor = ({ user, rating, createdAt }: IReview) => {
                     >
                         {user.name}
                     </Link>
-                    <div className="text-small text-black-40">{formattedDate(createdAt, locale)}</div>
+                    <div className="text-small text-black-40">{formattedDate(createdAt)}</div>
                 </div>
             </div>
         </div>
