@@ -10,7 +10,7 @@ export const searchAPI = api.injectEndpoints({
             transformResponse: (returnValue: ISearchResult, meta, arg) => {
                 // Add countries to the response
                 const countriesData = countriesDictionary.filter(country => {
-                    return country.name['en'].toLowerCase().includes(arg.query.toLowerCase())
+                    return country.name.toLowerCase().includes(arg.query.toLowerCase())
                 })
                 const countriesSearchResult: ISearchItem<ICountryDict>[] = countriesData.map(country => ({
                     title: '',

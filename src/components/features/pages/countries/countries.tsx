@@ -1,5 +1,4 @@
 import { MapIcon } from 'lucide-react'
-import { getTranslations } from 'next-intl/server'
 
 import Image from 'next/image'
 
@@ -9,19 +8,15 @@ import { getCountries } from '@/services/countries'
 import { getSettings } from '@/services/settings'
 
 export const Countries = async () => {
-    const t = await getTranslations()
     const countries = await getCountries()
     const settings = await getSettings()
 
     return (
         <section className="container space-y-16 py-16">
             <div className="space-y-4 sm:w-3/4">
-                <h1 className="h1 max-w-full break-words">{t('page.countries.title')}</h1>
+                <h1 className="h1 max-w-full break-words">Explore Countries and Travel Destinations</h1>
                 <p className="text-big text-black-70">
-                    {t.rich('page.countries.description', {
-                        placesCount: settings.placesCount,
-                        countriesCount: settings.countriesCount,
-                    })}
+                    {settings.placesCount} places in {settings.countriesCount} countries
                 </p>
             </div>
 
@@ -35,12 +30,14 @@ export const Countries = async () => {
                         alt="Tripadvancer Map"
                     />
                     <div className="flex-1">
-                        <h2 className="h5">{t('page.countries.goToMapTitle')}</h2>
-                        <p className="text-big text-black-70">{t('page.countries.goToMapText')}</p>
+                        <h2 className="h5">View places on the map</h2>
+                        <p className="text-big text-black-70">
+                            Discover places around the world with our interactive map.
+                        </p>
                     </div>
                     <LinkButton href="/maps" variant="orange" className="flex shrink-0 items-center gap-x-2">
                         <MapIcon />
-                        {t('page.countries.goToMapButton')}
+                        View Map
                     </LinkButton>
                 </div>
 

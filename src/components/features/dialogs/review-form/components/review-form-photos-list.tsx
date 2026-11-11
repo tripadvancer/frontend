@@ -3,7 +3,6 @@
 import { useState } from 'react'
 
 import classNames from 'classnames'
-import { useTranslations } from 'next-intl'
 import Lightbox from 'yet-another-react-lightbox'
 
 import { useToast } from '@/components/providers/toast-provider'
@@ -30,7 +29,6 @@ export const ReviewFormPhotosList = ({
     setIsFormDisabled,
     onChange,
 }: ReviewFormPhotosListProps) => {
-    const t = useTranslations()
     const toast = useToast()
 
     const [upload] = reviewsAPI.useReviewPhotoUploadMutation()
@@ -49,7 +47,7 @@ export const ReviewFormPhotosList = ({
                 const response = await upload(formData).unwrap()
                 return response.url
             } catch {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             }
         })
 
@@ -58,7 +56,7 @@ export const ReviewFormPhotosList = ({
             const filteredUrls = urls.filter(url => url !== undefined) as string[]
             onChange([...photos, ...filteredUrls])
         } catch (error) {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         } finally {
             setIsUploading(false)
             setIsFormDisabled(false)

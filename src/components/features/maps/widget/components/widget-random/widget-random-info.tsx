@@ -1,15 +1,13 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { WidgetTogler } from '../widget-togler'
 
 export const WidgetRandomInfo = () => {
-    const t = useTranslations()
-
     return (
         <div className="flex gap-x-4">
-            <div className="flex-1 text-black-70">{t('map.widget.random.info')}</div>
+            <div className="flex-1 text-black-70">
+                Select categories, radius around you or a specified point and we will select interesting place for you.
+            </div>
             <WidgetTogler />
         </div>
     )

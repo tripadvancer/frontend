@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { useRouter } from 'next/navigation'
 
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
@@ -27,7 +25,6 @@ type PlaceEditProps = {
 }
 
 export const PlaceEdit = ({ id, title, description, location, photos, cover, categories }: PlaceEditProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const router = useRouter()
     const toast = useToast()
@@ -41,7 +38,7 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
     }
 
     if (isMetaError) {
-        return <div>{t('common.error')}</div>
+        return <div>An unexpected error has occurred. Please try again later.</div>
     }
 
     const initialValues: UpdatePlaceInputs = {
@@ -76,10 +73,10 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
                 title: inputs.title.trim(),
             }
             await updatePlace(trimmedInputs)
-            toast.success(t('success.updatePlace'))
+            toast.success('Your place has been updated.')
             router.push(`/places/${id}`)
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
