@@ -8,8 +8,6 @@ export type ICountry = {
 export type ICountryDict = {
     code: string
     slug: string
-    name: {
-        [locale: string]: string
-    }
+    name: string
     bounds: LngLatBoundsLike
 }

@@ -1,12 +1,8 @@
-import { getTranslations } from 'next-intl/server'
-
 import Image from 'next/image'
 
 import { LandingFeaturesListsButton } from './landing-features-lists-buttons'
 
 export const LandingFeaturesLists = async () => {
-    const t = await getTranslations()
-
     return (
         <div className="grid items-center gap-y-8 sm:grid-cols-2 sm:gap-x-16">
             <Image
@@ -17,8 +13,15 @@ export const LandingFeaturesLists = async () => {
                 alt="Personalized travel lists"
             />
             <section className="flex flex-col gap-y-4 sm:gap-y-8">
-                <h4 className="h5">{t.rich('page.landing.features.lists.title', { br: () => <br /> })}</h4>
-                <p>{t('page.landing.features.lists.text')}</p>
+                <h4 className="h5">
+                    Plan seamlessly
+                    <br />
+                    with custom travel lists
+                </h4>
+                <p>
+                    Organize your future trips by creating personalized lists of must-see places. Make travel planning
+                    simple, efficient, and fun.
+                </p>
                 <div className="flex-none">
                     <LandingFeaturesListsButton />
                 </div>

@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { FormButton } from '@/components/ui/form-button'
 import { useAddPlaceClickHandler } from '@/utils/hooks/use-add-place-click-handler'
 
@@ -16,12 +14,11 @@ export const LandingFeaturesSharePlacesButton = ({
     isAuth,
     isEmailVerified,
 }: LandingFeaturesPlacesButtonProps) => {
-    const t = useTranslations()
     const handleClick = useAddPlaceClickHandler({ activeUserId, isAuth, isEmailVerified })
 
     return (
         <FormButton variant="orange" onClick={handleClick}>
-            {t('page.landing.features.sharePlaces.button')}
+            Share Place
         </FormButton>
     )
 }

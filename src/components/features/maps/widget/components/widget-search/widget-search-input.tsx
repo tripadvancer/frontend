@@ -3,7 +3,6 @@
 import { ChangeEvent } from 'react'
 
 import { SearchIcon, XIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { Spinner } from '@/components/ui/spinner'
 
@@ -16,8 +15,6 @@ type WidgetSearchInputProps = {
 }
 
 export const WidgetSearchInput = (props: WidgetSearchInputProps) => {
-    const t = useTranslations()
-
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         props.onChange(e.target.value)
     }
@@ -34,7 +31,7 @@ export const WidgetSearchInput = (props: WidgetSearchInputProps) => {
                 value={props.value}
                 autoComplete="off"
                 className="hover-animated h-10 w-full rounded-lg border border-blue-20 bg-white px-10 placeholder:text-black-40 hover:border-blue-100 focus:border-blue-100 focus:outline-none"
-                placeholder={t('map.widget.search.placeholder')}
+                placeholder="Find a country, place or address"
                 onChange={handleChange}
                 onClick={props.onClick}
             />
