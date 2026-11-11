@@ -3,7 +3,6 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import { emailPasswordSignIn } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 import * as Yup from 'yup'
 
@@ -26,7 +25,6 @@ type SignInProps = {
 }
 
 export const SignIn = ({ redirectTo }: SignInProps) => {
-    const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
@@ -41,12 +39,12 @@ export const SignIn = ({ redirectTo }: SignInProps) => {
     const validationSchema = Yup.object().shape({
         email: Yup.string()
             .trim()
-            .required(t('validation.required'))
+            .required('This field is required')
             .matches(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
-                t('validation.email.invalid'),
+                'Please enter a valid email address',
             ),
-        password: Yup.string().required(t('validation.required')),
+        password: Yup.string().required('This field is required'),
     })
 
     const handleSubmit = async (values: SignInInputs) => {
@@ -70,7 +68,7 @@ export const SignIn = ({ redirectTo }: SignInProps) => {
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
-                    formik.setErrors({ password: t('validation.wrong.credentials') })
+                    formik.setErrors({ password: 'Wrong email or password' })
                     break
 
                 case 'FIELD_ERROR':
@@ -81,14 +79,14 @@ export const SignIn = ({ redirectTo }: SignInProps) => {
                     break
 
                 default:
-                    toast.error(t('common.error'))
+                    toast.error('An unexpected error has occurred. Please try again later.')
                     break
             }
         } catch (err: any) {
             if (err.status === 403) {
                 dialog.open(<SignInReject />)
             } else {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             }
         } finally {
             setIsLoading(false)
@@ -113,19 +111,19 @@ export const SignIn = ({ redirectTo }: SignInProps) => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{t('auth.signIn.title')}</h1>
+            <h1 className="h7 text-center">Sign In</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" redirectTo={redirectTo} isDisabled={isLoading} />
                     {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
                 </div>
-                <Devider>{t('auth.or')}</Devider>
+                <Devider>Or</Devider>
                 <div className="flex flex-col gap-y-2">
                     <FormInput
                         type="text"
                         name="email"
                         value={formik.values.email}
-                        placeholder={t('placeholder.email')}
+                        placeholder="Email"
                         autoFocus
                         error={formik.errors.email}
                         disabled={isLoading}
@@ -135,7 +133,7 @@ export const SignIn = ({ redirectTo }: SignInProps) => {
                         type="password"
                         name="password"
                         value={formik.values.password}
-                        placeholder={t('placeholder.password')}
+                        placeholder="Password"
                         error={formik.errors.password}
                         disabled={isLoading}
                         onChange={formik.handleChange}
@@ -144,22 +142,19 @@ export const SignIn = ({ redirectTo }: SignInProps) => {
             </div>
             <div className="flex flex-col gap-y-4">
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {t('auth.signIn.submit')}
+                    Sign in
                 </FormButton>
                 <div className="text-center text-small">
                     <span className="link text-small" onClick={handleForgotPasswordClick}>
-                        {t('auth.signIn.forgotPassword')}
+                        Forgot password?
                     </span>
                 </div>
             </div>
             <div className="text-center">
-                {t.rich('auth.signIn.toBack', {
-                    signUpLink: signUpLink => (
-                        <span className="link" onClick={handleSignUpClick}>
-                            {signUpLink}
-                        </span>
-                    ),
-                })}
+                Don’t have an account?{' '}
+                <span className="link" onClick={handleSignUpClick}>
+                    Sign up
+                </span>
             </div>
         </form>
     )

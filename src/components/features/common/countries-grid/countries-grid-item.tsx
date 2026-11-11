@@ -1,5 +1,4 @@
 import { MapPin } from 'lucide-react'
-import { getLocale, getTranslations } from 'next-intl/server'
 
 import Link from 'next/link'
 
@@ -8,10 +7,8 @@ import { getCountryByCode } from '@/services/countries'
 import { ICountry } from '@/utils/types/country'
 
 export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) => {
-    const t = await getTranslations()
-    const locale = await getLocale()
     const country = getCountryByCode(countryCode)
-    const countryName = country?.name[locale] ?? ''
+    const countryName = country?.name ?? ''
     const countrySlug = country?.slug ?? ''
 
     return (
@@ -30,7 +27,7 @@ export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) 
                     <h4 className="h7 line-clamp-1 h-6 break-words sm:h-[26px]">{countryName}</h4>
                     <div className="flex items-center gap-x-2 text-black-40">
                         <MapPin size={16} />
-                        {t('common.placesCounter', { count: placesCount })}
+                        {placesCount === 0 ? 'No places' : placesCount === 1 ? '1 place' : placesCount + ' places'}
                     </div>
                 </figcaption>
             </Link>

@@ -4,19 +4,13 @@ import classNames from 'classnames'
 
 type SelectCategoriesItemProps = {
     id: number
-    localizedName: string
+    name: string
     isSelected: boolean
     isDisabled: boolean
     onClick: (categoryId: number) => void
 }
 
-export const SelectCategoriesItem = ({
-    id,
-    localizedName,
-    isSelected,
-    isDisabled,
-    onClick,
-}: SelectCategoriesItemProps) => {
+export const SelectCategoriesItem = ({ id, name, isSelected, isDisabled, onClick }: SelectCategoriesItemProps) => {
     return (
         <div
             className={classNames(
@@ -28,7 +22,7 @@ export const SelectCategoriesItem = ({
             )}
             onClick={() => onClick(id)}
         >
-            {localizedName}
+            {name}
         </div>
     )
 }
