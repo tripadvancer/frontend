@@ -24,9 +24,9 @@ export const Country = async ({
     const places = await getPlacesByCountryCode(country.code, selectedCategoriesIds.join())
     const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string
     const countryUrl = `${baseUrl}/countries/${country.slug}`
-    const countryBounds = Array.isArray(country.bounds[0])
-        ? (country.bounds as [[number, number], [number, number]]).flat().join(',')
-        : (country.bounds as [number, number, number, number]).join(',')
+    const countryBounds = Array.isArray(country.bounds)
+        ? country.bounds.flat().join(',')
+        : country.bounds.toArray().flat().join(',')
 
     return (
         <>
