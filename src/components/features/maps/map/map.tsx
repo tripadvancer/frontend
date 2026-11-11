@@ -12,6 +12,7 @@ import { useAppSelector } from '@/utils/redux/hooks'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
+import { MapControlSearch } from './components/map-control-search'
 import { MapControlUserLocation } from './components/map-control-user-location'
 import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
@@ -66,6 +67,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 {...handlers}
             >
                 <MapSources isAuth={isAuth} />
+                <MapControlSearch />
 
                 <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
                     <MapControl onClick={handleZoomIn}>
