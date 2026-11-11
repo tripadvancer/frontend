@@ -31,7 +31,7 @@ export const WidgetSearchInput = (props: WidgetSearchInputProps) => {
                 value={props.value}
                 autoComplete="off"
                 className="hover-animated h-10 w-full rounded-lg border border-blue-20 bg-white px-10 placeholder:text-black-40 hover:border-blue-100 focus:border-blue-100 focus:outline-none"
-                placeholder={'Find a country, place or address'}
+                placeholder="Find a country, place or address"
                 onChange={handleChange}
                 onClick={props.onClick}
             />

@@ -16,8 +16,8 @@ export const UserSettingsBlockRequestPersonalData = () => {
     const handleRequestPersonalData = () => {
         dialog.open(
             <Confirmation
-                title={'Send personal data'}
-                message={'Are you sure you want to send your personal data to your email?'}
+                title="Send personal data"
+                message="Are you sure you want to send your personal data to your email?"
                 onConfirm={async () => {
                     dialog.close()
                     try {
@@ -34,9 +34,9 @@ export const UserSettingsBlockRequestPersonalData = () => {
     return (
         <div className="flex flex-col gap-y-4 border-t border-black-15 py-8 last:border-b">
             <div className="flex items-center justify-between">
-                <div className="h7">{'Personal Information'}</div>
+                <div className="h7">Personal Information</div>
                 <div className="link font-medium" onClick={handleRequestPersonalData}>
-                    {'Get a copy of data'}
+                    Get a copy of data
                 </div>
             </div>
             <div>

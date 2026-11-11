@@ -14,7 +14,7 @@ export const PlaceFormSubmit = ({ isLoading, isDisabled }: PlaceFormSubmitProps)
         <div className="flex flex-col lg:flex-row lg:gap-x-8">
             <div className="flex-1">
                 <FormButton htmlType="submit" className="mb-4 w-full" isLoading={isLoading} isDisabled={isDisabled}>
-                    {'Save changes'}
+                    Save changes
                 </FormButton>
                 <p className="text-center text-small text-black-40">
                     {

@@ -27,7 +27,7 @@ export const Categories = ({ variant, selectedCategories, onClick }: CategoryPro
     return (
         <div className="flex flex-wrap gap-2">
             <Category variant={variant} isSelected={selectedCategories.length === 0} onClick={handleResetCategories}>
-                {'All'}
+                All
             </Category>
 
             {sortedCategories.map(category => (

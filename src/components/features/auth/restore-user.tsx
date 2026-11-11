@@ -30,7 +30,7 @@ export const RestoreUser = ({ token }: RestoreUserProps) => {
     })
 
     if (!status) {
-        return <p className="text-center">{'Restoring your account...'}</p>
+        return <p className="text-center">Restoring your account...</p>
     }
 
     return (
@@ -40,7 +40,7 @@ export const RestoreUser = ({ token }: RestoreUserProps) => {
                 {status === 'INVALID_TOKEN_ERROR' && 'The restore link has expired. Please request a new restore link.'}
             </p>
             <LinkButton href="/" className="w-full">
-                {'Go to Home'}
+                Go to Home
             </LinkButton>
         </>
     )

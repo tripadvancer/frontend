@@ -15,7 +15,7 @@ type PlaceSidebarAuthorProps = {
 export const PlaceSidebarAuthor = async ({ author, createdAt }: PlaceSidebarAuthorProps) => {
     return (
         <section>
-            <h3 className="mb-4 text-caps uppercase">{'Author'}</h3>
+            <h3 className="mb-4 text-caps uppercase">Author</h3>
             <Link href={`/users/${author.name.toLowerCase()}`} className="flex items-center gap-2 text-black-70">
                 <div className="grow-0">
                     <Avatar {...author} size={32} />

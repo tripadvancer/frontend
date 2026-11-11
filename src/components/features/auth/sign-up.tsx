@@ -132,19 +132,19 @@ export const SignUp = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{'Sign Up'}</h1>
+            <h1 className="h7 text-center">Sign Up</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading} />
                     {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
                 </div>
-                <Devider>{'Or'}</Devider>
+                <Devider>Or</Devider>
                 <div className="flex flex-col gap-y-2">
                     <FormInput
                         type="text"
                         name="email"
                         value={formik.values.email}
-                        placeholder={'Email'}
+                        placeholder="Email"
                         autoFocus
                         error={formik.errors.email}
                         disabled={isLoading}
@@ -154,7 +154,7 @@ export const SignUp = () => {
                         type="text"
                         name="username"
                         value={formik.values.username}
-                        placeholder={'Username'}
+                        placeholder="Username"
                         error={formik.errors.username}
                         disabled={isLoading}
                         onChange={formik.handleChange}
@@ -163,7 +163,7 @@ export const SignUp = () => {
                         type="password"
                         name="password"
                         value={formik.values.password}
-                        placeholder={'Password'}
+                        placeholder="Password"
                         error={formik.errors.password}
                         disabled={isLoading}
                         onChange={formik.handleChange}
@@ -172,7 +172,7 @@ export const SignUp = () => {
             </div>
             <div className="flex flex-col gap-y-4">
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {'Sign up'}
+                    Sign up
                 </FormButton>
                 <div className="text-center text-small text-black-40">
                     {

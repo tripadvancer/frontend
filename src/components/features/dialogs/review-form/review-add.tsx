@@ -42,7 +42,7 @@ export const ReviewAdd = ({ placeId, userId }: ReviewAddProps) => {
 
     return (
         <div className="flex w-full flex-col gap-y-4 sm:w-104">
-            <h1 className="h7">{'Write a review'}</h1>
+            <h1 className="h7">Write a review</h1>
             <hr className="border-black-70" />
             <ReviewForm
                 initialValues={initialValues}

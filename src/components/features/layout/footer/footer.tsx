@@ -11,19 +11,19 @@ export const Footer = async () => {
                 <div className="inner-container flex flex-col items-center gap-y-4 py-8">
                     <div className="flex flex-col sm:gap-y-1">
                         <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
-                            <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{'Contact Us'}</Link>
+                            <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>Contact Us</Link>
                             <span className="hidden sm:block">•</span>
                             <Link href="https://help.tripadvancer.com" target="_blank">
-                                {'Help Center'}
+                                Help Center
                             </Link>
                         </nav>
 
                         <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
-                            <Link href="/legal/terms-and-conditions">{'Terms and Conditions'}</Link>
+                            <Link href="/legal/terms-and-conditions">Terms and Conditions</Link>
                             <span className="hidden sm:block">•</span>
-                            <Link href="/legal/privacy-policy">{'Privacy Policy'}</Link>
+                            <Link href="/legal/privacy-policy">Privacy Policy</Link>
                             <span className="hidden sm:block">•</span>
-                            <Link href="/legal/cookie-policy">{'Cookie Policy'}</Link>
+                            <Link href="/legal/cookie-policy">Cookie Policy</Link>
                         </nav>
                     </div>
 
@@ -53,7 +53,7 @@ export const Footer = async () => {
                     </div>
 
                     <div className="text-center">
-                        <div className="text-black-40">{'© Tripadvancer, 2026'}</div>
+                        <div className="text-black-40">© Tripadvancer, 2026</div>
                     </div>
                 </div>
             </div>

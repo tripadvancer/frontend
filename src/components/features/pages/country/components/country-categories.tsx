@@ -35,7 +35,7 @@ export const CountryCategories = ({ selectedCategoryIds }: CountryCategoriesProp
 
     return (
         <div className="flex flex-wrap gap-1">
-            <CountryCategoriesItem href={pathname} caption={'All'} isSelected={selectedCategoryIds.length === 0} />
+            <CountryCategoriesItem href={pathname} caption="All" isSelected={selectedCategoryIds.length === 0} />
 
             {sortedCategories.map(category => (
                 <CountryCategoriesItem

@@ -35,8 +35,8 @@ export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
-            <h1 className="h7 text-center">{'Share place'}</h1>
-            <p className="text-center">{'Share the place with your friends and invite them to visit it.'}</p>
+            <h1 className="h7 text-center">Share place</h1>
+            <p className="text-center">Share the place with your friends and invite them to visit it.</p>
             <div className="flex gap-x-2">
                 <TwitterShareButton
                     url={url}

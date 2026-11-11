@@ -37,7 +37,7 @@ export const LocationPickerMapSearchInput = (props: LocationPickerMapSearchInput
                     autoComplete="off"
                     autoFocus
                     className="h-full w-full bg-transparent focus:outline-none"
-                    placeholder={'Enter coordinates'}
+                    placeholder="Enter coordinates"
                     onClick={props.onClick}
                     onChange={handleChange}
                 />

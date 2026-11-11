@@ -16,7 +16,7 @@ export const CountryAddPlace = ({ activeUserId, isAuth, isEmailVerified }: Count
 
     return (
         <FormButton icon={<MapPinPlusIcon />} onClick={handleClick}>
-            {'Add place'}
+            Add place
         </FormButton>
     )
 }

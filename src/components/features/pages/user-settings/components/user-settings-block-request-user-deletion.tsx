@@ -16,8 +16,8 @@ export const UserSettingsBlockRequestUserDeletion = () => {
         dialog.open(
             <Confirmation
                 variant="red"
-                title={'Delete your account'}
-                message={'Are you sure you want to delete your account?'}
+                title="Delete your account"
+                message="Are you sure you want to delete your account?"
                 onConfirm={async () => {
                     dialog.close()
                     try {
@@ -34,15 +34,14 @@ export const UserSettingsBlockRequestUserDeletion = () => {
     return (
         <div className="flex flex-col gap-y-4 border-t border-black-15 py-8 last:border-b">
             <div className="flex items-center justify-between">
-                <div className="h7">{'Account'}</div>
+                <div className="h7">Account</div>
                 <div className="link-red font-medium" onClick={handleRequestUserDeletion}>
-                    {'Delete account'}
+                    Delete account
                 </div>
             </div>
             <div>
-                {
-                    'You may request deletion of your account and all data associated with it. You will be able to restore your account using the link sent to your email before the deletion process is completed.'
-                }
+                You may request deletion of your account and all data associated with it. You will be able to restore
+                your account using the link sent to your email before the deletion process is completed.
             </div>
         </div>
     )

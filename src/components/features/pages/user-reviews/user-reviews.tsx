@@ -22,7 +22,7 @@ export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) 
     if (isError) {
         return (
             <div className="mt-16 text-center text-black-40">
-                {'An unexpected error has occurred. Please try again later.'}
+                An unexpected error has occurred. Please try again later.
             </div>
         )
     }

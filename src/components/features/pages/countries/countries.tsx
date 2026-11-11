@@ -14,7 +14,7 @@ export const Countries = async () => {
     return (
         <section className="container space-y-16 py-16">
             <div className="space-y-4 sm:w-3/4">
-                <h1 className="h1 max-w-full break-words">{'Explore Countries and Travel Destinations'}</h1>
+                <h1 className="h1 max-w-full break-words">Explore Countries and Travel Destinations</h1>
                 <p className="text-big text-black-70">
                     {
                         <>
@@ -34,14 +34,14 @@ export const Countries = async () => {
                         alt="Tripadvancer Map"
                     />
                     <div className="flex-1">
-                        <h2 className="h5">{'View places on the map'}</h2>
+                        <h2 className="h5">View places on the map</h2>
                         <p className="text-big text-black-70">
-                            {'Discover places around the world with our interactive map.'}
+                            Discover places around the world with our interactive map.
                         </p>
                     </div>
                     <LinkButton href="/maps" variant="orange" className="flex shrink-0 items-center gap-x-2">
                         <MapIcon />
-                        {'View Map'}
+                        View Map
                     </LinkButton>
                 </div>
 

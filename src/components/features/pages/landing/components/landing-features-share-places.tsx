@@ -23,9 +23,8 @@ export const LandingFeaturesSharePlaces = async () => {
                     }
                 </h4>
                 <p>
-                    {
-                        'Add unique locations to the map and help other adventurers discover amazing places. With just a few clicks, your favorite spots become accessible to the entire travel community.'
-                    }
+                    Add unique locations to the map and help other adventurers discover amazing places. With just a few
+                    clicks, your favorite spots become accessible to the entire travel community.
                 </p>
                 <div className="flex-none">
                     <LandingFeaturesSharePlacesButtonWithAuth />

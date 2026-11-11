@@ -19,7 +19,7 @@ export const PlaceFormInputTitle = ({ value, error, onChange }: PlaceFormInputTi
                 'h1 w-full resize-none bg-transparent align-top placeholder:text-black-40 focus:outline-none',
                 { 'text-red-100 placeholder:text-red-100': error },
             )}
-            placeholder={'Place name...'}
+            placeholder="Place name..."
         />
     )
 }

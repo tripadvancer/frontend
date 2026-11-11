@@ -26,7 +26,7 @@ export const PlaceSidebarActionsComplain = ({ id, isAuth }: PlaceSidebarActionsC
     return (
         <div className="link-red flex items-center gap-x-2 align-top" onClick={handleClick}>
             <MessageCircleWarningIcon />
-            {'Complain about a place'}
+            Complain about a place
         </div>
     )
 }

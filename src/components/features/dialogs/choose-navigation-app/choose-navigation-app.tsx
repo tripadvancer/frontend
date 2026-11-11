@@ -11,7 +11,7 @@ export const ChooseNavigationApp = ({ lngLat }: { lngLat: LngLat }) => {
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
-            <h1 className="h7 text-center">{'Choose navigation app'}</h1>
+            <h1 className="h7 text-center">Choose navigation app</h1>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <ChooseNavigationAppItem provider="google" lngLat={lngLat} />
                 <ChooseNavigationAppItem provider="waze" lngLat={lngLat} />
@@ -19,7 +19,7 @@ export const ChooseNavigationApp = ({ lngLat }: { lngLat: LngLat }) => {
                 <ChooseNavigationAppItem provider="yandex" lngLat={lngLat} />
             </div>
             <FormButton type="stroke" onClick={() => dialog.close()}>
-                {'Cancel'}
+                Cancel
             </FormButton>
         </div>
     )

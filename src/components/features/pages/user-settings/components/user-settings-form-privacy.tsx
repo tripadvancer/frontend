@@ -16,7 +16,7 @@ export const UserSettingsFormPrivacy = ({ initialValue, isDisabled, onChange }: 
         <FormCheckbox
             name="show_my_map"
             checked={initialValue[SettingsCategories.PRIVACY].show_my_map}
-            label={'Show my travel journal to everyone'}
+            label="Show my travel journal to everyone"
             disabled={isDisabled}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 onChange({

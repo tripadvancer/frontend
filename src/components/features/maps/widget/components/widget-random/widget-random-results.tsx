@@ -28,7 +28,7 @@ export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }
     }
 
     if (!isUserLocated) {
-        return <WidgetMessage message={'Allow location access to find places near you.'} />
+        return <WidgetMessage message="Allow location access to find places near you." />
     }
 
     if (isSuccess && !place) {

@@ -26,7 +26,7 @@ export const LandingFeaturesVisitedMapButton = ({ username, isAuth }: LandingFea
 
     return (
         <FormButton variant="orange" onClick={handleClick}>
-            {'View Your Map'}
+            View Your Map
         </FormButton>
     )
 }

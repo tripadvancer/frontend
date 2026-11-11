@@ -42,10 +42,10 @@ export const LocationPickerMethodOnMap = ({
                     <LocationPickerMap viewState={viewState} onChangeViewState={handleCangeViewState} />
                 </div>
                 <div className="cursor-pointer text-center text-blue-100" onClick={onChangeMethod}>
-                    {'Enter coordinates manually'}
+                    Enter coordinates manually
                 </div>
             </div>
-            <FormButton onClick={handleConfirm}>{'Confirm'}</FormButton>
+            <FormButton onClick={handleConfirm}>Confirm</FormButton>
         </div>
     )
 }

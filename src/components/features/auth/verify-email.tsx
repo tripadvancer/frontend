@@ -26,7 +26,7 @@ export const VerifyEmail = () => {
     })
 
     if (!status) {
-        return <p className="text-center">{'Verifying your email...'}</p>
+        return <p className="text-center">Verifying your email...</p>
     }
 
     return (
@@ -37,7 +37,7 @@ export const VerifyEmail = () => {
                 {status === 'OK' && 'Your email has been verified.'}
             </p>
             <LinkButton href="/" className="w-full">
-                {'Go to Home'}
+                Go to Home
             </LinkButton>
         </>
     )

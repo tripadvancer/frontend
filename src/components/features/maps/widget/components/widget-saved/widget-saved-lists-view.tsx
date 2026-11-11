@@ -31,8 +31,8 @@ export const WidgetSavedListsView = (list: IList) => {
         dialog.open(
             <Confirmation
                 variant="red"
-                title={'Delete list'}
-                message={'Are you sure you want to delete this list? This action is irreversible.'}
+                title="Delete list"
+                message="Are you sure you want to delete this list? This action is irreversible."
                 onConfirm={async () => {
                     try {
                         await deleteList(list.id)

@@ -31,7 +31,7 @@ export const PlaceFormInputCategories = ({ value, error, onChange }: PlaceFormIn
                     onClick={handleSelectCategories}
                 >
                     <PlusIcon size={16} />
-                    {'Add category'}
+                    Add category
                 </div>
             )}
             {value.map(categoryId => (

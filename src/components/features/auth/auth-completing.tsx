@@ -16,7 +16,7 @@ export const AuthCompleting = ({ title, text }: AuthCompletingProps) => {
             <h1 className="h7">{title}</h1>
             <p className="text-center">{text}</p>
             <FormButton type="stroke" htmlType="button" className="w-full" onClick={dialog.close}>
-                {'Ok'}
+                Ok
             </FormButton>
         </div>
     )

@@ -50,19 +50,15 @@ export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchRe
     }, [data, isSuccess, searchTerm])
 
     if (isError) {
-        return (
-            <div className="py-3 pl-3 text-red-100">{'An error occurred while searching. Please try again later.'}</div>
-        )
+        return <div className="py-3 pl-3 text-red-100">An error occurred while searching. Please try again later.</div>
     }
 
     if (isFetching) {
-        return <div className="py-3 pl-3 text-black-70">{'Searching ...'}</div>
+        return <div className="py-3 pl-3 text-black-70">Searching ...</div>
     }
 
     if (isSuccess && items.length === 0) {
-        return (
-            <div className="py-3 pl-3 text-black-70">{'No results found. Please try changing your search query.'}</div>
-        )
+        return <div className="py-3 pl-3 text-black-70">No results found. Please try changing your search query.</div>
     }
 
     if (isSuccess && items.length > 0) {
@@ -100,5 +96,5 @@ export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchRe
         ))
     }
 
-    return <div className="py-3 pl-3 text-black-70">{'Search for a country or place'}</div>
+    return <div className="py-3 pl-3 text-black-70">Search for a country or place</div>
 }

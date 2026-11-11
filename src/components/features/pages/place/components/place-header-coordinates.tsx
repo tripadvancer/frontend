@@ -37,7 +37,7 @@ export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps
             {coordinatesString}
             {copied ? (
                 <span className="flex items-center gap-1 text-green-600">
-                    <CheckIcon className="h-4 w-4" size={20} /> {'Copied'}
+                    <CheckIcon className="h-4 w-4" size={20} /> Copied
                 </span>
             ) : (
                 <CopyIcon className="rotate-90 text-blue-100 group-hover:text-blue-active" size={20} />

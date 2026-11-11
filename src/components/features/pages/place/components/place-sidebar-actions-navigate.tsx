@@ -22,7 +22,7 @@ export const PlaceSidebarActionsNavigate = ({ location }: PlaceSidebarActionsNav
     return (
         <div className="link flex items-center gap-x-2 align-top" onClick={handleClick}>
             <NavigationIcon />
-            {'Navigate'}
+            Navigate
         </div>
     )
 }

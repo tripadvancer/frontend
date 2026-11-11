@@ -50,7 +50,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
             <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {'Your rating'}
+                        Your rating
                     </label>
                     <FormRatingInput
                         value={formik.values.rating}
@@ -61,15 +61,13 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {'Review'}
+                        Review
                     </label>
                     <FormTextarea
                         id="text"
                         name="text"
                         value={formik.values.text}
-                        placeholder={
-                            'Share your impressions in detail — this way you will help others learn more about this place'
-                        }
+                        placeholder="Share your impressions in detail — this way you will help others learn more about this place"
                         maxLength={reviewTextMaxLength}
                         style={{ height: '120px' }}
                         error={formik.errors.text}
@@ -79,7 +77,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {'Photos'}
+                        Photos
                     </label>
                     <ReviewFormPhotosList
                         photos={formik.values.photos}
@@ -96,10 +94,10 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
             />
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty || isFormDisabled}>
-                    {'Save'}
+                    Save
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
-                    {'Close'}
+                    Close
                 </FormButton>
             </div>
         </form>

@@ -55,7 +55,7 @@ export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap
     return (
         <div className="link flex items-center gap-x-2 align-top" onClick={handleClick}>
             <LocateFixedIcon />
-            {'Show on map'}
+            Show on map
         </div>
     )
 }

@@ -74,16 +74,16 @@ export const ChangeEmail = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{'Change email'}</h1>
+            <h1 className="h7 text-center">Change email</h1>
             <div className="flex flex-col gap-y-2">
                 <p className="text-center">
-                    {'Enter your new email address below and we will send you a verification email:'}
+                    Enter your new email address below and we will send you a verification email:
                 </p>
                 <FormInput
                     type="text"
                     name="newEmail"
                     value={formik.values.newEmail}
-                    placeholder={'Enter new email address'}
+                    placeholder="Enter new email address"
                     autoFocus
                     error={formik.errors.newEmail}
                     disabled={isLoading}
@@ -93,14 +93,14 @@ export const ChangeEmail = () => {
                     type="password"
                     name="password"
                     value={formik.values.password}
-                    placeholder={'Enter your password'}
+                    placeholder="Enter your password"
                     error={formik.errors.password}
                     disabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>
             <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
-                {'Save changes'}
+                Save changes
             </FormButton>
         </form>
     )

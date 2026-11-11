@@ -24,10 +24,8 @@ export const PlaceSidebarActionsDelete = ({ id }: PlaceSidebarActionsDeleteProps
         dialog.open(
             <Confirmation
                 variant="red"
-                title={'Delete place'}
-                message={
-                    'Are you sure you want to delete this place and all data associated with it? This action is irreversible.'
-                }
+                title="Delete place"
+                message="Are you sure you want to delete this place and all data associated with it? This action is irreversible."
                 onConfirm={async () => {
                     dialog.close()
                     try {
@@ -46,7 +44,7 @@ export const PlaceSidebarActionsDelete = ({ id }: PlaceSidebarActionsDeleteProps
     return (
         <div className="link-red flex items-center gap-x-2 align-top" onClick={handleClick}>
             <Trash2Icon />
-            {'Delete place'}
+            Delete place
         </div>
     )
 }

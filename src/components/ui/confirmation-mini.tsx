@@ -8,13 +8,13 @@ type ConfirmationMiniProps = {
 export const ConfirmationMini = ({ onConfirm, onCancel }: ConfirmationMiniProps) => {
     return (
         <div className="flex gap-x-1">
-            <span>{'Sure?'}</span>
+            <span>Sure?</span>
             <span className="link-red" onClick={onConfirm}>
-                {'Yes'}
+                Yes
             </span>
             <span>/</span>
             <span className="link-red" onClick={onCancel}>
-                {'No'}
+                No
             </span>
         </div>
     )

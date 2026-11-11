@@ -24,7 +24,7 @@ export const UserSettings = async ({ name, info, avatar, social }: UserSettingsP
                     <UserSettingsForm name={name} info={info} avatar={avatar} social={social} settings={settings} />
                 </section>
                 <section>
-                    <h2 className="h5 mb-8">{'Your account'}</h2>
+                    <h2 className="h5 mb-8">Your account</h2>
                     <div className="flex flex-col">
                         <UserSettingsBlockChangeEmail />
                         <UserSettingsBlockChangePassword />

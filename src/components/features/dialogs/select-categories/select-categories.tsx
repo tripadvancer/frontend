@@ -55,7 +55,7 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
             </div>
             <div className="flex flex-col gap-y-4">
                 <FormButton isDisabled={selectedCategoryIds.length === 0} onClick={handleConfirm}>
-                    {'Confirm'}
+                    Confirm
                 </FormButton>
                 <div className="text-center text-small text-black-40">
                     {

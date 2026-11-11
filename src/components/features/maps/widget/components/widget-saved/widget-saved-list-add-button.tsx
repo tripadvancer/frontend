@@ -22,7 +22,7 @@ export const WidgetSavedListAddButton = () => {
             className="mb-6 w-full sm:mb-8"
             onClick={handleClick}
         >
-            {'Create new list'}
+            Create new list
         </FormButton>
     )
 }

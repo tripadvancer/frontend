@@ -59,7 +59,7 @@ export const WidgetRandom = () => {
 
     return (
         <div className="flex flex-col gap-y-6 sm:gap-y-8">
-            <div className="text-caps uppercase">{'Distance from you'}</div>
+            <div className="text-caps uppercase">Distance from you</div>
             <WidgetRandomSlider />
             {/* prettier-ignore */}
             <WidgetRandomButton

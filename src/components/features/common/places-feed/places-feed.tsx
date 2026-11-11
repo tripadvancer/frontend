@@ -38,7 +38,7 @@ export const PlacesFeed = ({ places, paginationLimit }: PlacesFeedProps) => {
                     className="flex-grow"
                     onClick={() => setCurrentPage(prev => prev + 1)}
                 >
-                    {'Load more ...'}
+                    Load more ...
                 </FormButton>
             )}
         </div>

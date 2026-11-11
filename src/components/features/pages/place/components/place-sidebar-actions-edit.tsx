@@ -12,7 +12,7 @@ export const PlaceSidebarActionsEdit = ({ id }: PlaceSidebarActionsEditProps) =>
     return (
         <Link href={`/places/${id}/edit`} className="link flex items-center gap-x-2 align-top">
             <PencilIcon />
-            {'Edit place'}
+            Edit place
         </Link>
     )
 }

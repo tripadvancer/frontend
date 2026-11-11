@@ -127,20 +127,20 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
             <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="avatar" className="font-medium">
-                        {'Avatar'}
+                        Avatar
                     </label>
                     <UserSettingsAvatarUploader currentAvatar={avatar} />
                 </div>
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="name" className="font-medium">
-                        {'Username'}
+                        Username
                     </label>
                     <FormInput
                         type="text"
                         name="name"
                         value={formik.values.name}
-                        placeholder={'Enter your username'}
+                        placeholder="Enter your username"
                         error={formik.errors.name}
                         disabled={isLoading}
                         onChange={formik.handleChange}
@@ -149,12 +149,12 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="info" className="font-medium">
-                        {'About me'}
+                        About me
                     </label>
                     <FormTextarea
                         name="info"
                         value={formik.values.info}
-                        placeholder={'Enter information about yourself...'}
+                        placeholder="Enter information about yourself..."
                         maxLength={userInfoMaxLength}
                         style={{ height: '120px' }}
                         error={formik.errors.info}
@@ -165,7 +165,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="info" className="font-medium">
-                        {'Social accounts'}
+                        Social accounts
                     </label>
                     <UserSettingsFormSocialLinks
                         initialValue={formik.values.social}
@@ -177,7 +177,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="info" className="font-medium">
-                        {'Privacy'}
+                        Privacy
                     </label>
                     <UserSettingsFormPrivacy
                         initialValue={formik.values.settings}
@@ -188,7 +188,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
             </div>
 
             <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                {'Save changes'}
+                Save changes
             </FormButton>
         </form>
     )

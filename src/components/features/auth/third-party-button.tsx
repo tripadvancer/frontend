@@ -47,7 +47,7 @@ export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps
             {provider === 'google' && (
                 <>
                     <Image src="/images/icons/social/google.svg" width={24} height={24} alt="Google" />
-                    {'Continue with Google'}
+                    Continue with Google
                 </>
             )}
         </FormButton>

@@ -15,7 +15,7 @@ export const LocationPicker = ({ location, onConfirm }: LocationPickerProps) => 
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
-            <h1 className="h7 text-center">{'Pick place location'}</h1>
+            <h1 className="h7 text-center">Pick place location</h1>
 
             {inputMethod === 'manual' && (
                 <LocationPickerMethodManually

@@ -23,9 +23,8 @@ export const LandingFeaturesLists = async () => {
                     }
                 </h4>
                 <p>
-                    {
-                        'Organize your future trips by creating personalized lists of must-see places. Make travel planning simple, efficient, and fun.'
-                    }
+                    Organize your future trips by creating personalized lists of must-see places. Make travel planning
+                    simple, efficient, and fun.
                 </p>
                 <div className="flex-none">
                     <LandingFeaturesListsButton />

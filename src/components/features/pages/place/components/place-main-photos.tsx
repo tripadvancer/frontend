@@ -18,7 +18,7 @@ export const PlaceMainPhotos = async ({ title, author, photos }: PlaceMainPhotos
 
     return (
         <section className="flex flex-col gap-y-8">
-            <h2 className="h5">{'Photos'}</h2>
+            <h2 className="h5">Photos</h2>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
                 <PhotoGallery photos={photos} title={title} description={author.name} size={186} />
             </div>

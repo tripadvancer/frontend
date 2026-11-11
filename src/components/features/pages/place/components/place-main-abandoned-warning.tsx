@@ -11,7 +11,7 @@ export const PlaceMainAbandonedWarning = async ({ categories }: PlaceMainAbandon
     if (categories.includes(1)) {
         return (
             <Notice
-                message={'Places in the "Abandoned" category might be dangerous, be careful.'}
+                message='Places in the "Abandoned" category might be dangerous, be careful.'
                 icon={<SkullIcon />}
                 variant="red"
             />

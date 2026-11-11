@@ -30,11 +30,10 @@ export const LandingAroundPlaces = () => {
     if (isSuccess && data.length > 0) {
         return (
             <section>
-                <h3 className="h3 mb-4 text-center">{'Explore places around you'}</h3>
+                <h3 className="h3 mb-4 text-center">Explore places around you</h3>
                 <p className="m-auto mb-16 w-full text-center text-big text-black-70 sm:w-2/3">
-                    {
-                        'Discover what interesting places are near you. These locations are recommended by other travelers, and you can visit them today.'
-                    }
+                    Discover what interesting places are near you. These locations are recommended by other travelers,
+                    and you can visit them today.
                 </p>
                 <div className="flex flex-col gap-y-8">
                     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-5 xl:gap-8">

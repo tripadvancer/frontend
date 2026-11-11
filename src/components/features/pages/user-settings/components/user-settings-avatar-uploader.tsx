@@ -71,7 +71,7 @@ export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProp
                         <ConfirmationMini onConfirm={handleConfirmDeleteAvatar} onCancel={handleCancelDeleteAvatar} />
                     ) : (
                         <div className="link-red" onClick={handleClickDeleteAvatar}>
-                            {'Delete'}
+                            Delete
                         </div>
                     )}
                 </div>

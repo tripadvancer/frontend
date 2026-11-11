@@ -9,9 +9,7 @@ export const SavePlaceLists = ({ placeId }: { placeId: number }) => {
 
     if (isError) {
         return (
-            <div className="text-center text-black-40">
-                {'An unexpected error has occurred. Please try again later.'}
-            </div>
+            <div className="text-center text-black-40">An unexpected error has occurred. Please try again later.</div>
         )
     }
 
@@ -19,5 +17,5 @@ export const SavePlaceLists = ({ placeId }: { placeId: number }) => {
         return <SavePlaceListsForm lists={lists} placeId={placeId} />
     }
 
-    return <div>{'Loading ...'}</div>
+    return <div>Loading ...</div>
 }

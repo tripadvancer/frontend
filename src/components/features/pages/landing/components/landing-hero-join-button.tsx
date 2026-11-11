@@ -13,7 +13,7 @@ export const LandingHeroJoinButton = () => {
 
     return (
         <FormButton variant="orange" onClick={handleClick}>
-            {'Join Now'}
+            Join Now
         </FormButton>
     )
 }

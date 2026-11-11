@@ -95,12 +95,12 @@ export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormI
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
                 <div className="w-full text-black-40 lg:w-64">
                     <div className="lg:hidden">
-                        {'Tell us what inspired you so you can help others learn more about this place.'}
+                        Tell us what inspired you so you can help others learn more about this place.
                     </div>
                 </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
-                        <h2 className="h5">{'About this place'}</h2>
+                        <h2 className="h5">About this place</h2>
                         <div className={classNames(characterCount > maxLength ? 'text-red-100' : 'text-black-40')}>
                             {characterCount} / {maxLength}
                         </div>
@@ -110,7 +110,7 @@ export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormI
 
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
                 <div className="hidden w-full text-black-40 lg:block lg:w-64">
-                    {'Tell us what inspired you so you can help others learn more about this place.'}
+                    Tell us what inspired you so you can help others learn more about this place.
                 </div>
                 <div className="min-w-0 flex-1 text-big">
                     {editor && (

@@ -21,7 +21,7 @@ export const LandingHero = async () => {
                 <div className="flex items-center justify-center gap-x-4 lg:justify-start">
                     <LandingJoinButtonWithAuth />
                     <LinkButton href="#features" variant="white">
-                        {'Learn More'}
+                        Learn More
                     </LinkButton>
                 </div>
                 <Image

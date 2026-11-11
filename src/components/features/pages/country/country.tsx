@@ -58,7 +58,7 @@ export const Country = async ({
                 <div className="space-y-8 sm:w-3/4">
                     <div className="space-y-4">
                         <Link href="/countries" className="font-medium text-blue-100 hover:text-blue-active">
-                            {'View all countries'}
+                            View all countries
                         </Link>
                         <h1 className="h1 max-w-full break-words">Places to visit in {country.name}</h1>
                         <p className="text-big text-black-70">

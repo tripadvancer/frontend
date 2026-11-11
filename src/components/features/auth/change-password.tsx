@@ -76,18 +76,16 @@ export const ChangePassword = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{'Change password'}</h1>
+            <h1 className="h7 text-center">Change password</h1>
             <div className="flex flex-col gap-y-2">
                 <p className="text-center">
-                    {
-                        'Create a new password that is at least 8 characters long and contains a mix of letters and numbers:'
-                    }
+                    Create a new password that is at least 8 characters long and contains a mix of letters and numbers:
                 </p>
                 <FormInput
                     type="password"
                     name="oldPassword"
                     value={formik.values.oldPassword}
-                    placeholder={'Enter your password'}
+                    placeholder="Enter your password"
                     autoFocus
                     error={formik.errors.oldPassword}
                     disabled={isLoading}
@@ -97,14 +95,14 @@ export const ChangePassword = () => {
                     type="password"
                     name="newPassword"
                     value={formik.values.newPassword}
-                    placeholder={'Enter new password'}
+                    placeholder="Enter new password"
                     error={formik.errors.newPassword}
                     disabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>
             <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
-                {'Save changes'}
+                Save changes
             </FormButton>
         </form>
     )

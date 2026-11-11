@@ -66,7 +66,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
                             <CircleUserIcon size={16} />
-                            {'Profile'}
+                            Profile
                         </Link>
                     </li>
                     <li>
@@ -76,7 +76,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
                             <SettingsIcon size={16} />
-                            {'Settings'}
+                            Settings
                         </Link>
                     </li>
                     <li>
@@ -85,7 +85,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                             onClick={signOut}
                         >
                             <LogOutIcon size={16} />
-                            {'Log out'}
+                            Log out
                         </div>
                     </li>
                 </menu>

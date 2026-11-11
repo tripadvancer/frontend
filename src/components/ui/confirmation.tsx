@@ -28,10 +28,10 @@ export const Confirmation = ({ title, message, variant = 'blue', onConfirm }: Co
             </div>
             <div className="flex gap-x-2">
                 <FormButton variant={variant} onClick={onConfirm}>
-                    {'Confirm'}
+                    Confirm
                 </FormButton>
                 <FormButton type="stroke" variant={variant} onClick={() => dialog.close()}>
-                    {'Cancel'}
+                    Cancel
                 </FormButton>
             </div>
         </div>

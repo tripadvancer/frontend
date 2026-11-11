@@ -26,7 +26,7 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
     if (isError) {
         return (
             <div className="border-y border-black-15 py-8 text-center text-black-40">
-                {'An unexpected error has occurred. Please try again later.'}
+                An unexpected error has occurred. Please try again later.
             </div>
         )
     }

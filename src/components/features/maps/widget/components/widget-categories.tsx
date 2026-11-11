@@ -33,7 +33,7 @@ export const WidgetCategories = ({ variant }: WidgetCategoriesProps) => {
     return (
         <div className="flex flex-col gap-y-4">
             <div className="flex cursor-pointer items-center justify-between" onClick={() => setIsOpened(!isOpened)}>
-                <div className="text-caps uppercase">{'Categories'}</div>
+                <div className="text-caps uppercase">Categories</div>
                 <div className="flex items-center justify-center gap-2">
                     {info && <span className={classNames('text-small', colorVariants[variant])}>{info}</span>}
                     {isOpened ? (

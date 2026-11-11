@@ -19,8 +19,8 @@ export const ReviewFormSkeleton = () => {
                 <div className="h-5 w-1/4 rounded-full bg-black-5" />
             </div>
             <div className="flex gap-x-2">
-                <FormButtonSkeleton>{'Send'}</FormButtonSkeleton>
-                <FormButtonSkeleton>{'Close'}</FormButtonSkeleton>
+                <FormButtonSkeleton>Send</FormButtonSkeleton>
+                <FormButtonSkeleton>Close</FormButtonSkeleton>
             </div>
         </div>
     )

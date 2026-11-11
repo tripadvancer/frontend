@@ -18,7 +18,7 @@ export const CookieConsent = () => {
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-orange-10">
             <div className="container flex flex-col gap-4 py-4 sm:flex-row sm:justify-between">
                 <div className="text-black-70">
-                    <div className="font-medium">{'Allow Cookies'}</div>
+                    <div className="font-medium">Allow Cookies</div>
                     <div>
                         {
                             <>
@@ -30,7 +30,7 @@ export const CookieConsent = () => {
                 </div>
                 <div className="flex-none">
                     <FormButton variant="orange" onClick={() => dispatch(setCookieAccepted())}>
-                        {'Got it!'}
+                        Got it!
                     </FormButton>
                 </div>
             </div>

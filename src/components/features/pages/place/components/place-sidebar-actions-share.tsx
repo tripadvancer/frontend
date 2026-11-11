@@ -16,7 +16,7 @@ export const PlaceSidebarActionsShare = ({ id, title, countryCode }: PlaceSideba
     return (
         <div className="link flex items-center gap-x-2 align-top" onClick={sharePlace}>
             <Share2Icon />
-            {'Share place'}
+            Share place
         </div>
     )
 }

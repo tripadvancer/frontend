@@ -21,7 +21,7 @@ export const LandingFeaturesListsButton = () => {
 
     return (
         <FormButton variant="orange" onClick={handleClick}>
-            {'Create Lists'}
+            Create Lists
         </FormButton>
     )
 }

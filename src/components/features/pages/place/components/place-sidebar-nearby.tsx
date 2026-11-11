@@ -34,7 +34,7 @@ export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyPro
 
     return (
         <section>
-            <h3 className="mb-4 text-caps uppercase">{'Places nearby'}</h3>
+            <h3 className="mb-4 text-caps uppercase">Places nearby</h3>
             <Suspense fallback={<PlaceSidebarNearbySkeleton />}>
                 <div className="flex flex-col gap-4">
                     {placesAroundFiltered.map(place => (

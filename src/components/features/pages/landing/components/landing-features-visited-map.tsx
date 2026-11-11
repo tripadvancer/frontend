@@ -23,9 +23,8 @@ export const LandingFeaturesVisitedMap = async () => {
                     }
                 </h4>
                 <p>
-                    {
-                        'Mark the countries you’ve explored and watch your personalized map come to life. Showcase your travel history and motivate others to start their journeys.'
-                    }
+                    Mark the countries you’ve explored and watch your personalized map come to life. Showcase your
+                    travel history and motivate others to start their journeys.
                 </p>
                 <div className="flex-none">
                     <LandingFeaturesVisitedMapButtonWithAuth />

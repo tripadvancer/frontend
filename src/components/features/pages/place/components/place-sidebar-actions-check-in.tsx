@@ -39,8 +39,7 @@ export const PlaceSidebarActionsCheckIn = ({ id, isAuth }: PlaceSidebarActionsCh
     return (
         <div className="flex items-center justify-between">
             <div className="flex flex-1 cursor-pointer items-center gap-x-2" onClick={toggle}>
-                <MapPinCheckIcon />
-                {'I was here'}
+                <MapPinCheckIcon />I was here
             </div>
             <FormSwitcher checked={!!meta?.isVisited} onChange={toggle} />
         </div>

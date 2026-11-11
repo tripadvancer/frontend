@@ -28,7 +28,7 @@ export const ReviewEdit = (review: IReview) => {
     if (isMetaLoading) {
         return (
             <div className="flex w-full flex-col gap-y-4 sm:w-104">
-                <h1 className="h7">{'Edit review'}</h1>
+                <h1 className="h7">Edit review</h1>
                 <hr className="border-black-70" />
                 <ReviewFormSkeleton />
             </div>
@@ -36,7 +36,7 @@ export const ReviewEdit = (review: IReview) => {
     }
 
     if (isMetaError) {
-        return <div>{'An unexpected error has occurred. Please try again later.'}</div>
+        return <div>An unexpected error has occurred. Please try again later.</div>
     }
 
     const initialValues: UpdateReviewInputs = {
@@ -65,7 +65,7 @@ export const ReviewEdit = (review: IReview) => {
 
     return (
         <div className="flex w-full flex-col gap-y-4 sm:w-104">
-            <h1 className="h7">{'Edit review'}</h1>
+            <h1 className="h7">Edit review</h1>
             <hr className="border-black-70" />
             <ReviewForm
                 initialValues={initialValues}

@@ -30,7 +30,7 @@ export const MapPopupPlaceActions = (place: MapPopupPlaceActionsProps) => {
                 onClick={savePlace}
             />
             <FormButton type="stroke" size="small" onClick={() => dialog.open(<ChooseNavigationApp lngLat={lngLat} />)}>
-                {'Route'}
+                Route
             </FormButton>
         </div>
     )

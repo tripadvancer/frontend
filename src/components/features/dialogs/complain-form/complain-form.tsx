@@ -66,17 +66,17 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
                     type="text"
                     name="text"
                     value={formik.values.text}
-                    placeholder={'Add your comment here'}
+                    placeholder="Add your comment here"
                     error={formik.errors.text}
                     onChange={formik.handleChange}
                 />
             </div>
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading}>
-                    {'Send'}
+                    Send
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
-                    {'Cancel'}
+                    Cancel
                 </FormButton>
             </div>
         </form>

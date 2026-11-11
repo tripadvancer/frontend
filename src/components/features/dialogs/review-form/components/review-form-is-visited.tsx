@@ -17,7 +17,7 @@ export const ReviewFormIsVisited = ({ isVisited, isLoading, onChange }: ReviewFo
         <div className="flex items-center gap-x-2">
             <FormSwitcher checked={isVisited} isDisabled={isLoading} onChange={handleToggleIsVisited} />
             <div className="cursor-pointer" onClick={isLoading ? undefined : handleToggleIsVisited}>
-                {'I was here'}
+                I was here
             </div>
         </div>
     )

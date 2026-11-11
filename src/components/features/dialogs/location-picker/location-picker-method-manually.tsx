@@ -46,16 +46,16 @@ export const LocationPickerMethodManually = ({
                     value={value}
                     autoComplete="off"
                     autoFocus
-                    placeholder={'Enter coordinates'}
+                    placeholder="Enter coordinates"
                     onChange={handleChangeValue}
                     error={!isValueValid ? "Coordinates must be in format: 'lat, lng', e.g. '50.4501, 30.5234'" : ''}
                 />
                 <div className="cursor-pointer text-center text-blue-100" onClick={onChangeMethod}>
-                    {'Select a location on the map'}
+                    Select a location on the map
                 </div>
             </div>
             <FormButton onClick={handleConfirm} isDisabled={!value}>
-                {'Confirm'}
+                Confirm
             </FormButton>
         </div>
     )

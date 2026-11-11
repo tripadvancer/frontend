@@ -128,7 +128,7 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
                 </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
-                        <h2 className="h5">{'Photos'}</h2>
+                        <h2 className="h5">Photos</h2>
                         <div className="text-black-40">
                             {photos.length} / {maxPhotosCount}
                         </div>

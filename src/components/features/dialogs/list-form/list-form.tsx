@@ -45,7 +45,7 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
             <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {'Name'}
+                        Name
                     </label>
                     <FormInput
                         id="name"
@@ -53,7 +53,7 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
                         value={formik.values.name}
                         autoFocus
                         autoComplete="off"
-                        placeholder={'Enter list name'}
+                        placeholder="Enter list name"
                         maxLength={listNameMaxLength}
                         error={formik.errors.name}
                         disabled={isLoading}
@@ -63,13 +63,13 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="text" className="font-medium">
-                        {'Description'}
+                        Description
                     </label>
                     <FormTextarea
                         id="description"
                         name="description"
                         value={formik.values.description}
-                        placeholder={'Enter list description'}
+                        placeholder="Enter list description"
                         maxLength={listDescriptionMaxLength}
                         style={{ height: '60px' }}
                         error={formik.errors.description}
@@ -80,10 +80,10 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
             </div>
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty}>
-                    {'Save'}
+                    Save
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
-                    {'Close'}
+                    Close
                 </FormButton>
             </div>
         </form>

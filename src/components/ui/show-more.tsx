@@ -10,7 +10,7 @@ type ShowMoreProps = {
 export const ShowMore = ({ isLoading, onClick }: ShowMoreProps) => {
     return (
         <FormButton type="stroke" shape="rounded" className="w-full" isLoading={isLoading} onClick={onClick}>
-            {'Load more ...'}
+            Load more ...
         </FormButton>
     )
 }

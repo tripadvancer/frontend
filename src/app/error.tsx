@@ -29,14 +29,14 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
                     alt="404"
                     priority
                 />
-                <h2 className="h3 mb-8">{'Oops! Something Went Wrong'}</h2>
+                <h2 className="h3 mb-8">Oops! Something Went Wrong</h2>
                 <p className="mb-8 text-big text-black-70">
-                    {
-                        'We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are currently experiencing technical difficulties, and we are working diligently to get things back on track.'
-                    }
+                    We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are
+                    currently experiencing technical difficulties, and we are working diligently to get things back on
+                    track.
                 </p>
                 <FormButton htmlType="button" onClick={() => reset()}>
-                    {'Try again'}
+                    Try again
                 </FormButton>
             </div>
         </div>

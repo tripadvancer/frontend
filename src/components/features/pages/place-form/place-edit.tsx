@@ -38,7 +38,7 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
     }
 
     if (isMetaError) {
-        return <div>{'An unexpected error has occurred. Please try again later.'}</div>
+        return <div>An unexpected error has occurred. Please try again later.</div>
     }
 
     const initialValues: UpdatePlaceInputs = {

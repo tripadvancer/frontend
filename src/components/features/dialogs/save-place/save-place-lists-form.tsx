@@ -118,7 +118,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     id="new-list"
                     name="new-list"
                     value="new-list"
-                    label={'Add new list'}
+                    label="Add new list"
                     checked={isCreateList}
                     disabled={isListCreating || isPlaceUpdating}
                     onChange={() => setIsCreateList(!isCreateList)}
@@ -131,7 +131,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     autoFocus={isCreateList}
                     autoComplete="off"
                     maxLength={listNameMaxLength}
-                    placeholder={'List name ...'}
+                    placeholder="List name ..."
                     error={formik.errors.name}
                     disabled={!isCreateList || isListCreating || isPlaceUpdating}
                     onChange={formik.handleChange}
@@ -139,10 +139,10 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
             </div>
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isListCreating || isPlaceUpdating} isDisabled={!formik.dirty}>
-                    {'Save'}
+                    Save
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
-                    {'Cancel'}
+                    Cancel
                 </FormButton>
             </div>
         </form>

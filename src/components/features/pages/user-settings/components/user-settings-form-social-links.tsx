@@ -77,7 +77,7 @@ export const UserSettingsFormSocialLinks = ({
         <div className="flex flex-col gap-y-2 sm:w-1/2">
             <FormSelect
                 name="social"
-                placeholder={'Add social link'}
+                placeholder="Add social link"
                 options={Object.values(UserSocialApps)
                     .sort()
                     .map(app => ({

@@ -45,14 +45,14 @@ export const UserSidebarAchievement = async ({
                     height={48}
                     className="m-auto"
                 />
-                <div className="break-words text-center font-medium">{'Beginner'}</div>
+                <div className="break-words text-center font-medium">Beginner</div>
             </div>
             <ul>
-                <Item label={'Added places'} value={places} />
-                <Item label={'Written reviews'} value={placeReviews} />
-                <Item label={'Added photos'} value={placePhotos} />
-                <Item label={'Visited places'} value={visitedPlaces} />
-                <Item label={'Visited countries'} value={visitedCountries} />
+                <Item label="Added places" value={places} />
+                <Item label="Written reviews" value={placeReviews} />
+                <Item label="Added photos" value={placePhotos} />
+                <Item label="Visited places" value={visitedPlaces} />
+                <Item label="Visited countries" value={visitedCountries} />
             </ul>
         </div>
     )

@@ -85,7 +85,7 @@ export const FormFileInput = ({
                     >
                         {isUploading && (
                             <>
-                                <div className="text-black-40">{'Loading ...'}</div>
+                                <div className="text-black-40">Loading ...</div>
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
                                     <Spinner size={16} />
                                 </div>
@@ -97,7 +97,7 @@ export const FormFileInput = ({
                                 {fileName ? (
                                     <div className="text-black-100">{fileName}</div>
                                 ) : (
-                                    <div className="text-black-40">{'Select file ...'}</div>
+                                    <div className="text-black-40">Select file ...</div>
                                 )}
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
                                     <FolderIcon size={16} />

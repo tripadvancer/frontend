@@ -9,6 +9,8 @@
     "deploy": "next build && vercel --prod",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
+    "typecheck": "tsc --noEmit --incremental false",
+    "format:check": "prettier --check src",
     "format": "prettier --write src/**/*.'ts{,x}'"
   },
   "dependencies": {

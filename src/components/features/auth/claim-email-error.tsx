@@ -30,11 +30,10 @@ export const ClaimEmailError = () => {
 
     return (
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
-            <h1 className="h7">{'Your email is not verified'}</h1>
+            <h1 className="h7">Your email is not verified</h1>
             <p className="text-center">
-                {
-                    'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.'
-                }
+                Verified accounts have more features. Please confirm your email by clicking the link in the email we
+                sent you during registration.
             </p>
             <FormButton
                 htmlType="button"
@@ -42,7 +41,7 @@ export const ClaimEmailError = () => {
                 isLoading={isLoading}
                 onClick={handleResendVerificationEmail}
             >
-                {'Resend verification email'}
+                Resend verification email
             </FormButton>
         </div>
     )

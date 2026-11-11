@@ -48,7 +48,7 @@ export const ThirdPartyCallback = () => {
 
             {status && status !== 'OK' && (
                 <LinkButton href="/" className="w-full">
-                    {'Go to Home'}
+                    Go to Home
                 </LinkButton>
             )}
         </>

@@ -22,7 +22,7 @@ export const UserVisitedSwitcherVisible = ({ showMyMap }: UserVisitedSwitcherVis
         <div className="flex items-center gap-x-2">
             <FormSwitcher checked={!!showMyMap} onChange={handleChange} />
             <div className="cursor-pointer text-big-bold" onClick={isLoading ? undefined : handleChange}>
-                {'Show my travel journal to everyone'}
+                Show my travel journal to everyone
             </div>
         </div>
     )

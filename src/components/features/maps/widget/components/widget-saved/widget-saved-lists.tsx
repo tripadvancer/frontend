@@ -33,7 +33,7 @@ export const WidgetSavedLists = () => {
                 {lists.map(list => (
                     <WidgetSavedListsItem key={`widget-list-${list.id}`} {...list} />
                 ))}
-                <p className="mt-6 text-center text-black-40 sm:mt-8">{'Select a list to view saved places.'}</p>
+                <p className="mt-6 text-center text-black-40 sm:mt-8">Select a list to view saved places.</p>
             </div>
         )
     }

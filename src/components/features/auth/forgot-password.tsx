@@ -83,18 +83,17 @@ export const ForgotPassword = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{'Forgot your password?'}</h1>
+            <h1 className="h7 text-center">Forgot your password?</h1>
             <div className="flex flex-col gap-y-2">
                 <p className="text-center">
-                    {
-                        'To reset your password, please enter your email address. We will send an email to the provided address with instructions on how to reset your password:'
-                    }
+                    To reset your password, please enter your email address. We will send an email to the provided
+                    address with instructions on how to reset your password:
                 </p>
                 <FormInput
                     type="text"
                     name="email"
                     value={formik.values.email}
-                    placeholder={'Enter email address'}
+                    placeholder="Enter email address"
                     autoFocus
                     error={formik.errors.email}
                     disabled={isLoading}
@@ -103,7 +102,7 @@ export const ForgotPassword = () => {
             </div>
             <div className="flex flex-col gap-y-4">
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {'Restore password'}
+                    Restore password
                 </FormButton>
                 <div className="text-center">
                     {

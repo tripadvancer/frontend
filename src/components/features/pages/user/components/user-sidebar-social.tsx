@@ -13,7 +13,7 @@ export const UserSidebarSocial = async ({ social }: UserSidebarSocialProps) => {
 
     return (
         <section>
-            <h3 className="mb-4 text-caps uppercase">{'Social accounts'}</h3>
+            <h3 className="mb-4 text-caps uppercase">Social accounts</h3>
             <div className="flex flex-col gap-y-4">
                 {Object.keys(social)
                     .sort()

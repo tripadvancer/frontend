@@ -41,7 +41,7 @@ export const WidgetRandomPlaceActions = (props: WidgetRandomPlaceActionsProps) =
                 onClick={() => dialog.open(<ChooseNavigationApp lngLat={lngLat} />)}
                 className="flex-none"
             >
-                {'Route'}
+                Route
             </FormButton>
         </div>
     )

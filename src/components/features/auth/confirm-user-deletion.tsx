@@ -33,7 +33,7 @@ export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
     })
 
     if (!status) {
-        return <p className="text-center">{'Starting the deletion process...'}</p>
+        return <p className="text-center">Starting the deletion process...</p>
     }
 
     return (
@@ -45,7 +45,7 @@ export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
                     'The confirmation link has expired. Please request a new confirmation link.'}
             </p>
             <LinkButton href="/" className="w-full">
-                {'Go to Home'}
+                Go to Home
             </LinkButton>
         </>
     )

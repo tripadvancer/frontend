@@ -41,7 +41,7 @@ export const ListEdit = (list: IList) => {
 
     return (
         <div className="flex w-full flex-col gap-y-4 sm:w-104">
-            <h1 className="h7">{'Edit list'}</h1>
+            <h1 className="h7">Edit list</h1>
             <hr className="border-black-70" />
             <ListForm initialValues={initialValues} onSubmit={inputs => handleSubmit(inputs as UpdateListInputs)} />
         </div>

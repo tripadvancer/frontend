@@ -72,12 +72,12 @@ export const ResetPassword = () => {
         return (
             <form className="flex w-full flex-col gap-y-8" onSubmit={formik.handleSubmit}>
                 <div className="flex flex-col gap-y-2">
-                    <p className="text-center">{'Enter your new password below'}</p>
+                    <p className="text-center">Enter your new password below</p>
                     <FormInput
                         type="password"
                         name="password"
                         value={formik.values.password}
-                        placeholder={'Enter new password'}
+                        placeholder="Enter new password"
                         autoFocus
                         error={formik.errors.password}
                         disabled={isLoading}
@@ -85,7 +85,7 @@ export const ResetPassword = () => {
                     />
                 </div>
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {'Reset password'}
+                    Reset password
                 </FormButton>
             </form>
         )
@@ -102,7 +102,7 @@ export const ResetPassword = () => {
                 href="/"
                 className="hover-animated inline-flex h-10 w-full items-center justify-center rounded-lg bg-blue-100 px-6 text-white hover:bg-blue-active hover:text-white focus:outline-none"
             >
-                {'Go to Home'}
+                Go to Home
             </Link>
         </>
     )
