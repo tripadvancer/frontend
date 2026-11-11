@@ -3,7 +3,6 @@
 import { RefObject, useRef, useState } from 'react'
 
 import { CircleUserIcon, LogOutIcon, SettingsIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 import { useMediaQuery, useOnClickOutside } from 'usehooks-ts'
 
@@ -22,7 +21,6 @@ type UserMenuProps = {
 }
 
 export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
-    const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
     const isMobile = useMediaQuery('(max-width: 639px)')
@@ -49,7 +47,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
             router.push('/')
             router.refresh()
         } catch (err) {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
@@ -68,7 +66,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
                             <CircleUserIcon size={16} />
-                            {t('layout.userMenu.profile')}
+                            Profile
                         </Link>
                     </li>
                     <li>
@@ -78,7 +76,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                             className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
                         >
                             <SettingsIcon size={16} />
-                            {t('layout.userMenu.settings')}
+                            Settings
                         </Link>
                     </li>
                     <li>
@@ -87,7 +85,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                             onClick={signOut}
                         >
                             <LogOutIcon size={16} />
-                            {t('layout.userMenu.logOut')}
+                            Log out
                         </div>
                     </li>
                 </menu>
