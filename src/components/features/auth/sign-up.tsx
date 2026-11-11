@@ -14,6 +14,7 @@ import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Devider } from '@/components/ui/devider'
 import { FormButton } from '@/components/ui/form-button'
+import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
 import { SignUpInputs } from '@/utils/types/auth'
@@ -39,6 +40,7 @@ export const SignUp = () => {
         email: '',
         username: '',
         password: '',
+        agreePrivacy: false,
     }
 
     const validationSchema = Yup.object().shape({
@@ -60,6 +62,7 @@ export const SignUp = () => {
             .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
             .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
             .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
+        agreePrivacy: Yup.boolean().oneOf([true], 'Please accept the Privacy Policy to continue.'),
     })
 
     const handleSubmit = async (values: SignUpInputs) => {
@@ -133,9 +136,22 @@ export const SignUp = () => {
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
             <h1 className="h7 text-center">{t('auth.signUp.title')}</h1>
+            <div>
+                <FormCheckbox
+                    id="agreePrivacy"
+                    name="agreePrivacy"
+                    checked={formik.values.agreePrivacy}
+                    label="I have read and agree to the Privacy Policy."
+                    disabled={isLoading}
+                    onChange={formik.handleChange}
+                />
+                {formik.errors.agreePrivacy && (
+                    <div className="mt-1 text-small text-red-100">{formik.errors.agreePrivacy}</div>
+                )}
+            </div>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
-                    <ThirdPartyButton provider="google" isDisabled={isLoading} />
+                    <ThirdPartyButton provider="google" isDisabled={isLoading || !formik.values.agreePrivacy} />
                     {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
                 </div>
                 <Devider>{t('auth.or')}</Devider>
@@ -171,7 +187,12 @@ export const SignUp = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-y-4">
-                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+                <FormButton
+                    htmlType="submit"
+                    className="w-full"
+                    isLoading={isLoading}
+                    isDisabled={!formik.values.agreePrivacy}
+                >
                     {t('auth.signUp.submit')}
                 </FormButton>
                 <div className="text-center text-small text-black-40">
