@@ -5,7 +5,11 @@ import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 import { Map } from './map'
 
-export const MapWithAuth = async () => {
+type MapWithAuthProps = {
+    initialBounds?: [number, number, number, number]
+}
+
+export const MapWithAuth = async ({ initialBounds }: MapWithAuthProps) => {
     const { session, hasToken } = await getSSRSessionHelper()
 
     if (!session) {
@@ -13,7 +17,7 @@ export const MapWithAuth = async () => {
             /**
              * This means that there is no session and no session tokens.
              */
-            return <Map isAuth={false} />
+            return <Map isAuth={false} initialBounds={initialBounds} />
         }
 
         /**
@@ -26,5 +30,12 @@ export const MapWithAuth = async () => {
     const isEmailVerified = await session?.getClaimValue(EmailVerificationClaim)
     const activeUserId = session.getAccessTokenPayload().userId
 
-    return <Map activeUserId={activeUserId} isAuth={true} isEmailVerified={isEmailVerified} />
+    return (
+        <Map
+            activeUserId={activeUserId}
+            isAuth={true}
+            isEmailVerified={isEmailVerified}
+            initialBounds={initialBounds}
+        />
+    )
 }

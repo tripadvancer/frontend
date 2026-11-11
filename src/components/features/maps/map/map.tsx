@@ -24,13 +24,18 @@ type MapProps = {
     activeUserId?: number
     isAuth: boolean
     isEmailVerified?: boolean
+    initialBounds?: [number, number, number, number]
 }
 
-export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
+export const Map = ({ activeUserId, isAuth, isEmailVerified, initialBounds }: MapProps) => {
     const handlers = useMapEventHandlers()
     const mapViewState = useAppSelector(getMapViewState)
     const isMobile = useMediaQuery('(max-width: 639px)')
     const isTablet = useMediaQuery('(max-width: 1023px)')
+    const mapPadding =
+        isMobile || isTablet
+            ? { top: 106, right: 50, bottom: 50, left: 50 }
+            : { top: 100, right: 564, bottom: 100, left: 100 }
 
     const mapRef = useRef<MapRef>(null)
     const containerRef = useRef<HTMLDivElement>(null)
@@ -58,10 +63,9 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 reuseMaps
                 initialViewState={{
                     ...mapViewState,
-                    padding:
-                        isMobile || isTablet
-                            ? { top: 106, right: 50, bottom: 50, left: 50 }
-                            : { top: 100, right: 564, bottom: 100, left: 100 },
+                    ...(initialBounds
+                        ? { bounds: initialBounds, fitBoundsOptions: { padding: mapPadding } }
+                        : { padding: mapPadding }),
                 }}
                 {...handlers}
             >

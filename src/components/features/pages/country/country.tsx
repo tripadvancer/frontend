@@ -36,6 +36,9 @@ export const Country = async ({
                     <p className="text-big text-black-70">
                         {t('page.country.description', { country: country.name[locale] })}
                     </p>
+                    <Link href={`/maps?bounds=${country.bounds.join(',')}`} className="link">
+                        View on map
+                    </Link>
                 </div>
 
                 <CountryCategories selectedCategoryIds={selectedCategoriesIds} locale={locale} />

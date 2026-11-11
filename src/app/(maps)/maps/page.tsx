@@ -37,11 +37,27 @@ export const metadata: Metadata = {
     },
 }
 
-export default function MapsPage() {
+type MapsPageProps = {
+    searchParams: Promise<{ bounds?: string | string[] }>
+}
+
+export default async function MapsPage({ searchParams }: MapsPageProps) {
+    const boundsParam = (await searchParams).bounds
+    const boundsValues = typeof boundsParam === 'string' ? boundsParam.split(',').map(Number) : []
+    const initialBounds =
+        boundsValues.length === 4 &&
+        boundsValues.every(Number.isFinite) &&
+        boundsValues[1] >= -90 &&
+        boundsValues[1] <= 90 &&
+        boundsValues[3] >= -90 &&
+        boundsValues[3] <= 90
+            ? (boundsValues as [number, number, number, number])
+            : undefined
+
     return (
         <div className="h-dvh w-dvw">
             <MapsLayout
-                map={<MapWithAuth />}
+                map={<MapWithAuth initialBounds={initialBounds} />}
                 header={<WidgetHeader />}
                 widget={<WidgetPlaces />}
                 widgetRandom={<WidgetRandomPlace />}
