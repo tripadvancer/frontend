@@ -1,7 +1,6 @@
 'use client'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
@@ -35,7 +34,6 @@ type UserSettingsFormProps = {
 }
 
 export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserSettingsFormProps) => {
-    const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
 
@@ -55,13 +53,13 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .trim()
-            .required(t('validation.required'))
-            .min(userNameMinLength, t('validation.text.minLength', { minLength: userNameMinLength }))
-            .max(userNameMaxLength, t('validation.text.maxLength', { maxLength: userNameMaxLength }))
-            .matches(/^[A-Za-z0-9._-]+$/, t('validation.username.invalid')),
+            .required('This field is required')
+            .min(userNameMinLength, `This field must be at least ${userNameMinLength} characters long`)
+            .max(userNameMaxLength, `This field must be at most ${userNameMaxLength} characters long`)
+            .matches(/^[A-Za-z0-9._-]+$/, 'Username can only contain letters, numbers, underscores, hyphens and dots'),
         info: Yup.string()
             .trim()
-            .max(userInfoMaxLength, t('validation.text.maxLength', { maxLength: userInfoMaxLength })),
+            .max(userInfoMaxLength, `This field must be at most ${userInfoMaxLength} characters long`),
         social: Yup.lazy(value =>
             Yup.object().shape(
                 Object.keys(value).reduce(
@@ -69,10 +67,10 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
                         acc[key] = Yup.string()
                             .trim()
                             .default('')
-                            .required(t('validation.required'))
+                            .required('This field is required')
                             .max(
                                 userSocialMaxLength,
-                                t('validation.text.maxLength', { maxLength: userSocialMaxLength }),
+                                `This field must be at most ${userSocialMaxLength} characters long`,
                             )
                         return acc
                     },
@@ -97,20 +95,22 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
                 case 'OK':
                     router.replace(`/users/${trimmedInputs.name?.toLowerCase()}/settings`)
                     router.refresh()
-                    toast.success(t('success.updateUserInfo'))
+                    toast.success('Your profile has been updated.')
                     break
                 case 'USERNAME_ALREADY_EXISTS_ERROR':
-                    formik.setErrors({ name: t('validation.wrong.usernameTaken') })
+                    formik.setErrors({ name: 'This username is already taken' })
                     break
                 case 'USERNAME_INVALID_FORMAT_ERROR':
-                    formik.setErrors({ name: t('validation.username.invalid') })
+                    formik.setErrors({
+                        name: 'Username can only contain letters, numbers, underscores, hyphens and dots',
+                    })
                     break
                 default:
-                    toast.error(t('common.error'))
+                    toast.error('An unexpected error has occurred. Please try again later.')
                     break
             }
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
@@ -127,20 +127,20 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
             <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="avatar" className="font-medium">
-                        {t('page.user.settingsForm.field.avatar.label')}
+                        Avatar
                     </label>
                     <UserSettingsAvatarUploader currentAvatar={avatar} />
                 </div>
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="name" className="font-medium">
-                        {t('page.user.settingsForm.field.username.label')}
+                        Username
                     </label>
                     <FormInput
                         type="text"
                         name="name"
                         value={formik.values.name}
-                        placeholder={t('page.user.settingsForm.field.username.placeholder')}
+                        placeholder="Enter your username"
                         error={formik.errors.name}
                         disabled={isLoading}
                         onChange={formik.handleChange}
@@ -149,12 +149,12 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="info" className="font-medium">
-                        {t('page.user.settingsForm.field.aboutMe.label')}
+                        About me
                     </label>
                     <FormTextarea
                         name="info"
                         value={formik.values.info}
-                        placeholder={t('page.user.settingsForm.field.aboutMe.placeholder')}
+                        placeholder="Enter information about yourself..."
                         maxLength={userInfoMaxLength}
                         style={{ height: '120px' }}
                         error={formik.errors.info}
@@ -165,7 +165,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="info" className="font-medium">
-                        {t('page.user.settingsForm.field.contacts.label')}
+                        Social accounts
                     </label>
                     <UserSettingsFormSocialLinks
                         initialValue={formik.values.social}
@@ -177,7 +177,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
 
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="info" className="font-medium">
-                        {t('page.user.settingsForm.field.settings.privacy.label')}
+                        Privacy
                     </label>
                     <UserSettingsFormPrivacy
                         initialValue={formik.values.settings}
@@ -188,7 +188,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
             </div>
 
             <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                {t('common.action.saveChanges')}
+                Save changes
             </FormButton>
         </form>
     )

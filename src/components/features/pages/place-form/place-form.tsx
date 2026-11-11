@@ -3,7 +3,6 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 
 import { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/redux/services/places/places.types'
 
@@ -24,14 +23,13 @@ type PlaceFormProps = {
 }
 
 export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps) => {
-    const t = useTranslations()
     const [isFormDisabled, setIsFormDisabled] = useState(false)
 
     const formik = useFormik({
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: validationSchema(t),
+        validationSchema: validationSchema(),
         onSubmit,
     })
 

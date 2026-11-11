@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { SharePlace } from '@/components/features/dialogs/share-place/share-place'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
@@ -17,7 +15,6 @@ type useSharePlaceProps = {
 }
 
 export function useSharePlace({ id, title, countryCode }: useSharePlaceProps): useSharePlaceInterface {
-    const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -33,7 +30,7 @@ export function useSharePlace({ id, title, countryCode }: useSharePlaceProps): u
                 await navigator.share(shareData)
             } catch (err: any) {
                 if (err.name !== 'AbortError') {
-                    toast.error(t('common.error'))
+                    toast.error('An unexpected error has occurred. Please try again later.')
                 }
             }
 

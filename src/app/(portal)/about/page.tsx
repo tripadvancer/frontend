@@ -3,16 +3,14 @@ import { Metadata } from 'next'
 import { About } from '@/components/features/about/about'
 
 export const metadata: Metadata = {
-    title: 'About',
+    title: 'About Tripadvancer',
     description:
         "Tripadvancer is a travel platform where people share interesting places, keep a personal travel journal, and track countries they've visited. Join a global travel community and start sharing your favorite spots.",
-    keywords:
-        'travel journal, travel map, hidden gems, travel community, share locations, visited countries, personal travel log',
     alternates: {
         canonical: '/about',
     },
     openGraph: {
-        title: 'About',
+        title: 'About Tripadvancer',
         description:
             'Discover Tripadvancer — a map of hidden travel spots shared by real travelers. Save your journeys, explore new places, and inspire others with your adventures.',
         url: '/about',
@@ -27,7 +25,7 @@ export const metadata: Metadata = {
         ],
     },
     twitter: {
-        title: 'About',
+        title: 'About Tripadvancer',
         description:
             'Discover Tripadvancer — a map of hidden travel spots shared by real travelers. Save your journeys, explore new places, and inspire others with your adventures.',
         images: '/images/about.jpg',

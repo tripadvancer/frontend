@@ -3,7 +3,6 @@
 import { ChangeEvent } from 'react'
 
 import { SearchIcon, XIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { Spinner } from '@/components/ui/spinner'
 
@@ -16,8 +15,6 @@ type SearchInputProps = {
 }
 
 export const SearchInput = ({ value, isLoading, onChange, onClick, onClear }: SearchInputProps) => {
-    const t = useTranslations()
-
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value)
     }
@@ -34,7 +31,7 @@ export const SearchInput = ({ value, isLoading, onChange, onClick, onClear }: Se
                 value={value}
                 autoComplete="off"
                 className="hover-animated h-10 w-full rounded-lg border border-blue-20 bg-white px-9 placeholder:text-black-40 hover:border-blue-100 focus:border-blue-100 focus:outline-none"
-                placeholder={t('component.search.placeholder')}
+                placeholder="Search"
                 onChange={handleChange}
                 onClick={onClick}
             />
