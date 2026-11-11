@@ -194,11 +194,21 @@ export const SignUp = () => {
                         label={
                             <>
                                 By completing the registration process, you acknowledge and accept our{' '}
-                                <Link href="/legal/terms-and-conditions" className="link">
+                                <Link
+                                    href="/legal/terms-and-conditions"
+                                    className="link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     Terms and Conditions
                                 </Link>{' '}
                                 and{' '}
-                                <Link href="/legal/privacy-policy" className="link">
+                                <Link
+                                    href="/legal/privacy-policy"
+                                    className="link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     Privacy Policy
                                 </Link>
                                 .
