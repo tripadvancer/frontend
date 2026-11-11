@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react'
 
 import { useDebounceCallback } from 'usehooks-ts'
 
-import Image from 'next/image'
-
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'

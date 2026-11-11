@@ -1,5 +1,37 @@
 @import 'tailwindcss';
+@import 'maplibre-gl/dist/maplibre-gl.css';
 @config '../../tailwind.config.js';
+
+@theme {
+    --color-blue-100: #1890ff;
+    --color-blue-80: #46a6ff;
+    --color-blue-20: #d1e9ff;
+    --color-blue-10: #e8f4ff;
+    --color-blue-active: #1373cc;
+
+    --color-orange-100: #ff7d00;
+    --color-orange-80: #ff9733;
+    --color-orange-20: #ffe5cc;
+    --color-orange-10: #fff2e6;
+    --color-orange-active: #d96c04;
+
+    --color-red-100: #f6511d;
+    --color-red-20: #fddcd2;
+    --color-red-10: #fee5dd;
+    --color-red-active: #c5441c;
+
+    --color-green-100: #98ce00;
+    --color-green-10: #f0f8d9;
+
+    --color-yellow-100: #efca08;
+    --color-yellow-10: #fdf7da;
+
+    --color-black-100: #020e19;
+    --color-black-70: #4e575e;
+    --color-black-40: #9a9fa3;
+    --color-black-15: #d9dbdd;
+    --color-black-5: #f2f3f3;
+}
 
 @utility container {
     margin-inline: auto;
@@ -271,8 +303,31 @@ body {
     @apply text-black-100 text-base antialiased;
 }
 
-a {
-    @apply link;
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-black-15, currentColor);
+    }
+
+    button:not(:disabled),
+    [role='button']:not(:disabled) {
+        cursor: pointer;
+    }
+
+    a {
+        color: var(--color-blue-100);
+        cursor: pointer;
+        transition-property: color, background-color, border-color;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
+
+        &:hover {
+            color: var(--color-blue-active);
+        }
+    }
 }
 
 .mapboxgl-popup-content,
@@ -314,7 +369,7 @@ a {
 }
 
 .tiptap {
-    @apply !outline-none;
+    @apply outline-none!;
 }
 
 @keyframes pulse-full {
