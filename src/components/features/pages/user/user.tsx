@@ -8,7 +8,7 @@ import { UserSidebarAbout } from './components/user-sidebar-about'
 import { UserSidebarAchievement } from './components/user-sidebar-achievement'
 import { UserSidebarSocial } from './components/user-sidebar-social'
 
-export const User = ({ user, children }: { user: IUser; children: ReactNode }) => {
+export const User = ({ user, username, children }: { user: IUser; username: string; children: ReactNode }) => {
     return (
         <div className="container py-24">
             <div className="inner-container">
@@ -16,7 +16,7 @@ export const User = ({ user, children }: { user: IUser; children: ReactNode }) =
 
                 <div className="flex flex-col gap-16 lg:flex-row-reverse lg:gap-8">
                     <div className="flex w-full flex-col gap-8 lg:w-64">
-                        <UserSidebarAchievement {...user._count} />
+                        <UserSidebarAchievement username={username} {...user._count} />
                         <UserSidebarAbout info={user.info} />
                         <UserSidebarSocial social={user.social} />
                     </div>
