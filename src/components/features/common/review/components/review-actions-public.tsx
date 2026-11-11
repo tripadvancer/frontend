@@ -1,7 +1,6 @@
 'use client'
 
 import { MessageCircleWarningIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 
 import { SignIn } from '@/components/features/auth/sign-in'
@@ -11,7 +10,6 @@ import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
 import { IReview } from '@/utils/types/common'
 
 export const ReviewActionsPublic = ({ id }: IReview) => {
-    const t = useTranslations()
     const dialog = useDialog()
 
     const handleClick = async () => {
@@ -21,7 +19,7 @@ export const ReviewActionsPublic = ({ id }: IReview) => {
 
     const items: DropdownItemProps[] = [
         {
-            caption: t('common.action.review.complain'),
+            caption: 'Complain',
             value: 'complain',
             icon: <MessageCircleWarningIcon size={16} />,
             isRed: true,

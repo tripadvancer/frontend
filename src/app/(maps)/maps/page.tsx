@@ -8,20 +8,20 @@ import { WidgetPlaces } from '@/components/features/maps/widget/widget-places'
 import { WidgetRandomPlace } from '@/components/features/maps/widget/widget-random-place'
 
 export const metadata: Metadata = {
-    title: 'Maps',
+    title: 'Travel Map: Find Attractions and Hidden Gems',
     description:
-        'Convenient search for places on the map, managing favorite spots, as well as finding a random location for an unforgettable journey.',
+        'Explore traveler-recommended attractions and hidden gems on an interactive travel map. Find places nearby, save favorites, and discover where to go next.',
     alternates: {
         canonical: '/maps',
     },
     openGraph: {
-        title: 'Maps',
+        title: 'Travel Map: Find Attractions and Hidden Gems',
         description:
-            'Convenient search for places on the map, managing favorite spots, as well as finding a random location for an unforgettable journey.',
+            'Explore traveler-recommended attractions and hidden gems on an interactive travel map. Find places nearby, save favorites, and discover where to go next.',
         url: '/maps',
         images: [
             {
-                url: '/images/og-image-2.jpg',
+                url: '/open-graph/image-2.jpg',
                 width: 1200,
                 height: 628,
                 type: 'image/jpeg',
@@ -30,10 +30,10 @@ export const metadata: Metadata = {
         ],
     },
     twitter: {
-        title: 'Maps',
+        title: 'Travel Map: Find Attractions and Hidden Gems',
         description:
-            'Convenient search for places on the map, managing favorite spots, as well as finding a random location for an unforgettable journey.',
-        images: '/images/og-image-2.jpg',
+            'Explore traveler-recommended attractions and hidden gems on an interactive travel map. Find places nearby, save favorites, and discover where to go next.',
+        images: '/open-graph/image-2.jpg',
     },
 }
 
