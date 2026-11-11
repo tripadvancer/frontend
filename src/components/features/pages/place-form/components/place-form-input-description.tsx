@@ -10,7 +10,6 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import classNames from 'classnames'
 import { BoldIcon, ItalicIcon, LinkIcon, StrikethroughIcon, UnderlineIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { validationConfig } from '@/configs/validation.config'
 
@@ -25,14 +24,13 @@ type PlaceFormInputDescriptionProps = {
 }
 
 export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormInputDescriptionProps) => {
-    const t = useTranslations()
     const [characterCount, setCharacterCount] = useState(0)
 
     const editor = useEditor({
         extensions: [
             StarterKit,
             Placeholder.configure({
-                placeholder: t('page.placeForm.field.about.placeholder'),
+                placeholder: 'Enter a description',
                 emptyEditorClass: 'is-editor-empty',
             }),
             Underline,
@@ -96,11 +94,13 @@ export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormI
         <div className="flex flex-col gap-y-8">
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
                 <div className="w-full text-black-40 lg:w-64">
-                    <div className="lg:hidden">{t('page.placeForm.field.about.text')}</div>
+                    <div className="lg:hidden">
+                        Tell us what inspired you so you can help others learn more about this place.
+                    </div>
                 </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
-                        <h2 className="h5">{t('page.placeForm.field.about.label')}</h2>
+                        <h2 className="h5">About this place</h2>
                         <div className={classNames(characterCount > maxLength ? 'text-red-100' : 'text-black-40')}>
                             {characterCount} / {maxLength}
                         </div>
@@ -110,7 +110,7 @@ export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormI
 
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
                 <div className="hidden w-full text-black-40 lg:block lg:w-64">
-                    {t('page.placeForm.field.about.text')}
+                    Tell us what inspired you so you can help others learn more about this place.
                 </div>
                 <div className="min-w-0 flex-1 text-big">
                     {editor && (

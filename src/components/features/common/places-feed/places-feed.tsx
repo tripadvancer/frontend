@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { FormButton } from '@/components/ui/form-button'
 
 import { PlacesFeedItem } from './places-feed-item'
@@ -24,7 +22,6 @@ type PlacesFeedProps = {
 }
 
 export const PlacesFeed = ({ places, paginationLimit }: PlacesFeedProps) => {
-    const t = useTranslations()
     const [currentPage, setCurrentPage] = useState(1)
 
     return (
@@ -41,7 +38,7 @@ export const PlacesFeed = ({ places, paginationLimit }: PlacesFeedProps) => {
                     className="flex-grow"
                     onClick={() => setCurrentPage(prev => prev + 1)}
                 >
-                    {t('common.action.loadMore')}
+                    Load more ...
                 </FormButton>
             )}
         </div>

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
@@ -26,7 +25,6 @@ type SavePlaceFormProps = {
 const listNameMaxLength = validationConfig.list.name.maxLength
 
 export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
-    const t = useTranslations()
     const toast = useToast()
     const dialog = useDialog()
     const router = useRouter()
@@ -47,7 +45,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .trim()
-            .max(listNameMaxLength, t('validation.text.maxLength', { maxLength: listNameMaxLength })),
+            .max(listNameMaxLength, `This field must be at most ${listNameMaxLength} characters long`),
     })
 
     const initialValues: CreateListInputs & UpdatePlaceInListsInputs = {
@@ -75,7 +73,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     await updatePlaceInLists({ placeId, listIds: [...inputs.listIds, response.id] }).unwrap()
                     dialog.close()
                 } catch {
-                    toast.error(t('common.error'))
+                    toast.error('An unexpected error has occurred. Please try again later.')
                 }
 
                 return
@@ -85,7 +83,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                 await updatePlaceInLists({ placeId, listIds: inputs.listIds }).unwrap()
                 dialog.close()
             } catch {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             }
 
             router.refresh()
@@ -120,7 +118,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     id="new-list"
                     name="new-list"
                     value="new-list"
-                    label={t('dialog.savePlace.field.list.label')}
+                    label="Add new list"
                     checked={isCreateList}
                     disabled={isListCreating || isPlaceUpdating}
                     onChange={() => setIsCreateList(!isCreateList)}
@@ -133,7 +131,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     autoFocus={isCreateList}
                     autoComplete="off"
                     maxLength={listNameMaxLength}
-                    placeholder={t('dialog.savePlace.field.list.placeholder')}
+                    placeholder="List name ..."
                     error={formik.errors.name}
                     disabled={!isCreateList || isListCreating || isPlaceUpdating}
                     onChange={formik.handleChange}
@@ -141,10 +139,10 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
             </div>
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isListCreating || isPlaceUpdating} isDisabled={!formik.dirty}>
-                    {t('common.action.save')}
+                    Save
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
-                    {t('common.action.cancel')}
+                    Cancel
                 </FormButton>
             </div>
         </form>

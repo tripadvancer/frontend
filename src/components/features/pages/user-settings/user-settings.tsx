@@ -1,5 +1,3 @@
-import { getTranslations } from 'next-intl/server'
-
 import { getUserSettings } from '@/services/user'
 import { UserSocialApps } from '@/utils/enums'
 
@@ -18,7 +16,6 @@ type UserSettingsProps = {
 }
 
 export const UserSettings = async ({ name, info, avatar, social }: UserSettingsProps) => {
-    const t = await getTranslations()
     const settings = await getUserSettings()
 
     return (
@@ -28,7 +25,7 @@ export const UserSettings = async ({ name, info, avatar, social }: UserSettingsP
                     <UserSettingsForm name={name} info={info} avatar={avatar} social={social} settings={settings} />
                 </section>
                 <section>
-                    <h2 className="h5 mb-8">{t('page.user.account.title')}</h2>
+                    <h2 className="h5 mb-8">Your account</h2>
                     <div className="flex flex-col">
                         <UserSettingsBlockChangeEmail />
                         <UserSettingsBlockChangePassword />
