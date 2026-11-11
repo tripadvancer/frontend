@@ -7,6 +7,7 @@ import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverificati
 import { emailPasswordSignUp } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 import * as Yup from 'yup'
 
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -60,7 +61,10 @@ export const SignUp = () => {
             .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
             .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
             .matches(/^(?=.*[a-z])(?=.*[0-9])/g, 'Password must contain at least 8 characters, including a number'),
-        agreePrivacy: Yup.boolean().oneOf([true], 'Please accept the Privacy Policy to continue.'),
+        agreePrivacy: Yup.boolean().oneOf(
+            [true],
+            'Please accept the Terms and Conditions and Privacy Policy to continue.',
+        ),
     })
 
     const handleSubmit = async (values: SignUpInputs) => {
@@ -136,19 +140,6 @@ export const SignUp = () => {
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
             <h1 className="h7 text-center">Sign Up</h1>
-            <div>
-                <FormCheckbox
-                    id="agreePrivacy"
-                    name="agreePrivacy"
-                    checked={formik.values.agreePrivacy}
-                    label="I have read and agree to the Privacy Policy."
-                    disabled={isLoading}
-                    onChange={formik.handleChange}
-                />
-                {formik.errors.agreePrivacy && (
-                    <div className="mt-1 text-small text-red-100">{formik.errors.agreePrivacy}</div>
-                )}
-            </div>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading || !formik.values.agreePrivacy} />
@@ -195,28 +186,30 @@ export const SignUp = () => {
                 >
                     Sign up
                 </FormButton>
-                <div className="text-center text-small text-black-40">
-                    By completing the registration process, you acknowledge and accept our{' '}
-                    <span
-                        className="link"
-                        onClick={() => {
-                            dialog.close()
-                            router.push('/legal/terms-and-conditions')
-                        }}
-                    >
-                        Terms and Conditions
-                    </span>{' '}
-                    and{' '}
-                    <span
-                        className="link"
-                        onClick={() => {
-                            dialog.close()
-                            router.push('/legal/privacy-policy')
-                        }}
-                    >
-                        Privacy Policy
-                    </span>
-                    .
+                <div>
+                    <FormCheckbox
+                        id="agreePrivacy"
+                        name="agreePrivacy"
+                        checked={formik.values.agreePrivacy}
+                        label={
+                            <>
+                                By completing the registration process, you acknowledge and accept our{' '}
+                                <Link href="/legal/terms-and-conditions" className="link">
+                                    Terms and Conditions
+                                </Link>{' '}
+                                and{' '}
+                                <Link href="/legal/privacy-policy" className="link">
+                                    Privacy Policy
+                                </Link>
+                                .
+                            </>
+                        }
+                        disabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                    {formik.errors.agreePrivacy && (
+                        <div className="mt-1 text-small text-red-100">{formik.errors.agreePrivacy}</div>
+                    )}
                 </div>
             </div>
             <div className="text-center">
