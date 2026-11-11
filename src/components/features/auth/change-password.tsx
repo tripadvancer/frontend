@@ -17,6 +17,7 @@ import { ChangeUserPasswordInputs } from '@/utils/redux/services/user/user.types
 
 const userPasswordMinLength = validationConfig.user.password.minLength
 const userPasswordMaxLength = validationConfig.user.password.maxLength
+const passwordMustDifferMessage = 'New password must be different from your current password.'
 
 export const ChangePassword = () => {
     const t = useTranslations()
@@ -35,6 +36,7 @@ export const ChangePassword = () => {
         oldPassword: Yup.string().required(t('validation.required')),
         newPassword: Yup.string()
             .required(t('validation.required'))
+            .notOneOf([Yup.ref('oldPassword')], passwordMustDifferMessage)
             .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
             .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
             .matches(/^(?=.*[a-z])(?=.*[0-9])/g, t('validation.wrong.passwordPolicy')),
@@ -75,6 +77,8 @@ export const ChangePassword = () => {
         validationSchema,
         onSubmit: handleSubmit,
     })
+    const isPasswordUnchanged =
+        formik.values.oldPassword.length > 0 && formik.values.oldPassword === formik.values.newPassword
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
@@ -96,12 +100,17 @@ export const ChangePassword = () => {
                     name="newPassword"
                     value={formik.values.newPassword}
                     placeholder={t('placeholder.action.enterNewPassword')}
-                    error={formik.errors.newPassword}
+                    error={formik.errors.newPassword || (isPasswordUnchanged ? passwordMustDifferMessage : '')}
                     disabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>
-            <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
+            <FormButton
+                htmlType="submit"
+                className="w-full"
+                isLoading={isLoading}
+                isDisabled={!formik.dirty || isPasswordUnchanged}
+            >
                 {t('common.action.saveChanges')}
             </FormButton>
         </form>
