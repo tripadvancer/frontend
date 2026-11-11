@@ -1,10 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 import classNames from 'classnames'
 
-// import { Translate } from '@/components/ui/translate'
 import { IReview } from '@/utils/types/common'
 
 import { ReviewActions } from './components/review-actions'
@@ -21,12 +18,6 @@ type ReviewProps = {
 }
 
 export const Review = ({ review, variant, className, activeUserId, isAuth }: ReviewProps) => {
-    const [displayText, setDisplayText] = useState<string>()
-
-    useEffect(() => {
-        setDisplayText(review.text)
-    }, [review.text])
-
     return (
         <div
             className={classNames(
@@ -42,17 +33,7 @@ export const Review = ({ review, variant, className, activeUserId, isAuth }: Rev
             </div>
 
             <div className="flex flex-col gap-y-2.5">
-                {/* <div className="text-small">
-                    <Translate
-                        originalText={review.text}
-                        availableTargets={[
-                            { label: 'Русский', code: 'ru' },
-                            { label: 'English', code: 'en' },
-                        ]}
-                        onTranslate={setDisplayText}
-                    />
-                </div> */}
-                <div className="break-words">{displayText}</div>
+                <div className="break-words">{review.text}</div>
             </div>
 
             <ReviewPhotosList title={review.place.title} description={review.user.name} photos={review.photos} />

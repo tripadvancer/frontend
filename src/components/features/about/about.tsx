@@ -6,7 +6,7 @@ export const About = () => {
         <div className="flex flex-col">
             <div className="flex-center relative z-10 flex-[540px] pb-7">
                 <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
-                    <Image src={'/images/about.jpg'} alt="About Tripadvancer" fill className="object-cover" />
+                    <Image src="/images/about.jpg" alt="About Tripadvancer" fill className="object-cover" />
                     <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
                 </div>
                 <section className="container relative z-30 py-8 text-center">

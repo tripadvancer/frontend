@@ -1,7 +1,6 @@
 'use client'
 
 import { ArrowLeftIcon, FilterIcon, FilterXIcon, PencilIcon, TrashIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { ListEdit } from '@/components/features/dialogs/list-form/list-edit'
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -17,7 +16,6 @@ import { IList } from '@/utils/types/common'
 import { WidgetSavedListsViewPlacesFeed } from './widget-saved-lists-view-places-feed'
 
 export const WidgetSavedListsView = (list: IList) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
     const isFilterMapBySavedLists = useAppSelector(getIsFilterMapBySavedLists)
@@ -33,15 +31,15 @@ export const WidgetSavedListsView = (list: IList) => {
         dialog.open(
             <Confirmation
                 variant="red"
-                title={t('confirmation.deleteList.title')}
-                message={t('confirmation.deleteList.text')}
+                title="Delete list"
+                message="Are you sure you want to delete this list? This action is irreversible."
                 onConfirm={async () => {
                     try {
                         await deleteList(list.id)
                         dispatch(setWidgetActiveList(null))
                         dialog.close()
                     } catch {
-                        toast.error(t('common.error'))
+                        toast.error('An unexpected error has occurred. Please try again later.')
                     }
                 }}
             />,
@@ -50,21 +48,19 @@ export const WidgetSavedListsView = (list: IList) => {
 
     const items: DropdownItemProps[] = [
         {
-            caption: isFilterMapBySavedLists
-                ? t('map.widget.tabs.savedPlaces.lists.action.disableMapFilter')
-                : t('map.widget.tabs.savedPlaces.lists.action.enableMapFilter'),
+            caption: isFilterMapBySavedLists ? 'Show all places' : 'Hide other places',
             value: 'preview_mode',
             icon: isFilterMapBySavedLists ? <FilterXIcon size={16} /> : <FilterIcon size={16} />,
             onClick: () => dispatch(setIsFilterMapBySavedLists(!isFilterMapBySavedLists)),
         },
         {
-            caption: t('map.widget.tabs.savedPlaces.lists.action.edit'),
+            caption: 'Edit',
             value: 'edit',
             icon: <PencilIcon size={16} />,
             onClick: () => dialog.open(<ListEdit {...list} />),
         },
         {
-            caption: t('map.widget.tabs.savedPlaces.lists.action.delete'),
+            caption: 'Delete',
             value: 'delete',
             icon: <TrashIcon size={16} />,
             isRed: true,

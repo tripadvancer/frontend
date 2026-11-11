@@ -4,7 +4,6 @@ import { ChangeEvent } from 'react'
 
 import classNames from 'classnames'
 import { TrashIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
 
@@ -27,8 +26,6 @@ export const UserSettingsFormSocialLinks = ({
     isDisabled,
     onChange,
 }: UserSettingsFormSocialLinksProps) => {
-    const t = useTranslations()
-
     const socialInputs = {
         [UserSocialApps.FACEBOOK]: {
             placeholder: 'Facebook',
@@ -80,7 +77,7 @@ export const UserSettingsFormSocialLinks = ({
         <div className="flex flex-col gap-y-2 sm:w-1/2">
             <FormSelect
                 name="social"
-                placeholder={t('page.user.settingsForm.field.contacts.addSocialLink')}
+                placeholder="Add social link"
                 options={Object.values(UserSocialApps)
                     .sort()
                     .map(app => ({

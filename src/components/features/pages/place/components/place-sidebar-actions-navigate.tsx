@@ -1,7 +1,6 @@
 'use client'
 
 import { NavigationIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { ChooseNavigationApp } from '@/components/features/dialogs/choose-navigation-app/choose-navigation-app'
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -13,7 +12,6 @@ type PlaceSidebarActionsNavigateProps = {
 }
 
 export const PlaceSidebarActionsNavigate = ({ location }: PlaceSidebarActionsNavigateProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const lngLat = arrayToLngLat(location.coordinates)
 
@@ -24,7 +22,7 @@ export const PlaceSidebarActionsNavigate = ({ location }: PlaceSidebarActionsNav
     return (
         <div className="link flex items-center gap-x-2 align-top" onClick={handleClick}>
             <NavigationIcon />
-            {t('common.action.place.navigate')}
+            Navigate
         </div>
     )
 }

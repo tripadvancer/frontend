@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import Image from 'next/image'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
@@ -17,7 +15,6 @@ type SearchSuggestProps = {
 }
 
 export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
-    const t = useTranslations()
     const edgeGeo = internalAPI.useGetEdgeGeoQuery()
 
     const lat = parseFloat(edgeGeo.data?.lat || '0')
@@ -41,15 +38,15 @@ export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
     return (
         <div>
             <hr className="my-1" />
-            <div className="mb-1 mt-4 pl-3 text-black-70">{t('component.search.suggestTitle')}</div>
+            <div className="mb-1 mt-4 pl-3 text-black-70">May be interesting for you:</div>
 
             <SearchItem
-                title={userCountry.name['en']}
-                info={`Discover the beauty of ${userCountry.name['en']}`}
+                title={userCountry.name}
+                info={`Discover the beauty of ${userCountry.name}`}
                 icon={
                     <Image
                         src={`/images/countries/preview/${userCountry.code.toLowerCase()}.jpg`}
-                        alt={userCountry.name['en']}
+                        alt={userCountry.name}
                         width={36}
                         height={36}
                         className="rounded-md"
@@ -63,13 +60,7 @@ export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
                 <SearchItem
                     key={`search-suggest-item-${place.id}`}
                     title={place.title}
-                    info={
-                        place.distance
-                            ? t('component.search.suggestAway', {
-                                  distance: Math.round(place.distance / 1000),
-                              })
-                            : ''
-                    }
+                    info={place.distance ? `~ ${Math.round(place.distance / 1000)} km away` : ''}
                     icon={
                         <PlacePreviewCover
                             cover={place.cover}

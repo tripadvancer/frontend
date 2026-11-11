@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { useRouter } from 'next/navigation'
 
 import { useToast } from '@/components/providers/toast-provider'
@@ -19,7 +17,6 @@ type AvatarUploaderProps = {
 }
 
 export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
-    const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
 
@@ -36,11 +33,11 @@ export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProp
             const formData = new FormData()
             formData.append('file', file)
             await updateUserAvatar(formData)
-            toast.success(t('success.updateUserAvatar'))
+            toast.success('Your avatar has been updated.')
             setFileName(file.name)
             router.refresh()
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
             setFileName('')
         }
     }
@@ -56,10 +53,10 @@ export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProp
     const handleConfirmDeleteAvatar = async () => {
         try {
             await deleteUserAvatar()
-            toast.success(t('success.updateUserAvatar'))
+            toast.success('Your avatar has been updated.')
             router.refresh()
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         } finally {
             setFileName('')
             setIsDeleteAvatarConfirm(false)
@@ -74,7 +71,7 @@ export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProp
                         <ConfirmationMini onConfirm={handleConfirmDeleteAvatar} onCancel={handleCancelDeleteAvatar} />
                     ) : (
                         <div className="link-red" onClick={handleClickDeleteAvatar}>
-                            {t('common.action.delete')}
+                            Delete
                         </div>
                     )}
                 </div>

@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { useRouter } from 'next/navigation'
 
 import { FormButton } from '@/components/ui/form-button'
@@ -11,7 +9,6 @@ import { setWidgetActiveTab, setWidgetMode } from '@/utils/redux/features/widget
 import { useAppDispatch } from '@/utils/redux/hooks'
 
 export const LandingFeaturesListsButton = () => {
-    const t = useTranslations()
     const router = useRouter()
     const dispatch = useAppDispatch()
 
@@ -24,7 +21,7 @@ export const LandingFeaturesListsButton = () => {
 
     return (
         <FormButton variant="orange" onClick={handleClick}>
-            {t('page.landing.features.lists.button')}
+            Create Lists
         </FormButton>
     )
 }
