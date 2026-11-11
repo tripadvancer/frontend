@@ -39,7 +39,7 @@ export const searchAPI = api.injectEndpoints({
                 // Add countries to the response
                 const searchQuery = arg.query.toLowerCase()
                 const countriesData = countriesDictionary.filter(country => {
-                    const nameMatches = country.name.en.toLowerCase().includes(searchQuery)
+                    const nameMatches = country.name.toLowerCase().includes(searchQuery)
                     const aliasMatches = countryAliases[country.code]?.some(alias =>
                         alias.toLowerCase().includes(searchQuery),
                     )

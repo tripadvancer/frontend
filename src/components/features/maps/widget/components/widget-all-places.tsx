@@ -2,8 +2,6 @@
 
 import { useMemo } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { PlacesFeed } from '@/components/features/common/places-feed/places-feed'
 import { PlacesFeedSkeleton } from '@/components/features/common/places-feed/places-feed-skeleton'
 import { getMapState } from '@/utils/redux/features/map-slice'
@@ -14,7 +12,6 @@ import { placesAPI } from '@/utils/redux/services/places/places.api'
 import { WidgetMessage } from './widget-message'
 
 export const WidgetAllPlaces = () => {
-    const t = useTranslations()
     const mapBounds = useAppSelector(getMapState).bounds
     const selectedCategories = useAppSelector(getWidgetState).selectedCategories
 
@@ -30,7 +27,17 @@ export const WidgetAllPlaces = () => {
     }
 
     if (isSuccess && places.length === 0) {
-        return <WidgetMessage message={t.rich('map.widget.tabs.allPlaces.emptyMessage', { br: () => <br /> })} />
+        return (
+            <WidgetMessage
+                message={
+                    <>
+                        No places found.
+                        <br />
+                        Try changing categories or zooming out the map.
+                    </>
+                }
+            />
+        )
     }
 
     if (isSuccess && places.length > 0) {
