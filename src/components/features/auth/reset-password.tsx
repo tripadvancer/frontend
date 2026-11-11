@@ -3,7 +3,6 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import { submitNewPassword } from 'supertokens-web-js/recipe/emailpassword'
 import * as Yup from 'yup'
 
@@ -19,7 +18,6 @@ const userPasswordMinLength = validationConfig.user.password.minLength
 const userPasswordMaxLength = validationConfig.user.password.maxLength
 
 export const ResetPassword = () => {
-    const t = useTranslations()
     const toast = useToast()
 
     const [status, setStatus] = useState<string>()
@@ -31,9 +29,9 @@ export const ResetPassword = () => {
 
     const validationSchema = Yup.object().shape({
         password: Yup.string()
-            .required(t('validation.required'))
-            .min(userPasswordMinLength, t('validation.text.minLength', { minLength: userPasswordMinLength }))
-            .max(userPasswordMaxLength, t('validation.text.maxLength', { maxLength: userPasswordMaxLength }))
+            .required('This field is required')
+            .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
+            .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
             .matches(validationConfig.user.password.policyRegex, validationConfig.user.password.policyMessage),
     })
 
@@ -56,7 +54,7 @@ export const ResetPassword = () => {
                     break
             }
         } catch (err) {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         } finally {
             setIsLoading(false)
         }
@@ -74,12 +72,12 @@ export const ResetPassword = () => {
         return (
             <form className="flex w-full flex-col gap-y-8" onSubmit={formik.handleSubmit}>
                 <div className="flex flex-col gap-y-2">
-                    <p className="text-center">{t('auth.resetPassword.title')}</p>
+                    <p className="text-center">Enter your new password below</p>
                     <FormInput
                         type="password"
                         name="password"
                         value={formik.values.password}
-                        placeholder={t('placeholder.action.enterNewPassword')}
+                        placeholder="Enter new password"
                         autoFocus
                         error={formik.errors.password}
                         disabled={isLoading}
@@ -87,7 +85,7 @@ export const ResetPassword = () => {
                     />
                 </div>
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {t('auth.resetPassword.submit')}
+                    Reset password
                 </FormButton>
             </form>
         )
@@ -96,14 +94,15 @@ export const ResetPassword = () => {
     return (
         <>
             <p className="text-center">
-                {status === 'RESET_PASSWORD_INVALID_TOKEN_ERROR' && t('auth.resetPassword.status.expired')}
-                {status === 'OK' && t('auth.resetPassword.status.ok')}
+                {status === 'RESET_PASSWORD_INVALID_TOKEN_ERROR' &&
+                    'The password reset link has expired. Please request a new password reset link.'}
+                {status === 'OK' && 'Your password has been reset.'}
             </p>
             <Link
                 href="/"
                 className="hover-animated inline-flex h-10 w-full items-center justify-center rounded-lg bg-blue-100 px-6 text-white hover:bg-blue-active hover:text-white focus:outline-none"
             >
-                {t('common.action.goHome')}
+                Go to Home
             </Link>
         </>
     )
