@@ -1,5 +1,3 @@
-import { getLocale } from 'next-intl/server'
-
 import Link from 'next/link'
 
 import { getCountryByCode } from '@/services/countries'
@@ -11,7 +9,6 @@ type PlaceHeaderCategoriesProps = {
 }
 
 export const PlaceHeaderCategories = async ({ countryCode, categories }: PlaceHeaderCategoriesProps) => {
-    const locale = await getLocale()
     const country = getCountryByCode(countryCode)
 
     return (
@@ -23,14 +20,14 @@ export const PlaceHeaderCategories = async ({ countryCode, categories }: PlaceHe
                         href={`/countries/${country.slug}?categories=${category}`}
                         className="hover-animated flex h-8 items-center whitespace-nowrap rounded-full border border-blue-100 px-4 text-small text-blue-100 hover:border-blue-active hover:text-blue-active"
                     >
-                        {categoriesDictionary.find(item => item.id === category)?.localizedName[locale]}
+                        {categoriesDictionary.find(item => item.id === category)?.name}
                     </Link>
                 ) : (
                     <div
                         key={`category-${category}`}
                         className="hover-animated flex h-8 items-center whitespace-nowrap rounded-full border border-blue-100 px-4 text-small text-blue-100 hover:border-blue-active hover:text-blue-active"
                     >
-                        {categoriesDictionary.find(item => item.id === category)?.localizedName[locale]}
+                        {categoriesDictionary.find(item => item.id === category)?.name}
                     </div>
                 ),
             )}

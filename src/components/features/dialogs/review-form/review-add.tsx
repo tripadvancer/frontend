@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
@@ -15,7 +13,6 @@ type ReviewAddProps = {
 }
 
 export const ReviewAdd = ({ placeId, userId }: ReviewAddProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -39,13 +36,13 @@ export const ReviewAdd = ({ placeId, userId }: ReviewAddProps) => {
             createReview(trimmedInputs)
             dialog.close()
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
     return (
         <div className="flex w-full flex-col gap-y-4 sm:w-104">
-            <h1 className="h7">{t('dialog.reviewForm.title.add')}</h1>
+            <h1 className="h7">Write a review</h1>
             <hr className="border-black-70" />
             <ReviewForm
                 initialValues={initialValues}
