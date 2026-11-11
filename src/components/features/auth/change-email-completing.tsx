@@ -1,11 +1,14 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { AuthCompleting } from './auth-completing'
 
 export const ChangeEmailCompleting = () => {
-    const t = useTranslations()
-
-    return <AuthCompleting title={t('auth.changeEmailCompleting.title')} text={t('auth.changeEmailCompleting.text')} />
+    return (
+        <AuthCompleting
+            title={'Confirm your new email'}
+            text={
+                'We have sent you a verification email. After confirming your new email address, you will be able to sign in using it.'
+            }
+        />
+    )
 }

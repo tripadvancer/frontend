@@ -1,7 +1,5 @@
 import { Suspense } from 'react'
 
-import { getTranslations } from 'next-intl/server'
-
 import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
@@ -18,7 +16,6 @@ type PlaceSidebarNearbyProps = {
 }
 
 export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyProps) => {
-    const t = await getTranslations()
     const lngLat = arrayToLngLat(location.coordinates)
     const placesAround = await getPlacesAround({
         lat: lngLat.lat,
@@ -37,7 +34,7 @@ export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyPro
 
     return (
         <section>
-            <h3 className="mb-4 text-caps uppercase">{t('page.place.placeNearby')}</h3>
+            <h3 className="mb-4 text-caps uppercase">{'Places nearby'}</h3>
             <Suspense fallback={<PlaceSidebarNearbySkeleton />}>
                 <div className="flex flex-col gap-4">
                     {placesAroundFiltered.map(place => (

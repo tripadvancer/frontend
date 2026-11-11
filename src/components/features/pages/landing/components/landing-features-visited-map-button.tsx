@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { useRouter } from 'next/navigation'
 
 import { SignIn } from '@/components/features/auth/sign-in'
@@ -14,7 +12,6 @@ type LandingFeaturesVisitedMapButtonProps = {
 }
 
 export const LandingFeaturesVisitedMapButton = ({ username, isAuth }: LandingFeaturesVisitedMapButtonProps) => {
-    const t = useTranslations()
     const router = useRouter()
     const dialog = useDialog()
 
@@ -29,7 +26,7 @@ export const LandingFeaturesVisitedMapButton = ({ username, isAuth }: LandingFea
 
     return (
         <FormButton variant="orange" onClick={handleClick}>
-            {t('page.landing.features.visitedMap.button')}
+            {'View Your Map'}
         </FormButton>
     )
 }

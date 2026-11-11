@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { SignIn } from '@/components/features/auth/sign-in'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { getWidgetActiveList } from '@/utils/redux/features/widget-slice'
@@ -13,21 +11,24 @@ import { WidgetSavedLists } from './widget-saved-lists'
 import { WidgetSavedListsView } from './widget-saved-lists-view'
 
 export const WidgetSaved = ({ isAuth }: { isAuth: boolean }) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const widgetActiveList = useAppSelector(getWidgetActiveList)
 
     if (!isAuth) {
         return (
             <WidgetMessage
-                message={t.rich('map.widget.tabs.savedPlaces.notLoggedIn', {
-                    br: () => <br />,
-                    signInLink: signInLink => (
-                        <span className="link" onClick={() => dialog.open(<SignIn />)}>
-                            {signInLink}
-                        </span>
-                    ),
-                })}
+                message={
+                    <>
+                        You are not logged in.
+                        <br />
+                        {
+                            <span className="link" onClick={() => dialog.open(<SignIn />)}>
+                                Sign in
+                            </span>
+                        }{' '}
+                        to see saved places.
+                    </>
+                }
             />
         )
     }

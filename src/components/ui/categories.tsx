@@ -1,7 +1,5 @@
 'use client'
 
-import { useLocale, useTranslations } from 'next-intl'
-
 import { Category } from '@/components/ui/category'
 import { getSortedCategories } from '@/utils/dictionaries/categories'
 
@@ -12,9 +10,7 @@ type CategoryProps = {
 }
 
 export const Categories = ({ variant, selectedCategories, onClick }: CategoryProps) => {
-    const t = useTranslations()
-    const locale = useLocale()
-    const sortedCategories = getSortedCategories(locale)
+    const sortedCategories = getSortedCategories()
 
     const handleSelectCategory = (categoryId: number) => {
         const updatedSelectedCategories = selectedCategories.includes(categoryId)
@@ -31,7 +27,7 @@ export const Categories = ({ variant, selectedCategories, onClick }: CategoryPro
     return (
         <div className="flex flex-wrap gap-2">
             <Category variant={variant} isSelected={selectedCategories.length === 0} onClick={handleResetCategories}>
-                {t('component.categories.all')}
+                {'All'}
             </Category>
 
             {sortedCategories.map(category => (
@@ -41,7 +37,7 @@ export const Categories = ({ variant, selectedCategories, onClick }: CategoryPro
                     isSelected={selectedCategories.includes(category.id)}
                     onClick={() => handleSelectCategory(category.id)}
                 >
-                    {category.localizedName[locale]}
+                    {category.name}
                 </Category>
             ))}
         </div>

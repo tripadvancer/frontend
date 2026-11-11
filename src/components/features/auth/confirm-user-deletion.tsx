@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 
 import { useToast } from '@/components/providers/toast-provider'
@@ -15,7 +14,6 @@ type ConfirmUserRemovalProps = {
 }
 
 export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
-    const t = useTranslations()
     const toast = useToast()
 
     const [status, setStatus] = useState<string>()
@@ -28,24 +26,26 @@ export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
                 setStatus(response.status)
                 await Session.signOut()
             } catch (err) {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             }
         }
         handleConfirmUserRemoval()
     })
 
     if (!status) {
-        return <p className="text-center">{t('auth.confirmUserDeletion.loading')}</p>
+        return <p className="text-center">{'Starting the deletion process...'}</p>
     }
 
     return (
         <>
             <p className="text-center">
-                {status === 'OK' && t('auth.confirmUserDeletion.status.ok')}
-                {status === 'INVALID_TOKEN_ERROR' && t('auth.confirmUserDeletion.status.expired')}
+                {status === 'OK' &&
+                    'The deletion process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.'}
+                {status === 'INVALID_TOKEN_ERROR' &&
+                    'The confirmation link has expired. Please request a new confirmation link.'}
             </p>
             <LinkButton href="/" className="w-full">
-                {t('common.action.goHome')}
+                {'Go to Home'}
             </LinkButton>
         </>
     )

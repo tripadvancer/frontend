@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import Link from 'next/link'
 
 import { FormButton } from '@/components/ui/form-button'
@@ -12,19 +10,20 @@ type PlaceFormSubmitProps = {
 }
 
 export const PlaceFormSubmit = ({ isLoading, isDisabled }: PlaceFormSubmitProps) => {
-    const t = useTranslations()
-
     return (
         <div className="flex flex-col lg:flex-row lg:gap-x-8">
             <div className="flex-1">
                 <FormButton htmlType="submit" className="mb-4 w-full" isLoading={isLoading} isDisabled={isDisabled}>
-                    {t('common.action.saveChanges')}
+                    {'Save changes'}
                 </FormButton>
                 <p className="text-center text-small text-black-40">
-                    {t.rich('page.placeForm.terms', {
-                        termsLink: termsLink => <Link href="/legal/terms-and-conditions">{termsLink}</Link>,
-                        privacyLink: privacyLink => <Link href="/legal/privacy-policy">{privacyLink}</Link>,
-                    })}
+                    {
+                        <>
+                            By adding a new place to the map, you acknowledge and accept our{' '}
+                            {<Link href="/legal/terms-and-conditions">Terms and Conditions</Link>} and{' '}
+                            {<Link href="/legal/privacy-policy">Privacy Policy</Link>}.
+                        </>
+                    }
                 </p>
             </div>
             <div className="hidden w-64 lg:block" />

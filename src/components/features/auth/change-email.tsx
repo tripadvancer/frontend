@@ -1,7 +1,6 @@
 'use client'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -14,7 +13,6 @@ import { ChangeUserEmailInputs } from '@/utils/redux/services/user/user.types'
 import { ChangeEmailCompleting } from './change-email-completing'
 
 export const ChangeEmail = () => {
-    const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -28,12 +26,12 @@ export const ChangeEmail = () => {
     const validationSchema = Yup.object().shape({
         newEmail: Yup.string()
             .trim()
-            .required(t('validation.required'))
+            .required('This field is required')
             .matches(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
-                t('validation.email.invalid'),
+                'Please enter a valid email address',
             ),
-        password: Yup.string().required(t('validation.required')),
+        password: Yup.string().required('This field is required'),
     })
 
     const handleSubmit = async (inputs: ChangeUserEmailInputs) => {
@@ -50,19 +48,19 @@ export const ChangeEmail = () => {
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
-                    formik.setErrors({ password: t('validation.wrong.password') })
+                    formik.setErrors({ password: 'Wrong password' })
                     break
 
                 case 'EMAIL_ALREADY_EXISTS_ERROR':
-                    formik.setErrors({ newEmail: t('validation.wrong.emailTaken') })
+                    formik.setErrors({ newEmail: 'This email is already taken' })
                     break
 
                 default:
-                    toast.error(t('common.error'))
+                    toast.error('An unexpected error has occurred. Please try again later.')
                     break
             }
         } catch (err) {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
@@ -76,14 +74,16 @@ export const ChangeEmail = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{t('auth.changeEmail.title')}</h1>
+            <h1 className="h7 text-center">{'Change email'}</h1>
             <div className="flex flex-col gap-y-2">
-                <p className="text-center">{t('auth.changeEmail.text')}</p>
+                <p className="text-center">
+                    {'Enter your new email address below and we will send you a verification email:'}
+                </p>
                 <FormInput
                     type="text"
                     name="newEmail"
                     value={formik.values.newEmail}
-                    placeholder={t('placeholder.action.enterNewEmail')}
+                    placeholder={'Enter new email address'}
                     autoFocus
                     error={formik.errors.newEmail}
                     disabled={isLoading}
@@ -93,14 +93,14 @@ export const ChangeEmail = () => {
                     type="password"
                     name="password"
                     value={formik.values.password}
-                    placeholder={t('placeholder.action.enterPassword')}
+                    placeholder={'Enter your password'}
                     error={formik.errors.password}
                     disabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>
             <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
-                {t('common.action.saveChanges')}
+                {'Save changes'}
             </FormButton>
         </form>
     )

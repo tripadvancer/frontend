@@ -1,7 +1,6 @@
 'use client'
 
 import { MapPinCheckIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { SignIn } from '@/components/features/auth/sign-in'
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -16,7 +15,6 @@ type PlaceSidebarActionsCheckInProps = {
 }
 
 export const PlaceSidebarActionsCheckIn = ({ id, isAuth }: PlaceSidebarActionsCheckInProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -34,7 +32,7 @@ export const PlaceSidebarActionsCheckIn = ({ id, isAuth }: PlaceSidebarActionsCh
         try {
             await (meta?.isVisited ? checkOut(id) : checkIn(id))
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
@@ -42,7 +40,7 @@ export const PlaceSidebarActionsCheckIn = ({ id, isAuth }: PlaceSidebarActionsCh
         <div className="flex items-center justify-between">
             <div className="flex flex-1 cursor-pointer items-center gap-x-2" onClick={toggle}>
                 <MapPinCheckIcon />
-                {t('common.action.place.iWasHere')}
+                {'I was here'}
             </div>
             <FormSwitcher checked={!!meta?.isVisited} onChange={toggle} />
         </div>

@@ -3,7 +3,6 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import { sendPasswordResetEmail } from 'supertokens-web-js/recipe/emailpassword'
 import * as Yup from 'yup'
 
@@ -18,7 +17,6 @@ import { SignIn } from './sign-in'
 import { SignUp } from './sign-up'
 
 export const ForgotPassword = () => {
-    const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -31,10 +29,10 @@ export const ForgotPassword = () => {
     const validationSchema = Yup.object().shape({
         email: Yup.string()
             .trim()
-            .required(t('validation.required'))
+            .required('This field is required')
             .matches(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
-                t('validation.email.invalid'),
+                'Please enter a valid email address',
             ),
     })
 
@@ -57,11 +55,11 @@ export const ForgotPassword = () => {
                     break
 
                 default:
-                    toast.error(t('common.error'))
+                    toast.error('An unexpected error has occurred. Please try again later.')
                     break
             }
         } catch (err) {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         } finally {
             setIsLoading(false)
         }
@@ -85,14 +83,18 @@ export const ForgotPassword = () => {
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
-            <h1 className="h7 text-center">{t('auth.forgotPassword.title')}</h1>
+            <h1 className="h7 text-center">{'Forgot your password?'}</h1>
             <div className="flex flex-col gap-y-2">
-                <p className="text-center">{t('auth.forgotPassword.info')}</p>
+                <p className="text-center">
+                    {
+                        'To reset your password, please enter your email address. We will send an email to the provided address with instructions on how to reset your password:'
+                    }
+                </p>
                 <FormInput
                     type="text"
                     name="email"
                     value={formik.values.email}
-                    placeholder={t('placeholder.action.enterEmail')}
+                    placeholder={'Enter email address'}
                     autoFocus
                     error={formik.errors.email}
                     disabled={isLoading}
@@ -101,21 +103,24 @@ export const ForgotPassword = () => {
             </div>
             <div className="flex flex-col gap-y-4">
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
-                    {t('auth.forgotPassword.submit')}
+                    {'Restore password'}
                 </FormButton>
                 <div className="text-center">
-                    {t.rich('auth.forgotPassword.toBack', {
-                        signInLink: signInLink => (
-                            <span className="link" onClick={handleSignInClcik}>
-                                {signInLink}
-                            </span>
-                        ),
-                        signUpLink: signUpLink => (
-                            <span className="link" onClick={handleSignUpClick}>
-                                {signUpLink}
-                            </span>
-                        ),
-                    })}
+                    {
+                        <>
+                            {
+                                <span className="link" onClick={handleSignInClcik}>
+                                    Sign in
+                                </span>
+                            }{' '}
+                            or{' '}
+                            {
+                                <span className="link" onClick={handleSignUpClick}>
+                                    Sign up
+                                </span>
+                            }
+                        </>
+                    }
                 </div>
             </div>
         </form>

@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { Review } from '@/components/features/common/review/review'
 import { ShowMore } from '@/components/ui/show-more'
 import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
@@ -17,19 +15,28 @@ type UserReviewsProps = {
 }
 
 export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) => {
-    const t = useTranslations()
     const [cursor, setCursor] = useState<number>()
 
     const { data: reviews, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsByUserIdQuery({ userId, cursor })
 
     if (isError) {
-        return <div className="mt-16 text-center text-black-40">{t('common.error')}</div>
+        return (
+            <div className="mt-16 text-center text-black-40">
+                {'An unexpected error has occurred. Please try again later.'}
+            </div>
+        )
     }
 
     if (isSuccess && reviews.items.length === 0) {
         return (
             <div className="mt-16 text-center text-black-40">
-                {t.rich('page.user.profile.reviews.emptyMessage', { br: () => <br /> })}
+                {
+                    <>
+                        Nothing has been added here yet.
+                        <br />
+                        Reviews will show up as they’re written.
+                    </>
+                }
             </div>
         )
     }

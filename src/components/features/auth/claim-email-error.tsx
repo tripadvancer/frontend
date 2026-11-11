@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
 import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverification'
 
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -12,7 +11,6 @@ import { FormButton } from '@/components/ui/form-button'
 import { SignUpCompleting } from './sign-up-completing'
 
 export const ClaimEmailError = () => {
-    const t = useTranslations()
     const toast = useToast()
     const dialog = useDialog()
 
@@ -24,7 +22,7 @@ export const ClaimEmailError = () => {
             await sendVerificationEmail()
             dialog.open(<SignUpCompleting />)
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         } finally {
             setIsLoading(false)
         }
@@ -32,15 +30,19 @@ export const ClaimEmailError = () => {
 
     return (
         <div className="flex w-full flex-col items-center gap-8 sm:w-104">
-            <h1 className="h7">{t('auth.claimEmailError.title')}</h1>
-            <p className="text-center">{t('auth.claimEmailError.text')}</p>
+            <h1 className="h7">{'Your email is not verified'}</h1>
+            <p className="text-center">
+                {
+                    'Verified accounts have more features. Please confirm your email by clicking the link in the email we sent you during registration.'
+                }
+            </p>
             <FormButton
                 htmlType="button"
                 className="w-full"
                 isLoading={isLoading}
                 onClick={handleResendVerificationEmail}
             >
-                {t('auth.claimEmailError.resendVerificationEmail')}
+                {'Resend verification email'}
             </FormButton>
         </div>
     )

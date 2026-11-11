@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import Link from 'next/link'
 
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -10,7 +8,6 @@ import { Confirmation } from '@/components/ui/confirmation'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 
 export const UserSettingsBlockRequestPersonalData = () => {
-    const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -19,15 +16,15 @@ export const UserSettingsBlockRequestPersonalData = () => {
     const handleRequestPersonalData = () => {
         dialog.open(
             <Confirmation
-                title={t('confirmation.requestPersonalData.title')}
-                message={t('confirmation.requestPersonalData.text')}
+                title={'Send personal data'}
+                message={'Are you sure you want to send your personal data to your email?'}
                 onConfirm={async () => {
                     dialog.close()
                     try {
                         await requestPersonalData()
-                        toast.success(t('success.requestPersonalData'))
+                        toast.success('Your personal data has been sent to your email.')
                     } catch {
-                        toast.error(t('common.error'))
+                        toast.error('An unexpected error has occurred. Please try again later.')
                     }
                 }}
             />,
@@ -37,19 +34,25 @@ export const UserSettingsBlockRequestPersonalData = () => {
     return (
         <div className="flex flex-col gap-y-4 border-t border-black-15 py-8 last:border-b">
             <div className="flex items-center justify-between">
-                <div className="h7">{t('page.user.account.requestPersonalData.title')}</div>
+                <div className="h7">{'Personal Information'}</div>
                 <div className="link font-medium" onClick={handleRequestPersonalData}>
-                    {t('page.user.account.requestPersonalData.action')}
+                    {'Get a copy of data'}
                 </div>
             </div>
             <div>
-                {t.rich('page.user.account.requestPersonalData.text', {
-                    privacyLink: privacyLink => (
-                        <Link href="/legal/privacy-policy" target="_blank">
-                            {privacyLink}
-                        </Link>
-                    ),
-                })}
+                {
+                    <>
+                        You may request a copy of the personal data we hold about you. This includes any information you
+                        provided to us when you registered, such as your username, email address, and other additional
+                        details. For more information, please refer to our{' '}
+                        {
+                            <Link href="/legal/privacy-policy" target="_blank">
+                                Privacy Policy
+                            </Link>
+                        }
+                        .
+                    </>
+                }
             </div>
         </div>
     )

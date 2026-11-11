@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-import { useTranslations } from 'next-intl'
 import { useDebounceCallback } from 'usehooks-ts'
 
 import Image from 'next/image'
@@ -25,7 +24,6 @@ type SearchResultProps = {
 }
 
 export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchResultProps) => {
-    const t = useTranslations()
     const [items, setItems] = useState<ISearchItem<IPlacePreview | ICountryDict>[]>([])
     const [search, { data, isFetching, isSuccess, isError }] = searchAPI.useLazySearchQuery()
 
@@ -52,15 +50,19 @@ export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchRe
     }, [data, isSuccess, searchTerm])
 
     if (isError) {
-        return <div className="py-3 pl-3 text-red-100">{t('component.search.result.error')}</div>
+        return (
+            <div className="py-3 pl-3 text-red-100">{'An error occurred while searching. Please try again later.'}</div>
+        )
     }
 
     if (isFetching) {
-        return <div className="py-3 pl-3 text-black-70">{t('component.search.result.loading')}</div>
+        return <div className="py-3 pl-3 text-black-70">{'Searching ...'}</div>
     }
 
     if (isSuccess && items.length === 0) {
-        return <div className="py-3 pl-3 text-black-70">{t('component.search.result.empty')}</div>
+        return (
+            <div className="py-3 pl-3 text-black-70">{'No results found. Please try changing your search query.'}</div>
+        )
     }
 
     if (isSuccess && items.length > 0) {
@@ -73,7 +75,7 @@ export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchRe
                     item.type === 'country' ? (
                         <ImageWithFallback
                             src={`/images/countries/preview/${(item.properties as ICountryDict).code.toLowerCase()}.jpg`}
-                            alt={(item.properties as ICountryDict).name['en']}
+                            alt={(item.properties as ICountryDict).name}
                             width={36}
                             height={36}
                             className="aspect-square rounded-md"
@@ -98,5 +100,5 @@ export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchRe
         ))
     }
 
-    return <div className="py-3 pl-3 text-black-70">{t('component.search.result.title')}</div>
+    return <div className="py-3 pl-3 text-black-70">{'Search for a country or place'}</div>
 }

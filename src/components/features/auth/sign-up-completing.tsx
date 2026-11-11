@@ -1,9 +1,12 @@
-import { useTranslations } from 'next-intl'
-
 import { AuthCompleting } from './auth-completing'
 
 export const SignUpCompleting = () => {
-    const t = useTranslations()
-
-    return <AuthCompleting title={t('auth.signupCompleting.title')} text={t('auth.signupCompleting.text')} />
+    return (
+        <AuthCompleting
+            title={'Verify your email'}
+            text={
+                'We have sent you a verification email. Please check your inbox and follow the instructions provided in the email to complete the verification process.'
+            }
+        />
+    )
 }

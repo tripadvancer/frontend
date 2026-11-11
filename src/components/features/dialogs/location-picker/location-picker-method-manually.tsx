@@ -2,8 +2,6 @@
 
 import { ChangeEvent, useState } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
@@ -20,7 +18,6 @@ export const LocationPickerMethodManually = ({
     onChangeMethod,
     onConfirm,
 }: LocationPickerMethodManuallyProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
 
     const [value, setValue] = useState(initialValue)
@@ -49,16 +46,16 @@ export const LocationPickerMethodManually = ({
                     value={value}
                     autoComplete="off"
                     autoFocus
-                    placeholder={t('dialog.locationPicker.placeholder')}
+                    placeholder={'Enter coordinates'}
                     onChange={handleChangeValue}
-                    error={!isValueValid ? t('validation.location.invalid') : ''}
+                    error={!isValueValid ? "Coordinates must be in format: 'lat, lng', e.g. '50.4501, 30.5234'" : ''}
                 />
                 <div className="cursor-pointer text-center text-blue-100" onClick={onChangeMethod}>
-                    {t('dialog.locationPicker.toggleMethodOnMap')}
+                    {'Select a location on the map'}
                 </div>
             </div>
             <FormButton onClick={handleConfirm} isDisabled={!value}>
-                {t('common.action.confirm')}
+                {'Confirm'}
             </FormButton>
         </div>
     )

@@ -2,7 +2,6 @@
 
 import classNames from 'classnames'
 import { PlusIcon } from 'lucide-react'
-import { useLocale, useTranslations } from 'next-intl'
 
 import { SelectCategories } from '@/components/features/dialogs/select-categories/select-categories'
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -15,8 +14,6 @@ type PlaceFormInputCategoriesProps = {
 }
 
 export const PlaceFormInputCategories = ({ value, error, onChange }: PlaceFormInputCategoriesProps) => {
-    const t = useTranslations()
-    const locale = useLocale()
     const dialog = useDialog()
 
     const handleSelectCategories = () => {
@@ -34,7 +31,7 @@ export const PlaceFormInputCategories = ({ value, error, onChange }: PlaceFormIn
                     onClick={handleSelectCategories}
                 >
                     <PlusIcon size={16} />
-                    {t('page.placeForm.field.categories.label')}
+                    {'Add category'}
                 </div>
             )}
             {value.map(categoryId => (
@@ -43,7 +40,7 @@ export const PlaceFormInputCategories = ({ value, error, onChange }: PlaceFormIn
                     className="hover-animated flex h-8 cursor-pointer items-center gap-x-2 whitespace-nowrap rounded-full border border-blue-100 px-4 text-small text-blue-100 hover:border-blue-active hover:text-blue-active"
                     onClick={handleSelectCategories}
                 >
-                    {categoriesDictionary.find(category => category.id === categoryId)?.localizedName[locale]}
+                    {categoriesDictionary.find(category => category.id === categoryId)?.name}
                 </div>
             ))}
         </div>

@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
 import { verifyEmail } from 'supertokens-web-js/recipe/emailverification'
 
 import { useToast } from '@/components/providers/toast-provider'
@@ -10,7 +9,6 @@ import { LinkButton } from '@/components/ui/link-button'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 
 export const VerifyEmail = () => {
-    const t = useTranslations()
     const toast = useToast()
 
     const [status, setStatus] = useState<string>()
@@ -21,24 +19,25 @@ export const VerifyEmail = () => {
                 const response = await verifyEmail()
                 setStatus(response.status)
             } catch (err) {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             }
         }
         handleVerifyEmail()
     })
 
     if (!status) {
-        return <p className="text-center">{t('auth.verifyEmail.loading')}</p>
+        return <p className="text-center">{'Verifying your email...'}</p>
     }
 
     return (
         <>
             <p className="text-center">
-                {status === 'EMAIL_VERIFICATION_INVALID_TOKEN_ERROR' && t('auth.verifyEmail.status.expired')}
-                {status === 'OK' && t('auth.verifyEmail.status.ok')}
+                {status === 'EMAIL_VERIFICATION_INVALID_TOKEN_ERROR' &&
+                    'The email verification link has expired. Please sign in again so we can send you a new verification link.'}
+                {status === 'OK' && 'Your email has been verified.'}
             </p>
             <LinkButton href="/" className="w-full">
-                {t('common.action.goHome')}
+                {'Go to Home'}
             </LinkButton>
         </>
     )

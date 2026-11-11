@@ -3,7 +3,6 @@
 import { ChangeEvent } from 'react'
 
 import { SearchIcon, XIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { Spinner } from '@/components/ui/spinner'
 
@@ -17,8 +16,6 @@ type LocationPickerMapSearchInputProps = {
 }
 
 export const LocationPickerMapSearchInput = (props: LocationPickerMapSearchInputProps) => {
-    const t = useTranslations()
-
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         props.onChange(e.target.value)
     }
@@ -40,7 +37,7 @@ export const LocationPickerMapSearchInput = (props: LocationPickerMapSearchInput
                     autoComplete="off"
                     autoFocus
                     className="h-full w-full bg-transparent focus:outline-none"
-                    placeholder={t('dialog.locationPicker.placeholder')}
+                    placeholder={'Enter coordinates'}
                     onClick={props.onClick}
                     onChange={handleChange}
                 />

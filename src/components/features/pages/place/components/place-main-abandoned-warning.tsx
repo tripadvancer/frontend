@@ -1,5 +1,4 @@
 import { SkullIcon } from 'lucide-react'
-import { getTranslations } from 'next-intl/server'
 
 import { Notice } from '@/components/ui/notice'
 
@@ -8,11 +7,15 @@ type PlaceMainAbandonedWarningProps = {
 }
 
 export const PlaceMainAbandonedWarning = async ({ categories }: PlaceMainAbandonedWarningProps) => {
-    const t = await getTranslations()
-
     // abandoned category id = 1 from categoriesDictionary
     if (categories.includes(1)) {
-        return <Notice message={t('page.place.abandonedWarning')} icon={<SkullIcon />} variant="red" />
+        return (
+            <Notice
+                message={'Places in the "Abandoned" category might be dangerous, be careful.'}
+                icon={<SkullIcon />}
+                variant="red"
+            />
+        )
     }
 
     return null

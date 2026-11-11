@@ -2,8 +2,6 @@
 
 import { ChangeEvent } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { SettingsCategories } from '@/utils/enums'
 
@@ -14,13 +12,11 @@ type UserSettingsFormPrivacyProps = {
 }
 
 export const UserSettingsFormPrivacy = ({ initialValue, isDisabled, onChange }: UserSettingsFormPrivacyProps) => {
-    const t = useTranslations()
-
     return (
         <FormCheckbox
             name="show_my_map"
             checked={initialValue[SettingsCategories.PRIVACY].show_my_map}
-            label={t('page.user.settingsForm.field.settings.privacy.options.show_my_map')}
+            label={'Show my travel journal to everyone'}
             disabled={isDisabled}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 onChange({

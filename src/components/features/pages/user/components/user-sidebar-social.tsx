@@ -1,5 +1,3 @@
-import { getTranslations } from 'next-intl/server'
-
 import { UserSocialApps } from '@/utils/enums'
 
 import { UserSidebarSocialLink } from './user-sidebar-social-link'
@@ -9,15 +7,13 @@ type UserSidebarSocialProps = {
 }
 
 export const UserSidebarSocial = async ({ social }: UserSidebarSocialProps) => {
-    const t = await getTranslations()
-
     if (!Object.keys(social).length) {
         return null
     }
 
     return (
         <section>
-            <h3 className="mb-4 text-caps uppercase">{t('page.user.contacts')}</h3>
+            <h3 className="mb-4 text-caps uppercase">{'Social accounts'}</h3>
             <div className="flex flex-col gap-y-4">
                 {Object.keys(social)
                     .sort()

@@ -1,5 +1,3 @@
-import { getLocale, getTranslations } from 'next-intl/server'
-
 import { getCountryByCode } from '@/services/countries'
 import { countriesDictionary } from '@/utils/dictionaries/countries'
 import { calculateWorldCoverage } from '@/utils/helpers/world-coverage'
@@ -12,8 +10,6 @@ type UserVisitedCountriesFeedProps = {
 }
 
 export const UserVisitedCountriesFeed = async ({ visitedCountries }: UserVisitedCountriesFeedProps) => {
-    const t = await getTranslations()
-    const locale = await getLocale()
     const worldCoverageInPercent = calculateWorldCoverage(visitedCountries, countriesDictionary)
 
     if (visitedCountries.length === 0) {
@@ -23,7 +19,7 @@ export const UserVisitedCountriesFeed = async ({ visitedCountries }: UserVisited
     return (
         <div className="flex flex-col gap-y-4">
             <div className="flex items-center justify-between rounded-2xl bg-orange-10 p-4">
-                <div className="h6">{t('page.user.profile.visitedCountries.allcountries')}</div>
+                <div className="h6">{'All countries'}</div>
                 <div className="h6 text-blue-80">{`${worldCoverageInPercent}%`}</div>
             </div>
 
@@ -34,7 +30,7 @@ export const UserVisitedCountriesFeed = async ({ visitedCountries }: UserVisited
                     return (
                         <UserVisitedCountriesFeedItem
                             key={`country-${country.code}`}
-                            name={country.name[locale]}
+                            name={country.name}
                             count={item.count}
                             places={item.places}
                         />

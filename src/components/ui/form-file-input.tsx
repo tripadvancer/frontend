@@ -2,7 +2,6 @@ import { ChangeEvent, useRef, useState } from 'react'
 
 import classNames from 'classnames'
 import { FolderIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { Spinner } from '@/components/ui/spinner'
 
@@ -27,8 +26,6 @@ export const FormFileInput = ({
     isUploading,
     onChange,
 }: FormFileInputProps) => {
-    const t = useTranslations()
-
     const [error, setError] = useState<string>('')
 
     // Create a reference to the hidden file input element
@@ -51,12 +48,12 @@ export const FormFileInput = ({
         setError('')
 
         if (files.length + currentFilesLength > maxFilesCount) {
-            setError(t('validation.file.maxCount', { count: maxFilesCount }))
+            setError(`You can upload up to ${maxFilesCount} files`)
             return
         }
 
         if (fileSize > maxFileSize) {
-            setError(t('validation.file.maxSize', { size: maxFileSize / 1000000 }))
+            setError(`The file size must not exceed ${maxFileSize / 1000000} MB`)
             return
         }
 
@@ -88,7 +85,7 @@ export const FormFileInput = ({
                     >
                         {isUploading && (
                             <>
-                                <div className="text-black-40">{t('common.loading')}</div>
+                                <div className="text-black-40">{'Loading ...'}</div>
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
                                     <Spinner size={16} />
                                 </div>
@@ -100,7 +97,7 @@ export const FormFileInput = ({
                                 {fileName ? (
                                     <div className="text-black-100">{fileName}</div>
                                 ) : (
-                                    <div className="text-black-40">{t('placeholder.action.selectFile')}</div>
+                                    <div className="text-black-40">{'Select file ...'}</div>
                                 )}
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
                                     <FolderIcon size={16} />

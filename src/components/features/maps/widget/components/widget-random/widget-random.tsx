@@ -3,7 +3,6 @@
 import { useMap } from 'react-map-gl/maplibre'
 
 import { GeoJSONSource } from 'maplibre-gl'
-import { useTranslations } from 'next-intl'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { getUserLocation } from '@/utils/redux/features/user-slice'
@@ -16,7 +15,6 @@ import { WidgetRandomResults } from './widget-random-results'
 import { WidgetRandomSlider } from './widget-random-slider'
 
 export const WidgetRandom = () => {
-    const t = useTranslations()
     const toast = useToast()
     const userLocation = useAppSelector(getUserLocation)
     const categories = useAppSelector(getWidgetSelectedCategories)
@@ -54,14 +52,14 @@ export const WidgetRandom = () => {
                     }
                 }
             } catch (error) {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             }
         }
     }
 
     return (
         <div className="flex flex-col gap-y-6 sm:gap-y-8">
-            <div className="text-caps uppercase">{t('map.widget.random.distance.title')}</div>
+            <div className="text-caps uppercase">{'Distance from you'}</div>
             <WidgetRandomSlider />
             {/* prettier-ignore */}
             <WidgetRandomButton

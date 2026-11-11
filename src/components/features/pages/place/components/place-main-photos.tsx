@@ -1,5 +1,3 @@
-import { getTranslations } from 'next-intl/server'
-
 import { PhotoGallery } from '@/components/ui/photo-gallery'
 
 type PlaceMainPhotosProps = {
@@ -14,15 +12,13 @@ type PlaceMainPhotosProps = {
 }
 
 export const PlaceMainPhotos = async ({ title, author, photos }: PlaceMainPhotosProps) => {
-    const t = await getTranslations()
-
     if (photos.length === 0) {
         return null
     }
 
     return (
         <section className="flex flex-col gap-y-8">
-            <h2 className="h5">{t('page.place.photos')}</h2>
+            <h2 className="h5">{'Photos'}</h2>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
                 <PhotoGallery photos={photos} title={title} description={author.name} size={186} />
             </div>

@@ -3,14 +3,12 @@
 import { useEffect, useState } from 'react'
 
 import DOMPurify from 'dompurify'
-import { useTranslations } from 'next-intl'
 
 type PlaceMainDescriptionProps = {
     description: string
 }
 
 export const PlaceMainDescription = ({ description }: PlaceMainDescriptionProps) => {
-    const t = useTranslations()
     const [sanitizedHTML, setSanitizedHTML] = useState<string>('')
 
     useEffect(() => {
@@ -43,7 +41,7 @@ export const PlaceMainDescription = ({ description }: PlaceMainDescriptionProps)
 
     return (
         <section className="flex flex-col gap-y-8">
-            <h2 className="h5">{t('page.place.about')}</h2>
+            <h2 className="h5">{'About this place'}</h2>
             <div className="flex flex-col gap-y-4">
                 <div className="break-words text-big" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
             </div>

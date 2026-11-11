@@ -1,13 +1,9 @@
-import { getTranslations } from 'next-intl/server'
-
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { LinkButton } from '@/components/ui/link-button'
 
 export default async function NotFound() {
-    const t = await getTranslations()
-
     return (
         <div className="container flex min-h-screen flex-col items-center py-16 md:flex-row md:gap-x-8 lg:gap-x-16 xl:gap-x-32">
             <Image
@@ -30,9 +26,13 @@ export default async function NotFound() {
                     alt="404"
                     priority
                 />
-                <h2 className="h3 mb-8">{t('page.notFound.title')}</h2>
-                <p className="mb-8 text-big text-black-70">{t('page.notFound.text')}</p>
-                <LinkButton href="/">{t('common.action.returnHome')}</LinkButton>
+                <h2 className="h3 mb-8">{'Page not found'}</h2>
+                <p className="mb-8 text-big text-black-70">
+                    {
+                        'We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for has either been moved, deleted, or never existed in the first place.'
+                    }
+                </p>
+                <LinkButton href="/">{'Return Home'}</LinkButton>
             </div>
         </div>
     )

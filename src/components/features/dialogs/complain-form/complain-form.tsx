@@ -1,7 +1,6 @@
 'use client'
 
 import { useFormik } from 'formik'
-import { useTranslations } from 'next-intl'
 import * as Yup from 'yup'
 
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -13,6 +12,16 @@ import { ComplaintReasonsEnum } from '@/utils/enums'
 import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/redux/services/complain/complain.types'
 
 const textMaxLength = validationConfig.complain.maxLength
+const complaintReasonLabels: Record<ComplaintReasonsEnum, string> = {
+    [ComplaintReasonsEnum.ABUSE]: 'Misuse, mistreatment or intentional harm',
+    [ComplaintReasonsEnum.COPYRIGHT]: 'Copyright or intellectual property rights violation',
+    [ComplaintReasonsEnum.DUPLICATE]: 'Duplicate, no additional value',
+    [ComplaintReasonsEnum.FALSE]: 'Incorrect or misleading information',
+    [ComplaintReasonsEnum.FRAUD]: 'Fraudulent, deceptive activities',
+    [ComplaintReasonsEnum.INAPPROPRIATE]: 'Inappropriate or explicit content',
+    [ComplaintReasonsEnum.SPAM]: 'Irrelevant or unsolicited content',
+    [ComplaintReasonsEnum.OTHER]: 'Other reason',
+}
 
 type ComplainFormProps = {
     initialValues: PlaceComplaintInputs | ReviewComplaintInputs
@@ -21,15 +30,12 @@ type ComplainFormProps = {
 }
 
 export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFormProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
 
     const reasons = Object.values(ComplaintReasonsEnum)
 
     const validationSchema = Yup.object().shape({
-        text: Yup.string()
-            .trim()
-            .max(textMaxLength, t('validation.text.maxLength', { maxLength: textMaxLength })),
+        text: Yup.string().trim().max(textMaxLength, `This field must be at most ${textMaxLength} characters long`),
     })
 
     const formik = useFormik({
@@ -50,8 +56,7 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
                             id={reason}
                             name="reason"
                             value={reason}
-                            // @ts-ignore
-                            caption={t(`dialog.complaintForm.reasons.${reason.toLowerCase()}`)}
+                            caption={complaintReasonLabels[reason]}
                             checked={formik.values.reason === reason}
                             onChange={formik.handleChange}
                         />
@@ -61,17 +66,17 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
                     type="text"
                     name="text"
                     value={formik.values.text}
-                    placeholder={t('dialog.complaintForm.field.comment.placeholder')}
+                    placeholder={'Add your comment here'}
                     error={formik.errors.text}
                     onChange={formik.handleChange}
                 />
             </div>
             <div className="flex gap-x-2">
                 <FormButton htmlType="submit" isLoading={isLoading}>
-                    {t('common.action.send')}
+                    {'Send'}
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>
-                    {t('common.action.cancel')}
+                    {'Cancel'}
                 </FormButton>
             </div>
         </form>

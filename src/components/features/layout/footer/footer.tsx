@@ -1,12 +1,8 @@
-import { getTranslations } from 'next-intl/server'
-
 import Link from 'next/link'
 
 import { ExternalLink } from '@/components/ui/external-link'
 
 export const Footer = async () => {
-    const t = await getTranslations()
-
     return (
         <footer className="bg-white">
             <div className="container relative">
@@ -15,19 +11,19 @@ export const Footer = async () => {
                 <div className="inner-container flex flex-col items-center gap-y-4 py-8">
                     <div className="flex flex-col sm:gap-y-1">
                         <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
-                            <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{t('layout.footer.contactUs')}</Link>
+                            <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{'Contact Us'}</Link>
                             <span className="hidden sm:block">•</span>
                             <Link href="https://help.tripadvancer.com" target="_blank">
-                                {t('layout.footer.helpCenter')}
+                                {'Help Center'}
                             </Link>
                         </nav>
 
                         <nav className="flex flex-col flex-wrap items-center justify-center gap-x-2 text-black-40 sm:flex-row">
-                            <Link href="/legal/terms-and-conditions">{t('layout.footer.termsAndConditions')}</Link>
+                            <Link href="/legal/terms-and-conditions">{'Terms and Conditions'}</Link>
                             <span className="hidden sm:block">•</span>
-                            <Link href="/legal/privacy-policy">{t('layout.footer.privacyPolicy')}</Link>
+                            <Link href="/legal/privacy-policy">{'Privacy Policy'}</Link>
                             <span className="hidden sm:block">•</span>
-                            <Link href="/legal/cookie-policy">{t('layout.footer.cookiePolicy')}</Link>
+                            <Link href="/legal/cookie-policy">{'Cookie Policy'}</Link>
                         </nav>
                     </div>
 
@@ -57,12 +53,7 @@ export const Footer = async () => {
                     </div>
 
                     <div className="text-center">
-                        {t.rich('layout.footer.poweredByStadiaMaps', {
-                            stadiaMapsLink: stadiaMapsLink => (
-                                <ExternalLink href="https://stadiamaps.com/">{stadiaMapsLink}</ExternalLink>
-                            ),
-                        })}
-                        <div className="text-black-40">{t('layout.footer.copyright')}</div>
+                        <div className="text-black-40">{'© Tripadvancer, 2026'}</div>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,6 @@
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
 
 import { CopyIcon } from 'lucide-react'
-import { useLocale, useTranslations } from 'next-intl'
 import { useCopyToClipboard } from 'usehooks-ts'
 
 import Image from 'next/image'
@@ -19,8 +18,6 @@ type SharePlaceProps = {
 }
 
 export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
-    const t = useTranslations()
-    const locale = useLocale()
     const toast = useToast()
     const url = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/places/${id}`
 
@@ -29,17 +26,17 @@ export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
     const handleCopy = () => {
         copy(url)
             .then(() => {
-                toast.success(t('success.copyLink'))
+                toast.success('Link copied to clipboard')
             })
             .catch(error => {
-                toast.error(t('common.error'))
+                toast.error('An unexpected error has occurred. Please try again later.')
             })
     }
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
-            <h1 className="h7 text-center">{t('dialog.sharePlace.title')}</h1>
-            <p className="text-center">{t('dialog.sharePlace.text')}</p>
+            <h1 className="h7 text-center">{'Share place'}</h1>
+            <p className="text-center">{'Share the place with your friends and invite them to visit it.'}</p>
             <div className="flex gap-x-2">
                 <TwitterShareButton
                     url={url}
@@ -47,8 +44,8 @@ export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
                     via="tripadvancer_me"
                     hashtags={[
                         `${title.replace(/\s/g, '').toLowerCase()}`,
-                        `${getCountryByCode(countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
-                        `visit${getCountryByCode(countryCode)?.name[locale].replace(/\s/g, '').toLowerCase()}`,
+                        `${getCountryByCode(countryCode)?.name.replace(/\s/g, '').toLowerCase()}`,
+                        `visit${getCountryByCode(countryCode)?.name.replace(/\s/g, '').toLowerCase()}`,
                         'tripadvancer_me',
                         'tripadvancer',
                         'travel',

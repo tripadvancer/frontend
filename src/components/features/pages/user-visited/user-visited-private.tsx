@@ -1,5 +1,3 @@
-import { getTranslations } from 'next-intl/server'
-
 import { ExternalLink } from '@/components/ui/external-link'
 import { getUserSettings } from '@/services/user'
 import { getUserVisitedCountries } from '@/services/users'
@@ -10,7 +8,6 @@ import { UserVisitedMap } from './components/user-visited-map'
 import { UserVisitedSwitcherVisible } from './components/user-visited-switcher-visible'
 
 export const UserVisitedPrivate = async ({ user }: { user: IUser }) => {
-    const t = await getTranslations()
     const [settings, visitedCountries] = await Promise.all([getUserSettings(), getUserVisitedCountries(user.id)])
 
     return (
@@ -20,14 +17,19 @@ export const UserVisitedPrivate = async ({ user }: { user: IUser }) => {
 
             {!visitedCountries.length && (
                 <div className="text-center text-black-40">
-                    {t.rich('page.user.profile.visitedCountries.emptyMessage', {
-                        br: () => <br />,
-                        learnMoreLink: learnMoreLink => (
-                            <ExternalLink href="https://help.tripadvancer.com/profile/user-map">
-                                {learnMoreLink}
-                            </ExternalLink>
-                        ),
-                    })}
+                    {
+                        <>
+                            You have not visited any countries yet.
+                            <br />
+                            To view your visited countries, add a place you have been to.
+                            <br />
+                            {
+                                <ExternalLink href="https://help.tripadvancer.com/profile/user-map">
+                                    Learn more
+                                </ExternalLink>
+                            }
+                        </>
+                    }
                 </div>
             )}
 

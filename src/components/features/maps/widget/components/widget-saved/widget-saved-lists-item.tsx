@@ -1,14 +1,12 @@
 'use client'
 
 import { ArrowRightIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { setWidgetActiveList } from '@/utils/redux/features/widget-slice'
 import { useAppDispatch } from '@/utils/redux/hooks'
 import { IList } from '@/utils/types/common'
 
 export const WidgetSavedListsItem = (list: IList) => {
-    const t = useTranslations()
     const dispatch = useAppDispatch()
 
     const handleListClick = () => {
@@ -23,9 +21,13 @@ export const WidgetSavedListsItem = (list: IList) => {
             <div className="flex-1 overflow-hidden">
                 <div className="overflow-hidden text-ellipsis text-big-bold">{list.name}</div>
                 <div className="flex gap-x-1 text-small text-black-40">
-                    {t('map.widget.tabs.savedPlaces.lists.private')}
+                    {'Private'}
                     <span>•</span>
-                    {t('common.placesCounter', { count: list._count.listToPlace })}
+                    {list._count.listToPlace === 0
+                        ? 'No places'
+                        : list._count.listToPlace === 1
+                          ? '1 place'
+                          : list._count.listToPlace + ' places'}
                 </div>
             </div>
             <ArrowRightIcon size={16} absoluteStrokeWidth />

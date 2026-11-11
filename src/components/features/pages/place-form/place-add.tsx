@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
@@ -15,7 +13,6 @@ import { CreatePlaceInputs } from '@/utils/redux/services/places/places.types'
 import { PlaceForm } from './place-form'
 
 export const PlaceAdd = () => {
-    const t = useTranslations()
     const dialog = useDialog()
     const router = useRouter()
     const toast = useToast()
@@ -57,10 +54,10 @@ export const PlaceAdd = () => {
                 title: inputs.title.trim(),
             }
             const response = await createPlace(trimmedInputs).unwrap()
-            toast.success(t('success.createPlace'))
+            toast.success('Your place has been added.')
             router.push(`/places/${response.id}`)
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
