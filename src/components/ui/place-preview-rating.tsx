@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { Rating } from '@/components/ui/rating'
 
 type PlacePreviewRatingProps = {
@@ -10,15 +8,11 @@ type PlacePreviewRatingProps = {
 }
 
 export const PlacePreviewRating = ({ avgRating, reviewsCount }: PlacePreviewRatingProps) => {
-    const t = useTranslations()
-
     return (
         <div>
             <Rating value={avgRating ?? 0} size={16} />
             <div className="text-small text-black-40">
-                {t('common.reviewsCounter', {
-                    count: reviewsCount ?? 0,
-                })}
+                {reviewsCount === 0 ? 'No reviews' : reviewsCount === 1 ? '1 review' : `${reviewsCount} reviews`}
             </div>
         </div>
     )
