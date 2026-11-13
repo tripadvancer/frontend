@@ -3,7 +3,8 @@
 import Image from 'next/image'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
-import { getCountryByCode } from '@/services/countries'
+import { getCountryByCode } from '@/utils/helpers/countries'
+import { getPlacePath } from '@/utils/helpers/places'
 import { internalAPI } from '@/utils/redux/services/internal/internal.api'
 import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
 
@@ -38,7 +39,7 @@ export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
     return (
         <div>
             <hr className="my-1" />
-            <div className="mb-1 mt-4 pl-3 text-black-70">May be interesting for you:</div>
+            <div className="text-black-70 mt-4 mb-1 pl-3">May be interesting for you:</div>
 
             <SearchItem
                 title={userCountry.name}
@@ -52,7 +53,7 @@ export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
                         className="rounded-md"
                     />
                 }
-                href={`/countries/${userCountry.slug}`}
+                href={`/${userCountry.slug}`}
                 hideResults={hideResults}
             />
 
@@ -69,7 +70,7 @@ export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
                             className="aspect-square w-9 rounded-md"
                         />
                     }
-                    href={`/places/${place.id}`}
+                    href={getPlacePath(place.id, place.countryCode)}
                     hideResults={hideResults}
                 />
             ))}

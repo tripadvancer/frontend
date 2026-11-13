@@ -6,6 +6,7 @@ import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { stringToLngLat } from '@/utils/helpers/maps'
+import { getPlacePath } from '@/utils/helpers/places'
 import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
 import { CreatePlaceInputs } from '@/utils/redux/services/places/places.types'
@@ -55,7 +56,7 @@ export const PlaceAdd = () => {
             }
             const response = await createPlace(trimmedInputs).unwrap()
             toast.success('Your place has been added.')
-            router.push(`/places/${response.id}`)
+            router.push(getPlacePath(response.id, response.countryCode))
         } catch {
             toast.error('An unexpected error has occurred. Please try again later.')
         }
