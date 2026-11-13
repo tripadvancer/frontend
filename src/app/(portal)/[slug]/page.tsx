@@ -7,7 +7,7 @@ type SearchParams = Promise<{ categories: string }>
 export default async function CountryPage(props: { params: Params; searchParams: SearchParams }) {
     const params = await props.params
     const searchParams = await props.searchParams
-    const country = getCountryBySlug(params.slug)
+    const country = await getCountryBySlug(params.slug)
     const categoriesIdsFromQueryString = searchParams.categories?.toString().toLowerCase()
 
     return <Country country={country} categoriesIdsFromQueryString={categoriesIdsFromQueryString} />

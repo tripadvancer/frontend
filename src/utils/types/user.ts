@@ -20,8 +20,23 @@ export type IUserStatistics = {
     visitedCountries: number
 }
 
+export type IUserPreview = {
+    id: number
+    name: string
+    avatar: string | null
+}
+
 export type IUserVisitedCountries = {
     code: string
     count: number
-    places: any
+    places: {
+        id: number
+        title: string
+        cover: string | null
+        coordinates: number[]
+        isSaved: boolean
+        avgRating: number | null
+        reviewsCount: number | null
+        countryCode: string | null
+    }[]
 }[]

@@ -13,7 +13,7 @@ export const HeaderLogo = ({ closeMobileMenu }: HeaderLogoProps) => {
                 width="187"
                 height="32"
                 alt="Tripadvancer"
-                className="h-[24px] w-[140px] sm:h-[32px] sm:w-[187px]"
+                className="h-6 w-35 sm:h-8 sm:w-46.75"
             />
         </Link>
     )

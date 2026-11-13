@@ -7,6 +7,7 @@ type PlacesGridProps = {
         id: number
         title: string
         cover: string | null
+        countryCode?: string | null
         rating?: {
             avgRating: number | null
             reviewsCount: number
@@ -27,6 +28,7 @@ export const PlacesGrid = ({ places }: PlacesGridProps) => {
             id={place.id}
             title={place.title}
             cover={place.cover}
+            countryCode={place.countryCode}
             rating={place.rating}
             meta={place.meta}
             distance={place.distance}

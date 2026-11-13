@@ -25,7 +25,7 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
 
     if (isError) {
         return (
-            <div className="border-y border-black-15 py-8 text-center text-black-40">
+            <div className="border-black-15 text-black-40 border-y py-8 text-center">
                 An unexpected error has occurred. Please try again later.
             </div>
         )
@@ -33,7 +33,7 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
 
     if (isSuccess && reviews.items.length === 0) {
         return (
-            <div className="border-y border-black-15 py-8 text-center text-black-40">
+            <div className="border-black-15 text-black-40 border-y py-8 text-center">
                 Do you know this place?
                 <br />
                 Other users will appreciate your review!
