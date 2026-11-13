@@ -4,8 +4,8 @@ import { EmailVerificationClaim } from 'supertokens-node/recipe/emailverificatio
 import { notFound } from 'next/navigation'
 
 import { PlaceEdit } from '@/components/features/pages/place-form/place-edit'
-import { getCountryByCode } from '@/services/countries'
 import { getPlaceById } from '@/services/places'
+import { getCountryByCode } from '@/utils/helpers/countries'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 

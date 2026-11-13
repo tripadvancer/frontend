@@ -16,7 +16,7 @@ export const PlaceFormSubmit = ({ isLoading, isDisabled }: PlaceFormSubmitProps)
                 <FormButton htmlType="submit" className="mb-4 w-full" isLoading={isLoading} isDisabled={isDisabled}>
                     Save changes
                 </FormButton>
-                <p className="text-center text-small text-black-40">
+                <p className="text-small text-black-40 text-center">
                     By adding a new place to the map, you acknowledge and accept our{' '}
                     {<Link href="/legal/terms-and-conditions">Terms and Conditions</Link>} and{' '}
                     {<Link href="/legal/privacy-policy">Privacy Policy</Link>}.
