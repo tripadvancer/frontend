@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
     return (
-        <div className="flex-center min-h-screen bg-blue-20 p-4 sm:p-16">
+        <div className="flex-center bg-blue-20 min-h-screen p-4 sm:p-16">
             <div className="box-content flex w-104 flex-col items-center gap-y-8 rounded-2xl bg-white px-8 py-16 sm:p-16">
                 <Link href="/" className="flex gap-x-2">
                     <Image
@@ -25,7 +25,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
                         width="144"
                         height="24"
                         alt="Tripadvancer"
-                        className="sm:h-[28px] sm:w-[168px]"
+                        className="sm:h-7 sm:w-42"
                     />
                 </Link>
                 {children}

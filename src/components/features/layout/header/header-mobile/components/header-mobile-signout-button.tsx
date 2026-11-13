@@ -29,7 +29,7 @@ export const HeaderMobileSignoutButton = ({ closeMobileMenu }: HeaderMobileSigno
     return (
         <button
             onClick={handleSignOut}
-            className="flex items-center justify-between gap-x-2 text-red-100 hover:text-red-active"
+            className="hover:text-red-active flex items-center justify-between gap-x-2 text-red-100"
         >
             Log Out
             <LogOutIcon size={20} />

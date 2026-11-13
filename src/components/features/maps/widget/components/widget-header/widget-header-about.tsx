@@ -10,7 +10,7 @@ export const WidgetHeaderAbout = () => {
 
     if (widgetState.isAboutOpened) {
         return (
-            <div className="flex flex-col gap-y-4 px-4 pb-8 pt-4 sm:px-8 sm:pt-0">
+            <div className="flex flex-col gap-y-4 px-4 pt-4 pb-8 sm:px-8 sm:pt-0">
                 <div className="flex flex-col gap-y-2">
                     <p>Planing a trip but don`t know where to go?</p>
                     <p>

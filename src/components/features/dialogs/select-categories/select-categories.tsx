@@ -57,7 +57,7 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
                 <FormButton isDisabled={selectedCategoryIds.length === 0} onClick={handleConfirm}>
                     Confirm
                 </FormButton>
-                <div className="text-center text-small text-black-40">
+                <div className="text-small text-black-40 text-center">
                     Not sure which categories to choose?
                     <br />
                     Take a look at our{' '}

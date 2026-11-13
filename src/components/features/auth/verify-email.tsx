@@ -34,6 +34,7 @@ export const VerifyEmail = () => {
             <p className="text-center">
                 {status === 'EMAIL_VERIFICATION_INVALID_TOKEN_ERROR' &&
                     'The email verification link has expired. Please sign in again so we can send you a new verification link.'}
+
                 {status === 'OK' && 'Your email has been verified.'}
             </p>
             <LinkButton href="/" className="w-full">
