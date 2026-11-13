@@ -14,7 +14,7 @@ export const PhotoPreview = ({ url, alt, size, onPhotoClick, onPhotoDelete }: Ph
     return (
         <div className="relative">
             <div
-                className="flex-center absolute right-0 top-0 h-8 w-8 cursor-pointer rounded-lg bg-red-10 text-red-100"
+                className="flex-center bg-red-10 absolute top-0 right-0 h-8 w-8 cursor-pointer rounded-lg text-red-100"
                 onClick={onPhotoDelete}
             >
                 <TrashIcon size={16} />

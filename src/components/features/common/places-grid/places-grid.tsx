@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { PlacesGridItem } from './places-grid-item'
 
 type PlacesGridProps = {
@@ -5,6 +7,7 @@ type PlacesGridProps = {
         id: number
         title: string
         cover: string | null
+        countryCode?: string | null
         rating?: {
             avgRating: number | null
             reviewsCount: number
@@ -14,6 +17,7 @@ type PlacesGridProps = {
             createdAt: Date
         }
         distance?: number
+        actions?: ReactNode
     }[]
 }
 
@@ -24,9 +28,11 @@ export const PlacesGrid = ({ places }: PlacesGridProps) => {
             id={place.id}
             title={place.title}
             cover={place.cover}
+            countryCode={place.countryCode}
             rating={place.rating}
             meta={place.meta}
             distance={place.distance}
+            actions={place.actions}
         />
     ))
 }

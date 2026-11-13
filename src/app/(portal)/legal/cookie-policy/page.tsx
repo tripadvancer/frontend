@@ -16,7 +16,7 @@ export default function LegalCookiePolicyPage() {
             <h1 className="h1 mb-4 text-center">Cookie Policy</h1>
 
             <div className="flex flex-col gap-y-16">
-                <section className="text-center text-black-70">
+                <section className="text-black-70 text-center">
                     <p className="mb-5">
                         This Cookie Policy explains how Tripadvancer (&laquo;we,&raquo;&nbsp;&laquo;us,&raquo;
                         or&nbsp;&laquo;our&raquo;) uses cookies and similar tracking technologies when you access
@@ -108,7 +108,7 @@ export default function LegalCookiePolicyPage() {
                     </p>
                 </section>
 
-                <p className="text-center text-black-70">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
+                <p className="text-black-70 text-center">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
             </div>
         </article>
     )

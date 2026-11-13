@@ -35,7 +35,7 @@ export const PlacesFeed = ({ places, paginationLimit }: PlacesFeedProps) => {
                     type="stroke"
                     size="small"
                     shape="rounded"
-                    className="flex-grow"
+                    className="grow"
                     onClick={() => setCurrentPage(prev => prev + 1)}
                 >
                     Load more ...
