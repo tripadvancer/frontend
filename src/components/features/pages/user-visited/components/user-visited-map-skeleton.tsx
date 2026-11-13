@@ -1,3 +1,3 @@
 export const UserVisitedMapSkeleton = () => {
-    return <div className="h-[480px] rounded-2xl bg-black-5"></div>
+    return <div className="bg-black-5 h-120 rounded-2xl"></div>
 }

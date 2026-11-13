@@ -4,6 +4,10 @@ import Link from 'next/link'
 import { SocialAppUrls, UserSocialApps } from '@/utils/enums'
 
 export const UserSidebarSocialLink = ({ app, appUsername }: { app: UserSocialApps; appUsername?: string }) => {
+    if (!appUsername) {
+        return null
+    }
+
     const socialLinks = {
         [UserSocialApps.FACEBOOK]: {
             icon: <Image src="/images/icons/social/facebook.svg" width={24} height={24} alt="Facebook" />,
@@ -39,9 +43,10 @@ export const UserSidebarSocialLink = ({ app, appUsername }: { app: UserSocialApp
 
     return (
         <Link
-            href={socialLinks[app].url + appUsername}
-            className="link inline-flex items-center gap-x-2 text-big-bold"
+            href={socialLinks[app].url + encodeURIComponent(appUsername)}
+            className="link text-big-bold inline-flex items-center gap-x-2"
             target="_blank"
+            rel="noopener noreferrer"
         >
             {socialLinks[app].icon}
             {socialLinks[app].title}
