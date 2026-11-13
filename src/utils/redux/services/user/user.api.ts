@@ -55,6 +55,13 @@ export const userAPI = api.injectEndpoints({
             query: () => 'user/personal-data',
         }),
 
+        revokeUserSessions: build.mutation<void, void>({
+            query: () => ({
+                url: 'user/revoke-sessions',
+                method: 'POST',
+            }),
+        }),
+
         requestUserDeletion: build.mutation<void, void>({
             query: () => ({
                 url: 'user',

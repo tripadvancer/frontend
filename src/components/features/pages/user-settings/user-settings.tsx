@@ -4,6 +4,7 @@ import { UserSocialApps } from '@/utils/enums'
 import { UserSettingsBlockChangePassword } from './components/user-settings-block-change-password'
 import { UserSettingsBlockRequestPersonalData } from './components/user-settings-block-request-personal-data'
 import { UserSettingsBlockRequestUserDeletion } from './components/user-settings-block-request-user-deletion'
+import { UserSettingsBlockRevokeSessions } from './components/user-settings-block-revoke-sessions'
 import { UserSettingsBlockChangeEmail } from './components/user-settings-block-сhange-email'
 import { UserSettingsForm } from './components/user-settings-form'
 
@@ -29,6 +30,7 @@ export const UserSettings = async ({ name, info, avatar, social }: UserSettingsP
                         <UserSettingsBlockChangeEmail />
                         <UserSettingsBlockChangePassword />
                         <UserSettingsBlockRequestPersonalData />
+                        <UserSettingsBlockRevokeSessions />
                         <UserSettingsBlockRequestUserDeletion />
                     </div>
                 </section>
