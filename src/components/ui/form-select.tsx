@@ -44,7 +44,7 @@ export const FormSelect = ({ name, placeholder, options, disabled, onChange }: F
         <div ref={ref} className="relative">
             <div
                 className={classNames(
-                    'hover-animated flex h-10 w-full cursor-pointer items-center justify-between rounded-lg border border-black-15 bg-white px-4 text-black-15 hover:border-black-40 hover:text-black-40 disabled:cursor-no-drop disabled:opacity-30',
+                    'hover-animated border-black-15 text-black-15 hover:border-black-40 hover:text-black-40 flex h-10 w-full cursor-pointer items-center justify-between rounded-lg border bg-white px-4 disabled:cursor-no-drop disabled:opacity-30',
                     {
                         'border-black-40 text-black-40': isOpen,
                         'cursor-no-drop opacity-30': disabled,
@@ -60,17 +60,17 @@ export const FormSelect = ({ name, placeholder, options, disabled, onChange }: F
                 )}
             </div>
             {isOpen && (
-                <div className="absolute left-0 right-0 top-full z-40 rounded-lg border bg-white p-1 shadow-small">
+                <div className="shadow-small absolute top-full right-0 left-0 z-40 rounded-lg border bg-white p-1">
                     {options.map(option => (
                         <div
                             key={`select-option-${name}-${option.value}`}
-                            className="group hover-animated relative cursor-pointer rounded-md hover:bg-black-5"
+                            className="group hover-animated hover:bg-black-5 relative cursor-pointer rounded-md"
                             onClick={() => handleClick(option.value)}
                         >
                             <div className="flex gap-x-2 px-3 py-2">
-                                {option.icon && <div className="mt-[3px] text-black-40">{option.icon}</div>}
+                                {option.icon && <div className="text-black-40 mt-0.75">{option.icon}</div>}
                                 <div className="overflow-hidden">
-                                    <div className="hover-animated line-clamp-2 break-words group-hover:text-blue-active">
+                                    <div className="hover-animated group-hover:text-blue-active line-clamp-2 wrap-break-word">
                                         {option.label}
                                     </div>
                                 </div>

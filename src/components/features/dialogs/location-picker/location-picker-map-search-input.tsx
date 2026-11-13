@@ -23,7 +23,7 @@ export const LocationPickerMapSearchInput = (props: LocationPickerMapSearchInput
     return (
         <div className="flex h-10 items-center sm:h-8">
             <div
-                className="flex-center size-10 shrink-0 cursor-pointer text-blue-active sm:size-8"
+                className="flex-center text-blue-active size-10 shrink-0 cursor-pointer sm:size-8"
                 onClick={props.isLoading ? undefined : props.onHide}
             >
                 {props.isLoading ? <Spinner size={16} /> : <SearchIcon size={16} />}
@@ -45,7 +45,7 @@ export const LocationPickerMapSearchInput = (props: LocationPickerMapSearchInput
 
             {props.value && (
                 <div
-                    className="flex-center hover-animated size-10 shrink-0 cursor-pointer text-black-15 hover:text-blue-active sm:size-8"
+                    className="flex-center hover-animated text-black-15 hover:text-blue-active size-10 shrink-0 cursor-pointer sm:size-8"
                     onClick={props.onClear}
                 >
                     <XIcon size={16} />

@@ -35,7 +35,7 @@ export const ThirdPartyButton = ({ provider, redirectTo, isDisabled }: ThirdPart
                 frontendRedirectURI: `${process.env.NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH}/${provider}`,
             })
             router.push(authUrl)
-        } catch (err: any) {
+        } catch {
             window.sessionStorage.removeItem('signInRedirectTo')
             toast.error('An unexpected error has occurred. Please try again later.')
         } finally {

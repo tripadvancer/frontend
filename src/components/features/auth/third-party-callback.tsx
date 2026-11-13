@@ -42,7 +42,7 @@ export const ThirdPartyCallback = () => {
                     router.replace(redirectPath)
                     router.refresh()
                 }
-            } catch (err: any) {
+            } catch {
                 setStatus('GENERAL_ERROR')
             }
         }
@@ -55,9 +55,12 @@ export const ThirdPartyCallback = () => {
             <p className="text-center">
                 {status === 'NO_EMAIL_GIVEN_BY_PROVIDER' &&
                     'No email provided by social login. Please use another form of login.'}
+
                 {status === 'EMAIL_ALREADY_EXISTS_ERROR' &&
                     'Seems like you already have an account with another method. Please use that instead.'}
+
                 {status === 'GENERAL_ERROR' && 'An unexpected error has occurred. Please try again later.'}
+
                 {status === 'OK' && 'You are being redirected...'}
 
                 {!status && 'We are checking your status...'}

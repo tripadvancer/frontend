@@ -37,13 +37,7 @@ export const SignIn = ({ redirectTo }: SignInProps) => {
     }
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string()
-            .trim()
-            .required('This field is required')
-            .matches(
-                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
-                'Please enter a valid email address',
-            ),
+        email: Yup.string().trim().required('This field is required').email('Please enter a valid email address'),
         password: Yup.string().required('This field is required'),
     })
 
@@ -82,8 +76,8 @@ export const SignIn = ({ redirectTo }: SignInProps) => {
                     toast.error('An unexpected error has occurred. Please try again later.')
                     break
             }
-        } catch (err: any) {
-            if (err.status === 403) {
+        } catch (err: unknown) {
+            if (typeof err === 'object' && err !== null && 'status' in err && err.status === 403) {
                 dialog.open(<SignInReject />)
             } else {
                 toast.error('An unexpected error has occurred. Please try again later.')
@@ -144,7 +138,7 @@ export const SignIn = ({ redirectTo }: SignInProps) => {
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                     Sign in
                 </FormButton>
-                <div className="text-center text-small">
+                <div className="text-small text-center">
                     <span className="link text-small" onClick={handleForgotPasswordClick}>
                         Forgot password?
                     </span>

@@ -82,7 +82,7 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
             >
                 <div ref={ref}>
                     <div>Selected location</div>
-                    <div className="mb-4 text-small text-black-40">{LngLatToString(popupInfo.coordinates)}</div>
+                    <div className="text-small text-black-40 mb-4">{LngLatToString(popupInfo.coordinates)}</div>
                     <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
                         Add place here
                     </FormButton>
