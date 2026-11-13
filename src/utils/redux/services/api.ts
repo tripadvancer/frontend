@@ -2,6 +2,8 @@ import { BaseQueryFn, FetchArgs, FetchBaseQueryError, createApi, fetchBaseQuery 
 import { Mutex } from 'async-mutex'
 import Session from 'supertokens-web-js/recipe/session'
 
+import { SESSION_EXPIRED_EVENT } from '@/utils/constants'
+
 // Create a new mutex
 const mutex = new Mutex()
 
@@ -20,6 +22,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
     let result = await baseQuery(args, api, extraOptions)
     if (result.error && result.error.status === 401) {
+        // Checking whether the mutex is locked
         if (!mutex.isLocked()) {
             const release = await mutex.acquire()
             try {
@@ -27,13 +30,19 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
                 if (hasSession) {
                     result = await baseQuery(args, api, extraOptions)
+                } else if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new Event(SESSION_EXPIRED_EVENT))
                 }
             } catch {
-                return result
+                if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new Event(SESSION_EXPIRED_EVENT))
+                }
             } finally {
+                // Release must be called once the mutex should be released again.
                 release()
             }
         } else {
+            // Wait until the mutex is available without locking it
             await mutex.waitForUnlock()
             result = await baseQuery(args, api, extraOptions)
         }

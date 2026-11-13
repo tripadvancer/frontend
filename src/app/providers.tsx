@@ -3,14 +3,11 @@
 import { ReactNode } from 'react'
 import { MapProvider } from 'react-map-gl/maplibre'
 
-import { setWorkerUrl } from 'maplibre-gl'
-
+import { SessionExpiredHandler } from '@/components/features/auth/session-expired-handler'
 import { DialogProvider } from '@/components/providers/dialog-provider'
 import { ReduxProvider } from '@/components/providers/redux-provider'
 import { ToastProvider } from '@/components/providers/toast-provider'
 import { SuperTokensInit } from '@/utils/supertokens/supertokens.init'
-
-setWorkerUrl('/maplibre-gl-worker.mjs')
 
 export function Providers({ children }: { children: ReactNode }) {
     return (
@@ -18,7 +15,10 @@ export function Providers({ children }: { children: ReactNode }) {
             <SuperTokensInit>
                 <ToastProvider>
                     <MapProvider>
-                        <DialogProvider>{children}</DialogProvider>
+                        <DialogProvider>
+                            {children}
+                            <SessionExpiredHandler />
+                        </DialogProvider>
                     </MapProvider>
                 </ToastProvider>
             </SuperTokensInit>
