@@ -16,6 +16,7 @@ import { ChangeUserPasswordInputs } from '@/utils/redux/services/user/user.types
 
 const userPasswordMinLength = validationConfig.user.password.minLength
 const userPasswordMaxLength = validationConfig.user.password.maxLength
+const passwordMustDifferMessage = 'New password must be different from your current password.'
 
 export const ChangePassword = () => {
     const router = useRouter()
@@ -33,6 +34,7 @@ export const ChangePassword = () => {
         oldPassword: Yup.string().required('This field is required'),
         newPassword: Yup.string()
             .required('This field is required')
+            .notOneOf([Yup.ref('oldPassword')], passwordMustDifferMessage)
             .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
             .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
             .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
@@ -73,6 +75,8 @@ export const ChangePassword = () => {
         validationSchema,
         onSubmit: handleSubmit,
     })
+    const isPasswordUnchanged =
+        formik.values.oldPassword.length > 0 && formik.values.oldPassword === formik.values.newPassword
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
@@ -96,12 +100,17 @@ export const ChangePassword = () => {
                     name="newPassword"
                     value={formik.values.newPassword}
                     placeholder="Enter new password"
-                    error={formik.errors.newPassword}
+                    error={formik.errors.newPassword || (isPasswordUnchanged ? passwordMustDifferMessage : '')}
                     disabled={isLoading}
                     onChange={formik.handleChange}
                 />
             </div>
-            <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
+            <FormButton
+                htmlType="submit"
+                className="w-full"
+                isLoading={isLoading}
+                isDisabled={!formik.dirty || isPasswordUnchanged}
+            >
                 Save changes
             </FormButton>
         </form>
