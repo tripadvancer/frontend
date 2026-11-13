@@ -42,5 +42,9 @@ export default async function UserLayout(props: { params: Params; children: Reac
     const params = await props.params
     const user = await getUserByUsername(params.username)
 
-    return <User user={user}>{props.children}</User>
+    return (
+        <User user={user} username={params.username}>
+            {props.children}
+        </User>
+    )
 }

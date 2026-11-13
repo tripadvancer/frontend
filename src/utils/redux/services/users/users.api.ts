@@ -1,8 +1,14 @@
 import { api } from '@/utils/redux/services/api'
 import { GetPlacesByUserIdParams, GetPlacesByUserIdResponse } from '@/utils/redux/services/users/users.types'
+import { IUser } from '@/utils/types/user'
 
 export const usersAPI = api.injectEndpoints({
     endpoints: build => ({
+        getUserByUsername: build.query<IUser, string>({
+            query: username => `users/${username}`,
+            providesTags: ['UserProfile'],
+        }),
+
         getPlacesByUserId: build.query<GetPlacesByUserIdResponse, GetPlacesByUserIdParams>({
             query: ({ userId, page }) => `users/${userId}/places?page=${page}`,
             serializeQueryArgs: ({ endpointName }) => {

@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 
+import { usersAPI } from '@/utils/redux/services/users/users.api'
 import { IUserStatistics } from '@/utils/types/user'
 
 const Item = ({ label, value }: { label: string; value: number }) => {
@@ -21,6 +24,7 @@ const Item = ({ label, value }: { label: string; value: number }) => {
 }
 
 type UserSidebarAchievementProps = {
+    username: string
     places: IUserStatistics['places']
     placeReviews: IUserStatistics['placeReviews']
     placePhotos: IUserStatistics['placePhotos']
@@ -28,13 +32,16 @@ type UserSidebarAchievementProps = {
     visitedCountries: IUserStatistics['visitedCountries']
 }
 
-export const UserSidebarAchievement = async ({
+export const UserSidebarAchievement = ({
+    username,
     places,
     placeReviews,
     placePhotos,
     visitedPlaces,
     visitedCountries,
 }: UserSidebarAchievementProps) => {
+    const { data: user } = usersAPI.useGetUserByUsernameQuery(username)
+
     return (
         <div className="bg-orange-10 rounded-2xl p-8">
             <div className="mb-8 items-center bg-[url('/images/user-rank/laurel.svg')] bg-top bg-no-repeat pt-4 pr-4 pl-4 text-orange-100">
@@ -48,11 +55,11 @@ export const UserSidebarAchievement = async ({
                 <div className="text-center font-medium wrap-break-word">Beginner</div>
             </div>
             <ul>
-                <Item label="Added places" value={places} />
-                <Item label="Written reviews" value={placeReviews} />
-                <Item label="Added photos" value={placePhotos} />
-                <Item label="Visited places" value={visitedPlaces} />
-                <Item label="Visited countries" value={visitedCountries} />
+                <Item label="Added places" value={user?._count.places ?? places} />
+                <Item label="Written reviews" value={user?._count.placeReviews ?? placeReviews} />
+                <Item label="Added photos" value={user?._count.placePhotos ?? placePhotos} />
+                <Item label="Visited places" value={user?._count.visitedPlaces ?? visitedPlaces} />
+                <Item label="Visited countries" value={user?._count.visitedCountries ?? visitedCountries} />
             </ul>
         </div>
     )
