@@ -6,7 +6,10 @@ import { ISearchItem, ISearchResult, SearchInputs } from '@/utils/types/search'
 export const searchAPI = api.injectEndpoints({
     endpoints: build => ({
         search: build.query<ISearchResult, SearchInputs>({
-            query: ({ query }) => `search?query=${query}`,
+            query: ({ query }) => ({
+                url: 'search',
+                params: { query },
+            }),
             transformResponse: (returnValue: ISearchResult, meta, arg) => {
                 // Add countries to the response
                 const countriesData = countriesDictionary.filter(country => {

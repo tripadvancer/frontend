@@ -58,12 +58,12 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
             </div>
 
             {isMenuOpen && (
-                <menu className="absolute right-0 top-full z-20 mt-1 min-w-40 rounded-lg bg-white p-1.5 shadow-medium">
+                <menu className="shadow-medium absolute top-full right-0 z-20 mt-1 min-w-40 rounded-lg bg-white p-1.5">
                     <li>
                         <Link
                             href={`/users/${name.toLowerCase()}`}
                             onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
+                            className="hover:bg-blue-10 flex items-center gap-x-2 rounded p-1.5 text-nowrap text-blue-100 transition-none"
                         >
                             <CircleUserIcon size={16} />
                             Profile
@@ -73,7 +73,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                         <Link
                             href={`/users/${name.toLowerCase()}/settings`}
                             onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
+                            className="hover:bg-blue-10 flex items-center gap-x-2 rounded p-1.5 text-nowrap text-blue-100 transition-none"
                         >
                             <SettingsIcon size={16} />
                             Settings
@@ -81,7 +81,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                     </li>
                     <li>
                         <div
-                            className="flex cursor-pointer items-center gap-x-2 text-nowrap rounded p-1.5 text-red-100 hover:bg-blue-10"
+                            className="hover:bg-blue-10 flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-nowrap text-red-100"
                             onClick={signOut}
                         >
                             <LogOutIcon size={16} />

@@ -14,7 +14,7 @@ type WidgetMessageProps = {
 export const WidgetMessage = ({ message, actionCaption, isLoading, onAction }: WidgetMessageProps) => {
     return (
         <section className="mx-auto flex flex-col items-center justify-center gap-y-4">
-            <p className="text-center text-black-40">
+            <p className="text-black-40 text-center">
                 {message ? (
                     message
                 ) : (

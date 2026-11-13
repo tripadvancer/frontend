@@ -4,12 +4,14 @@ import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
+import { getPlacePath } from '@/utils/helpers/places'
 
 type PlacesNearbyWarningProps = {
     places: {
         id: number
         title: string
         cover: string | null
+        countryCode: string | null
         avgRating: number | null
         reviewsCount: number
     }[]
@@ -30,7 +32,11 @@ export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
             <div className="flex flex-col gap-y-4">
                 {places.map(place => (
                     <div key={`place-nearby-${place.id}`} className="flex gap-x-4">
-                        <Link href={`places/${place.id}`} className="peer flex-none" target="_blank">
+                        <Link
+                            href={getPlacePath(place.id, place.countryCode)}
+                            className="peer flex-none"
+                            target="_blank"
+                        >
                             <PlacePreviewCover
                                 cover={place.cover}
                                 title={place.title}
@@ -38,10 +44,10 @@ export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
                                 className="aspect-square w-20 rounded-lg"
                             />
                         </Link>
-                        <div className="flex flex-1 flex-col justify-between overflow-hidden text-black-100 peer-hover:text-blue-active">
+                        <div className="text-black-100 peer-hover:text-blue-active flex flex-1 flex-col justify-between overflow-hidden">
                             <Link
-                                href={`places/${place.id}`}
-                                className="line-clamp-2 break-words font-medium text-inherit"
+                                href={getPlacePath(place.id, place.countryCode)}
+                                className="line-clamp-2 font-medium wrap-break-word text-inherit"
                                 target="_blank"
                             >
                                 {place.title}

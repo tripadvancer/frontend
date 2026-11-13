@@ -6,6 +6,7 @@ import { JsonLd } from '@/components/features/common/json-ld'
 import { getPlacesByCountryCode } from '@/services/places'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
 import { parseQueryString } from '@/utils/helpers/common'
+import { getPlacePath } from '@/utils/helpers/places'
 import { ICountryDict } from '@/utils/types/country'
 
 import { CountryAddPlaceWithAuth } from './components/country-add-place-with-auth'
@@ -23,7 +24,7 @@ export const Country = async ({
     const selectedCategoriesIds = parseQueryString(categoriesIdsFromQueryString, categoriesIds)
     const places = await getPlacesByCountryCode(country.code, selectedCategoriesIds.join())
     const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string
-    const countryUrl = `${baseUrl}/countries/${country.slug}`
+    const countryUrl = `${baseUrl}/${country.slug}`
 
     return (
         <>
@@ -33,9 +34,8 @@ export const Country = async ({
                         '@context': 'https://schema.org',
                         '@type': 'BreadcrumbList',
                         itemListElement: [
-                            { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
-                            { '@type': 'ListItem', position: 2, name: 'Countries', item: `${baseUrl}/countries` },
-                            { '@type': 'ListItem', position: 3, name: country.name, item: countryUrl },
+                            { '@type': 'ListItem', position: 1, name: 'Countries', item: baseUrl },
+                            { '@type': 'ListItem', position: 2, name: country.name, item: countryUrl },
                         ],
                     },
                     {
@@ -48,7 +48,7 @@ export const Country = async ({
                             item: {
                                 '@type': 'Place',
                                 name: place.title,
-                                url: `${baseUrl}/places/${place.id}`,
+                                url: `${baseUrl}${getPlacePath(place.id, country.code)}`,
                             },
                         })),
                     },
@@ -57,10 +57,10 @@ export const Country = async ({
             <section className="container space-y-8 py-16 sm:space-y-16">
                 <div className="space-y-8 sm:w-3/4">
                     <div className="space-y-4">
-                        <Link href="/countries" className="font-medium text-blue-100 hover:text-blue-active">
+                        <Link href="/" className="hover:text-blue-active inline-block font-medium text-blue-100">
                             View all countries
                         </Link>
-                        <h1 className="h1 max-w-full break-words">Places to visit in {country.name}</h1>
+                        <h1 className="h1 max-w-full wrap-break-word">Places to visit in {country.name}</h1>
                         <p className="text-big text-black-70">
                             {`Explore ${country.name} through traveler-recommended attractions, scenic places, and things to do. Browse local recommendations by category and plan your visit.`}
                         </p>
@@ -76,6 +76,7 @@ export const Country = async ({
                                 id: place.id,
                                 title: place.title,
                                 cover: place.cover,
+                                countryCode: country.code,
                                 rating: {
                                     avgRating: place.avgRating,
                                     reviewsCount: place.reviewsCount,
@@ -85,7 +86,7 @@ export const Country = async ({
                     )}
 
                     {places.length === 0 && (
-                        <div className="flex-center flex-col gap-y-8 py-16 text-black-40 sm:py-32">
+                        <div className="flex-center text-black-40 flex-col gap-y-8 py-16 sm:py-32">
                             <div className="flex flex-col items-center gap-y-4">
                                 <TentTreeIcon size={96} strokeWidth={1} />
                                 <div className="text-center">

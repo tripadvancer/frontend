@@ -33,14 +33,14 @@ export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps
     }
 
     return (
-        <div className="group flex cursor-pointer items-center gap-x-2 text-big text-black-70" onClick={handleCopy}>
+        <div className="group text-big text-black-70 flex cursor-pointer items-center gap-x-2" onClick={handleCopy}>
             {coordinatesString}
             {copied ? (
                 <span className="flex items-center gap-1 text-green-600">
                     <CheckIcon className="h-4 w-4" size={20} /> Copied
                 </span>
             ) : (
-                <CopyIcon className="rotate-90 text-blue-100 group-hover:text-blue-active" size={20} />
+                <CopyIcon className="group-hover:text-blue-active rotate-90 text-blue-100" size={20} />
             )}
         </div>
     )
