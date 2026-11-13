@@ -16,7 +16,7 @@ export const ReviewFormSkeleton = () => {
             </div>
             <div className="flex items-center gap-x-2">
                 <FormSwitcherSkeleton />
-                <div className="h-5 w-1/4 rounded-full bg-black-5" />
+                <div className="bg-black-5 h-5 w-1/4 rounded-full" />
             </div>
             <div className="flex gap-x-2">
                 <FormButtonSkeleton>Send</FormButtonSkeleton>

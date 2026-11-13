@@ -1,10 +1,12 @@
+import 'server-only'
+
 import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import { IUser, IUserVisitedCountries } from '@/utils/types/user'
 
 export async function getUserByUsername(username: string): Promise<IUser> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + username
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/users/${encodeURIComponent(username)}`
     const res = await fetch(url, { cache: 'no-cache' })
 
     if (!res.ok) {
@@ -25,7 +27,7 @@ export async function getUserVisitedCountries(userId: number): Promise<IUserVisi
 
     // todo: handle refresh token
     const res = await fetch(url, {
-        cache: 'no-cache',
+        cache: 'no-store',
         headers: {
             Authorization: 'Bearer ' + accessToken,
         },

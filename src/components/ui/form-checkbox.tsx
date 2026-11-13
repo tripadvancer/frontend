@@ -15,15 +15,15 @@ export const FormCheckbox = (props: FormCheckboxProps) => {
     return (
         <label
             htmlFor={props.id}
-            className="group flex cursor-pointer gap-x-2 has-[:disabled]:pointer-events-none has-[:disabled]:opacity-30"
+            className="group flex cursor-pointer gap-x-2 has-disabled:pointer-events-none has-disabled:opacity-30"
         >
-            <div className="flex-center hover-animated h-5 w-5 flex-none rounded border border-black-15 group-hover:border-black-40">
+            <div className="flex-center hover-animated border-black-15 group-hover:border-black-40 h-5 w-5 flex-none rounded border">
                 <input {...rest} ref={ref} type="checkbox" className="peer hidden" />
                 <div className="hidden h-4 w-4 peer-checked:block">
-                    <CheckIcon size={16} absoluteStrokeWidth />
+                    <CheckIcon size={16} nonScalingStroke />
                 </div>
             </div>
-            <div className="min-w-0 break-words">{label}</div>
+            <div className="min-w-0 wrap-break-word">{label}</div>
         </label>
     )
 }

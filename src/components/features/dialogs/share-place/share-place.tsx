@@ -1,6 +1,6 @@
 'use client'
 
-import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import { FacebookShareButton, XShareButton } from 'react-share'
 
 import { CopyIcon } from 'lucide-react'
 import { useCopyToClipboard } from 'usehooks-ts'
@@ -9,7 +9,8 @@ import Image from 'next/image'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { getCountryByCode } from '@/services/countries'
+import { getCountryByCode } from '@/utils/helpers/countries'
+import { getPlacePath } from '@/utils/helpers/places'
 
 type SharePlaceProps = {
     id: number
@@ -19,7 +20,7 @@ type SharePlaceProps = {
 
 export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
     const toast = useToast()
-    const url = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/places/${id}`
+    const url = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}${getPlacePath(id, countryCode)}`
 
     const [_, copy] = useCopyToClipboard()
 
@@ -38,9 +39,9 @@ export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
             <h1 className="h7 text-center">Share place</h1>
             <p className="text-center">Share the place with your friends and invite them to visit it.</p>
             <div className="flex gap-x-2">
-                <TwitterShareButton
+                <XShareButton
                     url={url}
-                    title="Look what place I found on Tripadvancer!"
+                    text="Look what place I found on Tripadvancer!"
                     via="tripadvancer_me"
                     hashtags={[
                         `${title.replace(/\s/g, '').toLowerCase()}`,
@@ -56,19 +57,19 @@ export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
                         'points_of_interest',
                         'places_to_visit',
                     ]}
-                    className="hover-animated flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white hover:!bg-blue-active"
+                    className="hover-animated hover:bg-blue-active! flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white"
                 >
-                    <Image src="/images/icons/social/x.svg" width={24} height={24} alt="Twitter" />
-                </TwitterShareButton>
+                    <Image src="/images/icons/social/x.svg" width={24} height={24} alt="X" />
+                </XShareButton>
 
                 <FacebookShareButton
                     url={url}
-                    className="hover-animated flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white hover:!bg-blue-active"
+                    className="hover-animated hover:bg-blue-active! flex h-10 w-10 flex-none items-center justify-center rounded-lg !bg-blue-100 !text-white"
                 >
                     <Image src="/images/icons/social/facebook.svg" width={24} height={24} alt="Facebook" />
                 </FacebookShareButton>
 
-                <div className="flex h-10 min-w-0 flex-1 items-center rounded-lg border border-black-15 px-4">
+                <div className="border-black-15 flex h-10 min-w-0 flex-1 items-center rounded-lg border px-4">
                     <div className="overflow-hidden text-ellipsis">{url}</div>
                 </div>
 

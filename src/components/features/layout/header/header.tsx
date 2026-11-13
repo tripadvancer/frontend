@@ -3,7 +3,7 @@ import { HeaderMobileAuthWrapper } from './header-mobile/header-mobile-auth-wrap
 
 export const Header = () => {
     return (
-        <header className="sticky top-0 z-50 bg-blue-20" data-nosnippet>
+        <header className="bg-blue-20 sticky top-0 z-50" data-nosnippet>
             <HeaderMobileAuthWrapper />
             <HeaderDesktopAuthWrapper />
         </header>

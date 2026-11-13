@@ -5,22 +5,23 @@ export const About = () => {
     return (
         <div className="flex flex-col">
             <div className="flex-center relative z-10 flex-[540px] pb-7">
-                <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full">
+                <div className="absolute top-0 right-0 bottom-0 left-0 z-10 h-full">
                     <Image src="/images/about.jpg" alt="About Tripadvancer" fill className="object-cover" />
-                    <div className="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black-100 opacity-50" />
+                    <div className="bg-black-100 absolute top-0 right-0 bottom-0 left-0 z-20 opacity-50" />
                 </div>
-                <section className="container relative z-30 py-8 text-center">
+                <section className="relative z-30 container py-8 text-center">
                     <div className="m-auto sm:w-2/3">
-                        <h1 className="h1 mb-4 text-white">About Tripadvancer</h1>
+                        <h1 className="h1 mb-4 text-white">Discover places to visit and plan your next trip</h1>
                         <p className="text-big text-white">
-                            A platform built by travelers — for discovering, sharing, and remembering amazing places.
+                            Explore traveler-recommended attractions and hidden gems around the world. Save your
+                            favorite places to trip lists, read reviews, and track the countries you have visited.
                         </p>
                     </div>
                 </section>
             </div>
 
             <div className="container flex-1 bg-white">
-                <div className="inner-container flex flex-col gap-y-8 py-16 text-big">
+                <div className="inner-container text-big flex flex-col gap-y-8 py-16">
                     <p>
                         <strong>Tripadvancer</strong> is&nbsp;a&nbsp;platform where travelers share the most interesting
                         places they&rsquo;ve discovered&nbsp;&mdash; hidden gems, unusual spots, and local favorites all
@@ -86,38 +87,6 @@ export const About = () => {
                                     rel="noopener noreferrer"
                                 >
                                     X (Twitter)
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="https://www.youtube.com/@tripadvancer"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    YouTube
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="mailto: tripadvancer.team@gmail.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Email
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="https://medium.com/@oskolsky" target="_blank" rel="noopener noreferrer">
-                                    Medium
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="https://www.linkedin.com/in/oskolsky/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    LinkedIn
                                 </Link>
                             </li>
                         </ul>

@@ -43,13 +43,7 @@ export const SignUp = () => {
     }
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string()
-            .trim()
-            .required('This field is required')
-            .matches(
-                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
-                'Please enter a valid email address',
-            ),
+        email: Yup.string().trim().required('This field is required').email('Please enter a valid email address'),
         username: Yup.string()
             .trim()
             .required('This field is required')
@@ -60,7 +54,7 @@ export const SignUp = () => {
             .required('This field is required')
             .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
             .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, 'Password must contain at least 8 characters, including a number'),
+            .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
         agreePrivacy: Yup.boolean().oneOf(
             [true],
             'Please accept the Terms and Conditions and Privacy Policy to continue.',
@@ -99,7 +93,7 @@ export const SignUp = () => {
                     }
 
                     if (passwordError) {
-                        formik.setErrors({ email: passwordError.error })
+                        formik.setErrors({ password: passwordError.error })
                     }
 
                     if (usernameError) {
@@ -118,7 +112,7 @@ export const SignUp = () => {
                     toast.error('An unexpected error has occurred. Please try again later.')
                     break
             }
-        } catch (err: any) {
+        } catch {
             toast.error('An unexpected error has occurred. Please try again later.')
         } finally {
             setIsLoading(false)
