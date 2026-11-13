@@ -9,9 +9,14 @@ import {
     GetReviewsResponse,
     UpdateReviewInputs,
 } from '@/utils/redux/services/reviews/reviews.types'
+import { IReview } from '@/utils/types/common'
 
 export const reviewsAPI = api.injectEndpoints({
     endpoints: build => ({
+        getReviewById: build.query<IReview, number>({
+            query: reviewId => `reviews/${reviewId}`,
+        }),
+
         getReviewsByPlaceId: build.query<GetReviewsResponse, GetReviewsByPlaceIdParams>({
             query: ({ placeId, cursor }) => `reviews?place_id=${placeId}${cursor ? `&cursor=${cursor}` : ''}`,
             serializeQueryArgs: ({ endpointName }) => {
@@ -134,6 +139,45 @@ export const reviewsAPI = api.injectEndpoints({
                     optimisticResultPlacePage.undo()
                     optimisticResultUserPage.undo()
                     optimisticResultPlaceMeta.undo()
+                    return
+                }
+
+                try {
+                    const updatedReview = await dispatch(
+                        reviewsAPI.endpoints.getReviewById.initiate(reviewId, {
+                            forceRefetch: true,
+                            subscribe: false,
+                        }),
+                    ).unwrap()
+
+                    dispatch(
+                        reviewsAPI.util.updateQueryData(
+                            'getReviewsByPlaceId',
+                            { placeId, cursor: undefined },
+                            draft => {
+                                const reviewIndex = draft.items.findIndex(review => review.id === reviewId)
+                                if (reviewIndex !== -1) {
+                                    draft.items[reviewIndex] = updatedReview
+                                }
+                            },
+                        ),
+                    )
+
+                    dispatch(
+                        reviewsAPI.util.updateQueryData('getReviewsByUserId', { userId, cursor: undefined }, draft => {
+                            const reviewIndex = draft.items.findIndex(review => review.id === reviewId)
+                            if (reviewIndex !== -1) {
+                                draft.items[reviewIndex] = updatedReview
+                            }
+                        }),
+                    )
+                } catch {
+                    dispatch(
+                        reviewsAPI.util.invalidateTags([
+                            { type: 'PlaceReviews', id: placeId },
+                            { type: 'UserReviews', id: userId },
+                        ]),
+                    )
                 }
             },
         }),
