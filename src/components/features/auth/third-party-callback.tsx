@@ -22,7 +22,24 @@ export const ThirdPartyCallback = () => {
                 setStatus(response.status === 'SIGN_IN_UP_NOT_ALLOWED' ? response.reason : response.status)
 
                 if (response.status === 'OK') {
-                    router.replace('/')
+                    const redirectTo = window.sessionStorage.getItem('signInRedirectTo')
+                    window.sessionStorage.removeItem('signInRedirectTo')
+
+                    let redirectPath = '/'
+
+                    if (redirectTo) {
+                        try {
+                            const redirectUrl = new URL(redirectTo, window.location.origin)
+
+                            if (redirectUrl.origin === window.location.origin) {
+                                redirectPath = `${redirectUrl.pathname}${redirectUrl.search}${redirectUrl.hash}`
+                            }
+                        } catch {
+                            // Keep the safe fallback route when the stored redirect path is invalid.
+                        }
+                    }
+
+                    router.replace(redirectPath)
                     router.refresh()
                 }
             } catch {

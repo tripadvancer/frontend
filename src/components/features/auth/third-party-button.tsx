@@ -12,24 +12,31 @@ import { FormButton } from '@/components/ui/form-button'
 
 type ThirdPartyButtonProps = {
     provider: 'google'
+    redirectTo?: string
     isDisabled?: boolean
 }
 
-export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps) => {
+export const ThirdPartyButton = ({ provider, redirectTo, isDisabled }: ThirdPartyButtonProps) => {
     const router = useRouter()
     const toast = useToast()
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const handleClick = async () => {
         setIsLoading(true)
+        window.sessionStorage.removeItem('signInRedirectTo')
 
         try {
+            if (redirectTo) {
+                window.sessionStorage.setItem('signInRedirectTo', redirectTo)
+            }
+
             const authUrl = await getAuthorisationURLWithQueryParamsAndSetState({
                 thirdPartyId: provider,
                 frontendRedirectURI: `${process.env.NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH}/${provider}`,
             })
             router.push(authUrl)
         } catch {
+            window.sessionStorage.removeItem('signInRedirectTo')
             toast.error('An unexpected error has occurred. Please try again later.')
         } finally {
             setIsLoading(false)

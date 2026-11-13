@@ -16,7 +16,7 @@ export const useAddPlaceClickHandler = ({ activeUserId, isAuth, isEmailVerified 
 
     const handleClick = async () => {
         if (!isAuth) {
-            dialog.open(<SignIn />)
+            dialog.open(<SignIn redirectTo="/places/add" />)
             return
         }
 
