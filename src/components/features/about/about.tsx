@@ -11,9 +11,10 @@ export const About = () => {
                 </div>
                 <section className="relative z-30 container py-8 text-center">
                     <div className="m-auto sm:w-2/3">
-                        <h1 className="h1 mb-4 text-white">About Tripadvancer</h1>
+                        <h1 className="h1 mb-4 text-white">Discover places to visit and plan your next trip</h1>
                         <p className="text-big text-white">
-                            A platform built by travelers — for discovering, sharing, and remembering amazing places.
+                            Explore traveler-recommended attractions and hidden gems around the world. Save your
+                            favorite places to trip lists, read reviews, and track the countries you have visited.
                         </p>
                     </div>
                 </section>
@@ -86,38 +87,6 @@ export const About = () => {
                                     rel="noopener noreferrer"
                                 >
                                     X (Twitter)
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="https://www.youtube.com/@tripadvancer"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    YouTube
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="mailto: tripadvancer.team@gmail.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Email
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="https://medium.com/@oskolsky" target="_blank" rel="noopener noreferrer">
-                                    Medium
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="https://www.linkedin.com/in/oskolsky/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    LinkedIn
                                 </Link>
                             </li>
                         </ul>

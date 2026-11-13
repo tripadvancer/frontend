@@ -5,11 +5,12 @@ import { useState } from 'react'
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 
 import { PlacesFeed } from '@/components/features/common/places-feed/places-feed'
+import { IUserVisitedCountries } from '@/utils/types/user'
 
 type UserMapCountriesFeedItemProps = {
     name: string
     count: number
-    places: any
+    places: IUserVisitedCountries[number]['places']
 }
 
 export const UserVisitedCountriesFeedItem = ({ name, count, places }: UserMapCountriesFeedItemProps) => {
@@ -33,7 +34,12 @@ export const UserVisitedCountriesFeedItem = ({ name, count, places }: UserMapCou
                 {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
             </div>
 
-            {isOpen && <PlacesFeed places={places} paginationLimit={10} />}
+            {isOpen && (
+                <PlacesFeed
+                    places={places.map(place => ({ ...place, isVisited: true, reviewsCount: place.reviewsCount ?? 0 }))}
+                    paginationLimit={10}
+                />
+            )}
         </div>
     )
 }

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { ImageVariants } from '@/utils/enums'
+import { getPlacePath } from '@/utils/helpers/places'
 
 import { WidgetRandomPlaceActions } from './widget-random-place-actions'
 
@@ -23,7 +24,11 @@ type WidgetRandomPlaceProps = {
 export const WidgetRandomPlace = (props: WidgetRandomPlaceProps) => {
     return (
         <div className="flex flex-col gap-y-2">
-            <Link href={`places/${props.id}`} className="link-black flex flex-col gap-y-2" target="_blank">
+            <Link
+                href={getPlacePath(props.id, props.countryCode)}
+                className="link-black flex flex-col gap-y-2"
+                target="_blank"
+            >
                 <div className="w-full">
                     <PlacePreviewCover
                         cover={props.cover}

@@ -1,5 +1,5 @@
-import { getCountryByCode } from '@/services/countries'
 import { countriesDictionary } from '@/utils/dictionaries/countries'
+import { getCountryByCode } from '@/utils/helpers/countries'
 import { calculateWorldCoverage } from '@/utils/helpers/world-coverage'
 import { IUserVisitedCountries } from '@/utils/types/user'
 

@@ -28,7 +28,7 @@ export const WidgetRandomSlider = () => {
             )}
             renderThumb={(
                 props: JSX.IntrinsicAttributes & ClassAttributes<HTMLDivElement> & HTMLAttributes<HTMLDivElement>,
-                state: { valueNow: any },
+                state: { valueNow: number },
             ) => (
                 <div
                     {...props}

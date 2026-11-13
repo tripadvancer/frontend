@@ -2,7 +2,6 @@
 
 import { ReactNode } from 'react'
 import { MapProvider } from 'react-map-gl/maplibre'
-import { ParallaxProvider } from 'react-scroll-parallax'
 
 import { setWorkerUrl } from 'maplibre-gl'
 
@@ -19,9 +18,7 @@ export function Providers({ children }: { children: ReactNode }) {
             <SuperTokensInit>
                 <ToastProvider>
                     <MapProvider>
-                        <DialogProvider>
-                            <ParallaxProvider>{children}</ParallaxProvider>
-                        </DialogProvider>
+                        <DialogProvider>{children}</DialogProvider>
                     </MapProvider>
                 </ToastProvider>
             </SuperTokensInit>

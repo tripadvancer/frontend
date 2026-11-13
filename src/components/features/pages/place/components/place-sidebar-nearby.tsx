@@ -6,6 +6,7 @@ import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewDistance } from '@/components/ui/place-preview-distance'
 import { getPlacesAround } from '@/services/places'
 import { arrayToLngLat } from '@/utils/helpers/maps'
+import { getPlacePath } from '@/utils/helpers/places'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
 import { PlaceSidebarNearbySkeleton } from './place-sidebar-nearby-skeleton'
@@ -40,7 +41,7 @@ export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyPro
                     {placesAroundFiltered.map(place => (
                         <Link
                             key={`place-nearby-${place.id}`}
-                            href={`/places/${place.id}`}
+                            href={getPlacePath(place.id, place.countryCode)}
                             className="text-black-100 flex-none"
                         >
                             <div className="flex flex-row gap-4">

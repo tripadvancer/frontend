@@ -25,7 +25,7 @@ export const ThirdPartyCallback = () => {
                     router.replace('/')
                     router.refresh()
                 }
-            } catch (err: any) {
+            } catch {
                 setStatus('GENERAL_ERROR')
             }
         }

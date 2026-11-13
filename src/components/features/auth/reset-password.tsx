@@ -32,7 +32,7 @@ export const ResetPassword = () => {
             .required('This field is required')
             .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
             .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, 'Password must contain at least 8 characters, including a number'),
+            .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
     })
 
     const handleSubmit = async (values: ResetPasswordInputs) => {

@@ -7,6 +7,7 @@ import { useDebounceCallback } from 'usehooks-ts'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
+import { getPlacePath } from '@/utils/helpers/places'
 import { transformSearchCountries, transformSearchPlaces } from '@/utils/helpers/search'
 import { searchAPI } from '@/utils/redux/services/search/search.api'
 import { ICountryDict } from '@/utils/types/country'
@@ -86,8 +87,11 @@ export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchRe
                 }
                 href={
                     item.type === 'country'
-                        ? `/countries/${(item.properties as ICountryDict).slug}`
-                        : `/places/${(item.properties as IPlacePreview).id}`
+                        ? `/${(item.properties as ICountryDict).slug}`
+                        : getPlacePath(
+                              (item.properties as IPlacePreview).id,
+                              (item.properties as IPlacePreview).countryCode,
+                          )
                 }
                 hideResults={hideResults}
             />

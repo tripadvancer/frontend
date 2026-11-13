@@ -46,6 +46,7 @@ export const UserPlaces = ({ userId, isOwnProfile }: UserPlacesProps) => {
                             id: item.id,
                             title: item.title,
                             cover: item.cover,
+                            countryCode: item.countryCode,
                             meta: {
                                 countryCode: item.countryCode,
                                 createdAt: new Date(item.createdAt),

@@ -3,7 +3,7 @@ import { MapPin } from 'lucide-react'
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
-import { getCountryByCode } from '@/services/countries'
+import { getCountryByCode } from '@/utils/helpers/countries'
 import { ICountry } from '@/utils/types/country'
 
 export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) => {
@@ -13,7 +13,7 @@ export const CountriesGridItem = async ({ countryCode, placesCount }: ICountry) 
 
     return (
         <figure className="group bg-orange-10 overflow-hidden rounded-2xl">
-            <Link href={`/countries/${countrySlug}`} className="link-black">
+            <Link href={`/${countrySlug}`} className="link-black">
                 <div className="w-full overflow-hidden">
                     <ImageWithFallback
                         src={`/images/countries/preview/${countryCode.toLowerCase()}.jpg`}

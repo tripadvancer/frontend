@@ -5,20 +5,17 @@ import Image from 'next/image'
 import { CountriesGrid } from '@/components/features/common/countries-grid/countries-grid'
 import { LinkButton } from '@/components/ui/link-button'
 import { getCountries } from '@/services/countries'
-import { getSettings } from '@/services/settings'
 
 export const Countries = async () => {
     const countries = await getCountries()
-    const settings = await getSettings()
 
     return (
-        <section className="container space-y-16 py-16">
-            <div className="space-y-4 sm:w-3/4">
-                <h1 className="h1 max-w-full wrap-break-word">Explore Countries and Travel Destinations</h1>
-                <p className="text-big text-black-70">
-                    {settings.placesCount} places in {settings.countriesCount} countries
-                </p>
-            </div>
+        <section className="container space-y-16 py-24">
+            <h1 className="h1 mb-4 text-center">Where are you going?</h1>
+            <p className="text-big text-black-70 m-auto mb-16 w-full text-center sm:w-2/3">
+                Visit top-rated destinations recommended by fellow travelers. Discover must-see sights, from iconic
+                landmarks to hidden gems waiting to be explored.
+            </p>
 
             <div className="space-y-4 sm:space-y-8">
                 <div className="bg-orange-10 flex flex-col items-center gap-8 rounded-2xl p-8 text-center sm:flex-row sm:text-left">

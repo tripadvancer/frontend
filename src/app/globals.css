@@ -312,6 +312,21 @@ body {
         border-color: var(--color-black-15, currentColor);
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+
+    p {
+        margin: 0;
+    }
+
     button:not(:disabled),
     [role='button']:not(:disabled) {
         cursor: pointer;

@@ -9,7 +9,8 @@ import Image from 'next/image'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { getCountryByCode } from '@/services/countries'
+import { getCountryByCode } from '@/utils/helpers/countries'
+import { getPlacePath } from '@/utils/helpers/places'
 
 type SharePlaceProps = {
     id: number
@@ -19,7 +20,7 @@ type SharePlaceProps = {
 
 export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
     const toast = useToast()
-    const url = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/places/${id}`
+    const url = `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}${getPlacePath(id, countryCode)}`
 
     const [_, copy] = useCopyToClipboard()
 

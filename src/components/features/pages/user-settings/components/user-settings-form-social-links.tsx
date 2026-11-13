@@ -3,6 +3,7 @@
 import { ChangeEvent } from 'react'
 
 import classNames from 'classnames'
+import { FormikErrors } from 'formik'
 import { TrashIcon } from 'lucide-react'
 
 import Image from 'next/image'
@@ -15,7 +16,7 @@ type IUserSocial = Partial<Record<UserSocialApps, string>>
 
 type UserSettingsFormSocialLinksProps = {
     initialValue: IUserSocial
-    error?: any
+    error?: FormikErrors<IUserSocial>
     isDisabled?: boolean
     onChange: (value: IUserSocial) => void
 }
@@ -111,7 +112,7 @@ export const UserSettingsFormSocialLinks = ({
                         value={link}
                         placeholder={socialInputs[app as UserSocialApps].placeholder}
                         disabled={isDisabled}
-                        error={error?.[app]}
+                        error={error?.[app as UserSocialApps]}
                         className="[&>input]:pr-9 [&>input]:pl-13.5"
                         onChange={handleChange}
                     />

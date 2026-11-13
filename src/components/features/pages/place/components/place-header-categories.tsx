@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { getCountryByCode } from '@/services/countries'
 import { categoriesDictionary } from '@/utils/dictionaries/categories'
+import { getCountryByCode } from '@/utils/helpers/countries'
 
 type PlaceHeaderCategoriesProps = {
     countryCode: string | null
@@ -17,7 +17,7 @@ export const PlaceHeaderCategories = async ({ countryCode, categories }: PlaceHe
                 country ? (
                     <Link
                         key={`category-${category}`}
-                        href={`/countries/${country.slug}?categories=${category}`}
+                        href={`/${country.slug}?categories=${category}`}
                         className="hover-animated text-small hover:border-blue-active hover:text-blue-active flex h-8 items-center rounded-full border border-blue-100 px-4 whitespace-nowrap text-blue-100"
                     >
                         {categoriesDictionary.find(item => item.id === category)?.name}
