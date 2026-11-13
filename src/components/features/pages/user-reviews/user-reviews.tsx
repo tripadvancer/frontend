@@ -21,7 +21,7 @@ export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) 
 
     if (isError) {
         return (
-            <div className="mt-16 text-center text-black-40">
+            <div className="text-black-40 mt-16 text-center">
                 An unexpected error has occurred. Please try again later.
             </div>
         )
@@ -29,7 +29,7 @@ export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) 
 
     if (isSuccess && reviews.items.length === 0) {
         return (
-            <div className="mt-16 text-center text-black-40">
+            <div className="text-black-40 mt-16 text-center">
                 Nothing has been added here yet.
                 <br />
                 Reviews will show up as they’re written.
