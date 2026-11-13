@@ -24,18 +24,19 @@ export const SendToMSP = ({ deepLink }: { deepLink: string }) => {
 
             <Image src={qrCodeUrl} width={240} height={240} alt="QR code to open My Saved Places" unoptimized />
 
-            {isMobile ? (
-                <a
-                    href={deepLink}
-                    className="hover-animated hover:bg-orange-active inline-flex h-10 w-full items-center justify-center rounded-lg bg-orange-100 px-6 font-medium whitespace-nowrap text-white hover:text-white"
-                >
-                    Open in My Saved Places
-                </a>
-            ) : (
+            <div className="space-y-2">
+                {isMobile && (
+                    <a
+                        href={deepLink}
+                        className="hover-animated hover:bg-orange-active inline-flex h-10 w-full items-center justify-center rounded-lg bg-orange-100 px-6 font-medium whitespace-nowrap text-white hover:text-white"
+                    >
+                        Open in My Saved Places
+                    </a>
+                )}
                 <FormButton type="stroke" variant="blue" className="w-full" onClick={dialog.close}>
                     Close
                 </FormButton>
-            )}
+            </div>
         </div>
     )
 }
