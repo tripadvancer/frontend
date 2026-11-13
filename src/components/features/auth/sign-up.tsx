@@ -40,7 +40,13 @@ export const SignUp = () => {
     }
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string().trim().required('This field is required').email('Please enter a valid email address'),
+        email: Yup.string()
+            .trim()
+            .required('This field is required')
+            .matches(
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
+                'Please enter a valid email address',
+            ),
         username: Yup.string()
             .trim()
             .required('This field is required')
@@ -51,7 +57,7 @@ export const SignUp = () => {
             .required('This field is required')
             .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
             .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
+            .matches(validationConfig.user.password.policyRegex, validationConfig.user.password.policyMessage),
     })
 
     const handleSubmit = async (values: SignUpInputs) => {
@@ -86,7 +92,7 @@ export const SignUp = () => {
                     }
 
                     if (passwordError) {
-                        formik.setErrors({ password: passwordError.error })
+                        formik.setErrors({ email: passwordError.error })
                     }
 
                     if (usernameError) {
@@ -105,7 +111,7 @@ export const SignUp = () => {
                     toast.error('An unexpected error has occurred. Please try again later.')
                     break
             }
-        } catch {
+        } catch (err: any) {
             toast.error('An unexpected error has occurred. Please try again later.')
         } finally {
             setIsLoading(false)
@@ -168,7 +174,7 @@ export const SignUp = () => {
                 <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
                     Sign up
                 </FormButton>
-                <div className="text-small text-black-40 text-center">
+                <div className="text-center text-small text-black-40">
                     By completing the registration process, you acknowledge and accept our{' '}
                     <span
                         className="link"

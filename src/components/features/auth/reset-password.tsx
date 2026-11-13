@@ -32,7 +32,7 @@ export const ResetPassword = () => {
             .required('This field is required')
             .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
             .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
+            .matches(validationConfig.user.password.policyRegex, validationConfig.user.password.policyMessage),
     })
 
     const handleSubmit = async (values: ResetPasswordInputs) => {
@@ -100,7 +100,7 @@ export const ResetPassword = () => {
             </p>
             <Link
                 href="/"
-                className="hover-animated hover:bg-blue-active inline-flex h-10 w-full items-center justify-center rounded-lg bg-blue-100 px-6 text-white hover:text-white focus:outline-none"
+                className="hover-animated inline-flex h-10 w-full items-center justify-center rounded-lg bg-blue-100 px-6 text-white hover:bg-blue-active hover:text-white focus:outline-none"
             >
                 Go to Home
             </Link>

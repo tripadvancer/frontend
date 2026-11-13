@@ -35,7 +35,7 @@ export const ChangePassword = () => {
             .required('This field is required')
             .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
             .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
+            .matches(validationConfig.user.password.policyRegex, validationConfig.user.password.policyMessage),
     })
 
     const handleSubmit = async (inputs: ChangeUserPasswordInputs) => {
@@ -54,14 +54,14 @@ export const ChangePassword = () => {
                     break
 
                 case 'PASSWORD_POLICY_VIOLATED_ERROR':
-                    formik.setErrors({ newPassword: 'Password must contain at least 8 characters, including a number' })
+                    formik.setErrors({ newPassword: validationConfig.user.password.policyMessage })
                     break
 
                 default:
                     toast.error('An unexpected error has occurred. Please try again later.')
                     break
             }
-        } catch {
+        } catch (err: any) {
             toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
