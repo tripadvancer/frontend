@@ -18,6 +18,7 @@ type PlaceSidebarActionsShowOnMap = {
     title: string
     cover: string | null
     avgRating: number | null
+    countryCode: string | null
     reviewsCount: number
     location: GeoJsonPoint
     isAuth: boolean
@@ -42,6 +43,7 @@ export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap
                 id: props.id,
                 title: props.title,
                 cover: props.cover,
+                countryCode: props.countryCode,
                 avgRating: props.avgRating,
                 reviewsCount: props.reviewsCount,
                 coordinates: props.location.coordinates,
