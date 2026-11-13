@@ -13,10 +13,19 @@ import {
 export const reviewsAPI = api.injectEndpoints({
     endpoints: build => ({
         getReviewsByPlaceId: build.query<GetReviewsResponse, GetReviewsByPlaceIdParams>({
-            query: ({ placeId, cursor }) => `reviews?place_id=${placeId}${cursor ? `&cursor=${cursor}` : ''}`,
-            serializeQueryArgs: ({ endpointName }) => {
-                return endpointName
-            },
+            query: ({ placeId, cursor, withPhotos }) => ({
+                url: 'reviews',
+                params: {
+                    place_id: placeId,
+                    cursor,
+                    with_photos: withPhotos ? 'true' : undefined,
+                },
+            }),
+            serializeQueryArgs: ({ endpointName, queryArgs }) => ({
+                endpointName,
+                placeId: queryArgs.placeId,
+                withPhotos: queryArgs.withPhotos ?? false,
+            }),
             merge: (currentCache, newResponse, otherArgs) => {
                 if (otherArgs.arg.cursor === undefined) {
                     return newResponse

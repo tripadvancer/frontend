@@ -3,6 +3,7 @@ import { IReview, PaginatedResponse } from '@/utils/types/common'
 export type GetReviewsByPlaceIdParams = {
     placeId: number
     cursor?: number
+    withPhotos?: boolean
 }
 
 export type GetReviewsByUserIdParams = {
