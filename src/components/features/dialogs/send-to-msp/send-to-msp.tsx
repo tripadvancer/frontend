@@ -8,22 +8,20 @@ import { useDialog } from '@/components/providers/dialog-provider'
 import { ExternalLink } from '@/components/ui/external-link'
 import { FormButton } from '@/components/ui/form-button'
 
-const APP_LANDING_PAGE = 'https://mysavedplaces.com'
-
 export const SendToMSP = ({ deepLink }: { deepLink: string }) => {
     const dialog = useDialog()
     const isMobile = useMediaQuery('(max-width: 639px)')
     const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(deepLink)}`
 
     return (
-        <div className="flex w-full flex-col items-center gap-y-6 text-center sm:w-96">
+        <div className="flex w-full flex-col items-center gap-y-8 py-10 text-center sm:w-96">
             <Image src="/images/mysavedplaces/logo.svg" width={314} height={23} alt="My Saved Places" />
-            <div>
-                <p className="text-black-70">Scan this QR code with your phone to open My Saved Places.</p>
-                <p className="text-black-70">
-                    Learn more at <ExternalLink href={APP_LANDING_PAGE}>mysavedplaces.com</ExternalLink>
-                </p>
-            </div>
+
+            <p className="text-black-70">
+                Scan this QR code with your phone to open{' '}
+                <ExternalLink href="https://mysavedplaces.com">My Saved Places</ExternalLink>.
+            </p>
+
             <Image src={qrCodeUrl} width={240} height={240} alt="QR code to open My Saved Places" unoptimized />
 
             {isMobile ? (
