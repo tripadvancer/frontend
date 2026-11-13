@@ -7,12 +7,14 @@ import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverificati
 import { emailPasswordSignUp } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 import * as Yup from 'yup'
 
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Devider } from '@/components/ui/devider'
 import { FormButton } from '@/components/ui/form-button'
+import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { FormInput } from '@/components/ui/form-input'
 import { validationConfig } from '@/configs/validation.config'
 import { SignUpInputs } from '@/utils/types/auth'
@@ -37,6 +39,7 @@ export const SignUp = () => {
         email: '',
         username: '',
         password: '',
+        agreePrivacy: false,
     }
 
     const validationSchema = Yup.object().shape({
@@ -52,6 +55,10 @@ export const SignUp = () => {
             .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
             .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
             .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
+        agreePrivacy: Yup.boolean().oneOf(
+            [true],
+            'Please accept the Terms and Conditions and Privacy Policy to continue.',
+        ),
     })
 
     const handleSubmit = async (values: SignUpInputs) => {
@@ -129,7 +136,7 @@ export const SignUp = () => {
             <h1 className="h7 text-center">Sign Up</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
-                    <ThirdPartyButton provider="google" isDisabled={isLoading} />
+                    <ThirdPartyButton provider="google" isDisabled={isLoading || !formik.values.agreePrivacy} />
                     {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
                 </div>
                 <Devider>Or</Devider>
@@ -165,31 +172,48 @@ export const SignUp = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-y-4">
-                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+                <FormButton
+                    htmlType="submit"
+                    className="w-full"
+                    isLoading={isLoading}
+                    isDisabled={!formik.values.agreePrivacy}
+                >
                     Sign up
                 </FormButton>
-                <div className="text-small text-black-40 text-center">
-                    By completing the registration process, you acknowledge and accept our{' '}
-                    <span
-                        className="link"
-                        onClick={() => {
-                            dialog.close()
-                            router.push('/legal/terms-and-conditions')
-                        }}
-                    >
-                        Terms and Conditions
-                    </span>{' '}
-                    and{' '}
-                    <span
-                        className="link"
-                        onClick={() => {
-                            dialog.close()
-                            router.push('/legal/privacy-policy')
-                        }}
-                    >
-                        Privacy Policy
-                    </span>
-                    .
+                <div>
+                    <FormCheckbox
+                        id="agreePrivacy"
+                        name="agreePrivacy"
+                        checked={formik.values.agreePrivacy}
+                        label={
+                            <div className="text-small text-black-40">
+                                By completing the registration process, you acknowledge and accept our{' '}
+                                <Link
+                                    href="/legal/terms-and-conditions"
+                                    className="link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Terms and Conditions
+                                </Link>{' '}
+                                and{' '}
+                                <Link
+                                    href="/legal/privacy-policy"
+                                    className="link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Privacy Policy
+                                </Link>
+                                .
+                            </div>
+                        }
+                        disabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                    {formik.errors.agreePrivacy && (
+                        <div className="mt-1 text-small text-red-100">{formik.errors.agreePrivacy}</div>
+                    )}
                 </div>
             </div>
             <div className="text-center">
