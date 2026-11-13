@@ -20,23 +20,20 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
     let result = await baseQuery(args, api, extraOptions)
     if (result.error && result.error.status === 401) {
-        // Checking whether the mutex is locked
         if (!mutex.isLocked()) {
             const release = await mutex.acquire()
             try {
-                // Try to get a new token
-                void Session.attemptRefreshingSession().then(async hasSession => {
-                    if (hasSession) {
-                        // todo: get new userInfo and revelidate tags???
-                        result = await baseQuery(args, api, extraOptions)
-                    }
-                })
+                const hasSession = await Session.attemptRefreshingSession()
+
+                if (hasSession) {
+                    result = await baseQuery(args, api, extraOptions)
+                }
+            } catch {
+                return result
             } finally {
-                // Release must be called once the mutex should be released again.
                 release()
             }
         } else {
-            // Wait until the mutex is available without locking it
             await mutex.waitForUnlock()
             result = await baseQuery(args, api, extraOptions)
         }

@@ -15,7 +15,7 @@ export const CookieConsent = () => {
     }
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-orange-10">
+        <div className="bg-orange-10 fixed right-0 bottom-0 left-0 z-50">
             <div className="container flex flex-col gap-4 py-4 sm:flex-row sm:justify-between">
                 <div className="text-black-70">
                     <div className="font-medium">Allow Cookies</div>

@@ -10,8 +10,6 @@ import { MapControl } from '@/components/ui/map-control'
 import { getMapViewState } from '@/utils/redux/features/map-slice'
 import { useAppSelector } from '@/utils/redux/hooks'
 
-import 'maplibre-gl/dist/maplibre-gl.css'
-
 import { MapControlSearch } from './components/map-control-search'
 import { MapControlUserLocation } from './components/map-control-user-location'
 import { MapPinUser } from './components/map-pin-user'
