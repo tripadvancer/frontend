@@ -27,7 +27,7 @@ export default async function NotFound() {
                     priority
                 />
                 <h2 className="h3 mb-8">Page not found</h2>
-                <p className="mb-8 text-big text-black-70">
+                <p className="text-big text-black-70 mb-8">
                     We are sorry, but it seems you have ventured into uncharted territory. The page you were looking for
                     has either been moved, deleted, or never existed in the first place.
                 </p>

@@ -6,16 +6,22 @@ import { PlacesGrid } from '@/components/features/common/places-grid/places-grid
 import { ShowMore } from '@/components/ui/show-more'
 import { usersAPI } from '@/utils/redux/services/users/users.api'
 
+import { UserPlacesItemActions } from './components/user-places-item-actions'
 import { UserPlacesSkeleton } from './user-places-skeleton'
 
-export const UserPlaces = ({ userId }: { userId: number }) => {
+type UserPlacesProps = {
+    userId: number
+    isOwnProfile: boolean
+}
+
+export const UserPlaces = ({ userId, isOwnProfile }: UserPlacesProps) => {
     const [page, setPage] = useState(1)
 
     const { data, isFetching, isSuccess, isError } = usersAPI.useGetPlacesByUserIdQuery({ userId, page })
 
     if (isError) {
         return (
-            <div className="mt-16 text-center text-black-40">
+            <div className="text-black-40 mt-16 text-center">
                 An unexpected error has occurred. Please try again later.
             </div>
         )
@@ -23,7 +29,7 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="mt-16 text-center text-black-40">
+            <div className="text-black-40 mt-16 text-center">
                 Nothing has been added here yet.
                 <br />
                 Places will show up as they’re added.
@@ -40,10 +46,12 @@ export const UserPlaces = ({ userId }: { userId: number }) => {
                             id: item.id,
                             title: item.title,
                             cover: item.cover,
+                            countryCode: item.countryCode,
                             meta: {
                                 countryCode: item.countryCode,
                                 createdAt: new Date(item.createdAt),
                             },
+                            actions: isOwnProfile ? <UserPlacesItemActions id={item.id} userId={userId} /> : undefined,
                         }))}
                     />
                 </div>
