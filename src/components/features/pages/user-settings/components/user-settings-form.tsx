@@ -60,24 +60,19 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
         info: Yup.string()
             .trim()
             .max(userInfoMaxLength, `This field must be at most ${userInfoMaxLength} characters long`),
-        social: Yup.lazy(value =>
-            Yup.object().shape(
-                Object.keys(value).reduce(
-                    (acc: Record<string, any>, key: string) => {
-                        acc[key] = Yup.string()
-                            .trim()
-                            .default('')
-                            .required('This field is required')
-                            .max(
-                                userSocialMaxLength,
-                                `This field must be at most ${userSocialMaxLength} characters long`,
-                            )
-                        return acc
-                    },
-                    {} as Record<string, Yup.StringSchema<string | undefined>>,
-                ),
-            ),
-        ),
+        social: Yup.lazy(value => {
+            const fields: Record<string, Yup.AnySchema> = {}
+
+            Object.keys(value).forEach(key => {
+                fields[key] = Yup.string()
+                    .trim()
+                    .default('')
+                    .required('This field is required')
+                    .max(userSocialMaxLength, `This field must be at most ${userSocialMaxLength} characters long`)
+            })
+
+            return Yup.object().shape(fields)
+        }),
     })
 
     const handleSubmit = async (inputs: UpdateUserDataInputs) => {

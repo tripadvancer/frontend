@@ -2,7 +2,6 @@
 
 import { ReactNode } from 'react'
 import { MapProvider } from 'react-map-gl/maplibre'
-import { ParallaxProvider } from 'react-scroll-parallax'
 
 import { SessionExpiredHandler } from '@/components/features/auth/session-expired-handler'
 import { DialogProvider } from '@/components/providers/dialog-provider'
@@ -17,10 +16,8 @@ export function Providers({ children }: { children: ReactNode }) {
                 <ToastProvider>
                     <MapProvider>
                         <DialogProvider>
-                            <ParallaxProvider>
-                                {children}
-                                <SessionExpiredHandler />
-                            </ParallaxProvider>
+                            {children}
+                            <SessionExpiredHandler />
                         </DialogProvider>
                     </MapProvider>
                 </ToastProvider>
