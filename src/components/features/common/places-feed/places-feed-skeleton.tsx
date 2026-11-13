@@ -5,9 +5,9 @@ export const PlacesFeedSkeleton = () => {
         <div role="status" className="flex animate-pulse flex-col gap-4">
             {Array.from({ length: 1 }).map((_, i) => (
                 <div key={`widgit-places-skeleton-${i}`} className="flex gap-x-4">
-                    <div className="flex-center mb-2 h-20 w-20 flex-none rounded-lg bg-black-5">
+                    <div className="flex-center bg-black-5 mb-2 h-20 w-20 flex-none rounded-lg">
                         <svg
-                            className="w-10 text-black-15 opacity-30"
+                            className="text-black-15 w-10 opacity-30"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -17,8 +17,8 @@ export const PlacesFeedSkeleton = () => {
                         </svg>
                     </div>
                     <div className="flex flex-1 flex-col gap-1">
-                        <div className="h-3.5 w-full rounded-full bg-black-5" />
-                        <div className="h-3.5 w-2/3 rounded-full bg-black-5" />
+                        <div className="bg-black-5 h-3.5 w-full rounded-full" />
+                        <div className="bg-black-5 h-3.5 w-2/3 rounded-full" />
                     </div>
                 </div>
             ))}

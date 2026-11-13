@@ -9,7 +9,7 @@ export const SavePlaceLists = ({ placeId }: { placeId: number }) => {
 
     if (isError) {
         return (
-            <div className="text-center text-black-40">An unexpected error has occurred. Please try again later.</div>
+            <div className="text-black-40 text-center">An unexpected error has occurred. Please try again later.</div>
         )
     }
 

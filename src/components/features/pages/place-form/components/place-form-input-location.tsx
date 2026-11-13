@@ -24,7 +24,7 @@ export const PlaceFormInputLocation = ({ value, error, onChange }: PlaceFormInpu
     return (
         <div
             className={classNames(
-                'group flex cursor-pointer items-center gap-x-2 text-big text-blue-100 hover:text-blue-active',
+                'group text-big hover:text-blue-active flex cursor-pointer items-center gap-x-2 text-blue-100',
                 {
                     'text-red-100': error,
                 },

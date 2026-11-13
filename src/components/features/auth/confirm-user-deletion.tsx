@@ -41,6 +41,7 @@ export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
             <p className="text-center">
                 {status === 'OK' &&
                     'The deletion process has been started. This process may take up to several days. You can restore your account using the link sent to your email until the deletion process is finished.'}
+
                 {status === 'INVALID_TOKEN_ERROR' &&
                     'The confirmation link has expired. Please request a new confirmation link.'}
             </p>

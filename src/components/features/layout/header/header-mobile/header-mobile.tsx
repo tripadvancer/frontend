@@ -28,7 +28,7 @@ export const HeaderMobile = (props: HeaderMobileProps) => {
     }
 
     return (
-        <div className="container relative flex h-14 items-center justify-between gap-x-6 lg:hidden">
+        <div className="relative container flex h-14 items-center justify-between gap-x-6 lg:hidden">
             <HeaderLogo closeMobileMenu={closeMobileMenu} />
 
             <div className="flex-center gap-x-3">
@@ -36,7 +36,7 @@ export const HeaderMobile = (props: HeaderMobileProps) => {
                     <MapIcon />
                 </Link>
 
-                <div className="hover-animated cursor-pointer hover:text-blue-active">
+                <div className="hover-animated hover:text-blue-active cursor-pointer">
                     {isOpen ? <XIcon onClick={closeMobileMenu} /> : <MenuIcon onClick={openMobileMenu} />}
                 </div>
 
