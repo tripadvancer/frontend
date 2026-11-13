@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { cookies } from 'next/headers'
 
 import { GetUserInfoResponse, GetUserSettingsResponse } from '@/services/user.types'
@@ -9,7 +11,7 @@ export async function getUserInfo(): Promise<GetUserInfoResponse> {
 
     // todo: handle refresh token
     const res = await fetch(url, {
-        cache: 'no-cache',
+        cache: 'no-store',
         headers: {
             Authorization: 'Bearer ' + accessToken,
         },
@@ -29,7 +31,7 @@ export async function getUserSettings(): Promise<GetUserSettingsResponse> {
 
     // todo: handle refresh token
     const res = await fetch(url, {
-        cache: 'no-cache',
+        cache: 'no-store',
         headers: {
             Authorization: 'Bearer ' + accessToken,
         },

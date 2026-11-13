@@ -25,7 +25,7 @@ export const FormTextarea = (props: FormTextareaProps) => {
         <div className={className}>
             <div className="relative">
                 {props.maxLength && (
-                    <div className="absolute -top-7 right-0 text-black-40">
+                    <div className="text-black-40 absolute -top-7 right-0">
                         {characterCount} / {props.maxLength}
                     </div>
                 )}
@@ -34,7 +34,7 @@ export const FormTextarea = (props: FormTextareaProps) => {
                     {...rest}
                     ref={ref}
                     className={classNames(
-                        'hover-animated w-full resize-none rounded-lg border bg-white p-2.5 align-top placeholder:text-black-40 focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
+                        'hover-animated placeholder:text-black-40 w-full resize-none rounded-lg border bg-white p-2.5 align-top focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                         {
                             'border-black-15 hover:border-black-40 focus:border-black-40': !error,
                             'border-red-100': error,
@@ -45,7 +45,7 @@ export const FormTextarea = (props: FormTextareaProps) => {
                 </textarea>
             </div>
 
-            {error && <div className="mt-1 text-small text-red-100">{error}</div>}
+            {error && <div className="text-small mt-1 text-red-100">{error}</div>}
         </div>
     )
 }

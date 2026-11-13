@@ -10,8 +10,6 @@ import { MapControl } from '@/components/ui/map-control'
 import { getMapViewState } from '@/utils/redux/features/map-slice'
 import { useAppSelector } from '@/utils/redux/hooks'
 
-import 'maplibre-gl/dist/maplibre-gl.css'
-
 import { MapControlUserLocation } from './components/map-control-user-location'
 import { MapPinUser } from './components/map-pin-user'
 import { MapPopupLocation } from './components/map-popup-location'
@@ -67,7 +65,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
             >
                 <MapSources isAuth={isAuth} />
 
-                <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
+                <div className="absolute top-20 right-2 z-30 flex flex-col gap-y-1 sm:top-2 sm:right-auto sm:bottom-auto sm:left-2 sm:translate-y-0">
                     <MapControl onClick={handleZoomIn}>
                         <PlusIcon size={16} />
                     </MapControl>

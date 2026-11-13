@@ -5,8 +5,8 @@ export const UserSidebarAbout = async ({ info }: { info: string | null }) => {
 
     return (
         <section>
-            <h3 className="mb-4 text-caps uppercase">About me</h3>
-            <p className="break-words">{info}</p>
+            <h3 className="text-caps mb-4 uppercase">About me</h3>
+            <p className="wrap-break-word">{info}</p>
         </section>
     )
 }

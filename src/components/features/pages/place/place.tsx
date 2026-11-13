@@ -1,10 +1,11 @@
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { JsonLd } from '@/components/features/common/json-ld'
-import { getCountryByCode } from '@/services/countries'
-import { getPlaceById } from '@/services/places'
+import { GetPlaceByIdResponse } from '@/services/places.types'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
+import { getCountryByCode } from '@/utils/helpers/countries'
+import { getPlacePath } from '@/utils/helpers/places'
 
 import { PlaceHeader } from './components/place-header'
 import { PlaceMainAbandonedWarning } from './components/place-main-abandoned-warning'
@@ -16,11 +17,10 @@ import { PlaceSidebarAuthor } from './components/place-sidebar-author'
 import { PlaceSidebarNearby } from './components/place-sidebar-nearby'
 import { PlaceSidebarRating } from './components/place-sidebar-rating'
 
-export const Place = async ({ placeId }: { placeId: string }) => {
-    const place = await getPlaceById(placeId)
+export const Place = ({ place }: { place: GetPlaceByIdResponse }) => {
     const country = getCountryByCode(place.countryCode)
     const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string
-    const placeUrl = `${baseUrl}/places/${place.id}`
+    const placeUrl = `${baseUrl}${getPlacePath(place.id, place.countryCode)}`
     const placeDescription = place.description
         .replace(/<[^>]*>/g, ' ')
         .replace(/\s+/g, ' ')
@@ -43,7 +43,7 @@ export const Place = async ({ placeId }: { placeId: string }) => {
                                           '@type': 'ListItem',
                                           position: 2,
                                           name: country.name,
-                                          item: `${baseUrl}/countries/${country.slug}`,
+                                          item: `${baseUrl}/${country.slug}`,
                                       },
                                   ]
                                 : []),
