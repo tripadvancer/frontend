@@ -25,6 +25,9 @@ export const Country = async ({
     const places = await getPlacesByCountryCode(country.code, selectedCategoriesIds.join())
     const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string
     const countryUrl = `${baseUrl}/${country.slug}`
+    const countryBounds = Array.isArray(country.bounds)
+        ? country.bounds.flat().join(',')
+        : country.bounds.toArray().flat().join(',')
 
     return (
         <>
@@ -59,6 +62,9 @@ export const Country = async ({
                     <div className="space-y-4">
                         <Link href="/" className="hover:text-blue-active inline-block font-medium text-blue-100">
                             View all countries
+                        </Link>
+                        <Link href={`/maps?bounds=${countryBounds}`} className="link">
+                            View on map
                         </Link>
                         <h1 className="h1 max-w-full wrap-break-word">Places to visit in {country.name}</h1>
                         <p className="text-big text-black-70">
