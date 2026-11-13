@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { WidgetMessage } from '../widget-message'
 import { WidgetRandomPlace } from './widget-random-place'
 
@@ -25,20 +23,20 @@ type WidgetRandomResultsProps = {
 }
 
 export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }: WidgetRandomResultsProps) => {
-    const t = useTranslations()
-
     if (isError) {
         return <WidgetMessage />
     }
 
     if (!isUserLocated) {
-        return <WidgetMessage message={t('map.widget.random.notLocation')} />
+        return <WidgetMessage message="Allow location access to find places near you." />
     }
 
     if (isSuccess && !place) {
         return (
-            <div className="m-auto text-center text-black-40">
-                {t.rich('map.widget.random.emptyMessage', { br: () => <br /> })}
+            <div className="text-black-40 m-auto text-center">
+                No places matcing your filter found.
+                <br />
+                Try changing categories or radius.
             </div>
         )
     }

@@ -1,5 +1,4 @@
 import { CheckIcon, TrashIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { Dropdown } from '@/components/ui/dropdown'
 import { Photo } from '@/components/ui/photo'
@@ -19,16 +18,14 @@ export const PlaceFormInputPhotosPreviewSuccess = ({
     onDelete,
     onSetAsCover,
 }: PlaceFormInputPhotosPreviewSuccessProps) => {
-    const t = useTranslations()
-
     return (
         <div className="relative">
             {isCover && (
-                <div className="absolute left-1 top-1 rounded-2xl bg-black-100 px-2 py-0.5 text-small-bold text-white">
-                    {t('page.placeForm.field.photos.cover')}
+                <div className="bg-black-100 text-small-bold absolute top-1 left-1 rounded-2xl px-2 py-0.5 text-white">
+                    Cover
                 </div>
             )}
-            <div className="absolute right-1 top-1 h-8 w-8">
+            <div className="absolute top-1 right-1 h-8 w-8">
                 <Dropdown
                     items={[
                         {

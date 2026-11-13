@@ -1,10 +1,12 @@
+import { permanentRedirect } from 'next/navigation'
 import { Metadata } from 'next/types'
 
 import { Place } from '@/components/features/pages/place/place'
-import { getCountryByCode } from '@/services/countries'
 import { getPlaceById } from '@/services/places'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
+import { getCountryByCode } from '@/utils/helpers/countries'
+import { getPlacePath } from '@/utils/helpers/places'
 
 type Params = Promise<{ id: string }>
 
@@ -12,38 +14,54 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const params = await props.params
     const place = await getPlaceById(params.id)
     const country = getCountryByCode(place.countryCode)
-    const countryName = country?.name['en'] ?? ''
+    const countryName = country?.name
+    const placeDescription = place.description
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+    const description = placeDescription
+        ? `${place.title}${countryName ? ` in ${countryName}` : ''}: ${placeDescription}`.slice(0, 160)
+        : `Explore ${place.title}${countryName ? ` in ${countryName}` : ''}. View photos, visitor reviews, and location details, then save this place to your trip list.`
+    const title = countryName ? `${place.title} in ${countryName}` : place.title
+    const image = place.cover ? makeImageUrl(place.cover, ImageVariants.PUBLIC) : '/images/place-cover-placeholder.jpg'
+    const placePath = getPlacePath(place.id, place.countryCode)
 
     return {
-        title: `${place.title} | ${countryName}`,
-        description: `Discover ${place.title} in ${countryName} with Tripadvancer. Plan your unforgettable journey now with our comprehensive travel guides and insider tips. Start your adventure today!`,
-        keywords: `${place.title}, ${countryName}, travel, tourism, vacation, holiday, trip, journey, adventure, guide, tips, what to see in ${countryName}, attractions of ${countryName}, spending weekends in ${countryName}, planning a trip around ${countryName} ,tourism in ${countryName}, things to do in ${countryName}`,
+        title,
+        description,
         alternates: {
-            canonical: `/places/${params.id}`,
+            canonical: placePath,
         },
         openGraph: {
-            title: `${place.title} | ${countryName}`,
-            description: `Discover ${place.title} in ${countryName} with Tripadvancer. Plan your unforgettable journey now with our comprehensive travel guides and insider tips. Start your adventure today!`,
+            title,
+            description,
             images: [
                 {
-                    url: makeImageUrl(place.cover, ImageVariants.PUBLIC),
+                    url: image,
                     width: 1920,
                     height: 1280,
                     type: 'image/jpeg',
                     alt: place.title,
                 },
             ],
-            url: `/places/${params.id}`,
+            url: placePath,
         },
         twitter: {
-            title: `${place.title} | ${countryName}`,
-            description: `Discover ${place.title} in ${countryName} with Tripadvancer. Plan your unforgettable journey now with our comprehensive travel guides and insider tips. Start your adventure today!`,
-            images: makeImageUrl(place.cover, ImageVariants.PUBLIC),
+            title,
+            description,
+            images: image,
         },
     }
 }
 
 export default async function PlacePage(props: { params: Params }) {
     const params = await props.params
-    return <Place placeId={params.id} />
+    const place = await getPlaceById(params.id)
+    const country = getCountryByCode(place.countryCode)
+
+    if (country) {
+        permanentRedirect(getPlacePath(place.id, place.countryCode))
+    }
+
+    return <Place place={place} />
 }

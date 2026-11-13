@@ -1,7 +1,6 @@
 'use client'
 
 import { LocateFixedIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { useRouter } from 'next/navigation'
 
@@ -19,13 +18,13 @@ type PlaceSidebarActionsShowOnMap = {
     title: string
     cover: string | null
     avgRating: number | null
+    countryCode: string | null
     reviewsCount: number
     location: GeoJsonPoint
     isAuth: boolean
 }
 
 export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap) => {
-    const t = useTranslations()
     const router = useRouter()
     const dispatch = useAppDispatch()
     const lngLat = arrayToLngLat(props.location.coordinates)
@@ -44,6 +43,7 @@ export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap
                 id: props.id,
                 title: props.title,
                 cover: props.cover,
+                countryCode: props.countryCode,
                 avgRating: props.avgRating,
                 reviewsCount: props.reviewsCount,
                 coordinates: props.location.coordinates,
@@ -57,7 +57,7 @@ export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap
     return (
         <div className="link flex items-center gap-x-2 align-top" onClick={handleClick}>
             <LocateFixedIcon />
-            {t('common.action.place.showOnMap')}
+            Show on map
         </div>
     )
 }

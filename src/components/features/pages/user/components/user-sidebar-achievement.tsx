@@ -1,5 +1,3 @@
-import { getTranslations } from 'next-intl/server'
-
 import Image from 'next/image'
 
 import { IUserStatistics } from '@/utils/types/user'
@@ -37,11 +35,9 @@ export const UserSidebarAchievement = async ({
     visitedPlaces,
     visitedCountries,
 }: UserSidebarAchievementProps) => {
-    const t = await getTranslations()
-
     return (
-        <div className="rounded-2xl bg-orange-10 p-8">
-            <div className="mb-8 items-center bg-[url('/images/user-rank/laurel.svg')] bg-top bg-no-repeat pl-4 pr-4 pt-4 text-orange-100">
+        <div className="bg-orange-10 rounded-2xl p-8">
+            <div className="mb-8 items-center bg-[url('/images/user-rank/laurel.svg')] bg-top bg-no-repeat pt-4 pr-4 pl-4 text-orange-100">
                 <Image
                     src="/images/user-rank/user-rank-beginner.svg"
                     alt="begginer"
@@ -49,16 +45,14 @@ export const UserSidebarAchievement = async ({
                     height={48}
                     className="m-auto"
                 />
-                <div className="break-words text-center font-medium">
-                    {t('component.userAchievement.level.beginner')}
-                </div>
+                <div className="text-center font-medium wrap-break-word">Beginner</div>
             </div>
             <ul>
-                <Item label={t('component.userAchievement.statistic.addedPlaces')} value={places} />
-                <Item label={t('component.userAchievement.statistic.addedReviews')} value={placeReviews} />
-                <Item label={t('component.userAchievement.statistic.addedPhotos')} value={placePhotos} />
-                <Item label={t('component.userAchievement.statistic.visitedPlaces')} value={visitedPlaces} />
-                <Item label={t('component.userAchievement.statistic.visitedCountries')} value={visitedCountries} />
+                <Item label="Added places" value={places} />
+                <Item label="Written reviews" value={placeReviews} />
+                <Item label="Added photos" value={placePhotos} />
+                <Item label="Visited places" value={visitedPlaces} />
+                <Item label="Visited countries" value={visitedCountries} />
             </ul>
         </div>
     )

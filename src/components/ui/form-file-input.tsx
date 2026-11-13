@@ -2,7 +2,6 @@ import { ChangeEvent, useRef, useState } from 'react'
 
 import classNames from 'classnames'
 import { FolderIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { Spinner } from '@/components/ui/spinner'
 
@@ -27,8 +26,6 @@ export const FormFileInput = ({
     isUploading,
     onChange,
 }: FormFileInputProps) => {
-    const t = useTranslations()
-
     const [error, setError] = useState<string>('')
 
     // Create a reference to the hidden file input element
@@ -51,12 +48,12 @@ export const FormFileInput = ({
         setError('')
 
         if (files.length + currentFilesLength > maxFilesCount) {
-            setError(t('validation.file.maxCount', { count: maxFilesCount }))
+            setError(`You can upload up to ${maxFilesCount} files`)
             return
         }
 
         if (fileSize > maxFileSize) {
-            setError(t('validation.file.maxSize', { size: maxFileSize / 1000000 }))
+            setError(`The file size must not exceed ${maxFileSize / 1000000} MB`)
             return
         }
 
@@ -67,7 +64,7 @@ export const FormFileInput = ({
         <div className={className}>
             <div className="relative">
                 {multiple && (
-                    <div className="absolute -top-7 right-0 text-black-40">
+                    <div className="text-black-40 absolute -top-7 right-0">
                         {currentFilesLength} / {maxFilesCount}
                     </div>
                 )}
@@ -75,7 +72,7 @@ export const FormFileInput = ({
                 <div className="relative">
                     <div
                         className={classNames(
-                            'hover-animated flex h-10 w-full items-center rounded-lg border bg-white pl-4 pr-9',
+                            'hover-animated flex h-10 w-full items-center rounded-lg border bg-white pr-9 pl-4',
                             {
                                 'border-red-100': error,
                                 'border-black-15 text-black-15 hover:border-black-40 hover:text-black-40': !error,
@@ -88,8 +85,8 @@ export const FormFileInput = ({
                     >
                         {isUploading && (
                             <>
-                                <div className="text-black-40">{t('common.loading')}</div>
-                                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-black-15">
+                                <div className="text-black-40">Loading ...</div>
+                                <div className="text-black-15 absolute top-1/2 right-3 -translate-y-1/2">
                                     <Spinner size={16} />
                                 </div>
                             </>
@@ -98,11 +95,13 @@ export const FormFileInput = ({
                         {!isUploading && (
                             <>
                                 {fileName ? (
-                                    <div className="text-black-100">{fileName}</div>
+                                    <div className="text-black-100 min-w-0 truncate" title={fileName}>
+                                        {fileName}
+                                    </div>
                                 ) : (
-                                    <div className="text-black-40">{t('placeholder.action.selectFile')}</div>
+                                    <div className="text-black-40">Select file ...</div>
                                 )}
-                                <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                                <div className="absolute top-1/2 right-3 -translate-y-1/2">
                                     <FolderIcon size={16} />
                                 </div>
                             </>
@@ -121,7 +120,7 @@ export const FormFileInput = ({
                 </div>
             </div>
 
-            {error && <div className="mt-1 text-small text-red-100">{error}</div>}
+            {error && <div className="text-small mt-1 text-red-100">{error}</div>}
         </div>
     )
 }

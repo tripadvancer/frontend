@@ -3,7 +3,6 @@
 import { RefObject, useRef, useState } from 'react'
 
 import { CircleUserIcon, LogOutIcon, SettingsIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 import Session from 'supertokens-web-js/recipe/session'
 import { useMediaQuery, useOnClickOutside } from 'usehooks-ts'
 
@@ -22,7 +21,6 @@ type UserMenuProps = {
 }
 
 export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
-    const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
     const isMobile = useMediaQuery('(max-width: 639px)')
@@ -49,7 +47,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
             router.push('/')
             router.refresh()
         } catch (err) {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 
@@ -60,34 +58,34 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
             </div>
 
             {isMenuOpen && (
-                <menu className="absolute right-0 top-full z-20 mt-1 min-w-40 rounded-lg bg-white p-1.5 shadow-medium">
+                <menu className="shadow-medium absolute top-full right-0 z-20 mt-1 min-w-40 rounded-lg bg-white p-1.5">
                     <li>
                         <Link
                             href={`/users/${name.toLowerCase()}`}
                             onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
+                            className="hover:bg-blue-10 flex items-center gap-x-2 rounded p-1.5 text-nowrap text-blue-100 transition-none"
                         >
                             <CircleUserIcon size={16} />
-                            {t('layout.userMenu.profile')}
+                            Profile
                         </Link>
                     </li>
                     <li>
                         <Link
                             href={`/users/${name.toLowerCase()}/settings`}
                             onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 transition-none hover:bg-blue-10"
+                            className="hover:bg-blue-10 flex items-center gap-x-2 rounded p-1.5 text-nowrap text-blue-100 transition-none"
                         >
                             <SettingsIcon size={16} />
-                            {t('layout.userMenu.settings')}
+                            Settings
                         </Link>
                     </li>
                     <li>
                         <div
-                            className="flex cursor-pointer items-center gap-x-2 text-nowrap rounded p-1.5 text-red-100 hover:bg-blue-10"
+                            className="hover:bg-blue-10 flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-nowrap text-red-100"
                             onClick={signOut}
                         >
                             <LogOutIcon size={16} />
-                            {t('layout.userMenu.logOut')}
+                            Log out
                         </div>
                     </li>
                 </menu>

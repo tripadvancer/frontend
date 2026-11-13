@@ -2,7 +2,6 @@
 
 import classNames from 'classnames'
 import { PencilIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { LocationPicker } from '@/components/features/dialogs/location-picker/location-picker'
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -15,7 +14,6 @@ type PlaceFormInputLocationProps = {
 }
 
 export const PlaceFormInputLocation = ({ value, error, onChange }: PlaceFormInputLocationProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const valueIsValidStringCoordinates = stringCoordinatesIsValid(value)
 
@@ -26,7 +24,7 @@ export const PlaceFormInputLocation = ({ value, error, onChange }: PlaceFormInpu
     return (
         <div
             className={classNames(
-                'group flex cursor-pointer items-center gap-x-2 text-big text-blue-100 hover:text-blue-active',
+                'group text-big hover:text-blue-active flex cursor-pointer items-center gap-x-2 text-blue-100',
                 {
                     'text-red-100': error,
                 },
@@ -39,7 +37,7 @@ export const PlaceFormInputLocation = ({ value, error, onChange }: PlaceFormInpu
                     <PencilIcon size={20} />
                 </>
             ) : (
-                t('page.placeForm.field.location.placeholder')
+                'Pick place location'
             )}
         </div>
     )

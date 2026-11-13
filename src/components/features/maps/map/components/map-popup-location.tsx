@@ -3,7 +3,6 @@
 import { RefObject, useRef } from 'react'
 import { Marker, Popup } from 'react-map-gl/maplibre'
 
-import { useTranslations } from 'next-intl'
 import { useOnClickOutside } from 'usehooks-ts'
 
 import Image from 'next/image'
@@ -27,7 +26,6 @@ type MapPopupLocationProps = {
 }
 
 export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVerified }: MapPopupLocationProps) => {
-    const t = useTranslations()
     const dispatch = useAppDispatch()
     const dialog = useDialog()
     const router = useRouter()
@@ -83,10 +81,10 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
                 closeButton={false}
             >
                 <div ref={ref}>
-                    <div>{t('map.popup.location.title')}</div>
-                    <div className="mb-4 text-small text-black-40">{LngLatToString(popupInfo.coordinates)}</div>
+                    <div>Selected location</div>
+                    <div className="text-small text-black-40 mb-4">{LngLatToString(popupInfo.coordinates)}</div>
                     <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
-                        {t('map.popup.location.addPlace')}
+                        Add place here
                     </FormButton>
                 </div>
             </Popup>

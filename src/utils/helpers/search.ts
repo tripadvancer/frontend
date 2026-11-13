@@ -1,4 +1,4 @@
-import { getCountryByCode } from '@/services/countries'
+import { getCountryByCode } from '@/utils/helpers/countries'
 import { ICountryDict } from '@/utils/types/country'
 import { ILocationPreview, IPlacePreview } from '@/utils/types/place'
 import { ISearchItem, ISearchResult } from '@/utils/types/search'
@@ -14,21 +14,12 @@ export const transformSearchLocations = (data: ISearchResult): ISearchItem<ILoca
 export const transformSearchPlaces = (data: ISearchResult): ISearchItem<IPlacePreview>[] => {
     return data.places.map(place => ({
         ...place,
-        info: getCountryByCode(place.properties.countryCode)?.name['en'] ?? '',
-    }))
-}
-
-export const transformSearchCountries = (data: ISearchResult): ISearchItem<ICountryDict>[] => {
-    return data.countries.map(country => ({
-        ...country,
-        title: country.properties.name['en'],
-        info: country.properties.code,
+        info: getCountryByCode(place.properties.countryCode)?.name ?? '',
     }))
 }
 
 export const transformFullSearchResult = (
     data: ISearchResult,
-    locale: string,
 ): ISearchItem<IPlacePreview | ILocationPreview | ICountryDict>[] => {
     return [
         ...transformSearchCoordinates(data),
@@ -36,4 +27,12 @@ export const transformFullSearchResult = (
         ...transformSearchPlaces(data),
         ...transformSearchLocations(data),
     ]
+}
+
+export const transformSearchCountries = (data: ISearchResult): ISearchItem<ICountryDict>[] => {
+    return data.countries.map(country => ({
+        ...country,
+        title: country.properties.name,
+        info: country.properties.code,
+    }))
 }

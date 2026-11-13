@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 
-import { useLocale, useTranslations } from 'next-intl'
-
 import Link from 'next/link'
 
 import { useDialog } from '@/components/providers/dialog-provider'
@@ -22,10 +20,8 @@ type SelectCategoriesProps = {
 const maxCategoriesCount = validationConfig.place.category.maxCount
 
 export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => {
-    const t = useTranslations()
-    const locale = useLocale()
     const dialog = useDialog()
-    const sortedCategories = getSortedCategories(locale)
+    const sortedCategories = getSortedCategories()
 
     const [selectedCategoryIds, setSelectedCategoryIds] = useState<number[]>(value)
 
@@ -41,13 +37,13 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
-            <h1 className="h7 text-center">{t('dialog.selectCategories.title', { maxCount: maxCategoriesCount })}</h1>
+            <h1 className="h7 text-center">{`Select up to ${maxCategoriesCount} categories`}</h1>
             <div className="flex flex-wrap justify-center gap-1">
                 {sortedCategories.map(category => (
                     <SelectCategoriesItem
                         key={`category-${category.id}`}
                         id={category.id}
-                        localizedName={category.localizedName[locale]}
+                        name={category.name}
                         isSelected={selectedCategoryIds.includes(category.id)}
                         isDisabled={
                             selectedCategoryIds.length === maxCategoriesCount &&
@@ -59,17 +55,16 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
             </div>
             <div className="flex flex-col gap-y-4">
                 <FormButton isDisabled={selectedCategoryIds.length === 0} onClick={handleConfirm}>
-                    {t('common.action.confirm')}
+                    Confirm
                 </FormButton>
-                <div className="text-center text-small text-black-40">
-                    {t.rich('dialog.selectCategories.help', {
-                        br: () => <br />,
-                        helpLink: helpLink => (
-                            <Link href="https://help.tripadvancer.com/categories" target="_blank">
-                                {helpLink}
-                            </Link>
-                        ),
-                    })}
+                <div className="text-small text-black-40 text-center">
+                    Not sure which categories to choose?
+                    <br />
+                    Take a look at our{' '}
+                    <Link href="https://help.tripadvancer.com/categories" target="_blank">
+                        category descriptions
+                    </Link>{' '}
+                    to choose the right ones.
                 </div>
             </div>
         </div>

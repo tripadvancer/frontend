@@ -1,14 +1,12 @@
 'use client'
 
 import { ArrowRightIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { setWidgetActiveList } from '@/utils/redux/features/widget-slice'
 import { useAppDispatch } from '@/utils/redux/hooks'
 import { IList } from '@/utils/types/common'
 
 export const WidgetSavedListsItem = (list: IList) => {
-    const t = useTranslations()
     const dispatch = useAppDispatch()
 
     const handleListClick = () => {
@@ -17,15 +15,19 @@ export const WidgetSavedListsItem = (list: IList) => {
 
     return (
         <div
-            className="group hover-animated flex cursor-pointer items-center justify-between gap-x-4 border-t border-blue-20 py-3 last-of-type:border-b hover:text-blue-active sm:py-4"
+            className="group hover-animated border-blue-20 hover:text-blue-active flex cursor-pointer items-center justify-between gap-x-4 border-t py-3 last-of-type:border-b sm:py-4"
             onClick={handleListClick}
         >
             <div className="flex-1 overflow-hidden">
-                <div className="overflow-hidden text-ellipsis text-big-bold">{list.name}</div>
-                <div className="flex gap-x-1 text-small text-black-40">
-                    {t('map.widget.tabs.savedPlaces.lists.private')}
+                <div className="text-big-bold overflow-hidden text-ellipsis">{list.name}</div>
+                <div className="text-small text-black-40 flex gap-x-1">
+                    Private
                     <span>•</span>
-                    {t('common.placesCounter', { count: list._count.listToPlace })}
+                    {list._count.listToPlace === 0
+                        ? 'No places'
+                        : list._count.listToPlace === 1
+                          ? '1 place'
+                          : list._count.listToPlace + ' places'}
                 </div>
             </div>
             <ArrowRightIcon size={16} absoluteStrokeWidth />

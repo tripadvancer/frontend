@@ -3,8 +3,6 @@
 import { useState } from 'react'
 import { ViewState } from 'react-map-gl/maplibre'
 
-import { useTranslations } from 'next-intl'
-
 import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { getDefaultViewState, stringToViewState, viewStateToString } from '@/utils/helpers/maps'
@@ -22,7 +20,6 @@ export const LocationPickerMethodOnMap = ({
     onChangeMethod,
     onConfirm,
 }: LocationPickerMethodOnMapProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
 
     const [viewState, setViewstate] = useState<Partial<ViewState>>(
@@ -41,14 +38,14 @@ export const LocationPickerMethodOnMap = ({
     return (
         <div className="flex flex-col gap-y-8">
             <div className="flex flex-col gap-y-4">
-                <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-black-15">
+                <div className="bg-black-15 relative aspect-square w-full overflow-hidden rounded-lg">
                     <LocationPickerMap viewState={viewState} onChangeViewState={handleCangeViewState} />
                 </div>
                 <div className="cursor-pointer text-center text-blue-100" onClick={onChangeMethod}>
-                    {t('dialog.locationPicker.toggleMethodManually')}
+                    Enter coordinates manually
                 </div>
             </div>
-            <FormButton onClick={handleConfirm}>{t('common.action.confirm')}</FormButton>
+            <FormButton onClick={handleConfirm}>Confirm</FormButton>
         </div>
     )
 }

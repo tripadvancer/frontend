@@ -1,7 +1,6 @@
 'use client'
 
 import { MessageSquareIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
@@ -22,7 +21,6 @@ export const PlaceMainAddReviewButton = ({
     isAuth,
     isEmailVerified,
 }: PlaceMainAddReviewButtonProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
 
     const handleClick = async () => {
@@ -47,7 +45,7 @@ export const PlaceMainAddReviewButton = ({
             className="w-full"
             onClick={handleClick}
         >
-            {t('page.place.reviews.addReview')}
+            Write a review
         </FormButton>
     )
 }

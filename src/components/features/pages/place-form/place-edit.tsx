@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { useRouter } from 'next/navigation'
 
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
@@ -9,6 +7,7 @@ import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { arrayToString, stringToLngLat } from '@/utils/helpers/maps'
+import { getPlacePath } from '@/utils/helpers/places'
 import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
 import { UpdatePlaceInputs } from '@/utils/redux/services/places/places.types'
@@ -27,7 +26,6 @@ type PlaceEditProps = {
 }
 
 export const PlaceEdit = ({ id, title, description, location, photos, cover, categories }: PlaceEditProps) => {
-    const t = useTranslations()
     const dialog = useDialog()
     const router = useRouter()
     const toast = useToast()
@@ -41,7 +39,7 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
     }
 
     if (isMetaError) {
-        return <div>{t('common.error')}</div>
+        return <div>An unexpected error has occurred. Please try again later.</div>
     }
 
     const initialValues: UpdatePlaceInputs = {
@@ -75,11 +73,11 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
                 ...inputs,
                 title: inputs.title.trim(),
             }
-            await updatePlace(trimmedInputs)
-            toast.success(t('success.updatePlace'))
-            router.push(`/places/${id}`)
+            const response = await updatePlace(trimmedInputs).unwrap()
+            toast.success('Your place has been updated.')
+            router.push(getPlacePath(response.id, response.countryCode))
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
         }
     }
 

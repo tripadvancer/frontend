@@ -3,8 +3,8 @@
 import { ChangeEvent } from 'react'
 
 import classNames from 'classnames'
+import { FormikErrors } from 'formik'
 import { TrashIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
 
@@ -16,7 +16,7 @@ type IUserSocial = Partial<Record<UserSocialApps, string>>
 
 type UserSettingsFormSocialLinksProps = {
     initialValue: IUserSocial
-    error?: any
+    error?: FormikErrors<IUserSocial>
     isDisabled?: boolean
     onChange: (value: IUserSocial) => void
 }
@@ -27,8 +27,6 @@ export const UserSettingsFormSocialLinks = ({
     isDisabled,
     onChange,
 }: UserSettingsFormSocialLinksProps) => {
-    const t = useTranslations()
-
     const socialInputs = {
         [UserSocialApps.FACEBOOK]: {
             placeholder: 'Facebook',
@@ -80,7 +78,7 @@ export const UserSettingsFormSocialLinks = ({
         <div className="flex flex-col gap-y-2 sm:w-1/2">
             <FormSelect
                 name="social"
-                placeholder={t('page.user.settingsForm.field.contacts.addSocialLink')}
+                placeholder="Add social link"
                 options={Object.values(UserSocialApps)
                     .sort()
                     .map(app => ({
@@ -101,7 +99,7 @@ export const UserSettingsFormSocialLinks = ({
             {Object.entries(initialValue).map(([app, link]) => (
                 <div key={`social-input-${app}`} className="relative">
                     <div
-                        className={classNames('absolute left-3 top-2 z-10 flex items-center gap-x-1', {
+                        className={classNames('absolute top-2 left-3 z-10 flex items-center gap-x-1', {
                             'cursor-no-drop opacity-30': isDisabled,
                         })}
                     >
@@ -114,12 +112,12 @@ export const UserSettingsFormSocialLinks = ({
                         value={link}
                         placeholder={socialInputs[app as UserSocialApps].placeholder}
                         disabled={isDisabled}
-                        error={error?.[app]}
-                        className="[&>input]:pl-[54px] [&>input]:pr-9"
+                        error={error?.[app as UserSocialApps]}
+                        className="[&>input]:pr-9 [&>input]:pl-13.5"
                         onChange={handleChange}
                     />
                     <div
-                        className={classNames('absolute right-3 top-3 cursor-pointer text-red-100', {
+                        className={classNames('absolute top-3 right-3 cursor-pointer text-red-100', {
                             'cursor-no-drop opacity-30': isDisabled,
                         })}
                         onClick={isDisabled ? undefined : () => handleDelete(app as UserSocialApps)}

@@ -1,7 +1,5 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { useRouter } from 'next/navigation'
 
 import { FormSwitcher } from '@/components/ui/form-switcher'
@@ -12,7 +10,6 @@ type UserVisitedSwitcherVisibleProps = {
 }
 
 export const UserVisitedSwitcherVisible = ({ showMyMap }: UserVisitedSwitcherVisibleProps) => {
-    const t = useTranslations()
     const router = useRouter()
     const [updateUserData, { isLoading }] = userAPI.useUpdateUserDataMutation()
 
@@ -24,8 +21,8 @@ export const UserVisitedSwitcherVisible = ({ showMyMap }: UserVisitedSwitcherVis
     return (
         <div className="flex items-center gap-x-2">
             <FormSwitcher checked={!!showMyMap} onChange={handleChange} />
-            <div className="cursor-pointer text-big-bold" onClick={isLoading ? undefined : handleChange}>
-                {t('page.user.settingsForm.field.settings.privacy.options.show_my_map')}
+            <div className="text-big-bold cursor-pointer" onClick={isLoading ? undefined : handleChange}>
+                Show my travel journal to everyone
             </div>
         </div>
     )

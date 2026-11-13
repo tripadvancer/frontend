@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
 import { thirdPartySignInAndUp } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 
 import { useRouter } from 'next/navigation'
@@ -11,7 +10,6 @@ import { LinkButton } from '@/components/ui/link-button'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 
 export const ThirdPartyCallback = () => {
-    const t = useTranslations()
     const router = useRouter()
 
     const [status, setStatus] = useState<string>()
@@ -27,7 +25,7 @@ export const ThirdPartyCallback = () => {
                     router.replace('/')
                     router.refresh()
                 }
-            } catch (err: any) {
+            } catch {
                 setStatus('GENERAL_ERROR')
             }
         }
@@ -38,17 +36,22 @@ export const ThirdPartyCallback = () => {
     return (
         <>
             <p className="text-center">
-                {status === 'NO_EMAIL_GIVEN_BY_PROVIDER' && t('auth.thirdPartyCallback.error.emailNotProvided')}
-                {status === 'EMAIL_ALREADY_EXISTS_ERROR' && t('auth.thirdPartyCallback.error.emailAlreadyExists')}
-                {status === 'GENERAL_ERROR' && t('common.error')}
-                {status === 'OK' && t('auth.thirdPartyCallback.redirecting')}
+                {status === 'NO_EMAIL_GIVEN_BY_PROVIDER' &&
+                    'No email provided by social login. Please use another form of login.'}
 
-                {!status && t('auth.thirdPartyCallback.checking')}
+                {status === 'EMAIL_ALREADY_EXISTS_ERROR' &&
+                    'Seems like you already have an account with another method. Please use that instead.'}
+
+                {status === 'GENERAL_ERROR' && 'An unexpected error has occurred. Please try again later.'}
+
+                {status === 'OK' && 'You are being redirected...'}
+
+                {!status && 'We are checking your status...'}
             </p>
 
             {status && status !== 'OK' && (
                 <LinkButton href="/" className="w-full">
-                    {t('common.action.goHome')}
+                    Go to Home
                 </LinkButton>
             )}
         </>

@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
 import { getAuthorisationURLWithQueryParamsAndSetState } from 'supertokens-web-js/recipe/thirdpartyemailpassword'
 
 import Image from 'next/image'
@@ -17,7 +16,6 @@ type ThirdPartyButtonProps = {
 }
 
 export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps) => {
-    const t = useTranslations()
     const router = useRouter()
     const toast = useToast()
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -31,8 +29,8 @@ export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps
                 frontendRedirectURI: `${process.env.NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH}/${provider}`,
             })
             router.push(authUrl)
-        } catch (err: any) {
-            toast.error(t('common.error'))
+        } catch {
+            toast.error('An unexpected error has occurred. Please try again later.')
         } finally {
             setIsLoading(false)
         }
@@ -49,7 +47,7 @@ export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps
             {provider === 'google' && (
                 <>
                     <Image src="/images/icons/social/google.svg" width={24} height={24} alt="Google" />
-                    {t('auth.signUp.thirdPartyGoogle')}
+                    Continue with Google
                 </>
             )}
         </FormButton>

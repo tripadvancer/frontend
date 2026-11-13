@@ -2,15 +2,13 @@
 
 import { useState } from 'react'
 
-import CharacterCount from '@tiptap/extension-character-count'
 import Link from '@tiptap/extension-link'
-import Placeholder from '@tiptap/extension-placeholder'
 import Underline from '@tiptap/extension-underline'
+import { CharacterCount, Placeholder } from '@tiptap/extensions'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import classNames from 'classnames'
 import { BoldIcon, ItalicIcon, LinkIcon, StrikethroughIcon, UnderlineIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
 
 import { validationConfig } from '@/configs/validation.config'
 
@@ -25,14 +23,16 @@ type PlaceFormInputDescriptionProps = {
 }
 
 export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormInputDescriptionProps) => {
-    const t = useTranslations()
     const [characterCount, setCharacterCount] = useState(0)
 
     const editor = useEditor({
         extensions: [
-            StarterKit,
+            StarterKit.configure({
+                link: false,
+                underline: false,
+            }),
             Placeholder.configure({
-                placeholder: t('page.placeForm.field.about.placeholder'),
+                placeholder: 'Enter a description',
                 emptyEditorClass: 'is-editor-empty',
             }),
             Underline,
@@ -74,6 +74,7 @@ export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormI
             }),
             CharacterCount,
         ],
+        shouldRerenderOnTransaction: true,
         content: value,
         onCreate: ({ editor }) => {
             setCharacterCount(editor.storage.characterCount.characters())
@@ -95,12 +96,14 @@ export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormI
     return (
         <div className="flex flex-col gap-y-8">
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
-                <div className="w-full text-black-40 lg:w-64">
-                    <div className="lg:hidden">{t('page.placeForm.field.about.text')}</div>
+                <div className="text-black-40 w-full lg:w-64">
+                    <div className="lg:hidden">
+                        Tell us what inspired you so you can help others learn more about this place.
+                    </div>
                 </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
-                        <h2 className="h5">{t('page.placeForm.field.about.label')}</h2>
+                        <h2 className="h5">About this place</h2>
                         <div className={classNames(characterCount > maxLength ? 'text-red-100' : 'text-black-40')}>
                             {characterCount} / {maxLength}
                         </div>
@@ -109,14 +112,14 @@ export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormI
             </div>
 
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
-                <div className="hidden w-full text-black-40 lg:block lg:w-64">
-                    {t('page.placeForm.field.about.text')}
+                <div className="text-black-40 hidden w-full lg:block lg:w-64">
+                    Tell us what inspired you so you can help others learn more about this place.
                 </div>
-                <div className="min-w-0 flex-1 text-big">
+                <div className="text-big min-w-0 flex-1">
                     {editor && (
                         <div className="flex flex-col gap-y-4">
                             <div className="sticky top-16 z-10">
-                                <div className="absolute -bottom-2.5 -left-2.5 -right-2.5 -top-3 z-10 bg-white/50 backdrop-blur-[2px]" />
+                                <div className="absolute -top-3 -right-2.5 -bottom-2.5 -left-2.5 z-10 bg-white/50 backdrop-blur-[2px]" />
                                 <div className="relative z-20 flex gap-x-2">
                                     <PlaceFormInputDescriptionButton
                                         icon={<BoldIcon size={24} />}

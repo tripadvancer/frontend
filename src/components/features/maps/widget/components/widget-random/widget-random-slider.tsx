@@ -2,14 +2,11 @@
 
 import { ClassAttributes, HTMLAttributes, JSX } from 'react'
 
-import { useTranslations } from 'next-intl'
-
 import { ReactSlider } from '@/components/vendor/react-slider/react-slider'
 import { getWidgetRandomRadius, setWidgetRandomRadius } from '@/utils/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 export const WidgetRandomSlider = () => {
-    const t = useTranslations()
     const dispatch = useAppDispatch()
     const radius = useAppSelector(getWidgetRandomRadius)
 
@@ -26,19 +23,19 @@ export const WidgetRandomSlider = () => {
                 <div
                     {...props}
                     key={`slider-track-${String(props.key)}`}
-                    className="h-full rounded bg-orange-10 odd:bg-orange-80"
+                    className="bg-orange-10 odd:bg-orange-80 h-full rounded"
                 />
             )}
             renderThumb={(
                 props: JSX.IntrinsicAttributes & ClassAttributes<HTMLDivElement> & HTMLAttributes<HTMLDivElement>,
-                state: { valueNow: any },
+                state: { valueNow: number },
             ) => (
                 <div
                     {...props}
                     key="slider-thumb"
-                    className="trasform flex-center top-1 h-8 w-[70px] -translate-y-1/2 whitespace-nowrap rounded-full border-2 border-black-5 bg-white text-small-bold shadow-small focus:outline-none"
+                    className="trasform flex-center border-black-5 text-small-bold shadow-small top-1 h-8 w-17.5 -translate-y-1/2 rounded-full border-2 bg-white whitespace-nowrap focus:outline-none"
                 >
-                    {t('map.widget.random.distance.km', { distance: state.valueNow })}
+                    {state.valueNow} km
                 </div>
             )}
             onChange={(value: number) => dispatch(setWidgetRandomRadius(value))}

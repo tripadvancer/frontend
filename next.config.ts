@@ -1,8 +1,5 @@
 import { NextConfig } from 'next'
-import createNextIntlPlugin from 'next-intl/plugin'
 import withPWA from 'next-pwa'
-
-const withNextIntl = createNextIntlPlugin('./src/utils/i18n/i18n.config.ts')
 
 const withPWANext = withPWA({
     dest: 'public',
@@ -13,8 +10,21 @@ const withPWANext = withPWA({
 
 const nextConfig: NextConfig = {
     pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
+    async redirects() {
+        return [
+            {
+                source: '/countries',
+                destination: '/',
+                permanent: true,
+            },
+            {
+                source: '/countries/:slug',
+                destination: '/:slug',
+                permanent: true,
+            },
+        ]
+    },
     images: {
-        unoptimized: true,
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
             {
@@ -41,4 +51,4 @@ const nextConfig: NextConfig = {
     },
 }
 
-export default withPWANext(withNextIntl(nextConfig) as any)
+export default withPWANext(nextConfig as any)

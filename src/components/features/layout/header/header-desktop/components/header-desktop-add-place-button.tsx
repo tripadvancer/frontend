@@ -17,7 +17,7 @@ export const HeaderDesktopAddPlaceButton = ({
 
     return (
         <button
-            className="flex-center hover-animated cursor-pointer text-nowrap text-blue-100 lg:h-8 lg:rounded-full lg:bg-white lg:px-4 lg:text-small lg:text-blue-100 lg:hover:text-blue-active"
+            className="flex-center hover-animated lg:text-small lg:hover:text-blue-active cursor-pointer text-nowrap text-blue-100 lg:h-8 lg:rounded-full lg:bg-white lg:px-4 lg:text-blue-100"
             onClick={handleAddPlaceClick}
         >
             Share place

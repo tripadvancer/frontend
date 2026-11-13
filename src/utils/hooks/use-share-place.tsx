@@ -1,10 +1,9 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { SharePlace } from '@/components/features/dialogs/share-place/share-place'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
+import { getPlacePath } from '@/utils/helpers/places'
 
 interface useSharePlaceInterface {
     sharePlace: () => void
@@ -17,7 +16,6 @@ type useSharePlaceProps = {
 }
 
 export function useSharePlace({ id, title, countryCode }: useSharePlaceProps): useSharePlaceInterface {
-    const t = useTranslations()
     const dialog = useDialog()
     const toast = useToast()
 
@@ -26,14 +24,14 @@ export function useSharePlace({ id, title, countryCode }: useSharePlaceProps): u
             const shareData = {
                 title: title,
                 text: 'Look what place I found on Tripadvancer!',
-                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/places/${id}`,
+                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}${getPlacePath(id, countryCode)}`,
             }
 
             try {
                 await navigator.share(shareData)
-            } catch (err: any) {
-                if (err.name !== 'AbortError') {
-                    toast.error(t('common.error'))
+            } catch (error: unknown) {
+                if (!(typeof error === 'object' && error !== null && 'name' in error && error.name === 'AbortError')) {
+                    toast.error('An unexpected error has occurred. Please try again later.')
                 }
             }
 

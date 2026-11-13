@@ -1,15 +1,11 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { FormButton } from '@/components/ui/form-button'
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
-    const t = useTranslations()
-
     // todo: create common error page with 404 and 500
     return (
         <div className="container flex min-h-screen flex-col items-center py-16 md:flex-row md:gap-x-8 lg:gap-x-16 xl:gap-x-32">
@@ -33,10 +29,14 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
                     alt="404"
                     priority
                 />
-                <h2 className="h3 mb-8">{t('page.error.title')}</h2>
-                <p className="mb-8 text-big text-black-70">{t('page.error.text')}</p>
+                <h2 className="h3 mb-8">Oops! Something Went Wrong</h2>
+                <p className="text-big text-black-70 mb-8">
+                    We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are
+                    currently experiencing technical difficulties, and we are working diligently to get things back on
+                    track.
+                </p>
                 <FormButton htmlType="button" onClick={() => reset()}>
-                    {t('common.action.tryAgain')}
+                    Try again
                 </FormButton>
             </div>
         </div>

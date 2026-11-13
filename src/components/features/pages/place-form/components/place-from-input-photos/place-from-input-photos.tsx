@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-import { useTranslations } from 'next-intl'
 import Lightbox from 'yet-another-react-lightbox'
 
 import { useToast } from '@/components/providers/toast-provider'
@@ -34,7 +33,6 @@ type PlaceFormInputPhotoProps = {
 }
 
 export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChange }: PlaceFormInputPhotoProps) => {
-    const t = useTranslations()
     const toast = useToast()
 
     const [photos, setPhotos] = useState<UploadingImage[]>(
@@ -98,7 +96,7 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
             const response = await upload(file).unwrap()
             updatePhoto(key, { status: UploadingImageStatus.SUCCESS, uploadedPhotoUrl: response.url })
         } catch {
-            toast.error(t('common.error'))
+            toast.error('An unexpected error has occurred. Please try again later.')
             updatePhoto(key, { status: UploadingImageStatus.ERROR })
         }
     }
@@ -125,14 +123,12 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
     return (
         <div className="flex flex-col gap-y-8">
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
-                <div className="w-full text-black-40 lg:w-64">
-                    <div className="lg:hidden">
-                        {t('page.placeForm.field.photos.text', { maxCount: maxPhotosCount })}
-                    </div>
+                <div className="text-black-40 w-full lg:w-64">
+                    <div className="lg:hidden">{`You can upload up to ${maxPhotosCount} photos of the place.`}</div>
                 </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between">
-                        <h2 className="h5">{t('page.placeForm.field.photos.label')}</h2>
+                        <h2 className="h5">Photos</h2>
                         <div className="text-black-40">
                             {photos.length} / {maxPhotosCount}
                         </div>
@@ -141,8 +137,8 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
             </div>
 
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
-                <div className="hidden w-full text-black-40 lg:block lg:w-64">
-                    {t('page.placeForm.field.photos.text', { maxCount: maxPhotosCount })}
+                <div className="text-black-40 hidden w-full lg:block lg:w-64">
+                    {`You can upload up to ${maxPhotosCount} photos of the place.`}
                 </div>
                 <div className="flex-1">
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
