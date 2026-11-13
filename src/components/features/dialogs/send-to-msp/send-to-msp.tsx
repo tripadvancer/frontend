@@ -24,7 +24,7 @@ export const SendToMSP = ({ deepLink }: { deepLink: string }) => {
 
             <Image src={qrCodeUrl} width={240} height={240} alt="QR code to open My Saved Places" unoptimized />
 
-            <div className="space-y-2">
+            <div className="w-full space-y-2">
                 {isMobile && (
                     <a
                         href={deepLink}
