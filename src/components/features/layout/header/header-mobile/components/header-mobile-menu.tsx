@@ -20,7 +20,6 @@ type HeaderMobileMenuProps = {
 
 const publicLinks = [
     { href: '/maps', label: 'Map' },
-    { href: '/countries', label: 'Explore the World' },
     { href: '/about', label: 'About Tripadvancer' },
 ]
 
@@ -34,7 +33,7 @@ const getUserLinks = (username: string) => [
 const MenuSection = ({ children }: { children: React.ReactNode }) => (
     <>
         <hr className="border-blue-80" />
-        <nav className="flex flex-col gap-y-4 text-big">{children}</nav>
+        <nav className="text-big flex flex-col gap-y-4">{children}</nav>
     </>
 )
 
@@ -48,10 +47,10 @@ export const HeaderMobileMenu = ({
     useScrollLock()
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 top-14 space-y-6 bg-blue-20 px-4 pb-8 pt-2">
+        <div className="bg-blue-20 fixed top-14 right-0 bottom-0 left-0 space-y-6 px-4 pt-2 pb-8">
             <Search closeMobileMenu={closeMobileMenu} />
 
-            <nav className="flex flex-col gap-y-4 text-big">
+            <nav className="text-big flex flex-col gap-y-4">
                 {publicLinks.map(link => (
                     <HeaderMobileMenuLink
                         key={`header-mobile-menu-public-link-${link.label}`}

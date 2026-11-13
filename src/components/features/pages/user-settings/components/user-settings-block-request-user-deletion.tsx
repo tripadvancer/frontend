@@ -32,7 +32,7 @@ export const UserSettingsBlockRequestUserDeletion = () => {
     }
 
     return (
-        <div className="flex flex-col gap-y-4 border-t border-black-15 py-8 last:border-b">
+        <div className="border-black-15 flex flex-col gap-y-4 border-t py-8 last:border-b">
             <div className="flex items-center justify-between">
                 <div className="h7">Account</div>
                 <div className="link-red font-medium" onClick={handleRequestUserDeletion}>

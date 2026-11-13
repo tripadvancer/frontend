@@ -7,6 +7,7 @@ import {
     GetPlacesResponse,
     ImageUploadResponse,
     UpdatePlaceInputs,
+    UpdatePlaceResponse,
 } from '@/utils/redux/services/places/places.types'
 
 export const placesAPI = api.injectEndpoints({
@@ -39,7 +40,7 @@ export const placesAPI = api.injectEndpoints({
             invalidatesTags: ['Visited', 'Places'],
         }),
 
-        updatePlace: build.mutation<void, UpdatePlaceInputs>({
+        updatePlace: build.mutation<UpdatePlaceResponse, UpdatePlaceInputs>({
             query: inputs => ({
                 url: `places/${inputs.placeId}`,
                 method: 'PATCH',
@@ -53,6 +54,7 @@ export const placesAPI = api.injectEndpoints({
                 url: `places/${placeId}`,
                 method: 'DELETE',
             }),
+            invalidatesTags: ['Places', 'UserPlaces'],
         }),
 
         placePhotoUpload: build.mutation<ImageUploadResponse, File>({

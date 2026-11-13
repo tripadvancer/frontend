@@ -17,7 +17,7 @@ export const PlacePreviewCover = ({ title, cover, size, imageVariant, className 
     if (!cover) {
         return (
             <div className={classNames('flex-center bg-black-15', className)}>
-                <ImageStub className="w-1/3 text-black-40 opacity-75" />
+                <ImageStub className="text-black-40 w-1/3 opacity-75" />
             </div>
         )
     }

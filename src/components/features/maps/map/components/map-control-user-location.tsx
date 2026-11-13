@@ -13,7 +13,7 @@ export const MapControlUserLocation = () => {
             {isWatching ? (
                 <div className="relative">
                     <LocateIcon size={16} />
-                    <div className="animate-pulse-full absolute left-1/2 top-1/2 z-10 size-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black-100" />
+                    <div className="animate-pulse-full bg-black-100 absolute top-1/2 left-1/2 z-10 size-1 -translate-x-1/2 -translate-y-1/2 rounded-full" />
                 </div>
             ) : isDenied ? (
                 <LocateOffIcon size={16} className="text-black-40" />

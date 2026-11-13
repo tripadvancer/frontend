@@ -1,20 +1,20 @@
-import { Landing } from '@/components/features/pages/landing/landing'
+import { Countries } from '@/components/features/pages/countries/countries'
 
 export const metadata = {
-    title: 'Discover Hidden Gems and Plan Your Trip',
+    title: 'Travel Destinations and Places to Visit Around the World',
     description:
-        "Explore traveler-recommended attractions and hidden gems on an interactive map. Save places to trip lists, read reviews, and track the countries you've visited.",
+        'Explore destinations around the world and find traveler-recommended attractions, scenic places, and things to do for your next trip.',
     alternates: {
         canonical: '/',
     },
     openGraph: {
-        title: 'Discover Hidden Gems and Plan Your Trip',
+        title: 'Travel Destinations and Places to Visit Around the World',
         description:
-            "Explore traveler-recommended attractions and hidden gems on an interactive map. Save places to trip lists, read reviews, and track the countries you've visited.",
+            'Explore destinations around the world and find traveler-recommended attractions, scenic places, and things to do for your next trip.',
         url: '/',
     },
 }
 
-export default async function HomePage() {
-    return <Landing />
+export default function HomePage() {
+    return <Countries />
 }

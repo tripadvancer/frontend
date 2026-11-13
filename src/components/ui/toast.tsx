@@ -18,7 +18,7 @@ export const Toast = ({ variant, message, onClose }: ToastProps) => {
 
     return (
         <div
-            className={classNames('relative rounded-2xl py-8 pl-8 pr-16 shadow-medium', {
+            className={classNames('shadow-medium relative rounded-2xl py-8 pr-16 pl-8', {
                 'bg-green-10': variant === 'green',
                 'bg-red-10': variant === 'red',
             })}
@@ -26,7 +26,7 @@ export const Toast = ({ variant, message, onClose }: ToastProps) => {
         >
             {message}
             <div
-                className={classNames('absolute right-8 top-1/2 -translate-y-1/2 cursor-pointer', {
+                className={classNames('absolute top-1/2 right-8 -translate-y-1/2 cursor-pointer', {
                     'text-green-100': variant === 'green',
                     'text-red-100': variant === 'red',
                 })}
@@ -40,7 +40,7 @@ export const Toast = ({ variant, message, onClose }: ToastProps) => {
 
 export const ToastContainer = ({ children }: { children: ReactNode }) => {
     return (
-        <div className="inner-container fixed left-1/2 top-4 z-50 flex -translate-x-1/2 transform flex-col gap-5 px-4 sm:px-8">
+        <div className="inner-container fixed top-4 left-1/2 z-50 flex -translate-x-1/2 transform flex-col gap-5 px-4 sm:px-8">
             {children}
         </div>
     )

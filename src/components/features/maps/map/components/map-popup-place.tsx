@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { arrayToLngLat } from '@/utils/helpers/maps'
+import { getPlacePath } from '@/utils/helpers/places'
 import { closeMapPopups, getMapState } from '@/utils/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
@@ -45,8 +46,9 @@ export const MapPopupPlace = ({ containerRef }: MapPopupPlaceProps) => {
         >
             <div ref={ref} className="flex w-56 flex-col gap-y-4">
                 <Link
-                    href={`/places/${popupInfo.id}`}
+                    href={getPlacePath(popupInfo.id, popupInfo.countryCode)}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="link-black flex gap-x-4 focus:outline-none"
                 >
                     <PlacePreviewCover
@@ -55,7 +57,7 @@ export const MapPopupPlace = ({ containerRef }: MapPopupPlaceProps) => {
                         size={80}
                         className="aspect-square w-20 flex-none rounded-lg"
                     />
-                    <div className="line-clamp-4 break-words font-medium">{popupInfo.title}</div>
+                    <div className="line-clamp-4 font-medium wrap-break-word">{popupInfo.title}</div>
                 </Link>
                 <div className="flex items-center justify-between">
                     <PlacePreviewRating {...popupInfo} />
