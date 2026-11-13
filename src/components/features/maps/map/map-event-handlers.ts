@@ -10,6 +10,7 @@ import {
     setMapLocationPopupInfo,
     setMapPlacePopupInfo,
     setMapViewState,
+    setPendingMapBounds,
 } from '@/utils/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
@@ -77,7 +78,7 @@ export const useMapEventHandlers = () => {
         (event: ViewStateChangeEvent) => {
             const map = event.target
             const mapBounds = map.getBounds()
-            dispatch(setMapBounds(mapBounds))
+            dispatch(setPendingMapBounds(mapBounds))
         },
         [dispatch],
     )
@@ -157,8 +158,7 @@ export const useMapEventHandlers = () => {
         locationPopupInfo: mapState.locationPopupInfo,
         onLoad: handleLoad,
         onMove: handleMove,
-        onDragEnd: handleMoveEnd,
-        onZoomEnd: handleMoveEnd,
+        onMoveEnd: handleMoveEnd,
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave,
         onClick: handleClick,
