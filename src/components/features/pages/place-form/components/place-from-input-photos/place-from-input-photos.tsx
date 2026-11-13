@@ -125,7 +125,7 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
     return (
         <div className="flex flex-col gap-y-8">
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
-                <div className="w-full text-black-40 lg:w-64">
+                <div className="text-black-40 w-full lg:w-64">
                     <div className="lg:hidden">{`You can upload up to ${maxPhotosCount} photos of the place.`}</div>
                 </div>
                 <div className="flex-1">
@@ -139,7 +139,7 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
             </div>
 
             <div className="flex flex-col gap-8 lg:flex-row-reverse">
-                <div className="hidden w-full text-black-40 lg:block lg:w-64">
+                <div className="text-black-40 hidden w-full lg:block lg:w-64">
                     {`You can upload up to ${maxPhotosCount} photos of the place.`}
                 </div>
                 <div className="flex-1">

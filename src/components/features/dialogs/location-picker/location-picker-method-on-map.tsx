@@ -38,7 +38,7 @@ export const LocationPickerMethodOnMap = ({
     return (
         <div className="flex flex-col gap-y-8">
             <div className="flex flex-col gap-y-4">
-                <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-black-15">
+                <div className="bg-black-15 relative aspect-square w-full overflow-hidden rounded-lg">
                     <LocationPickerMap viewState={viewState} onChangeViewState={handleCangeViewState} />
                 </div>
                 <div className="cursor-pointer text-center text-blue-100" onClick={onChangeMethod}>

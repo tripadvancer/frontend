@@ -7,6 +7,7 @@ import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { arrayToString, stringToLngLat } from '@/utils/helpers/maps'
+import { getPlacePath } from '@/utils/helpers/places'
 import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
 import { UpdatePlaceInputs } from '@/utils/redux/services/places/places.types'
@@ -72,9 +73,9 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
                 ...inputs,
                 title: inputs.title.trim(),
             }
-            await updatePlace(trimmedInputs)
+            const response = await updatePlace(trimmedInputs).unwrap()
             toast.success('Your place has been updated.')
-            router.push(`/places/${id}`)
+            router.push(getPlacePath(response.id, response.countryCode))
         } catch {
             toast.error('An unexpected error has occurred. Please try again later.')
         }

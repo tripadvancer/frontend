@@ -53,7 +53,10 @@ export type UpdatePlaceInputs = {
 
 export type CreatePlaceResponse = {
     id: number
+    countryCode: string | null
 }
+
+export type UpdatePlaceResponse = CreatePlaceResponse
 
 export type ImageUploadResponse = {
     url: string
