@@ -6,15 +6,12 @@ import classNames from 'classnames'
 import Lightbox from 'yet-another-react-lightbox'
 
 import { useToast } from '@/components/providers/toast-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormFileInput } from '@/components/ui/form-file-input'
 import { PhotoPreview } from '@/components/ui/photo-preview'
-import { validationConfig } from '@/configs/validation.config'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
-
-const maxFilesCount = validationConfig.review.photos.maxCount
-const maxFileSize = validationConfig.common.maxFileSize
 
 type ReviewFormPhotosListProps = {
     photos: string[]
@@ -29,7 +26,10 @@ export const ReviewFormPhotosList = ({
     setIsFormDisabled,
     onChange,
 }: ReviewFormPhotosListProps) => {
+    const settings = useAppSettings()
     const toast = useToast()
+    const maxFilesCount = settings?.validation.review.photos.maxCount ?? 0
+    const maxFileSize = settings?.validation.common.maxFileSize ?? 0
 
     const [upload] = reviewsAPI.useReviewPhotoUploadMutation()
     const [indexSlide, setIndexSlide] = useState<number>(-1)
@@ -79,6 +79,7 @@ export const ReviewFormPhotosList = ({
                 maxFileSize={maxFileSize}
                 currentFilesLength={photos.length}
                 isUploading={isUploading}
+                isDisabled={!settings}
                 onChange={handlePhotoUpload}
             />
 

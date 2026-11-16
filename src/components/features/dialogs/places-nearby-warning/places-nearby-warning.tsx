@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
@@ -18,14 +19,16 @@ type PlacesNearbyWarningProps = {
 }
 
 export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
+    const settings = useAppSettings()
     const dialog = useDialog()
+    const uniquePlaceRadius = settings?.radii.uniquePlace
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
             <h1 className="h7 text-center">Attention</h1>
             <p className="text-center">
-                Sorry, we cannot add a new place here because there are already others nearby, within $
-                {process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS as string} meters. If the place you want to add is on the
+                Sorry, we cannot add a new place here because there are already others nearby, within {uniquePlaceRadius}{' '}
+                meters. If the place you want to add is on the
                 list below, please share your review. If it is not listed, just contact our support team for help.
             </p>
 

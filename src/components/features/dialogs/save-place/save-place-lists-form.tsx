@@ -8,11 +8,11 @@ import * as Yup from 'yup'
 import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { FormInput } from '@/components/ui/form-input'
-import { validationConfig } from '@/configs/validation.config'
 import { listAPI } from '@/utils/redux/services/list/list.api'
 import { CreateListInputs, UpdatePlaceInListsInputs } from '@/utils/redux/services/list/list.types'
 import { IList } from '@/utils/types/common'
@@ -22,9 +22,8 @@ type SavePlaceFormProps = {
     placeId: number
 }
 
-const listNameMaxLength = validationConfig.list.name.maxLength
-
 export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
+    const settings = useAppSettings()
     const toast = useToast()
     const dialog = useDialog()
     const router = useRouter()
@@ -35,6 +34,8 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
 
     const [createList, { isLoading: isListCreating }] = listAPI.useCreateListMutation()
     const [updatePlaceInLists, { isLoading: isPlaceUpdating }] = listAPI.useUpdatePlaceInListsMutation()
+    const listNameMinLength = settings?.validation.list.name.minLength ?? 0
+    const listNameMaxLength = settings?.validation.list.name.maxLength ?? 0
 
     useEffect(() => {
         if (isCreateList) {
@@ -45,6 +46,11 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .trim()
+            .test(
+                'min-length-when-creating',
+                `This field must be at least ${listNameMinLength} characters long`,
+                value => !value || value.length >= listNameMinLength,
+            )
             .max(listNameMaxLength, `This field must be at most ${listNameMaxLength} characters long`),
     })
 
@@ -63,7 +69,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
         validateOnChange: false,
         validationSchema,
         onSubmit: async (inputs: CreateListInputs & UpdatePlaceInListsInputs) => {
-            if (inputs.name) {
+            if (inputs.name.trim()) {
                 try {
                     const trimmedInputs = {
                         name: inputs.name.trim(),
@@ -138,7 +144,11 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                 />
             </div>
             <div className="flex gap-x-2">
-                <FormButton htmlType="submit" isLoading={isListCreating || isPlaceUpdating} isDisabled={!formik.dirty}>
+                <FormButton
+                    htmlType="submit"
+                    isLoading={isListCreating || isPlaceUpdating}
+                    isDisabled={!settings || !formik.dirty}
+                >
                     Save
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>

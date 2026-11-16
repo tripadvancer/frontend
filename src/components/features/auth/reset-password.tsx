@@ -9,16 +9,17 @@ import * as Yup from 'yup'
 import Link from 'next/link'
 
 import { useToast } from '@/components/providers/toast-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { validationConfig } from '@/configs/validation.config'
 import { ResetPasswordInputs } from '@/utils/types/auth'
 
-const userPasswordMinLength = validationConfig.user.password.minLength
-const userPasswordMaxLength = validationConfig.user.password.maxLength
-
 export const ResetPassword = () => {
+    const settings = useAppSettings()
     const toast = useToast()
+    const passwordValidation = settings?.validation.user.password
+    const userPasswordMinLength = passwordValidation?.minLength ?? 0
+    const userPasswordMaxLength = passwordValidation?.maxLength ?? 0
 
     const [status, setStatus] = useState<string>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -64,7 +65,7 @@ export const ResetPassword = () => {
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema,
+        validationSchema: passwordValidation ? validationSchema : Yup.object(),
         onSubmit: handleSubmit,
     })
 
@@ -84,7 +85,7 @@ export const ResetPassword = () => {
                         onChange={formik.handleChange}
                     />
                 </div>
-                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+                <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!settings}>
                     Reset password
                 </FormButton>
             </form>

@@ -1,11 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ViewState } from 'react-map-gl/maplibre'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { getDefaultViewState, stringToViewState, viewStateToString } from '@/utils/helpers/maps'
+import { GlobalLoading } from '@/components/ui/global-loading'
+import { stringToViewState, viewStateToString } from '@/utils/helpers/maps'
 
 import { LocationPickerMap } from './location-picker-map'
 
@@ -20,11 +22,26 @@ export const LocationPickerMethodOnMap = ({
     onChangeMethod,
     onConfirm,
 }: LocationPickerMethodOnMapProps) => {
+    const settings = useAppSettings()
     const dialog = useDialog()
 
-    const [viewState, setViewstate] = useState<Partial<ViewState>>(
-        initialValue ? stringToViewState(initialValue) : getDefaultViewState(),
-    )
+    const [viewState, setViewstate] = useState<Partial<ViewState>>({})
+
+    useEffect(() => {
+        if (settings) {
+            setViewstate(
+                initialValue
+                    ? stringToViewState(initialValue, settings.map.flyToZoom)
+                    : {
+                          longitude: settings.map.center.longitude,
+                          latitude: settings.map.center.latitude,
+                          zoom: settings.map.zoom,
+                          pitch: 0,
+                          bearing: 0,
+                      },
+            )
+        }
+    }, [initialValue, settings])
 
     const handleCangeViewState = (viewState: Partial<ViewState>) => {
         setViewstate(viewState)
@@ -33,6 +50,10 @@ export const LocationPickerMethodOnMap = ({
     const handleConfirm = () => {
         onConfirm(viewStateToString(viewState))
         dialog.close()
+    }
+
+    if (!settings) {
+        return <GlobalLoading />
     }
 
     return (

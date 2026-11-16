@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { arrayToString, stringToLngLat } from '@/utils/helpers/maps'
@@ -26,6 +27,7 @@ type PlaceEditProps = {
 }
 
 export const PlaceEdit = ({ id, title, description, location, photos, cover, categories }: PlaceEditProps) => {
+    const settings = useAppSettings()
     const dialog = useDialog()
     const router = useRouter()
     const toast = useToast()
@@ -33,6 +35,10 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
     const [updatePlace, { isLoading }] = placesAPI.useUpdatePlaceMutation()
     const [searchPlacesAround, { isLoading: isSearchingPlacesAround }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
     const { data: meta, isLoading: isMetaLoading, isError: isMetaError } = placesAPI.useGetPlaceMetaByIdQuery(id)
+
+    if (!settings) {
+        return <GlobalLoading />
+    }
 
     if (isMetaLoading) {
         return <GlobalLoading />
@@ -56,7 +62,7 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
         const lngLat = stringToLngLat(inputs.location)
         const response = await searchPlacesAround({
             ...lngLat,
-            radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
+            radius: settings.radii.uniquePlace,
             categories: [],
         })
 

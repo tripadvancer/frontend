@@ -3,7 +3,9 @@ import EmailVerification from 'supertokens-node/recipe/emailverification'
 import Session from 'supertokens-node/recipe/session'
 import { TypeInput } from 'supertokens-node/types'
 
-import { supertokensConfig } from './supertokens.config'
+import { getSuperTokensConfig } from './supertokens.config'
+
+const supertokensConfig = getSuperTokensConfig('Tripadvancer')
 
 export let serverConfig = (): TypeInput => {
     return {

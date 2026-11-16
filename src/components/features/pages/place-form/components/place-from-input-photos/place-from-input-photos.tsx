@@ -4,16 +4,14 @@ import { useEffect, useState } from 'react'
 
 import Lightbox from 'yet-another-react-lightbox'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
-import { validationConfig } from '@/configs/validation.config'
 import { ImageVariants, UploadingImageStatus } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
 
 import { PlaceFormInputPhotosFileinput } from './place-from-input-photos-fileinput'
 import { PlaceFormInputPhotosPreview } from './place-from-input-photos-preview'
-
-const maxPhotosCount = validationConfig.place.photos.maxCount
 
 type UploadingImage = {
     key: string
@@ -33,7 +31,9 @@ type PlaceFormInputPhotoProps = {
 }
 
 export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChange }: PlaceFormInputPhotoProps) => {
+    const settings = useAppSettings()
     const toast = useToast()
+    const maxPhotosCount = settings?.validation.place.photos.maxCount ?? 0
 
     const [photos, setPhotos] = useState<UploadingImage[]>(
         initialPhotos.map(photo => ({

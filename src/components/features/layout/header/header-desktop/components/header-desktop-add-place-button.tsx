@@ -1,6 +1,7 @@
 'use client'
 
 import { useAddPlaceClickHandler } from '@/utils/hooks/use-add-place-click-handler'
+import { useAppSettings } from '@/components/providers/settings-provider'
 
 type HeaderDesktopAddPlaceButtonProps = {
     activeUserId?: number
@@ -13,7 +14,12 @@ export const HeaderDesktopAddPlaceButton = ({
     isAuth,
     isEmailVerified,
 }: HeaderDesktopAddPlaceButtonProps) => {
+    const settings = useAppSettings()
     const handleAddPlaceClick = useAddPlaceClickHandler({ activeUserId, isAuth, isEmailVerified })
+
+    if (!settings?.switchers.add_places) {
+        return null
+    }
 
     return (
         <button

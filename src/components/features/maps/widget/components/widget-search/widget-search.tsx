@@ -6,6 +6,7 @@ import { useMap } from 'react-map-gl/maplibre'
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { AppModes, Keys } from '@/utils/enums'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { transformFullSearchResult } from '@/utils/helpers/search'
@@ -22,6 +23,7 @@ import { WidgetTogler } from '../widget-togler'
 import { WidgetSearchInput } from './widget-search-input'
 
 export const WidgetSearch = () => {
+    const settings = useAppSettings()
     const dispatch = useAppDispatch()
 
     const ref = useRef<HTMLDivElement>(null)
@@ -35,12 +37,16 @@ export const WidgetSearch = () => {
     const [search, { data, isFetching, isSuccess }] = searchAPI.useLazySearchQuery()
 
     const debouncedSearch = useDebounceCallback(search, 500)
+    const minQueryLength = settings?.validation.searchQuery.minLength ?? 0
+    const maxQueryLength = settings?.validation.searchQuery.maxLength ?? 0
 
     useEffect(() => {
-        if (value.length >= 2) {
+        if (settings && value.length >= minQueryLength && value.length <= maxQueryLength) {
             debouncedSearch({ query: value })
+        } else if (settings && value.length > maxQueryLength) {
+            setItems([])
         }
-    }, [debouncedSearch, value])
+    }, [debouncedSearch, maxQueryLength, minQueryLength, settings, value])
 
     useEffect(() => {
         const isSearchSuccess = isSuccess && data && value.length >= 2
@@ -77,12 +83,16 @@ export const WidgetSearch = () => {
         dispatch(setAppMode(AppModes.MAP))
 
         if (item.type === 'location') {
-            map?.flyTo(getMapFlyToOptions(item.coordinates))
+            if (settings) {
+                map?.flyTo(getMapFlyToOptions(item.coordinates, settings.map.flyToZoom))
+            }
             dispatch(setMapLocationPopupInfo(item.properties as ILocationPreview))
         }
 
         if (item.type === 'place') {
-            map?.flyTo(getMapFlyToOptions(item.coordinates))
+            if (settings) {
+                map?.flyTo(getMapFlyToOptions(item.coordinates, settings.map.flyToZoom))
+            }
             dispatch(setMapPlacePopupInfo(item.properties as IPlacePreview))
         }
 

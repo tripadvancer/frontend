@@ -10,28 +10,29 @@ import * as Yup from 'yup'
 import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Devider } from '@/components/ui/devider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { validationConfig } from '@/configs/validation.config'
 import { SignUpInputs } from '@/utils/types/auth'
 
 import { SignIn } from './sign-in'
 import { SignUpCompleting } from './sign-up-completing'
 import { ThirdPartyButton } from './third-party-button'
 
-const userNameMinLength = validationConfig.user.name.minLength
-const userNameMaxLength = validationConfig.user.name.maxLength
-const userPasswordMinLength = validationConfig.user.password.minLength
-const userPasswordMaxLength = validationConfig.user.password.maxLength
-
 export const SignUp = () => {
+    const settings = useAppSettings()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const userValidation = settings?.validation.user
+    const userNameMinLength = userValidation?.name.minLength ?? 0
+    const userNameMaxLength = userValidation?.name.maxLength ?? 0
+    const userPasswordMinLength = userValidation?.password.minLength ?? 0
+    const userPasswordMaxLength = userValidation?.password.maxLength ?? 0
 
     const initialValues = {
         email: '',
@@ -120,7 +121,7 @@ export const SignUp = () => {
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema,
+        validationSchema: userValidation ? validationSchema : Yup.object(),
         onSubmit: handleSubmit,
     })
 
@@ -129,8 +130,7 @@ export const SignUp = () => {
             <h1 className="h7 text-center">Sign Up</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
-                    <ThirdPartyButton provider="google" isDisabled={isLoading} />
-                    {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
+                    <ThirdPartyButton provider="google" isDisabled={isLoading || !settings} />
                 </div>
                 <Devider>Or</Devider>
                 <div className="flex flex-col gap-y-2">
@@ -141,7 +141,7 @@ export const SignUp = () => {
                         placeholder="Email"
                         autoFocus
                         error={formik.errors.email}
-                        disabled={isLoading}
+                        disabled={isLoading || !settings}
                         onChange={formik.handleChange}
                     />
                     <FormInput
@@ -150,7 +150,7 @@ export const SignUp = () => {
                         value={formik.values.username}
                         placeholder="Username"
                         error={formik.errors.username}
-                        disabled={isLoading}
+                        disabled={isLoading || !settings}
                         onChange={formik.handleChange}
                     />
                     <FormInput
@@ -159,13 +159,13 @@ export const SignUp = () => {
                         value={formik.values.password}
                         placeholder="Password"
                         error={formik.errors.password}
-                        disabled={isLoading}
+                        disabled={isLoading || !settings}
                         onChange={formik.handleChange}
                     />
                 </div>
             </div>
             <div className="flex flex-col gap-y-4">
-                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+                <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!settings}>
                     Sign up
                 </FormButton>
                 <div className="text-small text-black-40 text-center">
@@ -194,7 +194,7 @@ export const SignUp = () => {
             </div>
             <div className="text-center">
                 Have an account?{' '}
-                <span className="link" onClick={handleSignInClick}>
+                <span className={`link ${!settings ? 'pointer-events-none opacity-50' : ''}`} onClick={settings ? handleSignInClick : undefined}>
                     Sign in
                 </span>
             </div>

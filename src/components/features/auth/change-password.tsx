@@ -7,22 +7,23 @@ import * as Yup from 'yup'
 import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { validationConfig } from '@/configs/validation.config'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 import { ChangeUserPasswordInputs } from '@/utils/redux/services/user/user.types'
 
-const userPasswordMinLength = validationConfig.user.password.minLength
-const userPasswordMaxLength = validationConfig.user.password.maxLength
-
 export const ChangePassword = () => {
+    const settings = useAppSettings()
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
 
     const [changeUserPassword, { isLoading }] = userAPI.useChangeUserPasswordMutation()
+    const passwordValidation = settings?.validation.user.password
+    const userPasswordMinLength = passwordValidation?.minLength ?? 0
+    const userPasswordMaxLength = passwordValidation?.maxLength ?? 0
 
     const initialValues = {
         oldPassword: '',
@@ -70,7 +71,7 @@ export const ChangePassword = () => {
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema,
+        validationSchema: passwordValidation ? validationSchema : Yup.object(),
         onSubmit: handleSubmit,
     })
 
@@ -101,7 +102,12 @@ export const ChangePassword = () => {
                     onChange={formik.handleChange}
                 />
             </div>
-            <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
+            <FormButton
+                htmlType="submit"
+                className="w-full"
+                isLoading={isLoading}
+                isDisabled={!settings || !formik.dirty}
+            >
                 Save changes
             </FormButton>
         </form>

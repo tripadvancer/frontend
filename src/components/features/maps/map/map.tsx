@@ -7,6 +7,8 @@ import { MinusIcon, PlusIcon } from 'lucide-react'
 import { useMediaQuery } from 'usehooks-ts'
 
 import { MapControl } from '@/components/ui/map-control'
+import { useAppSettings } from '@/components/providers/settings-provider'
+import { getDefaultViewState } from '@/utils/helpers/maps'
 import { getMapViewState } from '@/utils/redux/features/map-slice'
 import { useAppSelector } from '@/utils/redux/hooks'
 
@@ -25,6 +27,7 @@ type MapProps = {
 }
 
 export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
+    const settings = useAppSettings()
     const handlers = useMapEventHandlers()
     const mapViewState = useAppSelector(getMapViewState)
     const isMobile = useMediaQuery('(max-width: 639px)')
@@ -41,6 +44,10 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
         mapRef.current?.zoomOut({ duration: 500 })
     }, [])
 
+    if (!settings) {
+        return null
+    }
+
     return (
         <div ref={containerRef} className="size-full">
             {/* todo: for debug, remove later */}
@@ -55,6 +62,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 attributionControl={false}
                 reuseMaps
                 initialViewState={{
+                    ...getDefaultViewState(settings.map),
                     ...mapViewState,
                     padding:
                         isMobile || isTablet

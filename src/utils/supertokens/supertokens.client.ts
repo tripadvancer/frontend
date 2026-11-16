@@ -8,11 +8,11 @@ import { setWidgetActiveList } from '@/utils/redux/features/widget-slice'
 import { api } from '@/utils/redux/services/api'
 import { store } from '@/utils/redux/store'
 
-import { supertokensConfig } from './supertokens.config'
+import { getSuperTokensConfig } from './supertokens.config'
 
-export const clientConfig = (): SuperTokensConfig => {
+export const clientConfig = (appName: string): SuperTokensConfig => {
     return {
-        appInfo: supertokensConfig,
+        appInfo: getSuperTokensConfig(appName),
         recipeList: [
             EmailPassword.init(),
             ThirdPartyEmailPassword.init({

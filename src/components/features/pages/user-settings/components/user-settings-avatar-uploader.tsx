@@ -4,19 +4,18 @@ import { useState } from 'react'
 
 import { useRouter } from 'next/navigation'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { ConfirmationMini } from '@/components/ui/confirmation-mini'
 import { FormFileInput } from '@/components/ui/form-file-input'
-import { validationConfig } from '@/configs/validation.config'
 import { userAPI } from '@/utils/redux/services/user/user.api'
-
-const maxFileSize = validationConfig.common.maxFileSize
 
 type AvatarUploaderProps = {
     currentAvatar: string | null
 }
 
 export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProps) => {
+    const settings = useAppSettings()
     const router = useRouter()
     const toast = useToast()
 
@@ -25,6 +24,7 @@ export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProp
 
     const [updateUserAvatar, { isLoading: isUploading }] = userAPI.useUpdateUserAvatarMutation()
     const [deleteUserAvatar, { isLoading: isDeleting }] = userAPI.useDeleteUserAvatarMutation()
+    const maxFileSize = settings?.validation.common.maxFileSize ?? 0
 
     const handleChangeFileInput = async (files: FileList) => {
         const file = files[0]
@@ -81,6 +81,7 @@ export const UserSettingsAvatarUploader = ({ currentAvatar }: AvatarUploaderProp
                 fileName={fileName}
                 maxFileSize={maxFileSize}
                 isUploading={isUploading || isDeleting}
+                isDisabled={!settings}
                 onChange={handleChangeFileInput}
             />
         </div>

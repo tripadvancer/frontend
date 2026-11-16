@@ -12,6 +12,7 @@ import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { LngLatToString } from '@/utils/helpers/maps'
 import { closeMapPopups, getMapState } from '@/utils/redux/features/map-slice'
@@ -26,6 +27,7 @@ type MapPopupLocationProps = {
 }
 
 export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVerified }: MapPopupLocationProps) => {
+    const settings = useAppSettings()
     const dispatch = useAppDispatch()
     const dialog = useDialog()
     const router = useRouter()
@@ -56,9 +58,13 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
             return
         }
 
+        if (!settings) {
+            return
+        }
+
         const response = await searchPlacesAround({
             ...popupInfo.coordinates,
-            radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
+            radius: settings.radii.uniquePlace,
             categories: [],
         })
 
@@ -83,9 +89,11 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
                 <div ref={ref}>
                     <div>Selected location</div>
                     <div className="text-small text-black-40 mb-4">{LngLatToString(popupInfo.coordinates)}</div>
-                    <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
-                        Add place here
-                    </FormButton>
+                    {settings?.switchers.add_places && (
+                        <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
+                            Add place here
+                        </FormButton>
+                    )}
                 </div>
             </Popup>
             <Marker
