@@ -1,29 +1,48 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { verifyEmail } from 'supertokens-web-js/recipe/emailverification'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { LinkButton } from '@/components/ui/link-button'
-import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 export const VerifyEmail = () => {
     const toast = useToast()
+    const settings = useAppSettings()
 
     const [status, setStatus] = useState<string>()
+    const verification = useRef<Promise<string> | null>(null)
 
-    useOnMountUnsafe(() => {
-        const handleVerifyEmail = async () => {
-            try {
-                const response = await verifyEmail()
-                setStatus(response.status)
-            } catch (err) {
-                toast.error('An unexpected error has occurred. Please try again later.')
-            }
+    useEffect(() => {
+        if (!settings) {
+            return
         }
-        handleVerifyEmail()
-    })
+
+        let isActive = true
+
+        verification.current ??= waitForSuperTokensInitialization()
+            .then(() => verifyEmail())
+            .then(response => response.status)
+
+        void verification.current
+            .then(verificationStatus => {
+                if (isActive) {
+                    setStatus(verificationStatus)
+                }
+            })
+            .catch(() => {
+                if (isActive) {
+                    toast.error('An unexpected error has occurred. Please try again later.')
+                }
+            })
+
+        return () => {
+            isActive = false
+        }
+    }, [settings, toast])
 
     if (!status) {
         return <p className="text-center">Verifying your email...</p>

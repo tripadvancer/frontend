@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'
 import { useToast } from '@/components/providers/toast-provider'
 import { useAppSettings } from '@/components/providers/settings-provider'
 import { GlobalLoading } from '@/components/ui/global-loading'
-import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.init'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 type TryRefreshComponentProps = {
     fallback?: ReactNode

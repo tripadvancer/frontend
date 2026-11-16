@@ -13,6 +13,7 @@ import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 import { ChangeUserPasswordInputs } from '@/utils/redux/services/user/user.types'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 export const ChangePassword = () => {
     const settings = useAppSettings()
@@ -41,6 +42,7 @@ export const ChangePassword = () => {
 
     const handleSubmit = async (inputs: ChangeUserPasswordInputs) => {
         try {
+            await waitForSuperTokensInitialization()
             const response = await changeUserPassword(inputs).unwrap()
             switch (response.status) {
                 case 'OK':

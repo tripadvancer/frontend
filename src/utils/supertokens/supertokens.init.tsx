@@ -7,14 +7,9 @@ import SuperTokensAuth from 'supertokens-web-js'
 import { useAppSettings } from '@/components/providers/settings-provider'
 
 import { clientConfig } from './supertokens.client'
+import { markSuperTokensInitialized } from './supertokens.initialization'
 
 let isInitialized = false
-let resolveInitialization!: () => void
-const initialization = new Promise<void>(resolve => {
-    resolveInitialization = resolve
-})
-
-export const waitForSuperTokensInitialization = () => initialization
 
 export const SuperTokensInit = ({ children }: { children: ReactNode }) => {
     const settings = useAppSettings()
@@ -27,7 +22,7 @@ export const SuperTokensInit = ({ children }: { children: ReactNode }) => {
         if (!isInitialized) {
             SuperTokensAuth.init(clientConfig(settings.name))
             isInitialized = true
-            resolveInitialization()
+            markSuperTokensInitialized()
         }
     }, [settings])
 

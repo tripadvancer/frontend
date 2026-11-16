@@ -13,6 +13,7 @@ import { useToast } from '@/components/providers/toast-provider'
 import { Avatar } from '@/components/ui/avatar'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 type UserMenuProps = {
     name: string
@@ -43,6 +44,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
     const signOut = async () => {
         try {
             setIsMenuOpen(false)
+            await waitForSuperTokensInitialization()
             await Session.signOut()
             router.push('/')
             router.refresh()

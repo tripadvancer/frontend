@@ -13,6 +13,7 @@ import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { ResetPasswordInputs } from '@/utils/types/auth'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 export const ResetPassword = () => {
     const settings = useAppSettings()
@@ -39,6 +40,7 @@ export const ResetPassword = () => {
     const handleSubmit = async (values: ResetPasswordInputs) => {
         try {
             setIsLoading(true)
+            await waitForSuperTokensInitialization()
             const formFields = [{ id: 'password', value: values.password }]
             const response = await submitNewPassword({ formFields })
 

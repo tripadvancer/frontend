@@ -8,6 +8,7 @@ import { useToast } from '@/components/providers/toast-provider'
 import { LinkButton } from '@/components/ui/link-button'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { userAPI } from '@/utils/redux/services/user/user.api'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 type ConfirmUserRemovalProps = {
     token: string
@@ -22,6 +23,7 @@ export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
     useOnMountUnsafe(() => {
         const handleConfirmUserRemoval = async () => {
             try {
+                await waitForSuperTokensInitialization()
                 const response = await confirmUserDeletion(token).unwrap()
                 setStatus(response.status)
                 await Session.signOut()

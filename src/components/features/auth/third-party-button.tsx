@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 type ThirdPartyButtonProps = {
     provider: 'google'
@@ -24,6 +25,7 @@ export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps
         setIsLoading(true)
 
         try {
+            await waitForSuperTokensInitialization()
             const authUrl = await getAuthorisationURLWithQueryParamsAndSetState({
                 thirdPartyId: provider,
                 frontendRedirectURI: `${process.env.NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH}/${provider}`,

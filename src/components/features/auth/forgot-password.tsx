@@ -7,10 +7,12 @@ import { sendPasswordResetEmail } from 'supertokens-web-js/recipe/emailpassword'
 import * as Yup from 'yup'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { ForgotPasswordInputs } from '@/utils/types/auth'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 import { ForgotPasswordCompleting } from './forgot-password-completing'
 import { SignIn } from './sign-in'
@@ -19,6 +21,7 @@ import { SignUp } from './sign-up'
 export const ForgotPassword = () => {
     const dialog = useDialog()
     const toast = useToast()
+    const settings = useAppSettings()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -33,6 +36,7 @@ export const ForgotPassword = () => {
     const handleSubmit = async (values: ForgotPasswordInputs) => {
         try {
             setIsLoading(true)
+            await waitForSuperTokensInitialization()
             const formFields = [{ id: 'email', value: values.email.trim() }]
             const response = await sendPasswordResetEmail({ formFields })
 
@@ -95,15 +99,15 @@ export const ForgotPassword = () => {
                 />
             </div>
             <div className="flex flex-col gap-y-4">
-                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+                <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!settings}>
                     Restore password
                 </FormButton>
                 <div className="text-center">
-                    <span className="link" onClick={handleSignInClcik}>
+                    <span className={`link ${!settings ? 'pointer-events-none opacity-50' : ''}`} onClick={settings ? handleSignInClcik : undefined}>
                         Sign in
                     </span>{' '}
                     or{' '}
-                    <span className="link" onClick={handleSignUpClick}>
+                    <span className={`link ${!settings ? 'pointer-events-none opacity-50' : ''}`} onClick={settings ? handleSignUpClick : undefined}>
                         Sign up
                     </span>
                 </div>

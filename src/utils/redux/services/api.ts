@@ -2,6 +2,8 @@ import { BaseQueryFn, FetchArgs, FetchBaseQueryError, createApi, fetchBaseQuery 
 import { Mutex } from 'async-mutex'
 import Session from 'supertokens-web-js/recipe/session'
 
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
+
 // Create a new mutex
 const mutex = new Mutex()
 
@@ -15,11 +17,15 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
     api,
     extraOptions,
 ) => {
+    if (api.endpoint !== 'getSettings') {
+        await waitForSuperTokensInitialization()
+    }
+
     // Wait until the mutex is available without locking it
     await mutex.waitForUnlock()
 
     let result = await baseQuery(args, api, extraOptions)
-    if (result.error && result.error.status === 401) {
+    if (result.error && result.error.status === 401 && api.endpoint !== 'getSettings') {
         if (!mutex.isLocked()) {
             const release = await mutex.acquire()
             try {

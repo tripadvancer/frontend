@@ -6,6 +6,7 @@ import Session from 'supertokens-web-js/recipe/session'
 import { useRouter } from 'next/navigation'
 
 import { useToast } from '@/components/providers/toast-provider'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 type HeaderMobileSignoutButtonTypes = {
     closeMobileMenu: () => void
@@ -17,6 +18,7 @@ export const HeaderMobileSignoutButton = ({ closeMobileMenu }: HeaderMobileSigno
 
     const handleSignOut = async () => {
         try {
+            await waitForSuperTokensInitialization()
             await Session.signOut()
             closeMobileMenu()
             router.push('/')

@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 
 import { LinkButton } from '@/components/ui/link-button'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 export const ThirdPartyCallback = () => {
     const router = useRouter()
@@ -17,6 +18,7 @@ export const ThirdPartyCallback = () => {
     useOnMountUnsafe(() => {
         async function handleGoogleCallback() {
             try {
+                await waitForSuperTokensInitialization()
                 const response = await thirdPartySignInAndUp()
 
                 setStatus(response.status === 'SIGN_IN_UP_NOT_ALLOWED' ? response.reason : response.status)

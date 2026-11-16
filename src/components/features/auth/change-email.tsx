@@ -4,6 +4,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
@@ -14,6 +15,7 @@ import { ChangeEmailCompleting } from './change-email-completing'
 
 export const ChangeEmail = () => {
     const dialog = useDialog()
+    const settings = useAppSettings()
     const toast = useToast()
 
     const [changeUserEmail, { isLoading }] = userAPI.useChangeUserEmailMutation()
@@ -93,7 +95,12 @@ export const ChangeEmail = () => {
                     onChange={formik.handleChange}
                 />
             </div>
-            <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
+                <FormButton
+                    htmlType="submit"
+                    className="w-full"
+                    isLoading={isLoading}
+                    isDisabled={!settings || !formik.dirty}
+                >
                 Save changes
             </FormButton>
         </form>

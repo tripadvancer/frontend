@@ -16,6 +16,7 @@ import { Devider } from '@/components/ui/devider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { SignUpInputs } from '@/utils/types/auth'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 import { SignIn } from './sign-in'
 import { SignUpCompleting } from './sign-up-completing'
@@ -58,6 +59,7 @@ export const SignUp = () => {
     const handleSubmit = async (values: SignUpInputs) => {
         try {
             setIsLoading(true)
+            await waitForSuperTokensInitialization()
             const formFields = [
                 { id: 'email', value: values.email.trim() },
                 { id: 'password', value: values.password },
