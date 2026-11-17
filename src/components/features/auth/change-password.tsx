@@ -1,55 +1,49 @@
 'use client'
 
 import { useFormik } from 'formik'
-import Session from 'supertokens-web-js/recipe/session'
 import * as Yup from 'yup'
-
-import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { getPasswordSchema } from '@/utils/helpers/auth'
+import { useSignOut } from '@/utils/hooks/use-sign-out'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 import { ChangeUserPasswordInputs } from '@/utils/redux/services/user/user.types'
-import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 export const ChangePassword = () => {
     const settings = useAppSettings()
-    const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
+    const signOut = useSignOut()
 
     const [changeUserPassword, { isLoading }] = userAPI.useChangeUserPasswordMutation()
     const passwordValidation = settings?.validation.user.password
-    const userPasswordMinLength = passwordValidation?.minLength ?? 0
-    const userPasswordMaxLength = passwordValidation?.maxLength ?? 0
 
     const initialValues = {
         oldPassword: '',
         newPassword: '',
     }
 
-    const validationSchema = Yup.object().shape({
-        oldPassword: Yup.string().required('This field is required'),
-        newPassword: Yup.string()
-            .required('This field is required')
-            .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
-            .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
-    })
+    const validationSchema = passwordValidation
+        ? Yup.object().shape({
+              oldPassword: Yup.string().required('This field is required'),
+              newPassword: getPasswordSchema(passwordValidation),
+          })
+        : Yup.object()
 
     const handleSubmit = async (inputs: ChangeUserPasswordInputs) => {
         try {
-            await waitForSuperTokensInitialization()
             const response = await changeUserPassword(inputs).unwrap()
+
             switch (response.status) {
+                // The backend revokes all sessions after a password change
                 case 'OK':
-                    await Session.signOut()
                     dialog.close()
-                    router.push('/')
-                    router.refresh()
+                    await signOut()
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
@@ -61,11 +55,11 @@ export const ChangePassword = () => {
                     break
 
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 
@@ -73,7 +67,7 @@ export const ChangePassword = () => {
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: passwordValidation ? validationSchema : Yup.object(),
+        validationSchema,
         onSubmit: handleSubmit,
     })
 

@@ -6,6 +6,7 @@ import Lightbox from 'yet-another-react-lightbox'
 
 import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { ImageVariants, UploadingImageStatus } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
@@ -96,7 +97,7 @@ export const PlaceFormInputPhotos = ({ initialPhotos, setIsFormDisabled, onChang
             const response = await upload(file).unwrap()
             updatePhoto(key, { status: UploadingImageStatus.SUCCESS, uploadedPhotoUrl: response.url })
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
             updatePhoto(key, { status: UploadingImageStatus.ERROR })
         }
     }

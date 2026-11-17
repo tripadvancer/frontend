@@ -5,10 +5,11 @@ import { useState } from 'react'
 import classNames from 'classnames'
 import Lightbox from 'yet-another-react-lightbox'
 
-import { useToast } from '@/components/providers/toast-provider'
 import { useAppSettings } from '@/components/providers/settings-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { FormFileInput } from '@/components/ui/form-file-input'
 import { PhotoPreview } from '@/components/ui/photo-preview'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
@@ -47,7 +48,7 @@ export const ReviewFormPhotosList = ({
                 const response = await upload(formData).unwrap()
                 return response.url
             } catch {
-                toast.error('An unexpected error has occurred. Please try again later.')
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
         })
 
@@ -56,7 +57,7 @@ export const ReviewFormPhotosList = ({
             const filteredUrls = urls.filter(url => url !== undefined) as string[]
             onChange([...photos, ...filteredUrls])
         } catch (error) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         } finally {
             setIsUploading(false)
             setIsFormDisabled(false)

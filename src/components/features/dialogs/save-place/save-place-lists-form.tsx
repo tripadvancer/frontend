@@ -13,6 +13,7 @@ import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormCheckbox } from '@/components/ui/form-checkbox'
 import { FormInput } from '@/components/ui/form-input'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { listAPI } from '@/utils/redux/services/list/list.api'
 import { CreateListInputs, UpdatePlaceInListsInputs } from '@/utils/redux/services/list/list.types'
 import { IList } from '@/utils/types/common'
@@ -79,7 +80,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                     await updatePlaceInLists({ placeId, listIds: [...inputs.listIds, response.id] }).unwrap()
                     dialog.close()
                 } catch {
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                 }
 
                 return
@@ -89,7 +90,7 @@ export const SavePlaceListsForm = ({ lists, placeId }: SavePlaceFormProps) => {
                 await updatePlaceInLists({ placeId, listIds: inputs.listIds }).unwrap()
                 dialog.close()
             } catch {
-                toast.error('An unexpected error has occurred. Please try again later.')
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
 
             router.refresh()

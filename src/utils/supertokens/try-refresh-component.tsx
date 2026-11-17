@@ -1,39 +1,28 @@
 'use client'
 
-import { ReactNode, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
 
 import { useToast } from '@/components/providers/toast-provider'
-import { useAppSettings } from '@/components/providers/settings-provider'
 import { GlobalLoading } from '@/components/ui/global-loading'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
-type TryRefreshComponentProps = {
-    fallback?: ReactNode
-}
-
-export const TryRefreshComponent = ({ fallback }: TryRefreshComponentProps) => {
-    const settings = useAppSettings()
+// Rendered by the server when the access token has expired. A failed refresh clears the session
+// cookies, so the refreshed page is rendered for an anonymous user instead of loading forever.
+export const TryRefreshComponent = () => {
     const router = useRouter()
     const toast = useToast()
 
     useEffect(() => {
-        if (settings) {
-            void waitForSuperTokensInitialization()
-                .then(() => Session.attemptRefreshingSession())
-                .then(hasSession => {
-                    if (hasSession) {
-                        router.refresh()
-                    }
-                })
-                .catch(() => {
-                    toast.error('An unexpected error has occurred. Please try again later.')
-                })
-        }
-    }, [router, settings, toast])
+        void waitForSuperTokensInitialization()
+            .then(() => Session.attemptRefreshingSession())
+            .then(() => router.refresh())
+            .catch(() => toast.error(UNEXPECTED_ERROR_MESSAGE))
+    }, [router, toast])
 
-    return fallback ?? <GlobalLoading />
+    return <GlobalLoading />
 }

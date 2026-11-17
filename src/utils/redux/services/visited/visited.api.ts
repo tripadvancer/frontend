@@ -1,14 +1,8 @@
 import { api } from '@/utils/redux/services/api'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
-import { GetVisitedResponse } from '@/utils/redux/services/visited/visited.types'
 
 export const visitedAPI = api.injectEndpoints({
     endpoints: build => ({
-        getVisited: build.query<GetVisitedResponse, void>({
-            query: () => 'visited',
-            providesTags: ['Visited'],
-        }),
-
         addPlaceToVisited: build.mutation<void, number>({
             query: placeId => ({
                 url: 'visited',
@@ -27,7 +21,7 @@ export const visitedAPI = api.injectEndpoints({
                     optimisticResult.undo()
                 }
             },
-            invalidatesTags: ['Visited', 'Places'],
+            invalidatesTags: ['Places'],
         }),
 
         deletePlaceFromVisited: build.mutation<void, number>({
@@ -47,7 +41,7 @@ export const visitedAPI = api.injectEndpoints({
                     optimisticResult.undo()
                 }
             },
-            invalidatesTags: ['Visited', 'Places'],
+            invalidatesTags: ['Places'],
         }),
     }),
     overrideExisting: false,

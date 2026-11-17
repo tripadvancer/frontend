@@ -5,8 +5,8 @@ import { useMap } from 'react-map-gl/maplibre'
 
 import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
 
-import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { useAppSettings } from '@/components/providers/settings-provider'
+import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { AppModes, Keys } from '@/utils/enums'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { transformFullSearchResult } from '@/utils/helpers/search'

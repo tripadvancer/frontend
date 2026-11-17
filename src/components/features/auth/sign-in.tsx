@@ -11,12 +11,15 @@ import { useRouter } from 'next/navigation'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
-import { Devider } from '@/components/ui/devider'
+import { Divider } from '@/components/ui/divider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { SignInInputs } from '@/utils/types/auth'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { emailSchema } from '@/utils/helpers/auth'
 import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
+import { SignInInputs } from '@/utils/types/auth'
 
+import { AuthLink } from './auth-link'
 import { ForgotPassword } from './forgot-password'
 import { SignInReject } from './sign-in-reject'
 import { SignUp } from './sign-up'
@@ -36,7 +39,7 @@ export const SignIn = () => {
     }
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string().trim().required('This field is required').email('Please enter a valid email address'),
+        email: emailSchema,
         password: Yup.string().required('This field is required'),
     })
 
@@ -59,22 +62,24 @@ export const SignIn = () => {
                     formik.setErrors({ password: 'Wrong email or password' })
                     break
 
-                case 'FIELD_ERROR':
+                case 'FIELD_ERROR': {
                     const emailError = response.formFields.find(formField => formField.id === 'email')
                     if (emailError) {
                         formik.setErrors({ email: emailError.error })
                     }
                     break
+                }
 
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
         } catch (err: unknown) {
+            // The backend rejects sessions of accounts pending deletion with 403 and emails a restore link
             if (typeof err === 'object' && err !== null && 'status' in err && err.status === 403) {
                 dialog.open(<SignInReject />)
             } else {
-                toast.error('An unexpected error has occurred. Please try again later.')
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
         } finally {
             setIsLoading(false)
@@ -104,7 +109,7 @@ export const SignIn = () => {
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading || !settings} />
                 </div>
-                <Devider>Or</Devider>
+                <Divider>Or</Divider>
                 <div className="flex flex-col gap-y-2">
                     <FormInput
                         type="text"
@@ -132,16 +137,16 @@ export const SignIn = () => {
                     Sign in
                 </FormButton>
                 <div className="text-small text-center">
-                    <span className={`link text-small ${!settings ? 'pointer-events-none opacity-50' : ''}`} onClick={settings ? handleForgotPasswordClick : undefined}>
+                    <AuthLink className="text-small" isDisabled={!settings} onClick={handleForgotPasswordClick}>
                         Forgot password?
-                    </span>
+                    </AuthLink>
                 </div>
             </div>
             <div className="text-center">
                 Don’t have an account?{' '}
-                <span className={`link ${!settings ? 'pointer-events-none opacity-50' : ''}`} onClick={settings ? handleSignUpClick : undefined}>
+                <AuthLink isDisabled={!settings} onClick={handleSignUpClick}>
                     Sign up
-                </span>
+                </AuthLink>
             </div>
         </form>
     )

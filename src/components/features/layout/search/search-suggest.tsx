@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 
-import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { useAppSettings } from '@/components/providers/settings-provider'
+import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { getCountryByCode } from '@/utils/helpers/countries'
 import { getPlacePath } from '@/utils/helpers/places'
 import { internalAPI } from '@/utils/redux/services/internal/internal.api'

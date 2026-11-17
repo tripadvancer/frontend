@@ -3,11 +3,11 @@ import { UserPrivacySettings, UserSocialApps } from '@/utils/enums'
 export type IUser = {
     id: number
     name: string
-    info: string
+    info: string | null
     avatar: string | null
     social: Partial<Record<UserSocialApps, string>>
     createdAt: Date
-    updatedAt: Date
+    updatedAt: Date | null
     publicSettings: Partial<Record<UserPrivacySettings, boolean>>
     _count: IUserStatistics
 }

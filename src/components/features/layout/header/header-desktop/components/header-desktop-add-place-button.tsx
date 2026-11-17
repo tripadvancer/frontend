@@ -1,7 +1,7 @@
 'use client'
 
-import { useAddPlaceClickHandler } from '@/utils/hooks/use-add-place-click-handler'
 import { useAppSettings } from '@/components/providers/settings-provider'
+import { useAddPlaceClickHandler } from '@/utils/hooks/use-add-place-click-handler'
 
 type HeaderDesktopAddPlaceButtonProps = {
     activeUserId?: number

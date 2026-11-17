@@ -1,41 +1,13 @@
 import 'server-only'
 
-import { cookies } from 'next/headers'
-import { notFound } from 'next/navigation'
-
+import { apiFetch } from '@/services/api'
 import { IUser, IUserVisitedCountries } from '@/utils/types/user'
 
 export async function getUserByUsername(username: string): Promise<IUser> {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/users/${encodeURIComponent(username)}`
-    const res = await fetch(url, { cache: 'no-cache' })
-
-    if (!res.ok) {
-        if (res.status === 404) {
-            notFound()
-        }
-
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
+    return apiFetch(`users/${encodeURIComponent(username)}`, { cache: 'no-cache', notFoundOn404: true })
 }
 
+// The session is optional: the owner always sees the visited map, other users only if it is public
 export async function getUserVisitedCountries(userId: number): Promise<IUserVisitedCountries> {
-    const cookieStore = await cookies()
-    const accessToken = cookieStore.get('sAccessToken')?.value
-    const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + userId + '/visited-countries'
-
-    // todo: handle refresh token
-    const res = await fetch(url, {
-        cache: 'no-store',
-        headers: {
-            Authorization: 'Bearer ' + accessToken,
-        },
-    })
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
+    return apiFetch(`users/${userId}/visited-countries`, { cache: 'no-store', withSession: true })
 }

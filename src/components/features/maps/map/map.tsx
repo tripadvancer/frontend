@@ -6,8 +6,8 @@ import { AttributionControl, MapRef, Marker, Map as ReactMapGl } from 'react-map
 import { MinusIcon, PlusIcon } from 'lucide-react'
 import { useMediaQuery } from 'usehooks-ts'
 
-import { MapControl } from '@/components/ui/map-control'
 import { useAppSettings } from '@/components/providers/settings-provider'
+import { MapControl } from '@/components/ui/map-control'
 import { getDefaultViewState } from '@/utils/helpers/maps'
 import { getMapViewState } from '@/utils/redux/features/map-slice'
 import { useAppSelector } from '@/utils/redux/hooks'

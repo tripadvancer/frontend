@@ -3,6 +3,7 @@
 import { SharePlace } from '@/components/features/dialogs/share-place/share-place'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { getPlacePath } from '@/utils/helpers/places'
 
 interface useSharePlaceInterface {
@@ -31,7 +32,7 @@ export function useSharePlace({ id, title, countryCode }: useSharePlaceProps): u
                 await navigator.share(shareData)
             } catch (error: unknown) {
                 if (!(typeof error === 'object' && error !== null && 'name' in error && error.name === 'AbortError')) {
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                 }
             }
 

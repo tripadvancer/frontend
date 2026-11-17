@@ -7,9 +7,11 @@ import { thirdPartySignInAndUp } from 'supertokens-web-js/recipe/thirdpartyemail
 import { useRouter } from 'next/navigation'
 
 import { LinkButton } from '@/components/ui/link-button'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
+// SIGN_IN_UP_NOT_ALLOWED comes with the backend reason, e.g. EMAIL_ALREADY_EXISTS_ERROR for an email used by another login method
 export const ThirdPartyCallback = () => {
     const router = useRouter()
 
@@ -44,7 +46,7 @@ export const ThirdPartyCallback = () => {
                 {status === 'EMAIL_ALREADY_EXISTS_ERROR' &&
                     'Seems like you already have an account with another method. Please use that instead.'}
 
-                {status === 'GENERAL_ERROR' && 'An unexpected error has occurred. Please try again later.'}
+                {status === 'GENERAL_ERROR' && UNEXPECTED_ERROR_MESSAGE}
 
                 {status === 'OK' && 'You are being redirected...'}
 

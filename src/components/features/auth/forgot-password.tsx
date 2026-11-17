@@ -11,9 +11,12 @@ import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { ForgotPasswordInputs } from '@/utils/types/auth'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { emailSchema } from '@/utils/helpers/auth'
 import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
+import { ForgotPasswordInputs } from '@/utils/types/auth'
 
+import { AuthLink } from './auth-link'
 import { ForgotPasswordCompleting } from './forgot-password-completing'
 import { SignIn } from './sign-in'
 import { SignUp } from './sign-up'
@@ -30,7 +33,7 @@ export const ForgotPassword = () => {
     }
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string().trim().required('This field is required').email('Please enter a valid email address'),
+        email: emailSchema,
     })
 
     const handleSubmit = async (values: ForgotPasswordInputs) => {
@@ -45,25 +48,26 @@ export const ForgotPassword = () => {
                     dialog.open(<ForgotPasswordCompleting />)
                     break
 
-                case 'FIELD_ERROR':
+                case 'FIELD_ERROR': {
                     const emailError = response.formFields.find(formField => formField.id === 'email')
                     if (emailError) {
                         formik.setErrors({ email: emailError.error })
                     }
                     break
+                }
 
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
-        } catch (err) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+        } catch {
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         } finally {
             setIsLoading(false)
         }
     }
 
-    const handleSignInClcik = () => {
+    const handleSignInClick = () => {
         dialog.open(<SignIn />)
     }
 
@@ -103,13 +107,13 @@ export const ForgotPassword = () => {
                     Restore password
                 </FormButton>
                 <div className="text-center">
-                    <span className={`link ${!settings ? 'pointer-events-none opacity-50' : ''}`} onClick={settings ? handleSignInClcik : undefined}>
+                    <AuthLink isDisabled={!settings} onClick={handleSignInClick}>
                         Sign in
-                    </span>{' '}
+                    </AuthLink>{' '}
                     or{' '}
-                    <span className={`link ${!settings ? 'pointer-events-none opacity-50' : ''}`} onClick={settings ? handleSignUpClick : undefined}>
+                    <AuthLink isDisabled={!settings} onClick={handleSignUpClick}>
                         Sign up
-                    </span>
+                    </AuthLink>
                 </div>
             </div>
         </form>

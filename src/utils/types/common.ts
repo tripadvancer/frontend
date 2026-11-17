@@ -3,11 +3,6 @@ export type PaginatedResponse<T> = {
     items: T[]
 }
 
-export type FormFieldError = {
-    id: string
-    error: string
-}
-
 export type AuthContext = {
     activeUserId: number | undefined
     isAuth: boolean
@@ -30,7 +25,7 @@ export type IReview = {
     rating: number
     photos: { id: number; url: string }[]
     createdAt: Date
-    updatedAt: Date
+    updatedAt: Date | null
 }
 
 export type IList = {

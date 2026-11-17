@@ -34,7 +34,7 @@
     "dompurify": "^3.4.18",
     "formik": "^2.4.9",
     "framer-motion": "^14.14.0",
-    "lucide-react": "^1.73.0",
+    "lucide-react": "^1.74.0",
     "maplibre-gl": "^6.18.0",
     "next": "^16.4.6",
     "next-pwa": "^5.6.0",

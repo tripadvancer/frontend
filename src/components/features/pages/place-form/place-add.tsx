@@ -7,6 +7,7 @@ import { useDialog } from '@/components/providers/dialog-provider'
 import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { GlobalLoading } from '@/components/ui/global-loading'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { stringToLngLat } from '@/utils/helpers/maps'
 import { getPlacePath } from '@/utils/helpers/places'
 import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
@@ -65,7 +66,7 @@ export const PlaceAdd = () => {
             toast.success('Your place has been added.')
             router.push(getPlacePath(response.id, response.countryCode))
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 

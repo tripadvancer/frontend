@@ -82,7 +82,8 @@ export const FormFileInput = ({
                                 'border-black-15 text-black-15 hover:border-black-40 hover:text-black-40': !error,
                                 'cursor-pointer': !isUploading && !isDisabled && currentFilesLength < maxFilesCount,
                                 'cursor-wait': isUploading,
-                                'cursor-default opacity-30': isDisabled || (multiple && currentFilesLength >= maxFilesCount),
+                                'cursor-default opacity-30':
+                                    isDisabled || (multiple && currentFilesLength >= maxFilesCount),
                             },
                         )}
                         onClick={handleClickFileInput}

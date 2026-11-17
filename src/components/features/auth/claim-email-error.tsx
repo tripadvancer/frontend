@@ -7,6 +7,7 @@ import { sendVerificationEmail } from 'supertokens-web-js/recipe/emailverificati
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 import { SignUpCompleting } from './sign-up-completing'
@@ -24,7 +25,7 @@ export const ClaimEmailError = () => {
             await sendVerificationEmail()
             dialog.open(<SignUpCompleting />)
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         } finally {
             setIsLoading(false)
         }

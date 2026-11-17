@@ -12,15 +12,26 @@ import { useRouter } from 'next/navigation'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
-import { Devider } from '@/components/ui/devider'
+import { Divider } from '@/components/ui/divider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { SignUpInputs } from '@/utils/types/auth'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { USERNAME_FORMAT_MESSAGE, emailSchema, getPasswordSchema, getUsernameSchema } from '@/utils/helpers/auth'
 import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
+import { SignUpInputs } from '@/utils/types/auth'
 
+import { AuthLink } from './auth-link'
 import { SignIn } from './sign-in'
 import { SignUpCompleting } from './sign-up-completing'
 import { ThirdPartyButton } from './third-party-button'
+
+const SUPERTOKENS_EMAIL_EXISTS_MESSAGE = 'This email already exists. Please sign in instead.'
+
+// Username validation results of the backend sign up form field
+const USERNAME_ERROR_MESSAGES: Record<string, string> = {
+    USERNAME_ALREADY_EXISTS_ERROR: 'This username is already taken',
+    USERNAME_INVALID_FORMAT_ERROR: USERNAME_FORMAT_MESSAGE,
+}
 
 export const SignUp = () => {
     const settings = useAppSettings()
@@ -30,10 +41,6 @@ export const SignUp = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const userValidation = settings?.validation.user
-    const userNameMinLength = userValidation?.name.minLength ?? 0
-    const userNameMaxLength = userValidation?.name.maxLength ?? 0
-    const userPasswordMinLength = userValidation?.password.minLength ?? 0
-    const userPasswordMaxLength = userValidation?.password.maxLength ?? 0
 
     const initialValues = {
         email: '',
@@ -41,20 +48,13 @@ export const SignUp = () => {
         password: '',
     }
 
-    const validationSchema = Yup.object().shape({
-        email: Yup.string().trim().required('This field is required').email('Please enter a valid email address'),
-        username: Yup.string()
-            .trim()
-            .required('This field is required')
-            .min(userNameMinLength, `This field must be at least ${userNameMinLength} characters long`)
-            .max(userNameMaxLength, `This field must be at most ${userNameMaxLength} characters long`)
-            .matches(/^[A-Za-z0-9._-]+$/, 'Username can only contain letters, numbers, underscores, hyphens and dots'),
-        password: Yup.string()
-            .required('This field is required')
-            .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
-            .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
-    })
+    const validationSchema = userValidation
+        ? Yup.object().shape({
+              email: emailSchema,
+              username: getUsernameSchema(userValidation.name),
+              password: getPasswordSchema(userValidation.password),
+          })
+        : Yup.object()
 
     const handleSubmit = async (values: SignUpInputs) => {
         try {
@@ -74,42 +74,29 @@ export const SignUp = () => {
                     dialog.open(<SignUpCompleting />)
                     break
 
-                case 'FIELD_ERROR':
-                    const emailError = response.formFields.find(formField => formField.id === 'email')
-                    const passwordError = response.formFields.find(formField => formField.id === 'password')
-                    const usernameError = response.formFields.find(formField => formField.id === 'username')
+                case 'FIELD_ERROR': {
+                    const getFieldError = (id: string) => response.formFields.find(field => field.id === id)?.error
+                    const emailError = getFieldError('email')
+                    const usernameError = getFieldError('username')
 
-                    if (emailError) {
-                        // todo: try to find a better way to handle this
-                        if (emailError.error === 'This email already exists. Please sign in instead.') {
-                            formik.setErrors({ email: 'This email is already taken' })
-                        } else {
-                            formik.setErrors({ email: emailError.error })
-                        }
-                    }
-
-                    if (passwordError) {
-                        formik.setErrors({ password: passwordError.error })
-                    }
-
-                    if (usernameError) {
-                        if (usernameError.error === 'USERNAME_ALREADY_EXISTS_ERROR') {
-                            formik.setErrors({ username: 'This username is already taken' })
-                        }
-                        if (usernameError.error === 'USERNAME_INVALID_FORMAT_ERROR') {
-                            formik.setErrors({
-                                username: 'Username can only contain letters, numbers, underscores, hyphens and dots',
-                            })
-                        }
-                    }
+                    formik.setErrors({
+                        // SuperTokens returns this message when the backend reports EMAIL_ALREADY_EXISTS_ERROR
+                        email:
+                            emailError === SUPERTOKENS_EMAIL_EXISTS_MESSAGE
+                                ? 'This email is already taken'
+                                : emailError,
+                        password: getFieldError('password'),
+                        username: usernameError && USERNAME_ERROR_MESSAGES[usernameError],
+                    })
                     break
+                }
 
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         } finally {
             setIsLoading(false)
         }
@@ -123,7 +110,7 @@ export const SignUp = () => {
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: userValidation ? validationSchema : Yup.object(),
+        validationSchema,
         onSubmit: handleSubmit,
     })
 
@@ -134,7 +121,7 @@ export const SignUp = () => {
                 <div className="flex gap-x-2">
                     <ThirdPartyButton provider="google" isDisabled={isLoading || !settings} />
                 </div>
-                <Devider>Or</Devider>
+                <Divider>Or</Divider>
                 <div className="flex flex-col gap-y-2">
                     <FormInput
                         type="text"
@@ -196,9 +183,9 @@ export const SignUp = () => {
             </div>
             <div className="text-center">
                 Have an account?{' '}
-                <span className={`link ${!settings ? 'pointer-events-none opacity-50' : ''}`} onClick={settings ? handleSignInClick : undefined}>
+                <AuthLink isDisabled={!settings} onClick={handleSignInClick}>
                     Sign in
-                </span>
+                </AuthLink>
             </div>
         </form>
     )

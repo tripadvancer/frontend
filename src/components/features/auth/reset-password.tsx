@@ -6,36 +6,31 @@ import { useFormik } from 'formik'
 import { submitNewPassword } from 'supertokens-web-js/recipe/emailpassword'
 import * as Yup from 'yup'
 
-import Link from 'next/link'
-
-import { useToast } from '@/components/providers/toast-provider'
 import { useAppSettings } from '@/components/providers/settings-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { ResetPasswordInputs } from '@/utils/types/auth'
+import { LinkButton } from '@/components/ui/link-button'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { getPasswordSchema } from '@/utils/helpers/auth'
 import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
+import { ResetPasswordInputs } from '@/utils/types/auth'
 
 export const ResetPassword = () => {
     const settings = useAppSettings()
     const toast = useToast()
     const passwordValidation = settings?.validation.user.password
-    const userPasswordMinLength = passwordValidation?.minLength ?? 0
-    const userPasswordMaxLength = passwordValidation?.maxLength ?? 0
 
-    const [status, setStatus] = useState<string>()
+    const [status, setStatus] = useState<'OK' | 'RESET_PASSWORD_INVALID_TOKEN_ERROR'>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const initialValues = {
         password: '',
     }
 
-    const validationSchema = Yup.object().shape({
-        password: Yup.string()
-            .required('This field is required')
-            .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
-            .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/, 'Password must contain a lowercase letter and a number'),
-    })
+    const validationSchema = passwordValidation
+        ? Yup.object().shape({ password: getPasswordSchema(passwordValidation) })
+        : Yup.object()
 
     const handleSubmit = async (values: ResetPasswordInputs) => {
         try {
@@ -45,19 +40,20 @@ export const ResetPassword = () => {
             const response = await submitNewPassword({ formFields })
 
             switch (response.status) {
-                case 'FIELD_ERROR':
+                case 'FIELD_ERROR': {
                     const passwordError = response.formFields.find(formField => formField.id === 'password')
                     if (passwordError) {
                         formik.setErrors({ password: passwordError.error })
                     }
                     break
+                }
 
                 default:
                     setStatus(response.status)
                     break
             }
-        } catch (err) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+        } catch {
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         } finally {
             setIsLoading(false)
         }
@@ -67,7 +63,7 @@ export const ResetPassword = () => {
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: passwordValidation ? validationSchema : Yup.object(),
+        validationSchema,
         onSubmit: handleSubmit,
     })
 
@@ -101,12 +97,9 @@ export const ResetPassword = () => {
                     'The password reset link has expired. Please request a new password reset link.'}
                 {status === 'OK' && 'Your password has been reset.'}
             </p>
-            <Link
-                href="/"
-                className="hover-animated hover:bg-blue-active inline-flex h-10 w-full items-center justify-center rounded-lg bg-blue-100 px-6 text-white hover:text-white focus:outline-none"
-            >
+            <LinkButton href="/" className="w-full">
                 Go to Home
-            </Link>
+            </LinkButton>
         </>
     )
 }

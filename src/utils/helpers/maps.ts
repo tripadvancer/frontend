@@ -2,8 +2,8 @@ import { ViewState } from 'react-map-gl/maplibre'
 
 import { FlyToOptions } from 'maplibre-gl'
 
-import { LngLat } from '@/utils/types/geo'
 import type { ApplicationSettings } from '@/utils/redux/services/settings/settings.types'
+import { LngLat } from '@/utils/types/geo'
 
 export function stringCoordinatesIsValid(stringCoordinates: string): boolean {
     const reg = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)(\s*,\s*|\s+)([-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?))$/
@@ -37,11 +37,6 @@ export const LngLatToString = (coordinates: LngLat): string => {
 export const arrayToString = (coordinates: number[]): string => {
     const lngLat = arrayToLngLat(coordinates)
     return `${lngLat.lat}, ${lngLat.lng}`
-}
-
-export const stringToArray = (coordinates: string): number[] => {
-    const lngLat = stringToLngLat(coordinates)
-    return [lngLat.lng, lngLat.lat]
 }
 
 export function stringToViewState(coordinates: string, flyToZoom: number): Partial<ViewState> {

@@ -4,18 +4,18 @@ import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/redux/servi
 export const complainAPI = api.injectEndpoints({
     endpoints: build => ({
         complainAboutPlace: build.mutation<void, PlaceComplaintInputs>({
-            query: inputs => ({
-                url: `places/${inputs.placeId}/complaints`,
+            query: ({ placeId, ...body }) => ({
+                url: `places/${placeId}/complaints`,
                 method: 'POST',
-                body: inputs,
+                body,
             }),
         }),
 
         complainAboutReview: build.mutation<void, ReviewComplaintInputs>({
-            query: inputs => ({
-                url: `reviews/${inputs.reviewId}/complaints`,
+            query: ({ reviewId, ...body }) => ({
+                url: `reviews/${reviewId}/complaints`,
                 method: 'POST',
-                body: inputs,
+                body,
             }),
         }),
     }),

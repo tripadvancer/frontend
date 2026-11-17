@@ -10,6 +10,7 @@ import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 import { UpdateUserDataInputs } from '@/utils/redux/services/user/user.types'
@@ -102,11 +103,11 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
                     })
                     break
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 

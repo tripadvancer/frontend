@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, ReactNode, useContext } from 'react'
+import { ReactNode, createContext, useContext } from 'react'
 
 import { settingsAPI } from '@/utils/redux/services/settings/settings.api'
 import { ApplicationSettings } from '@/utils/redux/services/settings/settings.types'

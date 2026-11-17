@@ -8,6 +8,8 @@ import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { emailSchema } from '@/utils/helpers/auth'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 import { ChangeUserEmailInputs } from '@/utils/redux/services/user/user.types'
 
@@ -26,17 +28,13 @@ export const ChangeEmail = () => {
     }
 
     const validationSchema = Yup.object().shape({
-        newEmail: Yup.string().trim().required('This field is required').email('Please enter a valid email address'),
+        newEmail: emailSchema,
         password: Yup.string().required('This field is required'),
     })
 
     const handleSubmit = async (inputs: ChangeUserEmailInputs) => {
         try {
-            const trimedInputs = {
-                ...inputs,
-                newEmail: inputs.newEmail.trim(),
-            }
-            const response = await changeUserEmail(trimedInputs).unwrap()
+            const response = await changeUserEmail({ ...inputs, newEmail: inputs.newEmail.trim() }).unwrap()
 
             switch (response.status) {
                 case 'OK':
@@ -52,11 +50,11 @@ export const ChangeEmail = () => {
                     break
 
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
-        } catch (err) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+        } catch {
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 
@@ -95,12 +93,12 @@ export const ChangeEmail = () => {
                     onChange={formik.handleChange}
                 />
             </div>
-                <FormButton
-                    htmlType="submit"
-                    className="w-full"
-                    isLoading={isLoading}
-                    isDisabled={!settings || !formik.dirty}
-                >
+            <FormButton
+                htmlType="submit"
+                className="w-full"
+                isLoading={isLoading}
+                isDisabled={!settings || !formik.dirty}
+            >
                 Save changes
             </FormButton>
         </form>

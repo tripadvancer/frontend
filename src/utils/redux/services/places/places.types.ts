@@ -2,23 +2,14 @@ import { LngLatBounds } from 'react-map-gl/maplibre'
 
 import { IReview } from '@/utils/types/common'
 import { GeoJsonCollection } from '@/utils/types/geo'
+import { IPlacePreview } from '@/utils/types/place'
 
 export type GetPlacesParams = {
     mapBounds: LngLatBounds | undefined
     selectedCategories: number[]
 }
 
-export type GetPlacesResponse = GeoJsonCollection<{
-    id: number
-    title: string
-    cover: string | null
-    avgRating: number | null
-    reviewsCount: number
-    countryCode: string | null
-    isVisited: boolean
-    isSaved: boolean
-    coordinates: number[]
-}>
+export type GetPlacesResponse = GeoJsonCollection<IPlacePreview>
 
 export type GetPlaceMetaByIdResponse = {
     ownReview: IReview | null
@@ -38,17 +29,8 @@ export type CreatePlaceInputs = {
     isVisited: boolean
 }
 
-export type UpdatePlaceInputs = {
-    title: string
-    description: string
-    categories: number[]
+export type UpdatePlaceInputs = CreatePlaceInputs & {
     placeId: number
-    location: string
-    photos: {
-        url: string
-        isCover: boolean
-    }[]
-    isVisited: boolean
 }
 
 export type CreatePlaceResponse = {

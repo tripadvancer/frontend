@@ -3,17 +3,16 @@
 import { RefObject, useRef, useState } from 'react'
 
 import { CircleUserIcon, LogOutIcon, SettingsIcon } from 'lucide-react'
-import Session from 'supertokens-web-js/recipe/session'
 import { useMediaQuery, useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { Avatar } from '@/components/ui/avatar'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { Keys } from '@/utils/enums'
 import { useKeypress } from '@/utils/hooks/use-keypress'
-import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
+import { useSignOut } from '@/utils/hooks/use-sign-out'
 
 type UserMenuProps = {
     name: string
@@ -22,8 +21,8 @@ type UserMenuProps = {
 }
 
 export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
-    const router = useRouter()
     const toast = useToast()
+    const signOut = useSignOut()
     const isMobile = useMediaQuery('(max-width: 639px)')
 
     const ref = useRef<HTMLDivElement>(null)
@@ -41,15 +40,12 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
         setIsMenuOpen(false)
     })
 
-    const signOut = async () => {
+    const handleSignOut = async () => {
         try {
             setIsMenuOpen(false)
-            await waitForSuperTokensInitialization()
-            await Session.signOut()
-            router.push('/')
-            router.refresh()
-        } catch (err) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            await signOut()
+        } catch {
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 
@@ -84,7 +80,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
                     <li>
                         <div
                             className="hover:bg-blue-10 flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-nowrap text-red-100"
-                            onClick={signOut}
+                            onClick={handleSignOut}
                         >
                             <LogOutIcon size={16} />
                             Log out
