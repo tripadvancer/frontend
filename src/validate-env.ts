@@ -6,7 +6,6 @@ interface EnvVariables {
     NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH: string
     NEXT_PUBLIC_API_DOMAIN: string
     NEXT_PUBLIC_API_BASE_PATH: string
-    NEXT_PUBLIC_EMAIL: string
     NEXT_PUBLIC_API_URL: string
     NEXT_PUBLIC_INTERNAL_API_URL: string
     NEXT_PUBLIC_GA_MEASUREMENT_ID: string
@@ -23,7 +22,6 @@ const defaultValues: EnvVariables = {
     NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH: 'http://localhost:3000/auth/callback',
     NEXT_PUBLIC_API_DOMAIN: 'http://localhost:3001',
     NEXT_PUBLIC_API_BASE_PATH: '/api/v1',
-    NEXT_PUBLIC_EMAIL: 'tripadvancer.team@gmail.com',
     NEXT_PUBLIC_API_URL: 'http://localhost:3001/api/v1',
     NEXT_PUBLIC_INTERNAL_API_URL: 'http://localhost:3000/api',
     NEXT_PUBLIC_GA_MEASUREMENT_ID: 'SHOULD_BE_SET',

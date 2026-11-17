@@ -1,5 +1,6 @@
 export type ApplicationSettings = {
     name: string
+    supportEmail: string
     placesCount: number
     countriesCount: number
     validation: {

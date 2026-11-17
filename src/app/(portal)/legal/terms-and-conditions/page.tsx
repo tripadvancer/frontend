@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { Metadata } from 'next/types'
 
+import { SupportEmailLink } from '@/components/features/common/support-email-link'
 import { ExternalLink } from '@/components/ui/external-link'
 
 export const metadata: Metadata = {
@@ -376,8 +376,7 @@ export default function LegalTermsAndConditionsPage() {
                     <h2 className="h5 mb-8">Contacting&nbsp;us</h2>
                     <p>
                         If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Agreement,
-                        we&nbsp;encourage you to&nbsp;contact us&nbsp;using the details below:{' '}
-                        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{process.env.NEXT_PUBLIC_EMAIL}</Link>.
+                        we&nbsp;encourage you to&nbsp;contact us&nbsp;using the details below: <SupportEmailLink />.
                     </p>
                 </section>
 
