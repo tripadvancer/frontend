@@ -4,14 +4,13 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { FormRadio } from '@/components/ui/form-radio'
-import { validationConfig } from '@/configs/validation.config'
 import { ComplaintReasonsEnum } from '@/utils/enums'
 import { PlaceComplaintInputs, ReviewComplaintInputs } from '@/utils/redux/services/complain/complain.types'
 
-const textMaxLength = validationConfig.complain.maxLength
 const complaintReasonLabels: Record<ComplaintReasonsEnum, string> = {
     [ComplaintReasonsEnum.ABUSE]: 'Misuse, mistreatment or intentional harm',
     [ComplaintReasonsEnum.COPYRIGHT]: 'Copyright or intellectual property rights violation',
@@ -30,7 +29,9 @@ type ComplainFormProps = {
 }
 
 export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFormProps) => {
+    const settings = useAppSettings()
     const dialog = useDialog()
+    const textMaxLength = settings?.validation.complaint.maxLength ?? 0
 
     const reasons = Object.values(ComplaintReasonsEnum)
 
@@ -42,7 +43,7 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema,
+        validationSchema: settings ? validationSchema : Yup.object(),
         onSubmit,
     })
 
@@ -67,12 +68,13 @@ export const ComplainForm = ({ initialValues, isLoading, onSubmit }: ComplainFor
                     name="text"
                     value={formik.values.text}
                     placeholder="Add your comment here"
+                    maxLength={textMaxLength}
                     error={formik.errors.text}
                     onChange={formik.handleChange}
                 />
             </div>
             <div className="flex gap-x-2">
-                <FormButton htmlType="submit" isLoading={isLoading}>
+                <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!settings}>
                     Send
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>

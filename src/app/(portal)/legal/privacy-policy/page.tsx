@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import { Metadata } from 'next/types'
+
+import { SupportEmailLink } from '@/components/features/common/support-email-link'
 
 export const metadata: Metadata = {
     title: 'Privacy Policy',
@@ -123,8 +124,7 @@ export default function LegalPrivacyPolicyPage() {
                     <h2 className="h5 mb-8">Contacting&nbsp;us</h2>
                     <p>
                         If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Privacy Policy,
-                        we&nbsp;encourage you to contact&nbsp;us using the details below:{' '}
-                        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{process.env.NEXT_PUBLIC_EMAIL}</Link>.
+                        we&nbsp;encourage you to contact&nbsp;us using the details below: <SupportEmailLink />.
                     </p>
                 </section>
 

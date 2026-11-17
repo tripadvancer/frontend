@@ -4,14 +4,11 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
-import { validationConfig } from '@/configs/validation.config'
 import { CreateListInputs, UpdateListInputs } from '@/utils/redux/services/list/list.types'
-
-const listNameMaxLength = validationConfig.list.name.maxLength
-const listDescriptionMaxLength = validationConfig.list.description.maxLength
 
 type ListFormProps = {
     initialValues: CreateListInputs | UpdateListInputs
@@ -20,12 +17,18 @@ type ListFormProps = {
 }
 
 export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) => {
+    const settings = useAppSettings()
     const dialog = useDialog()
+    const listValidation = settings?.validation.list
+    const listNameMinLength = listValidation?.name.minLength ?? 1
+    const listNameMaxLength = listValidation?.name.maxLength ?? 0
+    const listDescriptionMaxLength = listValidation?.description.maxLength ?? 0
 
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .trim()
             .required('This field is required')
+            .min(listNameMinLength, `This field must be at least ${listNameMinLength} characters long`)
             .max(listNameMaxLength, `This field must be at most ${listNameMaxLength} characters long`),
         description: Yup.string()
             .trim()
@@ -36,7 +39,7 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema,
+        validationSchema: listValidation ? validationSchema : Yup.object(),
         onSubmit,
     })
 
@@ -79,7 +82,7 @@ export const ListForm = ({ initialValues, isLoading, onSubmit }: ListFormProps) 
                 </div>
             </div>
             <div className="flex gap-x-2">
-                <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!formik.dirty}>
+                <FormButton htmlType="submit" isLoading={isLoading} isDisabled={!settings || !formik.dirty}>
                     Save
                 </FormButton>
                 <FormButton type="stroke" onClick={() => dialog.close()}>

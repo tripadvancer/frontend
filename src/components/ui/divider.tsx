@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 
-type DeviderProps = {
+type DividerProps = {
     children: ReactNode
 }
 
-export const Devider = ({ children }: DeviderProps) => {
+export const Divider = ({ children }: DividerProps) => {
     return (
         <div className="relative text-center">
             <hr className="border-black-15 absolute top-1/2 right-0 left-0 z-0" />

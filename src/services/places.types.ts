@@ -19,19 +19,10 @@ export type GetPlaceByIdResponse = {
     createdAt: Date
 }
 
-export type GetPlacesByCountryCodeParams = {
-    countryCode: string
-    categoriesIds: string | undefined
-}
-
 export type GetPlacesByCountryCodeResponse = {
     id: number
     title: string
     cover: string | null
     avgRating: number | null
     reviewsCount: number
-    countryCode: string | null
-    isVisited: boolean
-    isSaved: boolean
-    coordinates: number[]
 }[]

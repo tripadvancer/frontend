@@ -1,10 +1,11 @@
 'use client'
 
-import { RefObject, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
+import { useDebounceCallback } from 'usehooks-ts'
 
 import { transformSearchCoordinates, transformSearchLocations } from '@/utils/helpers/search'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { searchAPI } from '@/utils/redux/services/search/search.api'
 import { LngLat } from '@/utils/types/geo'
 import { ILocationPreview } from '@/utils/types/place'
@@ -48,10 +49,7 @@ export const LocationPickerMapSearch = ({ onSelect, onHide }: LocationPickerSear
         setIsAutocompleteVisible(items.length > 0)
     }, [items])
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
+    useClickOutside(ref, () => {
         setIsAutocompleteVisible(false)
     })
 

@@ -1,7 +1,6 @@
 import 'server-only'
 
-import { notFound } from 'next/navigation'
-
+import { apiFetch } from '@/services/api'
 import { GetPlaceByIdResponse, GetPlacesByCountryCodeResponse } from '@/services/places.types'
 import {
     GetPlacesAroundParams,
@@ -12,36 +11,13 @@ export async function getPlacesByCountryCode(
     countryCode: string,
     categoriesIds: string | undefined,
 ): Promise<GetPlacesByCountryCodeResponse> {
-    const params = new URLSearchParams()
-
-    if (categoriesIds) {
-        params.set('categories_ids', categoriesIds)
-    }
-
-    const query = params.size ? `?${params.toString()}` : ''
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/countries/${encodeURIComponent(countryCode)}/places${query}`
-    const res = await fetch(url)
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
+    const params = new URLSearchParams(categoriesIds ? { categories_ids: categoriesIds } : {})
+    const query = params.size ? `?${params}` : ''
+    return apiFetch(`countries/${encodeURIComponent(countryCode)}/places${query}`)
 }
 
 export async function getPlaceById(placeId: string): Promise<GetPlaceByIdResponse> {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/places/${encodeURIComponent(placeId)}`
-    const res = await fetch(url, { cache: 'no-store' })
-
-    if (!res.ok) {
-        if (res.status === 404) {
-            notFound()
-        }
-
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
+    return apiFetch(`places/${encodeURIComponent(placeId)}`, { cache: 'no-store', notFoundOn404: true })
 }
 
 export async function getPlacesAround({
@@ -56,15 +32,7 @@ export async function getPlacesAround({
         lng: lng.toString(),
         radius: radius.toString(),
         categories_ids: categories.join(),
-
         ...(limit !== undefined && { limit: limit.toString() }),
     })
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places-around?' + params.toString()
-    const res = await fetch(url)
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
+    return apiFetch(`places-around?${params}`)
 }

@@ -12,7 +12,10 @@ import { placesLayer } from './map-layers'
 export const MapSourceDefault = () => {
     const mapBounds = useAppSelector(getMapBounds)
     const selectedCategories = useAppSelector(getWidgetSelectedCategories)
-    const { data: places, isSuccess } = placesAPI.useGetPlacesQuery({ mapBounds, selectedCategories })
+    const { data: places, isSuccess } = placesAPI.useGetPlacesQuery(
+        { mapBounds, selectedCategories },
+        { skip: !mapBounds },
+    )
 
     return (
         <Source

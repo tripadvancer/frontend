@@ -1,5 +1,8 @@
+'use client'
+
 import { ReactNode } from 'react'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
 import { PlaceSidebarActionsCheckIn } from './place-sidebar-actions-check-in'
@@ -34,6 +37,8 @@ type PlaceSidebarActionsProps = {
 }
 
 export const PlaceSidebarActions = (props: PlaceSidebarActionsProps) => {
+    const settings = useAppSettings()
+
     return (
         <div>
             <Item>
@@ -56,9 +61,11 @@ export const PlaceSidebarActions = (props: PlaceSidebarActionsProps) => {
             </Item>
             {props.activeUserId === props.author.id && (
                 <>
-                    <Item>
-                        <PlaceSidebarActionsEdit {...props} />
-                    </Item>
+                    {settings?.switchers.update_places && (
+                        <Item>
+                            <PlaceSidebarActionsEdit {...props} />
+                        </Item>
+                    )}
                     <Item>
                         <PlaceSidebarActionsDelete {...props} />
                     </Item>

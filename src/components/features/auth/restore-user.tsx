@@ -4,8 +4,10 @@ import { useState } from 'react'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { LinkButton } from '@/components/ui/link-button'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { userAPI } from '@/utils/redux/services/user/user.api'
+import { RestoreUserResponse } from '@/utils/redux/services/user/user.types'
 
 type RestoreUserProps = {
     token: string
@@ -14,7 +16,7 @@ type RestoreUserProps = {
 export const RestoreUser = ({ token }: RestoreUserProps) => {
     const toast = useToast()
 
-    const [status, setStatus] = useState<string>()
+    const [status, setStatus] = useState<RestoreUserResponse['status']>()
     const [restoreUser] = userAPI.useRestoreUserMutation()
 
     useOnMountUnsafe(() => {
@@ -22,8 +24,8 @@ export const RestoreUser = ({ token }: RestoreUserProps) => {
             try {
                 const response = await restoreUser(token).unwrap()
                 setStatus(response.status)
-            } catch (err) {
-                toast.error('An unexpected error has occurred. Please try again later.')
+            } catch {
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
         }
         handleRestoreUser()

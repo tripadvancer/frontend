@@ -7,21 +7,18 @@ import { ensureSuperTokensInit } from './supertokens.server'
 
 ensureSuperTokensInit()
 
-export async function getSSRSessionHelper(): Promise<{
+type SSRSession = {
     session: SessionContainer | undefined
     hasToken: boolean
-}> {
-    let session: SessionContainer | undefined
-    let hasToken = false
+}
 
-    const cookieStore = await cookies()
-    const headersList = await headers()
+// hasToken without a session means the access token has expired and must be refreshed on the client
+export async function getSSRSessionHelper(): Promise<SSRSession> {
+    const [cookieStore, headersList] = await Promise.all([cookies(), headers()])
 
     try {
-        ;({ session, hasToken } = await getSSRSession(cookieStore.getAll(), headersList))
+        return await getSSRSession(cookieStore.getAll(), headersList)
     } catch {
-        return { session, hasToken }
+        return { session: undefined, hasToken: false }
     }
-
-    return { session, hasToken }
 }

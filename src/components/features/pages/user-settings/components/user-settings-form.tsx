@@ -5,11 +5,12 @@ import * as Yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
 import { FormTextarea } from '@/components/ui/form-textarea'
-import { validationConfig } from '@/configs/validation.config'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { SettingsCategories, UserPrivacySettings, UserSocialApps } from '@/utils/enums'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 import { UpdateUserDataInputs } from '@/utils/redux/services/user/user.types'
@@ -17,11 +18,6 @@ import { UpdateUserDataInputs } from '@/utils/redux/services/user/user.types'
 import { UserSettingsAvatarUploader } from './user-settings-avatar-uploader'
 import { UserSettingsFormPrivacy } from './user-settings-form-privacy'
 import { UserSettingsFormSocialLinks } from './user-settings-form-social-links'
-
-const userNameMinLength = validationConfig.user.name.minLength
-const userNameMaxLength = validationConfig.user.name.maxLength
-const userInfoMaxLength = validationConfig.user.info.maxLength
-const userSocialMaxLength = validationConfig.user.social.maxLength
 
 type UserSettingsFormProps = {
     name: string
@@ -34,10 +30,16 @@ type UserSettingsFormProps = {
 }
 
 export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserSettingsFormProps) => {
+    const appSettings = useAppSettings()
     const router = useRouter()
     const toast = useToast()
 
     const [updateUserData, { isLoading }] = userAPI.useUpdateUserDataMutation()
+    const userValidation = appSettings?.validation.user
+    const userNameMinLength = userValidation?.name.minLength ?? 0
+    const userNameMaxLength = userValidation?.name.maxLength ?? 0
+    const userInfoMaxLength = userValidation?.info.maxLength ?? 0
+    const userSocialMaxLength = userValidation?.social.maxLength ?? 0
 
     const initialValues = {
         name: name,
@@ -101,11 +103,11 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
                     })
                     break
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 
@@ -113,7 +115,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema,
+        validationSchema: userValidation ? validationSchema : Yup.object(),
         onSubmit: handleSubmit,
     })
 
@@ -182,7 +184,7 @@ export const UserSettingsForm = ({ name, info, avatar, social, settings }: UserS
                 </div>
             </div>
 
-            <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+            <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!appSettings}>
                 Save changes
             </FormButton>
         </form>

@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
 import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
 import { UpdateReviewInputs } from '@/utils/redux/services/reviews/reviews.types'
@@ -36,7 +37,7 @@ export const ReviewEdit = (review: IReview) => {
     }
 
     if (isMetaError) {
-        return <div>An unexpected error has occurred. Please try again later.</div>
+        return <div>{UNEXPECTED_ERROR_MESSAGE}</div>
     }
 
     const initialValues: UpdateReviewInputs = {
@@ -59,7 +60,7 @@ export const ReviewEdit = (review: IReview) => {
             router.refresh()
             dialog.close()
         } catch (error) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 

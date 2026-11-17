@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewDistance } from '@/components/ui/place-preview-distance'
 import { getPlacesAround } from '@/services/places'
+import { getApplicationSettings } from '@/services/settings'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { getPlacePath } from '@/utils/helpers/places'
 import { GeoJsonPoint } from '@/utils/types/geo'
@@ -17,11 +18,12 @@ type PlaceSidebarNearbyProps = {
 }
 
 export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyProps) => {
+    const settings = await getApplicationSettings()
     const lngLat = arrayToLngLat(location.coordinates)
     const placesAround = await getPlacesAround({
         lat: lngLat.lat,
         lng: lngLat.lng,
-        radius: parseInt(process.env.NEXT_PUBLIC_NEARBY_PLACES_RADIUS || '30000', 10),
+        radius: settings.radii.nearbyPlaces,
         categories: [],
         limit: 6,
     })

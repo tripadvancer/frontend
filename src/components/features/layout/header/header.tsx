@@ -1,4 +1,4 @@
-import { HeaderDesktopAuthWrapper } from './header-desktop/header-mobile-auth-wrapper'
+import { HeaderDesktopAuthWrapper } from './header-desktop/header-desktop-auth-wrapper'
 import { HeaderMobileAuthWrapper } from './header-mobile/header-mobile-auth-wrapper'
 
 export const Header = () => {

@@ -1,53 +1,37 @@
-import { SuperTokensConfig } from 'supertokens-web-js/lib/build/types'
 import EmailPassword from 'supertokens-web-js/recipe/emailpassword'
 import EmailVerification from 'supertokens-web-js/recipe/emailverification'
 import Session from 'supertokens-web-js/recipe/session'
 import ThirdPartyEmailPassword from 'supertokens-web-js/recipe/thirdpartyemailpassword'
+import type { SuperTokensConfig } from 'supertokens-web-js/types'
 
 import { setWidgetActiveList } from '@/utils/redux/features/widget-slice'
-import { api } from '@/utils/redux/services/api'
+import { USER_DEPENDENT_TAGS, api } from '@/utils/redux/services/api'
 import { store } from '@/utils/redux/store'
 
-import { supertokensConfig } from './supertokens.config'
+import { getSuperTokensConfig } from './supertokens.config'
 
-export const clientConfig = (): SuperTokensConfig => {
-    return {
-        appInfo: supertokensConfig,
-        recipeList: [
-            EmailPassword.init(),
-            ThirdPartyEmailPassword.init({
-                override: {
-                    functions: oI => {
-                        return {
-                            ...oI,
-                            emailPasswordSignIn: async function (input) {
-                                const response = await oI.emailPasswordSignIn(input)
+// EmailPassword handles the password reset (its emails are customized on the backend),
+// ThirdPartyEmailPassword handles sign in and sign up with email or Google
+export const clientConfig = (appName: string): SuperTokensConfig => ({
+    appInfo: getSuperTokensConfig(appName),
+    recipeList: [
+        EmailPassword.init(),
+        ThirdPartyEmailPassword.init(),
+        EmailVerification.init(),
+        Session.init({
+            onHandleEvent: event => {
+                switch (event.action) {
+                    // Sign in, sign up and Google sign in: refetch data that depends on the user
+                    case 'SESSION_CREATED':
+                        store.dispatch(api.util.invalidateTags([...USER_DEPENDENT_TAGS]))
+                        break
 
-                                if (response.status === 'OK') {
-                                    store.dispatch(api.util.invalidateTags(['Visited', 'Places', 'Lists']))
-                                }
-
-                                return response
-                            },
-                        }
-                    },
-                },
-            }),
-            EmailVerification.init(),
-            Session.init({
-                override: {
-                    functions: oI => {
-                        return {
-                            ...oI,
-                            signOut: async function (input) {
-                                await oI.signOut(input)
-                                store.dispatch(api.util.resetApiState())
-                                store.dispatch(setWidgetActiveList(null))
-                            },
-                        }
-                    },
-                },
-            }),
-        ],
-    }
-}
+                    case 'SIGN_OUT':
+                        store.dispatch(api.util.resetApiState())
+                        store.dispatch(setWidgetActiveList(null))
+                        break
+                }
+            },
+        }),
+    ],
+})
