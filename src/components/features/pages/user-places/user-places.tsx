@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { PlacesGrid } from '@/components/features/common/places-grid/places-grid'
 import { ShowMore } from '@/components/ui/show-more'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { usersAPI } from '@/utils/redux/services/users/users.api'
 
 import { UserPlacesItemActions } from './components/user-places-item-actions'
@@ -20,11 +21,7 @@ export const UserPlaces = ({ userId, isOwnProfile }: UserPlacesProps) => {
     const { data, isFetching, isSuccess, isError } = usersAPI.useGetPlacesByUserIdQuery({ userId, page })
 
     if (isError) {
-        return (
-            <div className="text-black-40 mt-16 text-center">
-                An unexpected error has occurred. Please try again later.
-            </div>
-        )
+        return <div className="text-black-40 mt-16 text-center">{UNEXPECTED_ERROR_MESSAGE}</div>
     }
 
     if (isSuccess && data.items.length === 0) {

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 
+import { SupportEmailLink } from '@/components/features/common/support-email-link'
 import { getWidgetState } from '@/utils/redux/features/widget-slice'
 import { useAppSelector } from '@/utils/redux/hooks'
 
@@ -20,7 +21,7 @@ export const WidgetHeaderAbout = () => {
                 </div>
                 <ul className="flex flex-col gap-y-2">
                     <li>
-                        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>Contact Us</Link>
+                        <SupportEmailLink>Contact Us</SupportEmailLink>
                     </li>
                     <li>
                         <Link href="https://help.tripadvancer.com" target="_blank">

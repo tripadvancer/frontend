@@ -4,6 +4,7 @@ import { RequestUserDeletionCompleting } from '@/components/features/auth/reques
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 
 export const UserSettingsBlockRequestUserDeletion = () => {
@@ -24,7 +25,7 @@ export const UserSettingsBlockRequestUserDeletion = () => {
                         await requestUserDeletion()
                         dialog.open(<RequestUserDeletionCompleting />)
                     } catch {
-                        toast.error('An unexpected error has occurred. Please try again later.')
+                        toast.error(UNEXPECTED_ERROR_MESSAGE)
                     }
                 }}
             />,

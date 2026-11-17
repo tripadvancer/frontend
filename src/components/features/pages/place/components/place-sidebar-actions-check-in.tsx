@@ -6,6 +6,7 @@ import { SignIn } from '@/components/features/auth/sign-in'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormSwitcher } from '@/components/ui/form-switcher'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
 import { visitedAPI } from '@/utils/redux/services/visited/visited.api'
 
@@ -32,7 +33,7 @@ export const PlaceSidebarActionsCheckIn = ({ id, isAuth }: PlaceSidebarActionsCh
         try {
             await (meta?.isVisited ? checkOut(id) : checkIn(id))
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 

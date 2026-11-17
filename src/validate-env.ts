@@ -2,21 +2,12 @@ import * as yup from 'yup'
 
 interface EnvVariables {
     NODE_ENV: string
-    NEXT_PUBLIC_APP_NAME: string
     NEXT_PUBLIC_WEBSITE_DOMAIN: string
     NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH: string
     NEXT_PUBLIC_API_DOMAIN: string
     NEXT_PUBLIC_API_BASE_PATH: string
-    NEXT_PUBLIC_EMAIL: string
     NEXT_PUBLIC_API_URL: string
     NEXT_PUBLIC_INTERNAL_API_URL: string
-    NEXT_PUBLIC_MAP_CENTER_LAT: string
-    NEXT_PUBLIC_MAP_CENTER_LNG: string
-    NEXT_PUBLIC_MAP_ZOOM: string
-    NEXT_PUBLIC_MAP_FLY_TO_ZOOM: string
-    NEXT_PUBLIC_AROUND_ME_RADIUS: string
-    NEXT_PUBLIC_UNIQUE_PLACE_RADIUS: string
-    NEXT_PUBLIC_NEARBY_PLACES_RADIUS: string
     NEXT_PUBLIC_GA_MEASUREMENT_ID: string
     SUPERTOKENS_CONNECTION_URI: string
     SUPERTOKENS_API_KEY: string
@@ -27,21 +18,12 @@ interface EnvVariables {
 
 const defaultValues: EnvVariables = {
     NODE_ENV: 'development',
-    NEXT_PUBLIC_APP_NAME: 'Tripadvancer',
     NEXT_PUBLIC_WEBSITE_DOMAIN: 'http://localhost:3000',
     NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH: 'http://localhost:3000/auth/callback',
     NEXT_PUBLIC_API_DOMAIN: 'http://localhost:3001',
     NEXT_PUBLIC_API_BASE_PATH: '/api/v1',
-    NEXT_PUBLIC_EMAIL: 'tripadvancer.team@gmail.com',
     NEXT_PUBLIC_API_URL: 'http://localhost:3001/api/v1',
     NEXT_PUBLIC_INTERNAL_API_URL: 'http://localhost:3000/api',
-    NEXT_PUBLIC_MAP_CENTER_LAT: '51.89921',
-    NEXT_PUBLIC_MAP_CENTER_LNG: '19.13417',
-    NEXT_PUBLIC_MAP_ZOOM: '3',
-    NEXT_PUBLIC_MAP_FLY_TO_ZOOM: '14',
-    NEXT_PUBLIC_AROUND_ME_RADIUS: '150000',
-    NEXT_PUBLIC_UNIQUE_PLACE_RADIUS: '15',
-    NEXT_PUBLIC_NEARBY_PLACES_RADIUS: '30000',
     NEXT_PUBLIC_GA_MEASUREMENT_ID: 'SHOULD_BE_SET',
     SUPERTOKENS_CONNECTION_URI: 'SHOULD_BE_SET',
     SUPERTOKENS_API_KEY: 'SHOULD_BE_SET',

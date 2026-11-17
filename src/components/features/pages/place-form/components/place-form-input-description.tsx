@@ -10,11 +10,9 @@ import StarterKit from '@tiptap/starter-kit'
 import classNames from 'classnames'
 import { BoldIcon, ItalicIcon, LinkIcon, StrikethroughIcon, UnderlineIcon } from 'lucide-react'
 
-import { validationConfig } from '@/configs/validation.config'
+import { useAppSettings } from '@/components/providers/settings-provider'
 
 import { PlaceFormInputDescriptionButton } from './place-form-input-description-button'
-
-const maxLength = validationConfig.place.description.maxLength
 
 type PlaceFormInputDescriptionProps = {
     value: string
@@ -23,7 +21,9 @@ type PlaceFormInputDescriptionProps = {
 }
 
 export const PlaceFormInputDescription = ({ value, error, onChange }: PlaceFormInputDescriptionProps) => {
+    const settings = useAppSettings()
     const [characterCount, setCharacterCount] = useState(0)
+    const maxLength = settings?.validation.place.description.maxLength ?? 0
 
     const editor = useEditor({
         extensions: [

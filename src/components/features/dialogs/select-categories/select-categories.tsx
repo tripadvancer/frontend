@@ -5,8 +5,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
-import { validationConfig } from '@/configs/validation.config'
 import { getSortedCategories } from '@/utils/dictionaries/categories'
 import { updateSelectedCategories } from '@/utils/helpers/common'
 
@@ -17,11 +17,11 @@ type SelectCategoriesProps = {
     onChange: (value: number[]) => void
 }
 
-const maxCategoriesCount = validationConfig.place.category.maxCount
-
 export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => {
+    const settings = useAppSettings()
     const dialog = useDialog()
     const sortedCategories = getSortedCategories()
+    const maxCategoriesCount = settings?.validation.place.category.maxCount ?? 0
 
     const [selectedCategoryIds, setSelectedCategoryIds] = useState<number[]>(value)
 

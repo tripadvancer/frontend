@@ -1,6 +1,6 @@
 import { LngLat } from '@/utils/types/geo'
 
-// todo: remove after search refactoring
+// Place in map collections, lists and search results
 export type IPlacePreview = {
     id: number
     title: string

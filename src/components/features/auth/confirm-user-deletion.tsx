@@ -6,30 +6,38 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { LinkButton } from '@/components/ui/link-button'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { userAPI } from '@/utils/redux/services/user/user.api'
+import { ConfirmUserDeletionResponse } from '@/utils/redux/services/user/user.types'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
-type ConfirmUserRemovalProps = {
+type ConfirmUserDeletionProps = {
     token: string
 }
 
-export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
+export const ConfirmUserDeletion = ({ token }: ConfirmUserDeletionProps) => {
     const toast = useToast()
 
-    const [status, setStatus] = useState<string>()
+    const [status, setStatus] = useState<ConfirmUserDeletionResponse['status']>()
     const [confirmUserDeletion] = userAPI.useConfirmUserDeletionMutation()
 
     useOnMountUnsafe(() => {
-        const handleConfirmUserRemoval = async () => {
+        const handleConfirmUserDeletion = async () => {
             try {
+                await waitForSuperTokensInitialization()
                 const response = await confirmUserDeletion(token).unwrap()
                 setStatus(response.status)
-                await Session.signOut()
-            } catch (err) {
-                toast.error('An unexpected error has occurred. Please try again later.')
+
+                // The backend revokes the sessions of the deleted account, sign out this device as well
+                if (response.status === 'OK') {
+                    await Session.signOut()
+                }
+            } catch {
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
         }
-        handleConfirmUserRemoval()
+        handleConfirmUserDeletion()
     })
 
     if (!status) {

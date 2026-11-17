@@ -2,6 +2,7 @@
 
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { setWidgetActiveList } from '@/utils/redux/features/widget-slice'
 import { useAppDispatch } from '@/utils/redux/hooks'
 import { listAPI } from '@/utils/redux/services/list/list.api'
@@ -35,7 +36,7 @@ export const ListEdit = (list: IList) => {
             dispatch(setWidgetActiveList(updatedList))
             dialog.close()
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 

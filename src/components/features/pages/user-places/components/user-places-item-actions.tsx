@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { useAppDispatch } from '@/utils/redux/hooks'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
 import { usersAPI } from '@/utils/redux/services/users/users.api'
@@ -34,7 +35,7 @@ export const UserPlacesItemActions = ({ id, userId }: UserPlacesItemActionsProps
             toast.success('The place has been deleted.')
             router.refresh()
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 

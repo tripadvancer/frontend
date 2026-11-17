@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 import { useFormik } from 'formik'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
+import { GlobalLoading } from '@/components/ui/global-loading'
 import { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/redux/services/places/places.types'
 
 import { PlaceFormErrorMessage } from './components/place-form-error-message'
@@ -23,18 +25,23 @@ type PlaceFormProps = {
 }
 
 export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps) => {
+    const settings = useAppSettings()
     const [isFormDisabled, setIsFormDisabled] = useState(false)
 
     const formik = useFormik({
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: validationSchema(),
+        validationSchema: settings ? validationSchema(settings.validation.place) : undefined,
         onSubmit,
     })
 
     const handlePhotosChange = (value: { url: string; isCover: boolean }[]) => {
         formik.setFieldValue('photos', value)
+    }
+
+    if (!settings) {
+        return <GlobalLoading />
     }
 
     return (
@@ -76,7 +83,10 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                     />
                     <div className="flex flex-col gap-y-4">
                         <PlaceFormErrorMessage errors={formik.errors} />
-                        <PlaceFormSubmit isLoading={isLoading} isDisabled={!formik.dirty || isFormDisabled} />
+                        <PlaceFormSubmit
+                            isLoading={isLoading}
+                            isDisabled={!formik.dirty || isFormDisabled || !settings}
+                        />
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ import Image from 'next/image'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { getCountryByCode } from '@/utils/helpers/countries'
 import { getPlacePath } from '@/utils/helpers/places'
 
@@ -30,7 +31,7 @@ export const SharePlace = ({ id, title, countryCode }: SharePlaceProps) => {
                 toast.success('Link copied to clipboard')
             })
             .catch(error => {
-                toast.error('An unexpected error has occurred. Please try again later.')
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             })
     }
 
