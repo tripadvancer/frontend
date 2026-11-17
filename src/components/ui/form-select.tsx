@@ -1,10 +1,10 @@
-import { ReactNode, RefObject, useRef, useState } from 'react'
+import { ReactNode, useRef, useState } from 'react'
 
 import classNames from 'classnames'
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
-import { useOnClickOutside } from 'usehooks-ts'
 
 import { Keys } from '@/utils/enums'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
 type FormSelectProps = {
@@ -24,10 +24,7 @@ export const FormSelect = ({ name, placeholder, options, disabled, onChange }: F
 
     const ref = useRef<HTMLDivElement>(null)
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
+    useClickOutside(ref, () => {
         setIsOpen(false)
     })
 

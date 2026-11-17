@@ -1,11 +1,11 @@
 'use client'
 
-import { RefObject, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { useOnClickOutside } from 'usehooks-ts'
 
 import { Keys } from '@/utils/enums'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
 import { SearchInput } from './search-input'
@@ -27,10 +27,7 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
         setIsResultVisible(false)
     })
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
+    useClickOutside(ref, () => {
         setIsResultVisible(false)
     })
 

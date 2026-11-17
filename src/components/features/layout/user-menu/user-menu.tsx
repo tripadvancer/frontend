@@ -1,9 +1,9 @@
 'use client'
 
-import { RefObject, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { CircleUserIcon, LogOutIcon, SettingsIcon } from 'lucide-react'
-import { useMediaQuery, useOnClickOutside } from 'usehooks-ts'
+import { useMediaQuery } from 'usehooks-ts'
 
 import Link from 'next/link'
 
@@ -11,6 +11,7 @@ import { useToast } from '@/components/providers/toast-provider'
 import { Avatar } from '@/components/ui/avatar'
 import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { Keys } from '@/utils/enums'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useSignOut } from '@/utils/hooks/use-sign-out'
 
@@ -29,10 +30,7 @@ export const UserMenu = ({ name, avatar, avatarSize }: UserMenuProps) => {
 
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
+    useClickOutside(ref, () => {
         setIsMenuOpen(false)
     })
 

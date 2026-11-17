@@ -1,15 +1,16 @@
 'use client'
 
-import { RefObject, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
-import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
+import { useDebounceCallback } from 'usehooks-ts'
 
 import { useAppSettings } from '@/components/providers/settings-provider'
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { AppModes, Keys } from '@/utils/enums'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { transformFullSearchResult } from '@/utils/helpers/search'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { setAppMode } from '@/utils/redux/features/app-slice'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo } from '@/utils/redux/features/map-slice'
@@ -61,10 +62,7 @@ export const WidgetSearch = () => {
         setIsAutocompleteVisible(false)
     })
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
+    useClickOutside(ref, () => {
         setIsAutocompleteVisible(false)
     })
 

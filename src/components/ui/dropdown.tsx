@@ -1,13 +1,13 @@
 'use client'
 
-import { ReactNode, RefObject, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 
 import classNames from 'classnames'
-import { useOnClickOutside } from 'usehooks-ts'
 
 import { ActionButton } from '@/components/ui/action-button'
 import { ConfirmationMini } from '@/components/ui/confirmation-mini'
 import { Keys } from '@/utils/enums'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
 export type DropdownItemProps = {
@@ -95,10 +95,7 @@ export const Dropdown = ({ children, items, position = 'right', currentItem }: D
         }
     }, [isVisible])
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(containerRef as RefObject<HTMLDivElement>, () => {
+    useClickOutside(containerRef, () => {
         setIsVisible(false)
     })
 

@@ -48,7 +48,6 @@
 
 ## Repository notes
 
-- The backend README currently mentions the frontend at `http://localhost:5173`; the frontend's current Next.js scripts and Docker mapping use port `3000`.
 - Before editing, inspect `git status` and preserve unrelated user changes. Existing local modifications may be present in files outside the scope of a task.
 - Backend tests use Vitest with a mocked Prisma client: unit specs are `../backend/src/**/*.spec.ts` and HTTP API specs are `../backend/test/**/*.e2e-spec.ts`.
 
