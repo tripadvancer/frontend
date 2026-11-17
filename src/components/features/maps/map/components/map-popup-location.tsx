@@ -3,8 +3,6 @@
 import { RefObject, useRef } from 'react'
 import { Marker, Popup } from 'react-map-gl/maplibre'
 
-import { useOnClickOutside } from 'usehooks-ts'
-
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
@@ -15,6 +13,7 @@ import { useDialog } from '@/components/providers/dialog-provider'
 import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { LngLatToString } from '@/utils/helpers/maps'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { closeMapPopups, getMapState } from '@/utils/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
@@ -36,10 +35,7 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
 
     const [searchPlacesAround, { isLoading }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside([ref as RefObject<HTMLDivElement>, containerRef], () => {
+    useClickOutside([ref, containerRef], () => {
         dispatch(closeMapPopups())
     })
 

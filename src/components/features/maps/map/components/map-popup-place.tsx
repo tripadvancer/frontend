@@ -1,14 +1,13 @@
 import { RefObject, useRef } from 'react'
 import { Popup } from 'react-map-gl/maplibre'
 
-import { useOnClickOutside } from 'usehooks-ts'
-
 import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
 import { arrayToLngLat } from '@/utils/helpers/maps'
 import { getPlacePath } from '@/utils/helpers/places'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { closeMapPopups, getMapState } from '@/utils/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
@@ -23,10 +22,7 @@ export const MapPopupPlace = ({ containerRef }: MapPopupPlaceProps) => {
     const popupInfo = useAppSelector(getMapState).placePopupInfo
     const ref = useRef<HTMLDivElement>(null)
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside([ref as RefObject<HTMLDivElement>, containerRef], () => {
+    useClickOutside([ref, containerRef], () => {
         dispatch(closeMapPopups())
     })
 
