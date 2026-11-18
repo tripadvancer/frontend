@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 import { PlaceReviewStatus } from '@/utils/enums'
 
-const LABELS: Record<PlaceReviewStatus, string> = {
+export const placeReviewStatusLabels: Record<PlaceReviewStatus, string> = {
     [PlaceReviewStatus.NEEDS_REVIEW]: 'Needs review',
     [PlaceReviewStatus.NEEDS_IMPROVEMENT]: 'Needs improvement',
     [PlaceReviewStatus.APPROVED]: 'Approved',
@@ -19,18 +19,28 @@ const COLORS: Record<PlaceReviewStatus, string> = {
 type PlaceReviewStatusTagProps = {
     status: PlaceReviewStatus
     className?: string
+    onClick?: () => void
 }
 
-export const PlaceReviewStatusTag = ({ status, className }: PlaceReviewStatusTagProps) => {
-    return (
-        <span
-            className={classNames(
-                COLORS[status],
-                'text-small-bold text-black-100 inline-flex h-6 items-center rounded-full px-2 whitespace-nowrap',
-                className,
-            )}
-        >
-            {LABELS[status]}
-        </span>
+export const PlaceReviewStatusTag = ({ status, className, onClick }: PlaceReviewStatusTagProps) => {
+    const classes = classNames(
+        COLORS[status],
+        'text-small-bold text-black-100 inline-flex h-6 items-center rounded-full px-2 whitespace-nowrap',
+        className,
     )
+
+    if (onClick) {
+        return (
+            <button
+                type="button"
+                title="Change review status"
+                className={classNames(classes, 'hover-animated cursor-pointer hover:opacity-80')}
+                onClick={onClick}
+            >
+                {placeReviewStatusLabels[status]}
+            </button>
+        )
+    }
+
+    return <span className={classes}>{placeReviewStatusLabels[status]}</span>
 }

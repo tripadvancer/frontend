@@ -8,6 +8,8 @@ import {
     ImageUploadResponse,
     UpdatePlaceInputs,
     UpdatePlaceResponse,
+    UpdateReviewStatusInputs,
+    UpdateReviewStatusResponse,
 } from '@/utils/redux/services/places/places.types'
 
 export const placesAPI = api.injectEndpoints({
@@ -47,6 +49,16 @@ export const placesAPI = api.injectEndpoints({
                 body,
             }),
             invalidatesTags: (result, error, { placeId }) => [{ type: 'PlaceMeta', id: placeId }, 'Places'],
+        }),
+
+        // Rejected places are hidden from the map, so the map places are refetched
+        updateReviewStatus: build.mutation<UpdateReviewStatusResponse, UpdateReviewStatusInputs>({
+            query: ({ placeId, ...body }) => ({
+                url: `places/${placeId}/review-status`,
+                method: 'PATCH',
+                body,
+            }),
+            invalidatesTags: ['Places'],
         }),
 
         deletePlace: build.mutation<void, number>({

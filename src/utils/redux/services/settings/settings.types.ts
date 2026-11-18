@@ -26,6 +26,7 @@ export type ApplicationSettings = {
             photos: { maxCount: number }
         }
         complaint: { maxLength: number }
+        reviewMessage: { maxLength: number }
         searchQuery: { minLength: number; maxLength: number }
         list: {
             name: { minLength: number; maxLength: number }
