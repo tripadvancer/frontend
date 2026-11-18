@@ -18,6 +18,8 @@ type PlacesGridProps = {
         }
         distance?: number
         actions?: ReactNode
+        tag?: ReactNode
+        isMuted?: boolean
     }[]
 }
 
@@ -33,6 +35,8 @@ export const PlacesGrid = ({ places }: PlacesGridProps) => {
             meta={place.meta}
             distance={place.distance}
             actions={place.actions}
+            tag={place.tag}
+            isMuted={place.isMuted}
         />
     ))
 }
