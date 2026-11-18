@@ -1,5 +1,6 @@
 import { LngLatBounds } from 'react-map-gl/maplibre'
 
+import { PlaceReviewStatus } from '@/utils/enums'
 import { IReview } from '@/utils/types/common'
 import { GeoJsonCollection } from '@/utils/types/geo'
 import { IPlacePreview } from '@/utils/types/place'
@@ -39,6 +40,17 @@ export type CreatePlaceResponse = {
 }
 
 export type UpdatePlaceResponse = CreatePlaceResponse
+
+export type UpdateReviewStatusInputs = {
+    placeId: number
+    reviewStatus: PlaceReviewStatus
+    reviewMessage: string
+}
+
+export type UpdateReviewStatusResponse = {
+    reviewStatus: PlaceReviewStatus
+    reviewMessage: string | null
+}
 
 export type ImageUploadResponse = {
     url: string

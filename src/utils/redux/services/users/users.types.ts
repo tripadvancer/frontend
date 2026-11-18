@@ -17,4 +17,5 @@ export type GetPlacesByUserIdResponse = PaginatedResponse<{
     createdAt: Date
     // Returned only to the profile owner with the BOT role
     reviewStatus: PlaceReviewStatus | null
+    reviewMessage: string | null
 }>

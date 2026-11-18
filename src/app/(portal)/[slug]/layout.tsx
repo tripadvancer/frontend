@@ -1,15 +1,23 @@
 import { ReactNode } from 'react'
 
+import { notFound } from 'next/navigation'
 import { Metadata } from 'next/types'
 
-import { getCountryBySlug } from '@/services/countries'
+import { findCountryBySlug } from '@/utils/helpers/countries'
 import { getCountryImage } from '@/utils/helpers/country-image'
 
 type Params = Promise<{ slug: string }>
 
 export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
     const params = await props.params
-    const country = await getCountryBySlug(params.slug)
+    // The layout also wraps place pages, so a country without public places must not hide them.
+    // The country page itself checks that the country has public places.
+    const country = findCountryBySlug(params.slug)
+
+    if (!country) {
+        notFound()
+    }
+
     const countryName = country.name
     const title = `Best Places to Visit in ${countryName}`
     const description = `Explore ${countryName} through traveler-recommended attractions, scenic places, and things to do. Browse local recommendations by category and plan your visit.`

@@ -3,13 +3,13 @@
 import { useState } from 'react'
 
 import { PlacesGrid } from '@/components/features/common/places-grid/places-grid'
-import { PlaceReviewStatusTag } from '@/components/ui/place-review-status-tag'
 import { ShowMore } from '@/components/ui/show-more'
 import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { PlaceReviewStatus } from '@/utils/enums'
 import { usersAPI } from '@/utils/redux/services/users/users.api'
 
 import { UserPlacesItemActions } from './components/user-places-item-actions'
+import { UserPlacesItemReviewStatus } from './components/user-places-item-review-status'
 import { UserPlacesSkeleton } from './user-places-skeleton'
 
 type UserPlacesProps = {
@@ -55,7 +55,12 @@ export const UserPlaces = ({ userId, isOwnProfile, isBotAuthor }: UserPlacesProp
                             actions: isOwnProfile ? <UserPlacesItemActions id={item.id} userId={userId} /> : undefined,
                             tag:
                                 isBotAuthor && item.reviewStatus ? (
-                                    <PlaceReviewStatusTag status={item.reviewStatus} />
+                                    <UserPlacesItemReviewStatus
+                                        id={item.id}
+                                        userId={userId}
+                                        reviewStatus={item.reviewStatus}
+                                        reviewMessage={item.reviewMessage}
+                                    />
                                 ) : undefined,
                             isMuted: isBotAuthor && item.reviewStatus === PlaceReviewStatus.REJECTED,
                         }))}

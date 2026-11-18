@@ -20,6 +20,7 @@ export type GetPlaceByIdResponse = {
     createdAt: Date
     // Returned only to the author with the BOT role
     reviewStatus: PlaceReviewStatus | null
+    reviewMessage: string | null
 }
 
 export type GetPlacesByCountryCodeResponse = {
