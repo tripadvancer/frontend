@@ -1,3 +1,5 @@
+import { getUserInfo } from '@/services/user'
+import { PlaceReviewStatus, UserRole } from '@/utils/enums'
 import { withAuth } from '@/utils/supertokens/with-auth'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
@@ -16,10 +18,22 @@ type PlaceSidebarActionsWithAuthProps = {
         avatar: string | null
     }
     location: GeoJsonPoint
+    reviewStatus: PlaceReviewStatus | null
+    reviewMessage: string | null
 }
 
 export const PlaceSidebarActionsWithAuth = async (props: PlaceSidebarActionsWithAuthProps) => {
     return withAuth({
-        render: ({ auth }) => <PlaceSidebarActions {...props} activeUserId={auth.activeUserId} isAuth={auth.isAuth} />,
+        getAuthData: getUserInfo,
+        render: ({ auth, data }) => (
+            <PlaceSidebarActions
+                {...props}
+                activeUserId={auth.activeUserId}
+                isAuth={auth.isAuth}
+                canManageReviewStatus={
+                    props.reviewStatus !== null && data?.role === UserRole.BOT && auth.activeUserId === props.author.id
+                }
+            />
+        ),
     })
 }

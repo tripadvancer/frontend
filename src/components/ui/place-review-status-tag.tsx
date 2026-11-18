@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 import { PlaceReviewStatus } from '@/utils/enums'
 
-export const placeReviewStatusLabels: Record<PlaceReviewStatus, string> = {
+const placeReviewStatusLabels: Record<PlaceReviewStatus, string> = {
     [PlaceReviewStatus.NEEDS_REVIEW]: 'Needs review',
     [PlaceReviewStatus.NEEDS_IMPROVEMENT]: 'Needs improvement',
     [PlaceReviewStatus.APPROVED]: 'Approved',
@@ -10,10 +10,10 @@ export const placeReviewStatusLabels: Record<PlaceReviewStatus, string> = {
 }
 
 const COLORS: Record<PlaceReviewStatus, string> = {
-    [PlaceReviewStatus.NEEDS_REVIEW]: 'bg-blue-20',
-    [PlaceReviewStatus.NEEDS_IMPROVEMENT]: 'bg-orange-20',
-    [PlaceReviewStatus.APPROVED]: 'bg-green-100',
-    [PlaceReviewStatus.REJECTED]: 'bg-red-20',
+    [PlaceReviewStatus.NEEDS_REVIEW]: 'bg-blue-100 text-white',
+    [PlaceReviewStatus.NEEDS_IMPROVEMENT]: 'bg-orange-100 text-white',
+    [PlaceReviewStatus.APPROVED]: 'bg-green-100 text-white',
+    [PlaceReviewStatus.REJECTED]: 'bg-red-100 text-white',
 }
 
 type PlaceReviewStatusTagProps = {
