@@ -53,20 +53,9 @@ export const SelectCategories = ({ value, onChange }: SelectCategoriesProps) => 
                     />
                 ))}
             </div>
-            <div className="flex flex-col gap-y-4">
-                <FormButton isDisabled={selectedCategoryIds.length === 0} onClick={handleConfirm}>
-                    Confirm
-                </FormButton>
-                <div className="text-small text-black-40 text-center">
-                    Not sure which categories to choose?
-                    <br />
-                    Take a look at our{' '}
-                    <Link href="https://help.tripadvancer.com/categories" target="_blank">
-                        category descriptions
-                    </Link>{' '}
-                    to choose the right ones.
-                </div>
-            </div>
+            <FormButton isDisabled={selectedCategoryIds.length === 0} onClick={handleConfirm}>
+                Confirm
+            </FormButton>
         </div>
     )
 }

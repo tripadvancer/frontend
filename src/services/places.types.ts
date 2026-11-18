@@ -1,3 +1,4 @@
+import { PlaceReviewStatus } from '@/utils/enums'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
 export type GetPlaceByIdResponse = {
@@ -17,6 +18,8 @@ export type GetPlaceByIdResponse = {
     avgRating: number | null
     reviewsCount: number
     createdAt: Date
+    // Returned only to the author with the BOT role
+    reviewStatus: PlaceReviewStatus | null
 }
 
 export type GetPlacesByCountryCodeResponse = {

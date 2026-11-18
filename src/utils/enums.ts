@@ -79,3 +79,15 @@ export enum SocialAppUrls {
     X = 'https://x.com/',
     YOUTUBE = 'https://youtube.com/@',
 }
+
+export enum UserRole {
+    USER = 'USER',
+    BOT = 'BOT',
+}
+
+export enum PlaceReviewStatus {
+    NEEDS_REVIEW = 'NEEDS_REVIEW',
+    NEEDS_IMPROVEMENT = 'NEEDS_IMPROVEMENT',
+    APPROVED = 'APPROVED',
+    REJECTED = 'REJECTED',
+}

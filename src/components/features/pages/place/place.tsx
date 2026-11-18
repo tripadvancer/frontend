@@ -12,6 +12,7 @@ import { PlaceMainAbandonedWarning } from './components/place-main-abandoned-war
 import { PlaceMainDescription } from './components/place-main-description'
 import { PlaceMainPhotos } from './components/place-main-photos'
 import { PlaceMainReviewsWithAuth } from './components/place-main-reviews-with-auth'
+import { PlaceReviewStatusWithAuth } from './components/place-review-status-with-auth'
 import { PlaceSidebarActionsWithAuth } from './components/place-sidebar-actions-with-auth'
 import { PlaceSidebarAuthor } from './components/place-sidebar-author'
 import { PlaceSidebarNearby } from './components/place-sidebar-nearby'
@@ -92,7 +93,10 @@ export const Place = ({ place }: { place: GetPlaceByIdResponse }) => {
                     </div>
 
                     <div className="flex min-w-0 flex-1 flex-col gap-y-8 sm:gap-y-16">
-                        <PlaceMainAbandonedWarning {...place} />
+                        <div className="flex flex-col gap-y-4">
+                            <PlaceReviewStatusWithAuth {...place} />
+                            <PlaceMainAbandonedWarning {...place} />
+                        </div>
                         <PlaceMainPhotos {...place} />
                         <PlaceMainDescription {...place} />
                         <PlaceMainReviewsWithAuth {...place} />

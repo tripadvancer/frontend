@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
 
+import classNames from 'classnames'
+
 import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
@@ -23,6 +25,9 @@ type UserPlacesItemProps = {
     }
     distance?: number
     actions?: ReactNode
+    // Rendered over the top left corner of the cover
+    tag?: ReactNode
+    isMuted?: boolean
 }
 
 export const PlacesGridItem = ({
@@ -34,10 +39,15 @@ export const PlacesGridItem = ({
     meta,
     distance,
     actions,
+    tag,
+    isMuted,
 }: UserPlacesItemProps) => {
     return (
         <div className="relative space-y-1">
-            <Link href={getPlacePath(id, countryCode ?? meta?.countryCode)} className="text-black-100">
+            <Link
+                href={getPlacePath(id, countryCode ?? meta?.countryCode)}
+                className={classNames('text-black-100', { 'opacity-60': isMuted })}
+            >
                 <div className="mb-2 flex-none">
                     <PlacePreviewCover
                         cover={cover}
@@ -49,6 +59,7 @@ export const PlacesGridItem = ({
                 <div className="line-clamp-3 font-medium wrap-break-word">{title}</div>
             </Link>
 
+            {tag && <div className="absolute top-2 left-2 z-10">{tag}</div>}
             {actions}
 
             {rating && <PlacePreviewRating avgRating={rating.avgRating} reviewsCount={rating.reviewsCount} />}

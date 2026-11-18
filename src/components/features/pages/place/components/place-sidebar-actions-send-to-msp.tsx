@@ -25,13 +25,12 @@ export const PlaceSidebarActionsSendToMSP = ({ title, location }: PlaceSidebarAc
     const deepLink = `mysavedplaces://place?${params.toString()}`
 
     return (
-        <button
-            type="button"
+        <div
             className="link flex items-center gap-x-2 align-top text-[#F97316] hover:text-[#FB923C]"
             onClick={() => dialog.open(<SendToMSP deepLink={deepLink} />)}
         >
             <Image src="/images/mysavedplaces/icon.svg" width={24} height={24} alt="" />
             Open in My Saved Places
-        </button>
+        </div>
     )
 }

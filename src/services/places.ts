@@ -6,6 +6,7 @@ import {
     GetPlacesAroundParams,
     GetPlacesAroundResponse,
 } from '@/utils/redux/services/places-around/places-around.types'
+import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 
 export async function getPlacesByCountryCode(
     countryCode: string,
@@ -16,8 +17,16 @@ export async function getPlacesByCountryCode(
     return apiFetch(`countries/${encodeURIComponent(countryCode)}/places${query}`)
 }
 
+// Rejected places are returned only to their author with the BOT role. The session is forwarded only when it is valid,
+// because an expired access token fails the request.
 export async function getPlaceById(placeId: string): Promise<GetPlaceByIdResponse> {
-    return apiFetch(`places/${encodeURIComponent(placeId)}`, { cache: 'no-store', notFoundOn404: true })
+    const { session } = await getSSRSessionHelper()
+
+    return apiFetch(`places/${encodeURIComponent(placeId)}`, {
+        cache: 'no-store',
+        notFoundOn404: true,
+        withSession: Boolean(session),
+    })
 }
 
 export async function getPlacesAround({
