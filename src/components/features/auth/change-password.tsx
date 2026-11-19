@@ -15,6 +15,7 @@ import { userAPI } from '@/utils/redux/services/user/user.api'
 import { ChangeUserPasswordInputs } from '@/utils/redux/services/user/user.types'
 
 const passwordMustDifferMessage = 'New password must be different from your current password.'
+
 export const ChangePassword = () => {
     const settings = useAppSettings()
     const dialog = useDialog()
