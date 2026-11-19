@@ -8,6 +8,7 @@ import { LocateFixedIcon, MinusIcon, PlusIcon, SearchIcon } from 'lucide-react'
 import Image from 'next/image'
 
 import { MapControl } from '@/components/ui/map-control'
+import { transformMapRequest } from '@/utils/helpers/map-request'
 import { LngLat } from '@/utils/types/geo'
 
 import { LocationPickerMapSearch } from './location-picker-map-search'
@@ -74,6 +75,7 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
             id="locationPickerMap"
             initialViewState={viewState}
             mapStyle="https://tiles.stadiamaps.com/styles/outdoors.json"
+            transformRequest={transformMapRequest}
             attributionControl={false}
             onMove={handleMove}
             onMoveStart={handleMoveStart}

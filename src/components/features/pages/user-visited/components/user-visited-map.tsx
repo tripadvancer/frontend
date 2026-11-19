@@ -6,6 +6,7 @@ import { MapEvent, MapRef, Map as ReactMapGl } from 'react-map-gl/maplibre'
 import { MinusIcon, PlusIcon } from 'lucide-react'
 
 import { MapControl } from '@/components/ui/map-control'
+import { transformMapRequest } from '@/utils/helpers/map-request'
 import { IUserVisitedCountries } from '@/utils/types/user'
 
 type UserVisitedMapProps = {
@@ -69,6 +70,7 @@ export const UserVisitedMap = ({ visitedCountries }: UserVisitedMapProps) => {
                     zoom: 0.01,
                 }}
                 attributionControl={false}
+                transformRequest={transformMapRequest}
                 renderWorldCopies={false}
                 scrollZoom={false}
                 onLoad={handleLoad}

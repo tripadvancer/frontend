@@ -1,11 +1,10 @@
 import { ReactNode } from 'react'
 
-import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 import { Metadata, Viewport } from 'next/types'
 
+import { ConsentedAnalytics } from '@/components/features/common/consented-analytics'
 import { JsonLd } from '@/components/features/common/json-ld'
-import YandexMetrika from '@/components/features/common/yandex-metrika'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 
 import './globals.css'
@@ -145,9 +144,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                         },
                     ]}
                 />
-                <Providers>{children}</Providers>
-                <YandexMetrika />
-                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
+                <Providers>
+                    {children}
+                    <ConsentedAnalytics />
+                </Providers>
                 <TailwindIndicator />
             </body>
         </html>

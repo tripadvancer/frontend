@@ -18,12 +18,10 @@ export default function LegalCookiePolicyPage() {
             <div className="flex flex-col gap-y-16">
                 <section className="text-black-70 text-center">
                     <p className="mb-5">
-                        This Cookie Policy explains how Tripadvancer (&laquo;we,&raquo;&nbsp;&laquo;us,&raquo;
-                        or&nbsp;&laquo;our&raquo;) uses cookies and similar tracking technologies when you access
-                        or&nbsp;use our web service. By&nbsp;using our web service, you consent to&nbsp;the use of
-                        cookies as&nbsp;described in&nbsp;this policy.
+                        This Cookie Policy explains the essential browser storage and optional analytics used by
+                        Tripadvancer. Optional analytics run only after you choose to accept them.
                     </p>
-                    <p>Effective Date: July&nbsp;2, 2023</p>
+                    <p>Effective Date: November&nbsp;19, 2026</p>
                 </section>
 
                 <section>
@@ -47,24 +45,14 @@ export default function LegalCookiePolicyPage() {
                             be&nbsp;available to&nbsp;you.
                         </li>
                         <li className="mb-3">
-                            <strong>Analytics Cookies:</strong> We&nbsp;use analytics cookies to&nbsp;collect
-                            information about how visitors use our web service. This data helps&nbsp;us analyze website
-                            traffic, improve our services, and enhance user experience. The information collected
-                            is&nbsp;aggregated and anonymous, and it&nbsp;does not identify individual users.
-                        </li>
-                        <li className="mb-3">
-                            <strong>Advertising Cookies:</strong> We&nbsp;may use advertising cookies to&nbsp;deliver
-                            personalized advertisements to&nbsp;you based on&nbsp;your interests. These cookies track
-                            your browsing activities across different websites and may be&nbsp;used to&nbsp;build
-                            a&nbsp;profile of&nbsp;your preferences. This allows&nbsp;us to&nbsp;show you relevant ads
-                            and measure the effectiveness of&nbsp;our advertising campaigns.
+                            <strong>Optional analytics:</strong> If you accept, Google Analytics and Yandex Metrica load
+                            and may use cookies or similar identifiers to measure visits and interactions. Yandex
+                            Metrica session replay is enabled. Analytics may process network and device information; we
+                            do not describe this data as anonymous.
                         </li>
                         <li>
-                            <strong>Third-Party Cookies:</strong> We&nbsp;may allow third-party service providers
-                            to&nbsp;place cookies on&nbsp;your device. These cookies are not under our control, and
-                            their use is&nbsp;subject to&nbsp;the third party&rsquo;s privacy policy. We&nbsp;recommend
-                            reviewing the privacy policies of&nbsp;these third parties for more information about their
-                            cookie practices.
+                            <strong>No advertising cookies:</strong> Tripadvancer does not currently use advertising
+                            cookies for personalized ads.
                         </li>
                     </ol>
                 </section>
@@ -72,10 +60,10 @@ export default function LegalCookiePolicyPage() {
                 <section>
                     <h2 className="h5 mb-8">Your Cookie Choices</h2>
                     <p>
-                        Most web browsers automatically accept cookies, but you can usually modify your browser settings
-                        to decline cookies or&nbsp;to&nbsp;alert you when a&nbsp;cookie is&nbsp;being sent. However,
-                        please note that if&nbsp;you disable or reject cookies, some features of&nbsp;our web service
-                        may not function properly.
+                        The analytics banner offers Accept analytics and Reject analytics. Rejecting keeps optional
+                        analytics disabled while essential storage needed for site operation remains available. Your
+                        choice is saved in browser storage. You may withdraw a previous acceptance by clearing the site
+                        data in your browser; the banner will then be shown again.
                     </p>
                 </section>
 
@@ -107,7 +95,9 @@ export default function LegalCookiePolicyPage() {
                     </p>
                 </section>
 
-                <p className="text-black-70 text-center">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
+                <p className="text-black-70 text-center">
+                    This document was last updated on&nbsp;November&nbsp;19, 2026
+                </p>
             </div>
         </article>
     )
