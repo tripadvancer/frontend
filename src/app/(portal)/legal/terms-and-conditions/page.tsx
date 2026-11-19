@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { Metadata } from 'next/types'
 
+import { SupportEmailLink } from '@/components/features/common/support-email-link'
 import { ExternalLink } from '@/components/ui/external-link'
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export default function LegalTermsAndConditionsPage() {
             <h1 className="h1 mb-4 text-center">Terms and Conditions</h1>
 
             <div className="flex flex-col gap-y-16">
-                <section className="text-center text-black-70">
+                <section className="text-black-70 text-center">
                     <p className="mb-5">
                         These terms and conditions (&laquo;Agreement&raquo;) set forth the general terms and conditions
                         of&nbsp;your use of&nbsp;the tripadvancer.com website (&laquo;Website&raquo;
@@ -376,12 +376,11 @@ export default function LegalTermsAndConditionsPage() {
                     <h2 className="h5 mb-8">Contacting&nbsp;us</h2>
                     <p>
                         If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Agreement,
-                        we&nbsp;encourage you to&nbsp;contact us&nbsp;using the details below:{' '}
-                        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{process.env.NEXT_PUBLIC_EMAIL}</Link>.
+                        we&nbsp;encourage you to&nbsp;contact us&nbsp;using the details below: <SupportEmailLink />.
                     </p>
                 </section>
 
-                <p className="text-center text-black-70">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
+                <p className="text-black-70 text-center">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
             </div>
         </article>
     )

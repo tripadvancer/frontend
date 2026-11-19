@@ -5,16 +5,16 @@ type FormFileInputSkeletonProps = {
 export const FormFileInputSkeleton = ({ labeled }: FormFileInputSkeletonProps) => {
     return (
         <div className="flex w-full flex-col gap-y-2">
-            {labeled && <div className="h-5 w-1/4 rounded-full bg-black-5" />}
-            <div className="h-10 w-full rounded-lg bg-black-5" />
+            {labeled && <div className="bg-black-5 h-5 w-1/4 rounded-full" />}
+            <div className="bg-black-5 h-10 w-full rounded-lg" />
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
                 {Array.from({ length: 3 }).map((_, i) => (
                     <div
                         key={`form-file-input-skeleton-${i}`}
-                        className="flex-center aspect-square w-full rounded bg-black-5"
+                        className="flex-center bg-black-5 aspect-square w-full rounded"
                     >
                         <svg
-                            className="w-10 text-black-15 opacity-20"
+                            className="text-black-15 w-10 opacity-20"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"

@@ -18,7 +18,7 @@ export const ChooseNavigationAppItem = ({ lngLat, provider }: ChooseNavigationAp
             className="link-black flex flex-1 flex-col gap-y-2"
             target="_blank"
         >
-            <div className="flex-center hover-animated aspect-square rounded-2xl bg-orange-10 text-small hover:bg-orange-20">
+            <div className="flex-center hover-animated bg-orange-10 text-small hover:bg-orange-20 aspect-square rounded-2xl">
                 <Image
                     src={`/images/navigators/${provider}.png`}
                     width={56}

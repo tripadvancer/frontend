@@ -7,6 +7,9 @@ import {
     GetPlacesResponse,
     ImageUploadResponse,
     UpdatePlaceInputs,
+    UpdatePlaceResponse,
+    UpdateReviewStatusInputs,
+    UpdateReviewStatusResponse,
 } from '@/utils/redux/services/places/places.types'
 
 export const placesAPI = api.injectEndpoints({
@@ -36,16 +39,26 @@ export const placesAPI = api.injectEndpoints({
                 method: 'POST',
                 body: inputs,
             }),
-            invalidatesTags: ['Visited', 'Places'],
+            invalidatesTags: ['Places'],
         }),
 
-        updatePlace: build.mutation<void, UpdatePlaceInputs>({
-            query: inputs => ({
-                url: `places/${inputs.placeId}`,
+        updatePlace: build.mutation<UpdatePlaceResponse, UpdatePlaceInputs>({
+            query: ({ placeId, ...body }) => ({
+                url: `places/${placeId}`,
                 method: 'PATCH',
-                body: inputs,
+                body,
             }),
-            invalidatesTags: (result, error, { placeId }) => [{ type: 'PlaceMeta', id: placeId }, 'Visited', 'Places'],
+            invalidatesTags: (result, error, { placeId }) => [{ type: 'PlaceMeta', id: placeId }, 'Places'],
+        }),
+
+        // Rejected places are hidden from the map, so the map places are refetched
+        updateReviewStatus: build.mutation<UpdateReviewStatusResponse, UpdateReviewStatusInputs>({
+            query: ({ placeId, ...body }) => ({
+                url: `places/${placeId}/review-status`,
+                method: 'PATCH',
+                body,
+            }),
+            invalidatesTags: ['Places'],
         }),
 
         deletePlace: build.mutation<void, number>({
@@ -53,6 +66,7 @@ export const placesAPI = api.injectEndpoints({
                 url: `places/${placeId}`,
                 method: 'DELETE',
             }),
+            invalidatesTags: ['Places', 'UserPlaces'],
         }),
 
         placePhotoUpload: build.mutation<ImageUploadResponse, File>({

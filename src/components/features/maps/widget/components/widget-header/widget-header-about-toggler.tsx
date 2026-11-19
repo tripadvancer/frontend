@@ -11,7 +11,7 @@ export const WidgetHeaderAboutToggler = () => {
 
     return (
         <div
-            className="hover-animated cursor-pointer hover:text-blue-active"
+            className="hover-animated hover:text-blue-active cursor-pointer"
             onClick={() => dispatch(toggleWidgetAbout())}
         >
             {widgetState.isAboutOpened ? <XIcon /> : <MenuIcon />}

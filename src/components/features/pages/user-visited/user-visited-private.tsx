@@ -16,7 +16,7 @@ export const UserVisitedPrivate = async ({ user }: { user: IUser }) => {
             <UserVisitedMap visitedCountries={visitedCountries} />
 
             {!visitedCountries.length && (
-                <div className="text-center text-black-40">
+                <div className="text-black-40 text-center">
                     You have not visited any countries yet.
                     <br />
                     To view your visited countries, add a place you have been to.

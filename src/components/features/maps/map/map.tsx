@@ -6,11 +6,11 @@ import { AttributionControl, MapRef, Marker, Map as ReactMapGl } from 'react-map
 import { MinusIcon, PlusIcon } from 'lucide-react'
 import { useMediaQuery } from 'usehooks-ts'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { MapControl } from '@/components/ui/map-control'
+import { getDefaultViewState } from '@/utils/helpers/maps'
 import { getMapViewState } from '@/utils/redux/features/map-slice'
 import { useAppSelector } from '@/utils/redux/hooks'
-
-import 'maplibre-gl/dist/maplibre-gl.css'
 
 import { MapControlUserLocation } from './components/map-control-user-location'
 import { MapPinUser } from './components/map-pin-user'
@@ -27,6 +27,7 @@ type MapProps = {
 }
 
 export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
+    const settings = useAppSettings()
     const handlers = useMapEventHandlers()
     const mapViewState = useAppSelector(getMapViewState)
     const isMobile = useMediaQuery('(max-width: 639px)')
@@ -43,12 +44,12 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
         mapRef.current?.zoomOut({ duration: 500 })
     }, [])
 
+    if (!settings) {
+        return null
+    }
+
     return (
         <div ref={containerRef} className="size-full">
-            {/* todo: for debug, remove later */}
-            {/* <div className="fixed left-0 right-0 top-1/2 z-50 h-[1px] bg-red-100"></div> */}
-            {/* <div className="fixed bottom-0 left-1/2 top-0 z-50 w-[1px] bg-red-100"></div> */}
-
             <ReactMapGl
                 id="map"
                 ref={mapRef}
@@ -57,6 +58,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 attributionControl={false}
                 reuseMaps
                 initialViewState={{
+                    ...getDefaultViewState(settings.map),
                     ...mapViewState,
                     padding:
                         isMobile || isTablet
@@ -67,7 +69,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
             >
                 <MapSources isAuth={isAuth} />
 
-                <div className="absolute right-2 top-20 z-30 flex flex-col gap-y-1 sm:bottom-auto sm:left-2 sm:right-auto sm:top-2 sm:translate-y-0">
+                <div className="absolute top-20 right-2 z-30 flex flex-col gap-y-1 sm:top-2 sm:right-auto sm:bottom-auto sm:left-2 sm:translate-y-0">
                     <MapControl onClick={handleZoomIn}>
                         <PlusIcon size={16} />
                     </MapControl>

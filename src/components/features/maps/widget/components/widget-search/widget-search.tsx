@@ -1,14 +1,16 @@
 'use client'
 
-import { RefObject, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
-import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
+import { useDebounceCallback } from 'usehooks-ts'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { SearchAutocomplete } from '@/components/ui/search-autocomplete'
 import { AppModes, Keys } from '@/utils/enums'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { transformFullSearchResult } from '@/utils/helpers/search'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { setAppMode } from '@/utils/redux/features/app-slice'
 import { setMapLocationPopupInfo, setMapPlacePopupInfo } from '@/utils/redux/features/map-slice'
@@ -22,6 +24,7 @@ import { WidgetTogler } from '../widget-togler'
 import { WidgetSearchInput } from './widget-search-input'
 
 export const WidgetSearch = () => {
+    const settings = useAppSettings()
     const dispatch = useAppDispatch()
 
     const ref = useRef<HTMLDivElement>(null)
@@ -35,12 +38,16 @@ export const WidgetSearch = () => {
     const [search, { data, isFetching, isSuccess }] = searchAPI.useLazySearchQuery()
 
     const debouncedSearch = useDebounceCallback(search, 500)
+    const minQueryLength = settings?.validation.searchQuery.minLength ?? 0
+    const maxQueryLength = settings?.validation.searchQuery.maxLength ?? 0
 
     useEffect(() => {
-        if (value.length >= 2) {
+        if (settings && value.length >= minQueryLength && value.length <= maxQueryLength) {
             debouncedSearch({ query: value })
+        } else if (settings && value.length > maxQueryLength) {
+            setItems([])
         }
-    }, [debouncedSearch, value])
+    }, [debouncedSearch, maxQueryLength, minQueryLength, settings, value])
 
     useEffect(() => {
         const isSearchSuccess = isSuccess && data && value.length >= 2
@@ -55,10 +62,7 @@ export const WidgetSearch = () => {
         setIsAutocompleteVisible(false)
     })
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
+    useClickOutside(ref, () => {
         setIsAutocompleteVisible(false)
     })
 
@@ -77,12 +81,16 @@ export const WidgetSearch = () => {
         dispatch(setAppMode(AppModes.MAP))
 
         if (item.type === 'location') {
-            map?.flyTo(getMapFlyToOptions(item.coordinates))
+            if (settings) {
+                map?.flyTo(getMapFlyToOptions(item.coordinates, settings.map.flyToZoom))
+            }
             dispatch(setMapLocationPopupInfo(item.properties as ILocationPreview))
         }
 
         if (item.type === 'place') {
-            map?.flyTo(getMapFlyToOptions(item.coordinates))
+            if (settings) {
+                map?.flyTo(getMapFlyToOptions(item.coordinates, settings.map.flyToZoom))
+            }
             dispatch(setMapPlacePopupInfo(item.properties as IPlacePreview))
         }
 

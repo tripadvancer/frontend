@@ -118,7 +118,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <meta name="yandex-verification" content="b588c94393b01e7f" />
                 <link rel="apple-touch-icon" href="/icons/icon-192.png" />
                 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-                <link href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css" rel="stylesheet" />
             </head>
             <body className={roboto.className}>
                 <JsonLd

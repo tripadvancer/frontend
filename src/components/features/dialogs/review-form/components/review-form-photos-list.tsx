@@ -5,16 +5,14 @@ import { useState } from 'react'
 import classNames from 'classnames'
 import Lightbox from 'yet-another-react-lightbox'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormFileInput } from '@/components/ui/form-file-input'
 import { PhotoPreview } from '@/components/ui/photo-preview'
-import { validationConfig } from '@/configs/validation.config'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
 import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
-
-const maxFilesCount = validationConfig.review.photos.maxCount
-const maxFileSize = validationConfig.common.maxFileSize
 
 type ReviewFormPhotosListProps = {
     photos: string[]
@@ -29,7 +27,10 @@ export const ReviewFormPhotosList = ({
     setIsFormDisabled,
     onChange,
 }: ReviewFormPhotosListProps) => {
+    const settings = useAppSettings()
     const toast = useToast()
+    const maxFilesCount = settings?.validation.review.photos.maxCount ?? 0
+    const maxFileSize = settings?.validation.common.maxFileSize ?? 0
 
     const [upload] = reviewsAPI.useReviewPhotoUploadMutation()
     const [indexSlide, setIndexSlide] = useState<number>(-1)
@@ -47,7 +48,7 @@ export const ReviewFormPhotosList = ({
                 const response = await upload(formData).unwrap()
                 return response.url
             } catch {
-                toast.error('An unexpected error has occurred. Please try again later.')
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
         })
 
@@ -56,7 +57,7 @@ export const ReviewFormPhotosList = ({
             const filteredUrls = urls.filter(url => url !== undefined) as string[]
             onChange([...photos, ...filteredUrls])
         } catch (error) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         } finally {
             setIsUploading(false)
             setIsFormDisabled(false)
@@ -79,6 +80,7 @@ export const ReviewFormPhotosList = ({
                 maxFileSize={maxFileSize}
                 currentFilesLength={photos.length}
                 isUploading={isUploading}
+                isDisabled={!settings}
                 onChange={handlePhotoUpload}
             />
 

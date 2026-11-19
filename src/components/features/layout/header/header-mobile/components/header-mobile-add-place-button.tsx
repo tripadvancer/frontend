@@ -2,6 +2,7 @@
 
 import { MapPinPlusIcon } from 'lucide-react'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useAddPlaceClickHandler } from '@/utils/hooks/use-add-place-click-handler'
 
 type HeaderMobileAddPlaceButtonProps = {
@@ -17,7 +18,12 @@ export const HeaderMobileAddPlaceButton = ({
     isEmailVerified,
     closeMobileMenu,
 }: HeaderMobileAddPlaceButtonProps) => {
+    const settings = useAppSettings()
     const handleAddPlaceClick = useAddPlaceClickHandler({ activeUserId, isAuth, isEmailVerified })
+
+    if (!settings?.switchers.add_places) {
+        return null
+    }
 
     return (
         <button

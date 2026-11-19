@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 
+import { SupportEmailLink } from '@/components/features/common/support-email-link'
 import { getWidgetState } from '@/utils/redux/features/widget-slice'
 import { useAppSelector } from '@/utils/redux/hooks'
 
@@ -10,7 +11,7 @@ export const WidgetHeaderAbout = () => {
 
     if (widgetState.isAboutOpened) {
         return (
-            <div className="flex flex-col gap-y-4 px-4 pb-8 pt-4 sm:px-8 sm:pt-0">
+            <div className="flex flex-col gap-y-4 px-4 pt-4 pb-8 sm:px-8 sm:pt-0">
                 <div className="flex flex-col gap-y-2">
                     <p>Planing a trip but don`t know where to go?</p>
                     <p>
@@ -20,7 +21,7 @@ export const WidgetHeaderAbout = () => {
                 </div>
                 <ul className="flex flex-col gap-y-2">
                     <li>
-                        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>Contact Us</Link>
+                        <SupportEmailLink>Contact Us</SupportEmailLink>
                     </li>
                     <li>
                         <Link href="https://help.tripadvancer.com" target="_blank">

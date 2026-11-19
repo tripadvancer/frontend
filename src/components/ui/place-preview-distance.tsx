@@ -12,7 +12,7 @@ export const PlacePreviewDistance = ({ distance }: PlacePreviewDistanceProps) =>
     }
 
     return (
-        <div className="flex items-center gap-x-1 text-small text-black-40">
+        <div className="text-small text-black-40 flex items-center gap-x-1">
             <FootprintsIcon size={16} /> {getDistance(distance)}
         </div>
     )

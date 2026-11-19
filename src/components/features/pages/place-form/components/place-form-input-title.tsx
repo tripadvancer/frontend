@@ -16,7 +16,7 @@ export const PlaceFormInputTitle = ({ value, error, onChange }: PlaceFormInputTi
             value={value}
             onChange={e => onChange(e.target.value)}
             className={classNames(
-                'h1 w-full resize-none bg-transparent align-top placeholder:text-black-40 focus:outline-none',
+                'h1 placeholder:text-black-40 w-full resize-none bg-transparent align-top focus:outline-none',
                 { 'text-red-100 placeholder:text-red-100': error },
             )}
             placeholder="Place name..."

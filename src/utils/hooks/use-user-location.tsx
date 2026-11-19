@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { getMapFlyToOptions } from '@/utils/helpers/maps'
 import { getUserLocation, setUserLocation } from '@/utils/redux/features/user-slice'
@@ -19,6 +20,7 @@ interface LngLat {
 }
 
 export function useUserLocation(): useUserLocationInterface {
+    const settings = useAppSettings()
     const toast = useToast()
     const userLocation = useAppSelector(getUserLocation)
     const dispatch = useAppDispatch()
@@ -71,8 +73,8 @@ export function useUserLocation(): useUserLocationInterface {
             return
         }
 
-        if (userLocation) {
-            map?.flyTo(getMapFlyToOptions(userLocation))
+        if (userLocation && settings) {
+            map?.flyTo(getMapFlyToOptions(userLocation, settings.map.flyToZoom))
         }
     }
 

@@ -1,3 +1,4 @@
+import { PlaceReviewStatus } from '@/utils/enums'
 import { PaginatedResponse } from '@/utils/types/common'
 
 export type GetPlacesByUserIdParams = {
@@ -14,4 +15,7 @@ export type GetPlacesByUserIdResponse = PaginatedResponse<{
     isSaved: boolean
     isVisited: boolean
     createdAt: Date
+    // Returned only to the profile owner with the BOT role
+    reviewStatus: PlaceReviewStatus | null
+    reviewMessage: string | null
 }>

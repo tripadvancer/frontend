@@ -18,7 +18,7 @@ export const ImageWithFallback = (props: ImageProps) => {
     if (error) {
         return (
             <div className={classNames('flex-center bg-black-5', props.className)}>
-                <ImageStub className="w-1/3 text-black-15 opacity-75" />
+                <ImageStub className="text-black-15 w-1/3 opacity-75" />
             </div>
         )
     }

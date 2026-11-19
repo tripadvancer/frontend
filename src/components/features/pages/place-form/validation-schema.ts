@@ -1,44 +1,40 @@
 import * as Yup from 'yup'
 
-import { validationConfig } from '@/configs/validation.config'
 import { stringCoordinatesIsValid } from '@/utils/helpers/maps'
+import type { ApplicationSettings } from '@/utils/redux/services/settings/settings.types'
 
-const titleMinLength = validationConfig.place.title.minLength
-const titleMaxLength = validationConfig.place.title.maxLength
-const descriptionMinLength = validationConfig.place.description.minLength
-const descriptionMaxLength = validationConfig.place.description.maxLength
-const maxCategories = validationConfig.place.category.maxCount
-
-export const validationSchema = () =>
+export const validationSchema = (settings: ApplicationSettings['validation']['place']) =>
     Yup.object().shape({
         title: Yup.string()
             .trim()
             .required('Please enter a place title')
-            .min(titleMinLength, `The title must be at least ${titleMinLength} characters long`)
-            .max(titleMaxLength, `The title must be at most ${titleMaxLength} characters long`),
+            .min(settings.title.minLength, `The title must be at least ${settings.title.minLength} characters long`)
+            .max(settings.title.maxLength, `The title must be at most ${settings.title.maxLength} characters long`),
 
         description: Yup.mixed()
             .test('description', 'Please enter a place description', value => getDescriptionLength(value as string) > 0)
             .test(
                 'description',
-                `The description must be at least ${descriptionMinLength} characters long`,
-                value => getDescriptionLength(value as string) >= descriptionMinLength,
+                `The description must be at least ${settings.description.minLength} characters long`,
+                value => getDescriptionLength(value as string) >= settings.description.minLength,
             )
             .test(
                 'description',
-                `The description must be at most ${descriptionMaxLength} characters long`,
-                value => getDescriptionLength(value as string) <= descriptionMaxLength,
+                `The description must be at most ${settings.description.maxLength} characters long`,
+                value => getDescriptionLength(value as string) <= settings.description.maxLength,
             ),
 
         location: Yup.string()
             .trim()
+            .min(settings.location.minLength, 'Please enter valid coordinates')
+            .max(settings.location.maxLength, 'Coordinates are too long')
             .test('isValidLocation', "Coordinates must be in format: 'lat, lng', e.g. '50.4501, 30.5234'", value =>
                 stringCoordinatesIsValid(value as string),
             ),
 
         categories: Yup.array()
-            .min(1, 'Please select at least one category')
-            .max(maxCategories, `You can select up to ${maxCategories} categories`),
+            .min(settings.category.minCount, 'Please select at least one category')
+            .max(settings.category.maxCount, `You can select up to ${settings.category.maxCount} categories`),
     })
 
 function getDescriptionLength(value: string | undefined): number {

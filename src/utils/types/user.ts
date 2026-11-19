@@ -3,11 +3,11 @@ import { UserPrivacySettings, UserSocialApps } from '@/utils/enums'
 export type IUser = {
     id: number
     name: string
-    info: string
+    info: string | null
     avatar: string | null
     social: Partial<Record<UserSocialApps, string>>
     createdAt: Date
-    updatedAt: Date
+    updatedAt: Date | null
     publicSettings: Partial<Record<UserPrivacySettings, boolean>>
     _count: IUserStatistics
 }
@@ -20,8 +20,23 @@ export type IUserStatistics = {
     visitedCountries: number
 }
 
+export type IUserPreview = {
+    id: number
+    name: string
+    avatar: string | null
+}
+
 export type IUserVisitedCountries = {
     code: string
     count: number
-    places: any
+    places: {
+        id: number
+        title: string
+        cover: string | null
+        coordinates: number[]
+        isSaved: boolean
+        avgRating: number | null
+        reviewsCount: number | null
+        countryCode: string | null
+    }[]
 }[]

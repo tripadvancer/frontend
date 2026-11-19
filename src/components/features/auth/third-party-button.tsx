@@ -9,6 +9,8 @@ import { useRouter } from 'next/navigation'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 
 type ThirdPartyButtonProps = {
     provider: 'google'
@@ -24,13 +26,14 @@ export const ThirdPartyButton = ({ provider, isDisabled }: ThirdPartyButtonProps
         setIsLoading(true)
 
         try {
+            await waitForSuperTokensInitialization()
             const authUrl = await getAuthorisationURLWithQueryParamsAndSetState({
                 thirdPartyId: provider,
                 frontendRedirectURI: `${process.env.NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH}/${provider}`,
             })
             router.push(authUrl)
-        } catch (err: any) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+        } catch {
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         } finally {
             setIsLoading(false)
         }

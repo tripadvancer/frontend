@@ -20,14 +20,14 @@ export const SearchAutocompleteItem = ({ item, isSelected, onMouseEnter, onClick
             onMouseEnter={onMouseEnter}
         >
             <div className="flex gap-x-2 px-3 py-2">
-                <div className="mt-[3px] text-black-40">
+                <div className="text-black-40 mt-0.75">
                     {item.type === 'country' && <GlobeIcon size={16} />}
                     {item.type === 'place' && <MapPinIcon size={16} />}
                     {item.type === 'location' && <LocateFixedIcon size={16} />}
                 </div>
                 <div className="overflow-hidden">
-                    <div className="line-clamp-2 break-words group-hover:text-blue-active">{item.title}</div>
-                    <div className="line-clamp-2 break-words text-small text-black-40">{item.info}</div>
+                    <div className="group-hover:text-blue-active line-clamp-2 wrap-break-word">{item.title}</div>
+                    <div className="text-small text-black-40 line-clamp-2 wrap-break-word">{item.info}</div>
                 </div>
             </div>
         </div>

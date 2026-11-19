@@ -1,36 +1,45 @@
 import Link from 'next/link'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
+import { getPlacePath } from '@/utils/helpers/places'
 
 type PlacesNearbyWarningProps = {
     places: {
         id: number
         title: string
         cover: string | null
+        countryCode: string | null
         avgRating: number | null
         reviewsCount: number
     }[]
 }
 
 export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
+    const settings = useAppSettings()
     const dialog = useDialog()
+    const uniquePlaceRadius = settings?.radii.uniquePlace
 
     return (
         <div className="flex w-full flex-col gap-y-8 sm:w-104">
             <h1 className="h7 text-center">Attention</h1>
             <p className="text-center">
-                Sorry, we cannot add a new place here because there are already others nearby, within $
-                {process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS as string} meters. If the place you want to add is on the
-                list below, please share your review. If it is not listed, just contact our support team for help.
+                Sorry, we cannot add a new place here because there are already others nearby, within{' '}
+                {uniquePlaceRadius} meters. If the place you want to add is on the list below, please share your review.
+                If it is not listed, just contact our support team for help.
             </p>
 
             <div className="flex flex-col gap-y-4">
                 {places.map(place => (
                     <div key={`place-nearby-${place.id}`} className="flex gap-x-4">
-                        <Link href={`places/${place.id}`} className="peer flex-none" target="_blank">
+                        <Link
+                            href={getPlacePath(place.id, place.countryCode)}
+                            className="peer flex-none"
+                            target="_blank"
+                        >
                             <PlacePreviewCover
                                 cover={place.cover}
                                 title={place.title}
@@ -38,10 +47,10 @@ export const PlacesNearbyWarning = ({ places }: PlacesNearbyWarningProps) => {
                                 className="aspect-square w-20 rounded-lg"
                             />
                         </Link>
-                        <div className="flex flex-1 flex-col justify-between overflow-hidden text-black-100 peer-hover:text-blue-active">
+                        <div className="text-black-100 peer-hover:text-blue-active flex flex-1 flex-col justify-between overflow-hidden">
                             <Link
-                                href={`places/${place.id}`}
-                                className="line-clamp-2 break-words font-medium text-inherit"
+                                href={getPlacePath(place.id, place.countryCode)}
+                                className="line-clamp-2 font-medium wrap-break-word text-inherit"
                                 target="_blank"
                             >
                                 {place.title}

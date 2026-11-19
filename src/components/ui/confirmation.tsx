@@ -10,19 +10,29 @@ type ConfirmationProps = {
     message: string
     variant?: 'blue' | 'red'
     onConfirm: () => void
+    onCancel?: () => void
 }
 
-export const Confirmation = ({ title, message, variant = 'blue', onConfirm }: ConfirmationProps) => {
+export const Confirmation = ({ title, message, variant = 'blue', onConfirm, onCancel }: ConfirmationProps) => {
     const dialog = useDialog()
 
     useKeypress(Keys.ENTER, () => {
         onConfirm()
     })
 
+    const handleCancel = () => {
+        if (onCancel) {
+            onCancel()
+            return
+        }
+
+        dialog.close()
+    }
+
     return (
         <div className="w-full sm:w-104">
             <div className="mb-8 flex flex-col gap-y-4">
-                <h1 className="h7 break-words">{title}</h1>
+                <h1 className="h7 wrap-break-word">{title}</h1>
                 <hr className="border-black-70" />
                 <p>{message}</p>
             </div>
@@ -30,7 +40,7 @@ export const Confirmation = ({ title, message, variant = 'blue', onConfirm }: Co
                 <FormButton variant={variant} onClick={onConfirm}>
                     Confirm
                 </FormButton>
-                <FormButton type="stroke" variant={variant} onClick={() => dialog.close()}>
+                <FormButton type="stroke" variant={variant} onClick={handleCancel}>
                     Cancel
                 </FormButton>
             </div>

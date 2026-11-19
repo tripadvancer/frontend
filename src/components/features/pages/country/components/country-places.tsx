@@ -12,6 +12,7 @@ type CountryPlacesProps = {
         id: number
         title: string
         cover: string | null
+        countryCode: string | null
         rating: {
             avgRating: number | null
             reviewsCount: number

@@ -21,7 +21,7 @@ export const Review = ({ review, variant, className, activeUserId, isAuth }: Rev
     return (
         <div
             className={classNames(
-                'flex flex-col gap-y-5 border-b border-black-15 py-8 first:border-t last:border-b-0 last:pb-0',
+                'border-black-15 flex flex-col gap-y-5 border-b py-8 first:border-t last:border-b-0 last:pb-0',
                 className,
             )}
         >
@@ -33,7 +33,7 @@ export const Review = ({ review, variant, className, activeUserId, isAuth }: Rev
             </div>
 
             <div className="flex flex-col gap-y-2.5">
-                <div className="break-words">{review.text}</div>
+                <div className="wrap-break-word">{review.text}</div>
             </div>
 
             <ReviewPhotosList title={review.place.title} description={review.user.name} photos={review.photos} />

@@ -41,7 +41,7 @@ export function SearchAutocomplete({ items, onSelect }: SearchAutocompleteProps)
     }
 
     return (
-        <div className="absolute left-0 right-0 top-full z-40 rounded-lg bg-white p-1 shadow-small">
+        <div className="shadow-small absolute top-full right-0 left-0 z-40 rounded-lg bg-white p-1">
             {items.map((item, index) => (
                 <SearchAutocompleteItem
                     key={`search-item-${index}`}

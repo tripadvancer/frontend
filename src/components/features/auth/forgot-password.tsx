@@ -7,11 +7,16 @@ import { sendPasswordResetEmail } from 'supertokens-web-js/recipe/emailpassword'
 import * as Yup from 'yup'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { emailSchema } from '@/utils/helpers/auth'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 import { ForgotPasswordInputs } from '@/utils/types/auth'
 
+import { AuthLink } from './auth-link'
 import { ForgotPasswordCompleting } from './forgot-password-completing'
 import { SignIn } from './sign-in'
 import { SignUp } from './sign-up'
@@ -19,6 +24,7 @@ import { SignUp } from './sign-up'
 export const ForgotPassword = () => {
     const dialog = useDialog()
     const toast = useToast()
+    const settings = useAppSettings()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -27,18 +33,13 @@ export const ForgotPassword = () => {
     }
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string()
-            .trim()
-            .required('This field is required')
-            .matches(
-                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
-                'Please enter a valid email address',
-            ),
+        email: emailSchema,
     })
 
     const handleSubmit = async (values: ForgotPasswordInputs) => {
         try {
             setIsLoading(true)
+            await waitForSuperTokensInitialization()
             const formFields = [{ id: 'email', value: values.email.trim() }]
             const response = await sendPasswordResetEmail({ formFields })
 
@@ -47,25 +48,26 @@ export const ForgotPassword = () => {
                     dialog.open(<ForgotPasswordCompleting />)
                     break
 
-                case 'FIELD_ERROR':
+                case 'FIELD_ERROR': {
                     const emailError = response.formFields.find(formField => formField.id === 'email')
                     if (emailError) {
                         formik.setErrors({ email: emailError.error })
                     }
                     break
+                }
 
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
-        } catch (err) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+        } catch {
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         } finally {
             setIsLoading(false)
         }
     }
 
-    const handleSignInClcik = () => {
+    const handleSignInClick = () => {
         dialog.open(<SignIn />)
     }
 
@@ -101,21 +103,17 @@ export const ForgotPassword = () => {
                 />
             </div>
             <div className="flex flex-col gap-y-4">
-                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+                <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!settings}>
                     Restore password
                 </FormButton>
                 <div className="text-center">
-                    {
-                        <>
-                            <span className="link" onClick={handleSignInClcik}>
-                                Sign in
-                            </span>{' '}
-                            or{' '}
-                            <span className="link" onClick={handleSignUpClick}>
-                                Sign up
-                            </span>
-                        </>
-                    }
+                    <AuthLink isDisabled={!settings} onClick={handleSignInClick}>
+                        Sign in
+                    </AuthLink>{' '}
+                    or{' '}
+                    <AuthLink isDisabled={!settings} onClick={handleSignUpClick}>
+                        Sign up
+                    </AuthLink>
                 </div>
             </div>
         </form>

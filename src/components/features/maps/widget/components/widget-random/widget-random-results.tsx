@@ -33,7 +33,7 @@ export const WidgetRandomResults = ({ place, isSuccess, isError, isUserLocated }
 
     if (isSuccess && !place) {
         return (
-            <div className="m-auto text-center text-black-40">
+            <div className="text-black-40 m-auto text-center">
                 No places matcing your filter found.
                 <br />
                 Try changing categories or radius.

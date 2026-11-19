@@ -9,12 +9,17 @@ import * as Yup from 'yup'
 import { useRouter } from 'next/navigation'
 
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
-import { Devider } from '@/components/ui/devider'
+import { Divider } from '@/components/ui/divider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { emailSchema } from '@/utils/helpers/auth'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 import { SignInInputs } from '@/utils/types/auth'
 
+import { AuthLink } from './auth-link'
 import { ForgotPassword } from './forgot-password'
 import { SignInReject } from './sign-in-reject'
 import { SignUp } from './sign-up'
@@ -24,6 +29,7 @@ export const SignIn = () => {
     const router = useRouter()
     const dialog = useDialog()
     const toast = useToast()
+    const settings = useAppSettings()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -33,19 +39,14 @@ export const SignIn = () => {
     }
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string()
-            .trim()
-            .required('This field is required')
-            .matches(
-                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
-                'Please enter a valid email address',
-            ),
+        email: emailSchema,
         password: Yup.string().required('This field is required'),
     })
 
     const handleSubmit = async (values: SignInInputs) => {
         try {
             setIsLoading(true)
+            await waitForSuperTokensInitialization()
             const formFields = [
                 { id: 'email', value: values.email.trim() },
                 { id: 'password', value: values.password },
@@ -61,22 +62,24 @@ export const SignIn = () => {
                     formik.setErrors({ password: 'Wrong email or password' })
                     break
 
-                case 'FIELD_ERROR':
+                case 'FIELD_ERROR': {
                     const emailError = response.formFields.find(formField => formField.id === 'email')
                     if (emailError) {
                         formik.setErrors({ email: emailError.error })
                     }
                     break
+                }
 
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
-        } catch (err: any) {
-            if (err.status === 403) {
+        } catch (err: unknown) {
+            // The backend rejects sessions of accounts pending deletion with 403 and emails a restore link
+            if (typeof err === 'object' && err !== null && 'status' in err && err.status === 403) {
                 dialog.open(<SignInReject />)
             } else {
-                toast.error('An unexpected error has occurred. Please try again later.')
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
         } finally {
             setIsLoading(false)
@@ -104,10 +107,9 @@ export const SignIn = () => {
             <h1 className="h7 text-center">Sign In</h1>
             <div className="flex flex-col gap-y-4">
                 <div className="flex gap-x-2">
-                    <ThirdPartyButton provider="google" isDisabled={isLoading} />
-                    {/* <ThirdPartyButton provider="facebook" isDisabled={isLoading} /> */}
+                    <ThirdPartyButton provider="google" isDisabled={isLoading || !settings} />
                 </div>
-                <Devider>Or</Devider>
+                <Divider>Or</Divider>
                 <div className="flex flex-col gap-y-2">
                     <FormInput
                         type="text"
@@ -116,7 +118,7 @@ export const SignIn = () => {
                         placeholder="Email"
                         autoFocus
                         error={formik.errors.email}
-                        disabled={isLoading}
+                        disabled={isLoading || !settings}
                         onChange={formik.handleChange}
                     />
                     <FormInput
@@ -125,26 +127,26 @@ export const SignIn = () => {
                         value={formik.values.password}
                         placeholder="Password"
                         error={formik.errors.password}
-                        disabled={isLoading}
+                        disabled={isLoading || !settings}
                         onChange={formik.handleChange}
                     />
                 </div>
             </div>
             <div className="flex flex-col gap-y-4">
-                <FormButton htmlType="submit" className="w-full" isLoading={isLoading}>
+                <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!settings}>
                     Sign in
                 </FormButton>
-                <div className="text-center text-small">
-                    <span className="link text-small" onClick={handleForgotPasswordClick}>
+                <div className="text-small text-center">
+                    <AuthLink className="text-small" isDisabled={!settings} onClick={handleForgotPasswordClick}>
                         Forgot password?
-                    </span>
+                    </AuthLink>
                 </div>
             </div>
             <div className="text-center">
                 Don’t have an account?{' '}
-                <span className="link" onClick={handleSignUpClick}>
+                <AuthLink isDisabled={!settings} onClick={handleSignUpClick}>
                     Sign up
-                </span>
+                </AuthLink>
             </div>
         </form>
     )

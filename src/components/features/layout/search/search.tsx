@@ -1,11 +1,11 @@
 'use client'
 
-import { RefObject, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { useOnClickOutside } from 'usehooks-ts'
 
 import { Keys } from '@/utils/enums'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
 import { SearchInput } from './search-input'
@@ -27,10 +27,7 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
         setIsResultVisible(false)
     })
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
+    useClickOutside(ref, () => {
         setIsResultVisible(false)
     })
 
@@ -50,7 +47,7 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
     }
 
     return (
-        <div className="relative z-50 w-full lg:w-[350px]" ref={ref}>
+        <div className="relative z-50 w-full lg:w-87.5" ref={ref}>
             <SearchInput
                 value={searchTerm}
                 isLoading={isLoading}
@@ -71,11 +68,9 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
                             exit: { opacity: 0, y: -5 },
                         }}
                         transition={{ duration: 0.05 }}
-                        className="absolute -left-1 -right-1 -top-1 z-0"
+                        className="absolute -top-1 -right-1 -left-1 z-0"
                     >
-                        <div className="rounded-lg bg-white p-1 pt-12 shadow-small">
-                            {/* <SearchNearby hideResults={hideResults} /> */}
-                            {/* <hr className="my-1" /> */}
+                        <div className="shadow-small rounded-lg bg-white p-1 pt-12">
                             <SearchResult
                                 searchTerm={searchTerm}
                                 setIsLoading={setIsLoading}

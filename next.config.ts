@@ -10,8 +10,21 @@ const withPWANext = withPWA({
 
 const nextConfig: NextConfig = {
     pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
+    async redirects() {
+        return [
+            {
+                source: '/countries',
+                destination: '/',
+                permanent: true,
+            },
+            {
+                source: '/countries/:slug',
+                destination: '/:slug',
+                permanent: true,
+            },
+        ]
+    },
     images: {
-        unoptimized: true,
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
             {

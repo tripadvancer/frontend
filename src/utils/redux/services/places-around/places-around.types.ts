@@ -21,6 +21,7 @@ export type GetRandomPlaceResponse = {
 export type GetPlacesAroundResponse = {
     id: number
     title: string
+    countryCode: string | null
     cover: string | null
     avgRating: number | null
     reviewsCount: number

@@ -3,43 +3,26 @@ import { redirect } from 'next/navigation'
 import { UserVisitedPrivate } from '@/components/features/pages/user-visited/user-visited-private'
 import { UserVisitedPublic } from '@/components/features/pages/user-visited/user-visited-public'
 import { getUserByUsername } from '@/services/users'
-import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ username: string }>
 
+// The visited map is shown to the owner and, if the user allows it, to everybody else
 export default async function UserPage(props: { params: Params }) {
     const params = await props.params
     const user = await getUserByUsername(params.username)
 
-    const { session, hasToken } = await getSSRSessionHelper()
+    return withAuth({
+        render: ({ auth }) => {
+            if (auth.activeUserId === user.id) {
+                return <UserVisitedPrivate user={user} />
+            }
 
-    if (!session) {
-        if (!hasToken) {
-            /**
-             * This means that there is no session and no session tokens.
-             */
             if (user.publicSettings.show_my_map) {
                 return <UserVisitedPublic user={user} />
             }
 
             redirect(`/users/${params.username.toLowerCase()}/places`)
-        }
-
-        /**
-         * This means that the session does not exist but we have session tokens for the user. In this case
-         * the `TryRefreshComponent` will try to refresh the session.
-         */
-        return <TryRefreshComponent />
-    }
-
-    if (session.getAccessTokenPayload().userId === user.id) {
-        return <UserVisitedPrivate user={user} />
-    }
-
-    if (user.publicSettings.show_my_map) {
-        return <UserVisitedPublic user={user} />
-    }
-
-    redirect(`/users/${params.username.toLowerCase()}/places`)
+        },
+    })
 }

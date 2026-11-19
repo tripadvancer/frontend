@@ -3,8 +3,6 @@
 import { RefObject, useRef } from 'react'
 import { Marker, Popup } from 'react-map-gl/maplibre'
 
-import { useOnClickOutside } from 'usehooks-ts'
-
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
@@ -12,8 +10,10 @@ import { ClaimEmailError } from '@/components/features/auth/claim-email-error'
 import { SignIn } from '@/components/features/auth/sign-in'
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { LngLatToString } from '@/utils/helpers/maps'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { closeMapPopups, getMapState } from '@/utils/redux/features/map-slice'
 import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
@@ -26,6 +26,7 @@ type MapPopupLocationProps = {
 }
 
 export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVerified }: MapPopupLocationProps) => {
+    const settings = useAppSettings()
     const dispatch = useAppDispatch()
     const dialog = useDialog()
     const router = useRouter()
@@ -34,10 +35,7 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
 
     const [searchPlacesAround, { isLoading }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside([ref as RefObject<HTMLDivElement>, containerRef], () => {
+    useClickOutside([ref, containerRef], () => {
         dispatch(closeMapPopups())
     })
 
@@ -56,9 +54,13 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
             return
         }
 
+        if (!settings) {
+            return
+        }
+
         const response = await searchPlacesAround({
             ...popupInfo.coordinates,
-            radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
+            radius: settings.radii.uniquePlace,
             categories: [],
         })
 
@@ -82,10 +84,12 @@ export const MapPopupLocation = ({ containerRef, activeUserId, isAuth, isEmailVe
             >
                 <div ref={ref}>
                     <div>Selected location</div>
-                    <div className="mb-4 text-small text-black-40">{LngLatToString(popupInfo.coordinates)}</div>
-                    <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
-                        Add place here
-                    </FormButton>
+                    <div className="text-small text-black-40 mb-4">{LngLatToString(popupInfo.coordinates)}</div>
+                    {settings?.switchers.add_places && (
+                        <FormButton type="stroke" size="small" isLoading={isLoading} onClick={handleAddPlaceClick}>
+                            Add place here
+                        </FormButton>
+                    )}
                 </div>
             </Popup>
             <Marker

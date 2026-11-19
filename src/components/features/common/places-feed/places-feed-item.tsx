@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewRating } from '@/components/ui/place-preview-rating'
+import { getPlacePath } from '@/utils/helpers/places'
 
 import { PlacesFeedItemActions } from './places-feed-item-actions'
 
@@ -22,7 +23,12 @@ type PlacesFeedItemProps = {
 export const PlacesFeedItem = (props: PlacesFeedItemProps) => {
     return (
         <div className="relative flex gap-x-4">
-            <Link href={`/places/${props.id}`} className="peer flex-none" target="_blank">
+            <Link
+                href={getPlacePath(props.id, props.countryCode)}
+                className="peer flex-none"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <PlacePreviewCover
                     cover={props.cover}
                     title={props.title}
@@ -30,11 +36,12 @@ export const PlacesFeedItem = (props: PlacesFeedItemProps) => {
                     className="aspect-square w-20 rounded-lg"
                 />
             </Link>
-            <div className="flex min-w-0 flex-1 flex-col justify-between text-black-100 peer-hover:text-blue-active">
+            <div className="text-black-100 peer-hover:text-blue-active flex min-w-0 flex-1 flex-col justify-between">
                 <Link
-                    href={`/places/${props.id}`}
-                    className="line-clamp-2 flex-none break-words font-medium text-inherit"
+                    href={getPlacePath(props.id, props.countryCode)}
+                    className="line-clamp-2 flex-none font-medium wrap-break-word text-inherit"
                     target="_blank"
+                    rel="noopener noreferrer"
                 >
                     {props.title}
                 </Link>

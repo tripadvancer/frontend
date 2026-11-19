@@ -30,9 +30,9 @@ export const WidgetTabs = () => {
                 <li
                     key={`widget-tab-${tab.id}`}
                     className={classNames(
-                        'hover-animated cursor-pointer text-big-bold text-blue-100 hover:text-blue-active',
+                        'hover-animated text-big-bold hover:text-blue-active cursor-pointer text-blue-100',
                         {
-                            'border-b-2 border-black-100 !text-black-100': widgetState.activeTab === tab.id,
+                            'border-black-100 text-black-100! border-b-2': widgetState.activeTab === tab.id,
                         },
                     )}
                     onClick={() => handleTabClick(tab)}

@@ -10,7 +10,7 @@ export const WidgetHeaderSignInLink = () => {
 
     return (
         <div
-            className="hover-animated cursor-pointer text-blue-100 hover:text-blue-active"
+            className="hover-animated hover:text-blue-active cursor-pointer text-blue-100"
             onClick={() => dialog.open(<SignIn />)}
         >
             <CircleUserIcon />

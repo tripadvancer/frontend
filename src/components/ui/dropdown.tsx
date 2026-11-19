@@ -1,13 +1,13 @@
 'use client'
 
-import { ReactNode, RefObject, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 
 import classNames from 'classnames'
-import { useOnClickOutside } from 'usehooks-ts'
 
 import { ActionButton } from '@/components/ui/action-button'
 import { ConfirmationMini } from '@/components/ui/confirmation-mini'
 import { Keys } from '@/utils/enums'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 
 export type DropdownItemProps = {
@@ -38,7 +38,7 @@ const DropdownItem = (props: DropdownItemProps) => {
 
     if (isConfirm) {
         return (
-            <li className="hover-animated flex items-center gap-x-1 text-nowrap rounded p-1.5 text-blue-100 hover:bg-blue-10">
+            <li className="hover-animated hover:bg-blue-10 flex items-center gap-x-1 rounded p-1.5 text-nowrap text-blue-100">
                 <ConfirmationMini onCancel={handleCancel} onConfirm={handleConfirm} />
             </li>
         )
@@ -47,7 +47,7 @@ const DropdownItem = (props: DropdownItemProps) => {
     return (
         <li
             className={classNames(
-                'flex cursor-pointer items-center gap-x-2 text-nowrap rounded p-1.5 text-blue-100 hover:bg-blue-10',
+                'hover:bg-blue-10 flex cursor-pointer items-center gap-x-2 rounded p-1.5 text-nowrap text-blue-100',
                 {
                     'font-medium': props.isCurrent,
                     'text-red-100': props.isRed,
@@ -95,10 +95,7 @@ export const Dropdown = ({ children, items, position = 'right', currentItem }: D
         }
     }, [isVisible])
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(containerRef as RefObject<HTMLDivElement>, () => {
+    useClickOutside(containerRef, () => {
         setIsVisible(false)
     })
 
@@ -112,14 +109,14 @@ export const Dropdown = ({ children, items, position = 'right', currentItem }: D
     }
 
     return (
-        <div ref={containerRef} className="flex-0 relative">
+        <div ref={containerRef} className="relative flex-0">
             <div ref={toggleRef} className="relative z-10 cursor-pointer" onClick={() => setIsVisible(!isVisible)}>
                 {children ? children : <ActionButton isActivated={isVisible} />}
             </div>
 
             <ul
                 ref={listRef}
-                className={classNames('absolute z-20 min-w-40 rounded-lg bg-white p-1.5 shadow-medium', {
+                className={classNames('shadow-medium absolute z-20 min-w-40 rounded-lg bg-white p-1.5', {
                     block: isVisible,
                     hidden: !isVisible,
                     'left-0': position === 'left',

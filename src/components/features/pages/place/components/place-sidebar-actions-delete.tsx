@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
 
 type PlaceSidebarActionsDeleteProps = {
@@ -34,7 +35,7 @@ export const PlaceSidebarActionsDelete = ({ id }: PlaceSidebarActionsDeleteProps
                         router.push('/')
                         router.refresh()
                     } catch {
-                        toast.error('An unexpected error has occurred. Please try again later.')
+                        toast.error(UNEXPECTED_ERROR_MESSAGE)
                     }
                 }}
             />,

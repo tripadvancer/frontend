@@ -44,3 +44,5 @@ next-env.d.ts
 #PWA
 sw.js
 workbox-*
+/public/maplibre-gl-worker.mjs
+/public/maplibre-gl-shared.mjs

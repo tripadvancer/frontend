@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 
 import { useToast } from '@/components/providers/toast-provider'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { arrayToString } from '@/utils/helpers/maps'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
@@ -25,22 +26,22 @@ export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps
                 setCopied(true)
                 setTimeout(() => setCopied(false), 2000)
             } catch {
-                toast.error('An unexpected error has occurred. Please try again later.')
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
         } else {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 
     return (
-        <div className="group flex cursor-pointer items-center gap-x-2 text-big text-black-70" onClick={handleCopy}>
+        <div className="group text-big text-black-70 flex cursor-pointer items-center gap-x-2" onClick={handleCopy}>
             {coordinatesString}
             {copied ? (
                 <span className="flex items-center gap-1 text-green-600">
                     <CheckIcon className="h-4 w-4" size={20} /> Copied
                 </span>
             ) : (
-                <CopyIcon className="rotate-90 text-blue-100 group-hover:text-blue-active" size={20} />
+                <CopyIcon className="group-hover:text-blue-active rotate-90 text-blue-100" size={20} />
             )}
         </div>
     )

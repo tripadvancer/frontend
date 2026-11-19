@@ -12,7 +12,7 @@ type MapsLayoutMobileMapProps = {
 export const MapsLayoutMobileMap = ({ header, map }: MapsLayoutMobileMapProps) => {
     return (
         <div className="size-full">
-            <div className="fixed left-0 right-0 top-0 z-40 shadow-medium">{header}</div>
+            <div className="shadow-medium fixed top-0 right-0 left-0 z-40">{header}</div>
             {map}
             <MapLayoutMobileToggler isVisible={true} />
         </div>

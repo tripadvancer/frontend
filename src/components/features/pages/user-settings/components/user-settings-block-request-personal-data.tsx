@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 
 export const UserSettingsBlockRequestPersonalData = () => {
@@ -24,7 +25,7 @@ export const UserSettingsBlockRequestPersonalData = () => {
                         await requestPersonalData()
                         toast.success('Your personal data has been sent to your email.')
                     } catch {
-                        toast.error('An unexpected error has occurred. Please try again later.')
+                        toast.error(UNEXPECTED_ERROR_MESSAGE)
                     }
                 }}
             />,
@@ -32,7 +33,7 @@ export const UserSettingsBlockRequestPersonalData = () => {
     }
 
     return (
-        <div className="flex flex-col gap-y-4 border-t border-black-15 py-8 last:border-b">
+        <div className="border-black-15 flex flex-col gap-y-4 border-t py-8 last:border-b">
             <div className="flex items-center justify-between">
                 <div className="h7">Personal Information</div>
                 <div className="link font-medium" onClick={handleRequestPersonalData}>

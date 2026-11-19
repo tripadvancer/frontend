@@ -35,12 +35,12 @@ export const listAPI = api.injectEndpoints({
         }),
 
         updateList: build.mutation<UpdateListResponse, UpdateListInputs>({
-            query: inputs => ({
-                url: `lists/${inputs.id}`,
+            query: ({ id, ...body }) => ({
+                url: `lists/${id}`,
                 method: 'PATCH',
-                body: inputs,
+                body,
             }),
-            invalidatesTags: (result, error, inputs) => [{ type: 'Lists' }, { type: 'Lists', id: inputs.id }],
+            invalidatesTags: ['Lists'],
         }),
 
         deleteList: build.mutation<void, number>({
@@ -48,28 +48,16 @@ export const listAPI = api.injectEndpoints({
                 url: `lists/${listId}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: (result, error, listId) => [
-                { type: 'Lists' },
-                { type: 'Lists', id: listId },
-                { type: 'Places' },
-                { type: 'PlaceMeta' },
-                { type: 'Visited' },
-            ],
+            invalidatesTags: ['Lists', 'Places', 'PlaceMeta'],
         }),
 
         updatePlaceInLists: build.mutation<void, UpdatePlaceInListsInputs>({
             query: inputs => ({
-                url: 'lists/',
+                url: 'lists',
                 method: 'PATCH',
                 body: inputs,
             }),
-            invalidatesTags: (result, error, inputs) => [
-                { type: 'Lists' },
-                { type: 'Lists', id: inputs.placeId },
-                { type: 'Places' },
-                { type: 'PlaceMeta' },
-                { type: 'Visited' },
-            ],
+            invalidatesTags: ['Lists', 'Places', 'PlaceMeta'],
         }),
     }),
     overrideExisting: false,

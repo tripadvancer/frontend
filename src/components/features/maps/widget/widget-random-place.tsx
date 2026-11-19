@@ -7,7 +7,7 @@ export const WidgetRandomPlace = () => {
     return (
         <div className="rounded-2xl bg-white">
             <WidgetHeader />
-            <div className="flex flex-col gap-y-6 rounded-2xl bg-orange-10 px-4 py-6 sm:relative sm:gap-y-8 sm:p-8">
+            <div className="bg-orange-10 flex flex-col gap-y-6 rounded-2xl px-4 py-6 sm:relative sm:gap-y-8 sm:p-8">
                 <WidgetRandomInfo />
                 <WidgetCategories variant="orange" />
             </div>

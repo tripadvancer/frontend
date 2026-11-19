@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Review } from '@/components/features/common/review/review'
 import { ReviewSkeleton } from '@/components/features/common/review/review-skeleton'
 import { ShowMore } from '@/components/ui/show-more'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
 
 type PlaceMainReviewsFeedProps = {
@@ -24,16 +25,12 @@ export const PlaceMainReviewsFeed = ({ placeId, activeUserId, isAuth }: PlaceMai
     } = reviewsAPI.useGetReviewsByPlaceIdQuery({ placeId, cursor })
 
     if (isError) {
-        return (
-            <div className="border-y border-black-15 py-8 text-center text-black-40">
-                An unexpected error has occurred. Please try again later.
-            </div>
-        )
+        return <div className="border-black-15 text-black-40 border-y py-8 text-center">{UNEXPECTED_ERROR_MESSAGE}</div>
     }
 
     if (isSuccess && reviews.items.length === 0) {
         return (
-            <div className="border-y border-black-15 py-8 text-center text-black-40">
+            <div className="border-black-15 text-black-40 border-y py-8 text-center">
                 Do you know this place?
                 <br />
                 Other users will appreciate your review!

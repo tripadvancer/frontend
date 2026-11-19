@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import { Metadata } from 'next/types'
+
+import { SupportEmailLink } from '@/components/features/common/support-email-link'
 
 export const metadata: Metadata = {
     title: 'Privacy Policy',
@@ -14,7 +15,7 @@ export default function LegalPrivacyPolicyPage() {
             <h1 className="h1 mb-4 text-center">Privacy Policy</h1>
 
             <div className="flex flex-col gap-y-16">
-                <section className="text-center text-black-70">
+                <section className="text-black-70 text-center">
                     <p className="mb-5">
                         Thank you for using our service! This Privacy Policy explains how we&nbsp;collect, use, and
                         protect your personal information when you use our platform. By&nbsp;accessing or&nbsp;using our
@@ -123,8 +124,7 @@ export default function LegalPrivacyPolicyPage() {
                     <h2 className="h5 mb-8">Contacting&nbsp;us</h2>
                     <p>
                         If&nbsp;you have any questions, concerns, or&nbsp;complaints regarding this Privacy Policy,
-                        we&nbsp;encourage you to contact&nbsp;us using the details below:{' '}
-                        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>{process.env.NEXT_PUBLIC_EMAIL}</Link>.
+                        we&nbsp;encourage you to contact&nbsp;us using the details below: <SupportEmailLink />.
                     </p>
                 </section>
 
@@ -133,7 +133,7 @@ export default function LegalPrivacyPolicyPage() {
                     external websites or&nbsp;services that may be&nbsp;linked within our platform.
                 </p>
 
-                <p className="text-center text-black-70">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
+                <p className="text-black-70 text-center">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
             </div>
         </article>
     )

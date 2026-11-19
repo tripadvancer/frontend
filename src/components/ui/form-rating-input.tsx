@@ -40,7 +40,7 @@ export const FormRatingInput = ({ value, error, className, isDisabled, onChange 
                     ))}
             </div>
 
-            {error && <div className="mt-2 text-small text-red-100">{error}</div>}
+            {error && <div className="text-small mt-2 text-red-100">{error}</div>}
         </div>
     )
 }

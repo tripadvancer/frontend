@@ -10,9 +10,9 @@ export const FormRadio = (props: FormRadioProps) => {
 
     return (
         <label htmlFor={props.id} className="group flex cursor-pointer gap-x-2">
-            <div className="flex-center hover-animated h-5 w-5 flex-none rounded-full border border-black-15 group-hover:border-black-40">
+            <div className="flex-center hover-animated border-black-15 group-hover:border-black-40 h-5 w-5 flex-none rounded-full border">
                 <input {...rest} ref={ref} type="radio" className="peer hidden" />
-                <div className="hidden h-2 w-2 rounded-full bg-black-70 peer-checked:block" />
+                <div className="bg-black-70 hidden h-2 w-2 rounded-full peer-checked:block" />
             </div>
 
             {caption}

@@ -86,7 +86,7 @@ export const FormButton = ({
             onClick={onClick}
         >
             {isLoading && (
-                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <Spinner size={size === 'small' ? 16 : 24} />
                 </span>
             )}

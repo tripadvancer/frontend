@@ -1,10 +1,11 @@
 'use client'
 
-import { RefObject, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-import { useDebounceCallback, useOnClickOutside } from 'usehooks-ts'
+import { useDebounceCallback } from 'usehooks-ts'
 
 import { transformSearchCoordinates, transformSearchLocations } from '@/utils/helpers/search'
+import { useClickOutside } from '@/utils/hooks/use-click-outside'
 import { searchAPI } from '@/utils/redux/services/search/search.api'
 import { LngLat } from '@/utils/types/geo'
 import { ILocationPreview } from '@/utils/types/place'
@@ -48,10 +49,7 @@ export const LocationPickerMapSearch = ({ onSelect, onHide }: LocationPickerSear
         setIsAutocompleteVisible(items.length > 0)
     }, [items])
 
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
+    useClickOutside(ref, () => {
         setIsAutocompleteVisible(false)
     })
 
@@ -87,11 +85,13 @@ export const LocationPickerMapSearch = ({ onSelect, onHide }: LocationPickerSear
                     {items.map((item, index) => (
                         <div
                             key={`search-item-${item.title}-${index}`}
-                            className="group cursor-pointer overflow-hidden rounded-md px-2 py-1 hover:bg-black-5"
+                            className="group hover:bg-black-5 cursor-pointer overflow-hidden rounded-md px-2 py-1"
                             onClick={() => handleSelect(item)}
                         >
-                            <div className="line-clamp-1 break-words group-hover:text-blue-active">{item.title}</div>
-                            <div className="line-clamp-2 break-words text-black-40">{item.info}</div>
+                            <div className="group-hover:text-blue-active line-clamp-1 wrap-break-word">
+                                {item.title}
+                            </div>
+                            <div className="text-black-40 line-clamp-2 wrap-break-word">{item.info}</div>
                         </div>
                     ))}
                 </div>

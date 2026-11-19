@@ -79,7 +79,7 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
             onMoveStart={handleMoveStart}
             onMoveEnd={handleMoveEnd}
         >
-            <div className="absolute left-2 right-2 top-2 z-10 sm:right-auto">
+            <div className="absolute top-2 right-2 left-2 z-10 sm:right-auto">
                 {isSearchVisible ? (
                     <LocationPickerMapSearch
                         onSelect={handleSearchResultSelect}
@@ -92,7 +92,7 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
                 )}
             </div>
 
-            <div className="absolute bottom-2 right-2 z-10 flex flex-col gap-y-1">
+            <div className="absolute right-2 bottom-2 z-10 flex flex-col gap-y-1">
                 <MapControl desktopOnly onClick={handleZoomIn}>
                     <PlusIcon size={16} />
                 </MapControl>
@@ -110,7 +110,7 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
                 src="/images/location-picker/location-picker-pin-shadow.svg"
                 width={27}
                 height={41}
-                className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-[13.5px] -translate-y-[36px]"
+                className="pointer-events-none absolute top-1/2 left-1/2 translate-x-[-13.5px] -translate-y-9"
                 alt=""
             />
 
@@ -119,7 +119,7 @@ export const LocationPickerMap = ({ viewState, onChangeViewState }: LocationPick
                 width={27}
                 height={41}
                 alt=""
-                className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-[13.5px] -translate-y-[36px]"
+                className="pointer-events-none absolute top-1/2 left-1/2 translate-x-[-13.5px] -translate-y-9"
                 style={{ marginTop: isMoving ? -8 : 0 }}
             />
         </ReactMapGl>

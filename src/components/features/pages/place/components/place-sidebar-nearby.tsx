@@ -5,7 +5,9 @@ import Link from 'next/link'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { PlacePreviewDistance } from '@/components/ui/place-preview-distance'
 import { getPlacesAround } from '@/services/places'
+import { getApplicationSettings } from '@/services/settings'
 import { arrayToLngLat } from '@/utils/helpers/maps'
+import { getPlacePath } from '@/utils/helpers/places'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
 import { PlaceSidebarNearbySkeleton } from './place-sidebar-nearby-skeleton'
@@ -16,11 +18,12 @@ type PlaceSidebarNearbyProps = {
 }
 
 export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyProps) => {
+    const settings = await getApplicationSettings()
     const lngLat = arrayToLngLat(location.coordinates)
     const placesAround = await getPlacesAround({
         lat: lngLat.lat,
         lng: lngLat.lng,
-        radius: parseInt(process.env.NEXT_PUBLIC_NEARBY_PLACES_RADIUS || '30000', 10),
+        radius: settings.radii.nearbyPlaces,
         categories: [],
         limit: 6,
     })
@@ -34,14 +37,14 @@ export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyPro
 
     return (
         <section>
-            <h3 className="mb-4 text-caps uppercase">Places nearby</h3>
+            <h3 className="text-caps mb-4 uppercase">Places nearby</h3>
             <Suspense fallback={<PlaceSidebarNearbySkeleton />}>
                 <div className="flex flex-col gap-4">
                     {placesAroundFiltered.map(place => (
                         <Link
                             key={`place-nearby-${place.id}`}
-                            href={`/places/${place.id}`}
-                            className="flex-none text-black-100"
+                            href={getPlacePath(place.id, place.countryCode)}
+                            className="text-black-100 flex-none"
                         >
                             <div className="flex flex-row gap-4">
                                 <PlacePreviewCover
@@ -51,7 +54,7 @@ export const PlaceSidebarNearby = async ({ id, location }: PlaceSidebarNearbyPro
                                     className="aspect-square w-20 flex-none rounded-lg"
                                 />
                                 <div className="flex min-w-0 flex-col gap-y-1">
-                                    <div className="line-clamp-3 break-words font-medium">{place.title}</div>
+                                    <div className="line-clamp-3 font-medium wrap-break-word">{place.title}</div>
                                     <PlacePreviewDistance distance={place.distance} />
                                 </div>
                             </div>

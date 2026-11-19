@@ -118,6 +118,7 @@ export const useMapEventHandlers = () => {
                         id: number
                         title: string
                         cover: string | null
+                        countryCode: string | null
                         avgRating: number | null
                         reviewsCount: number
                         isSaved: boolean

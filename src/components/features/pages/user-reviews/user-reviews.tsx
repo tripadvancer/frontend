@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { Review } from '@/components/features/common/review/review'
 import { ShowMore } from '@/components/ui/show-more'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
 
 import { UserReviewsSkeleton } from './user-reviews-skeleton'
@@ -20,16 +21,12 @@ export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) 
     const { data: reviews, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsByUserIdQuery({ userId, cursor })
 
     if (isError) {
-        return (
-            <div className="mt-16 text-center text-black-40">
-                An unexpected error has occurred. Please try again later.
-            </div>
-        )
+        return <div className="text-black-40 mt-16 text-center">{UNEXPECTED_ERROR_MESSAGE}</div>
     }
 
     if (isSuccess && reviews.items.length === 0) {
         return (
-            <div className="mt-16 text-center text-black-40">
+            <div className="text-black-40 mt-16 text-center">
                 Nothing has been added here yet.
                 <br />
                 Reviews will show up as they’re written.

@@ -4,11 +4,10 @@ import { useEffect, useState } from 'react'
 
 import { useDebounceCallback } from 'usehooks-ts'
 
-import Image from 'next/image'
-
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { ImageVariants } from '@/utils/enums'
 import { makeImageUrl } from '@/utils/helpers/common'
+import { getPlacePath } from '@/utils/helpers/places'
 import { transformSearchCountries, transformSearchPlaces } from '@/utils/helpers/search'
 import { searchAPI } from '@/utils/redux/services/search/search.api'
 import { ICountryDict } from '@/utils/types/country'
@@ -54,11 +53,11 @@ export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchRe
     }
 
     if (isFetching) {
-        return <div className="py-3 pl-3 text-black-70">Searching ...</div>
+        return <div className="text-black-70 py-3 pl-3">Searching ...</div>
     }
 
     if (isSuccess && items.length === 0) {
-        return <div className="py-3 pl-3 text-black-70">No results found. Please try changing your search query.</div>
+        return <div className="text-black-70 py-3 pl-3">No results found. Please try changing your search query.</div>
     }
 
     if (isSuccess && items.length > 0) {
@@ -88,13 +87,16 @@ export const SearchResult = ({ searchTerm, setIsLoading, hideResults }: SearchRe
                 }
                 href={
                     item.type === 'country'
-                        ? `/countries/${(item.properties as ICountryDict).slug}`
-                        : `/places/${(item.properties as IPlacePreview).id}`
+                        ? `/${(item.properties as ICountryDict).slug}`
+                        : getPlacePath(
+                              (item.properties as IPlacePreview).id,
+                              (item.properties as IPlacePreview).countryCode,
+                          )
                 }
                 hideResults={hideResults}
             />
         ))
     }
 
-    return <div className="py-3 pl-3 text-black-70">Search for a country or place</div>
+    return <div className="text-black-70 py-3 pl-3">Search for a country or place</div>
 }

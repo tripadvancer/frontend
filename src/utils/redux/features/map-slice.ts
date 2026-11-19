@@ -2,7 +2,6 @@ import { LngLatBounds, ViewState } from 'react-map-gl/maplibre'
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import { getDefaultViewState } from '@/utils/helpers/maps'
 import { RootState } from '@/utils/redux/store'
 import { LngLat } from '@/utils/types/geo'
 
@@ -10,6 +9,7 @@ type IPlacePopupInfo = {
     id: number
     title: string
     cover: string | null
+    countryCode: string | null
     avgRating: number | null
     reviewsCount: number
     isSaved: boolean
@@ -30,7 +30,7 @@ interface MapState {
 
 export const initialState: MapState = {
     isFilterMapBySavedLists: false,
-    viewState: getDefaultViewState(),
+    viewState: {},
     bounds: undefined,
     placePopupInfo: null,
     locationPopupInfo: null,

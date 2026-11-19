@@ -11,7 +11,12 @@ type ExternalLinkProps = {
 
 export const ExternalLink = ({ children, href }: ExternalLinkProps) => {
     return (
-        <Link href={href} target="_blank" className="inline-flex items-center justify-center gap-x-0.5">
+        <Link
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-x-0.5"
+        >
             {children}
 
             <ExternalLinkIcon size={12} strokeWidth={2.75} />

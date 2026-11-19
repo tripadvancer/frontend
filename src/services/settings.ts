@@ -1,12 +1,8 @@
-import { GetSettingsResponse } from '@/services/settings.types'
+import 'server-only'
 
-export async function getSettings(): Promise<GetSettingsResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/settings'
-    const res = await fetch(url)
+import { apiFetch } from '@/services/api'
+import { ApplicationSettings } from '@/utils/redux/services/settings/settings.types'
 
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
+export async function getApplicationSettings(): Promise<ApplicationSettings> {
+    return apiFetch('settings', { next: { revalidate: 60 } })
 }

@@ -2,8 +2,10 @@
 
 import Image from 'next/image'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
-import { getCountryByCode } from '@/services/countries'
+import { getCountryByCode } from '@/utils/helpers/countries'
+import { getPlacePath } from '@/utils/helpers/places'
 import { internalAPI } from '@/utils/redux/services/internal/internal.api'
 import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
 
@@ -15,16 +17,17 @@ type SearchSuggestProps = {
 }
 
 export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
+    const settings = useAppSettings()
     const edgeGeo = internalAPI.useGetEdgeGeoQuery()
 
     const lat = parseFloat(edgeGeo.data?.lat || '0')
     const lng = parseFloat(edgeGeo.data?.lng || '0')
-    const radius = parseInt(process.env.NEXT_PUBLIC_AROUND_ME_RADIUS || '150000')
+    const radius = settings?.radii.aroundMe ?? 0
     const userCountry = getCountryByCode(edgeGeo.data?.countryCode)
 
     const places = placesAroundAPI.useGetPlacesAroundQuery(
         { lat, lng, radius, categories: [] },
-        { skip: !edgeGeo.isSuccess },
+        { skip: !settings || !edgeGeo.isSuccess },
     )
 
     if (edgeGeo.isFetching || places.isFetching) {
@@ -38,7 +41,7 @@ export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
     return (
         <div>
             <hr className="my-1" />
-            <div className="mb-1 mt-4 pl-3 text-black-70">May be interesting for you:</div>
+            <div className="text-black-70 mt-4 mb-1 pl-3">May be interesting for you:</div>
 
             <SearchItem
                 title={userCountry.name}
@@ -52,7 +55,7 @@ export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
                         className="rounded-md"
                     />
                 }
-                href={`/countries/${userCountry.slug}`}
+                href={`/${userCountry.slug}`}
                 hideResults={hideResults}
             />
 
@@ -69,7 +72,7 @@ export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
                             className="aspect-square w-9 rounded-md"
                         />
                     }
-                    href={`/places/${place.id}`}
+                    href={getPlacePath(place.id, place.countryCode)}
                     hideResults={hideResults}
                 />
             ))}

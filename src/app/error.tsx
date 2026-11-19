@@ -30,7 +30,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
                     priority
                 />
                 <h2 className="h3 mb-8">Oops! Something Went Wrong</h2>
-                <p className="mb-8 text-big text-black-70">
+                <p className="text-big text-black-70 mb-8">
                     We are really sorry, but it seems like there is a hiccup in the digital universe. Our servers are
                     currently experiencing technical difficulties, and we are working diligently to get things back on
                     track.

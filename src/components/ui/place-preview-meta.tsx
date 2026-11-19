@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 
 import Link from 'next/link'
 
-import { getCountryByCode } from '@/services/countries'
 import { formattedDate } from '@/utils/helpers/common'
+import { getCountryByCode } from '@/utils/helpers/countries'
 
 type PlacePreviewMetaProps = {
     countryCode: string | null
@@ -37,14 +37,10 @@ export const PlacePreviewMeta = ({ countryCode, createdAt }: PlacePreviewMetaPro
     }, [])
 
     return (
-        <div className="flex flex-wrap gap-x-2 whitespace-normal break-words text-small text-black-40">
+        <div className="text-small text-black-40 flex flex-wrap gap-x-2 wrap-break-word whitespace-normal">
             {country && (
                 <>
-                    <Link
-                        ref={countryRef}
-                        href={`/countries/${country.slug}`}
-                        className="max-w-[150px] truncate text-inherit"
-                    >
+                    <Link ref={countryRef} href={`/${country.slug}`} className="max-w-37.5 truncate text-inherit">
                         {country.name}
                     </Link>
                     <div className={!sameLine ? 'invisible' : ''}>•</div>

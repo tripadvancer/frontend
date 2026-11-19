@@ -4,9 +4,12 @@ import { useRouter } from 'next/navigation'
 
 import { PlacesNearbyWarning } from '@/components/features/dialogs/places-nearby-warning/places-nearby-warning'
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { GlobalLoading } from '@/components/ui/global-loading'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { arrayToString, stringToLngLat } from '@/utils/helpers/maps'
+import { getPlacePath } from '@/utils/helpers/places'
 import { placesAroundAPI } from '@/utils/redux/services/places-around/places-around.api'
 import { placesAPI } from '@/utils/redux/services/places/places.api'
 import { UpdatePlaceInputs } from '@/utils/redux/services/places/places.types'
@@ -25,6 +28,7 @@ type PlaceEditProps = {
 }
 
 export const PlaceEdit = ({ id, title, description, location, photos, cover, categories }: PlaceEditProps) => {
+    const settings = useAppSettings()
     const dialog = useDialog()
     const router = useRouter()
     const toast = useToast()
@@ -33,12 +37,16 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
     const [searchPlacesAround, { isLoading: isSearchingPlacesAround }] = placesAroundAPI.useLazyGetPlacesAroundQuery()
     const { data: meta, isLoading: isMetaLoading, isError: isMetaError } = placesAPI.useGetPlaceMetaByIdQuery(id)
 
+    if (!settings) {
+        return <GlobalLoading />
+    }
+
     if (isMetaLoading) {
         return <GlobalLoading />
     }
 
     if (isMetaError) {
-        return <div>An unexpected error has occurred. Please try again later.</div>
+        return <div>{UNEXPECTED_ERROR_MESSAGE}</div>
     }
 
     const initialValues: UpdatePlaceInputs = {
@@ -55,7 +63,7 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
         const lngLat = stringToLngLat(inputs.location)
         const response = await searchPlacesAround({
             ...lngLat,
-            radius: parseInt(process.env.NEXT_PUBLIC_UNIQUE_PLACE_RADIUS || '15', 10),
+            radius: settings.radii.uniquePlace,
             categories: [],
         })
 
@@ -72,11 +80,11 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
                 ...inputs,
                 title: inputs.title.trim(),
             }
-            await updatePlace(trimmedInputs)
+            const response = await updatePlace(trimmedInputs).unwrap()
             toast.success('Your place has been updated.')
-            router.push(`/places/${id}`)
+            router.push(getPlacePath(response.id, response.countryCode))
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 

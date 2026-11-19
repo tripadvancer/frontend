@@ -53,9 +53,9 @@ export const MapsLayoutTablet = ({ header, map, widget, widgetRandom }: MapsLayo
             <div className={classNames('block', { hidden: appMode === AppModes.MAP })}>
                 <div
                     ref={scrollContainerRef}
-                    className="scrollbar-hide pointer-events-none fixed bottom-0 right-0 top-0 z-40 max-h-full w-[496px] overflow-y-auto pb-8 pl-8 pr-4 pt-4"
+                    className="scrollbar-hide pointer-events-none fixed top-0 right-0 bottom-0 z-40 max-h-full w-124 overflow-y-auto pt-4 pr-4 pb-8 pl-8"
                 >
-                    <div ref={contentContainerRef} className="pointer-events-auto rounded-2xl shadow-large">
+                    <div ref={contentContainerRef} className="shadow-large pointer-events-auto rounded-2xl">
                         {widgetMode === WidgetModes.PLACES && widget}
                         {widgetMode === WidgetModes.RANDOM && widgetRandom}
                     </div>
@@ -63,8 +63,8 @@ export const MapsLayoutTablet = ({ header, map, widget, widgetRandom }: MapsLayo
             </div>
 
             <div className={classNames('block', { hidden: appMode === AppModes.WIDGET })}>
-                <div className="fixed right-0 top-0 z-50 w-[496px] pb-8 pl-8 pr-4 pt-4">
-                    <div className="rounded-2xl shadow-large">{header}</div>
+                <div className="fixed top-0 right-0 z-50 w-124 pt-4 pr-4 pb-8 pl-8">
+                    <div className="shadow-large rounded-2xl">{header}</div>
                 </div>
             </div>
 

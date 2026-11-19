@@ -15,7 +15,7 @@ export const Notice = ({ message, variant, icon }: NoticeProps) => {
     }
 
     return (
-        <div className={classNames('flex gap-x-2 rounded-2xl border p-4 text-big', colors[variant])}>
+        <div className={classNames('text-big flex gap-x-2 rounded-2xl border p-4', colors[variant])}>
             <div>{icon}</div>
             <p className="text-black-100">{message}</p>
         </div>

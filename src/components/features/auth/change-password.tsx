@@ -1,52 +1,49 @@
 'use client'
 
 import { useFormik } from 'formik'
-import Session from 'supertokens-web-js/recipe/session'
 import * as Yup from 'yup'
 
-import { useRouter } from 'next/navigation'
-
 import { useDialog } from '@/components/providers/dialog-provider'
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { FormButton } from '@/components/ui/form-button'
 import { FormInput } from '@/components/ui/form-input'
-import { validationConfig } from '@/configs/validation.config'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { getPasswordSchema } from '@/utils/helpers/auth'
+import { useSignOut } from '@/utils/hooks/use-sign-out'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 import { ChangeUserPasswordInputs } from '@/utils/redux/services/user/user.types'
 
-const userPasswordMinLength = validationConfig.user.password.minLength
-const userPasswordMaxLength = validationConfig.user.password.maxLength
-
 export const ChangePassword = () => {
-    const router = useRouter()
+    const settings = useAppSettings()
     const dialog = useDialog()
     const toast = useToast()
+    const signOut = useSignOut()
 
     const [changeUserPassword, { isLoading }] = userAPI.useChangeUserPasswordMutation()
+    const passwordValidation = settings?.validation.user.password
 
     const initialValues = {
         oldPassword: '',
         newPassword: '',
     }
 
-    const validationSchema = Yup.object().shape({
-        oldPassword: Yup.string().required('This field is required'),
-        newPassword: Yup.string()
-            .required('This field is required')
-            .min(userPasswordMinLength, `This field must be at least ${userPasswordMinLength} characters long`)
-            .max(userPasswordMaxLength, `This field must be at most ${userPasswordMaxLength} characters long`)
-            .matches(/^(?=.*[a-z])(?=.*[0-9])/g, 'Password must contain at least 8 characters, including a number'),
-    })
+    const validationSchema = passwordValidation
+        ? Yup.object().shape({
+              oldPassword: Yup.string().required('This field is required'),
+              newPassword: getPasswordSchema(passwordValidation),
+          })
+        : Yup.object()
 
     const handleSubmit = async (inputs: ChangeUserPasswordInputs) => {
         try {
             const response = await changeUserPassword(inputs).unwrap()
+
             switch (response.status) {
+                // The backend revokes all sessions after a password change
                 case 'OK':
-                    await Session.signOut()
                     dialog.close()
-                    router.push('/')
-                    router.refresh()
+                    await signOut()
                     break
 
                 case 'WRONG_CREDENTIALS_ERROR':
@@ -58,11 +55,11 @@ export const ChangePassword = () => {
                     break
 
                 default:
-                    toast.error('An unexpected error has occurred. Please try again later.')
+                    toast.error(UNEXPECTED_ERROR_MESSAGE)
                     break
             }
-        } catch (err: any) {
-            toast.error('An unexpected error has occurred. Please try again later.')
+        } catch {
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 
@@ -101,7 +98,12 @@ export const ChangePassword = () => {
                     onChange={formik.handleChange}
                 />
             </div>
-            <FormButton htmlType="submit" className="w-full" isLoading={isLoading} isDisabled={!formik.dirty}>
+            <FormButton
+                htmlType="submit"
+                className="w-full"
+                isLoading={isLoading}
+                isDisabled={!settings || !formik.dirty}
+            >
                 Save changes
             </FormButton>
         </form>
