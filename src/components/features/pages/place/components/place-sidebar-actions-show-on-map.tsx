@@ -4,6 +4,7 @@ import { LocateFixedIcon } from 'lucide-react'
 
 import { useRouter } from 'next/navigation'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { AppModes, WidgetModes, WidgetTabs } from '@/utils/enums'
 import { arrayToLngLat, getFlyToViewState } from '@/utils/helpers/maps'
 import { setAppMode } from '@/utils/redux/features/app-slice'
@@ -25,6 +26,7 @@ type PlaceSidebarActionsShowOnMap = {
 }
 
 export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap) => {
+    const settings = useAppSettings()
     const router = useRouter()
     const dispatch = useAppDispatch()
     const lngLat = arrayToLngLat(props.location.coordinates)
@@ -32,7 +34,11 @@ export const PlaceSidebarActionsShowOnMap = (props: PlaceSidebarActionsShowOnMap
     const { data: meta } = placesAPI.useGetPlaceMetaByIdQuery(props.id, { skip: !props.isAuth })
 
     const handleClick = () => {
-        const viewState = getFlyToViewState(lngLat)
+        if (!settings) {
+            return
+        }
+
+        const viewState = getFlyToViewState(lngLat, settings.map.flyToZoom)
 
         dispatch(setAppMode(AppModes.MAP))
         dispatch(setWidgetMode(WidgetModes.PLACES))

@@ -2,6 +2,7 @@
 
 import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { ComplaintReasonsEnum } from '@/utils/enums'
 import { complainAPI } from '@/utils/redux/services/complain/complain.api'
 import { PlaceComplaintInputs } from '@/utils/redux/services/complain/complain.types'
@@ -24,7 +25,7 @@ export const ComplainFormPlace = ({ placeId }: { placeId: number }) => {
             toast.success('Your complaint has been sent.')
             dialog.close()
         } catch {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 

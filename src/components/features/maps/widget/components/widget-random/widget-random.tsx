@@ -5,6 +5,7 @@ import { useMap } from 'react-map-gl/maplibre'
 import { GeoJSONSource } from 'maplibre-gl'
 
 import { useToast } from '@/components/providers/toast-provider'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { getUserLocation } from '@/utils/redux/features/user-slice'
 import { getWidgetRandomRadius, getWidgetSelectedCategories } from '@/utils/redux/features/widget-slice'
 import { useAppSelector } from '@/utils/redux/hooks'
@@ -52,7 +53,7 @@ export const WidgetRandom = () => {
                     }
                 }
             } catch (error) {
-                toast.error('An unexpected error has occurred. Please try again later.')
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
         }
     }

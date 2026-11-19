@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 
 import { useToast } from '@/components/providers/toast-provider'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { arrayToString } from '@/utils/helpers/maps'
 import { GeoJsonPoint } from '@/utils/types/geo'
 
@@ -25,10 +26,10 @@ export const PlaceHeaderCoordinates = ({ location }: PlaceHeaderCoordinatesProps
                 setCopied(true)
                 setTimeout(() => setCopied(false), 2000)
             } catch {
-                toast.error('An unexpected error has occurred. Please try again later.')
+                toast.error(UNEXPECTED_ERROR_MESSAGE)
             }
         } else {
-            toast.error('An unexpected error has occurred. Please try again later.')
+            toast.error(UNEXPECTED_ERROR_MESSAGE)
         }
     }
 

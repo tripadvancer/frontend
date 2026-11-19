@@ -7,6 +7,7 @@ import { useDialog } from '@/components/providers/dialog-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
 import { getIsFilterMapBySavedLists, setIsFilterMapBySavedLists } from '@/utils/redux/features/map-slice'
 import { setWidgetActiveList } from '@/utils/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
@@ -39,7 +40,7 @@ export const WidgetSavedListsView = (list: IList) => {
                         dispatch(setWidgetActiveList(null))
                         dialog.close()
                     } catch {
-                        toast.error('An unexpected error has occurred. Please try again later.')
+                        toast.error(UNEXPECTED_ERROR_MESSAGE)
                     }
                 }}
             />,

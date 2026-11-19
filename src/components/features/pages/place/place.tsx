@@ -92,7 +92,9 @@ export const Place = ({ place }: { place: GetPlaceByIdResponse }) => {
                     </div>
 
                     <div className="flex min-w-0 flex-1 flex-col gap-y-8 sm:gap-y-16">
-                        <PlaceMainAbandonedWarning {...place} />
+                        <div className="flex flex-col gap-y-4">
+                            <PlaceMainAbandonedWarning {...place} />
+                        </div>
                         <PlaceMainPhotos {...place} />
                         <PlaceMainDescription {...place} />
                         <PlaceMainReviewsWithAuth {...place} />

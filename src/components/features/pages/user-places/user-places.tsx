@@ -4,27 +4,28 @@ import { useState } from 'react'
 
 import { PlacesGrid } from '@/components/features/common/places-grid/places-grid'
 import { ShowMore } from '@/components/ui/show-more'
+import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { PlaceReviewStatus } from '@/utils/enums'
 import { usersAPI } from '@/utils/redux/services/users/users.api'
 
 import { UserPlacesItemActions } from './components/user-places-item-actions'
+import { UserPlacesItemReviewStatus } from './components/user-places-item-review-status'
 import { UserPlacesSkeleton } from './user-places-skeleton'
 
 type UserPlacesProps = {
     userId: number
     isOwnProfile: boolean
+    // Review statuses are shown only to the profile owner with the BOT role
+    isBotAuthor: boolean
 }
 
-export const UserPlaces = ({ userId, isOwnProfile }: UserPlacesProps) => {
+export const UserPlaces = ({ userId, isOwnProfile, isBotAuthor }: UserPlacesProps) => {
     const [page, setPage] = useState(1)
 
     const { data, isFetching, isSuccess, isError } = usersAPI.useGetPlacesByUserIdQuery({ userId, page })
 
     if (isError) {
-        return (
-            <div className="text-black-40 mt-16 text-center">
-                An unexpected error has occurred. Please try again later.
-            </div>
-        )
+        return <div className="text-black-40 mt-16 text-center">{UNEXPECTED_ERROR_MESSAGE}</div>
     }
 
     if (isSuccess && data.items.length === 0) {
@@ -52,6 +53,16 @@ export const UserPlaces = ({ userId, isOwnProfile }: UserPlacesProps) => {
                                 createdAt: new Date(item.createdAt),
                             },
                             actions: isOwnProfile ? <UserPlacesItemActions id={item.id} userId={userId} /> : undefined,
+                            tag:
+                                isBotAuthor && item.reviewStatus ? (
+                                    <UserPlacesItemReviewStatus
+                                        id={item.id}
+                                        userId={userId}
+                                        reviewStatus={item.reviewStatus}
+                                        reviewMessage={item.reviewMessage}
+                                    />
+                                ) : undefined,
+                            isMuted: isBotAuthor && item.reviewStatus === PlaceReviewStatus.REJECTED,
                         }))}
                     />
                 </div>

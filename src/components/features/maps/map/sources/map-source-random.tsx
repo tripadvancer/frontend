@@ -3,7 +3,7 @@
 import { useMemo } from 'react'
 import { Layer, Source } from 'react-map-gl/maplibre'
 
-import { circle } from '@turf/turf'
+import circle from '@turf/circle'
 import { Feature, GeoJsonProperties, Polygon } from 'geojson'
 
 import { LngLatToArray } from '@/utils/helpers/maps'

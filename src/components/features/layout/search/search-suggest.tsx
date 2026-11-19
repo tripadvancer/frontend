@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { PlacePreviewCover } from '@/components/ui/place-preview-cover'
 import { getCountryByCode } from '@/utils/helpers/countries'
 import { getPlacePath } from '@/utils/helpers/places'
@@ -16,16 +17,17 @@ type SearchSuggestProps = {
 }
 
 export const SearchSuggest = ({ hideResults }: SearchSuggestProps) => {
+    const settings = useAppSettings()
     const edgeGeo = internalAPI.useGetEdgeGeoQuery()
 
     const lat = parseFloat(edgeGeo.data?.lat || '0')
     const lng = parseFloat(edgeGeo.data?.lng || '0')
-    const radius = parseInt(process.env.NEXT_PUBLIC_AROUND_ME_RADIUS || '150000')
+    const radius = settings?.radii.aroundMe ?? 0
     const userCountry = getCountryByCode(edgeGeo.data?.countryCode)
 
     const places = placesAroundAPI.useGetPlacesAroundQuery(
         { lat, lng, radius, categories: [] },
-        { skip: !edgeGeo.isSuccess },
+        { skip: !settings || !edgeGeo.isSuccess },
     )
 
     if (edgeGeo.isFetching || places.isFetching) {

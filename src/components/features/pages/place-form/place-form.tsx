@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 import { useFormik } from 'formik'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
+import { GlobalLoading } from '@/components/ui/global-loading'
 import { CreatePlaceInputs, UpdatePlaceInputs } from '@/utils/redux/services/places/places.types'
 
 import { PlaceFormErrorMessage } from './components/place-form-error-message'
@@ -23,13 +25,14 @@ type PlaceFormProps = {
 }
 
 export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps) => {
+    const settings = useAppSettings()
     const [isFormDisabled, setIsFormDisabled] = useState(false)
 
     const formik = useFormik({
         initialValues,
         validateOnBlur: false,
         validateOnChange: false,
-        validationSchema: validationSchema(),
+        validationSchema: settings ? validationSchema(settings.validation.place) : undefined,
         onSubmit,
     })
 
@@ -37,12 +40,15 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
         formik.setFieldValue('photos', value)
     }
 
+    if (!settings) {
+        return <GlobalLoading />
+    }
+
     return (
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-            <div className="container space-y-8 py-16 sm:space-y-16">
+            <div className="space-y-8 sm:space-y-16">
                 <div className="space-y-8">
                     <div className="space-y-4">
-                        <div className="font-bold">Add a new place</div>
                         <PlaceFormInputTitle
                             value={formik.values.title}
                             onChange={value => formik.setFieldValue('title', value)}
@@ -76,7 +82,10 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
                     />
                     <div className="flex flex-col gap-y-4">
                         <PlaceFormErrorMessage errors={formik.errors} />
-                        <PlaceFormSubmit isLoading={isLoading} isDisabled={!formik.dirty || isFormDisabled} />
+                        <PlaceFormSubmit
+                            isLoading={isLoading}
+                            isDisabled={!formik.dirty || isFormDisabled || !settings}
+                        />
                     </div>
                 </div>
             </div>

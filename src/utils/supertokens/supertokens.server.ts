@@ -1,31 +1,27 @@
 import SuperTokens from 'supertokens-node'
 import EmailVerification from 'supertokens-node/recipe/emailverification'
 import Session from 'supertokens-node/recipe/session'
-import { TypeInput } from 'supertokens-node/types'
 
-import { supertokensConfig } from './supertokens.config'
+import { getSuperTokensConfig } from './supertokens.config'
 
-export let serverConfig = (): TypeInput => {
-    return {
-        appInfo: supertokensConfig,
+// Only verifies sessions for server rendering; the auth API itself is served by the backend
+const APP_NAME = 'Tripadvancer'
+
+let isInitialized = false
+
+export function ensureSuperTokensInit() {
+    if (isInitialized) {
+        return
+    }
+
+    SuperTokens.init({
+        appInfo: getSuperTokensConfig(APP_NAME),
         supertokens: {
-            connectionURI: process.env.SUPERTOKENS_CONNECTION_URI as string,
+            connectionURI: process.env.SUPERTOKENS_CONNECTION_URI!,
             apiKey: process.env.SUPERTOKENS_API_KEY,
         },
-        recipeList: [
-            EmailVerification.init({
-                mode: 'OPTIONAL',
-            }),
-            Session.init(),
-        ],
+        recipeList: [EmailVerification.init({ mode: 'OPTIONAL' }), Session.init()],
         isInServerlessEnv: true,
-    }
-}
-
-let initialized = false
-export function ensureSuperTokensInit() {
-    if (!initialized) {
-        SuperTokens.init(serverConfig())
-        initialized = true
-    }
+    })
+    isInitialized = true
 }

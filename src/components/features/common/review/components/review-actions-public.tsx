@@ -7,12 +7,14 @@ import { SignIn } from '@/components/features/auth/sign-in'
 import { ComplainFormReview } from '@/components/features/dialogs/complain-form/complain-form-review'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
+import { waitForSuperTokensInitialization } from '@/utils/supertokens/supertokens.initialization'
 import { IReview } from '@/utils/types/common'
 
 export const ReviewActionsPublic = ({ id }: IReview) => {
     const dialog = useDialog()
 
     const handleClick = async () => {
+        await waitForSuperTokensInitialization()
         const doesSessionExist = await Session.doesSessionExist()
         dialog.open(doesSessionExist ? <ComplainFormReview reviewId={id} /> : <SignIn />)
     }

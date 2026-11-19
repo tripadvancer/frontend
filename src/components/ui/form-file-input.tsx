@@ -13,6 +13,7 @@ type FormFileInputProps = {
     maxFileSize: number
     currentFilesLength?: number
     isUploading?: boolean
+    isDisabled?: boolean
     onChange: (files: FileList) => void
 }
 
@@ -24,6 +25,7 @@ export const FormFileInput = ({
     maxFileSize,
     currentFilesLength = 0,
     isUploading,
+    isDisabled,
     onChange,
 }: FormFileInputProps) => {
     const [error, setError] = useState<string>('')
@@ -34,7 +36,9 @@ export const FormFileInput = ({
     // Programatically click the hidden file input element
     // when the fake file input element is clicked
     const handleClickFileInput = () => {
-        hiddenFileInput.current?.click()
+        if (!isDisabled) {
+            hiddenFileInput.current?.click()
+        }
     }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +47,7 @@ export const FormFileInput = ({
         }
 
         const files = e.target.files
-        const fileSize = e.target.files[0].size
+        const oversizedFile = Array.from(files).find(file => file.size > maxFileSize)
 
         setError('')
 
@@ -52,7 +56,7 @@ export const FormFileInput = ({
             return
         }
 
-        if (fileSize > maxFileSize) {
+        if (oversizedFile) {
             setError(`The file size must not exceed ${maxFileSize / 1000000} MB`)
             return
         }
@@ -76,9 +80,10 @@ export const FormFileInput = ({
                             {
                                 'border-red-100': error,
                                 'border-black-15 text-black-15 hover:border-black-40 hover:text-black-40': !error,
-                                'cursor-pointer': !isUploading && currentFilesLength < maxFilesCount,
+                                'cursor-pointer': !isUploading && !isDisabled && currentFilesLength < maxFilesCount,
                                 'cursor-wait': isUploading,
-                                'cursor-default opacity-30': multiple && currentFilesLength >= maxFilesCount,
+                                'cursor-default opacity-30':
+                                    isDisabled || (multiple && currentFilesLength >= maxFilesCount),
                             },
                         )}
                         onClick={handleClickFileInput}
@@ -114,7 +119,7 @@ export const FormFileInput = ({
                         className="hidden"
                         accept="image/jpg, image/jpeg, image/png, image/webp"
                         multiple={multiple}
-                        disabled={isUploading || (multiple && currentFilesLength >= maxFilesCount)}
+                        disabled={isDisabled || isUploading || (multiple && currentFilesLength >= maxFilesCount)}
                         onChange={handleChange}
                     />
                 </div>

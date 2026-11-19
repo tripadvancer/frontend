@@ -1,47 +1,32 @@
 import 'server-only'
 
-import { notFound } from 'next/navigation'
-
+import { apiFetch } from '@/services/api'
 import { GetPlaceByIdResponse, GetPlacesByCountryCodeResponse } from '@/services/places.types'
 import {
     GetPlacesAroundParams,
     GetPlacesAroundResponse,
 } from '@/utils/redux/services/places-around/places-around.types'
+import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 
 export async function getPlacesByCountryCode(
     countryCode: string,
     categoriesIds: string | undefined,
 ): Promise<GetPlacesByCountryCodeResponse> {
-    const params = new URLSearchParams()
-
-    if (categoriesIds) {
-        params.set('categories_ids', categoriesIds)
-    }
-
-    const query = params.size ? `?${params.toString()}` : ''
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/countries/${encodeURIComponent(countryCode)}/places${query}`
-    const res = await fetch(url)
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
+    const params = new URLSearchParams(categoriesIds ? { categories_ids: categoriesIds } : {})
+    const query = params.size ? `?${params}` : ''
+    return apiFetch(`countries/${encodeURIComponent(countryCode)}/places${query}`)
 }
 
+// Rejected places are returned only to their author with the BOT role. The session is forwarded only when it is valid,
+// because an expired access token fails the request.
 export async function getPlaceById(placeId: string): Promise<GetPlaceByIdResponse> {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/places/${encodeURIComponent(placeId)}`
-    const res = await fetch(url, { cache: 'no-store' })
+    const { session } = await getSSRSessionHelper()
 
-    if (!res.ok) {
-        if (res.status === 404) {
-            notFound()
-        }
-
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
+    return apiFetch(`places/${encodeURIComponent(placeId)}`, {
+        cache: 'no-store',
+        notFoundOn404: true,
+        withSession: Boolean(session),
+    })
 }
 
 export async function getPlacesAround({
@@ -56,15 +41,7 @@ export async function getPlacesAround({
         lng: lng.toString(),
         radius: radius.toString(),
         categories_ids: categories.join(),
-
         ...(limit !== undefined && { limit: limit.toString() }),
     })
-    const url = process.env.NEXT_PUBLIC_API_URL + '/places-around?' + params.toString()
-    const res = await fetch(url)
-
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    }
-
-    return res.json()
+    return apiFetch(`places-around?${params}`)
 }

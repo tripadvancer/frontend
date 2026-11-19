@@ -57,9 +57,15 @@ export const Country = async ({
             <section className="container space-y-8 py-16 sm:space-y-16">
                 <div className="space-y-8 sm:w-3/4">
                     <div className="space-y-4">
-                        <Link href="/" className="hover:text-blue-active inline-block font-medium text-blue-100">
-                            View all countries
-                        </Link>
+                        <nav aria-label="Breadcrumb">
+                            <ol className="flex items-center text-sm font-medium">
+                                <li>
+                                    <Link href="/" className="hover:text-blue-active text-blue-100">
+                                        All countries
+                                    </Link>
+                                </li>
+                            </ol>
+                        </nav>
                         <h1 className="h1 max-w-full wrap-break-word">Places to visit in {country.name}</h1>
                         <p className="text-big text-black-70">
                             {`Explore ${country.name} through traveler-recommended attractions, scenic places, and things to do. Browse local recommendations by category and plan your visit.`}

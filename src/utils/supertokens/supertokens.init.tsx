@@ -1,16 +1,30 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 
 import SuperTokensAuth from 'supertokens-web-js'
 
-import { clientConfig } from './supertokens.client'
+import { useAppSettings } from '@/components/providers/settings-provider'
 
-if (typeof window !== 'undefined') {
-    // we only want to call this init function on the frontend, so we check typeof window !== 'undefined'
-    SuperTokensAuth.init(clientConfig())
-}
+import { clientConfig } from './supertokens.client'
+import { markSuperTokensInitialized } from './supertokens.initialization'
+
+let isInitialized = false
 
 export const SuperTokensInit = ({ children }: { children: ReactNode }) => {
+    const settings = useAppSettings()
+
+    useEffect(() => {
+        if (!settings) {
+            return
+        }
+
+        if (!isInitialized) {
+            SuperTokensAuth.init(clientConfig(settings.name))
+            isInitialized = true
+            markSuperTokensInitialized()
+        }
+    }, [settings])
+
     return children
 }

@@ -5,19 +5,19 @@ import { ChangeEvent, useRef } from 'react'
 import classNames from 'classnames'
 import { CameraIcon, CameraOffIcon } from 'lucide-react'
 
+import { useAppSettings } from '@/components/providers/settings-provider'
 import { useToast } from '@/components/providers/toast-provider'
-import { validationConfig } from '@/configs/validation.config'
 
 type PlaceFormInputPhotosFileinputProps = {
     photosLength: number
     onChange: (files: FileList) => void
 }
 
-const maxPhotosCount = validationConfig.place.photos.maxCount
-const maxFileSize = validationConfig.common.maxFileSize
-
 export const PlaceFormInputPhotosFileinput = ({ photosLength, onChange }: PlaceFormInputPhotosFileinputProps) => {
+    const settings = useAppSettings()
     const toast = useToast()
+    const maxPhotosCount = settings?.validation.place.photos.maxCount ?? 0
+    const maxFileSize = settings?.validation.common.maxFileSize ?? 0
 
     // Create a reference to the hidden file input element
     const hiddenFileInput = useRef<HTMLInputElement>(null)
@@ -34,14 +34,14 @@ export const PlaceFormInputPhotosFileinput = ({ photosLength, onChange }: PlaceF
         }
 
         const files = e.target.files
-        const fileSize = e.target.files[0].size
+        const oversizedFile = Array.from(files).find(file => file.size > maxFileSize)
 
         if (files.length + photosLength > maxPhotosCount) {
             toast.error(`You can upload up to ${maxPhotosCount} files`)
             return
         }
 
-        if (fileSize > maxFileSize) {
+        if (oversizedFile) {
             toast.error(`The file size must not exceed ${maxFileSize / 1000000} MB`)
             return
         }

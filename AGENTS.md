@@ -13,6 +13,8 @@
 - Backend-facing client queries use RTK Query. `src/utils/redux/services/api.ts` defines the shared base API; domain endpoints are injected from `src/utils/redux/services/*/*.api.ts`. `src/utils/redux/store.ts` configures the store and persists the `map`, `user`, and `widget` slices in browser storage. Internal Next.js routes use `internalAPI` and `src/app/api/`.
 - Server-rendered data helpers are in `src/services/`. They call the backend directly using `NEXT_PUBLIC_API_URL`; authenticated server calls read the `sAccessToken` cookie.
 - Auth uses SuperTokens on client and server. Shared configuration is in `src/utils/supertokens/`; account and callback routes are under `src/app/(auth)/auth/`. The backend also configures SuperTokens and its guards.
+- Server components resolve the session only through `withAuth` (`src/utils/supertokens/with-auth.tsx`): it renders `TryRefreshComponent` for expired tokens and supports `onUnauth: 'notFound'` or a redirect. Server-side backend requests use `apiFetch` (`src/services/api.ts`); pass `withSession: true` to forward the access token.
+- Client cache invalidation on sign in/out is handled once by the SuperTokens `onHandleEvent` handler in `supertokens.client.ts`. Use `useSignOut` for sign-out buttons, `UNEXPECTED_ERROR_MESSAGE` for generic errors, and the schemas in `src/utils/helpers/auth.ts` for email, username and password fields.
 - Maps use MapLibre through `react-map-gl/maplibre`. Map state and UI state are in `src/utils/redux/features/map-slice.ts` and `widget-slice.ts`. Coordinate helpers and initial map settings are in `src/utils/helpers/maps.ts` and environment variables.
 - The site is English-only. Keep user-facing copy directly in the relevant UI/metadata code; do not reintroduce locale routing, translation dictionaries, language switching, or translation libraries.
 - `src/components/features/common/json-ld.tsx` safely renders structured data used by the root layout and indexable place/country pages.
@@ -46,9 +48,8 @@
 
 ## Repository notes
 
-- The backend README currently mentions the frontend at `http://localhost:5173`; the frontend's current Next.js scripts and Docker mapping use port `3000`.
 - Before editing, inspect `git status` and preserve unrelated user changes. Existing local modifications may be present in files outside the scope of a task.
-- Do not assume all old API tests remain active: many backend test files are named `*.spec.old.ts`. Inspect the specific test configuration and target before relying on them.
+- Backend tests use Vitest with a mocked Prisma client: unit specs are `../backend/src/**/*.spec.ts` and HTTP API specs are `../backend/test/**/*.e2e-spec.ts`.
 
 ## Country preview illustrations
 
