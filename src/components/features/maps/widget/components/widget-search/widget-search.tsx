@@ -50,7 +50,7 @@ export const WidgetSearch = () => {
     }, [debouncedSearch, maxQueryLength, minQueryLength, settings, value])
 
     useEffect(() => {
-        const isSearchSuccess = isSuccess && data && value.length >= 2
+        const isSearchSuccess = isSuccess && data && value.trim().length >= 2
         setItems(isSearchSuccess ? transformFullSearchResult(data) : [])
     }, [data, isSuccess, value])
 
