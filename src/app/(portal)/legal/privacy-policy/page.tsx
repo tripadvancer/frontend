@@ -17,16 +17,16 @@ export default function LegalPrivacyPolicyPage() {
             <div className="flex flex-col gap-y-16">
                 <section className="text-black-70 text-center">
                     <p className="mb-5">
-                        Thank you for using our service! This Privacy Policy explains how we&nbsp;collect, use, and
-                        protect your personal information when you use our platform. By&nbsp;accessing or&nbsp;using our
-                        service, you agree to&nbsp;the terms of&nbsp;this Privacy Policy.
+                        This Privacy Policy explains what information Tripadvancer processes, why it is needed, and
+                        which service providers receive it. Use of the service does not itself constitute consent to
+                        optional analytics.
                     </p>
-                    <p>Effective Date: July&nbsp;2, 2023</p>
+                    <p>Effective Date: November&nbsp;19, 2026</p>
                 </section>
 
                 <section>
                     <h2 className="h5 mb-8">Information We&nbsp;Collect</h2>
-                    <p className="mb-5">We&nbsp;only collect the following user data:</p>
+                    <p className="mb-5">Depending on the features you use, we process:</p>
                     <ul className="mb-5 list-outside list-disc pl-12">
                         <li className="mb-3">
                             <strong>Email address:</strong> We&nbsp;collect your email address to&nbsp;facilitate
@@ -36,9 +36,15 @@ export default function LegalPrivacyPolicyPage() {
                             <strong>Username:</strong> We&nbsp;collect your chosen username for identification purposes
                             within our platform.
                         </li>
+                        <li className="mb-3">
+                            <strong>Content and activity:</strong> Places, reviews, photos, saved lists, visited-country
+                            selections, and coordinates you submit or choose to use app features. When you use device
+                            geolocation for the map, the precise position is held in memory for that page session and is
+                            not saved in browser storage.
+                        </li>
                         <li>
-                            <strong>Info:</strong> We&nbsp;may collect additional information provided by&nbsp;you, such
-                            as&nbsp;an&nbsp;account description, to enhance your user experience.
+                            <strong>Technical data:</strong> Request and security logs needed to operate, protect, and
+                            troubleshoot the service.
                         </li>
                     </ul>
                     <p>
@@ -70,15 +76,37 @@ export default function LegalPrivacyPolicyPage() {
 
                 <section>
                     <h2 className="h5 mb-8">Data Sharing</h2>
+                    <p className="mb-5">
+                        We use service providers to operate Tripadvancer. Cloudflare Images stores and serves uploaded
+                        images; uploads include the image file and technical upload metadata, but we no longer include
+                        your internal Tripadvancer user ID in the uploaded filename. Cloudflare necessarily receives the
+                        network address of the upload connection.
+                    </p>
+                    <p className="mb-5">
+                        Our authentication service processes account identifiers, credentials or sign-in provider
+                        identifiers, and session data to authenticate users. When you sign in with Google, Google also
+                        processes the information needed to complete that sign-in. Our configured email delivery
+                        provider processes recipient addresses and message content to deliver account and service
+                        emails; its identity depends on the mail provider configured for the service.
+                    </p>
+                    <p className="mb-5">
+                        Map tile providers receive requests for the map resources shown in your browser through our
+                        server proxy. This prevents the tile providers from receiving your browser IP address directly;
+                        they still receive the requested tile/style coordinates and may infer the map area being viewed.
+                        Our hosting provider receives those requests and the visitor network address.
+                    </p>
+                    <p className="mb-5">
+                        LocationIQ processes text entered in location search and coordinates submitted for reverse
+                        geocoding. These requests are sent by our backend, so LocationIQ receives our server network
+                        address rather than the visitor IP, along with the query or coordinates needed to provide the
+                        requested result.
+                    </p>
                     <p>
-                        We&nbsp;do&nbsp;not share your personal data with third-party services. However, please note
-                        that images uploaded to&nbsp;our platform are stored on&nbsp;Cloudflare for the purpose
-                        of&nbsp;hosting and serving the images. Cloudflare acts as&nbsp;a&nbsp;data processor and
-                        adheres to&nbsp;stringent security measures to&nbsp;protect your information. We&nbsp;do not
-                        provide Cloudflare with any personal data beyond what is&nbsp;necessary for image storage and
-                        delivery. It&rsquo;s important to&nbsp;note that while images themselves may not
-                        be&nbsp;considered personal information, we handle them with utmost care and ensure they are
-                        removed from our service once you remove them from your profile.
+                        If you accept optional analytics, Google Analytics and Yandex Metrica receive analytics events
+                        and may use cookies or similar identifiers. Yandex Metrica session replay is enabled. These
+                        providers may process network and device information. Analytics scripts are not loaded unless
+                        you accept analytics. You can reject analytics when first asked; the current choice is stored in
+                        browser storage and can be changed by clearing that storage.
                     </p>
                 </section>
 
@@ -133,7 +161,9 @@ export default function LegalPrivacyPolicyPage() {
                     external websites or&nbsp;services that may be&nbsp;linked within our platform.
                 </p>
 
-                <p className="text-black-70 text-center">This document was last updated on&nbsp;July&nbsp;2, 2023</p>
+                <p className="text-black-70 text-center">
+                    This document was last updated on&nbsp;November&nbsp;19, 2026
+                </p>
             </div>
         </article>
     )

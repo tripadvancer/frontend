@@ -8,6 +8,7 @@ import { useMediaQuery } from 'usehooks-ts'
 
 import { useAppSettings } from '@/components/providers/settings-provider'
 import { MapControl } from '@/components/ui/map-control'
+import { transformMapRequest } from '@/utils/helpers/map-request'
 import { getDefaultViewState } from '@/utils/helpers/maps'
 import { getMapViewState } from '@/utils/redux/features/map-slice'
 import { useAppSelector } from '@/utils/redux/hooks'
@@ -54,6 +55,7 @@ export const Map = ({ activeUserId, isAuth, isEmailVerified }: MapProps) => {
                 id="map"
                 ref={mapRef}
                 mapStyle="https://tiles.openfreemap.org/styles/bright"
+                transformRequest={transformMapRequest}
                 interactiveLayerIds={[placesLayer.id]}
                 attributionControl={false}
                 reuseMaps

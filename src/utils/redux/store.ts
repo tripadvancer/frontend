@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistReducer } from 'redux-persist'
+import { createTransform, persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 import appReducer from '@/utils/redux/features/app-slice'
@@ -25,10 +25,43 @@ const createNoopStorage = () => {
 
 const storage = typeof window === 'undefined' ? createNoopStorage() : createWebStorage('local')
 
+const userLocationTransform = createTransform(
+    (state: { userLocation?: unknown }) => ({ ...state, userLocation: null }),
+    (state: { userLocation?: unknown }) => ({ ...state, userLocation: null }),
+    { whitelist: ['user'] },
+)
+
+const mapLocationTransform = createTransform(
+    (state: { viewState?: Record<string, unknown> }) => ({
+        ...state,
+        viewState: state.viewState
+            ? Object.fromEntries(
+                  Object.entries(state.viewState).filter(([key]) => !['longitude', 'latitude'].includes(key)),
+              )
+            : {},
+        bounds: undefined,
+        placePopupInfo: null,
+        locationPopupInfo: null,
+    }),
+    (state: { viewState?: Record<string, unknown> }) => ({
+        ...state,
+        viewState: state.viewState
+            ? Object.fromEntries(
+                  Object.entries(state.viewState).filter(([key]) => !['longitude', 'latitude'].includes(key)),
+              )
+            : {},
+        bounds: undefined,
+        placePopupInfo: null,
+        locationPopupInfo: null,
+    }),
+    { whitelist: ['map'] },
+)
+
 const persistConfig = {
     key: 'tripadvancer:store:v5.3',
     storage,
     whitelist: ['map', 'user', 'widget'],
+    transforms: [userLocationTransform, mapLocationTransform],
 }
 
 const reducers = combineReducers({
