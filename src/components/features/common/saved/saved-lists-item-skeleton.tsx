@@ -1,4 +1,4 @@
-export const WidgetSavedListsItemSkeleton = () => {
+export const SavedListsItemSkeleton = () => {
     return (
         <div
             role="status"

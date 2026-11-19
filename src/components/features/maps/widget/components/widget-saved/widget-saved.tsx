@@ -1,17 +1,18 @@
 'use client'
 
 import { SignIn } from '@/components/features/auth/sign-in'
+import { SavedListAddButton } from '@/components/features/common/saved/saved-list-add-button'
+import { SavedLists } from '@/components/features/common/saved/saved-lists'
 import { useDialog } from '@/components/providers/dialog-provider'
-import { getWidgetActiveList } from '@/utils/redux/features/widget-slice'
-import { useAppSelector } from '@/utils/redux/hooks'
+import { getWidgetActiveList, setWidgetActiveList } from '@/utils/redux/features/widget-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
 
 import { WidgetMessage } from '../widget-message'
-import { WidgetSavedListAddButton } from './widget-saved-list-add-button'
-import { WidgetSavedLists } from './widget-saved-lists'
 import { WidgetSavedListsView } from './widget-saved-lists-view'
 
 export const WidgetSaved = ({ isAuth }: { isAuth: boolean }) => {
     const dialog = useDialog()
+    const dispatch = useAppDispatch()
     const widgetActiveList = useAppSelector(getWidgetActiveList)
 
     if (!isAuth) {
@@ -32,13 +33,13 @@ export const WidgetSaved = ({ isAuth }: { isAuth: boolean }) => {
     }
 
     if (widgetActiveList) {
-        return <WidgetSavedListsView {...widgetActiveList} />
+        return <WidgetSavedListsView list={widgetActiveList} />
     }
 
     return (
         <div className="flex flex-col">
-            <WidgetSavedListAddButton />
-            <WidgetSavedLists />
+            <SavedListAddButton />
+            <SavedLists onSelect={list => dispatch(setWidgetActiveList(list))} />
         </div>
     )
 }
