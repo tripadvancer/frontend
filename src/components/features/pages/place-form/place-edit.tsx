@@ -92,6 +92,7 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
         <PlaceForm
             initialValues={initialValues}
             isLoading={isLoading || isSearchingPlacesAround}
+            isEdit
             onSubmit={inputs => handleSubmit(inputs as UpdatePlaceInputs)}
         />
     )
