@@ -5,9 +5,15 @@ import Image from 'next/image'
 import { CountriesGrid } from '@/components/features/common/countries-grid/countries-grid'
 import { LinkButton } from '@/components/ui/link-button'
 import { getCountries } from '@/services/countries'
+import { getCountryByCode } from '@/utils/helpers/countries'
 
 export const Countries = async () => {
-    const countries = await getCountries()
+    const countries = (await getCountries()).sort((first, second) => {
+        const firstName = getCountryByCode(first.countryCode)?.name ?? first.countryCode
+        const secondName = getCountryByCode(second.countryCode)?.name ?? second.countryCode
+
+        return firstName.localeCompare(secondName, 'en')
+    })
 
     return (
         <section className="container space-y-16 py-24">
@@ -18,7 +24,7 @@ export const Countries = async () => {
             </p>
 
             <div className="space-y-4 sm:space-y-8">
-                <div className="bg-orange-10 flex flex-col items-center gap-8 rounded-2xl p-8 text-center sm:flex-row sm:text-left">
+                <div className="flex flex-col items-center gap-8 rounded-2xl bg-orange-10 p-8 text-center sm:flex-row sm:text-left">
                     <Image
                         src="/images/mini-map.png"
                         width={162}
