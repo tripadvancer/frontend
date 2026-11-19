@@ -1,91 +1,34 @@
 'use client'
 
-import { ArrowLeftIcon, FilterIcon, FilterXIcon, PencilIcon, TrashIcon } from 'lucide-react'
+import { FilterIcon, FilterXIcon } from 'lucide-react'
 
-import { ListEdit } from '@/components/features/dialogs/list-form/list-edit'
-import { useDialog } from '@/components/providers/dialog-provider'
-import { useToast } from '@/components/providers/toast-provider'
-import { Confirmation } from '@/components/ui/confirmation'
-import { Dropdown, DropdownItemProps } from '@/components/ui/dropdown'
-import { UNEXPECTED_ERROR_MESSAGE } from '@/utils/constants'
+import { SavedListView } from '@/components/features/common/saved/saved-list-view'
+import { DropdownItemProps } from '@/components/ui/dropdown'
 import { getIsFilterMapBySavedLists, setIsFilterMapBySavedLists } from '@/utils/redux/features/map-slice'
-import { setWidgetActiveList } from '@/utils/redux/features/widget-slice'
+import { getWidgetSelectedCategories, setWidgetActiveList } from '@/utils/redux/features/widget-slice'
 import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
-import { listAPI } from '@/utils/redux/services/list/list.api'
 import { IList } from '@/utils/types/common'
 
-import { WidgetSavedListsViewPlacesFeed } from './widget-saved-lists-view-places-feed'
-
-export const WidgetSavedListsView = (list: IList) => {
-    const dialog = useDialog()
-    const toast = useToast()
+export const WidgetSavedListsView = ({ list }: { list: IList }) => {
     const isFilterMapBySavedLists = useAppSelector(getIsFilterMapBySavedLists)
+    const selectedCategories = useAppSelector(getWidgetSelectedCategories)
     const dispatch = useAppDispatch()
 
-    const [deleteList] = listAPI.useDeleteListMutation()
-
-    const handleBackClick = () => {
-        dispatch(setWidgetActiveList(null))
-    }
-
-    const handleDeleteClick = () => {
-        dialog.open(
-            <Confirmation
-                variant="red"
-                title="Delete list"
-                message="Are you sure you want to delete this list? This action is irreversible."
-                onConfirm={async () => {
-                    try {
-                        await deleteList(list.id)
-                        dispatch(setWidgetActiveList(null))
-                        dialog.close()
-                    } catch {
-                        toast.error(UNEXPECTED_ERROR_MESSAGE)
-                    }
-                }}
-            />,
-        )
-    }
-
-    const items: DropdownItemProps[] = [
+    const actions: DropdownItemProps[] = [
         {
             caption: isFilterMapBySavedLists ? 'Show all places' : 'Hide other places',
             value: 'preview_mode',
             icon: isFilterMapBySavedLists ? <FilterXIcon size={16} /> : <FilterIcon size={16} />,
             onClick: () => dispatch(setIsFilterMapBySavedLists(!isFilterMapBySavedLists)),
         },
-        {
-            caption: 'Edit',
-            value: 'edit',
-            icon: <PencilIcon size={16} />,
-            onClick: () => dialog.open(<ListEdit {...list} />),
-        },
-        {
-            caption: 'Delete',
-            value: 'delete',
-            icon: <TrashIcon size={16} />,
-            isRed: true,
-            onClick: handleDeleteClick,
-        },
     ]
 
     return (
-        <div className="flex flex-col gap-y-6">
-            <div className="flex-center justify-between gap-x-8">
-                <div
-                    role="back"
-                    className="hover-animated hover:text-blue-active relative cursor-pointer overflow-hidden pl-6"
-                    onClick={handleBackClick}
-                >
-                    <div className="absolute top-1 left-0">
-                        <ArrowLeftIcon size={16} absoluteStrokeWidth />
-                    </div>
-                    <div className="text-big-bold overflow-hidden text-ellipsis">{list.name}</div>
-                </div>
-                <Dropdown items={items} />
-            </div>
-            {list.description && <div className="text-black-70 wrap-break-word">{list.description}</div>}
-            <WidgetSavedListsViewPlacesFeed listId={list.id} />
-        </div>
+        <SavedListView
+            list={list}
+            onBack={() => dispatch(setWidgetActiveList(null))}
+            actions={actions}
+            selectedCategories={selectedCategories}
+        />
     )
 }

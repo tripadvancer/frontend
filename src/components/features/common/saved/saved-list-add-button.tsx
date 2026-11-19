@@ -6,12 +6,8 @@ import { ListAdd } from '@/components/features/dialogs/list-form/list-add'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { FormButton } from '@/components/ui/form-button'
 
-export const WidgetSavedListAddButton = () => {
+export const SavedListAddButton = ({ caption = 'Create new list' }: { caption?: string }) => {
     const dialog = useDialog()
-
-    const handleClick = () => {
-        dialog.open(<ListAdd />)
-    }
 
     return (
         <FormButton
@@ -20,9 +16,9 @@ export const WidgetSavedListAddButton = () => {
             shape="rounded"
             icon={<PlusIcon size={16} />}
             className="mb-6 w-full sm:mb-8"
-            onClick={handleClick}
+            onClick={() => dialog.open(<ListAdd />)}
         >
-            Create new list
+            {caption}
         </FormButton>
     )
 }
