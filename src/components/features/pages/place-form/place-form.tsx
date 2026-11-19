@@ -21,11 +21,10 @@ import { validationSchema } from './validation-schema'
 type PlaceFormProps = {
     initialValues: CreatePlaceInputs | UpdatePlaceInputs
     isLoading: boolean
-    isEdit?: boolean
     onSubmit: (inputs: CreatePlaceInputs | UpdatePlaceInputs) => void
 }
 
-export const PlaceForm = ({ initialValues, isLoading, isEdit = false, onSubmit }: PlaceFormProps) => {
+export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps) => {
     const settings = useAppSettings()
     const [isFormDisabled, setIsFormDisabled] = useState(false)
 
@@ -47,10 +46,9 @@ export const PlaceForm = ({ initialValues, isLoading, isEdit = false, onSubmit }
 
     return (
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-            <div className="container space-y-8 py-16 sm:space-y-16">
+            <div className="space-y-8 sm:space-y-16">
                 <div className="space-y-8">
                     <div className="space-y-4">
-                        <div className="font-bold">{isEdit ? 'Edit place' : 'Add a new place'}</div>
                         <PlaceFormInputTitle
                             value={formik.values.title}
                             onChange={value => formik.setFieldValue('title', value)}

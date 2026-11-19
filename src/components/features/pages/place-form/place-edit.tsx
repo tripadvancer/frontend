@@ -89,11 +89,14 @@ export const PlaceEdit = ({ id, title, description, location, photos, cover, cat
     }
 
     return (
-        <PlaceForm
-            initialValues={initialValues}
-            isLoading={isLoading || isSearchingPlacesAround}
-            isEdit
-            onSubmit={inputs => handleSubmit(inputs as UpdatePlaceInputs)}
-        />
+        <div className="container space-y-4 py-16">
+            <div className="font-bold">Edit place</div>
+            <PlaceForm
+                initialValues={initialValues}
+                isLoading={isLoading || isSearchingPlacesAround}
+
+                onSubmit={inputs => handleSubmit(inputs as UpdatePlaceInputs)}
+            />
+        </div>
     )
 }
