@@ -46,10 +46,9 @@ export const PlaceForm = ({ initialValues, isLoading, onSubmit }: PlaceFormProps
 
     return (
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-            <div className="container space-y-8 py-16 sm:space-y-16">
+            <div className="space-y-8 sm:space-y-16">
                 <div className="space-y-8">
                     <div className="space-y-4">
-                        <div className="font-bold">Add a new place</div>
                         <PlaceFormInputTitle
                             value={formik.values.title}
                             onChange={value => formik.setFieldValue('title', value)}
