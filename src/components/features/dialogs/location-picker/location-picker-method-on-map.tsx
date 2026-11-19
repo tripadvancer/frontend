@@ -25,7 +25,7 @@ export const LocationPickerMethodOnMap = ({
     const settings = useAppSettings()
     const dialog = useDialog()
 
-    const [viewState, setViewstate] = useState<Partial<ViewState>>({})
+    const [viewState, setViewstate] = useState<Partial<ViewState> | null>(null)
 
     useEffect(() => {
         if (settings) {
@@ -48,11 +48,15 @@ export const LocationPickerMethodOnMap = ({
     }
 
     const handleConfirm = () => {
+        if (!viewState) {
+            return
+        }
+
         onConfirm(viewStateToString(viewState))
         dialog.close()
     }
 
-    if (!settings) {
+    if (!settings || !viewState) {
         return <GlobalLoading />
     }
 
