@@ -14,6 +14,8 @@ import { useSignOut } from '@/utils/hooks/use-sign-out'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 import { ChangeUserPasswordInputs } from '@/utils/redux/services/user/user.types'
 
+const passwordMustDifferMessage = 'New password must be different from your current password.'
+
 export const ChangePassword = () => {
     const settings = useAppSettings()
     const dialog = useDialog()
@@ -31,7 +33,10 @@ export const ChangePassword = () => {
     const validationSchema = passwordValidation
         ? Yup.object().shape({
               oldPassword: Yup.string().required('This field is required'),
-              newPassword: getPasswordSchema(passwordValidation),
+              newPassword: getPasswordSchema(passwordValidation).notOneOf(
+                  [Yup.ref('oldPassword')],
+                  passwordMustDifferMessage,
+              ),
           })
         : Yup.object()
 
@@ -70,6 +75,8 @@ export const ChangePassword = () => {
         validationSchema,
         onSubmit: handleSubmit,
     })
+    const isPasswordUnchanged =
+        formik.values.oldPassword.length > 0 && formik.values.oldPassword === formik.values.newPassword
 
     return (
         <form className="flex w-full flex-col gap-y-8 sm:w-104" onSubmit={formik.handleSubmit}>
@@ -93,7 +100,7 @@ export const ChangePassword = () => {
                     name="newPassword"
                     value={formik.values.newPassword}
                     placeholder="Enter new password"
-                    error={formik.errors.newPassword}
+                    error={formik.errors.newPassword || (isPasswordUnchanged ? passwordMustDifferMessage : '')}
                     disabled={isLoading}
                     onChange={formik.handleChange}
                 />
@@ -102,7 +109,7 @@ export const ChangePassword = () => {
                 htmlType="submit"
                 className="w-full"
                 isLoading={isLoading}
-                isDisabled={!settings || !formik.dirty}
+                isDisabled={!settings || !formik.dirty || isPasswordUnchanged}
             >
                 Save changes
             </FormButton>
