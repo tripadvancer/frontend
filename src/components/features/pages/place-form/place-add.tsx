@@ -71,10 +71,13 @@ export const PlaceAdd = () => {
     }
 
     return (
-        <PlaceForm
-            initialValues={initialValues}
-            isLoading={isLoading || isSearchingPlacesAround}
-            onSubmit={inputs => handleSubmit(inputs as CreatePlaceInputs)}
-        />
+        <div className="container space-y-4 py-16">
+            <div className="font-bold">Add a new place</div>
+            <PlaceForm
+                initialValues={initialValues}
+                isLoading={isLoading || isSearchingPlacesAround}
+                onSubmit={inputs => handleSubmit(inputs as CreatePlaceInputs)}
+            />
+        </div>
     )
 }
